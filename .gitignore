@@ -1,0 +1,7 @@
+*.vcd
+sim_*
+!sim_*.sv
+!sim_*.v
+*.o
+*.vvp
+.DS_Store

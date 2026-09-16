@@ -1,0 +1,1053 @@
+module multiwarp_execution_core (
+    input logic clk,
+    input logic reset,
+    input logic run_enable,
+
+    // =================================================
+    // WARP LAUNCH
+    // =================================================
+
+    input logic        launch_enable,
+    input logic [1:0]  launch_warp_id,
+    input logic [31:0] launch_pc,
+    input logic [3:0]  launch_active_mask,
+
+    // =================================================
+    // DEBUG REGISTER PRELOAD
+    // =================================================
+
+    input logic        debug_write_enable,
+    input logic [1:0]  debug_warp_id,
+    input logic [1:0]  debug_lane_id,
+    input logic [3:0]  debug_reg_addr,
+    input logic [31:0] debug_write_data,
+
+    // =================================================
+    // STATUS
+    // =================================================
+
+    output logic       issue_valid,
+    output logic       issue_accept,
+    output logic [1:0] selected_warp_id,
+
+    output logic [31:0] selected_pc,
+    output logic [31:0] instruction,
+    output logic [5:0]  opcode,
+
+    output logic [3:0] selected_active_mask,
+
+    output logic [3:0] valid_mask,
+    output logic [3:0] ready_mask,
+    output logic [3:0] halted_mask,
+    output logic [3:0] blocked_mask,
+
+    output logic dependency_stall,
+    output logic resource_stall,
+
+    output logic [127:0] rs1_data,
+    output logic [127:0] rs2_data,
+    output logic [127:0] alu_result,
+
+    // Shared memory
+    output logic       shared_bank_conflict,
+    output logic [3:0] shared_conflict_mask,
+
+    // Control-flow debug
+    output logic       branch_divergent,
+    output logic [3:0] branch_taken_mask,
+    output logic [3:0] branch_not_taken_mask,
+
+    output logic       reconvergence_event
+);
+
+    import snackwell_pkg::*;
+
+
+    // =================================================
+    // DECODE
+    // =================================================
+
+    logic [3:0] rd_addr;
+    logic [3:0] rs1_addr;
+    logic [3:0] rs2_addr;
+
+    logic [13:0] immediate;
+    logic [31:0] immediate_extended;
+
+
+    // =================================================
+    // OPCODE CLASSIFICATION
+    // =================================================
+
+    logic is_integer_op;
+    logic is_shared_load;
+    logic is_shared_store;
+    logic is_branch;
+    logic is_ssy;
+
+    logic uses_rs1;
+    logic uses_rs2;
+    logic writes_rd;
+
+    logic issue_uses_rs1;
+    logic issue_uses_rs2;
+    logic issue_writes_rd;
+
+
+    // =================================================
+    // STATE UPDATE
+    // =================================================
+
+    logic        state_update_enable;
+    logic [1:0]  state_update_warp_id;
+
+    logic        update_pc_enable;
+    logic [31:0] update_pc;
+
+    logic        update_mask_enable;
+    logic [3:0]  update_active_mask;
+
+    logic update_valid_enable;
+    logic update_valid;
+
+    logic update_ready_enable;
+    logic update_ready;
+
+    logic update_halted_enable;
+    logic update_halted;
+
+
+    // =================================================
+    // SELECTED WARP
+    // =================================================
+
+    logic selected_valid;
+    logic selected_ready;
+    logic selected_halted;
+
+    logic [3:0] eligible_mask;
+
+
+    // =================================================
+    // EXECUTION
+    // =================================================
+
+    logic execution_unit_ready;
+
+    logic [127:0] current_alu_result;
+
+
+    // =================================================
+    // LSU
+    // =================================================
+
+    logic [127:0] lsu_addresses;
+    logic [127:0] lsu_store_data;
+
+    logic [3:0] lsu_load_mask;
+    logic [3:0] lsu_store_mask;
+
+    logic [127:0] shared_load_data;
+
+
+    // =================================================
+    // WRITEBACK
+    // =================================================
+
+    logic         wb_valid;
+    logic [1:0]   wb_warp_id;
+    logic [3:0]   wb_rd_addr;
+    logic [3:0]   wb_write_mask;
+    logic [127:0] wb_result;
+
+
+    // =================================================
+    // BRANCH UNIT
+    // =================================================
+
+    logic [3:0] branch_taken;
+    logic [3:0] branch_not_taken;
+
+    logic branch_uniform_taken;
+    logic branch_uniform_not_taken;
+
+    logic [31:0] branch_target;
+    logic [31:0] branch_fallthrough;
+
+
+    assign branch_taken_mask =
+        branch_taken;
+
+    assign branch_not_taken_mask =
+        branch_not_taken;
+
+
+    // =================================================
+    // RECONVERGENCE TARGET TABLE
+    // =================================================
+
+    logic [31:0] reconv_target_pc;
+    logic        reconv_target_valid;
+
+    logic [31:0] ssy_target_pc;
+
+    logic target_write_enable;
+    logic target_clear_enable;
+
+
+    assign ssy_target_pc =
+        selected_pc +
+        32'd4 +
+        (immediate_extended << 2);
+
+
+    // =================================================
+    // RECONVERGENCE STACK
+    // =================================================
+
+    logic [31:0] stack_deferred_pc;
+    logic [3:0]  stack_deferred_mask;
+
+    logic [31:0] stack_reconverge_pc;
+    logic [3:0]  stack_reconverge_mask;
+
+    logic stack_deferred_pending;
+
+    logic stack_empty;
+    logic stack_full;
+    logic [2:0] stack_depth;
+
+    logic stack_overflow_attempt;
+    logic stack_underflow_attempt;
+
+
+    // =================================================
+    // DIVERGENCE CONTROLLER COMMANDS
+    // =================================================
+
+    logic        divergence_pc_update_enable;
+    logic [31:0] divergence_next_pc;
+
+    logic        divergence_mask_update_enable;
+    logic [3:0]  divergence_next_mask;
+
+    logic stack_push_enable;
+
+    logic [31:0] stack_push_deferred_pc;
+    logic [3:0]  stack_push_deferred_mask;
+
+    logic [31:0] stack_push_reconverge_pc;
+    logic [3:0]  stack_push_reconverge_mask;
+
+    logic stack_pop_enable;
+
+    logic stack_update_pending_enable;
+    logic stack_update_deferred_pending;
+
+    logic switch_to_deferred_path;
+    logic restore_reconverged_mask;
+
+    logic missing_reconvergence_target;
+
+
+    // Current PC is a reconvergence point.
+    logic at_reconvergence_point;
+
+
+    assign at_reconvergence_point =
+        !stack_empty &&
+        (selected_pc == stack_reconverge_pc);
+
+
+    // This event acts like an internal control-flow micro-op.
+    // We do NOT execute the instruction currently sitting at
+    // the JOIN address until reconvergence handling finishes.
+
+    logic instruction_execute_accept;
+
+    assign instruction_execute_accept =
+        issue_accept &&
+        !at_reconvergence_point;
+
+
+    // =================================================
+    // INSTRUCTION MEMORY
+    // =================================================
+
+    instruction_memory imem (
+
+        .pc          (selected_pc),
+        .instruction (instruction)
+
+    );
+
+
+    // =================================================
+    // DECODER
+    // =================================================
+
+    instruction_decoder decoder (
+
+        .instruction        (instruction),
+
+        .opcode             (opcode),
+
+        .rd_addr            (rd_addr),
+        .rs1_addr           (rs1_addr),
+        .rs2_addr           (rs2_addr),
+
+        .immediate          (immediate),
+        .immediate_extended (immediate_extended)
+
+    );
+
+
+    // =================================================
+    // OPCODE CONTROL
+    // =================================================
+
+    always @(*) begin
+
+        is_integer_op   = 1'b0;
+        is_shared_load  = 1'b0;
+        is_shared_store = 1'b0;
+        is_branch       = 1'b0;
+        is_ssy          = 1'b0;
+
+        uses_rs1  = 1'b0;
+        uses_rs2  = 1'b0;
+        writes_rd = 1'b0;
+
+
+        case (opcode)
+
+            OP_ADD,
+            OP_SUB,
+            OP_AND,
+            OP_OR,
+            OP_XOR: begin
+
+                is_integer_op = 1'b1;
+
+                uses_rs1  = 1'b1;
+                uses_rs2  = 1'b1;
+                writes_rd = 1'b1;
+
+            end
+
+
+            OP_LD_SHARED: begin
+
+                is_shared_load = 1'b1;
+
+                uses_rs1  = 1'b1;
+                writes_rd = 1'b1;
+
+            end
+
+
+            OP_ST_SHARED: begin
+
+                is_shared_store = 1'b1;
+
+                uses_rs1 = 1'b1;
+                uses_rs2 = 1'b1;
+
+            end
+
+
+            OP_BEQ: begin
+
+                is_branch = 1'b1;
+
+                uses_rs1 = 1'b1;
+                uses_rs2 = 1'b1;
+
+            end
+
+
+            OP_SSY: begin
+
+                is_ssy = 1'b1;
+
+            end
+
+
+            OP_EXIT: begin
+            end
+
+
+            default: begin
+            end
+
+        endcase
+
+    end
+
+
+    // At a reconvergence PC, suppress architectural
+    // operands/destination for the fetched instruction.
+    //
+    // This prevents the scoreboard from treating the JOIN
+    // instruction as having executed while the controller
+    // is switching masks/paths.
+
+    assign issue_uses_rs1 =
+        at_reconvergence_point
+            ? 1'b0
+            : uses_rs1;
+
+    assign issue_uses_rs2 =
+        at_reconvergence_point
+            ? 1'b0
+            : uses_rs2;
+
+    assign issue_writes_rd =
+        at_reconvergence_point
+            ? 1'b0
+            : writes_rd;
+
+
+    assign execution_unit_ready =
+        run_enable;
+
+
+    // =================================================
+    // WARP CONTROL
+    // =================================================
+
+    warp_control_unit warp_control (
+
+        .clk                  (clk),
+        .reset                (reset),
+
+        .issue_enable         (run_enable),
+
+        .update_enable        (state_update_enable),
+        .update_warp_id       (state_update_warp_id),
+
+        .update_pc_enable     (update_pc_enable),
+        .update_pc            (update_pc),
+
+        .update_mask_enable   (update_mask_enable),
+        .update_active_mask   (update_active_mask),
+
+        .update_valid_enable  (update_valid_enable),
+        .update_valid         (update_valid),
+
+        .update_ready_enable  (update_ready_enable),
+        .update_ready         (update_ready),
+
+        .update_halted_enable (update_halted_enable),
+        .update_halted        (update_halted),
+
+        .rs1_addr             (rs1_addr),
+        .rs2_addr             (rs2_addr),
+        .rd_addr              (rd_addr),
+
+        .uses_rs1             (issue_uses_rs1),
+        .uses_rs2             (issue_uses_rs2),
+        .writes_rd            (issue_writes_rd),
+
+        .execution_unit_ready (execution_unit_ready),
+
+        .clear_busy_enable    (wb_valid),
+        .clear_busy_warp_id   (wb_warp_id),
+        .clear_busy_reg       (wb_rd_addr),
+
+        .issue_valid          (issue_valid),
+        .issue_accept         (issue_accept),
+        .selected_warp_id     (selected_warp_id),
+
+        .dependency_stall     (dependency_stall),
+        .resource_stall       (resource_stall),
+
+        .selected_pc          (selected_pc),
+        .selected_active_mask (selected_active_mask),
+
+        .selected_valid       (selected_valid),
+        .selected_ready       (selected_ready),
+        .selected_halted      (selected_halted),
+
+        .valid_mask           (valid_mask),
+        .ready_mask           (ready_mask),
+        .halted_mask          (halted_mask),
+
+        .blocked_mask         (blocked_mask),
+        .eligible_mask        (eligible_mask)
+
+    );
+
+
+    // =================================================
+    // REGISTER FILE
+    // =================================================
+
+    multiwarp_register_file regfile (
+
+        .clk                (clk),
+        .reset              (reset),
+
+        .read_warp_id       (selected_warp_id),
+
+        .rs1_addr           (rs1_addr),
+        .rs2_addr           (rs2_addr),
+
+        .rs1_data           (rs1_data),
+        .rs2_data           (rs2_data),
+
+        .write_enable       (wb_valid),
+        .write_warp_id      (wb_warp_id),
+
+        .rd_addr            (wb_rd_addr),
+        .write_data         (wb_result),
+        .write_mask         (wb_write_mask),
+
+        .debug_write_enable (debug_write_enable),
+        .debug_warp_id      (debug_warp_id),
+        .debug_lane_id      (debug_lane_id),
+        .debug_reg_addr     (debug_reg_addr),
+        .debug_write_data   (debug_write_data)
+
+    );
+
+
+    // =================================================
+    // INTEGER SIMD
+    // =================================================
+
+    simd_integer_execute execute (
+
+        .opcode    (opcode),
+
+        .operand_a (rs1_data),
+        .operand_b (rs2_data),
+
+        .result    (current_alu_result)
+
+    );
+
+
+    assign alu_result =
+        current_alu_result;
+
+
+    // =================================================
+    // BRANCH UNIT
+    // =================================================
+
+    branch_unit branch (
+
+        .current_pc        (selected_pc),
+
+        .operand_a         (rs1_data),
+        .operand_b         (rs2_data),
+
+        .active_mask       (selected_active_mask),
+
+        .immediate         (immediate_extended),
+
+        .taken_mask        (branch_taken),
+        .not_taken_mask    (branch_not_taken),
+
+        .uniform_taken     (branch_uniform_taken),
+        .uniform_not_taken (branch_uniform_not_taken),
+        .divergent         (branch_divergent),
+
+        .branch_target     (branch_target),
+        .fallthrough_pc    (branch_fallthrough)
+
+    );
+
+
+    // =================================================
+    // RECONVERGENCE TARGET TABLE
+    // =================================================
+
+    assign target_write_enable =
+        run_enable &&
+        instruction_execute_accept &&
+        is_ssy;
+
+
+    assign target_clear_enable =
+        run_enable &&
+        instruction_execute_accept &&
+        is_branch;
+
+
+    reconvergence_target_table reconv_targets (
+
+        .clk           (clk),
+        .reset         (reset),
+
+        .write_enable  (target_write_enable),
+        .write_warp_id (selected_warp_id),
+        .write_pc      (ssy_target_pc),
+
+        .clear_enable  (target_clear_enable),
+        .clear_warp_id (selected_warp_id),
+
+        .read_warp_id  (selected_warp_id),
+
+        .read_pc       (reconv_target_pc),
+        .read_valid    (reconv_target_valid)
+
+    );
+
+
+    // =================================================
+    // RECONVERGENCE STACK
+    // =================================================
+
+    reconvergence_stack reconv_stack (
+
+        .clk                     (clk),
+        .reset                   (reset),
+
+        .warp_id                 (selected_warp_id),
+
+        .push_enable             (stack_push_enable),
+
+        .push_deferred_pc        (stack_push_deferred_pc),
+        .push_deferred_mask      (stack_push_deferred_mask),
+
+        .push_reconverge_pc      (stack_push_reconverge_pc),
+        .push_reconverge_mask    (stack_push_reconverge_mask),
+
+        .pop_enable              (stack_pop_enable),
+
+        .update_pending_enable   (stack_update_pending_enable),
+        .update_deferred_pending (stack_update_deferred_pending),
+
+        .top_deferred_pc         (stack_deferred_pc),
+        .top_deferred_mask       (stack_deferred_mask),
+
+        .top_reconverge_pc       (stack_reconverge_pc),
+        .top_reconverge_mask     (stack_reconverge_mask),
+
+        .top_deferred_pending    (stack_deferred_pending),
+
+        .empty                   (stack_empty),
+        .full                    (stack_full),
+        .depth                   (stack_depth),
+
+        .overflow_attempt        (stack_overflow_attempt),
+        .underflow_attempt       (stack_underflow_attempt)
+
+    );
+
+
+    // =================================================
+    // DIVERGENCE CONTROLLER
+    // =================================================
+
+    divergence_controller divergence_control (
+
+        .current_pc                    (selected_pc),
+        .current_active_mask           (selected_active_mask),
+
+        .branch_valid                  (
+            run_enable &&
+            instruction_execute_accept &&
+            is_branch
+        ),
+
+        .taken_mask                    (branch_taken),
+        .not_taken_mask                (branch_not_taken),
+
+        .uniform_taken                 (branch_uniform_taken),
+        .uniform_not_taken             (branch_uniform_not_taken),
+        .divergent                     (branch_divergent),
+
+        .branch_target                 (branch_target),
+        .fallthrough_pc                (branch_fallthrough),
+
+        .reconvergence_target_valid    (reconv_target_valid),
+        .reconvergence_target_pc       (reconv_target_pc),
+
+        .stack_empty                   (stack_empty),
+
+        .stack_deferred_pc             (stack_deferred_pc),
+        .stack_deferred_mask           (stack_deferred_mask),
+
+        .stack_reconverge_pc           (stack_reconverge_pc),
+        .stack_reconverge_mask         (stack_reconverge_mask),
+
+        .stack_deferred_pending        (stack_deferred_pending),
+
+        .pc_update_enable              (divergence_pc_update_enable),
+        .next_pc                       (divergence_next_pc),
+
+        .mask_update_enable            (divergence_mask_update_enable),
+        .next_active_mask              (divergence_next_mask),
+
+        .stack_push_enable             (stack_push_enable),
+
+        .stack_push_deferred_pc        (stack_push_deferred_pc),
+        .stack_push_deferred_mask      (stack_push_deferred_mask),
+
+        .stack_push_reconverge_pc      (stack_push_reconverge_pc),
+        .stack_push_reconverge_mask    (stack_push_reconverge_mask),
+
+        .stack_pop_enable              (stack_pop_enable),
+
+        .stack_update_pending_enable   (stack_update_pending_enable),
+        .stack_update_deferred_pending (stack_update_deferred_pending),
+
+        .reconvergence_event           (reconvergence_event),
+        .switch_to_deferred_path       (switch_to_deferred_path),
+        .restore_reconverged_mask      (restore_reconverged_mask),
+
+        .missing_reconvergence_target  (missing_reconvergence_target)
+
+    );
+
+
+    // =================================================
+    // LSU
+    // =================================================
+
+    load_store_unit lsu (
+
+        .base_addresses    (rs1_data),
+        .offset            (immediate_extended),
+
+        .store_data        (rs2_data),
+
+        .active_mask       (selected_active_mask),
+
+        .is_load           (
+            run_enable &&
+            instruction_execute_accept &&
+            is_shared_load
+        ),
+
+        .is_store          (
+            run_enable &&
+            instruction_execute_accept &&
+            is_shared_store
+        ),
+
+        .lane_addresses    (lsu_addresses),
+        .store_write_data  (lsu_store_data),
+
+        .load_enable_mask  (lsu_load_mask),
+        .store_enable_mask (lsu_store_mask)
+
+    );
+
+
+    // =================================================
+    // SHARED MEMORY
+    // =================================================
+
+    shared_memory shared_mem (
+
+        .clk               (clk),
+        .reset             (reset),
+
+        .lane_addresses    (lsu_addresses),
+        .store_data        (lsu_store_data),
+
+        .load_enable_mask  (
+            instruction_execute_accept
+                ? lsu_load_mask
+                : 4'b0000
+        ),
+
+        .store_enable_mask (
+            instruction_execute_accept
+                ? lsu_store_mask
+                : 4'b0000
+        ),
+
+        .load_data         (shared_load_data),
+
+        .conflict_mask     (shared_conflict_mask),
+        .bank_conflict     (shared_bank_conflict)
+
+    );
+
+
+    // =================================================
+    // EXECUTE -> WRITEBACK
+    // =================================================
+
+    always_ff @(posedge clk) begin
+
+        if (reset) begin
+
+            wb_valid      <= 1'b0;
+            wb_warp_id    <= 2'd0;
+            wb_rd_addr    <= 4'd0;
+            wb_write_mask <= 4'b0000;
+            wb_result     <= 128'd0;
+
+        end
+
+        else begin
+
+            wb_valid <= 1'b0;
+
+
+            if (
+                run_enable &&
+                instruction_execute_accept &&
+                is_integer_op
+            ) begin
+
+                wb_valid      <= 1'b1;
+                wb_warp_id    <= selected_warp_id;
+                wb_rd_addr    <= rd_addr;
+                wb_write_mask <= selected_active_mask;
+                wb_result     <= current_alu_result;
+
+            end
+
+
+            else if (
+                run_enable &&
+                instruction_execute_accept &&
+                is_shared_load
+            ) begin
+
+                wb_valid      <= 1'b1;
+                wb_warp_id    <= selected_warp_id;
+                wb_rd_addr    <= rd_addr;
+                wb_write_mask <= selected_active_mask;
+                wb_result     <= shared_load_data;
+
+            end
+
+        end
+
+    end
+
+
+    // =================================================
+    // WARP STATE CONTROL
+    // =================================================
+
+    always @(*) begin
+
+        state_update_enable =
+            1'b0;
+
+        state_update_warp_id =
+            selected_warp_id;
+
+
+        update_pc_enable =
+            1'b0;
+
+        update_pc =
+            selected_pc;
+
+
+        update_mask_enable =
+            1'b0;
+
+        update_active_mask =
+            selected_active_mask;
+
+
+        update_valid_enable =
+            1'b0;
+
+        update_valid =
+            selected_valid;
+
+
+        update_ready_enable =
+            1'b0;
+
+        update_ready =
+            selected_ready;
+
+
+        update_halted_enable =
+            1'b0;
+
+        update_halted =
+            selected_halted;
+
+
+        // =================================================
+        // PRIORITY 1: LAUNCH
+        // =================================================
+
+        if (launch_enable) begin
+
+            state_update_enable =
+                1'b1;
+
+            state_update_warp_id =
+                launch_warp_id;
+
+
+            update_pc_enable =
+                1'b1;
+
+            update_pc =
+                launch_pc;
+
+
+            update_mask_enable =
+                1'b1;
+
+            update_active_mask =
+                launch_active_mask;
+
+
+            update_valid_enable =
+                1'b1;
+
+            update_valid =
+                1'b1;
+
+
+            update_ready_enable =
+                1'b1;
+
+            update_ready =
+                1'b1;
+
+
+            update_halted_enable =
+                1'b1;
+
+            update_halted =
+                1'b0;
+
+        end
+
+
+        // =================================================
+        // PRIORITY 2: RECONVERGENCE EVENT
+        // =================================================
+
+        else if (
+            run_enable &&
+            reconvergence_event
+        ) begin
+
+            state_update_enable =
+                1'b1;
+
+            state_update_warp_id =
+                selected_warp_id;
+
+
+            if (divergence_pc_update_enable) begin
+
+                update_pc_enable =
+                    1'b1;
+
+                update_pc =
+                    divergence_next_pc;
+
+            end
+
+
+            if (divergence_mask_update_enable) begin
+
+                update_mask_enable =
+                    1'b1;
+
+                update_active_mask =
+                    divergence_next_mask;
+
+            end
+
+        end
+
+
+        // =================================================
+        // PRIORITY 3: ACCEPTED INSTRUCTION
+        // =================================================
+
+        else if (
+            run_enable &&
+            instruction_execute_accept
+        ) begin
+
+            state_update_enable =
+                1'b1;
+
+            state_update_warp_id =
+                selected_warp_id;
+
+
+            // ---------------------------------------------
+            // EXIT
+            // ---------------------------------------------
+
+            if (opcode == OP_EXIT) begin
+
+                update_ready_enable =
+                    1'b1;
+
+                update_ready =
+                    1'b0;
+
+
+                update_halted_enable =
+                    1'b1;
+
+                update_halted =
+                    1'b1;
+
+            end
+
+
+            // ---------------------------------------------
+            // BEQ
+            // ---------------------------------------------
+
+            else if (is_branch) begin
+
+                if (divergence_pc_update_enable) begin
+
+                    update_pc_enable =
+                        1'b1;
+
+                    update_pc =
+                        divergence_next_pc;
+
+                end
+
+
+                if (divergence_mask_update_enable) begin
+
+                    update_mask_enable =
+                        1'b1;
+
+                    update_active_mask =
+                        divergence_next_mask;
+
+                end
+
+            end
+
+
+            // ---------------------------------------------
+            // EVERYTHING ELSE
+            // ---------------------------------------------
+
+            else begin
+
+                update_pc_enable =
+                    1'b1;
+
+                update_pc =
+                    selected_pc + 32'd4;
+
+            end
+
+        end
+
+    end
+
+
+endmodule
