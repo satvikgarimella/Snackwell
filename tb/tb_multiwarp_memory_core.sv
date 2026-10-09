@@ -43,6 +43,7 @@ module tb_multiwarp_memory_core;
 
     logic shared_bank_conflict;
     logic [3:0] shared_conflict_mask;
+    integer cycles;
 
 
     multiwarp_execution_core dut (
@@ -303,6 +304,14 @@ module tb_multiwarp_memory_core;
         // LOAD
         // ---------------------------------------------
 
+        // The older store must finish before the next memory request issues.
+        cycles = 0;
+        while (!(opcode == OP_LD_SHARED && issue_accept) && cycles < 30) begin
+            @(posedge clk);
+            #1;
+            cycles = cycles + 1;
+        end
+
         if (
             opcode !== OP_LD_SHARED ||
             selected_pc !== 32'h00000004 ||
@@ -327,9 +336,13 @@ module tb_multiwarp_memory_core;
         #1;
 
 
-        // One more clock lets WB commit R3.
-        @(posedge clk);
-        #1;
+        // Loads complete asynchronously and retire through the shared WB port.
+        cycles = 0;
+        while (dut.regfile.registers[0][0][3] !== 32'd1234 && cycles < 30) begin
+            @(posedge clk);
+            #1;
+            cycles = cycles + 1;
+        end
 
 
         // ---------------------------------------------
@@ -388,10 +401,14 @@ module tb_multiwarp_memory_core;
         // RUN TO EXIT
         // ---------------------------------------------
 
-        while (halted_mask !== 4'b0001) begin
+        cycles = 0;
+        while (halted_mask !== 4'b0001 && cycles < 30) begin
             @(posedge clk);
             #1;
+            cycles = cycles + 1;
         end
+
+        if (halted_mask !== 4'b0001) $fatal(1, "Memory program did not halt");
 
 
         if (issue_valid !== 1'b0) begin

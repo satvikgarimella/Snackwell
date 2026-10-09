@@ -27,6 +27,9 @@ module issue_stage (
 
     input logic rs1_busy,
     input logic rs2_busy,
+    input logic rd_busy,
+    // Dependencies spanning multiple registers (for example a tensor tile).
+    input logic additional_dependency,
 
     // ------------------------------------------------
     // EXECUTION RESOURCE STATUS
@@ -56,16 +59,18 @@ module issue_stage (
 );
 
 
-    logic source_dependency;
+    logic register_dependency;
 
 
     // =================================================
-    // DEPENDENCY CHECK
+    // RAW / WAW DEPENDENCY CHECK
     // =================================================
 
-    assign source_dependency =
+    assign register_dependency =
+        additional_dependency ||
         (uses_rs1 && rs1_busy) ||
-        (uses_rs2 && rs2_busy);
+        (uses_rs2 && rs2_busy) ||
+        (writes_rd && rd_busy);
 
 
     // =================================================
@@ -74,12 +79,12 @@ module issue_stage (
 
     assign dependency_stall =
         candidate_valid &&
-        source_dependency;
+        register_dependency;
 
 
     assign resource_stall =
         candidate_valid &&
-        !source_dependency &&
+        !register_dependency &&
         !execution_unit_ready;
 
 
@@ -89,7 +94,7 @@ module issue_stage (
 
     assign issue_accept =
         candidate_valid &&
-        !source_dependency &&
+        !register_dependency &&
         execution_unit_ready;
 
 

@@ -136,6 +136,50 @@ module tb_simd_fp32_mul;
         );
 
 
+        // Lane 0 finishes early; lane 1 takes longer to normalize. A start
+        // while SIMD busy must not restart lane 0 and overwrite its result.
+        @(negedge clk);
+        operand_a = {32'h40200000, 32'h7f800000, 32'h00000001, 32'h00000000};
+        operand_b = {32'h40800000, 32'h3f800000, 32'h3f800000, 32'h3f800000};
+        active_mask = 15;
+        start = 1;
+        @(negedge clk);
+        start = 0;
+        repeat (12) @(negedge clk);
+        if (!busy) $fatal(1, "Expected mixed lane latencies");
+        operand_a = {4{32'h40400000}};
+        operand_b = {4{32'h40400000}};
+        start = 1;
+        @(negedge clk);
+        start = 0;
+        wait(done);
+        if (result !== {32'h41200000, 32'h7f800000, 32'h00000001, 32'h00000000})
+            $fatal(1, "Busy request corrupted an early-finishing lane: %h", result);
+
+        @(negedge clk);
+        operand_a = {4{32'h40000000}};
+        operand_b = {4{32'h40800000}};
+        active_mask = 5;
+        start = 1;
+        @(negedge clk);
+        start = 0;
+        wait(done);
+        if (result !== {32'h41200000, 32'h41000000, 32'h00000001, 32'h41000000})
+            $fatal(1, "Masked SIMD multiply changed inactive lanes");
+
+        @(negedge clk);
+        active_mask = 0;
+        start = 1;
+        @(negedge clk);
+        start = 0;
+        wait(done);
+        if (busy || result !== {32'h41200000, 32'h41000000, 32'h00000001, 32'h41000000})
+            $fatal(1, "Empty-mask multiply failed to complete without lane work");
+        @(negedge clk);
+        @(negedge clk);
+        if (done) $fatal(1, "Duplicate SIMD completion");
+        $display("PASS: mixed lane latency, busy rejection, inactive lanes, and empty masks");
+
         #10;
         $finish;
 

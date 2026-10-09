@@ -126,6 +126,14 @@ module tb_instruction_memory;
 
 
         $display("");
+        // The full PC must address the expanded memory without wrapping.
+        dut.memory[16] = {OP_TID, 4'd7, 22'd0};
+        check_instruction(32'd64, {OP_TID, 4'd7, 22'd0});
+        dut.memory[1023] = {OP_ADDI, 4'd2, 4'd1, 4'd0, 14'd7};
+        check_instruction(32'd4092, {OP_ADDI, 4'd2, 4'd1, 4'd0, 14'd7});
+        check_instruction(32'd4096, {OP_EXIT, 26'd0});
+        check_instruction(32'hfffffffc, {OP_EXIT, 26'd0});
+        check_instruction(32'd2, {OP_EXIT, 26'd0});
         $display("ALL INSTRUCTION MEMORY TESTS PASSED");
         $display("");
 

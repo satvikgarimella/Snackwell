@@ -67,6 +67,17 @@ module tb_integer_alu;
 
         check_result(OP_ADD, 32'd7,  32'd8, 32'd15);
         check_result(OP_SUB, 32'd20, 32'd5, 32'd15);
+        check_result(OP_ADDI, 32'd10, 32'hffffffff, 32'd9);
+        check_result(OP_ADDI, 32'hffffffff, 32'd1, 32'd0);
+        check_result(OP_SHR, 32'h80000000, 32'd31, 32'd1);
+        check_result(OP_SHR, 32'h80000000, 32'd32, 32'h80000000);
+        check_result(OP_SLTU, 32'hffffffff, 32'd0, 32'd0);
+        check_result(OP_SLTU, 32'd0, 32'hffffffff, 32'd1);
+        check_result(OP_FLT, 32'hbf800000, 32'h3f800000, 32'd1);
+        check_result(OP_FLT, 32'hc0000000, 32'hbf800000, 32'd1);
+        check_result(OP_FLT, 32'h80000000, 32'd0, 32'd0);
+        check_result(OP_FLT, 32'h7f800001, 32'h7f800000, 32'd0);
+        check_result(OP_FLT, 32'hff800000, 32'h7f800000, 32'd1);
 
         check_result(
             OP_AND,

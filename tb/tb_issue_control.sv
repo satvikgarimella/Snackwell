@@ -59,6 +59,7 @@ module tb_issue_control;
         .uses_rs1                (uses_rs1),
         .uses_rs2                (uses_rs2),
         .writes_rd               (writes_rd),
+        .additional_dependency   (1'b0),
 
         .execution_unit_ready    (execution_unit_ready),
 
@@ -668,6 +669,17 @@ module tb_issue_control;
         $display("");
 
 
+        // Resource recovery must not depend on this warp completing a write.
+        valid_mask = 4'b0001;
+        uses_rs1 = 0; uses_rs2 = 0; writes_rd = 0;
+        clear_busy_enable = 0;
+        repeat (3) begin
+            @(posedge clk);
+            #1;
+        end
+        if (!issue_valid || !issue_accept || selected_warp_id != 0)
+            $fatal(1, "Resource-stalled warp did not retry without writeback");
+        $display("PASS: resource stall recovery without a same-warp writeback");
         $finish;
 
     end

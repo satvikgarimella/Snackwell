@@ -24,6 +24,7 @@ module issue_control (
     input logic uses_rs1,
     input logic uses_rs2,
     input logic writes_rd,
+    input logic additional_dependency,
 
     // ------------------------------------------------
     // EXECUTION RESOURCE STATUS
@@ -83,8 +84,9 @@ module issue_control (
     // =================================================
 
     logic [3:0] registered_blocked_mask;
+    logic [3:0] resource_blocked_mask;
 
-    assign blocked_mask = registered_blocked_mask;
+    assign blocked_mask = registered_blocked_mask | resource_blocked_mask;
 
 
     // =================================================
@@ -100,7 +102,7 @@ module issue_control (
         .ready_mask       (ready_mask),
         .halted_mask      (halted_mask),
 
-        .blocked_mask     (registered_blocked_mask),
+        .blocked_mask     (blocked_mask),
 
         .issue_accept     (issue_accept),
 
@@ -160,6 +162,8 @@ module issue_control (
 
         .rs1_busy             (rs1_busy),
         .rs2_busy             (rs2_busy),
+        .rd_busy              (selected_warp_busy_mask[rd_addr]),
+        .additional_dependency (additional_dependency),
 
         .execution_unit_ready (execution_unit_ready),
 
@@ -178,12 +182,12 @@ module issue_control (
     // =================================================
     // BLOCKED MASK UPDATE
     //
-    // A warp that fails issue is marked blocked.
+    // A dependency-stalled warp waits for a writeback.
     //
-    // A successful clear/writeback releases that warp.
+    // Resource-stalled warps retry after one skipped cycle.
     //
     // This is intentionally simple for now:
-    // one block bit per warp.
+    // separate dependency and resource block bits per warp.
     // =================================================
 
     always_ff @(posedge clk) begin
@@ -191,18 +195,24 @@ module issue_control (
         if (reset) begin
 
             registered_blocked_mask <= 4'b0000;
+            resource_blocked_mask <= 4'b0000;
 
         end
 
         else begin
 
+            // Resource waits need no writeback from this warp to recover.
+            // Skip the candidate for one cycle, then retry with fresh status.
+            resource_blocked_mask <= 4'b0000;
+            if (resource_stall)
+                resource_blocked_mask[selected_warp_id] <= 1'b1;
+
             // -----------------------------------------
-            // Dependency/resource failure
+            // Register dependency failure
             // -----------------------------------------
 
             if (
-                issue_valid &&
-                !issue_accept
+                dependency_stall
             ) begin
 
                 registered_blocked_mask[selected_warp_id]

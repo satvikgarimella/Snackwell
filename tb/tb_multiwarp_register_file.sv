@@ -34,7 +34,8 @@ module tb_multiwarp_register_file;
         .clk                (clk),
         .reset              (reset),
 
-        .warp_id            (warp_id),
+        .read_warp_id       (warp_id),
+        .write_warp_id      (warp_id),
 
         .rs1_addr           (rs1_addr),
         .rs2_addr           (rs2_addr),

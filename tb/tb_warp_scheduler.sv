@@ -21,6 +21,8 @@ module tb_warp_scheduler;
         .valid_mask       (valid_mask),
         .ready_mask       (ready_mask),
         .halted_mask      (halted_mask),
+        .blocked_mask     (4'b0000),
+        .issue_accept     (issue_valid),
 
         .issue_valid      (issue_valid),
         .selected_warp_id (selected_warp_id),

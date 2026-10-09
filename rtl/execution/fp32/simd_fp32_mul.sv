@@ -33,7 +33,7 @@ module simd_fp32_mul (
 
     always_comb begin
         for (i = 0; i < 4; i = i + 1) begin
-            lane_start[i] = start && active_mask[i];
+            lane_start[i] = start && !busy && active_mask[i];
         end
     end
 

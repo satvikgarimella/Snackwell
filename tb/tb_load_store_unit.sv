@@ -21,7 +21,7 @@ module tb_load_store_unit;
 
     load_store_unit dut (
 
-        .base_addr         (base_addr),
+        .base_addresses    ({4{base_addr}}),
         .offset            (offset),
 
         .store_data        (store_data),

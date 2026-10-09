@@ -46,6 +46,7 @@ module warp_control_unit (
     input logic uses_rs1,
     input logic uses_rs2,
     input logic writes_rd,
+    input logic additional_dependency,
 
     // ------------------------------------------------
     // EXECUTION RESOURCE STATUS
@@ -92,7 +93,8 @@ module warp_control_unit (
     output logic [3:0] halted_mask,
 
     output logic [3:0] blocked_mask,
-    output logic [3:0] eligible_mask
+    output logic [3:0] eligible_mask,
+    output logic [15:0] selected_warp_busy_mask
 );
 
     // =================================================
@@ -102,7 +104,6 @@ module warp_control_unit (
     logic rs1_busy;
     logic rs2_busy;
 
-    logic [15:0] selected_warp_busy_mask;
 
     // This is the mask actually presented to the
     // scheduler/issue-control logic.
@@ -196,6 +197,7 @@ module warp_control_unit (
         .uses_rs1                (uses_rs1),
         .uses_rs2                (uses_rs2),
         .writes_rd               (writes_rd),
+        .additional_dependency   (additional_dependency),
 
         // Execution resource
         .execution_unit_ready    (execution_unit_ready),

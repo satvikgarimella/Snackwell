@@ -8,6 +8,8 @@ module tb_reconvergence_target_table;
     logic write_enable;
     logic [1:0] write_warp_id;
     logic [31:0] write_pc;
+    logic clear_enable = 0;
+    logic [1:0] clear_warp_id = 0;
 
     logic [1:0] read_warp_id;
     logic [31:0] read_pc;
@@ -22,6 +24,8 @@ module tb_reconvergence_target_table;
         .write_enable  (write_enable),
         .write_warp_id (write_warp_id),
         .write_pc      (write_pc),
+        .clear_enable  (clear_enable),
+        .clear_warp_id (clear_warp_id),
 
         .read_warp_id  (read_warp_id),
         .read_pc       (read_pc),
@@ -240,6 +244,16 @@ module tb_reconvergence_target_table;
         $display("");
 
 
+        @(negedge clk);
+        clear_enable = 1;
+        clear_warp_id = 0;
+        @(negedge clk);
+        clear_enable = 0;
+        if (read_valid !== 1'b0) $fatal(1, "Consumed target stayed valid");
+        read_warp_id = 1;
+        #1;
+        if (read_valid !== 1'b1) $fatal(1, "Clear affected another warp");
+        $display("PASS: target consumption is isolated per warp");
         $finish;
 
     end

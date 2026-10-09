@@ -203,7 +203,16 @@ module divergence_controller (
             // UNIFORM TAKEN
             // -----------------------------------------
 
-            if (uniform_taken) begin
+            // No lane participates in an empty-mask branch. Advance normally
+            // so an inactive warp can reach EXIT instead of retrying forever.
+            if (current_active_mask == 4'b0000) begin
+
+                pc_update_enable = 1'b1;
+                next_pc = fallthrough_pc;
+
+            end
+
+            else if (uniform_taken) begin
 
                 pc_update_enable = 1'b1;
                 next_pc = branch_target;

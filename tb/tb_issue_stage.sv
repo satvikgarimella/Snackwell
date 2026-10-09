@@ -15,6 +15,7 @@ module tb_issue_stage;
 
     logic rs1_busy;
     logic rs2_busy;
+    logic rd_busy = 1'b0;
 
     logic execution_unit_ready;
 
@@ -47,6 +48,8 @@ module tb_issue_stage;
 
         .rs1_busy             (rs1_busy),
         .rs2_busy             (rs2_busy),
+        .rd_busy              (rd_busy),
+        .additional_dependency (1'b0),
 
         .execution_unit_ready (execution_unit_ready),
 
@@ -502,11 +505,21 @@ module tb_issue_stage;
 
         $display("");
         $display(
-            "ALL ISSUE STAGE TESTS PASSED"
+            "Checking destination dependencies"
         );
         $display("");
 
 
+        writes_rd = 1'b1;
+        rd_busy = 1'b1;
+        expect_result(1'b0, 1'b1, 1'b0, 1'b0);
+        writes_rd = 1'b0;
+        expect_result(1'b1, 1'b0, 1'b0, 1'b0);
+        writes_rd = 1'b1;
+        rd_busy = 1'b0;
+        expect_result(1'b1, 1'b0, 1'b0, 1'b1);
+        $display("PASS: WAW stalls only instructions that write the busy destination");
+        $display("ALL ISSUE STAGE TESTS PASSED");
         $finish;
 
     end

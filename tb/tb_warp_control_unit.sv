@@ -50,6 +50,18 @@ module tb_warp_control_unit;
 
         .clk                  (clk),
         .reset                (reset),
+        .issue_enable         (1'b1),
+        .rs1_addr             (4'd0),
+        .rs2_addr             (4'd0),
+        .rd_addr              (4'd0),
+        .uses_rs1             (1'b0),
+        .uses_rs2             (1'b0),
+        .writes_rd            (1'b0),
+        .additional_dependency (1'b0),
+        .execution_unit_ready (1'b1),
+        .clear_busy_enable    (1'b0),
+        .clear_busy_warp_id   (2'd0),
+        .clear_busy_reg       (4'd0),
 
         .update_enable        (update_enable),
         .update_warp_id       (update_warp_id),

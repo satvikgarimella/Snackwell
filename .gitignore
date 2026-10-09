@@ -5,3 +5,5 @@ sim_*
 *.o
 *.vvp
 .DS_Store
+build/
+__pycache__/
