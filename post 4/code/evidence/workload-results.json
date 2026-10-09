@@ -1,0 +1,69 @@
+{
+  "verified": true,
+  "workloads": {
+    "vector_add": {
+      "cycles": 87,
+      "verified": true
+    },
+    "vector_mul": {
+      "cycles": 127,
+      "verified": true
+    },
+    "matmul_4x4": {
+      "cycles": 385,
+      "verified": true
+    },
+    "matmul_4x4_simd": {
+      "cycles": 534,
+      "verified": true
+    },
+    "tiled_matmul": {
+      "cycles": 3374,
+      "verified": true
+    },
+    "bias_add": {
+      "cycles": 145,
+      "verified": true
+    },
+    "residual_add": {
+      "cycles": 151,
+      "verified": true
+    },
+    "relu": {
+      "cycles": 116,
+      "verified": true
+    },
+    "gelu": {
+      "cycles": 4052,
+      "verified": true
+    },
+    "row_sum": {
+      "cycles": 72,
+      "verified": true
+    },
+    "row_max": {
+      "cycles": 80,
+      "verified": true
+    },
+    "layernorm": {
+      "cycles": 888,
+      "verified": true
+    },
+    "softmax": {
+      "cycles": 2214,
+      "verified": true
+    },
+    "linear": {
+      "cycles": 3895,
+      "verified": true
+    },
+    "attention": {
+      "cycles": 3557,
+      "verified": true
+    },
+    "tiled_matmul_16x16": {
+      "cycles": 27431,
+      "verified": true
+    }
+  }
+}

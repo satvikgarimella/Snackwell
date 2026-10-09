@@ -1,0 +1,612 @@
+{
+  "kernel": "tiled_matmul",
+  "verified": true,
+  "rows": 8,
+  "cols": 8,
+  "launches": 1,
+  "cycles": 3374,
+  "output_bits": [
+    "3e800000",
+    "3ea00000",
+    "bea00000",
+    "3f480000",
+    "3f000000",
+    "be000000",
+    "3f200000",
+    "00000000",
+    "3f380000",
+    "bf980000",
+    "bf840000",
+    "bff40000",
+    "3ea00000",
+    "3ef00000",
+    "bf400000",
+    "3f900000",
+    "bd000000",
+    "be800000",
+    "be000000",
+    "3f300000",
+    "3e000000",
+    "3e800000",
+    "3f380000",
+    "be400000",
+    "bec00000",
+    "3f300000",
+    "3ec00000",
+    "c0000000",
+    "bfa40000",
+    "bfcc0000",
+    "3e200000",
+    "3f080000",
+    "3fa80000",
+    "3ed00000",
+    "3f600000",
+    "3f800000",
+    "be800000",
+    "3e600000",
+    "00000000",
+    "bfcc0000",
+    "3e200000",
+    "3e000000",
+    "be800000",
+    "3f400000",
+    "3ec00000",
+    "00000000",
+    "3f280000",
+    "bd800000",
+    "bfb40000",
+    "3f280000",
+    "3f280000",
+    "bf380000",
+    "3f800000",
+    "3f800000",
+    "bf380000",
+    "3f280000",
+    "be000000",
+    "bee00000",
+    "bd800000",
+    "3f280000",
+    "00000000",
+    "3ec00000",
+    "3f400000",
+    "be800000"
+  ],
+  "stages": [
+    {
+      "stage": "matmul",
+      "verified": true,
+      "cycles": 3374,
+      "static_instructions": 157,
+      "accuracy": {
+        "comparison": "FP32 bits (NaNs by classification)"
+      },
+      "profile": {
+        "cycles": 3374,
+        "issue_cycles": {
+          "instruction_issue": 261,
+          "dependency_check": 128,
+          "resource_check": 112,
+          "no_eligible_warp": 2873
+        },
+        "instructions_issued": 261,
+        "opcode_counts": {
+          "ADD": 8,
+          "ADDI": 40,
+          "BEQ": 12,
+          "EXIT": 1,
+          "FADD": 32,
+          "LD_SHARED": 96,
+          "ST_SHARED": 48,
+          "TID": 4,
+          "TMUL": 8,
+          "XOR": 12
+        },
+        "load_words": 384,
+        "store_words": 192,
+        "shared_inflight_cycles": 288,
+        "shared_service_cycles": 144,
+        "shared_response_wait_cycles": 0,
+        "conflicting_memory_requests": 0,
+        "simd_fp_inflight_cycles": 173,
+        "simd_lane_multiplies": 0,
+        "simd_lane_adds": 128,
+        "tensor_phases": {
+          "idle": 770,
+          "register_gather": 32,
+          "operand_load": 256,
+          "array_launch": 8,
+          "array_compute": 2172,
+          "result_stream": 128,
+          "final_commit": 8
+        },
+        "tensor_mac_pairs": 512,
+        "tensor_row_commits": 32,
+        "tensor_steps": [
+          {
+            "step": 0,
+            "start_cycle": 89,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 111,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 139,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 167,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 195,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 224,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 253,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 282,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 312,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 9,
+            "start_cycle": 339,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 478,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 500,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 528,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 557,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 585,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 614,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 643,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 672,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 702,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 9,
+            "start_cycle": 729,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 934,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 956,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 984,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 1012,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 1042,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 1070,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 1099,
+            "useful_mac_pairs": 10,
+            "cycles": 31
+          },
+          {
+            "step": 7,
+            "start_cycle": 1130,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 1159,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 1187,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 1340,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 1362,
+            "useful_mac_pairs": 3,
+            "cycles": 26
+          },
+          {
+            "step": 2,
+            "start_cycle": 1388,
+            "useful_mac_pairs": 6,
+            "cycles": 27
+          },
+          {
+            "step": 3,
+            "start_cycle": 1415,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 1445,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 1474,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 6,
+            "start_cycle": 1502,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 1531,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 1561,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 1590,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 1793,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 1806,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 1828,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 1856,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 1884,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 1913,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 1942,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 1970,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 1999,
+            "useful_mac_pairs": 3,
+            "cycles": 25
+          },
+          {
+            "step": 9,
+            "start_cycle": 2024,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 2163,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 2185,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 2212,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 2241,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 2269,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 2298,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 2327,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 2355,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 2384,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 2412,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 2620,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 2633,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 2655,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 2683,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 2712,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 2742,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 2771,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 2800,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 2829,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 2857,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 3012,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 3034,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 3061,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 3089,
+            "useful_mac_pairs": 10,
+            "cycles": 27
+          },
+          {
+            "step": 4,
+            "start_cycle": 3116,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 3145,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 3174,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 3204,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 3232,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 3260,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          }
+        ],
+        "tensor_pe_arithmetic_cycles": 11135,
+        "tensor_pe_arithmetic_fraction": 0.32041321362799263,
+        "tensor_useful_step_slot_fraction": 0.4
+      }
+    }
+  ]
+}

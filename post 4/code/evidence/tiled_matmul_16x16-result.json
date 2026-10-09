@@ -1,0 +1,4164 @@
+{
+  "kernel": "tiled_matmul",
+  "verified": true,
+  "rows": 16,
+  "cols": 16,
+  "launches": 1,
+  "cycles": 27431,
+  "output_bits": [
+    "c0040000",
+    "3f680000",
+    "40200000",
+    "40020000",
+    "3f600000",
+    "bf780000",
+    "bfe40000",
+    "3f000000",
+    "3ec00000",
+    "bee00000",
+    "bff80000",
+    "c0040000",
+    "3f680000",
+    "40200000",
+    "40020000",
+    "3f600000",
+    "be200000",
+    "3f840000",
+    "3f580000",
+    "bec00000",
+    "c0120000",
+    "bed00000",
+    "3fbc0000",
+    "3ffc0000",
+    "3f8c0000",
+    "bef00000",
+    "c02e0000",
+    "be200000",
+    "3f840000",
+    "3f580000",
+    "bec00000",
+    "c0120000",
+    "400a0000",
+    "3fc80000",
+    "bed00000",
+    "c0180000",
+    "bf100000",
+    "3f100000",
+    "3f280000",
+    "bf200000",
+    "c0100000",
+    "bdc00000",
+    "3fb00000",
+    "400a0000",
+    "3fc80000",
+    "bed00000",
+    "c0180000",
+    "bf100000",
+    "3ed00000",
+    "bffc0000",
+    "bfa00000",
+    "3f000000",
+    "3fc80000",
+    "3ff80000",
+    "3e800000",
+    "c0340000",
+    "bf380000",
+    "3f300000",
+    "3fb40000",
+    "3ed00000",
+    "bffc0000",
+    "bfa00000",
+    "3f000000",
+    "3fc80000",
+    "c00a0000",
+    "c02a0000",
+    "bd800000",
+    "3e000000",
+    "bec00000",
+    "bfc80000",
+    "bfb00000",
+    "3ff40000",
+    "401c0000",
+    "40120000",
+    "3fb80000",
+    "c00a0000",
+    "c02a0000",
+    "bd800000",
+    "3e000000",
+    "bec00000",
+    "3e200000",
+    "3ff80000",
+    "40160000",
+    "3fb00000",
+    "be900000",
+    "c0280000",
+    "be200000",
+    "3f700000",
+    "3ea00000",
+    "bf800000",
+    "c0400000",
+    "3e200000",
+    "3ff80000",
+    "40160000",
+    "3fb00000",
+    "be900000",
+    "3f580000",
+    "3f580000",
+    "bf080000",
+    "c0100000",
+    "be400000",
+    "3f980000",
+    "3ff00000",
+    "3f980000",
+    "be400000",
+    "c0100000",
+    "bf080000",
+    "3f580000",
+    "3f580000",
+    "bf080000",
+    "c0100000",
+    "be400000",
+    "3ff80000",
+    "3e200000",
+    "c0400000",
+    "bf800000",
+    "3ea00000",
+    "3f700000",
+    "be200000",
+    "c0280000",
+    "be900000",
+    "3fb00000",
+    "40160000",
+    "3ff80000",
+    "3e200000",
+    "c0400000",
+    "bf800000",
+    "3ea00000",
+    "c02a0000",
+    "c00a0000",
+    "3fb80000",
+    "40120000",
+    "401c0000",
+    "3ff40000",
+    "bfb00000",
+    "bfc80000",
+    "bec00000",
+    "3e000000",
+    "bd800000",
+    "c02a0000",
+    "c00a0000",
+    "3fb80000",
+    "40120000",
+    "401c0000",
+    "bffc0000",
+    "3ed00000",
+    "3fb40000",
+    "3f300000",
+    "bf380000",
+    "c0340000",
+    "3e800000",
+    "3ff80000",
+    "3fc80000",
+    "3f000000",
+    "bfa00000",
+    "bffc0000",
+    "3ed00000",
+    "3fb40000",
+    "3f300000",
+    "bf380000",
+    "3fc80000",
+    "400a0000",
+    "3fb00000",
+    "bdc00000",
+    "c0100000",
+    "bf200000",
+    "3f280000",
+    "3f100000",
+    "bf100000",
+    "c0180000",
+    "bed00000",
+    "3fc80000",
+    "400a0000",
+    "3fb00000",
+    "bdc00000",
+    "c0100000",
+    "3f840000",
+    "be200000",
+    "c02e0000",
+    "bef00000",
+    "3f8c0000",
+    "3ffc0000",
+    "3fbc0000",
+    "bed00000",
+    "c0120000",
+    "bec00000",
+    "3f580000",
+    "3f840000",
+    "be200000",
+    "c02e0000",
+    "bef00000",
+    "3f8c0000",
+    "3f680000",
+    "c0040000",
+    "bff80000",
+    "bee00000",
+    "3ec00000",
+    "3f000000",
+    "bfe40000",
+    "bf780000",
+    "3f600000",
+    "40020000",
+    "40200000",
+    "3f680000",
+    "c0040000",
+    "bff80000",
+    "bee00000",
+    "3ec00000",
+    "c0040000",
+    "3f680000",
+    "40200000",
+    "40020000",
+    "3f600000",
+    "bf780000",
+    "bfe40000",
+    "3f000000",
+    "3ec00000",
+    "bee00000",
+    "bff80000",
+    "c0040000",
+    "3f680000",
+    "40200000",
+    "40020000",
+    "3f600000",
+    "be200000",
+    "3f840000",
+    "3f580000",
+    "bec00000",
+    "c0120000",
+    "bed00000",
+    "3fbc0000",
+    "3ffc0000",
+    "3f8c0000",
+    "bef00000",
+    "c02e0000",
+    "be200000",
+    "3f840000",
+    "3f580000",
+    "bec00000",
+    "c0120000",
+    "400a0000",
+    "3fc80000",
+    "bed00000",
+    "c0180000",
+    "bf100000",
+    "3f100000",
+    "3f280000",
+    "bf200000",
+    "c0100000",
+    "bdc00000",
+    "3fb00000",
+    "400a0000",
+    "3fc80000",
+    "bed00000",
+    "c0180000",
+    "bf100000"
+  ],
+  "stages": [
+    {
+      "stage": "matmul",
+      "verified": true,
+      "cycles": 27431,
+      "static_instructions": 625,
+      "accuracy": {
+        "comparison": "FP32 bits (NaNs by classification)"
+      },
+      "profile": {
+        "cycles": 27431,
+        "issue_cycles": {
+          "instruction_issue": 1905,
+          "dependency_check": 960,
+          "resource_check": 832,
+          "no_eligible_warp": 23734
+        },
+        "instructions_issued": 1905,
+        "opcode_counts": {
+          "ADD": 32,
+          "ADDI": 256,
+          "BEQ": 112,
+          "EXIT": 1,
+          "FADD": 256,
+          "LD_SHARED": 768,
+          "ST_SHARED": 320,
+          "TID": 16,
+          "TMUL": 64,
+          "XOR": 80
+        },
+        "load_words": 3072,
+        "store_words": 1280,
+        "shared_inflight_cycles": 2176,
+        "shared_service_cycles": 1088,
+        "shared_response_wait_cycles": 0,
+        "conflicting_memory_requests": 0,
+        "simd_fp_inflight_cycles": 1947,
+        "simd_lane_multiplies": 0,
+        "simd_lane_adds": 1024,
+        "tensor_phases": {
+          "idle": 6348,
+          "register_gather": 256,
+          "operand_load": 2048,
+          "array_launch": 64,
+          "array_compute": 17627,
+          "result_stream": 1024,
+          "final_commit": 64
+        },
+        "tensor_mac_pairs": 4096,
+        "tensor_row_commits": 256,
+        "tensor_steps": [
+          {
+            "step": 0,
+            "start_cycle": 89,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 111,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 133,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 161,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 189,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 217,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 246,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 275,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 305,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 334,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 488,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 510,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 539,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 568,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 597,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 627,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 656,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 685,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 714,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 742,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 912,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 934,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 961,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 989,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 1018,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 1047,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 1076,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 1105,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 1134,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 9,
+            "start_cycle": 1164,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 1349,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 1362,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 1384,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 1412,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 1440,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 1470,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 1500,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 1529,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 1558,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 1587,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 1792,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 1814,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 1843,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 1872,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 1900,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 1930,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 1959,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 1988,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 2017,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 2045,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 2199,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 2221,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 2248,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 2277,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 2306,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 2336,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 2365,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 2394,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 2423,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 2451,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 2636,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 2658,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 2680,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 2709,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 2738,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 2767,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 2797,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 2826,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 2855,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 2883,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 3066,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 3088,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 3115,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 3144,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 3173,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 3203,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 3233,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 3262,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 3291,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 3319,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 3512,
+            "useful_mac_pairs": 1,
+            "cycles": 21
+          },
+          {
+            "step": 1,
+            "start_cycle": 3533,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 2,
+            "start_cycle": 3563,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 3592,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 3621,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 3650,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 3679,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 3709,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 3738,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 3767,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 3921,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 3943,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 3971,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 4000,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 4029,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 4058,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 4087,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 4117,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 4145,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 4174,
+            "useful_mac_pairs": 1,
+            "cycles": 26
+          },
+          {
+            "step": 0,
+            "start_cycle": 4357,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 4379,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 4407,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 4435,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 4464,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 4492,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 4521,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 4550,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 4578,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 4606,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 0,
+            "start_cycle": 4782,
+            "useful_mac_pairs": 1,
+            "cycles": 21
+          },
+          {
+            "step": 1,
+            "start_cycle": 4803,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 4830,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 4858,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 4886,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 4915,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 6,
+            "start_cycle": 4943,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 4972,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 5001,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 9,
+            "start_cycle": 5031,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 5238,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 5260,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 5288,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 5316,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 5344,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 5373,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 5402,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 5432,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 5462,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 5490,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 5644,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 5666,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 5695,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 5723,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 5753,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 5782,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 5811,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 5840,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 5869,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 5897,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 6083,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 6105,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 6133,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 6162,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 6191,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 6220,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 6249,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 6278,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 6308,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 6336,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 6522,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 6544,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 6572,
+            "useful_mac_pairs": 6,
+            "cycles": 27
+          },
+          {
+            "step": 3,
+            "start_cycle": 6599,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 6629,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 6658,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 6687,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 6716,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 6746,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 6775,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 6983,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 7005,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 7027,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 7055,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 7085,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 7114,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 7143,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 7172,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 7200,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 7229,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 7384,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 7406,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 7433,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 7461,
+            "useful_mac_pairs": 10,
+            "cycles": 27
+          },
+          {
+            "step": 4,
+            "start_cycle": 7488,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 7518,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 7547,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 7576,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 7604,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 7633,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 7803,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 7825,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 7854,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 7882,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 7911,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 7941,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 7970,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 7999,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 8027,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 8056,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 8227,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 8240,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 8262,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 8290,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 8319,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 8348,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 8377,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 8406,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 8435,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 8464,
+            "useful_mac_pairs": 1,
+            "cycles": 30
+          },
+          {
+            "step": 0,
+            "start_cycle": 8672,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 8694,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 8722,
+            "useful_mac_pairs": 6,
+            "cycles": 27
+          },
+          {
+            "step": 3,
+            "start_cycle": 8749,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 8777,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 8805,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 8835,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 8865,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 8894,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 8923,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 9077,
+            "useful_mac_pairs": 1,
+            "cycles": 21
+          },
+          {
+            "step": 1,
+            "start_cycle": 9098,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 9126,
+            "useful_mac_pairs": 6,
+            "cycles": 26
+          },
+          {
+            "step": 3,
+            "start_cycle": 9152,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 9181,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 9211,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 9241,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 9269,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 9298,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 9326,
+            "useful_mac_pairs": 1,
+            "cycles": 26
+          },
+          {
+            "step": 0,
+            "start_cycle": 9509,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 9531,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 9553,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 9581,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 9610,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 9639,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 9668,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 9697,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 9726,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 9755,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 9926,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 9948,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 9976,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 10004,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 10033,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 10062,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 10092,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 10122,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 10151,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 10179,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 10369,
+            "useful_mac_pairs": 1,
+            "cycles": 21
+          },
+          {
+            "step": 1,
+            "start_cycle": 10390,
+            "useful_mac_pairs": 3,
+            "cycles": 25
+          },
+          {
+            "step": 2,
+            "start_cycle": 10415,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 10444,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 10473,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 10502,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 10532,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 10561,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 10590,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 10618,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 10772,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 10794,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 10823,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 10852,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 10881,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 10910,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 10939,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 10969,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 10998,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 11027,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 11212,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 11234,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 2,
+            "start_cycle": 11264,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 11292,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 11321,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 11350,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 6,
+            "start_cycle": 11378,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 11407,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 11436,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 11464,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 11630,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 11652,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 11680,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 11709,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 11737,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 11766,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 11795,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 11825,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 11854,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 11883,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 12091,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 12113,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 12141,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 3,
+            "start_cycle": 12171,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 12199,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 12228,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 12257,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 12285,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 12314,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 12343,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 12497,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 12519,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 12547,
+            "useful_mac_pairs": 6,
+            "cycles": 27
+          },
+          {
+            "step": 3,
+            "start_cycle": 12574,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 12604,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 12632,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 12661,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 12690,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 12720,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 12749,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 12934,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 12956,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 12984,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 13012,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 13042,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 13071,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 13100,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 13128,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 13157,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 13185,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 13354,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 13376,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 13404,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 13433,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 13462,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 13491,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 13520,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 13549,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 13578,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 9,
+            "start_cycle": 13608,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 13815,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 13837,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 13859,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 13888,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 13917,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 13947,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 13976,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 14005,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 14034,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 14062,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 14217,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 14239,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 14268,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 14297,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 14327,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 14357,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 14386,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 14415,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 14444,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 14473,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 14638,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 14651,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 14673,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 14702,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 14731,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 14761,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 14791,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 14820,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 14849,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 9,
+            "start_cycle": 14879,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 15064,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 15077,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 15099,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 15127,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 15155,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 15184,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 15214,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 15243,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 15272,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 15301,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 15510,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 15532,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 15560,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 15589,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 15617,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 15647,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 15676,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 15705,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 15734,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 15762,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 15917,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 15939,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 15967,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 15995,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 16024,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 16052,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 16081,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 16110,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 16140,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 16168,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 16349,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 16362,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 16384,
+            "useful_mac_pairs": 6,
+            "cycles": 22
+          },
+          {
+            "step": 3,
+            "start_cycle": 16406,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 16435,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 16464,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 16494,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 16523,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 16551,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 16580,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 16761,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 16783,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 16812,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 16841,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 16869,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 16898,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 16927,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 16957,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 16985,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 17014,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 17204,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 17226,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 17255,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 17283,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 17312,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 17341,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 17370,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 17400,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 17428,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 17457,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 17611,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 17633,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 17660,
+            "useful_mac_pairs": 6,
+            "cycles": 27
+          },
+          {
+            "step": 3,
+            "start_cycle": 17687,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 17715,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 17744,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 17773,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 17803,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 17832,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 17861,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 18040,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 18053,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 18075,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 3,
+            "start_cycle": 18105,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 18133,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 18162,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 18191,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 18219,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 18249,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 18277,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 18460,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 18482,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 18510,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 18539,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 18567,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 18596,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 18625,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 18653,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 18682,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 18710,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 18919,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 18941,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 18970,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 18998,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 19028,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 19056,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 19085,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 19114,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 19144,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 19173,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 19328,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 19350,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 19379,
+            "useful_mac_pairs": 6,
+            "cycles": 27
+          },
+          {
+            "step": 3,
+            "start_cycle": 19406,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 19436,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 19465,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 19494,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 19523,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 19552,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 19581,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 19762,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 19775,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 19797,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 19826,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 19855,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 19885,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 19914,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 19943,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 19973,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 20002,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 20187,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 20209,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 20237,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 20265,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 20294,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 20324,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 20353,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 20382,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 20411,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 20440,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 20645,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 20667,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 20689,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 20718,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 20746,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 20775,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 6,
+            "start_cycle": 20803,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 20832,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 20861,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 20889,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 21043,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 21065,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 21093,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 21122,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 21151,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 21181,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 21211,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 21240,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 21269,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 9,
+            "start_cycle": 21296,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 21467,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 21489,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 21511,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 21539,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 21568,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 21597,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 21626,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 21655,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 21684,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 21713,
+            "useful_mac_pairs": 1,
+            "cycles": 30
+          },
+          {
+            "step": 0,
+            "start_cycle": 21899,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 1,
+            "start_cycle": 21912,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 21934,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 21963,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 21992,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 22020,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 22050,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 22080,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 22109,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 22138,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 22343,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 22365,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 22393,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 22422,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 22451,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 22479,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 22508,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 22537,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 22565,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 22593,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 22747,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 22769,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 22796,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 22824,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 22853,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 22882,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 22912,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 22941,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 22970,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 22998,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 23184,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 23206,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 23228,
+            "useful_mac_pairs": 6,
+            "cycles": 26
+          },
+          {
+            "step": 3,
+            "start_cycle": 23254,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 23283,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 23312,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 23341,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 23370,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 23399,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 23428,
+            "useful_mac_pairs": 1,
+            "cycles": 27
+          },
+          {
+            "step": 0,
+            "start_cycle": 23611,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 23633,
+            "useful_mac_pairs": 3,
+            "cycles": 27
+          },
+          {
+            "step": 2,
+            "start_cycle": 23660,
+            "useful_mac_pairs": 6,
+            "cycles": 27
+          },
+          {
+            "step": 3,
+            "start_cycle": 23687,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 23716,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 23745,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 6,
+            "start_cycle": 23775,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 7,
+            "start_cycle": 23805,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 23834,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 23862,
+            "useful_mac_pairs": 1,
+            "cycles": 13
+          },
+          {
+            "step": 0,
+            "start_cycle": 24055,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 24077,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 24105,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 3,
+            "start_cycle": 24135,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 24164,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 24193,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 24222,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 24251,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 24281,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 24309,
+            "useful_mac_pairs": 1,
+            "cycles": 29
+          },
+          {
+            "step": 0,
+            "start_cycle": 24464,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 24486,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 24515,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 24544,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 24573,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 24602,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 24631,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 24660,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 24690,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 24718,
+            "useful_mac_pairs": 1,
+            "cycles": 25
+          },
+          {
+            "step": 0,
+            "start_cycle": 24901,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 24923,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 24945,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 24973,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 25001,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 25031,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 25060,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 25089,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 25118,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 25146,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 25327,
+            "useful_mac_pairs": 1,
+            "cycles": 21
+          },
+          {
+            "step": 1,
+            "start_cycle": 25348,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 25377,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 3,
+            "start_cycle": 25407,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 25437,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 25465,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 25494,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 25522,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 25551,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 25579,
+            "useful_mac_pairs": 1,
+            "cycles": 30
+          },
+          {
+            "step": 0,
+            "start_cycle": 25790,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 25812,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 25841,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 25869,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 25898,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 25926,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 25955,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 25984,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 8,
+            "start_cycle": 26012,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 26040,
+            "useful_mac_pairs": 1,
+            "cycles": 21
+          },
+          {
+            "step": 0,
+            "start_cycle": 26187,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 26209,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 2,
+            "start_cycle": 26237,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 26266,
+            "useful_mac_pairs": 10,
+            "cycles": 30
+          },
+          {
+            "step": 4,
+            "start_cycle": 26296,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 26326,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 26355,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 26384,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 26413,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 26442,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 26627,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 26649,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 26671,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 26699,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 26728,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 5,
+            "start_cycle": 26757,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 26786,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 26815,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 26844,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 9,
+            "start_cycle": 26874,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          },
+          {
+            "step": 0,
+            "start_cycle": 27058,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 27080,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 2,
+            "start_cycle": 27109,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 27138,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 4,
+            "start_cycle": 27166,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 27196,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 27225,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 27254,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 27283,
+            "useful_mac_pairs": 3,
+            "cycles": 30
+          },
+          {
+            "step": 9,
+            "start_cycle": 27313,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          }
+        ],
+        "tensor_pe_arithmetic_cycles": 89793,
+        "tensor_pe_arithmetic_fraction": 0.3183787655301526,
+        "tensor_useful_step_slot_fraction": 0.4
+      }
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "kernel": "attention",
+  "verified": true,
+  "rows": 4,
+  "cols": 4,
+  "launches": 4,
+  "cycles": 3557,
+  "output_bits": [
+    "bfc00000",
+    "bfa00000",
+    "bf800000",
+    "bf400000",
+    "bf82ff77",
+    "bf45feef",
+    "bf05feee",
+    "be8bfddc",
+    "bef3a67b",
+    "be674cf1",
+    "3cc59878",
+    "3e8c5988",
+    "be0a6bc2",
+    "bf0ddbcb",
+    "be9bb797",
+    "bd5dbcb4"
+  ],
+  "stages": [
+    {
+      "stage": "qk",
+      "verified": true,
+      "cycles": 451,
+      "static_instructions": 45,
+      "accuracy": {
+        "comparison": "FP32 bits (NaNs by classification)"
+      },
+      "profile": {
+        "cycles": 451,
+        "issue_cycles": {
+          "instruction_issue": 44,
+          "dependency_check": 23,
+          "resource_check": 22,
+          "no_eligible_warp": 362
+        },
+        "instructions_issued": 44,
+        "opcode_counts": {
+          "ADD": 6,
+          "ADDI": 7,
+          "BEQ": 1,
+          "EXIT": 1,
+          "FADD": 4,
+          "LD_SHARED": 12,
+          "ST_SHARED": 8,
+          "TID": 2,
+          "TMUL": 1,
+          "XOR": 2
+        },
+        "load_words": 48,
+        "store_words": 32,
+        "shared_inflight_cycles": 52,
+        "shared_service_cycles": 32,
+        "shared_response_wait_cycles": 0,
+        "conflicting_memory_requests": 4,
+        "simd_fp_inflight_cycles": 8,
+        "simd_lane_multiplies": 0,
+        "simd_lane_adds": 16,
+        "tensor_phases": {
+          "idle": 120,
+          "register_gather": 4,
+          "operand_load": 32,
+          "array_launch": 1,
+          "array_compute": 277,
+          "result_stream": 16,
+          "final_commit": 1
+        },
+        "tensor_mac_pairs": 64,
+        "tensor_row_commits": 4,
+        "tensor_steps": [
+          {
+            "step": 0,
+            "start_cycle": 114,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 136,
+            "useful_mac_pairs": 3,
+            "cycles": 26
+          },
+          {
+            "step": 2,
+            "start_cycle": 162,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 3,
+            "start_cycle": 191,
+            "useful_mac_pairs": 10,
+            "cycles": 27
+          },
+          {
+            "step": 4,
+            "start_cycle": 218,
+            "useful_mac_pairs": 12,
+            "cycles": 28
+          },
+          {
+            "step": 5,
+            "start_cycle": 246,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 275,
+            "useful_mac_pairs": 10,
+            "cycles": 28
+          },
+          {
+            "step": 7,
+            "start_cycle": 303,
+            "useful_mac_pairs": 6,
+            "cycles": 30
+          },
+          {
+            "step": 8,
+            "start_cycle": 333,
+            "useful_mac_pairs": 3,
+            "cycles": 29
+          },
+          {
+            "step": 9,
+            "start_cycle": 362,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          }
+        ],
+        "tensor_pe_arithmetic_cycles": 1359,
+        "tensor_pe_arithmetic_fraction": 0.30663357400722024,
+        "tensor_useful_step_slot_fraction": 0.4
+      }
+    },
+    {
+      "stage": "scale_mask",
+      "verified": true,
+      "cycles": 204,
+      "static_instructions": 60,
+      "accuracy": {
+        "comparison": "FP32 bits (NaNs by classification)"
+      },
+      "profile": {
+        "cycles": 204,
+        "issue_cycles": {
+          "instruction_issue": 59,
+          "dependency_check": 43,
+          "resource_check": 15,
+          "no_eligible_warp": 87
+        },
+        "instructions_issued": 59,
+        "opcode_counts": {
+          "ADD": 8,
+          "ADDI": 11,
+          "AND": 4,
+          "BEQ": 1,
+          "EXIT": 1,
+          "FMUL": 4,
+          "LD_SHARED": 6,
+          "SLTU": 4,
+          "ST_SHARED": 4,
+          "SUB": 4,
+          "TID": 3,
+          "XOR": 9
+        },
+        "load_words": 24,
+        "store_words": 16,
+        "shared_inflight_cycles": 50,
+        "shared_service_cycles": 40,
+        "shared_response_wait_cycles": 0,
+        "conflicting_memory_requests": 10,
+        "simd_fp_inflight_cycles": 76,
+        "simd_lane_multiplies": 16,
+        "simd_lane_adds": 0,
+        "tensor_phases": {
+          "idle": 204
+        },
+        "tensor_mac_pairs": 0,
+        "tensor_row_commits": 0,
+        "tensor_steps": [],
+        "tensor_pe_arithmetic_cycles": 0,
+        "tensor_pe_arithmetic_fraction": null,
+        "tensor_useful_step_slot_fraction": null
+      }
+    },
+    {
+      "stage": "softmax",
+      "verified": true,
+      "cycles": 2478,
+      "static_instructions": 235,
+      "accuracy": {
+        "comparison": "numerical tolerance",
+        "max_absolute_error": 8.193910074894006e-07,
+        "rtol": 0.0001,
+        "atol": 2e-06
+      },
+      "profile": {
+        "cycles": 2478,
+        "issue_cycles": {
+          "instruction_issue": 234,
+          "dependency_check": 196,
+          "resource_check": 32,
+          "no_eligible_warp": 2016
+        },
+        "instructions_issued": 234,
+        "opcode_counts": {
+          "ADD": 8,
+          "ADDI": 6,
+          "AND": 11,
+          "BEQ": 1,
+          "EXIT": 1,
+          "FADD": 32,
+          "FLT": 7,
+          "FMUL": 72,
+          "FSUB": 8,
+          "LD_SHARED": 50,
+          "ST_SHARED": 8,
+          "SUB": 8,
+          "TID": 2,
+          "XOR": 20
+        },
+        "load_words": 200,
+        "store_words": 32,
+        "shared_inflight_cycles": 290,
+        "shared_service_cycles": 232,
+        "shared_response_wait_cycles": 0,
+        "conflicting_memory_requests": 58,
+        "simd_fp_inflight_cycles": 2025,
+        "simd_lane_multiplies": 288,
+        "simd_lane_adds": 160,
+        "tensor_phases": {
+          "idle": 2478
+        },
+        "tensor_mac_pairs": 0,
+        "tensor_row_commits": 0,
+        "tensor_steps": [],
+        "tensor_pe_arithmetic_cycles": 0,
+        "tensor_pe_arithmetic_fraction": null,
+        "tensor_useful_step_slot_fraction": null
+      }
+    },
+    {
+      "stage": "pv",
+      "verified": true,
+      "cycles": 424,
+      "static_instructions": 40,
+      "accuracy": {
+        "comparison": "FP32 bits (NaNs by classification)"
+      },
+      "profile": {
+        "cycles": 424,
+        "issue_cycles": {
+          "instruction_issue": 39,
+          "dependency_check": 18,
+          "resource_check": 16,
+          "no_eligible_warp": 351
+        },
+        "instructions_issued": 39,
+        "opcode_counts": {
+          "ADD": 2,
+          "ADDI": 7,
+          "BEQ": 1,
+          "EXIT": 1,
+          "FADD": 4,
+          "LD_SHARED": 12,
+          "ST_SHARED": 8,
+          "TID": 1,
+          "TMUL": 1,
+          "XOR": 2
+        },
+        "load_words": 48,
+        "store_words": 32,
+        "shared_inflight_cycles": 40,
+        "shared_service_cycles": 20,
+        "shared_response_wait_cycles": 0,
+        "conflicting_memory_requests": 0,
+        "simd_fp_inflight_cycles": 8,
+        "simd_lane_multiplies": 0,
+        "simd_lane_adds": 16,
+        "tensor_phases": {
+          "idle": 95,
+          "register_gather": 4,
+          "operand_load": 32,
+          "array_launch": 1,
+          "array_compute": 275,
+          "result_stream": 16,
+          "final_commit": 1
+        },
+        "tensor_mac_pairs": 64,
+        "tensor_row_commits": 4,
+        "tensor_steps": [
+          {
+            "step": 0,
+            "start_cycle": 89,
+            "useful_mac_pairs": 1,
+            "cycles": 22
+          },
+          {
+            "step": 1,
+            "start_cycle": 111,
+            "useful_mac_pairs": 3,
+            "cycles": 22
+          },
+          {
+            "step": 2,
+            "start_cycle": 133,
+            "useful_mac_pairs": 6,
+            "cycles": 28
+          },
+          {
+            "step": 3,
+            "start_cycle": 161,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 4,
+            "start_cycle": 190,
+            "useful_mac_pairs": 12,
+            "cycles": 30
+          },
+          {
+            "step": 5,
+            "start_cycle": 220,
+            "useful_mac_pairs": 12,
+            "cycles": 29
+          },
+          {
+            "step": 6,
+            "start_cycle": 249,
+            "useful_mac_pairs": 10,
+            "cycles": 29
+          },
+          {
+            "step": 7,
+            "start_cycle": 278,
+            "useful_mac_pairs": 6,
+            "cycles": 29
+          },
+          {
+            "step": 8,
+            "start_cycle": 307,
+            "useful_mac_pairs": 3,
+            "cycles": 28
+          },
+          {
+            "step": 9,
+            "start_cycle": 335,
+            "useful_mac_pairs": 1,
+            "cycles": 28
+          }
+        ],
+        "tensor_pe_arithmetic_cycles": 1161,
+        "tensor_pe_arithmetic_fraction": 0.26386363636363636,
+        "tensor_useful_step_slot_fraction": 0.4
+      }
+    }
+  ],
+  "end_to_end_accuracy": {
+    "max_absolute_error": 2.491259969150672e-06,
+    "rtol": 0.0002,
+    "atol": 2e-05
+  }
+}

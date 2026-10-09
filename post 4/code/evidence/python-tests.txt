@@ -1,0 +1,41 @@
+test_bad_programs_are_rejected (test_assembler.AssemblerTests.test_bad_programs_are_rejected) ... ok
+test_capacity_and_padding (test_assembler.AssemblerTests.test_capacity_and_padding) ... ok
+test_cli_reports_line_number (test_assembler.AssemblerTests.test_cli_reports_line_number) ... ok
+test_every_opcode_matches_rtl (test_assembler.AssemblerTests.test_every_opcode_matches_rtl) ... ok
+test_forward_backward_labels_and_comments (test_assembler.AssemblerTests.test_forward_backward_labels_and_comments) ... ok
+test_immediate_endpoints (test_assembler.AssemblerTests.test_immediate_endpoints) ... ok
+test_known_machine_words (test_assembler.AssemblerTests.test_known_machine_words) ... ok
+test_basic_kernels_larger_shapes (test_inference_kernels.InferenceKernelTests.test_basic_kernels_larger_shapes) ... ok
+test_cli_custom_input_and_failed_rerun (test_inference_kernels.InferenceKernelTests.test_cli_custom_input_and_failed_rerun) ... ok
+test_compare_shift_instructions_full_sm (test_inference_kernels.InferenceKernelTests.test_compare_shift_instructions_full_sm) ... ok
+test_every_default_kernel (test_inference_kernels.InferenceKernelTests.test_every_default_kernel) ... ok
+test_gelu_dense_grid_and_saturation (test_inference_kernels.InferenceKernelTests.test_gelu_dense_grid_and_saturation) ... ok
+test_invalid_inputs_and_memory_capacity (test_inference_kernels.InferenceKernelTests.test_invalid_inputs_and_memory_capacity) ... ok
+test_layernorm_affine_constant_and_scale (test_inference_kernels.InferenceKernelTests.test_layernorm_affine_constant_and_scale) ... ok
+test_linear_pipeline_and_attention_shapes (test_inference_kernels.InferenceKernelTests.test_linear_pipeline_and_attention_shapes) ... ok
+test_relu_special_encodings (test_inference_kernels.InferenceKernelTests.test_relu_special_encodings) ... ok
+test_softmax_offsets_tails_and_masking (test_inference_kernels.InferenceKernelTests.test_softmax_offsets_tails_and_masking) ... ok
+test_tiled_matmul_shapes_and_partial_tile_accumulation (test_inference_kernels.InferenceKernelTests.test_tiled_matmul_shapes_and_partial_tile_accumulation) ... ok
+test_verifier_rejects_broken_assembly_and_memory_guards (test_inference_kernels.InferenceKernelTests.test_verifier_rejects_broken_assembly_and_memory_guards) ... ok
+test_addi_tid_and_labels_beyond_old_memory_limit (test_kernels.KernelTests.test_addi_tid_and_labels_beyond_old_memory_limit) ... ok
+test_addi_tid_load_fp_dependencies (test_kernels.KernelTests.test_addi_tid_load_fp_dependencies) ... ok
+test_branch_reconvergence_from_assembly (test_kernels.KernelTests.test_branch_reconvergence_from_assembly) ... ok
+test_invalid_fetch_and_exit_padding (test_kernels.KernelTests.test_invalid_fetch_and_exit_padding) ... ok
+test_missing_program_is_fatal (test_kernels.KernelTests.test_missing_program_is_fatal) ... ok
+test_vector_add_default (test_kernels.KernelTests.test_vector_add_default) ... ok
+test_vector_add_fp32_edges_and_random (test_kernels.KernelTests.test_vector_add_fp32_edges_and_random) ... ok
+test_vector_add_masks (test_kernels.KernelTests.test_vector_add_masks) ... ok
+test_broken_programs_fail_verification (test_matmul_kernels.MatmulKernelTests.test_broken_programs_fail_verification) ... ok
+test_comparison_cli_and_failed_rerun (test_matmul_kernels.MatmulKernelTests.test_comparison_cli_and_failed_rerun) ... ok
+test_fp32_rounding_order_and_special_values (test_matmul_kernels.MatmulKernelTests.test_fp32_rounding_order_and_special_values) ... ok
+test_known_product_and_profile_work_counts (test_matmul_kernels.MatmulKernelTests.test_known_product_and_profile_work_counts) ... ok
+test_seeded_random_matrices (test_matmul_kernels.MatmulKernelTests.test_seeded_random_matrices) ... ok
+test_simd_masks_and_selected_warps (test_matmul_kernels.MatmulKernelTests.test_simd_masks_and_selected_warps) ... ok
+test_tensor_single_warp_launch_and_tags (test_matmul_kernels.MatmulKernelTests.test_tensor_single_warp_launch_and_tags) ... ok
+test_vector_multiply_inputs_and_masks (test_matmul_kernels.MatmulKernelTests.test_vector_multiply_inputs_and_masks) ... ok
+test_zero_identity_and_every_basis_position (test_matmul_kernels.MatmulKernelTests.test_zero_identity_and_every_basis_position) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 49.138s
+
+OK

@@ -1,0 +1,17 @@
+PASS vector_add: 87 cycles
+PASS vector_mul: 127 cycles
+PASS matmul_4x4: 385 cycles
+PASS matmul_4x4_simd: 534 cycles
+PASS tiled_matmul: 3374 cycles (1 launch(es))
+PASS bias_add: 145 cycles (1 launch(es))
+PASS residual_add: 151 cycles (1 launch(es))
+PASS relu: 116 cycles (1 launch(es))
+PASS gelu: 4052 cycles (1 launch(es))
+PASS row_sum: 72 cycles (1 launch(es))
+PASS row_max: 80 cycles (1 launch(es))
+PASS layernorm: 888 cycles (1 launch(es))
+PASS softmax: 2214 cycles (1 launch(es))
+PASS linear: 3895 cycles (2 launch(es))
+PASS attention: 3557 cycles (4 launch(es))
+PASS tiled_matmul_16x16: 27431 cycles
+All 16 workloads passed. Results: /Users/satvik.garimella/Snackwell/build/kernels/post4-validation
