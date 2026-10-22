@@ -5,7 +5,6 @@ module tb_warp_control_unit;
     logic clk;
     logic reset;
 
-
     logic       update_enable;
     logic [1:0] update_warp_id;
 
@@ -24,7 +23,6 @@ module tb_warp_control_unit;
     logic update_halted_enable;
     logic update_halted;
 
-
     logic       issue_valid;
     logic [1:0] selected_warp_id;
 
@@ -35,16 +33,11 @@ module tb_warp_control_unit;
     logic selected_ready;
     logic selected_halted;
 
-
     logic [3:0] valid_mask;
     logic [3:0] ready_mask;
     logic [3:0] halted_mask;
     logic [3:0] eligible_mask;
-
-
-    // =========================================
     // DUT
-    // =========================================
 
     warp_control_unit dut (
 
@@ -97,18 +90,10 @@ module tb_warp_control_unit;
         .eligible_mask        (eligible_mask)
 
     );
-
-
-    // =========================================
     // CLOCK
-    // =========================================
 
     always #5 clk = ~clk;
-
-
-    // =========================================
     // WAVEFORM
-    // =========================================
 
     initial begin
 
@@ -116,11 +101,7 @@ module tb_warp_control_unit;
         $dumpvars(0, tb_warp_control_unit);
 
     end
-
-
-    // =========================================
     // CLEAR UPDATE SIGNALS
-    // =========================================
 
     task clear_updates;
 
@@ -137,11 +118,7 @@ module tb_warp_control_unit;
         end
 
     endtask
-
-
-    // =========================================
     // INITIALIZE WARP
-    // =========================================
 
     task initialize_warp (
         input logic [1:0] warp_id,
@@ -177,11 +154,7 @@ module tb_warp_control_unit;
         end
 
     endtask
-
-
-    // =========================================
     // CHECK SELECTED WARP
-    // =========================================
 
     task check_selected (
         input logic [1:0] expected_warp,
@@ -204,7 +177,6 @@ module tb_warp_control_unit;
 
             end
 
-
             if (selected_warp_id !== expected_warp) begin
 
                 $display(
@@ -216,7 +188,6 @@ module tb_warp_control_unit;
                 $fatal;
 
             end
-
 
             if (selected_pc !== expected_pc) begin
 
@@ -231,7 +202,6 @@ module tb_warp_control_unit;
 
             end
 
-
             if (selected_active_mask !== expected_mask) begin
 
                 $display(
@@ -245,7 +215,6 @@ module tb_warp_control_unit;
 
             end
 
-
             $display(
                 "PASS: Warp %0d selected PC=%h mask=%b",
                 selected_warp_id,
@@ -256,11 +225,7 @@ module tb_warp_control_unit;
         end
 
     endtask
-
-
-    // =========================================
     // MAIN TEST
-    // =========================================
 
     initial begin
 
@@ -278,21 +243,15 @@ module tb_warp_control_unit;
 
         clear_updates();
 
-
         $display("");
         $display("=== Snackwell Warp Control Unit Test ===");
         $display("");
-
-
-        // =====================================
         // RESET
-        // =====================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
-
 
         if (issue_valid !== 1'b0) begin
 
@@ -304,15 +263,10 @@ module tb_warp_control_unit;
 
         end
 
-
         $display(
             "PASS: no issue when no warps are resident"
         );
-
-
-        // =====================================
         // INITIALIZE FOUR WARPS
-        // =====================================
 
         initialize_warp(
             2'd0,
@@ -338,7 +292,6 @@ module tb_warp_control_unit;
             4'b0111
         );
 
-
         if (valid_mask !== 4'b1111) begin
 
             $display(
@@ -350,13 +303,10 @@ module tb_warp_control_unit;
 
         end
 
-
         $display(
             "PASS: four resident warps initialized"
         );
 
-
-        // =====================================
         // ROUND ROBIN
         //
         // Scheduler state has advanced during
@@ -366,7 +316,6 @@ module tb_warp_control_unit;
         //
         // Instead check current selection then
         // verify continued fair rotation.
-        // =====================================
 
         // Since last scheduler issue during
         // initialization was based on whichever
@@ -379,7 +328,6 @@ module tb_warp_control_unit;
         $display("");
         $display("Scheduler rotation:");
         $display("");
-
 
         repeat (8) begin
 
@@ -395,7 +343,6 @@ module tb_warp_control_unit;
 
             end
 
-
             $display(
                 "Selected W%0d PC=%h mask=%b",
                 selected_warp_id,
@@ -403,15 +350,10 @@ module tb_warp_control_unit;
                 selected_active_mask
             );
 
-
             @(posedge clk);
 
         end
-
-
-        // =====================================
         // STALL WARP 2
-        // =====================================
 
         update_enable = 1;
 
@@ -425,7 +367,6 @@ module tb_warp_control_unit;
 
         clear_updates();
 
-
         if (ready_mask !== 4'b1011) begin
 
             $display(
@@ -437,7 +378,6 @@ module tb_warp_control_unit;
 
         end
 
-
         if (eligible_mask[2] !== 1'b0) begin
 
             $display(
@@ -448,12 +388,10 @@ module tb_warp_control_unit;
 
         end
 
-
         $display("");
         $display(
             "PASS: Warp 2 removed from scheduler eligibility"
         );
-
 
         // Make sure it gets skipped.
 
@@ -474,20 +412,14 @@ module tb_warp_control_unit;
 
             end
 
-
             @(posedge clk);
 
         end
 
-
         $display(
             "PASS: scheduler consistently skips Warp 2"
         );
-
-
-        // =====================================
         // HALT WARP 3
-        // =====================================
 
         update_enable = 1;
 
@@ -504,7 +436,6 @@ module tb_warp_control_unit;
 
         clear_updates();
 
-
         if (halted_mask !== 4'b1000) begin
 
             $display(
@@ -516,7 +447,6 @@ module tb_warp_control_unit;
 
         end
 
-
         if (eligible_mask[3] !== 1'b0) begin
 
             $display(
@@ -527,15 +457,10 @@ module tb_warp_control_unit;
 
         end
 
-
         $display(
             "PASS: halted Warp 3 removed from eligibility"
         );
-
-
-        // =====================================
         // ONLY WARPS 0 AND 1 SHOULD REMAIN
-        // =====================================
 
         repeat (6) begin
 
@@ -551,7 +476,6 @@ module tb_warp_control_unit;
 
             end
 
-
             if (
                 selected_warp_id != 2'd0 &&
                 selected_warp_id != 2'd1
@@ -566,31 +490,26 @@ module tb_warp_control_unit;
 
             end
 
-
             $display(
                 "PASS: scheduler selected W%0d PC=%h",
                 selected_warp_id,
                 selected_pc
             );
 
-
             @(posedge clk);
 
         end
-
 
         $display("");
         $display(
             "PASS: selected warp state follows scheduler selection"
         );
 
-
         $display("");
         $display(
             "ALL WARP CONTROL UNIT TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

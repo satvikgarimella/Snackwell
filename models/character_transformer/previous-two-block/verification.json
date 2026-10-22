@@ -1,0 +1,347 @@
+{
+  "kind": "RTL simulation verification",
+  "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+  "source_sha256": "a61aaf713d6e026a9a1b7bdc834ea4b5245914a4bc4270e2cce52a05db727f83",
+  "source_hash_method": "SHA256 of sorted relative path, NUL, file bytes, NUL for source_files",
+  "source_files": [
+    "rtl/core/single_warp_core.sv",
+    "rtl/execution/branch_unit.sv",
+    "rtl/execution/fp32/fp32_addsub.sv",
+    "rtl/execution/fp32/fp32_mul_wrapper.sv",
+    "rtl/execution/fp32/multiplier.v",
+    "rtl/execution/fp32/simd_fp32_execute.sv",
+    "rtl/execution/fp32/simd_fp32_mul.sv",
+    "rtl/execution/integer_alu.sv",
+    "rtl/execution/simd_execution_unit.sv",
+    "rtl/execution/simd_integer_execute.sv",
+    "rtl/execution/simd_lane.sv",
+    "rtl/execution/tensor/fp32_mac_pe.sv",
+    "rtl/execution/tensor/systolic_array_4x4.sv",
+    "rtl/execution/tensor/systolic_feeder_4x4.sv",
+    "rtl/execution/tensor/tensor_core.sv",
+    "rtl/frontend/instruction_decoder.sv",
+    "rtl/frontend/instruction_frontend.sv",
+    "rtl/frontend/instruction_memory.sv",
+    "rtl/frontend/program_counter.sv",
+    "rtl/memory/load_store_unit.sv",
+    "rtl/memory/multiwarp_register_file.sv",
+    "rtl/memory/register_file.sv",
+    "rtl/memory/shared_memory.sv",
+    "rtl/sm/divergence_controller.sv",
+    "rtl/sm/issue_control.sv",
+    "rtl/sm/issue_stage.sv",
+    "rtl/sm/multiwarp_execution_core.sv",
+    "rtl/sm/reconvergence_stack.sv",
+    "rtl/sm/reconvergence_target_table.sv",
+    "rtl/sm/scoreboard.sv",
+    "rtl/sm/sm_tensor_unit.sv",
+    "rtl/sm/snackwell_sm.sv",
+    "rtl/sm/warp_control_unit.sv",
+    "rtl/sm/warp_scheduler.sv",
+    "rtl/sm/warp_state_table.sv",
+    "rtl/snackwell_pkg.sv",
+    "scripts/_bootstrap.py",
+    "scripts/assemble.py",
+    "scripts/compare_models.py",
+    "scripts/evaluate_generation.py",
+    "scripts/run_kernel.py",
+    "scripts/run_model.py",
+    "scripts/run_tests.py",
+    "scripts/train_reference_model.py",
+    "scripts/write_kernel_examples.py",
+    "snackwell/__init__.py",
+    "snackwell/assembler.py",
+    "snackwell/character_model.py",
+    "snackwell/cli/__init__.py",
+    "snackwell/cli/assemble.py",
+    "snackwell/cli/examples.py",
+    "snackwell/cli/generation_quality.py",
+    "snackwell/cli/kernel.py",
+    "snackwell/cli/model.py",
+    "snackwell/cli/model_quality.py",
+    "snackwell/cli/tests.py",
+    "snackwell/cli/train.py",
+    "snackwell/decoding.py",
+    "snackwell/inference_runner.py",
+    "snackwell/kernels/__init__.py",
+    "snackwell/kernels/basic.py",
+    "snackwell/kernels/inference.py",
+    "snackwell/kernels/model.py",
+    "snackwell/kernels/transformer.py",
+    "snackwell/live_model.html",
+    "snackwell/live_model.py",
+    "snackwell/model_runner.py",
+    "snackwell/model_runtime.py",
+    "snackwell/numeric.py",
+    "snackwell/paths.py",
+    "snackwell/profile.py",
+    "snackwell/reference/__init__.py",
+    "snackwell/reference/fp32.py",
+    "snackwell/reference/inference.py",
+    "snackwell/reference/tensor.py",
+    "snackwell/reference/transformer.py",
+    "snackwell/simulator.py",
+    "snackwell/terminal_model.py",
+    "snackwell/torch_model.py",
+    "tb/tb_branch_unit.sv",
+    "tb/tb_divergence_controller.sv",
+    "tb/tb_fp32_mac_pe.sv",
+    "tb/tb_fp32_mul_wrapper.sv",
+    "tb/tb_instruction_decoder.sv",
+    "tb/tb_instruction_frontend.sv",
+    "tb/tb_instruction_memory.sv",
+    "tb/tb_integer_alu.sv",
+    "tb/tb_issue_control.sv",
+    "tb/tb_issue_stage.sv",
+    "tb/tb_load_store_unit.sv",
+    "tb/tb_multiwarp_divergence_core.sv",
+    "tb/tb_multiwarp_execution_core.sv",
+    "tb/tb_multiwarp_memory_core.sv",
+    "tb/tb_multiwarp_register_file.sv",
+    "tb/tb_program_counter.sv",
+    "tb/tb_reconvergence_stack.sv",
+    "tb/tb_reconvergence_target_table.sv",
+    "tb/tb_register_file.sv",
+    "tb/tb_scoreboard.sv",
+    "tb/tb_shared_memory.sv",
+    "tb/tb_simd_execution_unit.sv",
+    "tb/tb_simd_fp32_execute.sv",
+    "tb/tb_simd_fp32_mul.sv",
+    "tb/tb_simd_lane.sv",
+    "tb/tb_single_warp_core.sv",
+    "tb/tb_snackwell_kernel.sv",
+    "tb/tb_snackwell_sm.sv",
+    "tb/tb_snackwell_sm_fp32.sv",
+    "tb/tb_snackwell_sm_memory.sv",
+    "tb/tb_snackwell_sm_tensor.sv",
+    "tb/tb_systolic_array_4x4.sv",
+    "tb/tb_tensor_core.sv",
+    "tb/tb_warp_control_unit.sv",
+    "tb/tb_warp_scheduler.sv",
+    "tb/tb_warp_scheduler_handshake.sv",
+    "tb/tb_warp_state_table.sv",
+    "tests/__init__.py",
+    "tests/test_assembler.py",
+    "tests/test_decoding.py",
+    "tests/test_inference_kernels.py",
+    "tests/test_kernels.py",
+    "tests/test_live_model.py",
+    "tests/test_matmul_kernels.py",
+    "tests/test_model.py",
+    "tests/test_simulator.py",
+    "tests/test_terminal_model.py",
+    "tests/test_transformer.py"
+  ],
+  "regression": {
+    "passed": true,
+    "full_suite": true,
+    "rtl": {
+      "passed": 37,
+      "total": 37,
+      "failures": []
+    },
+    "python": {
+      "passed": true,
+      "test_methods": 68
+    }
+  },
+  "held_out": {
+    "verified": true,
+    "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+    "evaluated_tokens": 256,
+    "loss": 1.6350861456976498,
+    "perplexity": 5.129899896798489,
+    "accuracy": 0.53515625,
+    "unigram_loss": 3.3767879390135325,
+    "improves_unigram": true,
+    "cycles": 183111305,
+    "examples": [
+      {
+        "index": 0,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.1920928955078125e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22965230
+      },
+      {
+        "index": 1,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 3.427267074584961e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22900237
+      },
+      {
+        "index": 2,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.9802322387695312e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22779698
+      },
+      {
+        "index": 3,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 8.344650268554688e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22773308
+      },
+      {
+        "index": 4,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.6763806343078613e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22901483
+      },
+      {
+        "index": 5,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.430511474609375e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22983054
+      },
+      {
+        "index": 6,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.086162567138672e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22879614
+      },
+      {
+        "index": 7,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.3543834686279297e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 22928681
+      }
+    ]
+  },
+  "pytorch_top1_matches": 256,
+  "max_pytorch_probability_error": 3.427267074584961e-06,
+  "generation": [
+    {
+      "prompt": "My name is ",
+      "generated": "My name is comes?\nGod and your envoids:\nCam",
+      "seed": 1730,
+      "characters": 32,
+      "cycles": 436264832,
+      "directory": "build/model-upgrade/rtl-name",
+      "verified": true,
+      "matches_reference_continuation": true,
+      "wall_seconds": 508.3459264180565
+    },
+    {
+      "prompt": "ROMEO:",
+      "generated": "ROMEO:\nThe rather you; let temper of m",
+      "seed": 1731,
+      "characters": 32,
+      "cycles": 436000608,
+      "directory": "build/model-upgrade/rtl-romeo",
+      "verified": true,
+      "matches_reference_continuation": true,
+      "wall_seconds": 509.84692533200723
+    },
+    {
+      "prompt": "the sky today is",
+      "generated": "the sky today issur'd keep thee.\n\nDUKE VINCENTIO",
+      "seed": 1729,
+      "characters": 32,
+      "cycles": 436133765,
+      "directory": "build/model-upgrade/rtl-sky",
+      "verified": true,
+      "matches_reference_continuation": true,
+      "wall_seconds": 509.1612667121517
+    }
+  ],
+  "generation_optimization": {
+    "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+    "input_ids": [
+      43,
+      44,
+      58,
+      1,
+      51,
+      43,
+      1,
+      46,
+      43,
+      56,
+      43,
+      1,
+      40,
+      43,
+      46,
+      47,
+      52,
+      42,
+      6,
+      1,
+      58,
+      53,
+      0,
+      43,
+      62,
+      54,
+      53,
+      59,
+      52,
+      42,
+      1,
+      58
+    ],
+    "exact_probability_and_prediction_match": true,
+    "full": {
+      "cycles": 22965230,
+      "launches": 1032,
+      "wall_seconds": 24.956840957980603
+    },
+    "last_only": {
+      "cycles": 13647553,
+      "launches": 657,
+      "wall_seconds": 16.363742708985228
+    }
+  },
+  "measured_seconds_per_character": {
+    "mean": 15.909938733981411,
+    "minimum": 15.29719599999953,
+    "maximum": 16.359290833002888,
+    "note": "Warm Verilator, trace off; other verification runs active"
+  },
+  "limits": [
+    "CPU PyTorch training; backpropagation on Snackwell is not implemented",
+    "77505 parameters; spelling and sentence quality remain limited",
+    "All forward arithmetic and categorical selection execute on the SM in RTL simulation",
+    "Host transfers raw words between launches; no hardware global-memory interface or KV cache",
+    "Slower than the previous small model; measured times are not FPGA performance"
+  ],
+  "verified_utc": "2026-10-15T14:05:54.277923+00:00",
+  "commands": [
+    "python3 scripts/run_tests.py",
+    "python3 scripts/run_model.py --evaluate models/character_transformer/evaluation.json",
+    "python3 scripts/run_model.py --prompt 'My name is ' --tokens 32 --seed 1730",
+    "python3 scripts/run_model.py --prompt 'ROMEO:' --tokens 32 --seed 1731",
+    "python3 scripts/run_model.py --prompt 'the sky today is' --tokens 32 --seed 1729"
+  ]
+}

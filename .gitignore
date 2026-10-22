@@ -7,3 +7,10 @@ sim_*
 .DS_Store
 build/
 __pycache__/
+.ruff_cache/
+.venv/
+*.py[cod]
+fpga/**/db/
+fpga/**/incremental_db/
+fpga/**/output_files/
+fpga/**/*.qws

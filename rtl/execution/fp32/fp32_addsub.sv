@@ -1,4 +1,5 @@
-// Iterative binary32 add/subtract, round-to-nearest, ties-to-even.
+// Binary32 add/subtract, round-to-nearest, ties-to-even.
+// Alignment and normalization each take one cycle, independent of exponent gaps.
 // Subnormals are preserved. NaNs are canonicalized; exception flags and
 // selectable rounding modes are not implemented. Requests while busy are ignored.
 module fp32_addsub (
@@ -21,9 +22,45 @@ module fp32_addsub (
     logic [27:0] sum;
     logic [24:0] rounded;
     logic [31:0] effective_b;
+    logic [8:0] exponent_gap;
+    logic [4:0] normalize_shift;
+
+    function automatic [26:0] shift_right_jam(input logic [26:0] value,
+                                              input logic [8:0] amount);
+        logic [26:0] shifted;
+        begin
+            if (amount == 0) shift_right_jam = value;
+            else if (amount >= 27) shift_right_jam = {26'd0, |value};
+            else begin
+                shifted = value >> amount;
+                // Keep every discarded bit in the sticky bit for rounding.
+                shifted[0] = shifted[0] | (|(value << (9'd27 - amount)));
+                shift_right_jam = shifted;
+            end
+        end
+    endfunction
+
+    function automatic [4:0] leading_zeros(input logic [26:0] value);
+        logic [31:0] shifted;
+        logic [4:0] count;
+        begin
+            shifted = {value, 5'd0};
+            count = 0;
+            if (shifted[31:16] == 0) begin count = count + 16; shifted = shifted << 16; end
+            if (shifted[31:24] == 0) begin count = count + 8; shifted = shifted << 8; end
+            if (shifted[31:28] == 0) begin count = count + 4; shifted = shifted << 4; end
+            if (shifted[31:30] == 0) begin count = count + 2; shifted = shifted << 2; end
+            if (!shifted[31]) count = count + 1;
+            leading_zeros = value == 0 ? 5'd27 : count;
+        end
+    endfunction
 
     assign busy = state != IDLE;
     assign effective_b = {operand_b[31] ^ subtract, operand_b[30:0]};
+    assign exponent_gap = exponent_large - exponent_small;
+    // Stop at exponent 1: values below the normal range retain subnormal bits.
+    assign normalize_shift = {4'd0, leading_zeros(mantissa_result)} < exponent_large
+        ? leading_zeros(mantissa_result) : 5'(exponent_large - 9'd1);
     assign sum = {1'b0, mantissa_large} + {1'b0, mantissa_small};
     assign rounded = {1'b0, mantissa_result[26:3]} +
         {24'd0, (mantissa_result[2] &&
@@ -90,10 +127,8 @@ module fp32_addsub (
                     end
                 end
                 ALIGN: begin
-                    if (exponent_small < exponent_large) begin
-                        mantissa_small <= {1'b0, mantissa_small[26:2], |mantissa_small[1:0]};
-                        exponent_small <= exponent_small + 9'd1;
-                    end else state <= COMBINE;
+                    mantissa_small <= shift_right_jam(mantissa_small, exponent_gap);
+                    state <= COMBINE;
                 end
                 COMBINE: begin
                     if (sign_large == sign_small) begin
@@ -109,10 +144,11 @@ module fp32_addsub (
                         result <= 32'd0; // exact cancellation in nearest-even mode
                         done <= 1'b1;
                         state <= IDLE;
-                    end else if (!mantissa_result[26] && exponent_large > 9'd1) begin
-                        mantissa_result <= mantissa_result << 1;
-                        exponent_large <= exponent_large - 9'd1;
-                    end else state <= ROUND_PACK;
+                    end else begin
+                        mantissa_result <= mantissa_result << normalize_shift;
+                        exponent_large <= exponent_large - {4'd0, normalize_shift};
+                        state <= ROUND_PACK;
+                    end
                 end
                 ROUND_PACK: begin
                     if (exponent_large >= 9'd255 ||

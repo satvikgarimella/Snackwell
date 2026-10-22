@@ -1,0 +1,82 @@
+[
+  {
+    "number": 1,
+    "label": "Opening",
+    "text": "Hey guys, Snackwell has its first kernels now :)\n\nI've finished the shared memory work and assembler from the last post, and got vector ops, tiled matmul and single-head attention running in RTL simulation.\n\nHere's what I did",
+    "media": [
+      "previews/00-kernel-overview.png"
+    ],
+    "editable": "00-kernel-overview.excalidraw"
+  },
+  {
+    "number": 2,
+    "label": "Shared memory",
+    "text": "First I had to finish shared memory. It could already spot when lanes wanted the same bank, but it didn't handle all those accesses yet.\n\nNow those lanes take turns until the request is done. Lanes using different banks can still go together.",
+    "media": [
+      "previews/02-shared-memory.png"
+    ],
+    "editable": "02-shared-memory.excalidraw"
+  },
+  {
+    "number": 3,
+    "label": "Assembler",
+    "text": "With that working, I needed a way to write kernels (programs for the GPU) without packing instruction bits by hand.\n\nSo I made an assembler. I write FADD, TMUL, loads and stores in an .asm file, and it turns them into machine code for the SM.",
+    "media": [
+      "previews/01-assembly-to-sm.png"
+    ],
+    "editable": "01-assembly-to-sm.excalidraw"
+  },
+  {
+    "number": 4,
+    "label": "First kernels",
+    "text": "I started with vector addition: C[i] = A[i] + B[i].\n\nEach lane loads two values, adds them and writes the result back. Four warps with four lanes each handle all 16 elements.\n\nI also wrote vector multiply and 4x4 matmul using both the SIMD and tensor units.",
+    "media": [
+      "previews/03-vector-kernel.png"
+    ],
+    "editable": "03-vector-kernel.excalidraw"
+  },
+  {
+    "number": 5,
+    "label": "Tiled matrix multiplication",
+    "text": "To go beyond 4x4, I split bigger matrices into tiles. The kernel loads a pair, runs TMUL and adds that partial result to C, then moves to the next pair.\n\nThat's 8 TMULs for an 8x8 multiply, and 64 for 16x16.",
+    "media": [
+      "animation/tiled-matmul.gif"
+    ],
+    "editable": "04-tiled-matmul.excalidraw",
+    "still_alternative": "previews/04-tiled-matmul.png",
+    "still_text_change": "The same tweet text works with either the animation or the still image."
+  },
+  {
+    "number": 6,
+    "label": "More kernels",
+    "text": "Once tiled matmul was working, I added bias and residual adds, row sums/maxes, ReLU, GELU, LayerNorm and softmax.\n\nThere's also a linear layer, which runs matmul and then adds the bias. All of these run as Snackwell assembly too.",
+    "media": [
+      "previews/07-more-kernels.png"
+    ],
+    "editable": "07-more-kernels.excalidraw"
+  },
+  {
+    "number": 7,
+    "label": "Attention",
+    "text": "That gave me enough to put together single-head attention.\n\nIt runs QK^T, scales and masks the scores, applies softmax, then multiplies the weights by V.\n\nThese are four separate launches, with the simulation runner passing the output memory from one to the next.",
+    "media": [
+      "previews/05-attention-kernels.png"
+    ],
+    "editable": "05-attention-kernels.excalidraw"
+  },
+  {
+    "number": 8,
+    "label": "Verification",
+    "text": "I check what the SM actually writes to memory against independent references. Matmul has to match bit for bit; approximate functions are checked within tolerances.\n\nThe latest run passed 37 RTL testbenches, 36 Python tests and all 16 workload cases.",
+    "media": [
+      "previews/06-verified-results.png"
+    ],
+    "editable": "06-verified-results.excalidraw"
+  },
+  {
+    "number": 9,
+    "label": "Next steps",
+    "text": "Next I'm putting these kernels together into a small transformer block and checking its forward pass. Then I'll add global memory and a runtime so we can load trained weights and run inference on a small model.\n\nCode: https://github.com/satvikgarimella/Snackwell\n\nSEE YOU SOON",
+    "media": []
+  }
+]

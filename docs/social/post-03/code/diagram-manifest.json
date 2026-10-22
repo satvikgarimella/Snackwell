@@ -1,0 +1,383 @@
+{
+  "canvas": [
+    3820,
+    2810
+  ],
+  "elements": 177,
+  "blocks": {
+    "interfaces": {
+      "role": "block"
+    },
+    "state": {
+      "role": "block",
+      "rtl": "rtl/sm/warp_state_table.sv"
+    },
+    "scheduler": {
+      "role": "block",
+      "rtl": "rtl/sm/warp_scheduler.sv"
+    },
+    "fetch": {
+      "role": "block",
+      "rtl": "rtl/frontend/instruction_memory.sv"
+    },
+    "decode": {
+      "role": "block",
+      "rtl": [
+        "rtl/frontend/instruction_decoder.sv",
+        "rtl/sm/multiwarp_execution_core.sv"
+      ]
+    },
+    "issue": {
+      "role": "block",
+      "rtl": [
+        "rtl/sm/issue_control.sv",
+        "rtl/sm/issue_stage.sv",
+        "rtl/sm/warp_control_unit.sv"
+      ]
+    },
+    "scoreboard": {
+      "role": "block",
+      "rtl": [
+        "rtl/sm/scoreboard.sv",
+        "rtl/sm/issue_control.sv"
+      ]
+    },
+    "rf": {
+      "role": "block",
+      "rtl": [
+        "rtl/memory/multiwarp_register_file.sv",
+        "rtl/sm/multiwarp_execution_core.sv"
+      ]
+    },
+    "checks": {
+      "role": "block",
+      "rtl": "rtl/sm/multiwarp_execution_core.sv"
+    },
+    "integer": {
+      "role": "container",
+      "rtl": "rtl/execution/simd_integer_execute.sv"
+    },
+    "integer-lanes": {
+      "role": "block",
+      "rtl": "integer_alu.sv"
+    },
+    "fp32": {
+      "role": "container",
+      "rtl": "rtl/execution/fp32/simd_fp32_execute.sv"
+    },
+    "fp-mul": {
+      "role": "block",
+      "rtl": [
+        "rtl/execution/fp32/fp32_mul_wrapper.sv",
+        "rtl/execution/fp32/multiplier.v"
+      ]
+    },
+    "fp-add": {
+      "role": "block",
+      "rtl": "rtl/execution/fp32/fp32_addsub.sv"
+    },
+    "fp-completion": {
+      "role": "block",
+      "rtl": "rtl/sm/multiwarp_execution_core.sv"
+    },
+    "tensor": {
+      "role": "container",
+      "rtl": "rtl/sm/sm_tensor_unit.sv"
+    },
+    "tensor-adapter": {
+      "role": "block",
+      "rtl": "rtl/sm/sm_tensor_unit.sv"
+    },
+    "tensor-interface": {
+      "role": "block",
+      "rtl": "rtl/execution/tensor/tensor_core.sv"
+    },
+    "array": {
+      "role": "block",
+      "rtl": [
+        "rtl/execution/tensor/systolic_array_4x4.sv",
+        "rtl/execution/tensor/systolic_feeder_4x4.sv",
+        "rtl/execution/tensor/fp32_mac_pe.sv"
+      ]
+    },
+    "lsu": {
+      "role": "block",
+      "rtl": "rtl/memory/load_store_unit.sv"
+    },
+    "shared-memory": {
+      "role": "block",
+      "rtl": "rtl/memory/shared_memory.sv"
+    },
+    "branch": {
+      "role": "block",
+      "rtl": "rtl/execution/branch_unit.sv"
+    },
+    "divergence": {
+      "role": "block",
+      "rtl": "rtl/sm/divergence_controller.sv"
+    },
+    "target-table": {
+      "role": "block",
+      "rtl": "rtl/sm/reconvergence_target_table.sv"
+    },
+    "reconv-stack": {
+      "role": "block",
+      "rtl": "rtl/sm/reconvergence_stack.sv"
+    },
+    "writeback": {
+      "role": "block",
+      "rtl": "rtl/sm/multiwarp_execution_core.sv"
+    },
+    "state-update": {
+      "role": "block",
+      "rtl": "rtl/sm/multiwarp_execution_core.sv"
+    }
+  },
+  "connections": [
+    {
+      "id": "launch",
+      "start": null,
+      "end": "state"
+    },
+    {
+      "id": "run-control",
+      "start": null,
+      "end": "issue"
+    },
+    {
+      "id": "eligible",
+      "start": "state",
+      "end": "scheduler"
+    },
+    {
+      "id": "select-state",
+      "start": "scheduler",
+      "end": "state"
+    },
+    {
+      "id": "selected-pc",
+      "start": "state",
+      "end": "fetch"
+    },
+    {
+      "id": "instruction",
+      "start": "fetch",
+      "end": "decode"
+    },
+    {
+      "id": "decode-issue",
+      "start": "decode",
+      "end": "issue"
+    },
+    {
+      "id": "scoreboard-issue",
+      "start": "scoreboard",
+      "end": "issue"
+    },
+    {
+      "id": "checks-issue",
+      "start": "checks",
+      "end": "issue"
+    },
+    {
+      "id": "read-selectors",
+      "start": "decode",
+      "end": "rf"
+    },
+    {
+      "id": "rf-warp-select",
+      "start": "scheduler",
+      "end": "rf"
+    },
+    {
+      "id": "debug-preload",
+      "start": null,
+      "end": "rf"
+    },
+    {
+      "id": "dispatch",
+      "start": "issue",
+      "end": null
+    },
+    {
+      "id": "rf-operands",
+      "start": "rf",
+      "end": null
+    },
+    {
+      "id": "operand-bus",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "dispatch-integer",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "dispatch-fp32",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "dispatch-tensor",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "dispatch-lsu",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "dispatch-branch",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "fp-mul-result",
+      "start": "fp-mul",
+      "end": "fp-completion"
+    },
+    {
+      "id": "fp-add-result",
+      "start": "fp-add",
+      "end": "fp-completion"
+    },
+    {
+      "id": "load-words",
+      "start": "tensor-adapter",
+      "end": "tensor-interface"
+    },
+    {
+      "id": "launch-array",
+      "start": "tensor-interface",
+      "end": "array"
+    },
+    {
+      "id": "array-results",
+      "start": "array",
+      "end": "tensor-interface"
+    },
+    {
+      "id": "tensor-results",
+      "start": "tensor-interface",
+      "end": "tensor-adapter"
+    },
+    {
+      "id": "memory-request",
+      "start": "lsu",
+      "end": "shared-memory"
+    },
+    {
+      "id": "branch-control",
+      "start": "branch",
+      "end": "divergence"
+    },
+    {
+      "id": "target-read",
+      "start": "target-table",
+      "end": "divergence"
+    },
+    {
+      "id": "stack-control",
+      "start": "divergence",
+      "end": "reconv-stack"
+    },
+    {
+      "id": "ssy-save",
+      "start": "issue",
+      "end": "target-table"
+    },
+    {
+      "id": "rejoin-event",
+      "start": "divergence",
+      "end": "checks"
+    },
+    {
+      "id": "integer-result",
+      "start": "integer",
+      "end": null
+    },
+    {
+      "id": "fp-result",
+      "start": "fp32",
+      "end": null
+    },
+    {
+      "id": "tensor-row-result",
+      "start": "tensor",
+      "end": null
+    },
+    {
+      "id": "load-result",
+      "start": "shared-memory",
+      "end": null
+    },
+    {
+      "id": "completion-bus",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "completion-to-wb",
+      "start": null,
+      "end": "writeback"
+    },
+    {
+      "id": "commit-to-rf",
+      "start": "writeback",
+      "end": "rf"
+    },
+    {
+      "id": "commit-to-scoreboard",
+      "start": "writeback",
+      "end": "scoreboard"
+    },
+    {
+      "id": "final-row-release",
+      "start": null,
+      "end": "tensor"
+    },
+    {
+      "id": "fp-status",
+      "start": "fp32",
+      "end": null
+    },
+    {
+      "id": "tensor-status",
+      "start": "tensor",
+      "end": null
+    },
+    {
+      "id": "wb-space",
+      "start": "writeback",
+      "end": null
+    },
+    {
+      "id": "status-bus",
+      "start": null,
+      "end": "checks"
+    },
+    {
+      "id": "branch-state-update",
+      "start": "divergence",
+      "end": "state-update"
+    },
+    {
+      "id": "accepted-state-update",
+      "start": "issue",
+      "end": "state-update"
+    },
+    {
+      "id": "update-state",
+      "start": "state-update",
+      "end": "state"
+    },
+    {
+      "id": "scheduler-accept",
+      "start": "issue",
+      "end": "scheduler"
+    }
+  ]
+}

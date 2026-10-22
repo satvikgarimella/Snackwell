@@ -53,8 +53,8 @@ column c. Each lane obtains its output index with `TID`, then calculates:
 - C output address: `128 + 4 * TID`.
 
 Four unrolled groups of load/load/FMUL/FADD compute the dot product. All lanes
-in a warp read the same A element for each term. Shared memory currently serves
-these as four separate accesses to one bank; it has no same-address broadcast.
+in a warp read the same A element for each term. Shared memory now broadcasts matching read-only requests for the same word.
+The historical baseline below predates that change.
 The B reads and output stores use four distinct banks.
 
 This program uses four-lane SIMD instructions. The name does not mean there is
@@ -63,7 +63,11 @@ Only one SIMD FP job can be outstanding globally in the current SM.
 
 ## Baseline measurement
 
-Measured with the default input matrices on 2026-10-09:
+Historical measurement with the default input matrices on 2026-10-09. The FP
+latency, PE overlap and SM tile interface have since changed; the table and cycle
+breakdown below describe that earlier implementation. Current results are in
+[FP32_SPEED.md](FP32_SPEED.md), and `matmul_compare` regenerates the comparison
+for the current RTL.
 
 ```text
 A = [ 1  2  3  4 ]    B = [16 15 14 13 ]
@@ -185,7 +189,7 @@ array result-valid, it counts as `array_compute`; afterward it is `result_stream
 ## Verification
 
 ```sh
-python3 -m unittest discover -s scripts/tests -p test_matmul_kernels.py -v
+python3 -m unittest discover -s tests -p test_matmul_kernels.py -v
 python3 scripts/run_tests.py
 ```
 

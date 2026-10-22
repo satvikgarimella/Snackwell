@@ -20,11 +20,7 @@ module warp_scheduler (
 );
 
     logic [1:0] rr_pointer;
-
-
-    // =================================================
     // ELIGIBILITY
-    // =================================================
 
     assign eligible_mask =
         valid_mask       &
@@ -32,19 +28,15 @@ module warp_scheduler (
         ~halted_mask     &
         ~blocked_mask;
 
-
-    // =================================================
     // ROUND-ROBIN SELECTION
     //
     // rr_pointer means:
     // "start searching from this warp"
-    // =================================================
 
     always @(*) begin
 
         issue_valid      = 1'b0;
         selected_warp_id = rr_pointer;
-
 
         case (rr_pointer)
 
@@ -74,7 +66,6 @@ module warp_scheduler (
 
             end
 
-
             // Search:
             // W1 -> W2 -> W3 -> W0
             2'd1: begin
@@ -100,7 +91,6 @@ module warp_scheduler (
                 end
 
             end
-
 
             // Search:
             // W2 -> W3 -> W0 -> W1
@@ -128,7 +118,6 @@ module warp_scheduler (
 
             end
 
-
             // Search:
             // W3 -> W0 -> W1 -> W2
             2'd3: begin
@@ -155,7 +144,6 @@ module warp_scheduler (
 
             end
 
-
             default: begin
 
                 issue_valid      = 1'b0;
@@ -166,11 +154,7 @@ module warp_scheduler (
         endcase
 
     end
-
-
-    // =================================================
     // ROUND-ROBIN POINTER UPDATE
-    // =================================================
 
     always_ff @(posedge clk) begin
 
@@ -210,6 +194,5 @@ module warp_scheduler (
         end
 
     end
-
 
 endmodule

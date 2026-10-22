@@ -17,8 +17,9 @@ Each bank serves its lowest-numbered pending lane on each service cycle.
 Different banks work in parallel. Consequently:
 
 - Four lanes using four different banks finish in one service cycle.
-- Two, three, or four accesses to one bank take two, three, or four service cycles.
-- Repeated loads of the same word are serialized and all receive its value.
+- Two, three, or four different words in one bank take two, three, or four service cycles.
+- Read-only requests broadcast each selected word to all matching active lanes
+  in one service cycle. Such repeated reads do not count as bank conflicts.
 - Repeated stores to the same word commit in ascending lane order; the
   highest-numbered active lane supplies the final word.
 - Inactive lanes neither access memory nor create conflicts.
@@ -50,7 +51,8 @@ request); the response handshake and SM writeback add completion latency.
 
 The SM issues exclusively loads or stores. At the standalone interface, a lane
 with both masks set reads its old word and then writes the supplied new word
-at its service edge. Lanes sharing a bank still execute in ascending order.
+at its service edge. Any request containing a store disables broadcast, so lanes
+sharing a bank still execute in ascending order, including reads around a store.
 
 ## SM integration
 
@@ -104,5 +106,5 @@ A complete program runs conflicting loads -> TMUL -> conflicting stores -> load
 of assuming a single-cycle load.
 
 This implementation is verified in RTL simulation. Global memory, barriers,
-coalescing, multiple outstanding requests, broadcast optimization, and FPGA
+coalescing, multiple outstanding requests, and FPGA
 resource/timing validation remain separate work.

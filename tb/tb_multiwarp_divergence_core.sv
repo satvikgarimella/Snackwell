@@ -50,12 +50,18 @@ module tb_multiwarp_divergence_core;
 
     logic reconvergence_event;
 
-
     multiwarp_execution_core dut (
 
         .clk                     (clk),
         .reset                   (reset),
         .run_enable              (run_enable),
+        .host_program_write(1'b0), .host_program_address(10'd0), .host_program_data(32'd0),
+        .host_program_read_data(),
+        .host_memory_valid(1'b0), .host_memory_ready(), .host_memory_write(1'b0),
+        .host_memory_address(10'd0), .host_memory_data(32'd0),
+        .host_memory_response_valid(), .host_memory_response_ready(1'b0),
+        .host_memory_read_data(), .execution_idle(),
+
 
         .launch_enable           (launch_enable),
         .launch_warp_id          (launch_warp_id),
@@ -101,9 +107,7 @@ module tb_multiwarp_divergence_core;
 
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
 
@@ -117,7 +121,6 @@ module tb_multiwarp_divergence_core;
         );
 
     end
-
 
     task write_reg (
         input logic [1:0] warp,
@@ -142,10 +145,8 @@ module tb_multiwarp_divergence_core;
             debug_write_data =
                 value;
 
-
             @(posedge clk);
             #1;
-
 
             debug_write_enable =
                 1'b0;
@@ -154,9 +155,7 @@ module tb_multiwarp_divergence_core;
 
     endtask
 
-
     integer cycle_count;
-
 
     initial begin
 
@@ -177,25 +176,18 @@ module tb_multiwarp_divergence_core;
 
         cycle_count = 0;
 
-
         $display("");
         $display(
             "=== Snackwell Full Divergence Integration Test ==="
         );
         $display("");
-
-
-        // =================================================
         // RESET
-        // =================================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
 
-
-        // =================================================
         // PROGRAM
         //
         // 0x00 SSY join=0x14
@@ -205,13 +197,11 @@ module tb_multiwarp_divergence_core;
         //
         // 0 + 4 + (4*4) = 0x14
         //
-        // -------------------------------------------------
         //
         // 0x04 BEQ R1,R2,target=0x10
         //
         // 4 + 4 + (2*4) = 0x10
         //
-        // -------------------------------------------------
         //
         // 0x08 ADD R4,R6,R7
         //      deferred / not-taken path
@@ -220,19 +210,15 @@ module tb_multiwarp_divergence_core;
         //
         // 12 + 4 + (1*4) = 0x14
         //
-        // -------------------------------------------------
         //
         // 0x10 ADD R3,R6,R7
         //      taken path
         //
-        // -------------------------------------------------
         //
         // 0x14 NOP
         //      reconvergence point
         //
         // 0x18 EXIT
-        // =================================================
-
 
         dut.imem.memory[0] = {
             OP_SSY,
@@ -242,7 +228,6 @@ module tb_multiwarp_divergence_core;
             14'd4
         };
 
-
         dut.imem.memory[1] = {
             OP_BEQ,
             4'd0,
@@ -251,7 +236,6 @@ module tb_multiwarp_divergence_core;
             14'd2
         };
 
-
         dut.imem.memory[2] = {
             OP_ADD,
             4'd4,
@@ -259,7 +243,6 @@ module tb_multiwarp_divergence_core;
             4'd7,
             14'd0
         };
-
 
         // BEQ R0,R0,+1 = unconditional for active lanes
 
@@ -271,7 +254,6 @@ module tb_multiwarp_divergence_core;
             14'd1
         };
 
-
         dut.imem.memory[4] = {
             OP_ADD,
             4'd3,
@@ -279,7 +261,6 @@ module tb_multiwarp_divergence_core;
             4'd7,
             14'd0
         };
-
 
         dut.imem.memory[5] = {
             OP_NOP,
@@ -289,7 +270,6 @@ module tb_multiwarp_divergence_core;
             14'd0
         };
 
-
         dut.imem.memory[6] = {
             OP_EXIT,
             4'd0,
@@ -298,8 +278,6 @@ module tb_multiwarp_divergence_core;
             14'd0
         };
 
-
-        // =================================================
         // REGISTER SETUP
         //
         // R1/R2 cause:
@@ -313,8 +291,6 @@ module tb_multiwarp_divergence_core;
         // => deferred 1010
         //
         // R6 + R7 = lane-specific result
-        // =================================================
-
 
         // ---------------- LANE 0 ----------------
 
@@ -338,7 +314,6 @@ module tb_multiwarp_divergence_core;
             4'd7, 32'd1
         );
 
-
         // ---------------- LANE 1 ----------------
 
         write_reg(
@@ -360,7 +335,6 @@ module tb_multiwarp_divergence_core;
             2'd0, 2'd1,
             4'd7, 32'd2
         );
-
 
         // ---------------- LANE 2 ----------------
 
@@ -384,7 +358,6 @@ module tb_multiwarp_divergence_core;
             4'd7, 32'd3
         );
 
-
         // ---------------- LANE 3 ----------------
 
         write_reg(
@@ -406,11 +379,7 @@ module tb_multiwarp_divergence_core;
             2'd0, 2'd3,
             4'd7, 32'd4
         );
-
-
-        // =================================================
         // LAUNCH W0
-        // =================================================
 
         launch_enable = 1'b1;
 
@@ -418,32 +387,20 @@ module tb_multiwarp_divergence_core;
         launch_pc = 32'd0;
         launch_active_mask = 4'b1111;
 
-
         @(posedge clk);
         #1;
 
-
         launch_enable = 1'b0;
-
 
         $display(
             "PASS: W0 launched with active mask 1111"
         );
-
-
-        // =================================================
         // RUN
-        // =================================================
 
         run_enable = 1'b1;
-
-
-        // =================================================
         // WATCH EXECUTION
-        // =================================================
 
         cycle_count = 0;
-
 
         while (
             halted_mask[0] !== 1'b1 &&
@@ -451,7 +408,6 @@ module tb_multiwarp_divergence_core;
         ) begin
 
             #1;
-
 
             if (
                 issue_valid &&
@@ -467,7 +423,6 @@ module tb_multiwarp_divergence_core;
                 );
 
             end
-
 
             // First BEQ should diverge.
 
@@ -487,7 +442,6 @@ module tb_multiwarp_divergence_core;
 
                 end
 
-
                 if (
                     branch_taken_mask !== 4'b0101
                 ) begin
@@ -500,7 +454,6 @@ module tb_multiwarp_divergence_core;
                     $fatal;
 
                 end
-
 
                 if (
                     branch_not_taken_mask !== 4'b1010
@@ -515,13 +468,11 @@ module tb_multiwarp_divergence_core;
 
                 end
 
-
                 $display(
                     "PASS: BEQ split warp into 0101 / 1010"
                 );
 
             end
-
 
             @(posedge clk);
             #1;
@@ -530,7 +481,6 @@ module tb_multiwarp_divergence_core;
                 cycle_count + 1;
 
         end
-
 
         if (cycle_count >= 50) begin
 
@@ -542,18 +492,14 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         // Allow final writeback to settle.
 
         @(posedge clk);
         #1;
 
-
-        // =================================================
         // VERIFY TAKEN PATH
         //
         // R3 should only be written on lanes 0 and 2.
-        // =================================================
 
         if (
             dut.regfile.registers[0][0][3]
@@ -568,7 +514,6 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         if (
             dut.regfile.registers[0][1][3]
             !== 32'd0
@@ -581,7 +526,6 @@ module tb_multiwarp_divergence_core;
             $fatal;
 
         end
-
 
         if (
             dut.regfile.registers[0][2][3]
@@ -596,7 +540,6 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         if (
             dut.regfile.registers[0][3][3]
             !== 32'd0
@@ -610,17 +553,13 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         $display(
             "PASS: taken path executed only on lanes 0 and 2"
         );
 
-
-        // =================================================
         // VERIFY DEFERRED PATH
         //
         // R4 should only be written on lanes 1 and 3.
-        // =================================================
 
         if (
             dut.regfile.registers[0][0][4]
@@ -635,7 +574,6 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         if (
             dut.regfile.registers[0][1][4]
             !== 32'd202
@@ -648,7 +586,6 @@ module tb_multiwarp_divergence_core;
             $fatal;
 
         end
-
 
         if (
             dut.regfile.registers[0][2][4]
@@ -663,7 +600,6 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         if (
             dut.regfile.registers[0][3][4]
             !== 32'd404
@@ -677,15 +613,10 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         $display(
             "PASS: deferred path executed only on lanes 1 and 3"
         );
-
-
-        // =================================================
         // VERIFY RECONVERGENCE STACK EMPTIED
-        // =================================================
 
         if (
             dut.reconv_stack.stack_depth[0]
@@ -700,15 +631,10 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         $display(
             "PASS: divergent paths reconverged and stack popped"
         );
-
-
-        // =================================================
         // VERIFY WARP HALTED
-        // =================================================
 
         if (
             halted_mask !== 4'b0001
@@ -722,18 +648,15 @@ module tb_multiwarp_divergence_core;
 
         end
 
-
         $display(
             "PASS: reconverged warp reached EXIT"
         );
-
 
         $display("");
         $display(
             "ALL DIVERGENT SIMT EXECUTION TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

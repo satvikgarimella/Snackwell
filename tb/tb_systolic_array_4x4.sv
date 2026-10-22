@@ -11,6 +11,7 @@ module tb_systolic_array_4x4;
 
     reg [511:0] source_a, source_b, expected, held_result;
     integer step_starts = 0, advances = 0, macs = 0;
+    integer overlapped_steps = 0;
     integer fd, scan, word_scan, case_id, cases = 0, cycles;
     integer latency_min = 100000, latency_max = 0;
     reg [31:0] word_value;
@@ -22,7 +23,10 @@ module tb_systolic_array_4x4;
         if (!reset) begin
             if (!enable && (step_advance || dut.pe_start))
                 $fatal(1, "Paused array moved operands or launched a step");
+            if (result_valid && (|dut.pe_arithmetic_busy))
+                $fatal(1, "Tile published before every accumulator drained");
             if (dut.pe_start) begin
+                if (|dut.pe_arithmetic_busy) overlapped_steps = overlapped_steps + 1;
                 if (step_index !== step_starts[3:0]) $fatal(1, "Repeated/skipped array step");
                 for (integer r = 0; r < 4; r = r + 1)
                     for (integer c = 0; c < 4; c = c + 1) begin
@@ -39,7 +43,7 @@ module tb_systolic_array_4x4;
                 step_starts = step_starts + 1;
             end
             if (step_advance) begin
-                if (pe_done_mask !== 16'hffff) $fatal(1, "Advanced before every PE completed");
+                if (pe_done_mask !== 16'hffff) $fatal(1, "Advanced before every product reached its adder");
                 advances = advances + 1;
             end
         end
@@ -124,6 +128,7 @@ module tb_systolic_array_4x4;
         end
         if (!$feof(fd) || cases == 0) $fatal(1, "Malformed/empty vector file");
         $fclose(fd);
+        if (overlapped_steps == 0) $fatal(1, "No multiplication overlapped a preceding addition");
         $display("PASS: %0d matrix tiles (%0d exact FP32 output checks), 10 steps and 64 aligned MACs each", cases, cases*16);
         $display("PASS: request capture, pause/resume, repeated tiles, output backpressure (latency %0d..%0d clocks with test pauses)", latency_min, latency_max);
 

@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snackwell · Live predictions</title>
+  <style>
+    :root { color-scheme: light; --ink: #24283a; --muted: #686d7e; --line: #e3e1e9; --accent: #6350bc; --pale: #f1edf9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f7f4; color: var(--ink); font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 1160px; margin: auto; padding: 36px 32px 28px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 26px; }
+    .brand { font-weight: 750; font-size: 19px; letter-spacing: -.5px; }
+    .brand span { color: var(--accent); }
+    .badge { border: 1px solid var(--line); border-radius: 20px; padding: 5px 12px; color: var(--muted); font-size: 12px; }
+    h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -1.2px; margin: 0 0 10px; font-weight: 650; }
+    h2 { margin: 0; font-size: 16px; font-weight: 650; }
+    p { margin: 0; }
+    .intro { color: var(--muted); margin-bottom: 24px; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+    .controls { display: grid; grid-template-columns: 1fr 120px auto auto; align-items: end; gap: 12px; }
+    label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+    textarea, input, button { font: inherit; border-radius: 8px; }
+    textarea, input { display: block; background: #fff; border: 1px solid #d6d3de; width: 100%; padding: 10px 12px; color: var(--ink); }
+    textarea { height: 46px; min-height: 46px; resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    input { height: 46px; }
+    button { height: 46px; padding: 0 18px; border: 1px solid var(--accent); background: var(--accent); color: white; font-weight: 600; cursor: pointer; }
+    button.secondary { color: var(--ink); background: white; border-color: var(--line); }
+    button:disabled { opacity: .45; cursor: default; }
+    :focus-visible { outline: 3px solid #c4b5f1; outline-offset: 3px; }
+    .output-label { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; font-size: 12px; color: var(--muted); }
+    .output { min-height: 98px; padding: 14px 0 20px; font: 27px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+    #original { color: #9093a0; }
+    #generated { color: var(--accent); background: var(--pale); border-radius: 4px; }
+    .placeholder { color: #9699a3; font: 18px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .statusline { display: flex; align-items: center; gap: 9px; border-top: 1px solid var(--line); padding-top: 14px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #9ba0ad; flex: 0 0 auto; }
+    body[data-running="true"] .dot { background: var(--accent); animation: pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .35; } }
+    #status { flex: 1; font-size: 13px; }
+    .stats { color: var(--muted); font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; text-align: right; }
+    .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 22px 0 12px; }
+    .caption { color: var(--muted); font-size: 12px; }
+    .pipeline { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+    .phase { position: relative; min-height: 86px; border: 1px solid var(--line); background: #fdfdfc; border-radius: 10px; padding: 12px; }
+    .phase .number { display: block; font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; color: #9093a0; margin-bottom: 7px; }
+    .phase b { font-size: 13px; font-weight: 600; }
+    .phase.active { border-color: var(--accent); background: var(--pale); }
+    .phase.active b, .phase.active .number { color: var(--accent); }
+    .phase.done { background: #edf5f0; border-color: #d9e7dd; }
+    .phase.done .number { color: #437c5a; }
+    .details { min-height: 40px; margin-top: 10px; color: var(--muted); font-size: 13px; }
+    .grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; margin-top: 14px; }
+    .panel .caption { margin-top: 5px; }
+    .context { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 4px; margin: 23px 0 12px; }
+    .character { text-align: center; min-width: 0; }
+    .tile { display: grid; place-items: center; height: 39px; border-radius: 5px; background: #efedf2; font: 16px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .character small { display: block; font-size: 8px; color: var(--muted); margin-top: 6px; }
+    .legend { font-size: 11px; color: var(--muted); }
+    .legend i { display: inline-block; width: 72px; height: 7px; margin: 0 5px; background: linear-gradient(to right, #f1edf9, #6350bc); border-radius: 5px; }
+    #attention-note { margin-top: 18px; font-size: 12px; color: var(--muted); }
+    #candidates { min-height: 168px; padding-top: 15px; }
+    .empty { color: #9093a0; font-size: 13px; margin: 28px 0; }
+    .candidate { display: grid; grid-template-columns: 54px 1fr 58px; align-items: center; gap: 10px; margin-bottom: 10px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .track { height: 9px; background: #f0eef4; border-radius: 5px; overflow: hidden; }
+    .fill { height: 100%; background: #b6a9e2; border-radius: 5px; }
+    .candidate:first-child .fill { background: var(--accent); }
+    .percent { text-align: right; color: var(--muted); }
+    .error { color: #b32e37; }
+    footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 22px; color: var(--muted); font-size: 11px; }
+    #artifacts { overflow-wrap: anywhere; max-width: 650px; }
+    @media (max-width: 760px) {
+      main { padding: 22px 16px; }
+      .controls { grid-template-columns: 1fr 100px; }
+      .pipeline { grid-template-columns: repeat(3, 1fr); }
+      .grid { grid-template-columns: 1fr; }
+      .statusline, footer { flex-wrap: wrap; }
+      .panel { padding: 16px; }
+      .stats { width: 100%; text-align: left; margin-left: 17px; }
+      .context { gap: 3px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .dot { animation: none !important; } }
+  </style>
+</head>
+<body>
+<main>
+  <header><div class="brand">snackwell<span>.</span></div><span class="badge">Live RTL simulation</span></header>
+  <h1>Watch the next character happen.</h1>
+  <p class="intro">Type a prompt. The transformer reads its last <span id="context-size">16</span> characters, predicts one more, and repeats.</p>
+  <p id="model-info" class="caption">Loading checkpoint…</p>
+
+  <section class="panel" aria-label="Generate text">
+    <form id="form" class="controls">
+      <div><label for="prompt">Your prompt</label><textarea id="prompt" rows="1" maxlength="4096" required spellcheck="false" autocomplete="off">To be, or not to </textarea></div>
+      <div><label for="tokens">New characters</label><input id="tokens" type="number" min="1" max="256" value="4" required></div>
+      <button id="generate" type="submit" disabled>Predict</button>
+      <button id="stop" type="button" class="secondary" disabled>Stop</button>
+    </form>
+    <div class="output-label"><span>OUTPUT <span style="margin-left: 10px; color: var(--accent)">purple = predicted</span></span><span id="counter">Ready when you are</span></div>
+    <div id="output" class="output" aria-live="polite"><span id="original"></span><span id="generated"></span><span id="placeholder" class="placeholder">Your text will grow here, one character at a time.</span></div>
+    <div class="statusline"><span class="dot"></span><span id="status" role="status">Loading the model…</span><span id="stats" class="stats">0 cycles · 0 launches · 0.0s</span></div>
+  </section>
+
+  <div class="section-head"><h2>Inside this prediction</h2><span id="phase-caption" class="caption">Each highlight follows a real kernel launch.</span></div>
+  <div id="pipeline" class="pipeline"></div>
+  <p id="details" class="details">The SM runs the forward pass before a new character appears.</p>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>What is it looking at?</h2>
+      <p class="caption">Attention from the last position to the characters in this window.</p>
+      <div id="context" class="context"></div>
+      <div class="legend">Less attention <i></i> More attention · · = space · ↵ = newline</div>
+      <p id="attention-note">The shading appears when the attention kernel finishes.</p>
+    </section>
+    <section class="panel">
+      <h2>What could come next?</h2>
+      <p id="probability-note" class="caption">Top five probabilities from the model's RTL output.</p>
+      <div id="candidates"><p class="empty">Waiting for the first prediction…</p></div>
+      <p id="selection-note" class="caption">Loading decoding mode…</p>
+    </section>
+  </div>
+
+  <footer><span>CPU-trained character model · <span id="model-size">1 head / 16 features</span><br>Wall time includes simulation overhead. Cycles count kernel execution only.</span><span id="artifacts">Assembly, memory images, and numerical checks are saved for every run.</span></footer>
+</main>
+<script>
+  const $ = id => document.getElementById(id);
+  const phases = [
+    ["Embeddings", "Look up each character and add its position."],
+    ["Attention", "Build Q, K and V; mix information from earlier characters."],
+    ["Feed-forward", "Apply the learned linear layers and GELU, with a residual connection."],
+    ["Final norm", "Normalize the transformer output."],
+    ["Character scores", "Score the vocabulary and turn the scores into probabilities."],
+    ["Pick a character", "Select a character from the probabilities on the SM."]
+  ];
+  const phaseNodes = phases.map(([name], i) => {
+    const node = document.createElement("div");
+    node.className = "phase";
+    const number = document.createElement("span");
+    number.className = "number";
+    number.textContent = String(i + 1).padStart(2, "0");
+    const title = document.createElement("b");
+    title.textContent = name;
+    node.append(number, title);
+    $("pipeline").append(node);
+    return node;
+  });
+  let busy = false, started = 0, timer, cycles = 0, launches = 0, step = 0, lastContext = [];
+  let defaultContext = 16;
+
+  function applyModel(config) {
+    if (!config.checkpoint_sha256 || !["sample", "greedy"].includes(config.decoding) || !Number.isFinite(config.temperature)) {
+      throw new Error("This server is running old code. Restart run_model.py to load the updated model.");
+    }
+    defaultContext = config.context;
+    $("context-size").textContent = config.context;
+    const shape = `${config.layers ?? 1} blocks / ${config.heads ?? 1} heads / ${config.width} features`;
+    $("model-size").textContent = shape;
+    const mode = config.decoding === "sample" ? `sample decoding (temperature ${config.temperature})` : "greedy decoding";
+    $("model-info").textContent = `${shape} · ${config.context}-character context · ${mode} · checkpoint ${config.checkpoint_sha256.slice(0, 12)}`;
+    const selection = config.decoding === "sample"
+      ? `A character is sampled on the SM after temperature ${config.temperature} adjusts the probabilities.`
+      : "The highest-probability character is selected on the SM.";
+    $("selection-note").textContent = selection;
+    phases[5][1] = selection;
+  }
+
+  function symbol(character) { return character === " " ? "·" : character === "\n" ? "↵" : character; }
+  function label(character) { return character === " " ? "space" : character === "\n" ? "newline" : character; }
+  function setStatus(message, error = false) { $("status").textContent = message; $("status").classList.toggle("error", error); }
+  function stats() { $("stats").textContent = `${cycles.toLocaleString()} cycles · ${launches} launches · ${((performance.now() - started) / 1000).toFixed(1)}s`; }
+  function phaseFor(name) {
+    name = name.replace(/^block\d+_/, "").replace(/^head\d+_/, "");
+    if (name === "embedding") return 0;
+    if (name === "layernorm1" || ["q_", "k_", "v_", "attention_"].some(prefix => name.startsWith(prefix))) return 1;
+    if (name === "layernorm2" || name.startsWith("ffn_")) return 2;
+    if (name === "final_norm") return 3;
+    if (name === "greedy_decode" || name === "sample_decode") return 5;
+    return 4;
+  }
+  function showPhase(active) { phaseNodes.forEach((node, i) => { node.className = `phase${i < active ? " done" : i === active ? " active" : ""}`; }); }
+  function showContext(characters, weights) {
+    $("context").replaceChildren();
+    $("context").style.gridTemplateColumns = `repeat(${characters.length}, minmax(0, 1fr))`;
+    const maximum = weights ? Math.max(...weights) : 1;
+    characters.forEach((character, i) => {
+      const node = document.createElement("div");
+      node.className = "character";
+      const tile = document.createElement("div");
+      tile.className = "tile";
+      tile.textContent = symbol(character);
+      const weight = weights ? weights[i] / maximum : 0;
+      if (weights) { tile.style.background = `rgba(99, 80, 188, ${.08 + .92 * weight})`; tile.style.color = weight > .5 ? "white" : "var(--ink)"; }
+      const value = document.createElement("small");
+      value.textContent = weights ? `${(weights[i] * 100).toFixed(0)}%` : String(i + 1);
+      node.title = `Position ${i + 1}: ${label(character)}${weights ? `, ${(weights[i] * 100).toFixed(2)}% attention` : ""}`;
+      node.append(tile, value);
+      $("context").append(node);
+    });
+  }
+  function showCandidates(event) {
+    $("candidates").replaceChildren();
+    event.candidates.forEach(candidate => {
+      const row = document.createElement("div");
+      row.className = "candidate";
+      const character = document.createElement("span");
+      character.textContent = label(candidate.character);
+      const track = document.createElement("div");
+      track.className = "track";
+      const fill = document.createElement("div");
+      fill.className = "fill";
+      fill.style.width = `${Math.max(0, Math.min(100, candidate.probability * 100))}%`;
+      track.append(fill);
+      const percent = document.createElement("span");
+      percent.className = "percent";
+      percent.textContent = `${(candidate.probability * 100).toFixed(1)}%`;
+      row.append(character, track, percent);
+      $("candidates").append(row);
+    });
+    $("probability-note").textContent = `Prediction ${event.step}: chose ${JSON.stringify(event.character)}. Selection probabilities from RTL, checked against the reference.`;
+  }
+  function handle(event, prompt, count) {
+    if (event.type === "run_start") {
+      applyModel(event.model);
+      $("artifacts").textContent = `Run files: ${event.output}`;
+      $("stop").disabled = false;
+    }
+    if (event.type === "token_start") {
+      step = event.step;
+      lastContext = event.context;
+      showContext(lastContext);
+      showPhase(-1);
+      $("counter").textContent = `Predicting ${step} of ${count}`;
+      $("phase-caption").textContent = `Character ${step}`;
+      $("attention-note").textContent = `Prediction ${step}: waiting for attention weights.`;
+      setStatus(`Reading the context for character ${step}…`);
+    }
+    if (event.type === "cache") {
+      const phase = {prefill: "Reading the prompt", decode: "Using cached keys and values", rebuild: "Rebuilding the context", recompute: "Recomputing the context"}[event.phase];
+      $("phase-caption").textContent = `Character ${step} · ${phase}`;
+    }
+    if (event.type === "kernel_start") {
+      const phase = phaseFor(event.stage);
+      showPhase(phase);
+      $("details").textContent = phases[phase][1];
+      setStatus(`Character ${step} · ${phases[phase][0]} · launch ${event.launch} (${event.stage})`);
+    }
+    if (event.type === "kernel_complete") { cycles += event.cycles; launches++; stats(); }
+    if (event.type === "attention") {
+      showContext(lastContext, event.weights);
+      $("attention-note").textContent = `Prediction ${step}: last block, head ${(event.head ?? 0) + 1}, from the RTL softmax. Shading is relative to the strongest weight.`;
+    }
+    if (event.type === "prediction") {
+      $("generated").textContent = event.generated.slice(prompt.length);
+      $("counter").textContent = `${event.step} of ${count} characters predicted`;
+      cycles = event.total_cycles;
+      launches = event.total_launches;
+      showCandidates(event);
+      stats();
+    }
+    if (event.type === "done") {
+      showPhase(6);
+      setStatus(`Done. ${count} new character${count === 1 ? "" : "s"} predicted by Snackwell.`);
+      $("details").textContent = "Each character was added to the context for the next prediction. Edit the prompt to try another run.";
+    }
+    if (event.type === "stopped") {
+      setStatus("Stopped. Completed predictions are kept above.");
+      $("counter").textContent = "Stopped";
+      $("details").textContent = "The unfinished character was not appended.";
+      phaseNodes.forEach(node => node.classList.remove("active"));
+    }
+    if (event.type === "error") throw new Error(event.message);
+  }
+  function setBusy(value) {
+    busy = value;
+    document.body.dataset.running = value;
+    ["generate", "prompt", "tokens"].forEach(id => { $(id).disabled = value; });
+    $("stop").disabled = true;
+  }
+  $("form").addEventListener("submit", async event => {
+    event.preventDefault();
+    if (busy) return;
+    const prompt = $("prompt").value, count = Number($("tokens").value);
+    setBusy(true);
+    cycles = launches = step = 0;
+    started = performance.now();
+    timer = setInterval(stats, 100);
+    $("placeholder").hidden = true;
+    $("original").textContent = prompt;
+    $("generated").textContent = "";
+    $("candidates").textContent = "Waiting for the first prediction…";
+    $("probability-note").textContent = "Top five probabilities from the model's RTL output.";
+    $("counter").textContent = "Starting…";
+    $("details").textContent = "Preparing the forward pass.";
+    $("artifacts").textContent = "Starting a new run…";
+    showPhase(-1);
+    showContext(Array.from(prompt.slice(-defaultContext).padStart(defaultContext, " ")));
+    setStatus("Starting RTL inference…");
+    try {
+      const response = await fetch("/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt, tokens: count }) });
+      if (!response.ok) throw new Error((await response.json()).error);
+      const { run } = await response.json();
+      let cursor = 0, complete = false, retries = 0;
+      while (true) {
+        let progress;
+        try {
+          const update = await fetch(`/events?run=${run}&after=${cursor}`);
+          if (!update.ok) throw new Error((await update.json()).error);
+          progress = await update.json();
+          retries = 0;
+        } catch (error) {
+          if (++retries > 3) throw error;
+          setStatus("Reconnecting to the local simulator…");
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          continue;
+        }
+        for (const update of progress.events) {
+          handle(update, prompt, count);
+          if (update.type === "done" || update.type === "stopped") complete = true;
+        }
+        cursor = progress.cursor;
+        if (progress.finished) {
+          if (!complete) throw new Error("Inference ended without a completed result.");
+          break;
+        }
+        await new Promise(resolve => setTimeout(resolve, 250));
+      }
+    } catch (error) {
+      setStatus(error.message, true);
+      $("counter").textContent = "Run incomplete";
+      $("details").textContent = "Only completed, verified predictions are shown.";
+      phaseNodes.forEach(node => node.classList.remove("active"));
+    } finally { clearInterval(timer); stats(); setBusy(false); }
+  });
+  $("stop").addEventListener("click", async () => {
+    $("stop").disabled = true;
+    setStatus("Stopping after the current kernel finishes…");
+    try {
+      const response = await fetch("/stop", { method: "POST" });
+      if (!response.ok) throw new Error("Could not stop the run.");
+    } catch (error) { setStatus(error.message, true); $("stop").disabled = !busy; }
+  });
+  fetch("/config").then(response => {
+    if (!response.ok) throw new Error("Could not load the model configuration.");
+    return response.json();
+  }).then(config => {
+    $("prompt").value = config.prompt;
+    $("tokens").value = config.tokens;
+    applyModel(config);
+    showContext(Array.from(config.prompt.slice(-config.context).padStart(config.context, " ")));
+    $("generate").disabled = false;
+    setStatus("Ready. Click Predict to run the transformer on the SM.");
+  }).catch(error => setStatus(error.message, true));
+</script>
+</body>
+</html>

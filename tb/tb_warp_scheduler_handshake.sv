@@ -16,7 +16,6 @@ module tb_warp_scheduler_handshake;
     logic [1:0] selected_warp_id;
     logic [3:0] eligible_mask;
 
-
     warp_scheduler dut (
 
         .clk              (clk),
@@ -35,9 +34,7 @@ module tb_warp_scheduler_handshake;
 
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
 
@@ -45,7 +42,6 @@ module tb_warp_scheduler_handshake;
         $dumpvars(0, tb_warp_scheduler_handshake);
 
     end
-
 
     task expect_warp (
         input logic       expected_valid,
@@ -68,7 +64,6 @@ module tb_warp_scheduler_handshake;
 
             end
 
-
             if (
                 expected_valid &&
                 selected_warp_id !== expected_warp
@@ -83,7 +78,6 @@ module tb_warp_scheduler_handshake;
                 $fatal;
 
             end
-
 
             if (expected_valid) begin
 
@@ -106,7 +100,6 @@ module tb_warp_scheduler_handshake;
 
     endtask
 
-
     task accept_issue;
 
         begin
@@ -122,7 +115,6 @@ module tb_warp_scheduler_handshake;
 
     endtask
 
-
     initial begin
 
         clk = 0;
@@ -135,43 +127,30 @@ module tb_warp_scheduler_handshake;
 
         issue_accept = 0;
 
-
         $display("");
         $display(
             "=== Snackwell Scheduler Handshake Test ==="
         );
         $display("");
-
-
-        // =================================================
         // RESET
-        // =================================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
-
-
-        // =================================================
         // ALL FOUR READY
-        // =================================================
 
         valid_mask = 4'b1111;
         ready_mask = 4'b1111;
 
-
         expect_warp(
             1'b1,
             2'd0
         );
 
-
-        // =================================================
         // NO ACCEPT
         //
         // Scheduler must HOLD W0.
-        // =================================================
 
         @(posedge clk);
         #1;
@@ -181,7 +160,6 @@ module tb_warp_scheduler_handshake;
             2'd0
         );
 
-
         @(posedge clk);
         #1;
 
@@ -189,78 +167,53 @@ module tb_warp_scheduler_handshake;
             1'b1,
             2'd0
         );
-
 
         $display(
             "PASS: scheduler holds candidate during backpressure"
         );
-
-
-        // =================================================
         // ACCEPT W0
-        // =================================================
 
         accept_issue();
-
 
         expect_warp(
             1'b1,
             2'd1
         );
 
-
         $display(
             "PASS: scheduler advances only after issue_accept"
         );
-
-
-        // =================================================
         // ACCEPT W1
-        // =================================================
 
         accept_issue();
-
 
         expect_warp(
             1'b1,
             2'd2
         );
-
-
-        // =================================================
         // BLOCK W2
-        // =================================================
 
         blocked_mask = 4'b0100;
 
         #1;
-
 
         expect_warp(
             1'b1,
             2'd3
         );
 
-
         $display(
             "PASS: blocked warp skipped"
         );
-
-
-        // =================================================
         // ACCEPT W3
-        // =================================================
 
         accept_issue();
-
 
         expect_warp(
             1'b1,
             2'd0
         );
 
-
-        // =================================================
         // BLOCK W0 + W2
         //
         // rr_pointer is W0.
@@ -269,51 +222,38 @@ module tb_warp_scheduler_handshake;
         // IMPORTANT:
         // W1 is selected but NOT accepted.
         // Therefore pointer remains W0.
-        // =================================================
 
         blocked_mask = 4'b0101;
-
 
         expect_warp(
             1'b1,
             2'd1
         );
 
-
         $display(
             "PASS: multiple blocked warps skipped"
         );
-
-
-        // =================================================
         // BLOCK EVERYTHING
-        // =================================================
 
         blocked_mask = 4'b1111;
-
 
         expect_warp(
             1'b0,
             2'd0
         );
-
 
         @(posedge clk);
         #1;
 
-
         expect_warp(
             1'b0,
             2'd0
         );
-
 
         $display(
             "PASS: scheduler idles when all warps blocked"
         );
 
-
-        // =================================================
         // UNBLOCK
         //
         // W1 was only selected, never accepted.
@@ -321,30 +261,25 @@ module tb_warp_scheduler_handshake;
         // Therefore rr_pointer is STILL W0.
         //
         // Scheduler must select W0 after unblock.
-        // =================================================
 
         blocked_mask = 4'b0000;
 
         #1;
-
 
         expect_warp(
             1'b1,
             2'd0
         );
 
-
         $display(
             "PASS: round-robin pointer preserved without issue_accept"
         );
-
 
         $display("");
         $display(
             "ALL SCHEDULER HANDSHAKE TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

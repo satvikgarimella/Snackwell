@@ -2,14 +2,9 @@
 
 module tb_warp_state_table;
 
-
     logic clk;
     logic reset;
-
-
-    // -----------------------------------------
     // READ
-    // -----------------------------------------
 
     logic [1:0]  read_warp_id;
 
@@ -19,11 +14,7 @@ module tb_warp_state_table;
     logic read_valid;
     logic read_ready;
     logic read_halted;
-
-
-    // -----------------------------------------
     // UPDATE
-    // -----------------------------------------
 
     logic        update_enable;
     logic [1:0]  update_warp_id;
@@ -42,20 +33,12 @@ module tb_warp_state_table;
 
     logic        update_halted_enable;
     logic        update_halted;
-
-
-    // -----------------------------------------
     // STATUS MASKS
-    // -----------------------------------------
 
     logic [3:0] valid_mask;
     logic [3:0] ready_mask;
     logic [3:0] halted_mask;
-
-
-    // =========================================
     // DUT
-    // =========================================
 
     warp_state_table dut (
 
@@ -93,18 +76,10 @@ module tb_warp_state_table;
         .halted_mask           (halted_mask)
 
     );
-
-
-    // =========================================
     // CLOCK
-    // =========================================
 
     always #5 clk = ~clk;
-
-
-    // =========================================
     // WAVEFORM
-    // =========================================
 
     initial begin
 
@@ -112,11 +87,7 @@ module tb_warp_state_table;
         $dumpvars(0, tb_warp_state_table);
 
     end
-
-
-    // =========================================
     // CLEAR UPDATE CONTROLS
-    // =========================================
 
     task clear_updates;
 
@@ -133,11 +104,7 @@ module tb_warp_state_table;
         end
 
     endtask
-
-
-    // =========================================
     // INITIALIZE A WARP
-    // =========================================
 
     task initialize_warp (
         input logic [1:0]  warp_id,
@@ -173,11 +140,7 @@ module tb_warp_state_table;
         end
 
     endtask
-
-
-    // =========================================
     // CHECK WARP STATE
-    // =========================================
 
     task check_warp (
         input logic [1:0]  warp_id,
@@ -194,7 +157,6 @@ module tb_warp_state_table;
 
             #1;
 
-
             if (read_pc !== expected_pc) begin
 
                 $display(
@@ -207,7 +169,6 @@ module tb_warp_state_table;
                 $fatal;
 
             end
-
 
             if (read_active_mask !== expected_mask) begin
 
@@ -222,7 +183,6 @@ module tb_warp_state_table;
 
             end
 
-
             if (read_valid !== expected_valid) begin
 
                 $display(
@@ -233,7 +193,6 @@ module tb_warp_state_table;
                 $fatal;
 
             end
-
 
             if (read_ready !== expected_ready) begin
 
@@ -246,7 +205,6 @@ module tb_warp_state_table;
 
             end
 
-
             if (read_halted !== expected_halted) begin
 
                 $display(
@@ -257,7 +215,6 @@ module tb_warp_state_table;
                 $fatal;
 
             end
-
 
             $display(
                 "PASS Warp %0d: PC=%h mask=%b valid=%b ready=%b halted=%b",
@@ -272,11 +229,7 @@ module tb_warp_state_table;
         end
 
     endtask
-
-
-    // =========================================
     // MAIN TEST
-    // =========================================
 
     initial begin
 
@@ -295,21 +248,15 @@ module tb_warp_state_table;
 
         clear_updates();
 
-
         $display("");
         $display("=== Snackwell Warp State Table Test ===");
         $display("");
-
-
-        // =====================================
         // RESET
-        // =====================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
-
 
         // Every warp should be empty
 
@@ -331,14 +278,9 @@ module tb_warp_state_table;
             1'b0
         );
 
-
         $display("PASS: reset cleared warp state");
         $display("");
-
-
-        // =====================================
         // INITIALIZE FOUR WARPS
-        // =====================================
 
         initialize_warp(
             2'd0,
@@ -363,11 +305,7 @@ module tb_warp_state_table;
             32'h00000300,
             4'b0111
         );
-
-
-        // =====================================
         // CHECK ALL FOUR
-        // =====================================
 
         check_warp(
             2'd0,
@@ -404,11 +342,7 @@ module tb_warp_state_table;
             1,
             0
         );
-
-
-        // =====================================
         // VERIFY STATUS MASKS
-        // =====================================
 
         #1;
 
@@ -427,18 +361,13 @@ module tb_warp_state_table;
             $fatal;
         end
 
-
         $display(
             "PASS: scheduler masks valid=%b ready=%b halted=%b",
             valid_mask,
             ready_mask,
             halted_mask
         );
-
-
-        // =====================================
         // UPDATE ONLY WARP 1 PC
-        // =====================================
 
         update_enable    = 1;
         update_warp_id   = 2'd1;
@@ -451,7 +380,6 @@ module tb_warp_state_table;
 
         clear_updates();
 
-
         check_warp(
             2'd1,
             32'h00000104,
@@ -461,13 +389,8 @@ module tb_warp_state_table;
             0
         );
 
-
         $display("PASS: independent PC update");
-
-
-        // =====================================
         // STALL WARP 2
-        // =====================================
 
         update_enable      = 1;
         update_warp_id     = 2'd2;
@@ -480,7 +403,6 @@ module tb_warp_state_table;
 
         clear_updates();
 
-
         check_warp(
             2'd2,
             32'h00000200,
@@ -489,7 +411,6 @@ module tb_warp_state_table;
             0,
             0
         );
-
 
         if (ready_mask !== 4'b1011) begin
 
@@ -502,16 +423,11 @@ module tb_warp_state_table;
 
         end
 
-
         $display(
             "PASS: Warp 2 stalled, ready_mask=%b",
             ready_mask
         );
-
-
-        // =====================================
         // HALT WARP 3
-        // =====================================
 
         update_enable        = 1;
         update_warp_id       = 2'd3;
@@ -527,7 +443,6 @@ module tb_warp_state_table;
 
         clear_updates();
 
-
         check_warp(
             2'd3,
             32'h00000300,
@@ -536,7 +451,6 @@ module tb_warp_state_table;
             0,
             1
         );
-
 
         if (halted_mask !== 4'b1000) begin
 
@@ -549,15 +463,10 @@ module tb_warp_state_table;
 
         end
 
-
         $display(
             "PASS: Warp 3 halted"
         );
-
-
-        // =====================================
         // CHANGE ACTIVE MASK FOR WARP 0
-        // =====================================
 
         update_enable       = 1;
         update_warp_id      = 2'd0;
@@ -570,7 +479,6 @@ module tb_warp_state_table;
 
         clear_updates();
 
-
         check_warp(
             2'd0,
             32'h00000000,
@@ -580,13 +488,9 @@ module tb_warp_state_table;
             0
         );
 
-
         $display(
             "PASS: active mask updated independently"
         );
-
-
-        // =====================================
 
         $display("");
         $display(

@@ -1,21 +1,16 @@
 module issue_control (
     input logic clk,
     input logic reset,
-
-    // ------------------------------------------------
     // WARP STATUS
-    // ------------------------------------------------
 
     input logic [3:0] valid_mask,
     input logic [3:0] ready_mask,
     input logic [3:0] halted_mask,
 
-    // ------------------------------------------------
     // CURRENT CANDIDATE INSTRUCTION FIELDS
     //
     // These are assumed to correspond to the warp
     // selected by the scheduler.
-    // ------------------------------------------------
 
     input logic [3:0] rs1_addr,
     input logic [3:0] rs2_addr,
@@ -25,24 +20,15 @@ module issue_control (
     input logic uses_rs2,
     input logic writes_rd,
     input logic additional_dependency,
-
-    // ------------------------------------------------
     // EXECUTION RESOURCE STATUS
-    // ------------------------------------------------
 
     input logic execution_unit_ready,
-
-    // ------------------------------------------------
     // WRITEBACK / SCOREBOARD CLEAR
-    // ------------------------------------------------
 
     input logic       clear_busy_enable,
     input logic [1:0] clear_busy_warp_id,
     input logic [3:0] clear_busy_reg,
-
-    // ------------------------------------------------
     // ISSUE OUTPUT
-    // ------------------------------------------------
 
     output logic       issue_valid,
     output logic       issue_accept,
@@ -52,26 +38,19 @@ module issue_control (
     output logic resource_stall,
 
     output logic [3:0] blocked_mask,
-
-    // ------------------------------------------------
     // DEBUG
-    // ------------------------------------------------
 
     output logic       rs1_busy,
     output logic       rs2_busy,
     output logic [15:0] selected_warp_busy_mask,
     output logic [3:0] eligible_mask
 );
-
-    // =================================================
     // SCOREBOARD MARK-BUSY SIGNALS
-    // =================================================
 
     logic       mark_busy_enable;
     logic [1:0] mark_busy_warp_id;
     logic [3:0] mark_busy_reg;
 
-    // =================================================
     // IMPORTANT:
     //
     // blocked_mask is generated from the CURRENT
@@ -81,17 +60,12 @@ module issue_control (
     // we must avoid creating a combinational loop.
     //
     // Therefore dependency blocking is registered below.
-    // =================================================
 
     logic [3:0] registered_blocked_mask;
     logic [3:0] resource_blocked_mask;
 
     assign blocked_mask = registered_blocked_mask | resource_blocked_mask;
-
-
-    // =================================================
     // WARP SCHEDULER
-    // =================================================
 
     warp_scheduler scheduler (
 
@@ -111,11 +85,7 @@ module issue_control (
         .eligible_mask    (eligible_mask)
 
     );
-
-
-    // =================================================
     // SCOREBOARD
-    // =================================================
 
     scoreboard sb (
 
@@ -141,11 +111,7 @@ module issue_control (
         .selected_warp_busy_mask (selected_warp_busy_mask)
 
     );
-
-
-    // =================================================
     // ISSUE STAGE
-    // =================================================
 
     issue_stage issue (
 
@@ -178,8 +144,6 @@ module issue_control (
 
     );
 
-
-    // =================================================
     // BLOCKED MASK UPDATE
     //
     // A dependency-stalled warp waits for a writeback.
@@ -188,7 +152,6 @@ module issue_control (
     //
     // This is intentionally simple for now:
     // separate dependency and resource block bits per warp.
-    // =================================================
 
     always_ff @(posedge clk) begin
 
@@ -206,10 +169,7 @@ module issue_control (
             resource_blocked_mask <= 4'b0000;
             if (resource_stall)
                 resource_blocked_mask[selected_warp_id] <= 1'b1;
-
-            // -----------------------------------------
             // Register dependency failure
-            // -----------------------------------------
 
             if (
                 dependency_stall
@@ -220,14 +180,11 @@ module issue_control (
 
             end
 
-
-            // -----------------------------------------
             // Writeback can unblock the warp
             //
             // For this stage, clearing any completed
             // destination for that warp makes it
             // schedulable again.
-            // -----------------------------------------
 
             if (clear_busy_enable) begin
 
@@ -239,6 +196,5 @@ module issue_control (
         end
 
     end
-
 
 endmodule

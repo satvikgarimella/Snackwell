@@ -12,14 +12,12 @@ module simd_integer_execute (
     logic [31:0] lane2_result;
     logic [31:0] lane3_result;
 
-
     integer_alu alu0 (
         .opcode    (opcode),
         .operand_a (operand_a[31:0]),
         .operand_b (operand_b[31:0]),
         .result    (lane0_result)
     );
-
 
     integer_alu alu1 (
         .opcode    (opcode),
@@ -28,7 +26,6 @@ module simd_integer_execute (
         .result    (lane1_result)
     );
 
-
     integer_alu alu2 (
         .opcode    (opcode),
         .operand_a (operand_a[95:64]),
@@ -36,14 +33,12 @@ module simd_integer_execute (
         .result    (lane2_result)
     );
 
-
     integer_alu alu3 (
         .opcode    (opcode),
         .operand_a (operand_a[127:96]),
         .operand_b (operand_b[127:96]),
         .result    (lane3_result)
     );
-
 
     assign result = {
         lane3_result,

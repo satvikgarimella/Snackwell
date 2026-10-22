@@ -1,30 +1,39 @@
-module multiwarp_execution_core (
+module multiwarp_execution_core #(
+    parameter bit HOST_PORTS = 0,
+    parameter bit SIMULATION_INIT = 1,
+    parameter bit CLEAR_SHARED_ON_RESET = 1
+) (
     input logic clk,
     input logic reset,
     input logic run_enable,
-
-    // =================================================
+    // Host access is accepted only while execution is stopped and drained.
+    input  logic        host_program_write,
+    input  logic [9:0]  host_program_address,
+    input  logic [31:0] host_program_data,
+    output logic [31:0] host_program_read_data,
+    input  logic        host_memory_valid,
+    output logic        host_memory_ready,
+    input  logic        host_memory_write,
+    input  logic [9:0]  host_memory_address,
+    input  logic [31:0] host_memory_data,
+    output logic        host_memory_response_valid,
+    input  logic        host_memory_response_ready,
+    output logic [31:0] host_memory_read_data,
+    output logic        execution_idle,
     // WARP LAUNCH
-    // =================================================
 
     input logic        launch_enable,
     input logic [1:0]  launch_warp_id,
     input logic [31:0] launch_pc,
     input logic [3:0]  launch_active_mask,
-
-    // =================================================
     // DEBUG REGISTER PRELOAD
-    // =================================================
 
     input logic        debug_write_enable,
     input logic [1:0]  debug_warp_id,
     input logic [1:0]  debug_lane_id,
     input logic [3:0]  debug_reg_addr,
     input logic [31:0] debug_write_data,
-
-    // =================================================
     // STATUS
-    // =================================================
 
     output logic       issue_valid,
     output logic       issue_accept,
@@ -61,11 +70,7 @@ module multiwarp_execution_core (
 );
 
     import snackwell_pkg::*;
-
-
-    // =================================================
     // DECODE
-    // =================================================
 
     logic [3:0] rd_addr;
     logic [3:0] rs1_addr;
@@ -73,11 +78,7 @@ module multiwarp_execution_core (
 
     logic [13:0] immediate;
     logic [31:0] immediate_extended;
-
-
-    // =================================================
     // OPCODE CLASSIFICATION
-    // =================================================
 
     logic is_integer_op;
     logic is_fp_op;
@@ -94,11 +95,7 @@ module multiwarp_execution_core (
     logic issue_uses_rs1;
     logic issue_uses_rs2;
     logic issue_writes_rd;
-
-
-    // =================================================
     // STATE UPDATE
-    // =================================================
 
     logic        state_update_enable;
     logic [1:0]  state_update_warp_id;
@@ -117,11 +114,7 @@ module multiwarp_execution_core (
 
     logic update_halted_enable;
     logic update_halted;
-
-
-    // =================================================
     // SELECTED WARP
-    // =================================================
 
     logic selected_valid;
     logic selected_ready;
@@ -129,22 +122,14 @@ module multiwarp_execution_core (
 
     logic [3:0] eligible_mask;
     logic [15:0] selected_warp_busy_mask;
-
-
-    // =================================================
     // EXECUTION
-    // =================================================
 
     logic execution_unit_ready;
     logic at_reconvergence_point;
 
     logic [127:0] current_alu_result;
     logic [127:0] integer_alu_result, integer_operand_b;
-
-
-    // =================================================
     // LSU
-    // =================================================
 
     logic [127:0] lsu_addresses;
     logic [127:0] lsu_store_data;
@@ -160,11 +145,9 @@ module multiwarp_execution_core (
     logic shared_inflight, shared_is_load, shared_completion_valid, shared_take;
     logic [1:0] shared_warp_id;
     logic [3:0] shared_rd_addr, shared_write_mask;
-
-
-    // =================================================
+    logic memory_response_valid, memory_response_ready;
+    logic host_memory_pending, host_memory_accept;
     // WRITEBACK
-    // =================================================
 
     logic         wb_valid;
     logic [1:0]   wb_warp_id;
@@ -220,11 +203,7 @@ module multiwarp_execution_core (
     assign rf_read_warp_id = tensor_gather ? tensor_warp_id : selected_warp_id;
     assign rf_rs1_addr = tensor_gather ? tensor_a_addr : rs1_addr;
     assign rf_rs2_addr = tensor_gather ? tensor_b_addr : rs2_addr;
-
-
-    // =================================================
     // BRANCH UNIT
-    // =================================================
 
     logic [3:0] branch_taken;
     logic [3:0] branch_not_taken;
@@ -235,17 +214,12 @@ module multiwarp_execution_core (
     logic [31:0] branch_target;
     logic [31:0] branch_fallthrough;
 
-
     assign branch_taken_mask =
         branch_taken;
 
     assign branch_not_taken_mask =
         branch_not_taken;
-
-
-    // =================================================
     // RECONVERGENCE TARGET TABLE
-    // =================================================
 
     logic [31:0] reconv_target_pc;
     logic        reconv_target_valid;
@@ -255,16 +229,11 @@ module multiwarp_execution_core (
     logic target_write_enable;
     logic target_clear_enable;
 
-
     assign ssy_target_pc =
         selected_pc +
         32'd4 +
         (immediate_extended << 2);
-
-
-    // =================================================
     // RECONVERGENCE STACK
-    // =================================================
 
     logic [31:0] stack_deferred_pc;
     logic [3:0]  stack_deferred_mask;
@@ -280,11 +249,7 @@ module multiwarp_execution_core (
 
     logic stack_overflow_attempt;
     logic stack_underflow_attempt;
-
-
-    // =================================================
     // DIVERGENCE CONTROLLER COMMANDS
-    // =================================================
 
     logic        divergence_pc_update_enable;
     logic [31:0] divergence_next_pc;
@@ -310,12 +275,10 @@ module multiwarp_execution_core (
 
     logic missing_reconvergence_target;
 
-
     // Current PC is a reconvergence point.
     assign at_reconvergence_point =
         !stack_empty &&
         (selected_pc == stack_reconverge_pc);
-
 
     // This event acts like an internal control-flow micro-op.
     // We do NOT execute the instruction currently sitting at
@@ -330,23 +293,44 @@ module multiwarp_execution_core (
     assign instruction_execute_accept =
         issue_accept &&
         !at_reconvergence_point;
-
-
-    // =================================================
     // INSTRUCTION MEMORY
-    // =================================================
 
-    instruction_memory imem (
+    assign execution_idle = !fp_inflight && !tensor_busy && !shared_inflight &&
+        !wb_valid && !host_memory_pending;
+    assign host_memory_ready = HOST_PORTS && !reset && !run_enable &&
+        !launch_enable && execution_idle && shared_request_ready;
+    assign host_memory_accept = host_memory_valid && host_memory_ready;
+    assign host_memory_response_valid = host_memory_pending && memory_response_valid;
+    assign host_memory_read_data = shared_load_data[31:0];
+    assign shared_response_valid = memory_response_valid && !host_memory_pending;
+    assign memory_response_ready = host_memory_pending
+        ? host_memory_response_ready : shared_response_ready;
+
+    always_ff @(posedge clk) begin
+        if (reset)
+            host_memory_pending <= 1'b0;
+        else begin
+            if (host_memory_accept) host_memory_pending <= 1'b1;
+            if (host_memory_response_valid && host_memory_response_ready)
+                host_memory_pending <= 1'b0;
+        end
+    end
+
+    instruction_memory #(
+        .HOST_WRITABLE(HOST_PORTS), .SIMULATION_INIT(SIMULATION_INIT)
+    ) imem (
 
         .pc          (selected_pc),
-        .instruction (instruction)
+        .instruction (instruction),
+        .clk(clk),
+        .host_write_enable(HOST_PORTS && !reset && !run_enable && !launch_enable &&
+                           execution_idle && host_program_write),
+        .host_word_address(host_program_address),
+        .host_write_data(host_program_data),
+        .host_read_data(host_program_read_data)
 
     );
-
-
-    // =================================================
     // DECODER
-    // =================================================
 
     instruction_decoder decoder (
 
@@ -362,11 +346,7 @@ module multiwarp_execution_core (
         .immediate_extended (immediate_extended)
 
     );
-
-
-    // =================================================
     // OPCODE CONTROL
-    // =================================================
 
     always @(*) begin
 
@@ -381,7 +361,6 @@ module multiwarp_execution_core (
         uses_rs1  = 1'b0;
         uses_rs2  = 1'b0;
         writes_rd = 1'b0;
-
 
         case (opcode)
 
@@ -401,7 +380,6 @@ module multiwarp_execution_core (
                 writes_rd = 1'b1;
 
             end
-
 
             OP_ADDI: begin
                 is_integer_op = 1'b1;
@@ -441,7 +419,6 @@ module multiwarp_execution_core (
 
             end
 
-
             OP_ST_SHARED: begin
 
                 is_shared_store = 1'b1;
@@ -450,7 +427,6 @@ module multiwarp_execution_core (
                 uses_rs2 = 1'b1;
 
             end
-
 
             OP_BEQ: begin
 
@@ -461,17 +437,14 @@ module multiwarp_execution_core (
 
             end
 
-
             OP_SSY: begin
 
                 is_ssy = 1'b1;
 
             end
 
-
             OP_EXIT: begin
             end
-
 
             default: begin
             end
@@ -479,7 +452,6 @@ module multiwarp_execution_core (
         endcase
 
     end
-
 
     // At a reconvergence PC, suppress architectural
     // operands/destination for the fetched instruction.
@@ -503,7 +475,6 @@ module multiwarp_execution_core (
             ? 1'b0
             : writes_rd;
 
-
     assign execution_unit_ready =
         run_enable && !launch_enable && !debug_write_enable && !tensor_gather &&
         (at_reconvergence_point ||
@@ -515,11 +486,7 @@ module multiwarp_execution_core (
           (opcode != OP_EXIT ||
            (selected_warp_busy_mask == 16'd0 && selected_tensor_busy_mask == 16'd0 &&
             !(shared_inflight && shared_warp_id == selected_warp_id)))));
-
-
-    // =================================================
     // WARP CONTROL
-    // =================================================
 
     warp_control_unit warp_control (
 
@@ -584,11 +551,7 @@ module multiwarp_execution_core (
         .selected_warp_busy_mask (selected_warp_busy_mask)
 
     );
-
-
-    // =================================================
     // REGISTER FILE
-    // =================================================
 
     multiwarp_register_file regfile (
 
@@ -617,11 +580,7 @@ module multiwarp_execution_core (
         .debug_write_data   (debug_write_data)
 
     );
-
-
-    // =================================================
     // INTEGER SIMD
-    // =================================================
 
     simd_integer_execute execute (
 
@@ -633,7 +592,6 @@ module multiwarp_execution_core (
         .result    (integer_alu_result)
 
     );
-
 
     assign integer_operand_b = opcode == OP_ADDI ? {4{immediate_extended}} : rs2_data;
     // The SM currently has four resident warps of four lanes. TID supplies
@@ -673,11 +631,7 @@ module multiwarp_execution_core (
             end
         end
     end
-
-
-    // =================================================
     // TENSOR EXECUTION AND REGISTER TRANSFERS
-    // =================================================
 
     sm_tensor_unit tensor_execute (
         .clk(clk), .reset(reset),
@@ -694,10 +648,7 @@ module multiwarp_execution_core (
         .row_data(tensor_result), .row_last(tensor_row_last),
         .last_row_committed(wb_fire && wb_is_tensor && wb_tensor_last)
     );
-
-    // =================================================
     // BRANCH UNIT
-    // =================================================
 
     branch_unit branch (
 
@@ -721,23 +672,17 @@ module multiwarp_execution_core (
         .fallthrough_pc    (branch_fallthrough)
 
     );
-
-
-    // =================================================
     // RECONVERGENCE TARGET TABLE
-    // =================================================
 
     assign target_write_enable =
         run_enable &&
         instruction_execute_accept &&
         is_ssy;
 
-
     assign target_clear_enable =
         run_enable &&
         instruction_execute_accept &&
         is_branch;
-
 
     reconvergence_target_table reconv_targets (
 
@@ -757,11 +702,7 @@ module multiwarp_execution_core (
         .read_valid    (reconv_target_valid)
 
     );
-
-
-    // =================================================
     // RECONVERGENCE STACK
-    // =================================================
 
     reconvergence_stack reconv_stack (
 
@@ -799,11 +740,7 @@ module multiwarp_execution_core (
         .underflow_attempt       (stack_underflow_attempt)
 
     );
-
-
-    // =================================================
     // DIVERGENCE CONTROLLER
-    // =================================================
 
     divergence_controller divergence_control (
 
@@ -865,11 +802,7 @@ module multiwarp_execution_core (
         .missing_reconvergence_target  (missing_reconvergence_target)
 
     );
-
-
-    // =================================================
     // LSU
-    // =================================================
 
     load_store_unit lsu (
 
@@ -899,33 +832,30 @@ module multiwarp_execution_core (
         .store_enable_mask (lsu_store_mask)
 
     );
-
-
-    // =================================================
     // SHARED MEMORY
-    // =================================================
 
-    shared_memory shared_mem (
+    shared_memory #(.CLEAR_ON_RESET(CLEAR_SHARED_ON_RESET)) shared_mem (
 
         .clk               (clk),
         .reset             (reset),
 
-        .request_valid     (shared_start),
+        .request_valid     (shared_start || host_memory_accept),
         .request_ready     (shared_request_ready),
-        .response_valid    (shared_response_valid),
-        .response_ready    (shared_response_ready),
+        .response_valid    (memory_response_valid),
+        .response_ready    (memory_response_ready),
 
-        .lane_addresses    (lsu_addresses),
-        .store_data        (lsu_store_data),
+        .lane_addresses    (host_memory_accept
+                            ? {96'd0, 20'd0, host_memory_address, 2'b0} : lsu_addresses),
+        .store_data        (host_memory_accept ? {96'd0, host_memory_data} : lsu_store_data),
 
         .load_enable_mask  (
-            instruction_execute_accept
+            host_memory_accept ? {3'b0, !host_memory_write} : instruction_execute_accept
                 ? lsu_load_mask
                 : 4'b0000
         ),
 
         .store_enable_mask (
-            instruction_execute_accept
+            host_memory_accept ? {3'b0, host_memory_write} : instruction_execute_accept
                 ? lsu_store_mask
                 : 4'b0000
         ),
@@ -956,11 +886,7 @@ module multiwarp_execution_core (
                 shared_inflight <= 1'b0;
         end
     end
-
-
-    // =================================================
     // EXECUTE -> WRITEBACK
-    // =================================================
 
     always_ff @(posedge clk) begin
 
@@ -1021,15 +947,10 @@ module multiwarp_execution_core (
 
             end
 
-
         end
 
     end
-
-
-    // =================================================
     // WARP STATE CONTROL
-    // =================================================
 
     always @(*) begin
 
@@ -1039,13 +960,11 @@ module multiwarp_execution_core (
         state_update_warp_id =
             selected_warp_id;
 
-
         update_pc_enable =
             1'b0;
 
         update_pc =
             selected_pc;
-
 
         update_mask_enable =
             1'b0;
@@ -1053,13 +972,11 @@ module multiwarp_execution_core (
         update_active_mask =
             selected_active_mask;
 
-
         update_valid_enable =
             1'b0;
 
         update_valid =
             selected_valid;
-
 
         update_ready_enable =
             1'b0;
@@ -1067,17 +984,12 @@ module multiwarp_execution_core (
         update_ready =
             selected_ready;
 
-
         update_halted_enable =
             1'b0;
 
         update_halted =
             selected_halted;
-
-
-        // =================================================
         // PRIORITY 1: LAUNCH
-        // =================================================
 
         if (launch_enable) begin
 
@@ -1087,13 +999,11 @@ module multiwarp_execution_core (
             state_update_warp_id =
                 launch_warp_id;
 
-
             update_pc_enable =
                 1'b1;
 
             update_pc =
                 launch_pc;
-
 
             update_mask_enable =
                 1'b1;
@@ -1101,20 +1011,17 @@ module multiwarp_execution_core (
             update_active_mask =
                 launch_active_mask;
 
-
             update_valid_enable =
                 1'b1;
 
             update_valid =
                 1'b1;
 
-
             update_ready_enable =
                 1'b1;
 
             update_ready =
                 1'b1;
-
 
             update_halted_enable =
                 1'b1;
@@ -1123,11 +1030,7 @@ module multiwarp_execution_core (
                 1'b0;
 
         end
-
-
-        // =================================================
         // PRIORITY 2: RECONVERGENCE EVENT
-        // =================================================
 
         else if (
             issue_accept &&
@@ -1140,7 +1043,6 @@ module multiwarp_execution_core (
             state_update_warp_id =
                 selected_warp_id;
 
-
             if (divergence_pc_update_enable) begin
 
                 update_pc_enable =
@@ -1150,7 +1052,6 @@ module multiwarp_execution_core (
                     divergence_next_pc;
 
             end
-
 
             if (divergence_mask_update_enable) begin
 
@@ -1163,11 +1064,7 @@ module multiwarp_execution_core (
             end
 
         end
-
-
-        // =================================================
         // PRIORITY 3: ACCEPTED INSTRUCTION
-        // =================================================
 
         else if (
             run_enable &&
@@ -1179,11 +1076,7 @@ module multiwarp_execution_core (
 
             state_update_warp_id =
                 selected_warp_id;
-
-
-            // ---------------------------------------------
             // EXIT
-            // ---------------------------------------------
 
             if (opcode == OP_EXIT) begin
 
@@ -1193,7 +1086,6 @@ module multiwarp_execution_core (
                 update_ready =
                     1'b0;
 
-
                 update_halted_enable =
                     1'b1;
 
@@ -1201,11 +1093,7 @@ module multiwarp_execution_core (
                     1'b1;
 
             end
-
-
-            // ---------------------------------------------
             // BEQ
-            // ---------------------------------------------
 
             else if (is_branch) begin
 
@@ -1219,7 +1107,6 @@ module multiwarp_execution_core (
 
                 end
 
-
                 if (divergence_mask_update_enable) begin
 
                     update_mask_enable =
@@ -1231,11 +1118,7 @@ module multiwarp_execution_core (
                 end
 
             end
-
-
-            // ---------------------------------------------
             // EVERYTHING ELSE
-            // ---------------------------------------------
 
             else begin
 
@@ -1250,6 +1133,5 @@ module multiwarp_execution_core (
         end
 
     end
-
 
 endmodule

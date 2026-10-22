@@ -1,0 +1,37 @@
+PASS tb_branch_unit
+PASS tb_divergence_controller
+PASS tb_fp32_mac_pe
+PASS tb_fp32_mul_wrapper
+PASS tb_instruction_decoder
+PASS tb_instruction_frontend
+PASS tb_instruction_memory
+PASS tb_integer_alu
+PASS tb_issue_control
+PASS tb_issue_stage
+PASS tb_load_store_unit
+PASS tb_multiwarp_divergence_core
+PASS tb_multiwarp_execution_core
+PASS tb_multiwarp_memory_core
+PASS tb_multiwarp_register_file
+PASS tb_program_counter
+PASS tb_reconvergence_stack
+PASS tb_reconvergence_target_table
+PASS tb_register_file
+PASS tb_scoreboard
+PASS tb_shared_memory
+PASS tb_simd_execution_unit
+PASS tb_simd_fp32_execute
+PASS tb_simd_fp32_mul
+PASS tb_simd_lane
+PASS tb_single_warp_core
+PASS tb_snackwell_sm
+PASS tb_snackwell_sm_fp32
+PASS tb_snackwell_sm_tensor
+PASS tb_systolic_array_4x4
+PASS tb_tensor_core
+PASS tb_warp_control_unit
+PASS tb_warp_scheduler
+PASS tb_warp_scheduler_handshake
+PASS tb_warp_state_table
+
+35/35 testbenches passed. Logs: /Users/satvik.garimella/Snackwell/build/tests

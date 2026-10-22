@@ -17,7 +17,6 @@ module tb_simd_fp32_mul;
 
     logic [127:0] result;
 
-
     simd_fp32_mul dut (
         .clk         (clk),
         .rst         (rst),
@@ -34,9 +33,7 @@ module tb_simd_fp32_mul;
         .result      (result)
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
 
@@ -53,7 +50,6 @@ module tb_simd_fp32_mul;
 
         active_mask = 4'b1111;
 
-
         repeat (3) @(posedge clk);
 
         @(negedge clk);
@@ -61,15 +57,12 @@ module tb_simd_fp32_mul;
 
         @(posedge clk);
 
-
-        // =========================================
         // LANE TESTS
         //
         // L0: 2.5 * 4.0  = 10.0
         // L1: 1.5 * 2.0  = 3.0
         // L2: 3.0 * 3.0  = 9.0
         // L3: -2.0 * 4.0 = -8.0
-        // =========================================
 
         operand_a = {
             32'hC0000000, // -2.0
@@ -85,7 +78,6 @@ module tb_simd_fp32_mul;
             32'h40800000  // 4.0
         };
 
-
         @(negedge clk);
         start = 1;
 
@@ -94,9 +86,7 @@ module tb_simd_fp32_mul;
         @(negedge clk);
         start = 0;
 
-
         wait(done);
-
 
         // L0 = 10.0
         if (result[31:0] !== 32'h41200000) begin
@@ -104,13 +94,11 @@ module tb_simd_fp32_mul;
             $fatal;
         end
 
-
         // L1 = 3.0
         if (result[63:32] !== 32'h40400000) begin
             $display("FAIL: lane 1 result=%h", result[63:32]);
             $fatal;
         end
-
 
         // L2 = 9.0
         if (result[95:64] !== 32'h41100000) begin
@@ -118,13 +106,11 @@ module tb_simd_fp32_mul;
             $fatal;
         end
 
-
         // L3 = -8.0
         if (result[127:96] !== 32'hC1000000) begin
             $display("FAIL: lane 3 result=%h", result[127:96]);
             $fatal;
         end
-
 
         $display("PASS: lane 0 2.5 * 4.0 = 10.0");
         $display("PASS: lane 1 1.5 * 2.0 = 3.0");
@@ -135,8 +121,7 @@ module tb_simd_fp32_mul;
             "ALL 4-LANE FP32 SIMD MULTIPLIER TESTS PASSED"
         );
 
-
-        // Lane 0 finishes early; lane 1 takes longer to normalize. A start
+        // Lane 0 finishes early on zero; lane 1 runs the finite datapath. A start
         // while SIMD busy must not restart lane 0 and overwrite its result.
         @(negedge clk);
         operand_a = {32'h40200000, 32'h7f800000, 32'h00000001, 32'h00000000};
@@ -145,8 +130,8 @@ module tb_simd_fp32_mul;
         start = 1;
         @(negedge clk);
         start = 0;
-        repeat (12) @(negedge clk);
-        if (!busy) $fatal(1, "Expected mixed lane latencies");
+        while (!dut.completed_mask[0]) @(negedge clk);
+        if (!busy || dut.completed_mask[1]) $fatal(1, "Expected mixed lane latencies");
         operand_a = {4{32'h40400000}};
         operand_b = {4{32'h40400000}};
         start = 1;
@@ -184,7 +169,6 @@ module tb_simd_fp32_mul;
         $finish;
 
     end
-
 
     initial begin
 

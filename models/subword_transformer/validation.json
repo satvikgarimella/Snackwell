@@ -1,0 +1,345 @@
+{
+  "kind": "CPU canonical-tokenization NLL per character; not RTL or per-character accuracy",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "split": "validation",
+  "seed": 2741,
+  "context_policy": "each model's context; periodic rebuild to three quarters",
+  "spans": [
+    {
+      "start": 1005017,
+      "end": 1005444
+    },
+    {
+      "start": 1006528,
+      "end": 1006933
+    },
+    {
+      "start": 1012634,
+      "end": 1013031
+    },
+    {
+      "start": 1023150,
+      "end": 1023567
+    },
+    {
+      "start": 1025110,
+      "end": 1025530
+    },
+    {
+      "start": 1036472,
+      "end": 1036880
+    },
+    {
+      "start": 1041610,
+      "end": 1041998
+    },
+    {
+      "start": 1045075,
+      "end": 1045478
+    },
+    {
+      "start": 1046625,
+      "end": 1047021
+    },
+    {
+      "start": 1048742,
+      "end": 1049145
+    },
+    {
+      "start": 1049356,
+      "end": 1049767
+    },
+    {
+      "start": 1051295,
+      "end": 1051689
+    },
+    {
+      "start": 1051817,
+      "end": 1052228
+    },
+    {
+      "start": 1052915,
+      "end": 1053344
+    },
+    {
+      "start": 1056217,
+      "end": 1056631
+    },
+    {
+      "start": 1057292,
+      "end": 1057702
+    }
+  ],
+  "results": [
+    {
+      "checkpoint": "/Users/satvik.garimella/Snackwell/models/character_transformer/checkpoint.json",
+      "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+      "spans": [
+        {
+          "nats": 541.7979307851326,
+          "tokens": 427,
+          "characters": 427
+        },
+        {
+          "nats": 599.9835716571598,
+          "tokens": 405,
+          "characters": 405
+        },
+        {
+          "nats": 442.3645175478374,
+          "tokens": 397,
+          "characters": 397
+        },
+        {
+          "nats": 573.5688583612509,
+          "tokens": 417,
+          "characters": 417
+        },
+        {
+          "nats": 542.4591664633833,
+          "tokens": 420,
+          "characters": 420
+        },
+        {
+          "nats": 628.3662951045757,
+          "tokens": 408,
+          "characters": 408
+        },
+        {
+          "nats": 563.125089931137,
+          "tokens": 388,
+          "characters": 388
+        },
+        {
+          "nats": 489.9260681034791,
+          "tokens": 403,
+          "characters": 403
+        },
+        {
+          "nats": 537.5338118921906,
+          "tokens": 396,
+          "characters": 396
+        },
+        {
+          "nats": 479.407839943533,
+          "tokens": 403,
+          "characters": 403
+        },
+        {
+          "nats": 514.6461349437437,
+          "tokens": 411,
+          "characters": 411
+        },
+        {
+          "nats": 530.3563698290933,
+          "tokens": 394,
+          "characters": 394
+        },
+        {
+          "nats": 675.0149869390232,
+          "tokens": 411,
+          "characters": 411
+        },
+        {
+          "nats": 720.9148029681933,
+          "tokens": 429,
+          "characters": 429
+        },
+        {
+          "nats": 570.3142582698772,
+          "tokens": 414,
+          "characters": 414
+        },
+        {
+          "nats": 557.1789821423932,
+          "tokens": 410,
+          "characters": 410
+        }
+      ],
+      "nats": 8966.958684882004,
+      "characters": 6533,
+      "nats_per_character": 1.3725637050179096,
+      "bits_per_character": 1.9801908505335202
+    },
+    {
+      "checkpoint": "/Users/satvik.garimella/Snackwell/build/subword-repair-20261020/bpe512/portable-checkpoint.json",
+      "checkpoint_sha256": "046267affed1d2dcbc038298a92535fa41a0ebdbf7a1cbcad236a06e15c3331a",
+      "spans": [
+        {
+          "nats": 539.2988505668411,
+          "tokens": 204,
+          "characters": 427
+        },
+        {
+          "nats": 618.6089352759446,
+          "tokens": 194,
+          "characters": 405
+        },
+        {
+          "nats": 462.8821768492058,
+          "tokens": 217,
+          "characters": 397
+        },
+        {
+          "nats": 571.1226079792694,
+          "tokens": 194,
+          "characters": 417
+        },
+        {
+          "nats": 531.712557483603,
+          "tokens": 199,
+          "characters": 420
+        },
+        {
+          "nats": 684.6747559083228,
+          "tokens": 196,
+          "characters": 408
+        },
+        {
+          "nats": 593.0418715224782,
+          "tokens": 196,
+          "characters": 388
+        },
+        {
+          "nats": 475.74382504864826,
+          "tokens": 180,
+          "characters": 403
+        },
+        {
+          "nats": 535.4095818156813,
+          "tokens": 219,
+          "characters": 396
+        },
+        {
+          "nats": 480.0579419643282,
+          "tokens": 164,
+          "characters": 403
+        },
+        {
+          "nats": 500.2995075427589,
+          "tokens": 191,
+          "characters": 411
+        },
+        {
+          "nats": 554.0641609049691,
+          "tokens": 193,
+          "characters": 394
+        },
+        {
+          "nats": 659.9343917388347,
+          "tokens": 232,
+          "characters": 411
+        },
+        {
+          "nats": 734.4726262527469,
+          "tokens": 221,
+          "characters": 429
+        },
+        {
+          "nats": 543.1617969488884,
+          "tokens": 195,
+          "characters": 414
+        },
+        {
+          "nats": 534.5840189268024,
+          "tokens": 198,
+          "characters": 410
+        }
+      ],
+      "nats": 9019.069606729323,
+      "characters": 6533,
+      "nats_per_character": 1.3805402734929317,
+      "bits_per_character": 1.991698606315746
+    },
+    {
+      "checkpoint": "/Users/satvik.garimella/Snackwell/build/subword-repair-20261020/bpe512-wide/portable-checkpoint.json",
+      "checkpoint_sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8",
+      "spans": [
+        {
+          "nats": 503.59962812282987,
+          "tokens": 204,
+          "characters": 427
+        },
+        {
+          "nats": 578.6073369118692,
+          "tokens": 194,
+          "characters": 405
+        },
+        {
+          "nats": 433.6391529254951,
+          "tokens": 217,
+          "characters": 397
+        },
+        {
+          "nats": 519.6218097528116,
+          "tokens": 194,
+          "characters": 417
+        },
+        {
+          "nats": 496.5154020785735,
+          "tokens": 199,
+          "characters": 420
+        },
+        {
+          "nats": 622.3806629462638,
+          "tokens": 196,
+          "characters": 408
+        },
+        {
+          "nats": 545.6431779223466,
+          "tokens": 196,
+          "characters": 388
+        },
+        {
+          "nats": 444.6836985195866,
+          "tokens": 180,
+          "characters": 403
+        },
+        {
+          "nats": 487.44997690687546,
+          "tokens": 219,
+          "characters": 396
+        },
+        {
+          "nats": 445.8223374562955,
+          "tokens": 164,
+          "characters": 403
+        },
+        {
+          "nats": 477.17344505665704,
+          "tokens": 191,
+          "characters": 411
+        },
+        {
+          "nats": 508.55974347031605,
+          "tokens": 193,
+          "characters": 394
+        },
+        {
+          "nats": 599.0225210300525,
+          "tokens": 232,
+          "characters": 411
+        },
+        {
+          "nats": 699.572157924712,
+          "tokens": 221,
+          "characters": 429
+        },
+        {
+          "nats": 515.8012270517615,
+          "tokens": 195,
+          "characters": 414
+        },
+        {
+          "nats": 486.61118112540834,
+          "tokens": 198,
+          "characters": 410
+        }
+      ],
+      "nats": 8364.703459201855,
+      "characters": 6533,
+      "nats_per_character": 1.2803770793206575,
+      "bits_per_character": 1.8471936628038075
+    }
+  ]
+}

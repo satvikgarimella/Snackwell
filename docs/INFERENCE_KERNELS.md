@@ -2,7 +2,8 @@
 
 The library now includes tiled matmul, bias/residual addition, ReLU, tanh-GELU,
 row sum/max, affine LayerNorm, stable row softmax, linear, and single-head
-scaled dot-product attention. All device computation runs as Snackwell assembly
+scaled dot-product attention, plus a complete pre-LayerNorm transformer block.
+All device computation runs as Snackwell assembly
 on the real SM in RTL simulation. Python generates instruction sequences and
 constant tables, loads inputs, launches programs, and verifies results.
 
@@ -12,8 +13,8 @@ constant tables, loads inputs, launches programs, and verifies results.
 python3 scripts/run_kernel.py all
 ```
 
-This verifies 16 workloads: the four earlier vector/matmul programs, all eleven
-new library commands, and a separate 16x16 tiled matmul. It writes a summary to
+This verifies 17 workloads: the four earlier vector/matmul programs, all twelve
+library commands, and a separate 16x16 tiled matmul. It writes a summary to
 `build/kernels/all/result.json` plus per-workload assembly, input/output memory,
 cycle traces, profiles, and verification results. Any mismatch exits nonzero.
 
@@ -30,14 +31,19 @@ python3 scripts/run_kernel.py layernorm --rows 4 --cols 16
 python3 scripts/run_kernel.py softmax --rows 8 --cols 8
 python3 scripts/run_kernel.py linear --size 8
 python3 scripts/run_kernel.py attention --rows 8 --cols 8
+python3 scripts/run_kernel.py transformer
 ```
 
 Dimensions are 4, 8, or 16. `--size` controls square tiled matmul and linear
 (default 8); `--rows`/`--cols` control the other new commands (default 4x4).
-For attention they mean sequence length and head width. Memory capacity is
+For attention they mean sequence length and head width; for the transformer,
+sequence length and model width, with a feed-forward width of twice the model
+width. Memory capacity is
 validated before launch. For example, 16-token attention with width 8 fits;
 16-token attention with width 16 does not fit the current 4 KB memory.
 There is no padding or support for arbitrary non-multiple-of-four dimensions.
+The transformer has room for 4x4, 8x4, and 4x8 inputs with its current layout;
+see [the transformer guide](TRANSFORMER.md) for its parameters and limits.
 
 ## What each command does
 
@@ -54,11 +60,13 @@ There is no padding or support for arbitrary non-multiple-of-four dimensions.
 | `softmax` | exp(X-row_max) divided by its row sum | 1 |
 | `linear` | Y=A B+b | 2 |
 | `attention` | softmax(Q K-transpose / sqrt(head_width) + causal_mask) V | 4 |
+| `transformer` | Pre-LayerNorm block: Q/K/V projections, attention, output projection, GELU feed-forward network, two residuals | 21 |
 
-Linear and attention are pipelines of GPU programs. The simulation runner
+Linear, attention and the transformer are pipelines of GPU programs. The simulation runner
 passes the actual dumped memory from each stage to the next launch; Python
 does not compute intermediate scores, probabilities, or output activations for
-the device. Each stage and the final attention output are independently checked.
+the device. Each stage is checked, with an additional independent whole-pipeline
+reference for attention and the transformer.
 This simulates several launches with memory preserved through host images;
 it is not yet a persistent hardware runtime or DMA path.
 
@@ -76,6 +84,7 @@ the JSON use deterministic example values; unknown fields are rejected.
 | `relu`, `gelu`, `row_sum`, `row_max`, `softmax` | `x`: rows x cols |
 | `layernorm` | `x`: rows x cols; optional `gamma`, `beta`: cols; optional `epsilon` |
 | `attention` | `q`, `k`, `v`: rows x cols each; optional `causal`: boolean |
+| `transformer` | `x`, projection and feed-forward weights/biases, two affine norms; [full format](TRANSFORMER.md#inputs) |
 
 LayerNorm defaults to gamma=1, beta=0, epsilon=1e-5. Epsilon must round to a
 positive normal binary32 value. Attention defaults to causal masking, allowing
@@ -107,13 +116,16 @@ IEEE exception flags or correctly rounded exp/divide/sqrt.
 ## Tiled multiplication
 
 One full warp computes output tiles sequentially. For each 4x4 output tile,
-the kernel initializes its output memory to zero, then loops over the inner
+the kernel initializes four accumulator registers to zero, then loops over the inner
 dimension in blocks of four:
 
 1. Load a 4x4 A tile and a 4x4 B tile into eight registers.
-2. Execute TMUL into four result registers.
-3. Load the existing partial C rows, add the new tile, and store them.
+2. Execute TMUL into R0--R3, reusing A's registers after the tensor unit gathers them.
+3. Add the new tile to the partial C rows held in R8--R11.
 4. Advance A/B pointers and repeat until the K blocks are finished.
+
+The completed output tile is then stored once. When the model runtime splits K
+across launches, the next launch loads the previous partial tile once.
 
 The 8x8 product executes 8 TMULs; 16x16 executes 64. Those are full GPU programs
 with counted loops, not host-computed partial results. TMUL sums four products
@@ -121,7 +133,7 @@ from positive zero; FADD then adds each completed tile to the running output.
 The reference reproduces that specified order, since it can differ in FP32
 rounding from one uninterrupted dot product.
 
-The 16x16 program contains 625 instructions and uses 768 shared-memory words
+The 16x16 program contains 561 instructions and uses 768 shared-memory words
 for A/B/C. All generated programs are checked against the 1024-instruction ROM
 limit, and layouts plus constants against the 1024-word memory limit.
 
@@ -132,9 +144,12 @@ and a counted loop advances to the next group. Each lane performs its own
 reduction, with no dependence on another lane's partial result. GELU instead
 loops over groups of four contiguous elements to reuse its longer math routine.
 
-All new programs launch only warp 0 with all four lanes active. Their ownership
-of outputs avoids inter-warp communication and therefore requires no block
-barriers. This is a correct initial mapping, not a claim of optimal reduction
+The standalone examples launch only warp 0 with all four lanes active. The model
+runtime also generates matrix kernels that assign disjoint output tiles to up
+to four warps. Each tile's K accumulation stays in one warp; no barrier is needed
+because these warps do not consume each other's outputs. Standalone row kernels
+also avoid inter-warp communication and therefore require no block barriers.
+This is a correct initial mapping, not a claim of optimal reduction
 throughput. General cooperating multiwarp kernels remain separate work.
 
 ## Numerical algorithms and accuracy
@@ -151,9 +166,11 @@ The implementation and dependency-free references live in separate modules.
 - **Reciprocal square root:** obtain a bit-based estimate, then perform four
   steps `y = y*(1.5-0.5*x*y*y)`. LayerNorm adds epsilon before this operation.
 - **Exponential:** for nonpositive x, evaluate a degree-six Taylor polynomial
-  for exp(x/256), then square eight times. Values below -80, including -inf,
+  for exp(x/32), then square five times. Values below -80, including -inf,
   become zero. Softmax subtracts its row maximum before exponentiation, so at
   least one numerator is 1. The cutoff discards terms below about 1.81e-35.
+  Reducing the number of squarings limits amplified FP32 rounding near zero;
+  the larger polynomial error in the far negative tail has a tiny absolute value.
 - **GELU:** evaluate the tanh approximation with coefficient 0.044715 using
   the stable exponential form of tanh. Clamp the magnitude used inside that
   approximation to 10, where it has saturated, while retaining the original
@@ -172,6 +189,7 @@ the reference, with NaNs compared by classification. Approximate kernels use
 | softmax | 1e-4 | 2e-6 |
 | LayerNorm | 3e-5 | 3e-6 |
 | complete attention | 2e-4 | 2e-5 |
+| complete transformer block | 5e-4 | 5e-5 |
 
 These are verification thresholds, not universal error bounds for arbitrary
 ill-conditioned or overflowing inputs. Softmax also checks nonnegative
@@ -179,7 +197,9 @@ probabilities and a row sum within 2e-5 of one. Its reference uses host math.exp
 not the device polynomial. GELU uses host math.tanh. LayerNorm's reference
 reproduces the FP32 mean/variance order and uses host sqrt for the reciprocal;
 the final attention reference starts independently from original Q/K/V with
-double-precision sums and exp.
+double-precision sums and exp. The whole-block transformer reference likewise
+starts from the original input and parameters, uses double-precision arithmetic,
+and never consumes the SM's intermediate outputs.
 
 ## Supporting ISA additions
 
@@ -199,9 +219,11 @@ The older standalone single-warp teaching core still has its earlier subset.
 
 ## Source, output, and verification
 
-- `scripts/inference_kernels.py`: shape-specialized assembly emitters and layout.
-- `scripts/inference_reference.py`: independent expected results and tolerances.
-- `scripts/run_inference.py`: RTL execution and stage-to-stage memory transfer.
+- `snackwell/kernels/inference.py`: shape-specialized assembly emitters and layout.
+- `snackwell/reference/inference.py`: independent expected results and tolerances.
+- `snackwell/kernels/transformer.py`: transformer layout and stage composition.
+- `snackwell/reference/transformer.py`: independent whole-block reference.
+- `snackwell/inference_runner.py`: RTL execution and stage-to-stage memory transfer.
 - `kernels/nn/*.asm`: readable default assembly examples, with memory addresses.
 - Each run's `<stage>/program.asm`: the exact assembly that was assembled.
 - Each workload's `layout.json`: array addresses and immutable constants.
@@ -221,7 +243,7 @@ precompute device outputs. Program images are identical for different input
 values at the same shape/configuration. There are no HDL real-number shortcuts.
 
 ```sh
-python3 -m unittest discover -s scripts/tests -p test_inference_kernels.py -v
+python3 -m unittest discover -s tests -p test_inference_kernels.py -v
 python3 scripts/run_tests.py
 ```
 
@@ -230,6 +252,9 @@ accumulation and counts, signed/random inputs, dense GELU values and saturation,
 softmax offsets/extreme tails/masking, affine LayerNorm and different scales,
 causal/unmasked attention and several shapes, the new ISA through the full SM,
 memory guards, rejected inputs/capacity, and deliberately removed stores.
+Transformer tests also cover nonzero parameters, both affine norms, causal
+isolation, residual identity, and a deliberately broken final stage that passes
+its local check but fails the independent whole-block reference.
 Existing vector, matmul, memory, FP32, tensor, and control tests continue to run.
 
 Cycle reports exclude reset, image loading, and launch overhead. Pipeline totals
@@ -237,3 +262,8 @@ sum the GPU execution cycles of their stages. All measurements remain simulation
 results. Larger model weights, global memory, a general host runtime, pretrained
 model integration, multiple heads, and KV-cache decoding are outside this kernel
 library milestone.
+
+The separate [trained character-model runner](MODEL_INFERENCE.md) now composes
+these operations with token embeddings, an output head and sampled or greedy generation.
+It loads tensor chunks through the simulation host; hardware global memory and
+the persistent runtime remain future work.

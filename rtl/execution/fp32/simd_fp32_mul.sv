@@ -25,22 +25,14 @@ module simd_fp32_mul (
     logic [3:0] completed_mask;
 
     integer i;
-
-
-    // =========================================
     // START ONLY ACTIVE LANES
-    // =========================================
 
     always_comb begin
         for (i = 0; i < 4; i = i + 1) begin
             lane_start[i] = start && !busy && active_mask[i];
         end
     end
-
-
-    // =========================================
     // FOUR FP32 MULTIPLIER LANES
-    // =========================================
 
     fp32_mul_wrapper lane0 (
         .clk       (clk),
@@ -53,7 +45,6 @@ module simd_fp32_mul (
         .result    (lane_result[0])
     );
 
-
     fp32_mul_wrapper lane1 (
         .clk       (clk),
         .rst       (rst),
@@ -64,7 +55,6 @@ module simd_fp32_mul (
         .done      (lane_done[1]),
         .result    (lane_result[1])
     );
-
 
     fp32_mul_wrapper lane2 (
         .clk       (clk),
@@ -77,7 +67,6 @@ module simd_fp32_mul (
         .result    (lane_result[2])
     );
 
-
     fp32_mul_wrapper lane3 (
         .clk       (clk),
         .rst       (rst),
@@ -88,11 +77,7 @@ module simd_fp32_mul (
         .done      (lane_done[3]),
         .result    (lane_result[3])
     );
-
-
-    // =========================================
     // PACK RESULTS
-    // =========================================
 
     always_comb begin
         result = {
@@ -102,11 +87,7 @@ module simd_fp32_mul (
             lane_result[0]
         };
     end
-
-
-    // =========================================
     // TRACK WHICH LANES ARE FINISHED
-    // =========================================
 
     always_ff @(posedge clk) begin
 
@@ -122,7 +103,6 @@ module simd_fp32_mul (
 
             done <= 1'b0;
 
-
             // Start a SIMD operation
             if (start && !busy) begin
 
@@ -133,14 +113,12 @@ module simd_fp32_mul (
 
             end
 
-
             // Record completion of each lane
             if (busy) begin
 
                 completed_mask <=
                     completed_mask |
                     lane_done;
-
 
                 // All active lanes complete
                 if (

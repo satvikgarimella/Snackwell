@@ -55,7 +55,7 @@ module tb_simd_fp32_execute;
                 start = busy && cycles == 3;
             end
             start = 0;
-            if (!done || busy) $fatal(1, "FP timeout vector %0d busy=%b done=%b complete=%b lane_done=%b mulstate=%d mulst=%d", count, busy, done, dut.completed_mask, dut.lane_done, dut.lanes[0].mul.state, dut.lanes[0].mul.u_multiplier.state);
+            if (!done || busy) $fatal(1, "FP timeout vector %0d busy=%b done=%b complete=%b lane_done=%b", count, busy, done, dut.completed_mask, dut.lane_done);
             for (integer lane = 0; lane < 4; lane = lane + 1)
                 if (mask_word[lane] && !fp_equal(result[lane*32 +: 32], expected[lane]))
                     $fatal(1, "vector %0d op=%h lane=%0d a=%h b=%h got=%h expected=%h",

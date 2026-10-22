@@ -1,0 +1,29 @@
+/Users/satvik.garimella/Snackwell/build/model-venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+Initial validation loss: 1.4492
+step 500: train=1.3426, val=1.4433
+step 1000: train=1.2997, val=1.4424
+step 1500: train=1.2944, val=1.4336
+step 2000: train=1.3218, val=1.4360
+step 2500: train=1.2378, val=1.4340
+step 3000: train=1.2967, val=1.4359
+step 3500: train=1.3074, val=1.4280
+step 4000: train=1.3254, val=1.4280
+step 4500: train=1.2240, val=1.4305
+step 5000: train=1.2577, val=1.4242
+step 5500: train=1.2930, val=1.4211
+step 6000: train=1.3148, val=1.4218
+step 6500: train=1.2091, val=1.4244
+step 7000: train=1.2271, val=1.4196
+step 7500: train=1.2620, val=1.4136
+step 8000: train=1.2504, val=1.4192
+step 8500: train=1.2524, val=1.4158
+step 9000: train=1.2426, val=1.4162
+step 9500: train=1.2783, val=1.4168
+step 10000: train=1.2164, val=1.4140
+step 10500: train=1.2511, val=1.4139
+step 11000: train=1.2745, val=1.4139
+step 11500: train=1.2562, val=1.4118
+step 12000: train=1.2162, val=1.4128
+Selected step 11500; test loss=1.5888; unigram=3.3620
+Exported 555073 parameters to build/inference-quality-v4/wide-refined/checkpoint.json

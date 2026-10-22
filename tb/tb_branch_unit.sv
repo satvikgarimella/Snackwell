@@ -21,7 +21,6 @@ module tb_branch_unit;
     logic [31:0] branch_target;
     logic [31:0] fallthrough_pc;
 
-
     branch_unit dut (
 
         .current_pc        (current_pc),
@@ -45,14 +44,12 @@ module tb_branch_unit;
 
     );
 
-
     initial begin
 
         $dumpfile("tb_branch_unit.vcd");
         $dumpvars(0, tb_branch_unit);
 
     end
-
 
     initial begin
 
@@ -65,13 +62,10 @@ module tb_branch_unit;
 
         immediate = 32'd2;
 
-
         $display("");
         $display("=== Snackwell Branch Unit Test ===");
         $display("");
 
-
-        // =================================================
         // PC CALCULATION
         //
         // PC = 0x100
@@ -81,10 +75,8 @@ module tb_branch_unit;
         // displacement = 8 bytes
         //
         // target = 0x10C
-        // =================================================
 
         #1;
-
 
         if (fallthrough_pc !== 32'h00000104) begin
 
@@ -97,7 +89,6 @@ module tb_branch_unit;
 
         end
 
-
         if (branch_target !== 32'h0000010C) begin
 
             $display(
@@ -109,16 +100,12 @@ module tb_branch_unit;
 
         end
 
-
         $display(
             "PASS: branch target calculation"
         );
 
-
-        // =================================================
         // TEST 1
         // ALL LANES TAKEN
-        // =================================================
 
         operand_a = {
             32'd40,
@@ -138,7 +125,6 @@ module tb_branch_unit;
 
         #1;
 
-
         if (taken_mask !== 4'b1111) begin
 
             $display(
@@ -150,7 +136,6 @@ module tb_branch_unit;
 
         end
 
-
         if (!uniform_taken) begin
 
             $display(
@@ -160,7 +145,6 @@ module tb_branch_unit;
             $fatal;
 
         end
-
 
         if (divergent) begin
 
@@ -172,16 +156,12 @@ module tb_branch_unit;
 
         end
 
-
         $display(
             "PASS: uniform taken branch"
         );
 
-
-        // =================================================
         // TEST 2
         // NO LANES TAKEN
-        // =================================================
 
         operand_b = {
             32'd41,
@@ -191,7 +171,6 @@ module tb_branch_unit;
         };
 
         #1;
-
 
         if (taken_mask !== 4'b0000) begin
 
@@ -203,7 +182,6 @@ module tb_branch_unit;
 
         end
 
-
         if (!uniform_not_taken) begin
 
             $display(
@@ -213,7 +191,6 @@ module tb_branch_unit;
             $fatal;
 
         end
-
 
         if (divergent) begin
 
@@ -225,13 +202,10 @@ module tb_branch_unit;
 
         end
 
-
         $display(
             "PASS: uniform not-taken branch"
         );
 
-
-        // =================================================
         // TEST 3
         // DIVERGENCE
         //
@@ -241,7 +215,6 @@ module tb_branch_unit;
         // L3 not
         //
         // taken = 0101
-        // =================================================
 
         operand_a = {
             32'd40,
@@ -259,7 +232,6 @@ module tb_branch_unit;
 
         #1;
 
-
         if (taken_mask !== 4'b0101) begin
 
             $display(
@@ -270,7 +242,6 @@ module tb_branch_unit;
             $fatal;
 
         end
-
 
         if (not_taken_mask !== 4'b1010) begin
 
@@ -283,7 +254,6 @@ module tb_branch_unit;
 
         end
 
-
         if (!divergent) begin
 
             $display(
@@ -294,13 +264,10 @@ module tb_branch_unit;
 
         end
 
-
         $display(
             "PASS: divergent branch detected"
         );
 
-
-        // =================================================
         // TEST 4
         // ACTIVE MASK
         //
@@ -308,7 +275,6 @@ module tb_branch_unit;
         // Both take branch.
         //
         // This is UNIFORM among ACTIVE lanes.
-        // =================================================
 
         active_mask = 4'b0101;
 
@@ -328,7 +294,6 @@ module tb_branch_unit;
 
         #1;
 
-
         if (taken_mask !== 4'b0101) begin
 
             $display(
@@ -340,7 +305,6 @@ module tb_branch_unit;
 
         end
 
-
         if (!uniform_taken) begin
 
             $display(
@@ -350,7 +314,6 @@ module tb_branch_unit;
             $fatal;
 
         end
-
 
         if (divergent) begin
 
@@ -362,13 +325,10 @@ module tb_branch_unit;
 
         end
 
-
         $display(
             "PASS: inactive lanes ignored correctly"
         );
 
-
-        // =================================================
         // TEST 5
         // NEGATIVE BRANCH OFFSET
         //
@@ -376,13 +336,11 @@ module tb_branch_unit;
         // imm = -2
         //
         // PC + 4 - 8 = 0xFC
-        // =================================================
 
         current_pc = 32'h00000100;
         immediate  = 32'hFFFFFFFE;
 
         #1;
-
 
         if (branch_target !== 32'h000000FC) begin
 
@@ -395,18 +353,15 @@ module tb_branch_unit;
 
         end
 
-
         $display(
             "PASS: negative branch displacement"
         );
-
 
         $display("");
         $display(
             "ALL BRANCH UNIT TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

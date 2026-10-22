@@ -34,6 +34,7 @@ module tb_shared_memory;
         reg [3:0] conflicts, active;
         integer count [0:3];
         integer latency, elapsed, word_index;
+        reg repeated_read;
         begin
             expected = 0; conflicts = 0; active = loads | stores;
             for (integer b = 0; b < 4; b = b + 1) count[b] = 0;
@@ -41,7 +42,13 @@ module tb_shared_memory;
                 word_index = addr[lane*32+2 +: 10];
                 if (loads[lane]) expected[lane*32 +: 32] = model[word_index];
                 if (stores[lane]) model[word_index] = data[lane*32 +: 32];
-                if (active[lane]) count[word_index % 4] = count[word_index % 4] + 1;
+                repeated_read = 0;
+                for (integer earlier = 0; earlier < lane; earlier = earlier + 1)
+                    if (stores == 0 && loads[earlier] &&
+                        addr[earlier*32+2 +: 10] == word_index)
+                        repeated_read = 1;
+                if (active[lane] && !repeated_read)
+                    count[word_index % 4] = count[word_index % 4] + 1;
             end
             latency = 1;
             for (integer b = 0; b < 4; b = b + 1)
@@ -115,6 +122,15 @@ module tb_shared_memory;
             transfer({4{32'hffc}}, 0, 15, 0, 2);
         end
         transfer({4{32'h40}}, {32'd4, 32'd3, 32'd2, 32'd1}, 15, 15, 2);
+        // Multicast groups can be separated by another word in lane order.
+        // Aliased byte addresses retain the architectural 4 KB word mapping.
+        for (integer mask = 0; mask < 16; mask = mask + 1) begin
+            transfer({32'h40, 32'h50, 32'h40, 32'h50}, 0, mask, 0, 2);
+            transfer({32'h1040, 32'h40, 32'h1040, 32'h40}, 0, mask, 0, 1);
+            transfer({32'h54, 32'h50, 32'h44, 32'h40}, 0, mask, 0);
+        end
+        // A store between same-word reads forbids multicast across the store.
+        transfer({4{32'h40}}, {4{32'h1234}}, 4'b1101, 4'b0010, 2);
         check_memory();
         $display("PASS: same-address ordering, repeated reads, mixed read/write and empty masks");
 

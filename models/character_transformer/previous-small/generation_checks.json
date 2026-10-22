@@ -1,0 +1,472 @@
+{
+  "reference_generation": {
+    "kind": "CPU reference generation diagnostic; not RTL execution",
+    "checkpoint_sha256": "3af837fdd4e8472048fea4999e7e16eea0f1e4ce315b13f76b3aff6514b34277",
+    "tokens": 32,
+    "summary": {
+      "greedy": {
+        "cases": 6,
+        "mean_repeated_fourgram_fraction": 0.8333333333333334,
+        "cases_with_three_repeats": 6
+      },
+      "sample": {
+        "cases": 18,
+        "mean_repeated_fourgram_fraction": 0.005747126436781602,
+        "cases_with_three_repeats": 0
+      }
+    },
+    "cases": [
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "the sky today is",
+        "continuation": " the the the the the the the the",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "My name is ",
+        "continuation": "the the the the the the the the ",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "ROMEO:",
+        "continuation": "\nWhere the the the the the the t",
+        "repeated_fourgram_fraction": 0.6896551724137931,
+        "positions_starting_three_repeats": 16
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "Good night,",
+        "continuation": " the the the the the the the the",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "I love",
+        "continuation": " the the the the the the the the",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "To be, or not to ",
+        "continuation": "the the the the the the the the ",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "t; I no radome, thermommell\nThe ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you in bocech hou crow to mard i",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "--saord radme.\nMy Wour ting\nThe ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": "--saord radme.\nMy Wour ting\nThe ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "wn:\nI mar burfest crow to mard i",
+        "repeated_fourgram_fraction": 0.03448275862068961,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you in bocech hou crow to mard i",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " thest the and yourn, willf;\nBan",
+        "repeated_fourgram_fraction": 0.03448275862068961,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "comay?\nEf:\nArk yourn, willf;\nBan",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nWhats the and yourn, willf;\nBan",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhats the and yourn, willf;\nBan",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " thest the and yourn, willf;\nBan",
+        "repeated_fourgram_fraction": 0.03448275862068961,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "comay?\nEf:\nArk yourn, willf;\nBan",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the ses, shy,\nNursemoan force.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "lolidies on youls.\n\nMaciend not!",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe ses, shy,\nNursemoan force.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": " the ses, shy,\nNursemoan force.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": " the ses, shy,\nNursemoan force.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "loin ses's it,\nNursemoan force.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      }
+    ]
+  },
+  "rtl_generations": [
+    {
+      "prompt": "the sky today is",
+      "generated": "the sky today ist; I no radome, thermommell\nThe ",
+      "seed": 1729,
+      "characters": 32,
+      "cycles": 29920451,
+      "directory": "build/model-quality/rtl-generation",
+      "verified": true,
+      "matches_reference_continuation": true
+    },
+    {
+      "prompt": "My name is ",
+      "generated": "My name is comay?\nEf:\nArk yourn, willf;\nBan",
+      "seed": 1730,
+      "characters": 32,
+      "cycles": 29934412,
+      "directory": "build/model-quality/rtl-name",
+      "verified": true,
+      "matches_reference_continuation": true
+    },
+    {
+      "prompt": "ROMEO:",
+      "generated": "ROMEO:\nThe ses, shy,\nNursemoan force.\n",
+      "seed": 1731,
+      "characters": 32,
+      "cycles": 29916915,
+      "directory": "build/model-quality/rtl-romeo",
+      "verified": true,
+      "matches_reference_continuation": true
+    }
+  ],
+  "baseline_reference_generation": {
+    "kind": "CPU reference generation diagnostic; not RTL execution",
+    "checkpoint_sha256": "846b525279aac7f30924e25d263a275c8db6f3db9a6c663c24b47295ed113c47",
+    "tokens": 32,
+    "summary": {
+      "greedy": {
+        "cases": 6,
+        "mean_repeated_fourgram_fraction": 0.8333333333333334,
+        "cases_with_three_repeats": 6
+      },
+      "sample": {
+        "cases": 18,
+        "mean_repeated_fourgram_fraction": 0.0038314176245210683,
+        "cases_with_three_repeats": 1
+      }
+    },
+    "cases": [
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "the sky today is",
+        "continuation": " the the the the the the the the",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "My name is ",
+        "continuation": "the the the the the the the the ",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "ROMEO:",
+        "continuation": "\nWhat the the the the the the th",
+        "repeated_fourgram_fraction": 0.6896551724137931,
+        "positions_starting_three_repeats": 16
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "Good night,",
+        "continuation": " the the the the the the the the",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "I love",
+        "continuation": " the the the the the the the the",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "To be, or not to ",
+        "continuation": "the the the the the the the the ",
+        "repeated_fourgram_fraction": 0.8620689655172413,
+        "positions_starting_three_repeats": 21
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "who, ligh bung to ctrudngan\nTing",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you in bod! Yortle with; miaon.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "Our heael come uth with; miaon.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": ".\n\n\nITh\nRAMO:\nIf'lfsow to lard h",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 1
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "y, Khen of unpest drow to lard h",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you in bod! Yortle with; miaon.\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " thest the and yours hou to Ale;",
+        "repeated_fourgram_fraction": 0.03448275862068961,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "comaybloor are yours hou to Ale;",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nWhaving of rifut sulesidito\nF I",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhaving of rifut sulesidito\nF I",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " thest the and yours hou to Ale;",
+        "repeated_fourgram_fraction": 0.03448275862068961,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "comaybloor are yours hou to Ale;",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the ses noty,\nOur, ou mall med,",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "lof Romienigwn my sirg me sengen",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nWead-Oumir youlter:\nWard sengen",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": " the ses noty,\nOur, ou mall med,",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": " the ses noty,\nOur, ou mall med,",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "loke ses noty,\nOur, ou mall med,",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      }
+    ]
+  },
+  "training_comparison": {
+    "baseline_validation_loss": 2.182420462369919,
+    "new_validation_loss": 2.1521791368722916,
+    "baseline_test": {
+      "loss": 2.1772107630968094,
+      "perplexity": 8.821666194310257,
+      "accuracy": 0.37322998046875,
+      "tokens": 16384
+    },
+    "new_test": {
+      "loss": 2.143540531396866,
+      "perplexity": 8.529583489358874,
+      "accuracy": 0.38720703125,
+      "tokens": 16384
+    }
+  }
+}

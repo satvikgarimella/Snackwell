@@ -100,8 +100,10 @@ while the adapter loads the tensor core and the array computes. A younger
 instruction may reuse a source register after gathering, provided it is not
 also a reserved destination.
 
-The adapter sends 32 input words to `tensor_core`, launches it, and packs its
-16 output words into four vector writes. Writeback priority is:
+The adapter passes its gathered tiles directly to `systolic_array_4x4` and reads
+four 128-bit result rows directly from the held output tile. This removes the
+former 32 serial input transfers and 16 serial output transfers. The standalone
+`tensor_core` word interface remains available and tested separately. Writeback priority is:
 
 1. A completed SIMD FP instruction.
 2. A ready tensor result row.
@@ -155,16 +157,19 @@ Every PE receives four valid pairs, for 64 MACs total, across ten steps (0..9).
 
 Each step has two phases:
 
-1. All PEs capture their current inputs. Valid pairs run multiply, then add.
-   Bubble PEs finish immediately but still retain both independent input tokens.
-2. Once every PE reports completion, the controller asserts `step_advance`.
+1. All PEs capture their current inputs. Valid pairs multiply, then submit the
+   rounded product to their adder. Bubble PEs retain both independent input tokens.
+2. Once every product has reached its adder, the controller asserts `step_advance`.
    All PEs forward their saved A/B tokens together. The feeder and step index
    advance at the same edge.
 
-The shared step prevents variable FP latency from misaligning the operand
-streams. Arithmetic FSMs remain clocked while transport waits. This is an
-iterative implementation: ten logical steps are **not** ten clock cycles.
-No clock gating is used.
+The next multiplication can overlap the preceding addition. If an early product
+arrives while the adder is busy, the PE holds it. If the preceding addition
+finishes on the edge that accepts the next product, the new sum is forwarded
+directly into the adder. Additions still occur in k order with separate rounding.
+After the tenth transport step, the controller drains all pending additions
+before publishing C. The shared step preserves operand alignment across the
+array. Ten logical steps still take multiple clocks; no clock gating is used.
 
 `enable=0` pauses step launch and token advancement. It does not abort arithmetic
 already started. After `result_valid` is asserted, result consumption proceeds
@@ -220,10 +225,12 @@ used by `result_tile`, which remains stable while `result_valid` waits for
 completion mask are useful for tracing the wavefront.
 
 For `fp32_mac_pe`, `step_valid && step_ready` accepts the next pair of tokens.
-`step_done` is a **held level**, not a pulse: it stays asserted until `advance`
-retires the step. Early advance is ignored. A completed PE cannot accept a new
-step until its saved tokens have been forwarded. `clear` resets the accumulator,
-tokens, and arithmetic, including an operation in flight.
+`step_done` is a **held level**, not a pulse: it means the product has reached the
+adder (or the step was a bubble), and stays asserted until `advance` forwards the
+tokens. It does not mean the addition has finished. `arithmetic_busy` stays high
+through the accumulator update. Early advance is ignored. A PE cannot accept a
+new step until its saved tokens have been forwarded. `clear` resets the
+accumulator, tokens and both arithmetic units, including operations in flight.
 
 ## Verification
 
@@ -243,7 +250,7 @@ and sum separately, preserving the specified accumulation order and rounding.
 
 - The PE suite checks repeated accumulation, negative values, subnormals, a case
   that differs from fused FMA, bubbles, token retention, early advance, completion
-  backpressure, and clear/reset while busy.
+  backpressure, overlapping multiply/add, same-edge sum forwarding, and clear/reset while busy.
 - The array suite checks 185 matrix cases / 2,960 output elements, including
   zero/identity/basis matrices, known non-symmetric products, random signed values,
   varied exponents, special values, and random bit patterns. It also checks the

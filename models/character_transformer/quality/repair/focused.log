@@ -1,0 +1,15 @@
+test_invalid_partial_row_shapes_are_rejected_before_launch (tests.test_decode_kernels.DecodeKernelTests.test_invalid_partial_row_shapes_are_rejected_before_launch) ... ok
+test_lookup_single_row_capacity_boundary_and_long_context (tests.test_decode_kernels.DecodeKernelTests.test_lookup_single_row_capacity_boundary_and_long_context) ... ok
+test_mask_loop_preserves_absolute_positions_through_column_127 (tests.test_decode_kernels.DecodeKernelTests.test_mask_loop_preserves_absolute_positions_through_column_127) ... ok
+test_row_operations_match_first_row_of_full_tile (tests.test_decode_kernels.DecodeKernelTests.test_row_operations_match_first_row_of_full_tile) ... ok
+test_single_row_matmul_column_tails_k_chunks_bias_and_transpose (tests.test_decode_kernels.DecodeKernelTests.test_single_row_matmul_column_tails_k_chunks_bias_and_transpose) ... ok
+test_single_row_sampling_boundaries (tests.test_decode_kernels.DecodeKernelTests.test_single_row_sampling_boundaries) ... ok
+test_looped_layernorm_preserves_unrolled_fp32_results (tests.test_wide_model.WideModelTests.test_looped_layernorm_preserves_unrolled_fp32_results) ... ok
+test_wide_cached_decode_matches_full_forward (tests.test_wide_model.WideModelTests.test_wide_cached_decode_matches_full_forward) ... ok
+test_wide_gelu_and_embedding_keep_flat_order (tests.test_wide_model.WideModelTests.test_wide_gelu_and_embedding_keep_flat_order) ... ok
+test_wide_layernorm_handles_zero_variance_and_distinct_rows (tests.test_wide_model.WideModelTests.test_wide_layernorm_handles_zero_variance_and_distinct_rows) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 11.201s
+
+OK

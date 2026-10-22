@@ -23,7 +23,6 @@ module tb_simd_lane;
     logic [31:0] debug_rs2_data;
     logic [31:0] debug_alu_result;
 
-
     simd_lane dut (
         .clk                (clk),
         .reset              (reset),
@@ -45,15 +44,12 @@ module tb_simd_lane;
         .debug_alu_result   (debug_alu_result)
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
         $dumpfile("tb_simd_lane.vcd");
         $dumpvars(0, tb_simd_lane);
     end
-
 
     task debug_write(
         input logic [3:0] addr,
@@ -75,7 +71,6 @@ module tb_simd_lane;
 
     endtask
 
-
     initial begin
 
         clk = 0;
@@ -93,24 +88,20 @@ module tb_simd_lane;
         debug_write_addr   = 0;
         debug_write_data   = 0;
 
-
         $display("");
         $display("=== Snackwell SIMD Lane Test ===");
         $display("");
-
 
         // Reset
         @(posedge clk);
         #1;
         reset = 0;
 
-
         // Preload R1 = 7
         debug_write(4'd1, 32'd7);
 
         // Preload R2 = 8
         debug_write(4'd2, 32'd8);
-
 
         // Select R1 and R2
         rs1_addr = 4'd1;
@@ -119,7 +110,6 @@ module tb_simd_lane;
         opcode = OP_ADD;
 
         #1;
-
 
         // Verify ALU sees the correct operands
         if (debug_rs1_data !== 32'd7) begin
@@ -147,7 +137,6 @@ module tb_simd_lane;
             debug_alu_result
         );
 
-
         // Write result into R3
         rd_addr = 4'd3;
         write_enable = 1'b1;
@@ -156,7 +145,6 @@ module tb_simd_lane;
         #1;
 
         write_enable = 1'b0;
-
 
         // Read R3
         rs1_addr = 4'd3;
@@ -174,12 +162,10 @@ module tb_simd_lane;
 
         end
 
-
         $display(
             "PASS: R3 contains writeback result = %0d",
             debug_rs1_data
         );
-
 
         $display("");
         $display("ALL SIMD LANE TESTS PASSED");

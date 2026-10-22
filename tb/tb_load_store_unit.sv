@@ -18,7 +18,6 @@ module tb_load_store_unit;
     logic [3:0] load_enable_mask;
     logic [3:0] store_enable_mask;
 
-
     load_store_unit dut (
 
         .base_addresses    ({4{base_addr}}),
@@ -39,14 +38,12 @@ module tb_load_store_unit;
 
     );
 
-
     initial begin
 
         $dumpfile("tb_load_store_unit.vcd");
         $dumpvars(0, tb_load_store_unit);
 
     end
-
 
     initial begin
 
@@ -60,22 +57,17 @@ module tb_load_store_unit;
         is_load  = 1'b0;
         is_store = 1'b0;
 
-
         $display("");
         $display("=== Snackwell Load/Store Unit Test ===");
         $display("");
 
-
-        // =================================================
         // TEST 1
         // ADDRESS GENERATION
-        // =================================================
 
         base_addr = 32'h00001000;
         offset    = 32'h00000020;
 
         #1;
-
 
         if (lane_addresses[31:0] !== 32'h00001020) begin
 
@@ -88,7 +80,6 @@ module tb_load_store_unit;
 
         end
 
-
         if (lane_addresses[63:32] !== 32'h00001020) begin
 
             $display(
@@ -99,7 +90,6 @@ module tb_load_store_unit;
             $fatal;
 
         end
-
 
         if (lane_addresses[95:64] !== 32'h00001020) begin
 
@@ -112,7 +102,6 @@ module tb_load_store_unit;
 
         end
 
-
         if (lane_addresses[127:96] !== 32'h00001020) begin
 
             $display(
@@ -124,16 +113,12 @@ module tb_load_store_unit;
 
         end
 
-
         $display(
             "PASS: effective address generation"
         );
 
-
-        // =================================================
         // TEST 2
         // LOAD ALL ACTIVE LANES
-        // =================================================
 
         active_mask = 4'b1111;
 
@@ -141,7 +126,6 @@ module tb_load_store_unit;
         is_store = 1'b0;
 
         #1;
-
 
         if (load_enable_mask !== 4'b1111) begin
 
@@ -154,7 +138,6 @@ module tb_load_store_unit;
 
         end
 
-
         if (store_enable_mask !== 4'b0000) begin
 
             $display(
@@ -165,21 +148,16 @@ module tb_load_store_unit;
 
         end
 
-
         $display(
             "PASS: full active-mask load"
         );
 
-
-        // =================================================
         // TEST 3
         // MASKED LOAD
-        // =================================================
 
         active_mask = 4'b0101;
 
         #1;
-
 
         if (load_enable_mask !== 4'b0101) begin
 
@@ -192,16 +170,12 @@ module tb_load_store_unit;
 
         end
 
-
         $display(
             "PASS: masked load respects active lanes"
         );
 
-
-        // =================================================
         // TEST 4
         // STORE
-        // =================================================
 
         is_load  = 1'b0;
         is_store = 1'b1;
@@ -217,7 +191,6 @@ module tb_load_store_unit;
 
         #1;
 
-
         if (store_enable_mask !== 4'b1011) begin
 
             $display(
@@ -228,7 +201,6 @@ module tb_load_store_unit;
             $fatal;
 
         end
-
 
         if (
             store_write_data !== {
@@ -247,16 +219,12 @@ module tb_load_store_unit;
 
         end
 
-
         $display(
             "PASS: store data + active mask"
         );
 
-
-        // =================================================
         // TEST 5
         // NO MEMORY OP
-        // =================================================
 
         is_load  = 1'b0;
         is_store = 1'b0;
@@ -264,7 +232,6 @@ module tb_load_store_unit;
         active_mask = 4'b1111;
 
         #1;
-
 
         if (load_enable_mask !== 4'b0000) begin
 
@@ -276,7 +243,6 @@ module tb_load_store_unit;
 
         end
 
-
         if (store_enable_mask !== 4'b0000) begin
 
             $display(
@@ -287,20 +253,15 @@ module tb_load_store_unit;
 
         end
 
-
         $display(
             "PASS: idle LSU produces no requests"
         );
-
-
-        // =================================================
 
         $display("");
         $display(
             "ALL LOAD/STORE UNIT TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

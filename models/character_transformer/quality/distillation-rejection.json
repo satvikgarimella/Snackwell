@@ -1,0 +1,189 @@
+{
+  "selected_step": 0,
+  "weights_identical_to_baseline": true,
+  "initial_validation": {
+    "loss": 1.5255915448069572,
+    "perplexity": 4.597862606759289,
+    "accuracy": 0.541961669921875,
+    "tokens": 32768
+  },
+  "history": [
+    {
+      "step": 500,
+      "train_batch_loss": 1.32185697555542,
+      "validation": {
+        "loss": 1.6225290149450302,
+        "perplexity": 5.06588583069636,
+        "accuracy": 0.510772705078125,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 11.123058666998986
+    },
+    {
+      "step": 1000,
+      "train_batch_loss": 1.2103952169418335,
+      "validation": {
+        "loss": 1.6288192570209503,
+        "perplexity": 5.09785191069063,
+        "accuracy": 0.5087890625,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 22.005600584001513
+    },
+    {
+      "step": 1500,
+      "train_batch_loss": 1.1621496677398682,
+      "validation": {
+        "loss": 1.6340855732560158,
+        "perplexity": 5.12476962736453,
+        "accuracy": 0.50970458984375,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 32.88387916699867
+    },
+    {
+      "step": 2000,
+      "train_batch_loss": 1.1974420547485352,
+      "validation": {
+        "loss": 1.634823516011238,
+        "perplexity": 5.128552809697544,
+        "accuracy": 0.509521484375,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 43.91562945899204
+    },
+    {
+      "step": 2500,
+      "train_batch_loss": 1.1931006908416748,
+      "validation": {
+        "loss": 1.636802114546299,
+        "perplexity": 5.138710202160993,
+        "accuracy": 0.5096435546875,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 54.9912089589925
+    },
+    {
+      "step": 3000,
+      "train_batch_loss": 1.074501395225525,
+      "validation": {
+        "loss": 1.6395516097545624,
+        "perplexity": 5.152858502667611,
+        "accuracy": 0.50970458984375,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 66.13876170900767
+    },
+    {
+      "step": 3500,
+      "train_batch_loss": 1.1389344930648804,
+      "validation": {
+        "loss": 1.6345695331692696,
+        "perplexity": 5.127250410680254,
+        "accuracy": 0.510894775390625,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 77.05510933400365
+    },
+    {
+      "step": 4000,
+      "train_batch_loss": 1.1257824897766113,
+      "validation": {
+        "loss": 1.6308675408363342,
+        "perplexity": 5.108304459491348,
+        "accuracy": 0.512451171875,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 87.81018479200429
+    },
+    {
+      "step": 4500,
+      "train_batch_loss": 1.2008684873580933,
+      "validation": {
+        "loss": 1.6334917470812798,
+        "perplexity": 5.121727308414022,
+        "accuracy": 0.51104736328125,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 98.64823908399558
+    },
+    {
+      "step": 5000,
+      "train_batch_loss": 1.0819932222366333,
+      "validation": {
+        "loss": 1.632070891559124,
+        "perplexity": 5.114455241386605,
+        "accuracy": 0.511688232421875,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 109.39833679201547
+    },
+    {
+      "step": 5500,
+      "train_batch_loss": 1.1324409246444702,
+      "validation": {
+        "loss": 1.6317148357629776,
+        "perplexity": 5.112634534109703,
+        "accuracy": 0.511932373046875,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 120.14058108400786
+    },
+    {
+      "step": 6000,
+      "train_batch_loss": 1.1410847902297974,
+      "validation": {
+        "loss": 1.6285641491413116,
+        "perplexity": 5.096551574369055,
+        "accuracy": 0.511383056640625,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 130.87629154199385
+    },
+    {
+      "step": 6500,
+      "train_batch_loss": 1.1118245124816895,
+      "validation": {
+        "loss": 1.6301204711198807,
+        "perplexity": 5.104489625078295,
+        "accuracy": 0.513092041015625,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 141.65252500001225
+    },
+    {
+      "step": 7000,
+      "train_batch_loss": 1.1123448610305786,
+      "validation": {
+        "loss": 1.6299111172556877,
+        "perplexity": 5.103421092305187,
+        "accuracy": 0.51165771484375,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 152.46639037498971
+    },
+    {
+      "step": 7500,
+      "train_batch_loss": 1.0356831550598145,
+      "validation": {
+        "loss": 1.6291657462716103,
+        "perplexity": 5.099618567625285,
+        "accuracy": 0.51214599609375,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 163.21966566701303
+    },
+    {
+      "step": 8000,
+      "train_batch_loss": 1.0548499822616577,
+      "validation": {
+        "loss": 1.6287291646003723,
+        "perplexity": 5.097392653560352,
+        "accuracy": 0.514251708984375,
+        "tokens": 32768
+      },
+      "elapsed_seconds": 174.44742729200516
+    }
+  ],
+  "reason": "Every distilled checkpoint had worse validation cross-entropy than the starting weights. Rejected; no smaller-model quality gain established."
+}

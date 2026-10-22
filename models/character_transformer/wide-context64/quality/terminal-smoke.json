@@ -1,0 +1,315 @@
+{
+  "verified": true,
+  "checkpoint_sha256": "933a263b2d033eb1477665b7e52c76b25be399350109993893f78e1a25f026f7",
+  "prompt": "ROMEO:",
+  "generated": "ROMEO:\nAnd",
+  "decoding": {
+    "mode": "sample",
+    "seed": 92617660,
+    "temperature": 0.7
+  },
+  "tokens": [
+    {
+      "character": "\n",
+      "cycles": 6403849,
+      "launches": 1149,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 1.308288415380332e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 1.1763003193721033e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 1.5078481148123046e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 1.0932780462047376e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.6815278107706888e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 1.6756970335762844e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 4.4241755203788813e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 4.5910346002653313e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 6.912841332989046,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false
+      },
+      "rtl_source_sha256": "75031f1eb062a449ff15dce791d3be66748aa8d807e1a849633fa542397646b1",
+      "selection": {
+        "mode": "sample",
+        "draw": 0.3344963788986206,
+        "token_id": 0,
+        "temperature": 0.7
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "prefill",
+        "reused_tokens": 0,
+        "computed_tokens": 6,
+        "context_tokens": 6,
+        "storage": "host raw FP32 words",
+        "bytes": 24576
+      }
+    },
+    {
+      "character": "A",
+      "cycles": 2825032,
+      "launches": 762,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.8734375884530436e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 5.415393999896878e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 7.246416875439365e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 2.2578469174305837e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.3916196190955077e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 2.025387831672276e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.3444200785972527e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 9.062045391861062e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 3.370301416987786,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false
+      },
+      "rtl_source_sha256": "75031f1eb062a449ff15dce791d3be66748aa8d807e1a849633fa542397646b1",
+      "selection": {
+        "mode": "sample",
+        "draw": 0.09953165054321289,
+        "token_id": 13,
+        "temperature": 0.7
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 6,
+        "computed_tokens": 1,
+        "context_tokens": 7,
+        "storage": "host raw FP32 words",
+        "bytes": 28672
+      }
+    },
+    {
+      "character": "n",
+      "cycles": 2825687,
+      "launches": 762,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.3969838619232178e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.856098747228142e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 4.2095623853377617e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 5.475416864353377e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 7.005750157773605e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.068234677603641e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 1.6677214844662558e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.8787047867396822e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.249499743116722e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 3.589899541984778,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false
+      },
+      "rtl_source_sha256": "75031f1eb062a449ff15dce791d3be66748aa8d807e1a849633fa542397646b1",
+      "selection": {
+        "mode": "sample",
+        "draw": 0.5062462091445923,
+        "token_id": 52,
+        "temperature": 0.7
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 7,
+        "computed_tokens": 1,
+        "context_tokens": 8,
+        "storage": "host raw FP32 words",
+        "bytes": 32768
+      }
+    },
+    {
+      "character": "d",
+      "cycles": 2883295,
+      "launches": 762,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 9.313225746154785e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.634842147242189e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.7397883898004913e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 5.721537193470461e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.738481955175345e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.4244579888966769e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 2.7485921938463775e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 5.817097992188991e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.104772011650823e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 3.345750959008001,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false
+      },
+      "rtl_source_sha256": "75031f1eb062a449ff15dce791d3be66748aa8d807e1a849633fa542397646b1",
+      "selection": {
+        "mode": "sample",
+        "draw": 0.8806771636009216,
+        "token_id": 42,
+        "temperature": 0.7
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 8,
+        "computed_tokens": 1,
+        "context_tokens": 9,
+        "storage": "host raw FP32 words",
+        "bytes": 36864
+      }
+    }
+  ],
+  "cycles": 14937863,
+  "latency": {
+    "first_character_seconds": 6.912841332989046,
+    "subsequent_character_seconds": 3.4353173059935216,
+    "cached_decode": true,
+    "decode_seconds": 3.4353173059935216,
+    "decode_steps": 3,
+    "rebuild_seconds": null,
+    "rebuild_steps": 0
+  }
+}

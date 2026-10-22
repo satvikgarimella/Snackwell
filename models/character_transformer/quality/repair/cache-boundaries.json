@@ -1,0 +1,95 @@
+{
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "rtl_source_sha256": "75031f1eb062a449ff15dce791d3be66748aa8d807e1a849633fa542397646b1",
+  "verified": true,
+  "cases": [
+    {
+      "case": "short",
+      "step": 0,
+      "context": 3,
+      "phase": "prefill",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 1057196,
+      "full_cycles": 1159999,
+      "selected": "E"
+    },
+    {
+      "case": "short",
+      "step": 1,
+      "context": 4,
+      "phase": "decode",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 714285,
+      "full_cycles": 1161134,
+      "selected": "O"
+    },
+    {
+      "case": "short",
+      "step": 2,
+      "context": 5,
+      "phase": "decode",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 735513,
+      "full_cycles": 2278825,
+      "selected": ":"
+    },
+    {
+      "case": "short",
+      "step": 3,
+      "context": 6,
+      "phase": "decode",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 735968,
+      "full_cycles": 2280339,
+      "selected": "\n"
+    },
+    {
+      "case": "boundary",
+      "step": 0,
+      "context": 31,
+      "phase": "prefill",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 7976017,
+      "full_cycles": 10276461,
+      "selected": "i"
+    },
+    {
+      "case": "boundary",
+      "step": 1,
+      "context": 32,
+      "phase": "decode",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 878197,
+      "full_cycles": 10280722,
+      "selected": "n"
+    },
+    {
+      "case": "boundary",
+      "step": 2,
+      "context": 24,
+      "phase": "rebuild",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 6008511,
+      "full_cycles": 7670177,
+      "selected": " "
+    },
+    {
+      "case": "boundary",
+      "step": 3,
+      "context": 25,
+      "phase": "decode",
+      "verified": true,
+      "bit_identical": true,
+      "cached_cycles": 874147,
+      "full_cycles": 8989081,
+      "selected": "t"
+    }
+  ]
+}

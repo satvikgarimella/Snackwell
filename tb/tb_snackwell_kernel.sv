@@ -28,16 +28,11 @@ module tb_snackwell_kernel;
     for (genvar r = 0; r < 4; r = r + 1) begin : monitor_rows
         for (genvar c = 0; c < 4; c = c + 1) begin : monitor_columns
             assign pe_mac_accept[r*4+c] =
-                dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.accept &&
-                dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.a_valid &&
-                dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.b_valid;
+                dut.core.tensor_execute.tensor.rows[r].columns[c].pe.accept &&
+                dut.core.tensor_execute.tensor.rows[r].columns[c].pe.a_valid &&
+                dut.core.tensor_execute.tensor.rows[r].columns[c].pe.b_valid;
             assign pe_arithmetic_active[r*4+c] =
-                dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.state ==
-                    dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.MULTIPLY ||
-                dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.state ==
-                    dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.ADD_START ||
-                dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.state ==
-                    dut.core.tensor_execute.tensor.array.rows[r].columns[c].pe.ADD_WAIT;
+                dut.core.tensor_execute.tensor.rows[r].columns[c].pe.arithmetic_busy;
         end
     end
 
@@ -54,10 +49,10 @@ module tb_snackwell_kernel;
                     dut.core.selected_active_mask, dut.core.dependency_stall, dut.core.resource_stall,
                     dut.core.issue_accept && dut.core.at_reconvergence_point,
                     dut.core.fp_inflight, dut.core.fp_start, dut.core.fp_take, dut.core.wb_fire,
-                    dut.core.tensor_execute.state, dut.core.tensor_execute.tensor.array_result_valid,
-                    dut.core.tensor_execute.tensor.array.step_index,
-                    dut.core.tensor_execute.tensor.array.pe_start,
-                    dut.core.tensor_execute.tensor.array.step_advance,
+                    dut.core.tensor_execute.state, dut.core.tensor_execute.tensor.result_valid,
+                    dut.core.tensor_execute.tensor.step_index,
+                    dut.core.tensor_execute.tensor.pe_start,
+                    dut.core.tensor_execute.tensor.step_advance,
                     pe_mac_accept, pe_arithmetic_active, dut.core.tensor_take,
                     dut.core.wb_fire && dut.core.wb_is_tensor,
                     dut.core.shared_inflight, dut.core.shared_mem.servicing,
@@ -67,17 +62,15 @@ module tb_snackwell_kernel;
         end
     end
 
-    initial begin
-        if (!$value$plusargs("PROGRAM=%s", program_path) ||
-            !$value$plusargs("DATA=%s", data_path) || !$value$plusargs("RESULT=%s", result_path))
-            $fatal(1, "Kernel runner requires +PROGRAM, +DATA, and +RESULT");
-        if ($value$plusargs("ACTIVE_MASKS=%h", active_masks)) begin end
-        if ($value$plusargs("WARP_MASK=%h", warp_mask)) begin end
-        if ($value$plusargs("ENTRY=%d", entry_pc)) begin end
-        if ($value$plusargs("MAX_CYCLES=%d", max_cycles)) begin end
+    task automatic run_kernel;
+        run_enable = 0;
+        launch_enable = 0;
+        reset = 1;
+        trace_cycles = 0;
+        trace_handle = 0;
         if (max_cycles < 1 || max_cycles > 1000000) $fatal(1, "Invalid cycle limit");
         if (warp_mask == 0) $fatal(1, "At least one warp must be launched");
-        if ($value$plusargs("TRACE=%s", trace_path)) begin
+        if (trace_path != "") begin
             trace_handle = $fopen(trace_path, "w");
             if (trace_handle == 0) $fatal(1, "Cannot open kernel trace: %s", trace_path);
             $fwrite(trace_handle, "cycle,issue_valid,instruction_accepted,warp,pc,opcode,active_mask,dependency_stall,resource_stall,reconvergence_accepted,fp_inflight,fp_start,fp_take,wb_commit,tensor_state,array_result_valid,array_step,array_step_start,array_step_advance,pe_mac_accept,pe_arithmetic_active,tensor_row_take,tensor_row_commit,shared_inflight,shared_servicing,shared_start,shared_response_valid,shared_response_ready,shared_bank_conflict,tensor_start\n");
@@ -87,6 +80,11 @@ module tb_snackwell_kernel;
         $fclose(handle);
         $readmemh(data_path, memory_image);
         repeat (3) @(negedge clk);
+        handle = $fopen(program_path, "r");
+        if (handle == 0) $fatal(1, "Cannot open kernel program: %s", program_path);
+        $fclose(handle);
+        // Each request provides a complete, EXIT-padded instruction image.
+        $readmemh(program_path, dut.core.imem.memory);
         reset = 0;
         for (integer row = 0; row < 256; row = row + 1) begin
             dut.core.shared_mem.bank0[row] = memory_image[row*4];
@@ -122,7 +120,7 @@ module tb_snackwell_kernel;
             memory_image[row*4+3] = dut.core.shared_mem.bank3[row];
         end
         $writememh(result_path, memory_image);
-        if ($value$plusargs("REGISTERS=%s", register_path)) begin
+        if (register_path != "") begin
             for (integer warp = 0; warp < 4; warp = warp + 1)
                 for (integer lane = 0; lane < 4; lane = lane + 1)
                     for (integer rd = 0; rd < 16; rd = rd + 1)
@@ -130,6 +128,52 @@ module tb_snackwell_kernel;
             $writememh(register_path, registers_image);
         end
         $display("PASS kernel completed in %0d cycles", cycles);
+        $fflush();
+    endtask
+
+    initial begin
+`ifdef VERILATOR
+        // A simulation-only host session avoids restarting the executable for
+        // every tiny kernel. The DUT is still reset and loaded on every request.
+        if ($test$plusargs("SESSION")) begin
+            string directory, options;
+            integer length, traced;
+            forever begin
+                length = $fgets(directory, 32'h80000000);
+                if (length == 0) begin
+                    $finish;
+                    break;
+                end
+                while (directory.len() > 0 &&
+                       (directory[directory.len()-1] == 10 || directory[directory.len()-1] == 13))
+                    directory = directory.substr(0, directory.len()-2);
+                if (directory.len() == 0) $fatal(1, "Empty session directory");
+                length = $fgets(options, 32'h80000000);
+                if (length == 0 || $sscanf(options, "%h %h %d %d %d",
+                    active_masks, warp_mask, entry_pc, max_cycles, traced) != 5)
+                    $fatal(1, "Invalid session launch options");
+                program_path = {directory, "/program.hex"};
+                data_path = {directory, "/input.hex"};
+                result_path = {directory, "/output.hex"};
+                register_path = {directory, "/registers.hex"};
+                trace_path = traced != 0 ? {directory, "/trace.csv"} : "";
+                run_kernel();
+            end
+        end else begin
+`endif
+        if (!$value$plusargs("PROGRAM=%s", program_path) ||
+            !$value$plusargs("DATA=%s", data_path) || !$value$plusargs("RESULT=%s", result_path))
+            $fatal(1, "Kernel runner requires +PROGRAM, +DATA, and +RESULT");
+        if ($value$plusargs("ACTIVE_MASKS=%h", active_masks)) begin end
+        if ($value$plusargs("WARP_MASK=%h", warp_mask)) begin end
+        if ($value$plusargs("ENTRY=%d", entry_pc)) begin end
+        if ($value$plusargs("MAX_CYCLES=%d", max_cycles)) begin end
+        if ($value$plusargs("TRACE=%s", trace_path)) begin end
+        if ($value$plusargs("REGISTERS=%s", register_path)) begin end
+        run_kernel();
         $finish;
+`ifdef VERILATOR
+        end
+`endif
     end
 endmodule

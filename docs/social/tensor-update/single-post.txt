@@ -1,0 +1,5 @@
+Snackwell can do matrix math now 😎
+
+Since the last update, I’ve added FP32 multiply/add/subtract and a 4×4 systolic array, then connected the tensor unit to the SM with a TMUL instruction.
+
+Here’s how the data moves through it 👇

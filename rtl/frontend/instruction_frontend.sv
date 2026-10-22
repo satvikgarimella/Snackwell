@@ -15,10 +15,7 @@ module instruction_frontend (
     output logic [13:0] immediate,
     output logic [31:0] immediate_extended
 );
-
-    // -----------------------------------------
     // PROGRAM COUNTER
-    // -----------------------------------------
 
     program_counter pc_unit (
         .clk    (clk),
@@ -26,21 +23,15 @@ module instruction_frontend (
         .enable (enable),
         .pc     (pc)
     );
-
-
-    // -----------------------------------------
     // INSTRUCTION MEMORY
-    // -----------------------------------------
 
     instruction_memory imem (
+        .clk(clk), .host_write_enable(1'b0), .host_word_address(10'd0),
+        .host_write_data(32'd0), .host_read_data(),
         .pc          (pc),
         .instruction (instruction)
     );
-
-
-    // -----------------------------------------
     // INSTRUCTION DECODER
-    // -----------------------------------------
 
     instruction_decoder decoder (
         .instruction        (instruction),

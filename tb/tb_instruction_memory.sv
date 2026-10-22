@@ -7,18 +7,17 @@ module tb_instruction_memory;
     logic [31:0] pc;
     logic [31:0] instruction;
 
-
     instruction_memory dut (
+        .clk(1'b0), .host_write_enable(1'b0), .host_word_address(10'd0),
+        .host_write_data(32'd0), .host_read_data(),
         .pc          (pc),
         .instruction (instruction)
     );
-
 
     initial begin
         $dumpfile("tb_instruction_memory.vcd");
         $dumpvars(0, tb_instruction_memory);
     end
-
 
     task check_instruction(
         input logic [31:0] test_pc,
@@ -58,13 +57,11 @@ module tb_instruction_memory;
 
     endtask
 
-
     initial begin
 
         $display("");
         $display("=== Snackwell Instruction Memory Test ===");
         $display("");
-
 
         // ADD R3, R1, R2
         check_instruction(
@@ -78,7 +75,6 @@ module tb_instruction_memory;
             }
         );
 
-
         // SUB R4, R1, R2
         check_instruction(
             32'h00000004,
@@ -90,7 +86,6 @@ module tb_instruction_memory;
                 14'd0
             }
         );
-
 
         // XOR R5, R1, R2
         check_instruction(
@@ -104,7 +99,6 @@ module tb_instruction_memory;
             }
         );
 
-
         // EXIT
         check_instruction(
             32'h0000000C,
@@ -117,13 +111,11 @@ module tb_instruction_memory;
             }
         );
 
-
         // NOP region
         check_instruction(
             32'h00000010,
             32'd0
         );
-
 
         $display("");
         // The full PC must address the expanded memory without wrapping.

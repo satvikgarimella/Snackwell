@@ -1,0 +1,151 @@
+{
+  "top": "snackwell_device",
+  "target": "generic",
+  "tool": "Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+  "synthesis_run": true,
+  "place_and_route_run": false,
+  "timing_verified": false,
+  "bitstream_generated": false,
+  "hardware_tested": false,
+  "synthesis_seconds": 176.1,
+  "rtl_sha256": {
+    "rtl/snackwell_pkg.sv": "b4d16a916c35b5cc3b0e52726db41de272004d86088250bdec8e9b2fe4229197",
+    "rtl/core/single_warp_core.sv": "0895ef365c94204fac43422fe9ec1bfdc4f6578bb31d88a810bf4af9c3e0fce8",
+    "rtl/execution/branch_unit.sv": "deac4ce8861f8459259e43aaf98ce98e1d73d7fbe2c65a745c6afca6c28390a1",
+    "rtl/execution/fp32/fp32_addsub.sv": "d4f5b09cd395df1c88d2a1f914419e2a6ce14d25fae9a371ee1955f05401a9a4",
+    "rtl/execution/fp32/fp32_mul_wrapper.sv": "3219d0f2cd7e747a0aa2d73f58c750d3433549c57a81b5bba4041b51aebdbef1",
+    "rtl/execution/fp32/simd_fp32_execute.sv": "4364a2c3b75aa1d5ae00e4bda45d9291fdc8e0023ea4efee9cc489e93a86a582",
+    "rtl/execution/fp32/simd_fp32_mul.sv": "d616e8099e2e1e706b4f69cf3614bbe8a13a5f2799543d5174fa4175fef72312",
+    "rtl/execution/integer_alu.sv": "7c0c8b7a36c2a263ead8318ac99ae31d8f2002ae5f77511e8710060cc09b72d0",
+    "rtl/execution/simd_execution_unit.sv": "acd45cc1d0a5682c5ba5403650230445744e6109053ef6c4d03287de4af54ee8",
+    "rtl/execution/simd_integer_execute.sv": "a01a18ecf8985bb1c8b06d419a956e9a3e50e1503291c29d86ddee5b92b21f8b",
+    "rtl/execution/simd_lane.sv": "04476afc8d3af8433e2c57209fc9f441a315deccd8b48a9fc82ed516cd810eb9",
+    "rtl/execution/tensor/fp32_mac_pe.sv": "178eb23abfd8b9d2b35eb58c251583f40b4ade2b13fba843b2ec8e4c85d9eef5",
+    "rtl/execution/tensor/systolic_array_4x4.sv": "fb4ac85e909c17db818d3c6b3f3764da99c3372f858a94cb045776603688de36",
+    "rtl/execution/tensor/systolic_feeder_4x4.sv": "47e78771bd60e333765e643591820025197e027b2ced7a08e6211b37ae293954",
+    "rtl/execution/tensor/tensor_core.sv": "3984e87d078190575ee42c11b9879f009479aee0e8a15759a82fda4e2cbb6659",
+    "rtl/fpga/snackwell_device.sv": "5e25c90f32674e88b93fdca50bb4b30be5d2520816c587f0897a4701ed7527f3",
+    "rtl/frontend/instruction_decoder.sv": "95fc59b26757f0e5ba48e3bbdf85a0ed0a102a2446cd4e18b5fbf821c694bdb3",
+    "rtl/frontend/instruction_frontend.sv": "dfda181b1b5e0f194ff12f4951a0413634cbdb5d537c204671e64f75d8472abc",
+    "rtl/frontend/instruction_memory.sv": "d3de4358b3dc0931863582b95ecf955900359576a3e0b035639f346195904d77",
+    "rtl/frontend/program_counter.sv": "fbac99189781f0d1fd716481de843e760ebc32a1638d925766071a7a6986d2e1",
+    "rtl/memory/load_store_unit.sv": "f01b377fa42134e031f3b3fcdf6965df6871443a65078bf3f7759011c2976fbc",
+    "rtl/memory/multiwarp_register_file.sv": "e8aa26f8ebcc10ba21f9a27d73dbffe823ca54db0611fe2f92a91e8061d33d93",
+    "rtl/memory/register_file.sv": "2ea5b006d1ff9c2d8e2ff96361a9a8744dd235d7b6cc01eee42c646df7f231ec",
+    "rtl/memory/shared_memory.sv": "82f65f164c84822848d6f1dc68b58679bcfd82c71fdda1f902804e7f0bcb263f",
+    "rtl/sm/divergence_controller.sv": "5a26d1d73b7ad6309778f3e133841fa6d8fda1669805507160c28eb69d13c625",
+    "rtl/sm/issue_control.sv": "87f7916baf77833273f3ffc9781f24d6a3d493d155f3c25b15f5feebe1e6bd59",
+    "rtl/sm/issue_stage.sv": "a4b7caefef94a3100d845f058817e5eb8e43f06cae3bcc89acc470ceab59d205",
+    "rtl/sm/multiwarp_execution_core.sv": "3ad9e627a76ed08a91bd8f5c2f7e8e39beb441f3d288e24b41f59a713663368e",
+    "rtl/sm/reconvergence_stack.sv": "90faef7ae2dcde18008fd811c02b8cbd8097b76aa0b85dd32a8f9c7ef879d22d",
+    "rtl/sm/reconvergence_target_table.sv": "b18ef3c9318a6a7caa1fc20d852838a4acabdb63030cb7ed504274a9da9af388",
+    "rtl/sm/scoreboard.sv": "75050f2266fe1a50a2950889271a9dac6d0e84159393c5b082f3b7e8df37ff59",
+    "rtl/sm/sm_tensor_unit.sv": "ffa4dc1c07cdea5a0c02173bb081b68186476f0469e4e5443764fc86a9204a9d",
+    "rtl/sm/snackwell_sm.sv": "1d2f9d406baa1df830270da4831eb70032d4214e6f472da9eea6b8505e417e11",
+    "rtl/sm/warp_control_unit.sv": "31263c0ac81bf2de632694e679703c482f598f38bc9961c3d9d28b13124ad8d1",
+    "rtl/sm/warp_scheduler.sv": "9c94c648f7d5db11f6f39dd5092bfcad5db3d38386639a4681a4dcb33dca7024",
+    "rtl/sm/warp_state_table.sv": "4ceddcfb89789552796aa6f7ab49aa00d6e1eeefa831426fa6410318f98c0f4e",
+    "rtl/execution/fp32/multiplier.v": "6b97e8b50cfe76193584d24a084de8683ad341d205e2c6a70d4d2b1e7215a4a0"
+  },
+  "statistics": {
+    "creator": "Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+    "invocation": "stat -json ",
+    "modules": {
+      "\\snackwell_device": {
+        "num_wires": 427145,
+        "num_wire_bits": 463491,
+        "num_pub_wires": 90392,
+        "num_pub_wire_bits": 104946,
+        "num_ports": 14,
+        "num_port_bits": 107,
+        "num_memories": 0,
+        "num_memory_bits": 0,
+        "num_processes": 0,
+        "num_cells": 423749,
+        "num_submodules": 0,
+        "num_cells_by_type": {
+          "$_ANDNOT_": 9908,
+          "$_AND_": 65047,
+          "$_DFFE_PP_": 65611,
+          "$_DFF_P_": 254,
+          "$_MUX_": 105019,
+          "$_NAND_": 78741,
+          "$_NOR_": 7471,
+          "$_NOT_": 2941,
+          "$_ORNOT_": 14215,
+          "$_OR_": 25570,
+          "$_SDFFCE_PN0P_": 9585,
+          "$_SDFFE_PP0P_": 10023,
+          "$_SDFFE_PP1P_": 27,
+          "$_SDFF_PP0_": 733,
+          "$_XNOR_": 7686,
+          "$_XOR_": 20918
+        }
+      }
+    },
+    "design": {
+      "num_wires": 427145,
+      "num_wire_bits": 463491,
+      "num_pub_wires": 90392,
+      "num_pub_wire_bits": 104946,
+      "num_ports": 14,
+      "num_port_bits": 107,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_processes": 0,
+      "num_cells": 423749,
+      "num_submodules": 0,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 9908,
+        "$_AND_": 65047,
+        "$_DFFE_PP_": 65611,
+        "$_DFF_P_": 254,
+        "$_MUX_": 105019,
+        "$_NAND_": 78741,
+        "$_NOR_": 7471,
+        "$_NOT_": 2941,
+        "$_ORNOT_": 14215,
+        "$_OR_": 25570,
+        "$_SDFFCE_PN0P_": 9585,
+        "$_SDFFE_PP0P_": 10023,
+        "$_SDFFE_PP1P_": 27,
+        "$_SDFF_PP0_": 733,
+        "$_XNOR_": 7686,
+        "$_XOR_": 20918
+      }
+    }
+  },
+  "netlist_sha256": "6568b38760898ac800d8c8dfd23da42bc188de8c0a4470377a73598ab68cf368",
+  "verification": {
+    "protocol_passed": true,
+    "simulator": "verilator",
+    "workloads": [
+      {
+        "kernel": "vector_add",
+        "cycles": 73,
+        "full_memory_match": true,
+        "rtl_cycle_match": true
+      },
+      {
+        "kernel": "vector_mul",
+        "cycles": 73,
+        "full_memory_match": true,
+        "rtl_cycle_match": true
+      },
+      {
+        "kernel": "matmul_4x4",
+        "cycles": 136,
+        "full_memory_match": true,
+        "rtl_cycle_match": true
+      },
+      {
+        "kernel": "matmul_4x4_simd",
+        "cycles": 303,
+        "full_memory_match": true,
+        "rtl_cycle_match": true
+      }
+    ],
+    "cell_models_sha256": {}
+  },
+  "alias_export_seconds": 14.562548999965657
+}

@@ -1,0 +1,267 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3820" height="2810" viewBox="0 0 3820 2810">
+<rect width="3820" height="2810" fill="#fffefa"/>
+<rect x="100" y="1290" width="570" height="440" rx="28" fill="#f5f5f2" stroke="#242830" stroke-width="3"/>
+<rect x="800" y="1290" width="600" height="570" rx="28" fill="#e7f5ff" stroke="#1971c2" stroke-width="3"/>
+<rect x="1530" y="1290" width="800" height="830" rx="28" fill="#f3f0ff" stroke="#7048c6" stroke-width="3"/>
+<polyline points="250,340 250,460" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="242.91319635870343,444.54758225552695 250,460 257.08680364129657,444.54758225552695" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3440,340 3440,460" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3432.9131963587033,444.54758225552695 3440,460 3447.0868036412967,444.54758225552695" fill="none" stroke="#626975" stroke-width="3"/>
+<polyline points="670,550 800,550" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="784.547582255527,557.0868036412966 800,550 784.547582255527,542.9131963587034" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="930,660 930,727 585,727 585,660" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="592.0868036412966,675.452417744473 585,660 577.9131963587034,675.452417744473" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="440,460 440,400 1725,400 1725,460" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="1717.9131963587033,444.54758225552695 1725,460 1732.0868036412967,444.54758225552695" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="2000,550 2130,550" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="2114.547582255527,557.0868036412966 2130,550 2114.547582255527,542.9131963587034" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="2700,550 2850,550" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="2834.547582255527,557.0868036412966 2850,550 2834.547582255527,542.9131963587034" fill="none" stroke="#626975" stroke-width="3"/>
+<polyline points="670,950 710,950 710,782 3040,782 3040,700" fill="none" stroke="#2b8a3e" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3047.0868036412967,715.452417744473 3040,700 3032.9131963587033,715.452417744473" fill="none" stroke="#2b8a3e" stroke-width="3"/>
+<polyline points="685.452417744473,942.9131963587034 670,950 685.452417744473,957.0868036412966" fill="none" stroke="#2b8a3e" stroke-width="3"/>
+<polyline points="3320,865 3320,700" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3327.0868036412967,715.452417744473 3320,700 3312.9131963587033,715.452417744473" fill="none" stroke="#626975" stroke-width="3"/>
+<polyline points="2415,660 2415,845" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="2407.9131963587033,829.547582255527 2415,845 2422.0868036412967,829.547582255527" fill="none" stroke="#626975" stroke-width="3"/>
+<polyline points="1070,660 1070,690 1385,690 1385,845" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="1377.9131963587033,829.547582255527 1385,845 1392.0868036412967,829.547582255527" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="2770,340 2770,920 2650,920" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="2665.452417744473,912.9131963587034 2650,920 2665.452417744473,927.0868036412966" fill="none" stroke="#626975" stroke-width="3"/>
+<polyline points="2850,640 2800,640 2800,1205" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="1845,1090 1845,1205" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="385,1205 3445,1205" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="385,1205 385,1290" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="377.91319635870343,1274.547582255527 385,1290 392.08680364129657,1274.547582255527" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="1100,1205 1100,1290" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="1092.9131963587033,1274.547582255527 1100,1290 1107.0868036412967,1274.547582255527" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="1930,1205 1930,1290" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="1922.9131963587033,1274.547582255527 1930,1290 1937.0868036412967,1274.547582255527" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="2750,1205 2750,1290" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="2742.9131963587033,1274.547582255527 2750,1290 2757.0868036412967,1274.547582255527" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="3445,1205 3445,1290" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="3437.9131963587033,1274.547582255527 3445,1290 3452.0868036412967,1274.547582255527" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="955,1615 955,1670" fill="none" stroke="#1971c2" stroke-width="3"/>
+<polyline points="947.9131963587034,1654.547582255527 955,1670 962.0868036412966,1654.547582255527" fill="none" stroke="#1971c2" stroke-width="3"/>
+<polyline points="1240,1615 1240,1670" fill="none" stroke="#1971c2" stroke-width="3"/>
+<polyline points="1232.9131963587033,1654.547582255527 1240,1670 1247.0868036412967,1654.547582255527" fill="none" stroke="#1971c2" stroke-width="3"/>
+<polyline points="1910,1620 1910,1670" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="1902.9131963587033,1654.547582255527 1910,1670 1917.0868036412967,1654.547582255527" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="1910,1780 1910,1830" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="1902.9131963587033,1814.547582255527 1910,1830 1917.0868036412967,1814.547582255527" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="2270,2005 2300,2005 2300,1740 2270,1740" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="2285.452417744473,1732.9131963587033 2270,1740 2285.452417744473,1747.0868036412967" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="2270,1710 2300,1710 2300,1550 2270,1550" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="2285.452417744473,1542.9131963587033 2270,1550 2285.452417744473,1557.0868036412967" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="2750,1490 2750,1580" fill="none" stroke="#c56a0a" stroke-width="3"/>
+<polyline points="2742.9131963587033,1564.547582255527 2750,1580 2757.0868036412967,1564.547582255527" fill="none" stroke="#c56a0a" stroke-width="3"/>
+<polyline points="3445,1480 3445,1590" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3437.9131963587033,1574.547582255527 3445,1590 3452.0868036412967,1574.547582255527" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3170,1955 3140,1955 3140,1760 3170,1760" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3154.547582255527,1767.0868036412967 3170,1760 3154.547582255527,1752.9131963587033" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3720,1740 3750,1740 3750,2190 3720,2190" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3735.452417744473,2182.9131963587033 3720,2190 3735.452417744473,2197.0868036412967" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3735.452417744473,1732.9131963587033 3720,1740 3735.452417744473,1747.0868036412967" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3720,600 3775,600 3775,1950 3720,1950" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3735.452417744473,1942.9131963587033 3720,1950 3735.452417744473,1957.0868036412967" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3720,1640 3740,1640 3740,1135 3600,1135 3600,1105" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3607.0868036412967,1120.452417744473 3600,1105 3592.9131963587033,1120.452417744473" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="620,1730 620,2230" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="1100,1860 1100,2230" fill="none" stroke="#1971c2" stroke-width="3"/>
+<polyline points="1930,2120 1930,2230" fill="none" stroke="#7048c6" stroke-width="3"/>
+<polyline points="2750,1915 2750,2230" fill="none" stroke="#c56a0a" stroke-width="3"/>
+<polyline points="620,2230 2750,2230" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="1930,2230 1930,2320" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="1922.9131963587033,2304.547582255527 1930,2320 1937.0868036412967,2304.547582255527" fill="none" stroke="#242830" stroke-width="3"/>
+<polyline points="2395,2320 2395,1090" fill="none" stroke="#2b8a3e" stroke-width="4" stroke-dasharray="10 9"/>
+<polyline points="2402.0868036412967,1105.452417744473 2395,1090 2387.9131963587033,1105.452417744473" fill="none" stroke="#2b8a3e" stroke-width="4"/>
+<polyline points="800,2450 730,2450 730,1040 670,1040" fill="none" stroke="#2b8a3e" stroke-width="4" stroke-dasharray="10 9"/>
+<polyline points="685.452417744473,1032.9131963587033 670,1040 685.452417744473,1047.0868036412967" fill="none" stroke="#2b8a3e" stroke-width="4"/>
+<polyline points="2395,2100 2330,2100" fill="none" stroke="#2b8a3e" stroke-width="4" stroke-dasharray="10 9"/>
+<polyline points="2345.452417744473,2092.9131963587033 2330,2100 2345.452417744473,2107.0868036412967" fill="none" stroke="#2b8a3e" stroke-width="4"/>
+<polyline points="1400,1350 1460,1350 1460,1130" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="2330,1350 2370,1350 2370,1130" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3040,2440 3080,2440 3080,1130" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="1460,1130 3315,1130 3315,1105" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="3322.0868036412967,1120.452417744473 3315,1105 3307.9131963587033,1120.452417744473" fill="none" stroke="#626975" stroke-width="3"/>
+<polyline points="3170,1685 3110,1685 3110,2660 385,2660 385,2610" fill="none" stroke="#087f8c" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="392.08680364129657,2625.452417744473 385,2610 377.91319635870343,2625.452417744473" fill="none" stroke="#087f8c" stroke-width="3"/>
+<polyline points="3630,700 3630,760 3795,760 3795,2720 230,2720 230,2610" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="237.0868036412966,2625.452417744473 230,2610 222.91319635870343,2625.452417744473" fill="none" stroke="#626975" stroke-width="3"/>
+<polyline points="100,2440 42,2440 42,600 100,600" fill="none" stroke="#087f8c" stroke-width="4" stroke-dasharray="10 9"/>
+<polyline points="84.54758225552695,607.0868036412966 100,600 84.54758225552695,592.9131963587034" fill="none" stroke="#087f8c" stroke-width="4"/>
+<polyline points="2850,680 2730,680 2730,817 1220,817 1220,660" fill="none" stroke="#626975" stroke-width="3" stroke-dasharray="10 9"/>
+<polyline points="1227.0868036412967,675.452417744473 1220,660 1212.9131963587033,675.452417744473" fill="none" stroke="#626975" stroke-width="3"/>
+<rect x="100" y="230" width="3620" height="110" rx="28" fill="#fffefa" stroke="#bdc4cc" stroke-width="3"/>
+<rect x="100" y="460" width="570" height="200" rx="28" fill="#edf9f8" stroke="#087f8c" stroke-width="3"/>
+<rect x="800" y="460" width="520" height="200" rx="28" fill="#f5f5f2" stroke="#242830" stroke-width="3"/>
+<rect x="1450" y="460" width="550" height="200" rx="28" fill="#f5f5f2" stroke="#242830" stroke-width="3"/>
+<rect x="2130" y="460" width="570" height="200" rx="28" fill="#f5f5f2" stroke="#242830" stroke-width="3"/>
+<rect x="2850" y="460" width="870" height="240" rx="28" fill="#f5f5f2" stroke="#242830" stroke-width="3"/>
+<rect x="100" y="865" width="570" height="275" rx="28" fill="#ebfbee" stroke="#2b8a3e" stroke-width="3"/>
+<rect x="1040" y="845" width="1610" height="245" rx="28" fill="#f5f5f2" stroke="#242830" stroke-width="3"/>
+<rect x="2850" y="865" width="870" height="240" rx="28" fill="#f5f5f2" stroke="#242830" stroke-width="3"/>
+<rect x="130" y="1445" width="510" height="170" rx="28" fill="#fffefa" stroke="#242830" stroke-width="3"/>
+<rect x="830" y="1460" width="255" height="155" rx="28" fill="#fffefa" stroke="#1971c2" stroke-width="3"/>
+<rect x="1115" y="1460" width="255" height="155" rx="28" fill="#fffefa" stroke="#1971c2" stroke-width="3"/>
+<rect x="830" y="1670" width="540" height="125" rx="28" fill="#fffefa" stroke="#1971c2" stroke-width="3"/>
+<rect x="1560" y="1430" width="710" height="190" rx="28" fill="#fffefa" stroke="#7048c6" stroke-width="3"/>
+<rect x="1560" y="1670" width="710" height="110" rx="28" fill="#fffefa" stroke="#7048c6" stroke-width="3"/>
+<rect x="1560" y="1830" width="710" height="220" rx="28" fill="#fffefa" stroke="#7048c6" stroke-width="3"/>
+<rect x="2460" y="1290" width="580" height="200" rx="28" fill="#fff4e6" stroke="#c56a0a" stroke-width="3"/>
+<rect x="2460" y="1580" width="580" height="335" rx="28" fill="#fff4e6" stroke="#c56a0a" stroke-width="3"/>
+<rect x="3170" y="1290" width="550" height="190" rx="28" fill="#edf9f8" stroke="#087f8c" stroke-width="3"/>
+<rect x="3170" y="1590" width="550" height="210" rx="28" fill="#edf9f8" stroke="#087f8c" stroke-width="3"/>
+<rect x="3170" y="1880" width="550" height="150" rx="28" fill="#edf9f8" stroke="#087f8c" stroke-width="3"/>
+<rect x="3170" y="2110" width="550" height="185" rx="28" fill="#edf9f8" stroke="#087f8c" stroke-width="3"/>
+<rect x="800" y="2320" width="2240" height="210" rx="28" fill="#ebfbee" stroke="#2b8a3e" stroke-width="3"/>
+<rect x="100" y="2320" width="570" height="290" rx="28" fill="#edf9f8" stroke="#087f8c" stroke-width="3"/>
+<rect x="1052" y="1154" width="1113.96875" height="42.4" rx="28" fill="#fffefa" stroke="#fffefa" stroke-width="1"/>
+<rect x="2472" y="1517" width="396.0" height="37.2" rx="28" fill="#fffefa" stroke="#fffefa" stroke-width="1"/>
+<rect x="2719" y="507" width="73.0" height="35.900000000000006" rx="28" fill="#fffefa" stroke="#fffefa" stroke-width="1"/>
+<circle cx="385.0" cy="1205.0" r="5.0" fill="#242830"/>
+<circle cx="1100.0" cy="1205.0" r="5.0" fill="#242830"/>
+<circle cx="1930.0" cy="1205.0" r="5.0" fill="#242830"/>
+<circle cx="2750.0" cy="1205.0" r="5.0" fill="#242830"/>
+<circle cx="3445.0" cy="1205.0" r="5.0" fill="#242830"/>
+<circle cx="1845.0" cy="1205.0" r="5.0" fill="#242830"/>
+<circle cx="2800.0" cy="1205.0" r="5.0" fill="#242830"/>
+<circle cx="620.0" cy="2230.0" r="5.0" fill="#242830"/>
+<circle cx="1100.0" cy="2230.0" r="5.0" fill="#242830"/>
+<circle cx="1930.0" cy="2230.0" r="5.0" fill="#242830"/>
+<circle cx="2750.0" cy="2230.0" r="5.0" fill="#242830"/>
+<circle cx="2395.0" cy="2100.0" r="5.0" fill="#2b8a3e"/>
+<circle cx="1460.0" cy="1130.0" r="5.0" fill="#626975"/>
+<circle cx="2370.0" cy="1130.0" r="5.0" fill="#626975"/>
+<circle cx="3080.0" cy="1130.0" r="5.0" fill="#626975"/>
+<text x="100" y="52.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="77" fill="#242830">Snackwell — full SM architecture</text>
+<text x="104" y="153.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#626975">Current implemented RTL  ·  4 resident warps  ·  4 lanes per warp  ·  32-bit instructions and data</text>
+<text x="126" y="248.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#242830">Inputs: clock / reset, run enable, warp launch (ID, PC, mask), debug register preload</text>
+<text x="126" y="290.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Status: issue / stalls, warp state, register operands / ALU result, bank conflicts, branch masks and reconvergence</text>
+<text x="126" y="482.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#087f8c">Warp state table</text>
+<text x="126" y="537.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">4 × PC, active mask</text>
+<text x="126" y="573.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Valid / ready / halted flags</text>
+<text x="826" y="482.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#242830">Warp scheduler</text>
+<text x="826" y="537.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Round-robin eligible warps</text>
+<text x="826" y="573.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Skip blocked / halted warps</text>
+<text x="1476" y="482.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#242830">Instruction fetch</text>
+<text x="1476" y="537.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Shared instruction memory</text>
+<text x="1476" y="573.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">16 × 32-bit words; PC[5:2]</text>
+<text x="2156" y="482.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#242830">Decode + opcode control</text>
+<text x="2156" y="537.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Opcode, Rd, Rs1, Rs2</text>
+<text x="2156" y="573.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">14-bit immediate → 32 bits</text>
+<text x="2876" y="482.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#242830">Issue control + acceptance</text>
+<text x="2876" y="537.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Source / destination dependencies + unit availability</text>
+<text x="2876" y="573.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Block or retry a candidate; issue only when ready</text>
+<text x="2876" y="609.8" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Accept also advances scheduler and warp control</text>
+<text x="265" y="406.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#087f8c">launch</text>
+<text x="3455" y="409.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#626975">run / debug</text>
+<text x="688" y="510.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#087f8c">status</text>
+<text x="615" y="685.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#087f8c">selected warp ID</text>
+<text x="1110" y="362.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#087f8c">selected PC</text>
+<text x="2027" y="510.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#626975">32-bit</text>
+<text x="2727" y="510.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#626975">fields</text>
+<text x="126" y="887.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="33" fill="#2b8a3e">Scoreboard + blocked state</text>
+<text x="126" y="942.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">16 busy bits per warp</text>
+<text x="126" y="977.1" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Check reads + destination writes</text>
+<text x="126" y="1012.2" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Mark on issue; clear on commit</text>
+<text x="126" y="1047.3" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Wake / retry blocked warps</text>
+<text x="1066" y="867.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#242830">Multiwarp register file + read-port selection</text>
+<text x="1066" y="922.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">4 warps × 4 lanes × 16 registers × 32 bits = 1 KB</text>
+<text x="1066" y="957.1" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Two 128-bit reads; one masked 128-bit write</text>
+<text x="1066" y="992.2" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Normal reads use the selected warp; TMUL owns both read ports for four gather cycles</text>
+<text x="1066" y="1027.3" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Debug preload has priority over architectural writes</text>
+<text x="2876" y="887.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="33" fill="#242830">Unit availability + tensor dependency checks</text>
+<text x="2876" y="942.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">FP in-flight · tensor ready / gather · writeback space</text>
+<text x="2876" y="978.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Check all A / B / C rows against pending destinations</text>
+<text x="2876" y="1014.8" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">EXIT waits until the warp has no pending writes</text>
+<text x="2876" y="1051.2" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Rejoin handling takes priority over the fetched operation</text>
+<text x="1120" y="740.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#2b8a3e">register checks / destination allocation on issue</text>
+<text x="3340" y="797.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#626975">ready + tile dependencies</text>
+<text x="2435" y="705.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#626975">read addresses</text>
+<text x="1405" y="704.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#087f8c">warp select</text>
+<text x="2657" y="944.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#626975">debug</text>
+<text x="1060" y="1157.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">OPERANDS + ISSUED OPERATION  ·  opcode, warp, active mask, PC and immediate</text>
+<text x="126" y="1312.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#242830">Integer SIMD</text>
+<text x="126" y="1367.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Four parallel 32-bit lanes</text>
+<text x="156" y="1467.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="31" fill="#242830">4 × integer ALU</text>
+<text x="156" y="1522.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">ADD · SUB · AND · OR · XOR</text>
+<text x="156" y="1557.1" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Combinational lane results</text>
+<text x="126" y="1660.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Active mask applied at writeback</text>
+<text x="826" y="1312.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#1971c2">FP32 SIMD</text>
+<text x="826" y="1367.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">FMUL · FADD · FSUB</text>
+<text x="826" y="1403.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Four lanes, each containing:</text>
+<text x="856" y="1482.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#1971c2">Multiply</text>
+<text x="856" y="1537.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">FP32 wrapper</text>
+<text x="856" y="1569.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">+ multiplier</text>
+<text x="1141" y="1482.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#1971c2">Add / subtract</text>
+<text x="1141" y="1537.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#626975">Iterative FP32</text>
+<text x="1141" y="1568.2" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#626975">normalize / round</text>
+<text x="856" y="1692.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#1971c2">Lane completion + saved tag</text>
+<text x="856" y="1736.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#626975">Wait for active lanes; retain result + context</text>
+<text x="826" y="1812.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#1971c2">One SIMD FP instruction in flight</text>
+<text x="1556" y="1312.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="35" fill="#7048c6">Tensor execution · TMUL</text>
+<text x="1556" y="1367.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#626975">Fixed 4×4 FP32 · one tensor job in flight</text>
+<text x="1586" y="1452.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#7048c6">SM tensor adapter</text>
+<text x="1586" y="1507.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Gather A + B in 4 register-read cycles</text>
+<text x="1586" y="1540.8" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Save warp / mask; reserve 4 destination rows</text>
+<text x="1586" y="1574.6" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Pack the 16 output words into 4 vector writes</text>
+<text x="1586" y="1692.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#7048c6">Tile buffers + word interface</text>
+<text x="1586" y="1736.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Load 32 input words; stream 16 result words</text>
+<text x="1586" y="1852.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="31" fill="#7048c6">4×4 systolic array · 16 FP32 PEs</text>
+<text x="1586" y="1907.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Feeder staggers the row / column inputs</text>
+<text x="1586" y="1939.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Each PE: multiply → add → local C register</text>
+<text x="1586" y="1972.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">A moves right; B moves down; C stays</text>
+<text x="1586" y="2004.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Advance only when every PE finishes</text>
+<text x="1556" y="2072.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#7048c6">Non-fused MAC · release destinations on final row commit</text>
+<text x="2486" y="1312.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="34" fill="#c56a0a">Load / store unit</text>
+<text x="2486" y="1367.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">LD_SHARED · ST_SHARED</text>
+<text x="2486" y="1402.1" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Per-lane base + immediate</text>
+<text x="2486" y="1437.2" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#626975">Active load / store masks</text>
+<text x="2486" y="1602.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="34" fill="#c56a0a">Shared memory</text>
+<text x="2486" y="1657.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">4 KB · 4 banks</text>
+<text x="2486" y="1689.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">256 × 32-bit words per bank</text>
+<text x="2486" y="1722.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Bank = address[3:2]</text>
+<text x="2486" y="1754.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Row = address[11:4]</text>
+<text x="2486" y="1787.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Bank-conflict detection</text>
+<text x="2486" y="1819.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Conflicting lanes suppressed; no replay</text>
+<text x="2480" y="1520.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#c56a0a">addresses / store data / lane masks</text>
+<text x="3196" y="1312.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#087f8c">Branch unit · BEQ</text>
+<text x="3196" y="1367.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Compare active lanes</text>
+<text x="3196" y="1400.8" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Taken / not-taken masks</text>
+<text x="3196" y="1434.6" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Target PC + fallthrough PC</text>
+<text x="3196" y="1612.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#087f8c">Divergence controller</text>
+<text x="3196" y="1667.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Choose path + active mask</text>
+<text x="3196" y="1700.8" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Switch deferred path / rejoin</text>
+<text x="3196" y="1734.6" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Handle rejoin before fetched op</text>
+<text x="3196" y="1902.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#087f8c">Reconvergence target table</text>
+<text x="3196" y="1957.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#626975">One target PC per warp</text>
+<text x="3196" y="1988.2" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#626975">SSY writes; accepted BEQ clears</text>
+<text x="3196" y="2132.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#087f8c">Reconvergence stacks</text>
+<text x="3196" y="2187.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">4 entries per warp</text>
+<text x="3196" y="2219.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Deferred + rejoin PC / mask</text>
+<text x="3196" y="2252.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Push / pop + pending-path state</text>
+<text x="2770" y="2035.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#c56a0a">load data</text>
+<text x="826" y="2342.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="38" fill="#2b8a3e">Shared writeback arbitration + result register</text>
+<text x="826" y="2397.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#626975">Priority: completed FP → tensor row → integer result / shared-memory load</text>
+<text x="826" y="2434.7" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#626975">One 128-bit result + saved warp, destination register and active-lane mask</text>
+<text x="826" y="2472.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#626975">Commit when the register port is available; hold pending results during debug writes</text>
+<text x="1290" y="2260.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#2b8a3e">FP / tensor hold results; integer / loads retry when writeback is busy</text>
+<text x="1780" y="2555.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#2b8a3e">REGISTER COMMIT: write active lanes · clear busy state · release the final tensor row</text>
+<text x="126" y="2342.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#087f8c">Warp state update logic</text>
+<text x="126" y="2397.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Accepted instruction: PC + 4</text>
+<text x="126" y="2430.8" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Branch / rejoin: new PC + mask</text>
+<text x="126" y="2464.6" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">EXIT: halt after pending writes</text>
+<text x="126" y="2498.4" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Launch: initialize the warp</text>
+<text x="126" y="2532.2" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#626975">Update priority: launch → rejoin → op</text>
+<text x="1525" y="2615.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#087f8c">branch / reconvergence PC + active-mask updates</text>
+<text x="1525" y="2682.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">accepted instruction / EXIT</text>
+<text x="1520" y="788.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#626975">accept / blocked masks</text>
+<text x="125" y="1870.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="31" fill="#242830">Reading the connections</text>
+<text x="125" y="1923.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Solid: instructions / operands / results</text>
+<text x="125" y="1955.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Dashed: control and availability</text>
+<text x="125" y="1988.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Green: dependencies / writeback</text>
+<text x="125" y="2020.5" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Dots connect shared paths</text>
+<text x="125" y="2084.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#626975">Clock / reset apply across the SM.</text>
+<text x="104" y="2760.0" dominant-baseline="text-before-edge" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#626975">Functional block diagram of snackwell_sm / multiwarp_execution_core. Connections show data and control flow; they do not imply one pipeline stage per box.</text>
+</svg>

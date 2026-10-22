@@ -1,0 +1,241 @@
+{
+  "kind": "Direct-clock simulation host and reference-training experiments",
+  "date": "2026-10-16",
+  "verified": true,
+  "verification_scope": "Numerical RTL execution for tested inputs; not language fluency or hardware training",
+  "language_quality_fixed": false,
+  "training_on_snackwell": false,
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "default_checkpoint_changed": false,
+  "rtl_and_host_sha256": "592ce28d04d34a417c725311f338113b644d6b895cfe25296d951a7cec546c63",
+  "source_files": {
+    "snackwell/simulator.py": "6790977263f1619f76621b047b365c0376736ac4dcf649244ce329523ff77a46",
+    "snackwell/model_runner.py": "f880aa7e3851862ae16b4c02792a648c9017ff41b768240f534b1db4df92e792",
+    "snackwell/cli/train.py": "fd325ea5498558f052523801bdb81b35d0fbf468f2928fb3e2da8bf34538c275",
+    "snackwell/torch_model.py": "49e69c06135e947499e7b7353f86ac46e4859794e8a43a0ac868042cacbe9075",
+    "scripts/train_reference_model.py": "e829970497d4ab7caf8f8014e8417b93b9359242af4eb3f534ace5a07847ea1d",
+    "sim/session.cpp": "9cea27944a3e658b8fb1ec4f719f1a2694340267366389eac06179044358f292",
+    "sim/snackwell_sim_top.sv": "44b14de90c83db4adb24b5e4f1474b0e2dad0ad2d0807196887d4207b70d26ca",
+    "tests/test_simulator.py": "557e6009339789e9561cb250428839fd48681703480a3ca15b43a54d946ad921"
+  },
+  "evidence_files": {
+    "quality/host/context128-generation.json": "25b2de5453bde482cf864fc8feba89d7313802f9b991c200127708a5b6e5b9ed",
+    "quality/host/context128-training.log": "51dcd9cffce7dd6e99a5b6fe8f7c48589521f71226a08b8555eb903818949318",
+    "quality/host/default-generation.json": "14ac4be4edd7fbe88115edfb01f5d60ba33386e5e59fc5dd4fc220a89c5fae1e",
+    "quality/host/held-out.json": "06baf73da0ffea9e355afbb292a9be29534208bfc034f178e48563a81a8c27f0",
+    "quality/host/measure.py": "00469294b67efeb1c5f2fe6c9053416ce240c2e26dac1c5eb794d165f7164b5a",
+    "quality/host/python-tests-final.log": "ca5b0037a51edcaee65a3e90a20627b4a3bebdd79f5d9c90276a9a09d1ba887c",
+    "quality/host/timing.json": "88d1940e290200ece23d2355e0dddbfa12c6486601c0f06b35a6634aeba012e3",
+    "quality/host/validation.json": "c3c1021f639684ff7b45c79699026817cf515360c9ba25192b0c9e42e91250ea",
+    "quality/host/wide-generation.json": "7e6b5fa85355624eacc9d3c1a66bd2221a31e18a897b7812d1c2f322bfdeac5d",
+    "quality/host/wide-refined-training.log": "e17369e9e449f552d29297caa5809fda441cd62b5ed49d88c4bc5a54a1a420e8",
+    "quality/host/wide-test.json": "07cb55b4254e51b6d124bd9501bb2bef139da6f10c49d1c5cd09d3cff5962510",
+    "quality/host/wide-validation.json": "36081901ea1b83abedd878863e86c270b019128fdb1c224fe33e5c185b47114e",
+    "quality/host/wide-rtl.json": "b8480d065f95824a47164551019a2e417f34f67421137384dfbf1eeb592ef969"
+  },
+  "regression": {
+    "test_methods": 113,
+    "passed": true,
+    "skipped": 0,
+    "log": "quality/host/python-tests-final.log"
+  },
+  "held_out_rtl": {
+    "verified": true,
+    "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+    "evaluated_tokens": 256,
+    "loss": 1.6052631310600534,
+    "perplexity": 4.979169604557276,
+    "accuracy": 0.546875,
+    "unigram_loss": 3.3767879390135325,
+    "improves_unigram": true,
+    "cycles": 81981271,
+    "examples": [
+      {
+        "index": 0,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.3113021850585938e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10247605
+      },
+      {
+        "index": 1,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.6226043701171875e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10247280
+      },
+      {
+        "index": 2,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.4007091522216797e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10248754
+      },
+      {
+        "index": 3,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.6093254089355469e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10247421
+      },
+      {
+        "index": 4,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.205371856689453e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10247050
+      },
+      {
+        "index": 5,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.205371856689453e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10247416
+      },
+      {
+        "index": 6,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.8014183044433594e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10248082
+      },
+      {
+        "index": 7,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.996755599975586e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 10247663
+      }
+    ]
+  },
+  "timing": {
+    "before": {
+      "wall_seconds": 33.691473145459895,
+      "cycles": 31380631,
+      "launches": 7242,
+      "latency": {
+        "first_character_seconds": 7.64097939550993,
+        "decode_seconds": 1.0983421250331538,
+        "rebuild_seconds": 5.886023062259483,
+        "subsequent_character_seconds": 1.7366995833299976,
+        "rebuild_steps": 2
+      }
+    },
+    "after": {
+      "wall_seconds": 22.695863376487978,
+      "cycles": 31380631,
+      "launches": 7242,
+      "latency": {
+        "first_character_seconds": 5.163247187490924,
+        "decode_seconds": 0.7411761924606532,
+        "rebuild_seconds": 3.9486628435042803,
+        "subsequent_character_seconds": 1.1688410792664703,
+        "rebuild_steps": 2
+      }
+    }
+  },
+  "timing_evidence": "quality/host/timing.json",
+  "candidate_decisions": {
+    "context128": "Rejected: worse matched validation and generation diagnostics.",
+    "wide_refined": "Lower matched validation/test loss and better word coverage; grammar still weak and more expensive. Default unchanged."
+  },
+  "candidate_checkpoints": {
+    "context128": {
+      "path": "build/inference-quality-v4/context128/checkpoint.json",
+      "sha256": "b2e6fdfe7b039310f1a93f075c0d0cb4b46bfb53b25c0b45ac29ebb5492da211"
+    },
+    "wide-refined": {
+      "path": "build/inference-quality-v4/wide-refined/checkpoint.json",
+      "sha256": "86a71a15c944e4a0402467ebc47d6fab81c6e4213fa46b11a4be2d086b0c36ff"
+    }
+  },
+  "standalone_rtl_regression": "Not rerun for this host-only change; prior 39-bench run is historical evidence.",
+  "wide_candidate_rtl": {
+    "verified": true,
+    "scope": "16 sampled RTL characters, not full held-out evaluation",
+    "cpu_continuation_prefix_matches": true,
+    "evidence": "quality/host/wide-rtl.json",
+    "latency": {
+      "first_character_seconds": 15.395684291986981,
+      "subsequent_character_seconds": 2.2154838610692726,
+      "cached_decode": true,
+      "decode_seconds": 2.2154838610692726,
+      "decode_steps": 15,
+      "rebuild_seconds": null,
+      "rebuild_steps": 0
+    },
+    "cycles": 67795042,
+    "generated": "My lord, I have something to say 'I,' will not s"
+  },
+  "simulator_builds": {
+    "timed_testbench": {
+      "verilator": "/opt/homebrew/bin/verilator",
+      "version": "Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905",
+      "cxx": "/usr/bin/c++",
+      "cxx_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+      "flags": [
+        "--binary",
+        "--timing",
+        "--assert",
+        "-CFLAGS",
+        "-O3 -std=c++17",
+        "--top-module",
+        "tb_snackwell_kernel",
+        "-Wno-fatal"
+      ],
+      "environment": {
+        "CC": null,
+        "CXX": null,
+        "CXXFLAGS": null,
+        "LDFLAGS": null
+      }
+    },
+    "direct_clock_session": {
+      "verilator": "/opt/homebrew/bin/verilator",
+      "version": "Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905",
+      "cxx": "/usr/bin/c++",
+      "cxx_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+      "flags": [
+        "--cc",
+        "--exe",
+        "--build",
+        "--assert",
+        "-CFLAGS",
+        "-O3 -std=c++17",
+        "--top-module",
+        "snackwell_sim_top",
+        "-Wno-fatal"
+      ],
+      "environment": {
+        "CC": null,
+        "CXX": null,
+        "CXXFLAGS": null,
+        "LDFLAGS": null
+      }
+    }
+  }
+}

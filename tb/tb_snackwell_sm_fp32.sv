@@ -188,6 +188,22 @@ module tb_snackwell_sm_fp32;
             $fatal(1, "Missing WAW or concurrent integer coverage");
         $display("PASS: WAW ordering and independent integer issue during FP execution");
 
+        // Keep independent integer writers ready throughout the shorter FP
+        // latency, so completion must contend for the shared writeback slot.
+        reset_core();
+        dut.core.imem.memory[0] = insn(OP_FMUL, 3, 1, 2);
+        for (integer pc = 1; pc <= 12; pc = pc + 1)
+            dut.core.imem.memory[pc] = insn(OP_ADD, 4'(8 + pc % 4), 6, 7);
+        write_reg(0, 0, 1, fp_int(2)); write_reg(0, 0, 2, fp_int(3));
+        write_reg(0, 0, 6, 7); write_reg(0, 0, 7, 9);
+        launch(0, 1);
+        run_to_halt(1);
+        expect_reg(0, 0, 3, fp_int(6));
+        for (integer rd = 8; rd < 12; rd = rd + 1) expect_reg(0, 0, rd, 16);
+        if (retired != 13 || fp_collisions == 0)
+            $fatal(1, "Short-latency FP/integer contention was not exercised");
+        collisions_total = collisions_total + fp_collisions;
+
         // Sweep completion timing against a second warp's integer/load loop.
         // Both producers share one writeback slot; all loop iterations must
         // survive, including a cycle retiring an older write as FP completes.
@@ -216,7 +232,8 @@ module tb_snackwell_sm_fp32;
                 collisions_total = collisions_total + fp_collisions;
             end
         if (collisions_total == 0 || simultaneous_writes == 0)
-            $fatal(1, "Writeback collision sweep did not exercise arbitration");
+            $fatal(1, "Writeback collision sweep did not exercise arbitration: %0d collisions, %0d retirements",
+                collisions_total, simultaneous_writes);
         $display("PASS: FP/integer/load writeback arbitration (%0d collisions, %0d concurrent retirements)",
             collisions_total, simultaneous_writes);
 

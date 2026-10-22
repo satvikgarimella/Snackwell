@@ -20,11 +20,7 @@ module tb_single_warp_core;
     logic [127:0] debug_rs1_data;
     logic [127:0] debug_rs2_data;
     logic [127:0] debug_alu_result;
-
-
-    // -----------------------------------------
     // DUT
-    // -----------------------------------------
 
     single_warp_core dut (
         .clk                (clk),
@@ -47,19 +43,12 @@ module tb_single_warp_core;
         .debug_alu_result   (debug_alu_result)
     );
 
-
-    // -----------------------------------------
     // CLOCK
     //
     // 10 ns period
-    // -----------------------------------------
 
     always #5 clk = ~clk;
-
-
-    // -----------------------------------------
     // WAVEFORM
-    // -----------------------------------------
 
     initial begin
 
@@ -67,11 +56,7 @@ module tb_single_warp_core;
         $dumpvars(0, tb_single_warp_core);
 
     end
-
-
-    // -----------------------------------------
     // PRELOAD REGISTER
-    // -----------------------------------------
 
     task preload_register (
         input logic [1:0]  lane,
@@ -95,12 +80,9 @@ module tb_single_warp_core;
 
     endtask
 
-
-    // -----------------------------------------
     // CHECK ALL FOUR LANES
     //
     // Reads from debug_rs1_data.
-    // -----------------------------------------
 
     task check_four_lane_values (
         input logic [31:0] lane0_expected,
@@ -112,7 +94,6 @@ module tb_single_warp_core;
         begin
 
             #1;
-
 
             if (debug_rs1_data[31:0] !== lane0_expected) begin
 
@@ -126,7 +107,6 @@ module tb_single_warp_core;
 
             end
 
-
             if (debug_rs1_data[63:32] !== lane1_expected) begin
 
                 $display(
@@ -139,7 +119,6 @@ module tb_single_warp_core;
 
             end
 
-
             if (debug_rs1_data[95:64] !== lane2_expected) begin
 
                 $display(
@@ -151,7 +130,6 @@ module tb_single_warp_core;
                 $fatal;
 
             end
-
 
             if (debug_rs1_data[127:96] !== lane3_expected) begin
 
@@ -168,11 +146,7 @@ module tb_single_warp_core;
         end
 
     endtask
-
-
-    // =========================================
     // MAIN TEST
-    // =========================================
 
     initial begin
 
@@ -186,21 +160,15 @@ module tb_single_warp_core;
         debug_write_addr   = 0;
         debug_write_data   = 0;
 
-
         $display("");
         $display("=== Snackwell Single Warp Program Test ===");
         $display("");
-
-
-        // =====================================
         // RESET
-        // =====================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
-
 
         if (pc !== 32'h00000000) begin
 
@@ -213,19 +181,14 @@ module tb_single_warp_core;
 
         end
 
-
         $display("PASS: PC reset to 0");
 
-
-        // =====================================
         // PRELOAD REGISTERS
         //
         // run_enable remains ZERO.
         //
         // Therefore the program must NOT
         // execute while loading registers.
-        // =====================================
-
 
         // Lane 0
         //
@@ -244,7 +207,6 @@ module tb_single_warp_core;
             32'd8
         );
 
-
         // Lane 1
         //
         // R1 = 7
@@ -261,7 +223,6 @@ module tb_single_warp_core;
             4'd2,
             32'd5
         );
-
 
         // Lane 2
         //
@@ -280,7 +241,6 @@ module tb_single_warp_core;
             32'd30
         );
 
-
         // Lane 3
         //
         // R1 = 100
@@ -297,11 +257,7 @@ module tb_single_warp_core;
             4'd2,
             32'd1
         );
-
-
-        // =====================================
         // VERIFY PC DID NOT MOVE
-        // =====================================
 
         if (pc !== 32'h00000000) begin
 
@@ -314,7 +270,6 @@ module tb_single_warp_core;
 
         end
 
-
         $display(
             "PASS: PC held at 0 during register preload"
         );
@@ -324,21 +279,14 @@ module tb_single_warp_core;
         );
 
         $display("");
-
-
-        // =====================================
         // START EXECUTION
-        // =====================================
 
         run_enable = 1;
 
-
-        // =====================================
         // INSTRUCTION 0
         //
         // PC = 0x00
         // ADD R3,R1,R2
-        // =====================================
 
         if (pc !== 32'h00000000) begin
 
@@ -351,23 +299,18 @@ module tb_single_warp_core;
 
         end
 
-
         $display(
             "Executing ADD at PC=%h",
             pc
         );
 
-
         @(posedge clk);
         #1;
 
-
-        // =====================================
         // INSTRUCTION 1
         //
         // PC = 0x04
         // SUB R4,R1,R2
-        // =====================================
 
         if (pc !== 32'h00000004) begin
 
@@ -380,23 +323,18 @@ module tb_single_warp_core;
 
         end
 
-
         $display(
             "Executing SUB at PC=%h",
             pc
         );
 
-
         @(posedge clk);
         #1;
 
-
-        // =====================================
         // INSTRUCTION 2
         //
         // PC = 0x08
         // XOR R5,R1,R2
-        // =====================================
 
         if (pc !== 32'h00000008) begin
 
@@ -409,20 +347,14 @@ module tb_single_warp_core;
 
         end
 
-
         $display(
             "Executing XOR at PC=%h",
             pc
         );
 
-
         @(posedge clk);
         #1;
-
-
-        // =====================================
         // EXIT
-        // =====================================
 
         if (pc !== 32'h0000000C) begin
 
@@ -435,7 +367,6 @@ module tb_single_warp_core;
 
         end
 
-
         if (!halted) begin
 
             $display(
@@ -446,22 +377,17 @@ module tb_single_warp_core;
 
         end
 
-
         $display("");
         $display("PASS: program reached EXIT");
         $display("");
 
-
-        // =====================================
         // VERIFY R3
         //
         // ADD RESULTS
-        // =====================================
 
         force dut.execution.rs1_addr = 4'd3;
 
         #1;
-
 
         check_four_lane_values(
             32'd15,
@@ -470,25 +396,19 @@ module tb_single_warp_core;
             32'd101
         );
 
-
         release dut.execution.rs1_addr;
-
 
         $display(
             "PASS: R3 ADD results correct"
         );
 
-
-        // =====================================
         // VERIFY R4
         //
         // SUB RESULTS
-        // =====================================
 
         force dut.execution.rs1_addr = 4'd4;
 
         #1;
-
 
         check_four_lane_values(
             32'hFFFFFFFF,
@@ -497,25 +417,19 @@ module tb_single_warp_core;
             32'd99
         );
 
-
         release dut.execution.rs1_addr;
-
 
         $display(
             "PASS: R4 SUB results correct"
         );
 
-
-        // =====================================
         // VERIFY R5
         //
         // XOR RESULTS
-        // =====================================
 
         force dut.execution.rs1_addr = 4'd5;
 
         #1;
-
 
         check_four_lane_values(
             32'd15,
@@ -524,24 +438,17 @@ module tb_single_warp_core;
             32'd101
         );
 
-
         release dut.execution.rs1_addr;
-
 
         $display(
             "PASS: R5 XOR results correct"
         );
-
-
-        // =====================================
         // VERIFY EXIT HOLDS PC
-        // =====================================
 
         repeat (3) begin
 
             @(posedge clk);
             #1;
-
 
             if (pc !== 32'h0000000C) begin
 
@@ -556,18 +463,15 @@ module tb_single_warp_core;
 
         end
 
-
         $display(
             "PASS: EXIT holds PC at 0x0000000C"
         );
-
 
         $display("");
         $display(
             "ALL SINGLE WARP PROGRAM TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

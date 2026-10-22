@@ -1,10 +1,7 @@
 module warp_state_table (
     input  logic        clk,
     input  logic        reset,
-
-    // -----------------------------------------
     // READ PORT
-    // -----------------------------------------
 
     input  logic [1:0]  read_warp_id,
 
@@ -13,10 +10,7 @@ module warp_state_table (
     output logic        read_valid,
     output logic        read_ready,
     output logic        read_halted,
-
-    // -----------------------------------------
     // UPDATE PORT
-    // -----------------------------------------
 
     input  logic        update_enable,
     input  logic [1:0]  update_warp_id,
@@ -35,20 +29,13 @@ module warp_state_table (
 
     input  logic        update_halted_enable,
     input  logic        update_halted,
-
-    // -----------------------------------------
     // SCHEDULER STATUS VECTORS
-    // -----------------------------------------
 
     output logic [3:0]  valid_mask,
     output logic [3:0]  ready_mask,
     output logic [3:0]  halted_mask
 );
-
-
-    // =========================================
     // STATE STORAGE
-    // =========================================
 
     logic [31:0] warp_pc          [0:3];
     logic [3:0]  warp_active_mask [0:3];
@@ -57,13 +44,8 @@ module warp_state_table (
     logic        warp_ready       [0:3];
     logic        warp_halted      [0:3];
 
-
     integer i;
-
-
-    // =========================================
     // STATE UPDATE
-    // =========================================
 
     always_ff @(posedge clk) begin
 
@@ -111,11 +93,7 @@ module warp_state_table (
         end
 
     end
-
-
-    // =========================================
     // SELECTED WARP READ
-    // =========================================
 
     assign read_pc =
         warp_pc[read_warp_id];
@@ -131,11 +109,7 @@ module warp_state_table (
 
     assign read_halted =
         warp_halted[read_warp_id];
-
-
-    // =========================================
     // SCHEDULER MASKS
-    // =========================================
 
     assign valid_mask = {
         warp_valid[3],
@@ -157,6 +131,5 @@ module warp_state_table (
         warp_halted[1],
         warp_halted[0]
     };
-
 
 endmodule

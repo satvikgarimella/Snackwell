@@ -28,11 +28,7 @@ module scoreboard (
     logic [15:0] busy [0:3];
 
     integer w;
-
-
-    // =================================================
     // BUSY STATE UPDATE
-    // =================================================
 
     always_ff @(posedge clk) begin
 
@@ -62,11 +58,7 @@ module scoreboard (
         end
 
     end
-
-
-    // =================================================
     // DEPENDENCY CHECK
-    // =================================================
 
     assign rs1_busy =
         busy[check_warp_id][check_rs1];
@@ -78,10 +70,8 @@ module scoreboard (
         ~rs1_busy &
         ~rs2_busy;
 
-
     // Useful for GTKWave/debugging
     assign selected_warp_busy_mask =
         busy[check_warp_id];
-
 
 endmodule

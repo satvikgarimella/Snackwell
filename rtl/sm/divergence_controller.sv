@@ -1,20 +1,12 @@
 module divergence_controller (
-    // =================================================
     // CURRENT WARP STATE
-    // =================================================
 
     input logic [31:0] current_pc,
     input logic [3:0]  current_active_mask,
-
-    // =================================================
     // CURRENT INSTRUCTION TYPE
-    // =================================================
 
     input logic        branch_valid,
-
-    // =================================================
     // BRANCH UNIT RESULTS
-    // =================================================
 
     input logic [3:0]  taken_mask,
     input logic [3:0]  not_taken_mask,
@@ -25,17 +17,11 @@ module divergence_controller (
 
     input logic [31:0] branch_target,
     input logic [31:0] fallthrough_pc,
-
-    // =================================================
     // SAVED RECONVERGENCE TARGET
-    // =================================================
 
     input logic        reconvergence_target_valid,
     input logic [31:0] reconvergence_target_pc,
-
-    // =================================================
     // CURRENT RECONVERGENCE STACK TOP
-    // =================================================
 
     input logic        stack_empty,
 
@@ -46,20 +32,14 @@ module divergence_controller (
     input logic [3:0]  stack_reconverge_mask,
 
     input logic        stack_deferred_pending,
-
-    // =================================================
     // WARP STATE UPDATE OUTPUTS
-    // =================================================
 
     output logic        pc_update_enable,
     output logic [31:0] next_pc,
 
     output logic        mask_update_enable,
     output logic [3:0]  next_active_mask,
-
-    // =================================================
     // STACK COMMANDS
-    // =================================================
 
     output logic        stack_push_enable,
 
@@ -73,10 +53,7 @@ module divergence_controller (
 
     output logic        stack_update_pending_enable,
     output logic        stack_update_deferred_pending,
-
-    // =================================================
     // STATUS
-    // =================================================
 
     output logic        reconvergence_event,
     output logic        switch_to_deferred_path,
@@ -85,24 +62,16 @@ module divergence_controller (
     // Invalid divergent branch with no SSY target.
     output logic        missing_reconvergence_target
 );
-
-
-    // =================================================
     // CONTROL
-    // =================================================
 
     always @(*) begin
-
-        // ---------------------------------------------
         // Defaults
-        // ---------------------------------------------
 
         pc_update_enable   = 1'b0;
         next_pc            = current_pc;
 
         mask_update_enable = 1'b0;
         next_active_mask   = current_active_mask;
-
 
         stack_push_enable = 1'b0;
 
@@ -112,12 +81,10 @@ module divergence_controller (
         stack_push_reconverge_pc   = 32'd0;
         stack_push_reconverge_mask = 4'b0000;
 
-
         stack_pop_enable = 1'b0;
 
         stack_update_pending_enable   = 1'b0;
         stack_update_deferred_pending = 1'b0;
-
 
         reconvergence_event       = 1'b0;
         switch_to_deferred_path   = 1'b0;
@@ -125,13 +92,10 @@ module divergence_controller (
 
         missing_reconvergence_target = 1'b0;
 
-
-        // =================================================
         // PRIORITY 1:
         // RECONVERGENCE POINT
         //
         // This happens before normal branch processing.
-        // =================================================
 
         if (
             !stack_empty &&
@@ -140,13 +104,10 @@ module divergence_controller (
 
             reconvergence_event = 1'b1;
 
-
-            // -----------------------------------------
             // FIRST ARRIVAL
             //
             // The path currently executing reached JOIN.
             // Switch to the deferred path.
-            // -----------------------------------------
 
             if (stack_deferred_pending) begin
 
@@ -158,15 +119,12 @@ module divergence_controller (
                 mask_update_enable = 1'b1;
                 next_active_mask = stack_deferred_mask;
 
-
                 // Mark alternate path as consumed.
                 stack_update_pending_enable = 1'b1;
                 stack_update_deferred_pending = 1'b0;
 
             end
 
-
-            // -----------------------------------------
             // SECOND ARRIVAL
             //
             // Both paths are complete.
@@ -175,7 +133,6 @@ module divergence_controller (
             // PC does NOT need to change here.
             // The normal instruction flow can continue
             // from the reconvergence point.
-            // -----------------------------------------
 
             else begin
 
@@ -190,18 +147,11 @@ module divergence_controller (
 
         end
 
-
-        // =================================================
         // PRIORITY 2:
         // BRANCH INSTRUCTION
-        // =================================================
 
         else if (branch_valid) begin
-
-
-            // -----------------------------------------
             // UNIFORM TAKEN
-            // -----------------------------------------
 
             // No lane participates in an empty-mask branch. Advance normally
             // so an inactive warp can reach EXIT instead of retrying forever.
@@ -218,11 +168,7 @@ module divergence_controller (
                 next_pc = branch_target;
 
             end
-
-
-            // -----------------------------------------
             // UNIFORM NOT TAKEN
-            // -----------------------------------------
 
             else if (uniform_not_taken) begin
 
@@ -231,14 +177,11 @@ module divergence_controller (
 
             end
 
-
-            // -----------------------------------------
             // DIVERGENT BRANCH
             //
             // Execute taken path first.
             //
             // Save the not-taken path for later.
-            // -----------------------------------------
 
             else if (divergent) begin
 
@@ -251,7 +194,6 @@ module divergence_controller (
 
                     mask_update_enable = 1'b1;
                     next_active_mask = taken_mask;
-
 
                     // Save not-taken lanes.
 
@@ -285,6 +227,5 @@ module divergence_controller (
         end
 
     end
-
 
 endmodule

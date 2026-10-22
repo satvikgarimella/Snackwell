@@ -1,0 +1,568 @@
+{
+  "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+  "previous_cpu_reference": {
+    "kind": "CPU reference generation diagnostic; not RTL execution",
+    "checkpoint_sha256": "3af837fdd4e8472048fea4999e7e16eea0f1e4ce315b13f76b3aff6514b34277",
+    "backend": "torch",
+    "word_coverage_note": "Corpus word coverage is a spelling diagnostic, not a fluency score",
+    "tokens": 64,
+    "summary": {
+      "greedy": {
+        "cases": 6,
+        "mean_repeated_fourgram_fraction": 0.9207650273224045,
+        "cases_with_three_repeats": 6,
+        "completed_words": 84,
+        "words_seen_in_training": 84
+      },
+      "sample": {
+        "cases": 18,
+        "mean_repeated_fourgram_fraction": 0.002732240437158473,
+        "cases_with_three_repeats": 0,
+        "completed_words": 167,
+        "words_seen_in_training": 68
+      }
+    },
+    "cases": [
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "the sky today is",
+        "continuation": " the the the the the the the the the the the the the the the the",
+        "repeated_fourgram_fraction": 0.9344262295081968,
+        "positions_starting_three_repeats": 53,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "My name is ",
+        "continuation": "the the the the the the the the the the the the the the the the ",
+        "repeated_fourgram_fraction": 0.9344262295081968,
+        "positions_starting_three_repeats": 53,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "ROMEO:",
+        "continuation": "\nWhere the the the the the the the the the the the the the the t",
+        "repeated_fourgram_fraction": 0.8524590163934427,
+        "positions_starting_three_repeats": 48,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "Good night,",
+        "continuation": " the the the the the the the the the the the the the the the the",
+        "repeated_fourgram_fraction": 0.9344262295081968,
+        "positions_starting_three_repeats": 53,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "I love",
+        "continuation": " the the the the the the the the the the the the the the the the",
+        "repeated_fourgram_fraction": 0.9344262295081968,
+        "positions_starting_three_repeats": 53,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "To be, or not to ",
+        "continuation": "the the the the the the the the the the the the the the the the ",
+        "repeated_fourgram_fraction": 0.9344262295081968,
+        "positions_starting_three_repeats": 53,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "t; I no radome, thermommell\nThe his, him cit! Cove,\nWhy, houldis",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 6
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you in bocech hou crow to mard in, speome it nay; nevetly urnete",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 6
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "--saord radme.\nMy Wour ting\nThe his, him cit! Cove,\nWhy, houldis",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 5
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": "--saord radme.\nMy Wour ting\nThe his, him cit! Cove,\nWhy, houldis",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 5
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "wn:\nI mar burfest crow to mard in, speome it nay; nevetly urnete",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 7
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you in bocech hou crow to mard in, speome it nay; nevetly urnete",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 6
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " thest the and yourn, willf;\nBan:\nad scome!\n\nMures not nocer.\nDe",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "comay?\nEf:\nArk yourn, willf;\nBan:\nad scome!\n\nMures not nocer.\nDe",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 1
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nWhats the and yourn, willf;\nBan:\nad scome!\n\nMures not nocer.\nDe",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhats the and yourn, willf;\nBan:\nad scome!\n\nMures not nocer.\nDe",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " thest the and yourn, willf;\nBan:\nad scome!\n\nMures not nocer.\nDe",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "comay?\nEf:\nArk yourn, willf;\nBan:\nad scome!\n\nMures not nocer.\nDe",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 1
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the ses, shy,\nNursemoan force.\n\nHESCHUngne;\nHour beould thaler ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 7,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "lolidies on youls.\n\nMaciend not! Whomeswith eetth bent ifol Yera",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 8,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe ses, shy,\nNursemoan force.\n\nHESCHUngne;\nHour beould thaler ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 7,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": " the ses, shy,\nNursemoan force.\n\nHESCHUngne;\nHour beould thaler ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 7,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": " the ses, shy,\nNursemoan force.\n\nHESCHUngne;\nHour beould thaler ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 7,
+        "words_seen_in_training": 3
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "loin ses's it,\nNursemoan force.\n\nHESCHUngne;\nHour beould thaler ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 8,
+        "words_seen_in_training": 4
+      }
+    ]
+  },
+  "current_cpu_reference": {
+    "kind": "CPU reference generation diagnostic; not RTL execution",
+    "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+    "backend": "torch",
+    "word_coverage_note": "Corpus word coverage is a spelling diagnostic, not a fluency score",
+    "tokens": 64,
+    "summary": {
+      "greedy": {
+        "cases": 6,
+        "mean_repeated_fourgram_fraction": 0.23224043715846995,
+        "cases_with_three_repeats": 0,
+        "completed_words": 75,
+        "words_seen_in_training": 75
+      },
+      "sample": {
+        "cases": 18,
+        "mean_repeated_fourgram_fraction": 0.009107468123861576,
+        "cases_with_three_repeats": 1,
+        "completed_words": 192,
+        "words_seen_in_training": 168
+      }
+    },
+    "cases": [
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "the sky today is",
+        "continuation": " the shall be so should be the prince the words of the shall be ",
+        "repeated_fourgram_fraction": 0.2786885245901639,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "My name is ",
+        "continuation": "the shall be so should be the prince the words of the shall be s",
+        "repeated_fourgram_fraction": 0.2786885245901639,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 13,
+        "words_seen_in_training": 13
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "ROMEO:",
+        "continuation": "\nI will not so much a soldier the shall be so should be the prin",
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 13,
+        "words_seen_in_training": 13
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "Good night,",
+        "continuation": "\nAnd the shall be so should be the prince the words of the shall",
+        "repeated_fourgram_fraction": 0.21311475409836067,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "I love",
+        "continuation": " the shall be so should be the prince the words of the shall be ",
+        "repeated_fourgram_fraction": 0.2786885245901639,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "greedy",
+        "seed": null,
+        "prompt": "To be, or not to ",
+        "continuation": "the shall be so should be the prince the words of the shall be s",
+        "repeated_fourgram_fraction": 0.2786885245901639,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 13,
+        "words_seen_in_training": 13
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "sur'd keep thee.\n\nDUKE VINCENTIO:\nSo? meer the trusty would now,",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 9
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you have a the tributo the Clarence.\n\nLEONTES:\nWhom your housely",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 8
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": " prayer that may'ranus to make in this gone:\nO took your greats,",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": "--if no, I well.\n\nDUKE VINCENTIO:\nSo? meer the trusty would now,",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 9
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "s, I mighful live crymer;\nI remember, one holy trummourates,\nOut",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 6
+      },
+      {
+        "mode": "sample",
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you have a the tributo the Clarence.\n\nLEONTES:\nWhom your housely",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 8
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " that lord Mercy?\nDo it cour cannot\nprayer acts home? Sir I, app",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "comes?\nGod and your envoids:\nCame your repeal's friend.\n\nCATESBY",
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 8
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nUnder the both? You hot supbided watens of alone;\nMy flor's doe",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 8
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhere the arm world how to Babel. As I have press other:\nAy, th",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " these the arm world how to Babel. As I have press other:\nAy, th",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "criest thou shame to hours; 't?\nDever are hands home; but as and",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the rather you: my look it not sing try soft to Olf, encome for",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "my kindred.\nYou will say him more or try, noble, I could teal th",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe rather you; let temper of my lordst:\nO despect to have\nAnd ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 9
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nWhich well you will say him, my lord? you, beside armg'd,\nAgain",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": "; Play well you will say him,\nOr good wrong here, alter'd a beli",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "my keeps of yourself.\n\nKING RICHARD IIIUS:\nGive mad, the tab;\nTh",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 1,
+        "completed_words": 10,
+        "words_seen_in_training": 8
+      }
+    ]
+  },
+  "rtl_generations": [
+    {
+      "prompt": "My name is ",
+      "generated": "My name is comes?\nGod and your envoids:\nCam",
+      "seed": 1730,
+      "characters": 32,
+      "cycles": 436264832,
+      "directory": "build/model-upgrade/rtl-name",
+      "verified": true,
+      "matches_reference_continuation": true,
+      "wall_seconds": 508.3459264180565
+    },
+    {
+      "prompt": "ROMEO:",
+      "generated": "ROMEO:\nThe rather you; let temper of m",
+      "seed": 1731,
+      "characters": 32,
+      "cycles": 436000608,
+      "directory": "build/model-upgrade/rtl-romeo",
+      "verified": true,
+      "matches_reference_continuation": true,
+      "wall_seconds": 509.84692533200723
+    },
+    {
+      "prompt": "the sky today is",
+      "generated": "the sky today issur'd keep thee.\n\nDUKE VINCENTIO",
+      "seed": 1729,
+      "characters": 32,
+      "cycles": 436133765,
+      "directory": "build/model-upgrade/rtl-sky",
+      "verified": true,
+      "matches_reference_continuation": true,
+      "wall_seconds": 509.1612667121517
+    }
+  ]
+}

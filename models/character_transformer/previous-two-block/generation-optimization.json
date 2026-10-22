@@ -1,0 +1,48 @@
+{
+  "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+  "input_ids": [
+    43,
+    44,
+    58,
+    1,
+    51,
+    43,
+    1,
+    46,
+    43,
+    56,
+    43,
+    1,
+    40,
+    43,
+    46,
+    47,
+    52,
+    42,
+    6,
+    1,
+    58,
+    53,
+    0,
+    43,
+    62,
+    54,
+    53,
+    59,
+    52,
+    42,
+    1,
+    58
+  ],
+  "exact_probability_and_prediction_match": true,
+  "full": {
+    "cycles": 22965230,
+    "launches": 1032,
+    "wall_seconds": 24.956840957980603
+  },
+  "last_only": {
+    "cycles": 13647553,
+    "launches": 657,
+    "wall_seconds": 16.363742708985228
+  }
+}

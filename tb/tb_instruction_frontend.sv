@@ -20,7 +20,6 @@ module tb_instruction_frontend;
     logic [13:0] immediate;
     logic [31:0] immediate_extended;
 
-
     instruction_frontend dut (
         .clk                (clk),
         .reset              (reset),
@@ -39,15 +38,12 @@ module tb_instruction_frontend;
         .immediate_extended (immediate_extended)
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
         $dumpfile("tb_instruction_frontend.vcd");
         $dumpvars(0, tb_instruction_frontend);
     end
-
 
     task check_decode(
         input logic [31:0] expected_pc,
@@ -102,25 +98,20 @@ module tb_instruction_frontend;
 
     endtask
 
-
     initial begin
 
         clk    = 0;
         reset  = 1;
         enable = 0;
 
-
         $display("");
         $display("=== Snackwell Instruction Frontend Test ===");
         $display("");
 
-
-        // -----------------------------------------
         // RESET
         //
         // PC = 0
         // ADD R3,R1,R2
-        // -----------------------------------------
 
         @(posedge clk);
         #1;
@@ -135,13 +126,10 @@ module tb_instruction_frontend;
             4'd2
         );
 
-
-        // -----------------------------------------
         // NEXT INSTRUCTION
         //
         // PC = 4
         // SUB R4,R1,R2
-        // -----------------------------------------
 
         enable = 1;
 
@@ -155,13 +143,10 @@ module tb_instruction_frontend;
             4'd2
         );
 
-
-        // -----------------------------------------
         // NEXT
         //
         // PC = 8
         // XOR R5,R1,R2
-        // -----------------------------------------
 
         @(posedge clk);
 
@@ -173,12 +158,9 @@ module tb_instruction_frontend;
             4'd2
         );
 
-
-        // -----------------------------------------
         // EXIT
         //
         // PC = C
-        // -----------------------------------------
 
         @(posedge clk);
 
@@ -189,11 +171,7 @@ module tb_instruction_frontend;
             4'd0,
             4'd0
         );
-
-
-        // -----------------------------------------
         // TEST STALL
-        // -----------------------------------------
 
         enable = 0;
 
@@ -206,7 +184,6 @@ module tb_instruction_frontend;
             4'd0,
             4'd0
         );
-
 
         $display("");
         $display("PASS: frontend held instruction during stall");

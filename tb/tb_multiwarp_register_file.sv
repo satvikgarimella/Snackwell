@@ -23,11 +23,7 @@ module tb_multiwarp_register_file;
     logic [1:0]   debug_lane_id;
     logic [3:0]   debug_reg_addr;
     logic [31:0]  debug_write_data;
-
-
-    // =================================================
     // DUT
-    // =================================================
 
     multiwarp_register_file dut (
 
@@ -55,18 +51,10 @@ module tb_multiwarp_register_file;
         .debug_write_data   (debug_write_data)
 
     );
-
-
-    // =================================================
     // CLOCK
-    // =================================================
 
     always #5 clk = ~clk;
-
-
-    // =================================================
     // WAVEFORM
-    // =================================================
 
     initial begin
 
@@ -74,11 +62,7 @@ module tb_multiwarp_register_file;
         $dumpvars(0, tb_multiwarp_register_file);
 
     end
-
-
-    // =================================================
     // DEBUG WRITE HELPER
-    // =================================================
 
     task debug_write (
         input logic [1:0]  test_warp,
@@ -104,11 +88,7 @@ module tb_multiwarp_register_file;
         end
 
     endtask
-
-
-    // =================================================
     // CHECK ONE 4-LANE READ
-    // =================================================
 
     task check_rs1 (
         input logic [1:0]  test_warp,
@@ -127,7 +107,6 @@ module tb_multiwarp_register_file;
 
             #1;
 
-
             if (rs1_data[31:0] !== lane0_expected) begin
 
                 $display(
@@ -141,7 +120,6 @@ module tb_multiwarp_register_file;
                 $fatal;
 
             end
-
 
             if (rs1_data[63:32] !== lane1_expected) begin
 
@@ -157,7 +135,6 @@ module tb_multiwarp_register_file;
 
             end
 
-
             if (rs1_data[95:64] !== lane2_expected) begin
 
                 $display(
@@ -171,7 +148,6 @@ module tb_multiwarp_register_file;
                 $fatal;
 
             end
-
 
             if (rs1_data[127:96] !== lane3_expected) begin
 
@@ -187,7 +163,6 @@ module tb_multiwarp_register_file;
 
             end
 
-
             $display(
                 "PASS W%0d R%0d = [%0d, %0d, %0d, %0d]",
                 test_warp,
@@ -201,11 +176,7 @@ module tb_multiwarp_register_file;
         end
 
     endtask
-
-
-    // =================================================
     // MAIN TEST
-    // =================================================
 
     initial begin
 
@@ -228,23 +199,17 @@ module tb_multiwarp_register_file;
         debug_reg_addr     = 0;
         debug_write_data   = 0;
 
-
         $display("");
         $display(
             "=== Snackwell Multi-Warp Register File Test ==="
         );
         $display("");
-
-
-        // =================================================
         // RESET
-        // =================================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
-
 
         check_rs1(
             2'd0,
@@ -255,7 +220,6 @@ module tb_multiwarp_register_file;
             32'd0,
             32'd0
         );
-
 
         check_rs1(
             2'd3,
@@ -267,23 +231,18 @@ module tb_multiwarp_register_file;
             32'd0
         );
 
-
         $display("PASS: reset cleared register storage");
         $display("");
 
-
-        // =================================================
         // TEST 1
         //
         // Different values in SAME register,
         // SAME warp, DIFFERENT lanes.
-        // =================================================
 
         debug_write(2'd0, 2'd0, 4'd1, 32'd10);
         debug_write(2'd0, 2'd1, 4'd1, 32'd20);
         debug_write(2'd0, 2'd2, 4'd1, 32'd30);
         debug_write(2'd0, 2'd3, 4'd1, 32'd40);
-
 
         check_rs1(
             2'd0,
@@ -295,24 +254,19 @@ module tb_multiwarp_register_file;
             32'd40
         );
 
-
         $display(
             "PASS: per-lane register state is independent"
         );
         $display("");
 
-
-        // =================================================
         // TEST 2
         //
         // SAME register number in DIFFERENT warps.
-        // =================================================
 
         debug_write(2'd1, 2'd0, 4'd1, 32'd100);
         debug_write(2'd1, 2'd1, 4'd1, 32'd200);
         debug_write(2'd1, 2'd2, 4'd1, 32'd300);
         debug_write(2'd1, 2'd3, 4'd1, 32'd400);
-
 
         check_rs1(
             2'd1,
@@ -323,7 +277,6 @@ module tb_multiwarp_register_file;
             32'd300,
             32'd400
         );
-
 
         // Warp 0 must remain untouched
 
@@ -337,18 +290,14 @@ module tb_multiwarp_register_file;
             32'd40
         );
 
-
         $display(
             "PASS: per-warp register state is independent"
         );
         $display("");
 
-
-        // =================================================
         // TEST 3
         //
         // SIMD writeback into Warp 2 R3
-        // =================================================
 
         warp_id = 2'd2;
 
@@ -365,13 +314,10 @@ module tb_multiwarp_register_file;
 
         write_enable = 1;
 
-
         @(posedge clk);
         #1;
 
-
         write_enable = 0;
-
 
         check_rs1(
             2'd2,
@@ -383,20 +329,16 @@ module tb_multiwarp_register_file;
             32'd44
         );
 
-
         $display(
             "PASS: 4-lane SIMD writeback"
         );
         $display("");
 
-
-        // =================================================
         // TEST 4
         //
         // MASKED WRITEBACK
         //
         // Only lanes 0 and 2 should update.
-        // =================================================
 
         warp_id = 2'd2;
 
@@ -413,13 +355,10 @@ module tb_multiwarp_register_file;
 
         write_enable = 1;
 
-
         @(posedge clk);
         #1;
 
-
         write_enable = 0;
-
 
         check_rs1(
             2'd2,
@@ -431,18 +370,14 @@ module tb_multiwarp_register_file;
             32'd44    // lane 3 preserved
         );
 
-
         $display(
             "PASS: active-mask style writeback"
         );
         $display("");
 
-
-        // =================================================
         // TEST 5
         //
         // TWO READ PORTS AT ONCE
-        // =================================================
 
         // Put values into Warp 3 R4 and R7
 
@@ -456,14 +391,12 @@ module tb_multiwarp_register_file;
         debug_write(2'd3, 2'd2, 4'd7, 32'd30);
         debug_write(2'd3, 2'd3, 4'd7, 32'd40);
 
-
         warp_id  = 2'd3;
 
         rs1_addr = 4'd4;
         rs2_addr = 4'd7;
 
         #1;
-
 
         if (
             rs1_data !== {
@@ -482,7 +415,6 @@ module tb_multiwarp_register_file;
 
         end
 
-
         if (
             rs2_data !== {
                 32'd40,
@@ -500,15 +432,10 @@ module tb_multiwarp_register_file;
 
         end
 
-
         $display(
             "PASS: two 4-lane read ports operate simultaneously"
         );
-
-
-        // =================================================
         // VERIFY NO CORRUPTION OF OTHER WARPS
-        // =================================================
 
         check_rs1(
             2'd0,
@@ -520,7 +447,6 @@ module tb_multiwarp_register_file;
             32'd40
         );
 
-
         check_rs1(
             2'd1,
             4'd1,
@@ -531,20 +457,15 @@ module tb_multiwarp_register_file;
             32'd400
         );
 
-
         $display(
             "PASS: unrelated warp state preserved"
         );
-
-
-        // =================================================
 
         $display("");
         $display(
             "ALL MULTI-WARP REGISTER FILE TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

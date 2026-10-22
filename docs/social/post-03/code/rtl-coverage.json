@@ -1,0 +1,114 @@
+{
+  "branch_unit": {
+    "source": "rtl/execution/branch_unit.sv",
+    "sha256": "46a4a84b86a75917f53e8d61d5dc2bdd26aae2481c984fb40cf981a0792532d3"
+  },
+  "divergence_controller": {
+    "source": "rtl/sm/divergence_controller.sv",
+    "sha256": "9f09700ff40d94c0fc292cb9f0cdd18e5d1f7b2560ff2b3ee73d055209430931"
+  },
+  "fp32_addsub": {
+    "source": "rtl/execution/fp32/fp32_addsub.sv",
+    "sha256": "355812154c2e711b727d2fc34a8d43ce62cfa2698facef24e22625256af22996"
+  },
+  "fp32_mac_pe": {
+    "source": "rtl/execution/tensor/fp32_mac_pe.sv",
+    "sha256": "ff540e6c9607f2912423a6ec12cec00a67d3e7d0eb198d24fc74410a50333706"
+  },
+  "fp32_mul_wrapper": {
+    "source": "rtl/execution/fp32/fp32_mul_wrapper.sv",
+    "sha256": "e31365e6968abab49993520987f37cab4b5998ce31ff78ade2ec76cc4e736c36"
+  },
+  "instruction_decoder": {
+    "source": "rtl/frontend/instruction_decoder.sv",
+    "sha256": "53f00eb4b1e97165221645b65de28dadbbc94775ebae04983da7782ccbf1554d"
+  },
+  "instruction_memory": {
+    "source": "rtl/frontend/instruction_memory.sv",
+    "sha256": "eb2c3f815ed6273c340f25366ea652b50cbeaca6e7be8dd52afef7ca5a276aef"
+  },
+  "integer_alu": {
+    "source": "integer_alu.sv",
+    "sha256": "e9cdb37b484bc5ca5f7ca0cb53840440afc452d686d2fa30618ae23c1fa8316c"
+  },
+  "issue_control": {
+    "source": "rtl/sm/issue_control.sv",
+    "sha256": "09640331a164c2fe1ac488a7e625f350c886bcab7f44059314051e095187e732"
+  },
+  "issue_stage": {
+    "source": "rtl/sm/issue_stage.sv",
+    "sha256": "3bb4e251654d33b7bdd60c527d9f90e1977d536dfbaab268581e7fb9b7b178d8"
+  },
+  "load_store_unit": {
+    "source": "rtl/memory/load_store_unit.sv",
+    "sha256": "e9e1bc65393de966a6af0501c1f4c50367caa748a1e0b6b9d9f3c97f8361d32c"
+  },
+  "multiplier": {
+    "source": "rtl/execution/fp32/multiplier.v",
+    "sha256": "6b97e8b50cfe76193584d24a084de8683ad341d205e2c6a70d4d2b1e7215a4a0"
+  },
+  "multiwarp_execution_core": {
+    "source": "rtl/sm/multiwarp_execution_core.sv",
+    "sha256": "c7ad6005f54745632b76e6bd6c9887e1fca8d95110722468748a4c92b7fcc290"
+  },
+  "multiwarp_register_file": {
+    "source": "rtl/memory/multiwarp_register_file.sv",
+    "sha256": "ead5ed499429667ceacb9ad5c33873fb6f6030bbcd1338c01ee73c08fda8df94"
+  },
+  "reconvergence_stack": {
+    "source": "rtl/sm/reconvergence_stack.sv",
+    "sha256": "eeacc007d3e6f96b6a2203736d833e3be89c577b0ee46b12591681ec22500543"
+  },
+  "reconvergence_target_table": {
+    "source": "rtl/sm/reconvergence_target_table.sv",
+    "sha256": "18c135e6417ec027eace2ed725cbc11f31d9fd01e7410ca4ac87f14b8611c018"
+  },
+  "scoreboard": {
+    "source": "rtl/sm/scoreboard.sv",
+    "sha256": "342d6aa56ba8ca40132a4fa4ee8649ddd5456be1cd630a4ddc1266ac629427b5"
+  },
+  "shared_memory": {
+    "source": "rtl/memory/shared_memory.sv",
+    "sha256": "31dce3dbf2d0f580e657b527134ddd794ced4d850d9111ff6ea6bb2f9d3837e3"
+  },
+  "simd_fp32_execute": {
+    "source": "rtl/execution/fp32/simd_fp32_execute.sv",
+    "sha256": "4364a2c3b75aa1d5ae00e4bda45d9291fdc8e0023ea4efee9cc489e93a86a582"
+  },
+  "simd_integer_execute": {
+    "source": "rtl/execution/simd_integer_execute.sv",
+    "sha256": "99760f9edf1c607f8171af45d32c2da30710c7190cbd7a0116e6823990b1f1df"
+  },
+  "sm_tensor_unit": {
+    "source": "rtl/sm/sm_tensor_unit.sv",
+    "sha256": "e04a235a49779fb1938a75979f34d98c1f167a1ffdcba6b1aedab6fbeeb0eeaf"
+  },
+  "snackwell_sm": {
+    "source": "rtl/sm/snackwell_sm.sv",
+    "sha256": "1b51a83895afee8f16b58b9c366538af94669e1aec0a12835b04b3669a55db8c"
+  },
+  "systolic_array_4x4": {
+    "source": "rtl/execution/tensor/systolic_array_4x4.sv",
+    "sha256": "b0b19a411b2737b9679c96af5b24c5984d3b323ace4a481704fcc94e47bcb3d7"
+  },
+  "systolic_feeder_4x4": {
+    "source": "rtl/execution/tensor/systolic_feeder_4x4.sv",
+    "sha256": "47e78771bd60e333765e643591820025197e027b2ced7a08e6211b37ae293954"
+  },
+  "tensor_core": {
+    "source": "rtl/execution/tensor/tensor_core.sv",
+    "sha256": "3984e87d078190575ee42c11b9879f009479aee0e8a15759a82fda4e2cbb6659"
+  },
+  "warp_control_unit": {
+    "source": "rtl/sm/warp_control_unit.sv",
+    "sha256": "d984821aec08597fbebf5b013629d0985059d2e9cd12e638f0b9be427026ec16"
+  },
+  "warp_scheduler": {
+    "source": "rtl/sm/warp_scheduler.sv",
+    "sha256": "1765a58ee5e8f0b8c99eef7a743060a14c704dbd88d46000b874422e9134e55c"
+  },
+  "warp_state_table": {
+    "source": "rtl/sm/warp_state_table.sv",
+    "sha256": "3ca39f1b0c9dfa4365389de7939c5af81102bdcffa68a8e5c07bedc7db749202"
+  }
+}

@@ -37,11 +37,7 @@ module tb_issue_control;
 
     logic [15:0] selected_warp_busy_mask;
     logic [3:0] eligible_mask;
-
-
-    // =================================================
     // DUT
-    // =================================================
 
     issue_control dut (
 
@@ -83,18 +79,10 @@ module tb_issue_control;
         .eligible_mask           (eligible_mask)
 
     );
-
-
-    // =================================================
     // CLOCK
-    // =================================================
 
     always #5 clk = ~clk;
-
-
-    // =================================================
     // WAVEFORM
-    // =================================================
 
     initial begin
 
@@ -102,11 +90,7 @@ module tb_issue_control;
         $dumpvars(0, tb_issue_control);
 
     end
-
-
-    // =================================================
     // CLEAR SCOREBOARD ENTRY
-    // =================================================
 
     task clear_reg (
         input logic [1:0] warp,
@@ -127,11 +111,7 @@ module tb_issue_control;
         end
 
     endtask
-
-
-    // =================================================
     // MAIN TEST
-    // =================================================
 
     initial begin
 
@@ -156,23 +136,17 @@ module tb_issue_control;
         clear_busy_warp_id = 2'd0;
         clear_busy_reg     = 4'd0;
 
-
         $display("");
         $display(
             "=== Snackwell Issue Control Integration Test ==="
         );
         $display("");
-
-
-        // =================================================
         // RESET
-        // =================================================
 
         @(posedge clk);
         #1;
 
         reset = 1'b0;
-
 
         if (blocked_mask !== 4'b0000) begin
 
@@ -185,21 +159,16 @@ module tb_issue_control;
 
         end
 
-
         $display("PASS: issue control reset");
 
-
-        // =================================================
         // TEST 1
         //
         // W0:
         // ADD R3,R1,R2
         //
         // R3 becomes busy ONLY for W0.
-        // =================================================
 
         #1;
-
 
         if (
             selected_warp_id !== 2'd0 ||
@@ -214,7 +183,6 @@ module tb_issue_control;
 
         end
 
-
         if (rd_addr !== 4'd3) begin
 
             $display(
@@ -225,15 +193,12 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "ISSUE: W0 ADD R3,R1,R2"
         );
 
-
         @(posedge clk);
         #1;
-
 
         if (selected_warp_id !== 2'd1) begin
 
@@ -245,13 +210,10 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: W0 issued and scheduler advanced"
         );
 
-
-        // =================================================
         // IMPORTANT
         //
         // W1/W2/W3 write R8 instead of R3.
@@ -262,14 +224,9 @@ module tb_issue_control;
         // W1.R3 = READY
         // W2.R3 = READY
         // W3.R3 = READY
-        // =================================================
 
         rd_addr = 4'd8;
-
-
-        // =================================================
         // W1
-        // =================================================
 
         if (!issue_accept) begin
 
@@ -281,19 +238,13 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "ISSUE: W1 ADD R8,R1,R2"
         );
 
-
         @(posedge clk);
         #1;
-
-
-        // =================================================
         // W2
-        // =================================================
 
         if (selected_warp_id !== 2'd2) begin
 
@@ -305,7 +256,6 @@ module tb_issue_control;
 
         end
 
-
         if (!issue_accept) begin
 
             $display(
@@ -316,19 +266,13 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "ISSUE: W2 ADD R8,R1,R2"
         );
 
-
         @(posedge clk);
         #1;
-
-
-        // =================================================
         // W3
-        // =================================================
 
         if (selected_warp_id !== 2'd3) begin
 
@@ -340,7 +284,6 @@ module tb_issue_control;
 
         end
 
-
         if (!issue_accept) begin
 
             $display(
@@ -351,19 +294,13 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "ISSUE: W3 ADD R8,R1,R2"
         );
 
-
         @(posedge clk);
         #1;
-
-
-        // =================================================
         // SHOULD WRAP TO W0
-        // =================================================
 
         if (selected_warp_id !== 2'd0) begin
 
@@ -375,13 +312,10 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: other warps issued independent destinations"
         );
 
-
-        // =================================================
         // TEST 2
         //
         // W0:
@@ -390,15 +324,12 @@ module tb_issue_control;
         // W0.R3 is busy.
         //
         // Other warps' R3 registers are NOT busy.
-        // =================================================
 
         rs1_addr = 4'd3;
         rs2_addr = 4'd2;
         rd_addr  = 4'd4;
 
-
         #1;
-
 
         if (!rs1_busy) begin
 
@@ -410,7 +341,6 @@ module tb_issue_control;
 
         end
 
-
         if (!dependency_stall) begin
 
             $display(
@@ -420,7 +350,6 @@ module tb_issue_control;
             $fatal;
 
         end
-
 
         if (issue_accept) begin
 
@@ -432,21 +361,16 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: W0 RAW dependency detected"
         );
 
-
-        // =================================================
         // CLOCK FAILED W0 ISSUE
         //
         // This registers W0 into blocked_mask.
-        // =================================================
 
         @(posedge clk);
         #1;
-
 
         if (blocked_mask[0] !== 1'b1) begin
 
@@ -458,7 +382,6 @@ module tb_issue_control;
 
         end
 
-
         if (selected_warp_id === 2'd0) begin
 
             $display(
@@ -469,20 +392,16 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: scheduler switched away from blocked W0"
         );
 
-
-        // =================================================
         // ALTERNATE WARP
         //
         // It also reads R3, but scoreboard state is
         // per-warp.
         //
         // W1.R3 is ready, so W1 can issue.
-        // =================================================
 
         if (selected_warp_id !== 2'd1) begin
 
@@ -495,7 +414,6 @@ module tb_issue_control;
 
         end
 
-
         if (rs1_busy) begin
 
             $display(
@@ -505,7 +423,6 @@ module tb_issue_control;
             $fatal;
 
         end
-
 
         if (!issue_accept) begin
 
@@ -517,23 +434,18 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: W1 issued while W0 was dependency blocked"
         );
 
-
-        // =================================================
         // COMPLETE W0.R3
         //
         // Simulates writeback from W0's original ADD.
-        // =================================================
 
         clear_reg(
             2'd0,
             4'd3
         );
-
 
         if (blocked_mask[0] !== 1'b0) begin
 
@@ -545,15 +457,10 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: W0 unblocked after dependency writeback"
         );
-
-
-        // =================================================
         // RUN UNTIL W0 RETURNS
-        // =================================================
 
         while (selected_warp_id !== 2'd0) begin
 
@@ -567,19 +474,13 @@ module tb_issue_control;
 
             end
 
-
             @(posedge clk);
             #1;
 
         end
-
-
-        // =================================================
         // W0.R3 SHOULD NOW BE READY
-        // =================================================
 
         #1;
-
 
         if (rs1_busy) begin
 
@@ -591,7 +492,6 @@ module tb_issue_control;
 
         end
 
-
         if (!issue_accept) begin
 
             $display(
@@ -602,20 +502,14 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: W0 became schedulable after dependency resolved"
         );
-
-
-        // =================================================
         // RESOURCE STALL TEST
-        // =================================================
 
         execution_unit_ready = 1'b0;
 
         #1;
-
 
         if (!resource_stall) begin
 
@@ -627,7 +521,6 @@ module tb_issue_control;
 
         end
 
-
         if (issue_accept) begin
 
             $display(
@@ -638,15 +531,12 @@ module tb_issue_control;
 
         end
 
-
         $display(
             "PASS: execution resource stall detected"
         );
 
-
         @(posedge clk);
         #1;
-
 
         if (blocked_mask == 4'b0000) begin
 
@@ -658,16 +548,13 @@ module tb_issue_control;
 
         end
 
-
         execution_unit_ready = 1'b1;
-
 
         $display("");
         $display(
             "ALL ISSUE CONTROL INTEGRATION TESTS PASSED"
         );
         $display("");
-
 
         // Resource recovery must not depend on this warp completing a write.
         valid_mask = 4'b0001;

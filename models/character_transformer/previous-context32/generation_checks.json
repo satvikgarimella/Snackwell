@@ -1,0 +1,3792 @@
+{
+  "kind": "CPU quality measurements and separately identified RTL evidence",
+  "original": {
+    "kind": "CPU reference diagnostic, not RTL",
+    "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+    "summary": {
+      "1.0": {
+        "cases": 32,
+        "completed_words": 336,
+        "known_words": 294,
+        "repetition_cases": 1
+      },
+      "0.85": {
+        "cases": 32,
+        "completed_words": 329,
+        "known_words": 296,
+        "repetition_cases": 0
+      },
+      "0.7": {
+        "cases": 32,
+        "completed_words": 342,
+        "known_words": 316,
+        "repetition_cases": 0
+      },
+      "0.55": {
+        "cases": 32,
+        "completed_words": 364,
+        "known_words": 350,
+        "repetition_cases": 0
+      }
+    },
+    "cases": [
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "My lord, I have something to say",
+        "continuation": " Romeosed prove,\nAnd that will not tell name and in the was thee",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "My lord, I have something to say",
+        "continuation": "s':\nI knot well. Give his last in this gone:\nNay, news? why, my ",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "My lord, I have something to say",
+        "continuation": " your,\nThe arm xuectentimes,\nBe mercy are hands home; but as and",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "My lord, I have something to say",
+        "continuation": " you serve;\nup; you, take thee prink, writh give,\nAnd he unacled",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " alongue.\n\nMessenger:\nBelove her may greaging or here;\nNo, my lo",
+        "completed_words": 9,
+        "known_words": 7,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": "s, I mean by sisters.\n\nSecomfort Servingman:\nNay, news? why, my ",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " they lord!\nHe would how to Babel. As I have press other:\nAy, th",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the rather you: my look it not sing try soft to Olf, encome for",
+        "completed_words": 12,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "the sky today is",
+        "continuation": " a thousand your blood by the ever\nseep! 'Sak the good purpose, ",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "sur'd keep thee.\n\nDUKE VINCENTIO:\nSo? meer the trusty would now,",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " that lord Mercy?\nDo it cour cannot\nprayer acts home? Sir I, app",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the rather you: my look it not sing try soft to Olf, encome for",
+        "completed_words": 12,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "My name is ",
+        "continuation": "hangestitions,\nOr king but, bear may greak effence strent of War",
+        "completed_words": 9,
+        "known_words": 6,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you have a the tributo the Clarence.\n\nLEONTES:\nWhom your housely",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "comes?\nGod and your envoids:\nCame your repeal's friend.\n\nCATESBY",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "my kindred.\nYou will say him more or try, noble, I could teal th",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd twice put prayers are the off your hand,\nTo is the was thee",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": " prayer that may'ranus to make in this gone:\nO took your greats,",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nUnder the both? You hot supbided watens of alone;\nMy flor's doe",
+        "completed_words": 11,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe rather you; let temper of my lordst:\nO despect to have\nAnd ",
+        "completed_words": 11,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "Good night,",
+        "continuation": "\nAnd twice own present cousin, nor there,\nHardly heaven your cou",
+        "completed_words": 9,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": "--if no, I well.\n\nDUKE VINCENTIO:\nSo? meer the trusty would now,",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhere the arm world how to Babel. As I have press other:\nAy, th",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nWhich well you will say him, my lord? you, beside armg'd,\nAgain",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "I love",
+        "continuation": " alongue.\n\nMessenger:\nBelove her may greaging or here;\nNo, my lo",
+        "completed_words": 9,
+        "known_words": 7,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "s, I mighful live crymer;\nI remember, one holy trummourates,\nOut",
+        "completed_words": 9,
+        "known_words": 6,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " these the arm world how to Babel. As I have press other:\nAy, th",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": "; Play well you will say him,\nOr good wrong here, alter'd a beli",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "To be, or not to ",
+        "continuation": "have two convequed my certain for are the gladel me, they resign",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you have a the tributo the Clarence.\n\nLEONTES:\nWhom your housely",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "criest thou shame to hours; 't?\nDever are hands home; but as and",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "my keeps of yourself.\n\nKING RICHARD IIIUS:\nGive mad, the tab;\nTh",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 1
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "My lord, I have something to say",
+        "continuation": " alongue.\n\nMOPSAO:\nI warrant meanly, for Edward,\nI silent thou s",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "My lord, I have something to say",
+        "continuation": "s was,\nAnd thee, better, my lord, some heart\nThou newstition, wi",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "My lord, I have something to say",
+        "continuation": " your honour.\n\nVaLgracticous OF YORK:\nAre if the well good will ",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "My lord, I have something to say",
+        "continuation": " you serve.\nYou will say him not! for your false a corrow?\n\nBENV",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " all turn sound;\nAnd uncless here, they keep and legs,\nSuch thei",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": "s the kind the tributo the Clarence.\n\nLEONTES:\nWhom your housed ",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " they lord,\nThat's there to Call at will madam?\n\nSICINIUS:\nWhat ",
+        "completed_words": 10,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the rather you; in that do not slew toward cloud\nBeloming That ",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "the sky today is",
+        "continuation": " a thousand with a let cousin,\nThe take name blood strange's blo",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "sue\nOf am coming gives to make in the old in this oaths.\n\nSecond",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " that lost and world how to Death yield.\n\nFRIAR LAURENCE:\nAy, th",
+        "completed_words": 10,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the rather you; in that do not slew toward cloud\nBeloming That ",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "My name is ",
+        "continuation": "help tsto power see,\nWherefore the take o' paint me.\n\nDUKE VINCE",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you have a the tributo the Clarence.\n\nLEONTES:\nWhom your housed ",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "done?\n\nPOMPEY:\nYou're will said keparies of alminifit his but th",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "my lashing,\nto royal temper of our thise so,\nHow a corrow, I do ",
+        "completed_words": 12,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd twice put so more forjudge.\n\nBUCKINGHAM:\nO, if you well.\n\nP",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": " staring age of thence to make in the old in this oaths.\n\nSecond",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nUnder the both; but it boy.\n\nBISHOP OF ELO:\nPreposed my day, th",
+        "completed_words": 11,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe say to your lords of the not more:--God it said.\n\nHAST:\nGo ",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "Good night,",
+        "continuation": "\nAnd twice out of my shamed.\n\nESCALUS:\nI am faith is there: ther",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": "--faith scarce to drunkly last less.\n\nLEONTES:\nWhom your housed ",
+        "completed_words": 8,
+        "known_words": 7,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhere the both; and it brother have serve a prince, if your dot",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nWhich weep:--\n\nVOLUMNIA:\nShe mother town shall lady.\n\nHAST:\nGo ",
+        "completed_words": 8,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "I love",
+        "continuation": " aftery,\nAnd, good mercy'st go the unew never stand?\n\nDUKE VINCE",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "s, I mean come to drowning God in this good and times with there",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " there's night world his sun\nCamillity the begnedies: but as and",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": ":\nAnd by they deviring\nMarry's nor thise so, for I could that se",
+        "completed_words": 12,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 92617660,
+        "prompt": "To be, or not to ",
+        "continuation": "have turn sound;\nAnd uncless here, they keep and legs,\nSuch thei",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you have a the tributo the Clarence.\n\nLEONTES:\nWhom your housed ",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "do drumpet and worning;\nAnd Hear grave the begne: but is easoner",
+        "completed_words": 10,
+        "known_words": 7,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.85,
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "my lashing,\nto royal temper of our thise so,\nHow a corrow, I do ",
+        "completed_words": 12,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "My lord, I have something to say",
+        "continuation": " affent,\nAnd there is bestiture in thee satisford his determined",
+        "completed_words": 8,
+        "known_words": 6,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "My lord, I have something to say",
+        "continuation": "s was lend the tributo the Duke of York,\nAnd say that you will s",
+        "completed_words": 13,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "My lord, I have something to say",
+        "continuation": " your honour,\nAs in here to Camillo that leanning,\nSo her by his",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "My lord, I have something to say",
+        "continuation": " you serve,\nor store the fortune men too sold, that the brace th",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " all trumpety.\n\nMARCIUS:\nWho is is the heard and me; they sorrow",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": "?\n\nAUFIDIUS:\nI would this last more than for their brows.\n\nNORTH",
+        "completed_words": 9,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " these the both: but it courage mercy.\n\nGLOUCESTER:\nWhat have th",
+        "completed_words": 9,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the services.\n\nThird Citizen:\nNor thousand here a corrow,\nAnd b",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "the sky today is",
+        "continuation": " a thousand with a let cousin,\nThan I think in the promittle, my",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "sue\nShall be not: by were may find the gods,\nShow thy words of t",
+        "completed_words": 13,
+        "known_words": 13,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " them.\n\nHENRY BOLINGBROKE:\nTake thy speech a notes of live urge ",
+        "completed_words": 9,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the retors, they sir;\nFor Margareter wrong here, and leave a se",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "My name is ",
+        "continuation": "in this party.\n\nMARCIUS:\nWho is is the heard and me; they sorrow",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you have a the tribust's me\nThan the heard the strong, to the wo",
+        "completed_words": 13,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.09836065573770492,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "done; for I that her how to I am commoney,\nAnd should envious so",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "no man the husband.\n\nPARIS:\nNor therefore the true armonard\nAnd ",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd trust to my book: I would not their all discorded such the ",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "\nRomeo, shall be gone: the Earl of speak for their brows.\n\nNORTH",
+        "completed_words": 10,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nThere the both: but it courage mercy.\n\nGLOUCESTER:\nWhat have th",
+        "completed_words": 9,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe say to your lords of the not more. The father brother Can a",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "Good night,",
+        "continuation": "\nAnd trumpety miserable tongue shall come me.\n\nROMEO:\nHere is no",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": "--I\nI know the tribust, the one his slain my lawly butting.\n\nLUC",
+        "completed_words": 11,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhere the both: but it courage mercy.\n\nGLOUCESTER:\nWhat have th",
+        "completed_words": 9,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nWhich we shrifty son: if your lords toward disport to make a se",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "I love",
+        "continuation": " a thousand with a let cousin,\nThan I think in the promittle, my",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "s, Marcius the tributo the Duke of York,\nAnd say that you will s",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " then:\nThe both, doubts, to Edward,\nWhat shall have we not thee ",
+        "completed_words": 10,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": "-pardon,\nSo you will say it slew me, too sold to a corrumpel for",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "To be, or not to ",
+        "continuation": "have turn thy great is exile,\nAnd are the god to means on this s",
+        "completed_words": 13,
+        "known_words": 13,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you have a the tribust's me\nThan the heard the strong, to the wo",
+        "completed_words": 13,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.09836065573770492,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "do drumpet,\nThat her how to I am commoney, and revenge premornie",
+        "completed_words": 10,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "my lashing it disment;\nFor and so much your fellow! what that th",
+        "completed_words": 11,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "My lord, I have something to say",
+        "continuation": " a thousand with a man and the people,\nDid make a mistery sorrow",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "My lord, I have something to say",
+        "continuation": "ing in him the troop;\nAnd then is the people the so with my offi",
+        "completed_words": 13,
+        "known_words": 13,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "My lord, I have something to say",
+        "continuation": " your honour,\nAs in my rest I bear, that not stoop the prepared ",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "My lord, I have something to say",
+        "continuation": " you should your lords\nThat shall be torther his about of a base",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " behold the words of the true do man it of my royal to the other",
+        "completed_words": 13,
+        "known_words": 13,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": "?\n\nAUFIDIUS:\nI would the made me to the mark of the would the wo",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.2622950819672131,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " them.\n\nHENRY BOLINGBROKE:\nWe do him the maident thee not brief,",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the services.\n\nSecond Murderer:\nI will propers, I could that th",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "the sky today is",
+        "continuation": " a thousand with a man and the people,\nDid make a mistery sorrow",
+        "completed_words": 11,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": ",\nWhich seem them doth the are of the people the so with my offi",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " thee,\nThat they her how the day it will not strangelo on his so",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the services.\n\nSecond Murderer:\nI will propers, I could that th",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "My name is ",
+        "continuation": "my sons,\nAnd there is best. Hear things man,\nAnd she were the no",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you have a the troop: and the harm'd me the be strong with their",
+        "completed_words": 13,
+        "known_words": 13,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "done;\nBut I shall presentent\nHath was and lady.\n\nSICINIUS:\nWhat ",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "stand,\nWhich, and them sing the shall wrong in that the come in ",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd to the words of the true do man it of my royal to the other",
+        "completed_words": 14,
+        "known_words": 14,
+        "repeated_fourgram_fraction": 0.1311475409836066,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "\nSo me for upon their brother in the heard the truth;\nWho with t",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nThere the both, but it courage now\nThat receive thee off his so",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe say to your lords of the proud;\nThy son courage, both a foo",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "Good night,",
+        "continuation": "\nAnd to the words of the true do man it of my royal to the other",
+        "completed_words": 14,
+        "known_words": 14,
+        "repeated_fourgram_fraction": 0.1311475409836066,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": " speak and the trooper to the harm,\nThat die the so with my offi",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhere the bloody to his sun\nAnd holy are made this the seat it ",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nWhich we should prince of his presentse that with all the balm ",
+        "completed_words": 10,
+        "known_words": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "I love",
+        "continuation": " a this party of blood by the end and the gods the propes of his",
+        "completed_words": 13,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "r the kind the troop?\n\nSecond Murderer:\nI have to the words of t",
+        "completed_words": 12,
+        "known_words": 12,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " them.\n\nGLOUCESTER:\nAnd for I bear, that make with the other con",
+        "completed_words": 10,
+        "known_words": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": " the services.\n\nSecond Murderer:\nI will propers, I could that th",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "To be, or not to ",
+        "continuation": "languess and the comes and the people,\nEven hear of the was the ",
+        "completed_words": 11,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.180327868852459,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you have a the troop: and the harm'd me the be strong with their",
+        "completed_words": 13,
+        "known_words": 13,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "for us the birder to my cousin in the comfort thee to more than ",
+        "completed_words": 12,
+        "known_words": 11,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "stand and thy court.\n\nAUFIDIUS:\nO, whose that with beggard.\n\nDUK",
+        "completed_words": 9,
+        "known_words": 8,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      }
+    ]
+  },
+  "selected": {
+    "kind": "CPU reference generation, not RTL",
+    "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+    "summary": {
+      "1.0": {
+        "cases": 32,
+        "words": 323,
+        "known": 294,
+        "repeat_cases": 0
+      },
+      "0.7": {
+        "cases": 32,
+        "words": 340,
+        "known": 326,
+        "repeat_cases": 0
+      },
+      "0.55": {
+        "cases": 32,
+        "words": 339,
+        "known": 336,
+        "repeat_cases": 0
+      }
+    },
+    "cases": [
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "My lord, I have something to say",
+        "continuation": " Cotkfwer strong--\nGor cousin and as it mark blood one purpose,\n",
+        "words": 9,
+        "known": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " answer,\nAnd therefore and the people than he speakest ruin, and",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "the sky today is",
+        "continuation": " a virtuous, there is better has may dreached\nTo help into subje",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "My name is ",
+        "continuation": "hell, you must nod-better.\nI have an execute's teeth; and think-",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd would put tidings and the philodence\nIf any many divine.\n\nP",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "Good night,",
+        "continuation": "\nAnd vrience; for more but thankinds\nIs man, and let us well.\n\nP",
+        "words": 11,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "I love",
+        "continuation": " another,\nSon, or life but the pirate, follow stand to quartle;\n",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 92617660,
+        "prompt": "To be, or not to ",
+        "continuation": "get,\nWrite out of much brows in in thee land anon his devil, and",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "My lord, I have something to say",
+        "continuation": "s!\n\nGREGOLE:\nNow, by your iater, some old grandsman with him.\nTh",
+        "words": 10,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": "?\nTell him very that were i' the strong of the troth?\nWhy would ",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": "?\nO heaven the treasure. My lord; or him, go rather with, which ",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you held,\nAs merry with the\nplace of it need news. By yourself;\n",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "Ofice let from the world.\n\nARCHBISHOP OF JAUGHAPHEN:\nOut, which ",
+        "words": 8,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": "--Mark'd Richard:\nBy whom i' the strong of the troth?\nWhy would ",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "s,\nAnd come hither with the\nplace! pretty is niner, why, how now",
+        "words": 11,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you hear,\nAs mistress, then relent; then being to pawns.\n\nSecond",
+        "words": 9,
+        "known": 8,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "My lord, I have something to say",
+        "continuation": " we world,\nAnd young crreete\nBe may speed-dames, while nor undon",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " they must\nAnd your entrary,\nAll due this gainsays or good\non th",
+        "words": 11,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " there,\nHis ponty such restock forth; I'll be then my father's l",
+        "words": 12,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "comes.\nFor I may, such rather and way.\nAlack to him where I know",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nUncounted are you? O, thou'e, blessing it before.\n\nSecond Trani",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhere upon these treatigns,\nAnd eyes are gentlemen, he's at com",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " then?\nBut I let, to him together waxemp's belooks on it;\nAnd th",
+        "words": 12,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "cries;\nThe bornmouth hours, 'fair was an health!\nWhilst they con",
+        "words": 9,
+        "known": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "My lord, I have something to say",
+        "continuation": " the respectuously,\nSpare thee nobly swrether with all law I do ",
+        "words": 9,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the patience.\n\nVOLUMNIA:\nThe news! Why? the house brook than th",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the sepurget?\n'Why, the grainess of try-morrow: Hail:\nI wake th",
+        "words": 10,
+        "known": 8,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "my kindred it:\nNot live child, my lordsiar; and said, for I\nAll ",
+        "words": 11,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe rather young dispatch.\n\nKING LEWIS:\nThe house brook than th",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nWe are forguilty sorrow do report.\n\nRozener:\nWho cannot teach m",
+        "words": 9,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": ",\nAnd by they courtesy king of still tuving fly:\nAnd the teachin",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 1.0,
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "long\nThink sweetly live, but not kingdows,\nBecome felling a bene",
+        "words": 9,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "My lord, I have something to say",
+        "continuation": " against my words of weeping in poisons of kings have done,\nThat",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " begins the world\nThat counterfeit upon the father of his misery",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "the sky today is",
+        "continuation": " a worthy power'd my that word the wars of heaven,\nTo do him bot",
+        "words": 13,
+        "known": 13,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "My name is ",
+        "continuation": "lawful:\nTherefore me we tool, but I am king in the rought of fou",
+        "words": 12,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd with thy head of good, come things of mine.\n\nGREMIO:\nO, I w",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "Good night,",
+        "continuation": "\nAnd wounded their lives, upon the wars of heaven,\nTo every the ",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "I love",
+        "continuation": " and two common the greatest less as my lady countrymen, and dis",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 92617660,
+        "prompt": "To be, or not to ",
+        "continuation": "have trumpets,\nIf they be the fielding of my country;\nAnd the no",
+        "words": 11,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "My lord, I have something to say",
+        "continuation": "?\n\nBISHOP OF YORK:\nWhy would me my son, most office with his lov",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": "?\nHark you the tribunes, my lord, sir, even an our business,\nOur",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": ".\n\nANGELO:\nWhat, having the place, sir, much last,\nAs you think ",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "you have a very that were lap in the heavens\nThe reasons of this",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "\nPray you! where is the smiles of the place.\n\nBUCKINGHAM:\nWhere ",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": " prayers a thousand to the Duke of York!\n\nGhostly:\nAy, to the wo",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "s the last shows.\n\nSecond Marcius, sir, more services you, sir; ",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you,\nMore freeding with the place, that of the truly.\nThough the",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "My lord, I have something to say",
+        "continuation": " that our causes:\nThe world I am curse to have one purge;\nAnd th",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " they prove so worthily,\nTo I am curse the best of the noble cou",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " thee.\n\nGLOUCESTER:\nGood straight was an hearing where nor that ",
+        "words": 8,
+        "known": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "done;\nAnd being where you will go well the best of the noble cou",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nThey is the matter: good to be mercy,\nThe children that cause t",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nWhere we been your eyes to Elbow, I take it out well,\nOr I may ",
+        "words": 13,
+        "known": 13,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " them,\nThat they doth us, what is your place of holy man:\nAre we",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "cross,\nThe consulder is any Padua well the best of the noble cou",
+        "words": 11,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "My lord, I have something to say",
+        "continuation": " the senatory:\nPrithee thee power my sworth enter in the tears,\n",
+        "words": 9,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the people with,\nThe all things me. Would have the steele's eye",
+        "words": 11,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the senatory:\nPrithee thee power my sworth enter in the tears,\n",
+        "words": 9,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "our breathe you.\n\nMENENIUS:\nO, pray, too much straight lay a gra",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe saucy my country?\n\nCLARENCE:\nMy love of my majesty Vold, th",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nThan are thy courtesy of the prince ruthly father and law a foo",
+        "words": 11,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": " the rest,\nDulent their father's grounds so far of death that th",
+        "words": 11,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.7,
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "my law with your knees\nShall be them tosses here.\n\nCORIOLANUS:\nB",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "My lord, I have something to say",
+        "continuation": " her true of the consul,\nWith his brave in peace of the wars.\n\nM",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.09836065573770492,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " be protectors of the children of an eyes\nHath seeming such been",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "the sky today is",
+        "continuation": " a worthy prove the king,\nWhich is the heart of his station!\n\nJU",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "My name is ",
+        "continuation": "mine own brows of the children of an eyes\nHath seeming such been",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd with thy head of her.\n\nDUKE VINCENTIO:\nHath not their prese",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "Good night,",
+        "continuation": "\nAnd wounded thee so the vows of thine eyes,\nAnd she well should",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "I love",
+        "continuation": " and true sport.\n\nKING HENRY VI:\nO think I do not meet to the mo",
+        "words": 13,
+        "known": 13,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 92617660,
+        "prompt": "To be, or not to ",
+        "continuation": "have to the world of the world the wars of me.\n\nCLARENCE:\nThink ",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.19672131147540983,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "My lord, I have something to say",
+        "continuation": "?\n\nBLARDIGABERD ROSS:\nAy, see your lordship,\nThe signior. What, ",
+        "words": 7,
+        "known": 7,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": "?\n\nANGELO:\nWhat we will shake it to the mark of the world to put",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "the sky today is",
+        "continuation": " the one another,\nAnd good Lord Hastings, for all this such a wo",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "My name is ",
+        "continuation": "young Henry,\nI would thee pass of the poor thing to thy throne:\n",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "ROMEO:",
+        "continuation": "\nOf the reason to his brother is the life of the state;\nWho may ",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "Good night,",
+        "continuation": " so long against thou beholding of the house of the world to our",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.08196721311475408,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "I love",
+        "continuation": "s the late the tribunes,\nHe shall have heard them say you will n",
+        "words": 12,
+        "known": 12,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1729,
+        "prompt": "To be, or not to ",
+        "continuation": "you?\n\nHASTINGS:\nWhat well never it, the people strength, and the",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "My lord, I have something to say",
+        "continuation": " thee.\n\nGLOUCESTER:\nHere is a common the one of my mother but th",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " then proud them;\nIn this woes in the breath of our time.\n\nSecon",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "the sky today is",
+        "continuation": " the world consul,\nWhere with his way are the virtues is her blo",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "My name is ",
+        "continuation": "from the people?\n\nProvost:\nTell me, what said your husband with ",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "ROMEO:",
+        "continuation": "\nThere well shame to my counceouse,\nWhere is the wars most thou ",
+        "words": 10,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "Good night,",
+        "continuation": "\nThat she deliver'd in the sacred were the better for our countr",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "I love",
+        "continuation": " them so seeming.\n\nSecond Senator:\nAy, the contrary with her bot",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1730,
+        "prompt": "To be, or not to ",
+        "continuation": "come.\n\nPOMPEY:\nYour heart, tell me, what said your husband with ",
+        "words": 9,
+        "known": 9,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "My lord, I have something to say",
+        "continuation": " the senatory.\n\nSecond Murderer:\nMy lord, sir, that would a bett",
+        "words": 9,
+        "known": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the people with the sail of the hearts?\n\nLADY CAPULET:\nAy, and ",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "the sky today is",
+        "continuation": " the senatory.\n\nSecond Murderer:\nMy lord, sir, that would a bett",
+        "words": 9,
+        "known": 8,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "My name is ",
+        "continuation": "to make a sovereign of the contrary.\n\nShepherd:\nThe state able e",
+        "words": 10,
+        "known": 10,
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "ROMEO:",
+        "continuation": "\nThe same thy devil to remember the into the house of mine age.\n",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "Good night,",
+        "continuation": "\nThan committed with the field of the wrong'd the children and d",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "I love",
+        "continuation": " the senate will not say to the seas of the earth\nAnd made a foo",
+        "words": 13,
+        "known": 13,
+        "repeated_fourgram_fraction": 0.09836065573770492,
+        "positions_starting_three_repeats": 0
+      },
+      {
+        "temperature": 0.55,
+        "seed": 1731,
+        "prompt": "To be, or not to ",
+        "continuation": "my learn is yourself,\nAnd then the times of my soldiers,\nWhen th",
+        "words": 11,
+        "known": 11,
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0
+      }
+    ]
+  },
+  "additional_seeds": {
+    "kind": "CPU reference generation diagnostic; not RTL execution",
+    "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+    "backend": "torch",
+    "word_coverage_note": "Corpus word coverage is a spelling diagnostic, not a fluency score",
+    "tokens": 64,
+    "temperature": 0.7,
+    "summary": {
+      "greedy": {
+        "cases": 8,
+        "mean_repeated_fourgram_fraction": 0.25,
+        "cases_with_three_repeats": 0,
+        "completed_words": 95,
+        "words_seen_in_training": 95
+      },
+      "sample": {
+        "cases": 32,
+        "mean_repeated_fourgram_fraction": 0.017418032786885262,
+        "cases_with_three_repeats": 1,
+        "completed_words": 359,
+        "words_seen_in_training": 349
+      }
+    },
+    "cases": [
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "My lord, I have something to say",
+        "continuation": " the world to the sea of the world that I will be the sea of the",
+        "repeated_fourgram_fraction": 0.3770491803278688,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " the better of the contrary.\n\nCORIOLANUS:\nThe senate of the worl",
+        "repeated_fourgram_fraction": 0.11475409836065575,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 9
+      },
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "the sky today is",
+        "continuation": " the seasons of the contrary.\n\nCORIOLANUS:\nThe senate of the wor",
+        "repeated_fourgram_fraction": 0.14754098360655743,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 9
+      },
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "My name is ",
+        "continuation": "the world that I will be the sea of the world that I will be the",
+        "repeated_fourgram_fraction": 0.4426229508196722,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "ROMEO:",
+        "continuation": "\nAnd then the season of the world that I will be the sea of the ",
+        "repeated_fourgram_fraction": 0.2295081967213115,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 13,
+        "words_seen_in_training": 13
+      },
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "Good night,",
+        "continuation": "\nAnd then the season of the world that I will be the sea of the ",
+        "repeated_fourgram_fraction": 0.2295081967213115,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 13,
+        "words_seen_in_training": 13
+      },
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "I love",
+        "continuation": " thee to the sea of the world that I will be the sea of the worl",
+        "repeated_fourgram_fraction": 0.3278688524590164,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "greedy",
+        "temperature": null,
+        "seed": null,
+        "prompt": "To be, or not to ",
+        "continuation": "the seasons of the contrary.\n\nCORIOLANUS:\nThe senate of the worl",
+        "repeated_fourgram_fraction": 0.1311475409836066,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 9
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "My lord, I have something to say",
+        "continuation": " this lady;\nThou and the field's soul, with which we are particu",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " thy father with a world hand\nThat way words. O, prithee, and cl",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "the sky today is",
+        "continuation": " this lamented.\n\nABRAKENBROKE:\nI thought there is the fear'd par",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 9,
+        "words_seen_in_training": 8
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "My name is ",
+        "continuation": "forth of their weaks: the old shame;\nThy heart more man's childr",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "ROMEO:",
+        "continuation": "\nO, he hath thou a world go deserves\nThis entertains and make a ",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "Good night,",
+        "continuation": "\nRevenge to this a word of beat dost thou dishonour's great to h",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "I love",
+        "continuation": " thy father with a world hand\nThat way words. O, prithee, and cl",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 104729,
+        "prompt": "To be, or not to ",
+        "continuation": "command by,\nWhose arms he mad, be my severeign is the\nhave drunk",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "My lord, I have something to say",
+        "continuation": ",\nThe same the inherital rimal Angelo,\nAnd not here hold will go",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 8
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "The king is dead, and we must now",
+        "continuation": ",\nWhich they say she is one and be person,\nI shall sering the he",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "the sky today is",
+        "continuation": " to see unlook'd his father,\nThat I have made thee too quickly s",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "My name is ",
+        "continuation": "the matter's seemed will not shall dispatch him or those that is",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "ROMEO:",
+        "continuation": "\nOn say your office the news of\nBe remorse of the other lords it",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "Good night,",
+        "continuation": "\nRichard count the lords, that 'em not,\nI'll pray you.\n\nJULIET:\n",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "I love",
+        "continuation": "d the same the injuries,\nOr any fear that he shall revenge and t",
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 130363,
+        "prompt": "To be, or not to ",
+        "continuation": "sleep she mine ere or good servant the blood of our fratter\nNigh",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "My lord, I have something to say",
+        "continuation": ".\n\nKING RICHARD III:\nSpeak his nobleness, as free, as your heart",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 1,
+        "completed_words": 9,
+        "words_seen_in_training": 9
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "The king is dead, and we must now",
+        "continuation": ",\nHere should not so much deed to the proudest:\nHe has a preserv",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "the sky today is",
+        "continuation": " out,\nAnd bring thee of your hearts with thy honour three the wa",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "My name is ",
+        "continuation": "the triumph-steel to my war,\nI think whom I send them was the wa",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 13,
+        "words_seen_in_training": 13
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "ROMEO:",
+        "continuation": "\nI revength to hear me, we do here to strike him that you.\n\nFirs",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "Good night,",
+        "continuation": "\nI prithee to the stomach of the sun.\n\nSecond Watchman:\nBut here",
+        "repeated_fourgram_fraction": 0.049180327868852514,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "I love",
+        "continuation": "r live thy known but there for thee.\n\nMOPSA:\nIt is coming the wa",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 155921,
+        "prompt": "To be, or not to ",
+        "continuation": "the sun open speak;\nBut we do his strength with him three the wa",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "My lord, I have something to say",
+        "continuation": " thee,\nAnd she will tell the earth of youth.\n\nRICHMOND:\nWhat, sh",
+        "repeated_fourgram_fraction": 0.032786885245901676,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "The king is dead, and we must now",
+        "continuation": " their fault rest straight and for then by such a villain may ma",
+        "repeated_fourgram_fraction": 0.016393442622950838,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "the sky today is",
+        "continuation": " the times of the mother shall be precious lord,\nStand to the of",
+        "repeated_fourgram_fraction": 0.06557377049180324,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 11
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "My name is ",
+        "continuation": "present him his news?\n\nDUKE OF YORK:\nAy, yes, that have you to b",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 12,
+        "words_seen_in_training": 12
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "ROMEO:",
+        "continuation": "\nSir, my think with us: I have done,\nAs I'll not remains, or tha",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 13,
+        "words_seen_in_training": 13
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "Good night,",
+        "continuation": "\nThen morning stoops my brother such as by the cause of your sol",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 11,
+        "words_seen_in_training": 10
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "I love",
+        "continuation": "'s to me,\nAnd then will and fall'n that by such a villain may ma",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 14,
+        "words_seen_in_training": 14
+      },
+      {
+        "mode": "sample",
+        "temperature": 0.7,
+        "seed": 196613,
+        "prompt": "To be, or not to ",
+        "continuation": "me.\n\nQUEEN ELIZABETH:\nThat I do prove your honour, belike thee a",
+        "repeated_fourgram_fraction": 0.0,
+        "positions_starting_three_repeats": 0,
+        "completed_words": 10,
+        "words_seen_in_training": 10
+      }
+    ]
+  },
+  "rtl_generation": {
+    "verified": true,
+    "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+    "prompt": "My lord, I have something to say",
+    "generated": "My lord, I have something to say against my word",
+    "decoding": {
+      "mode": "sample",
+      "seed": 92617660,
+      "temperature": 0.7
+    },
+    "tokens": [
+      {
+        "character": " ",
+        "cycles": 34236950,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.989341617021246e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 4.304788922659952e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 6.21135107214954e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 1.174443590912233e-05,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 1.5938588342478965e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 5.723382201949789e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 3.510644089876891e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 1.0011168151136118e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 37.50385320800706,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.3344963788986206,
+          "token_id": 1,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "a",
+        "cycles": 34247381,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.7483744684531075e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.7319961698756288e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 5.385339013175283e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 9.977459480836615e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 2.3775219797350644e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 4.475127761693898e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 4.803955089838219e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 8.204397238809058e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.91371320799226,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.09953165054321289,
+          "token_id": 39,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "g",
+        "cycles": 34259932,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.471239142431969e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.201983094225369e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 4.6943474085736625e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 6.552664680192777e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 1.8950875255718813e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 4.253939762222103e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 4.7423181170902495e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 7.096292225505785e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.91110983397812,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.5062462091445923,
+          "token_id": 45,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "a",
+        "cycles": 34240448,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.372243699255705e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.974584437571593e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 6.353486179833112e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 1.0056839977679033e-05,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 2.6305358242773025e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 6.1953044130369506e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 6.737869623907322e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 8.374784763454102e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 39.048629832977895,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.8806771636009216,
+          "token_id": 39,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "i",
+        "cycles": 34236066,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.6278067259966065e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 4.796403790585657e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 4.866256775315492e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 7.253524227923691e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.704346966254546e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 8.271297199158312e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 4.968433023333496e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 8.326759428634034e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 39.096465542010264,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.5099796652793884,
+          "token_id": 47,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "n",
+        "cycles": 34200752,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 3.0654222689108224e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 4.0245620842593866e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 5.452062083133313e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 6.951301543267618e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.5540817584500672e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 8.70119340046216e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 2.331902630159366e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 3.3082622297175845e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.466904166998575,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.8787463307380676,
+          "token_id": 52,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "s",
+        "cycles": 34233942,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.480262685899959e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.7502055372229393e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 5.991694067120079e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 1.1584271073949992e-05,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.7821132581328243e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 9.245394421597553e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 1.0312742259044327e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 1.4346332173897913e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.85276470798999,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.994991660118103,
+          "token_id": 57,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "t",
+        "cycles": 34218889,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.250794757685526e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.5280030072915025e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 5.213807065640452e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 9.767108235969602e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 4.982811335318971e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 9.632351460786559e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 7.967293409461007e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 1.2585875294734983e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.65768233302515,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.7221341729164124,
+          "token_id": 58,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": " ",
+        "cycles": 34242439,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 3.3302460558104485e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.754132807731736e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 4.46939588716333e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 8.204993673821548e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.969305149897906e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 7.489143825090139e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 1.4829851506525937e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 1.3910315566079134e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.906573333981214,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.6684888601303101,
+          "token_id": 1,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "m",
+        "cycles": 34274783,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.197354928568096e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.5192015861440495e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 4.296329928488163e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 1.0864240735486419e-05,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.071343869093246e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 6.816818484800535e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 8.266155528957597e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 2.5861500785318015e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 39.15098974999273,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.1725062131881714,
+          "token_id": 51,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "y",
+        "cycles": 34272228,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.4079719167513502e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.5057257112836027e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 6.2271358016730005e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 9.46388473010984e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.5672716378609692e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 1.1425958734712083e-05,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 7.230420934201121e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 7.209205479252745e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 39.20478416699916,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.6203989386558533,
+          "token_id": 63,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": " ",
+        "cycles": 34254613,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.7584354093113106e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 4.874664260912098e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 9.991348658644483e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 1.007878079839486e-05,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 4.274296926398691e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 7.046808395472226e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 6.834024528501459e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 1.010931699685358e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.84509183300543,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.6497106552124023,
+          "token_id": 1,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "w",
+        "cycles": 34241802,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.669909694219541e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 4.3615222686810284e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 5.315354132395811e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 9.911358672898274e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.841426543305104e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 6.132780349332734e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 7.763458453879934e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 7.237393581105422e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 39.18461187501089,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.9784256219863892,
+          "token_id": 61,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "o",
+        "cycles": 34243230,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.729950979940554e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.2119728814450355e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 5.301028558335474e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 8.371663817285935e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 2.1152100324606238e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 4.586702979869628e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 2.0180919661771934e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 2.764245190106651e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 38.63037212501513,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.7988379597663879,
+          "token_id": 53,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "r",
+        "cycles": 34243894,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 2.8529609870098227e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.0159487518499617e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 4.625600188656875e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 8.182606833884165e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 1.773682371419838e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 4.680987217398069e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 2.707830956266699e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 4.369404317250414e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 37.21897395901033,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.40708839893341064,
+          "token_id": 56,
+          "temperature": 0.7
+        }
+      },
+      {
+        "character": "d",
+        "cycles": 34264389,
+        "launches": 1571,
+        "accuracy": {
+          "embedding": {
+            "max_absolute_error": 2.9802322387695312e-08,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block0_block": {
+            "max_absolute_error": 3.3073170033759425e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block1_block": {
+            "max_absolute_error": 3.676379723094314e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block2_block": {
+            "max_absolute_error": 6.068707723017042e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "block3_block": {
+            "max_absolute_error": 8.385868966342969e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "final_norm": {
+            "max_absolute_error": 3.5993122775579423e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "logits": {
+            "max_absolute_error": 7.505660882145548e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "probabilities": {
+            "max_absolute_error": 7.104018461268069e-07,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          },
+          "sampling_probabilities": {
+            "max_absolute_error": 1.0543097848092486e-06,
+            "rtol": 0.0005,
+            "atol": 5e-05
+          }
+        },
+        "wall_seconds": 37.011101500014775,
+        "simulation": {
+          "backend": "verilator",
+          "trace": false
+        },
+        "selection": {
+          "mode": "sample",
+          "draw": 0.5756611824035645,
+          "token_id": 42,
+          "temperature": 0.7
+        }
+      }
+    ],
+    "cycles": 547911738,
+    "cpu_reference_matches": true,
+    "source_result": "build/model-quality-v2/rtl-user-prompt/result.json"
+  },
+  "note": "All diagnostic outputs retained; corpus-word coverage is only a spelling proxy"
+}

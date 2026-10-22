@@ -1,0 +1,44 @@
+{
+  "verified_at": "2026-10-15T14:18:59.174108+00:00",
+  "scope": "Session checkpoint reload and live deployment; not a new full hardware regression",
+  "cause": "Existing browser and terminal processes predated the code and checkpoint upgrade",
+  "previous_live_run": {
+    "checkpoint_sha256": "846b525279aac7f30924e25d263a275c8db6f3db9a6c663c24b47295ed113c47",
+    "prompt": "To be, or not to ",
+    "generated": "To be, or not to the ",
+    "result_path": "build/inference/character_transformer/live/20261015-100012-eda18d43/result.json"
+  },
+  "fresh_live_run": {
+    "verified": true,
+    "checkpoint_sha256": "d63bcfcb293356a5d030e3502ee2c9a8ba9a4d60cf214a36a2920aba88ddd42d",
+    "prompt": "To be, or not to ",
+    "generated": "To be, or not to purg",
+    "decoding": {
+      "mode": "sample",
+      "seed": 2591925365
+    },
+    "cycles": 54556740,
+    "result_path": "build/inference/character_transformer/live/20261015-101704-f52488b5/result.json",
+    "result_sha256": "fbdb676dc6339aac8a7df4fdad7c5582fbdadea4f184540bda410047c0b3185b",
+    "characters": 4,
+    "launches": 2632,
+    "elapsed_seconds": 62.12006333400495
+  },
+  "focused_tests": {
+    "command": "python3 -m unittest tests.test_live_model tests.test_terminal_model -v",
+    "passed": 7,
+    "log": "build/model-upgrade/session-tests.log",
+    "log_sha256": "f3503b3c3d489b94d8658196db8826431cfeb6666faf0a2afa6a3d35ae9c73c3"
+  },
+  "source_sha256": {
+    "snackwell/character_model.py": "a140e8bfe1d3b6a5b89ec971f6c8caf0a46a36a58411ef3f536e8bdd74db3024",
+    "snackwell/cli/model.py": "ac747ae7b7ce9fcc08b882291679a3b403c2fcf198eebd42069fb8c145d360cb",
+    "snackwell/terminal_model.py": "5fb42318a2ce30c84379930a7c1900eae23ac326ed8bd21f01019b07ef1b18bf",
+    "snackwell/live_model.py": "aa456f13ea212791d2b7a531736d9644063a52807c6ee69c4608e3e6446f292c",
+    "snackwell/live_model.html": "73ff196f45491717027d492b653da7781ce1b82d2a98fdab80c7c709b922601a",
+    "tests/test_terminal_model.py": "85b747da1adbd3abeba4f81d9dbad94a6628189e14f04a6d38b24de3a401c1c5",
+    "tests/test_live_model.py": "3518fb9bff80c129e7e18ca916a14ae341ea7bb84a161ab6e9bca2edf438ae22"
+  },
+  "screenshot": "build/model-upgrade/live-session-fixed.png",
+  "terminal_note": "Pre-upgrade terminal process must be quit and restarted once to load new Python code"
+}

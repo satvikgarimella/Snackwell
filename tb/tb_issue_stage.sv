@@ -27,11 +27,7 @@ module tb_issue_stage;
     logic       mark_busy_enable;
     logic [1:0] mark_busy_warp_id;
     logic [3:0] mark_busy_reg;
-
-
-    // =================================================
     // DUT
-    // =================================================
 
     issue_stage dut (
 
@@ -63,11 +59,7 @@ module tb_issue_stage;
         .mark_busy_reg        (mark_busy_reg)
 
     );
-
-
-    // =================================================
     // WAVEFORM
-    // =================================================
 
     initial begin
 
@@ -75,11 +67,7 @@ module tb_issue_stage;
         $dumpvars(0, tb_issue_stage);
 
     end
-
-
-    // =================================================
     // EXPECT HELPER
-    // =================================================
 
     task expect_result (
         input logic expected_accept,
@@ -92,7 +80,6 @@ module tb_issue_stage;
 
             #1;
 
-
             if (issue_accept !== expected_accept) begin
 
                 $display(
@@ -104,7 +91,6 @@ module tb_issue_stage;
                 $fatal;
 
             end
-
 
             if (
                 dependency_stall !==
@@ -121,7 +107,6 @@ module tb_issue_stage;
 
             end
 
-
             if (
                 resource_stall !==
                 expected_resource_stall
@@ -136,7 +121,6 @@ module tb_issue_stage;
                 $fatal;
 
             end
-
 
             if (
                 mark_busy_enable !==
@@ -153,7 +137,6 @@ module tb_issue_stage;
 
             end
 
-
             $display(
                 "PASS: accept=%b dep_stall=%b resource_stall=%b mark_busy=%b",
                 issue_accept,
@@ -165,11 +148,7 @@ module tb_issue_stage;
         end
 
     endtask
-
-
-    // =================================================
     // MAIN TEST
-    // =================================================
 
     initial begin
 
@@ -189,16 +168,12 @@ module tb_issue_stage;
 
         execution_unit_ready = 1'b1;
 
-
         $display("");
         $display("=== Snackwell Issue Stage Test ===");
         $display("");
 
-
-        // =================================================
         // TEST 1
         // NO CANDIDATE
-        // =================================================
 
         expect_result(
             1'b0,
@@ -207,17 +182,13 @@ module tb_issue_stage;
             1'b0
         );
 
-
         $display("PASS: invalid candidate does not issue");
         $display("");
 
-
-        // =================================================
         // TEST 2
         // ADD R3,R1,R2
         //
         // Both sources ready.
-        // =================================================
 
         candidate_valid   = 1'b1;
         candidate_warp_id = 2'd2;
@@ -235,14 +206,12 @@ module tb_issue_stage;
 
         execution_unit_ready = 1'b1;
 
-
         expect_result(
             1'b1,
             1'b0,
             1'b0,
             1'b1
         );
-
 
         if (
             mark_busy_warp_id !== 2'd2 ||
@@ -257,21 +226,16 @@ module tb_issue_stage;
 
         end
 
-
         $display(
             "PASS: ready ADD instruction accepted"
         );
         $display("");
 
-
-        // =================================================
         // TEST 3
         // RAW HAZARD ON RS1
-        // =================================================
 
         rs1_busy = 1'b1;
         rs2_busy = 1'b0;
-
 
         expect_result(
             1'b0,
@@ -279,22 +243,17 @@ module tb_issue_stage;
             1'b0,
             1'b0
         );
-
 
         $display(
             "PASS: RS1 dependency blocks issue"
         );
         $display("");
 
-
-        // =================================================
         // TEST 4
         // RAW HAZARD ON RS2
-        // =================================================
 
         rs1_busy = 1'b0;
         rs2_busy = 1'b1;
-
 
         expect_result(
             1'b0,
@@ -302,22 +261,17 @@ module tb_issue_stage;
             1'b0,
             1'b0
         );
-
 
         $display(
             "PASS: RS2 dependency blocks issue"
         );
         $display("");
 
-
-        // =================================================
         // TEST 5
         // BOTH SOURCES BUSY
-        // =================================================
 
         rs1_busy = 1'b1;
         rs2_busy = 1'b1;
-
 
         expect_result(
             1'b0,
@@ -326,20 +280,16 @@ module tb_issue_stage;
             1'b0
         );
 
-
         $display(
             "PASS: multiple dependencies block issue"
         );
         $display("");
 
-
-        // =================================================
         // TEST 6
         // UNUSED RS2 MUST NOT CAUSE A STALL
         //
         // Example:
         // ADDI R3,R1,10
-        // =================================================
 
         uses_rs1 = 1'b1;
         uses_rs2 = 1'b0;
@@ -348,7 +298,6 @@ module tb_issue_stage;
         rs1_busy = 1'b0;
         rs2_busy = 1'b1;
 
-
         expect_result(
             1'b1,
             1'b0,
@@ -356,17 +305,13 @@ module tb_issue_stage;
             1'b1
         );
 
-
         $display(
             "PASS: unused RS2 ignored"
         );
         $display("");
 
-
-        // =================================================
         // TEST 7
         // UNUSED RS1 MUST NOT CAUSE A STALL
-        // =================================================
 
         uses_rs1 = 1'b0;
         uses_rs2 = 1'b1;
@@ -374,7 +319,6 @@ module tb_issue_stage;
         rs1_busy = 1'b1;
         rs2_busy = 1'b0;
 
-
         expect_result(
             1'b1,
             1'b0,
@@ -382,17 +326,13 @@ module tb_issue_stage;
             1'b1
         );
 
-
         $display(
             "PASS: unused RS1 ignored"
         );
         $display("");
 
-
-        // =================================================
         // TEST 8
         // EXECUTION UNIT BUSY
-        // =================================================
 
         uses_rs1 = 1'b1;
         uses_rs2 = 1'b1;
@@ -403,29 +343,23 @@ module tb_issue_stage;
 
         execution_unit_ready = 1'b0;
 
-
         expect_result(
             1'b0,
             1'b0,
             1'b1,
             1'b0
         );
-
 
         $display(
             "PASS: execution resource stall detected"
         );
         $display("");
 
-
-        // =================================================
         // TEST 9
         // DEPENDENCY TAKES PRECEDENCE
-        // =================================================
 
         rs1_busy = 1'b1;
         execution_unit_ready = 1'b0;
-
 
         expect_result(
             1'b0,
@@ -434,20 +368,16 @@ module tb_issue_stage;
             1'b0
         );
 
-
         $display(
             "PASS: dependency stall classified correctly"
         );
         $display("");
 
-
-        // =================================================
         // TEST 10
         // EXIT-LIKE INSTRUCTION
         //
         // No sources, no destination.
         // It should issue without allocating scoreboard.
-        // =================================================
 
         uses_rs1  = 1'b0;
         uses_rs2  = 1'b0;
@@ -458,7 +388,6 @@ module tb_issue_stage;
 
         execution_unit_ready = 1'b1;
 
-
         expect_result(
             1'b1,
             1'b0,
@@ -466,19 +395,15 @@ module tb_issue_stage;
             1'b0
         );
 
-
         $display(
             "PASS: source-free instruction issues correctly"
         );
         $display("");
 
-
-        // =================================================
         // TEST 11
         // Destination-less instruction
         //
         // It may issue but must not mark anything busy.
-        // =================================================
 
         uses_rs1  = 1'b1;
         uses_rs2  = 1'b1;
@@ -487,7 +412,6 @@ module tb_issue_stage;
         rs1_busy = 1'b0;
         rs2_busy = 1'b0;
 
-
         expect_result(
             1'b1,
             1'b0,
@@ -495,20 +419,15 @@ module tb_issue_stage;
             1'b0
         );
 
-
         $display(
             "PASS: destination-less instruction does not allocate scoreboard"
         );
-
-
-        // =================================================
 
         $display("");
         $display(
             "Checking destination dependencies"
         );
         $display("");
-
 
         writes_rd = 1'b1;
         rd_busy = 1'b1;

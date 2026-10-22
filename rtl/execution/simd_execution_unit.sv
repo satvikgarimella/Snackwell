@@ -41,11 +41,7 @@ module simd_execution_unit (
     logic [31:0] lane1_result;
     logic [31:0] lane2_result;
     logic [31:0] lane3_result;
-
-
-    // ------------------------------------------------
     // Lane 0
-    // ------------------------------------------------
 
     simd_lane lane0 (
         .clk                (clk),
@@ -71,11 +67,7 @@ module simd_execution_unit (
         .debug_rs2_data     (lane0_rs2),
         .debug_alu_result   (lane0_result)
     );
-
-
-    // ------------------------------------------------
     // Lane 1
-    // ------------------------------------------------
 
     simd_lane lane1 (
         .clk                (clk),
@@ -101,11 +93,7 @@ module simd_execution_unit (
         .debug_rs2_data     (lane1_rs2),
         .debug_alu_result   (lane1_result)
     );
-
-
-    // ------------------------------------------------
     // Lane 2
-    // ------------------------------------------------
 
     simd_lane lane2 (
         .clk                (clk),
@@ -131,11 +119,7 @@ module simd_execution_unit (
         .debug_rs2_data     (lane2_rs2),
         .debug_alu_result   (lane2_result)
     );
-
-
-    // ------------------------------------------------
     // Lane 3
-    // ------------------------------------------------
 
     simd_lane lane3 (
         .clk                (clk),
@@ -161,7 +145,6 @@ module simd_execution_unit (
         .debug_rs2_data     (lane3_rs2),
         .debug_alu_result   (lane3_result)
     );
-
 
     // Pack the four lane outputs onto wider buses.
 

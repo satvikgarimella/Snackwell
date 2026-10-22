@@ -28,7 +28,6 @@ module simd_lane (
     logic [3:0]  reg_write_addr;
     logic [31:0] reg_write_data;
 
-
     always_comb begin
 
         if (debug_write_enable) begin
@@ -48,7 +47,6 @@ module simd_lane (
 
     end
 
-
     register_file regfile (
         .clk          (clk),
         .reset        (reset),
@@ -64,14 +62,12 @@ module simd_lane (
         .write_data   (reg_write_data)
     );
 
-
     integer_alu alu (
         .opcode    (opcode),
         .operand_a (rs1_data),
         .operand_b (rs2_data),
         .result    (alu_result)
     );
-
 
     assign debug_rs1_data   = rs1_data;
     assign debug_rs2_data   = rs2_data;

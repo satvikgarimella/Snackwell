@@ -1,16 +1,10 @@
 module reconvergence_stack (
     input logic clk,
     input logic reset,
-
-    // =================================================
     // WARP SELECTION
-    // =================================================
 
     input logic [1:0] warp_id,
-
-    // =================================================
     // PUSH
-    // =================================================
 
     input logic push_enable,
 
@@ -19,25 +13,17 @@ module reconvergence_stack (
 
     input logic [31:0] push_reconverge_pc,
     input logic [3:0]  push_reconverge_mask,
-
-    // =================================================
     // POP
-    // =================================================
 
     input logic pop_enable,
 
-    // =================================================
     // UPDATE TOP ENTRY
     //
     // Used after switching to the deferred path.
-    // =================================================
 
     input logic update_pending_enable,
     input logic update_deferred_pending,
-
-    // =================================================
     // TOP OF STACK
-    // =================================================
 
     output logic [31:0] top_deferred_pc,
     output logic [3:0]  top_deferred_mask,
@@ -46,10 +32,7 @@ module reconvergence_stack (
     output logic [3:0]  top_reconverge_mask,
 
     output logic top_deferred_pending,
-
-    // =================================================
     // STATUS
-    // =================================================
 
     output logic       empty,
     output logic       full,
@@ -59,20 +42,14 @@ module reconvergence_stack (
     output logic overflow_attempt,
     output logic underflow_attempt
 );
-
-    // =================================================
     // PARAMETERS
-    // =================================================
 
     localparam integer NUM_WARPS   = 4;
     localparam integer STACK_DEPTH = 4;
 
-
-    // =================================================
     // STACK STORAGE
     //
     // [warp][stack entry]
-    // =================================================
 
     logic [31:0] deferred_pc_stack
         [0:NUM_WARPS-1][0:STACK_DEPTH-1];
@@ -89,26 +66,18 @@ module reconvergence_stack (
     logic deferred_pending_stack
         [0:NUM_WARPS-1][0:STACK_DEPTH-1];
 
-
-    // =================================================
     // STACK POINTERS
     //
     // Number of valid entries:
     //
     // 0 = empty
     // 4 = full
-    // =================================================
 
     logic [2:0] stack_depth [0:NUM_WARPS-1];
 
-
     integer w;
     integer s;
-
-
-    // =================================================
     // STATUS
-    // =================================================
 
     assign depth = stack_depth[warp_id];
 
@@ -117,11 +86,7 @@ module reconvergence_stack (
 
     assign full =
         (stack_depth[warp_id] == 3'd4);
-
-
-    // =================================================
     // TOP-OF-STACK READ
-    // =================================================
 
     always @(*) begin
 
@@ -132,7 +97,6 @@ module reconvergence_stack (
         top_reconverge_mask  = 4'b0000;
 
         top_deferred_pending = 1'b0;
-
 
         if (stack_depth[warp_id] != 3'd0) begin
 
@@ -157,7 +121,6 @@ module reconvergence_stack (
 
                 end
 
-
                 3'd2: begin
 
                     top_deferred_pc =
@@ -176,7 +139,6 @@ module reconvergence_stack (
                         deferred_pending_stack[warp_id][1];
 
                 end
-
 
                 3'd3: begin
 
@@ -197,7 +159,6 @@ module reconvergence_stack (
 
                 end
 
-
                 3'd4: begin
 
                     top_deferred_pc =
@@ -217,7 +178,6 @@ module reconvergence_stack (
 
                 end
 
-
                 default: begin
 
                     top_deferred_pc      = 32'd0;
@@ -235,25 +195,16 @@ module reconvergence_stack (
         end
 
     end
-
-
-    // =================================================
     // ERROR STATUS
-    // =================================================
 
     assign overflow_attempt =
         push_enable &&
         full;
 
-
     assign underflow_attempt =
         pop_enable &&
         empty;
-
-
-    // =================================================
     // STACK UPDATE
-    // =================================================
 
     always_ff @(posedge clk) begin
 
@@ -292,11 +243,9 @@ module reconvergence_stack (
 
         else begin
 
-            // =================================================
             // PUSH
             //
             // Highest priority operation.
-            // =================================================
 
             if (
                 push_enable &&
@@ -324,7 +273,6 @@ module reconvergence_stack (
 
                     end
 
-
                     3'd1: begin
 
                         deferred_pc_stack[warp_id][1]
@@ -344,7 +292,6 @@ module reconvergence_stack (
 
                     end
 
-
                     3'd2: begin
 
                         deferred_pc_stack[warp_id][2]
@@ -363,7 +310,6 @@ module reconvergence_stack (
                             <= 1'b1;
 
                     end
-
 
                     3'd3: begin
 
@@ -386,16 +332,11 @@ module reconvergence_stack (
 
                 endcase
 
-
                 stack_depth[warp_id]
                     <= stack_depth[warp_id] + 3'd1;
 
             end
-
-
-            // =================================================
             // POP
-            // =================================================
 
             else if (
                 pop_enable &&
@@ -406,11 +347,7 @@ module reconvergence_stack (
                     <= stack_depth[warp_id] - 3'd1;
 
             end
-
-
-            // =================================================
             // UPDATE TOP DEFERRED-PENDING BIT
-            // =================================================
 
             else if (
                 update_pending_enable &&
@@ -442,6 +379,5 @@ module reconvergence_stack (
         end
 
     end
-
 
 endmodule

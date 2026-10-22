@@ -1,0 +1,1282 @@
+[
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 0,
+    "column": 0,
+    "k": 0,
+    "accumulator": 1
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 0,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 0,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 0,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 1,
+    "column": 0,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 1,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 1,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 1,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 2,
+    "column": 0,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 2,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 2,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 2,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 3,
+    "column": 0,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 3,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 3,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 24,
+    "step": 0,
+    "row": 3,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 0,
+    "column": 0,
+    "k": 1,
+    "accumulator": 1
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 0,
+    "column": 1,
+    "k": 0,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 0,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 0,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 1,
+    "column": 0,
+    "k": 0,
+    "accumulator": 2
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 1,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 1,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 1,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 2,
+    "column": 0,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 2,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 2,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 2,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 3,
+    "column": 0,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 3,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 3,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 46,
+    "step": 1,
+    "row": 3,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 0,
+    "column": 0,
+    "k": 2,
+    "accumulator": 7
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 0,
+    "column": 1,
+    "k": 1,
+    "accumulator": 2
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 0,
+    "column": 2,
+    "k": 0,
+    "accumulator": 2
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 0,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 1,
+    "column": 0,
+    "k": 1,
+    "accumulator": 2
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 1,
+    "column": 1,
+    "k": 0,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 1,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 1,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 2,
+    "column": 0,
+    "k": 0,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 2,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 2,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 2,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 3,
+    "column": 0,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 3,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 3,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 74,
+    "step": 2,
+    "row": 3,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 0,
+    "column": 0,
+    "k": 3,
+    "accumulator": 11
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 0,
+    "column": 1,
+    "k": 2,
+    "accumulator": 5
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 0,
+    "column": 2,
+    "k": 1,
+    "accumulator": 4
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 0,
+    "column": 3,
+    "k": 0,
+    "accumulator": 1
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 1,
+    "column": 0,
+    "k": 2,
+    "accumulator": 2
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 1,
+    "column": 1,
+    "k": 1,
+    "accumulator": 1
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 1,
+    "column": 2,
+    "k": 0,
+    "accumulator": 4
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 1,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 2,
+    "column": 0,
+    "k": 1,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 2,
+    "column": 1,
+    "k": 0,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 2,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 2,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 3,
+    "column": 0,
+    "k": 0,
+    "accumulator": 1
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 3,
+    "column": 1,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 3,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 100,
+    "step": 3,
+    "row": 3,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 0,
+    "column": 0,
+    "k": null,
+    "accumulator": 11
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 0,
+    "column": 1,
+    "k": 3,
+    "accumulator": 13
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 0,
+    "column": 2,
+    "k": 2,
+    "accumulator": 4
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 0,
+    "column": 3,
+    "k": 1,
+    "accumulator": 5
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 1,
+    "column": 0,
+    "k": 3,
+    "accumulator": 3
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 1,
+    "column": 1,
+    "k": 2,
+    "accumulator": 1
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 1,
+    "column": 2,
+    "k": 1,
+    "accumulator": 5
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 1,
+    "column": 3,
+    "k": 0,
+    "accumulator": 2
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 2,
+    "column": 0,
+    "k": 2,
+    "accumulator": 4
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 2,
+    "column": 1,
+    "k": 1,
+    "accumulator": 1
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 2,
+    "column": 2,
+    "k": 0,
+    "accumulator": 0
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 2,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 3,
+    "column": 0,
+    "k": 1,
+    "accumulator": 1
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 3,
+    "column": 1,
+    "k": 0,
+    "accumulator": 0
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 3,
+    "column": 2,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 128,
+    "step": 4,
+    "row": 3,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 0,
+    "column": 0,
+    "k": null,
+    "accumulator": 11
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 0,
+    "column": 1,
+    "k": null,
+    "accumulator": 13
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 0,
+    "column": 2,
+    "k": 3,
+    "accumulator": 8
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 0,
+    "column": 3,
+    "k": 2,
+    "accumulator": 8
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 1,
+    "column": 0,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 1,
+    "column": 1,
+    "k": 3,
+    "accumulator": 3
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 1,
+    "column": 2,
+    "k": 2,
+    "accumulator": 5
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 1,
+    "column": 3,
+    "k": 1,
+    "accumulator": 4
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 2,
+    "column": 0,
+    "k": 3,
+    "accumulator": 7
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 2,
+    "column": 1,
+    "k": 2,
+    "accumulator": 3
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 2,
+    "column": 2,
+    "k": 1,
+    "accumulator": 1
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 2,
+    "column": 3,
+    "k": 0,
+    "accumulator": 0
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 3,
+    "column": 0,
+    "k": 2,
+    "accumulator": 3
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 3,
+    "column": 1,
+    "k": 1,
+    "accumulator": 0
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 3,
+    "column": 2,
+    "k": 0,
+    "accumulator": 2
+  },
+  {
+    "clock": 156,
+    "step": 5,
+    "row": 3,
+    "column": 3,
+    "k": null,
+    "accumulator": 0
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 0,
+    "column": 0,
+    "k": null,
+    "accumulator": 11
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 0,
+    "column": 1,
+    "k": null,
+    "accumulator": 13
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 0,
+    "column": 2,
+    "k": null,
+    "accumulator": 8
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 0,
+    "column": 3,
+    "k": 3,
+    "accumulator": 8
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 1,
+    "column": 0,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 1,
+    "column": 1,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 1,
+    "column": 2,
+    "k": 3,
+    "accumulator": 6
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 1,
+    "column": 3,
+    "k": 2,
+    "accumulator": 4
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 2,
+    "column": 0,
+    "k": null,
+    "accumulator": 7
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 2,
+    "column": 1,
+    "k": 3,
+    "accumulator": 9
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 2,
+    "column": 2,
+    "k": 2,
+    "accumulator": 1
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 2,
+    "column": 3,
+    "k": 1,
+    "accumulator": 2
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 3,
+    "column": 0,
+    "k": 3,
+    "accumulator": 5
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 3,
+    "column": 1,
+    "k": 2,
+    "accumulator": 1
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 3,
+    "column": 2,
+    "k": 1,
+    "accumulator": 2
+  },
+  {
+    "clock": 184,
+    "step": 6,
+    "row": 3,
+    "column": 3,
+    "k": 0,
+    "accumulator": 1
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 0,
+    "column": 0,
+    "k": null,
+    "accumulator": 11
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 0,
+    "column": 1,
+    "k": null,
+    "accumulator": 13
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 0,
+    "column": 2,
+    "k": null,
+    "accumulator": 8
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 0,
+    "column": 3,
+    "k": null,
+    "accumulator": 8
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 1,
+    "column": 0,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 1,
+    "column": 1,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 1,
+    "column": 2,
+    "k": null,
+    "accumulator": 6
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 1,
+    "column": 3,
+    "k": 3,
+    "accumulator": 4
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 2,
+    "column": 0,
+    "k": null,
+    "accumulator": 7
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 2,
+    "column": 1,
+    "k": null,
+    "accumulator": 9
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 2,
+    "column": 2,
+    "k": 3,
+    "accumulator": 4
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 2,
+    "column": 3,
+    "k": 2,
+    "accumulator": 4
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 3,
+    "column": 0,
+    "k": null,
+    "accumulator": 5
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 3,
+    "column": 1,
+    "k": 3,
+    "accumulator": 5
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 3,
+    "column": 2,
+    "k": 2,
+    "accumulator": 2
+  },
+  {
+    "clock": 212,
+    "step": 7,
+    "row": 3,
+    "column": 3,
+    "k": 1,
+    "accumulator": 1
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 0,
+    "column": 0,
+    "k": null,
+    "accumulator": 11
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 0,
+    "column": 1,
+    "k": null,
+    "accumulator": 13
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 0,
+    "column": 2,
+    "k": null,
+    "accumulator": 8
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 0,
+    "column": 3,
+    "k": null,
+    "accumulator": 8
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 1,
+    "column": 0,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 1,
+    "column": 1,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 1,
+    "column": 2,
+    "k": null,
+    "accumulator": 6
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 1,
+    "column": 3,
+    "k": null,
+    "accumulator": 4
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 2,
+    "column": 0,
+    "k": null,
+    "accumulator": 7
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 2,
+    "column": 1,
+    "k": null,
+    "accumulator": 9
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 2,
+    "column": 2,
+    "k": null,
+    "accumulator": 4
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 2,
+    "column": 3,
+    "k": 3,
+    "accumulator": 4
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 3,
+    "column": 0,
+    "k": null,
+    "accumulator": 5
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 3,
+    "column": 1,
+    "k": null,
+    "accumulator": 5
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 3,
+    "column": 2,
+    "k": 3,
+    "accumulator": 4
+  },
+  {
+    "clock": 238,
+    "step": 8,
+    "row": 3,
+    "column": 3,
+    "k": 2,
+    "accumulator": 2
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 0,
+    "column": 0,
+    "k": null,
+    "accumulator": 11
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 0,
+    "column": 1,
+    "k": null,
+    "accumulator": 13
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 0,
+    "column": 2,
+    "k": null,
+    "accumulator": 8
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 0,
+    "column": 3,
+    "k": null,
+    "accumulator": 8
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 1,
+    "column": 0,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 1,
+    "column": 1,
+    "k": null,
+    "accumulator": 3
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 1,
+    "column": 2,
+    "k": null,
+    "accumulator": 6
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 1,
+    "column": 3,
+    "k": null,
+    "accumulator": 4
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 2,
+    "column": 0,
+    "k": null,
+    "accumulator": 7
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 2,
+    "column": 1,
+    "k": null,
+    "accumulator": 9
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 2,
+    "column": 2,
+    "k": null,
+    "accumulator": 4
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 2,
+    "column": 3,
+    "k": null,
+    "accumulator": 4
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 3,
+    "column": 0,
+    "k": null,
+    "accumulator": 5
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 3,
+    "column": 1,
+    "k": null,
+    "accumulator": 5
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 3,
+    "column": 2,
+    "k": null,
+    "accumulator": 4
+  },
+  {
+    "clock": 250,
+    "step": 9,
+    "row": 3,
+    "column": 3,
+    "k": 3,
+    "accumulator": 2
+  }
+]

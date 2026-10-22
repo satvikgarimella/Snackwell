@@ -15,7 +15,6 @@ module tb_instruction_decoder;
     logic [13:0] immediate;
     logic [31:0] immediate_extended;
 
-
     instruction_decoder dut (
 
         .instruction        (instruction),
@@ -31,7 +30,6 @@ module tb_instruction_decoder;
 
     );
 
-
     initial begin
 
         $dumpfile("tb_instruction_decoder.vcd");
@@ -39,19 +37,15 @@ module tb_instruction_decoder;
 
     end
 
-
     initial begin
 
         $display("");
         $display("=== Snackwell Instruction Decoder Test ===");
         $display("");
 
-
-        // ------------------------------------------------
         // TEST 1
         //
         // ADD R3, R1, R2
-        // ------------------------------------------------
 
         instruction = {
             OP_ADD,     // opcode
@@ -62,7 +56,6 @@ module tb_instruction_decoder;
         };
 
         #10;
-
 
         if (opcode !== OP_ADD) begin
             $display("FAIL: ADD opcode");
@@ -84,7 +77,6 @@ module tb_instruction_decoder;
             $fatal;
         end
 
-
         $display(
             "PASS: ADD R%0d, R%0d, R%0d",
             rd_addr,
@@ -92,12 +84,9 @@ module tb_instruction_decoder;
             rs2_addr
         );
 
-
-        // ------------------------------------------------
         // TEST 2
         //
         // SUB R7, R5, R4
-        // ------------------------------------------------
 
         instruction = {
             OP_SUB,
@@ -108,7 +97,6 @@ module tb_instruction_decoder;
         };
 
         #10;
-
 
         if (
             opcode   !== OP_SUB ||
@@ -122,7 +110,6 @@ module tb_instruction_decoder;
 
         end
 
-
         $display(
             "PASS: SUB R%0d, R%0d, R%0d",
             rd_addr,
@@ -130,12 +117,9 @@ module tb_instruction_decoder;
             rs2_addr
         );
 
-
-        // ------------------------------------------------
         // TEST 3
         //
         // ADDI R6, R2, 10
-        // ------------------------------------------------
 
         instruction = {
             OP_ADDI,
@@ -146,7 +130,6 @@ module tb_instruction_decoder;
         };
 
         #10;
-
 
         if (
             opcode             !== OP_ADDI ||
@@ -160,7 +143,6 @@ module tb_instruction_decoder;
 
         end
 
-
         $display(
             "PASS: ADDI R%0d, R%0d, %0d",
             rd_addr,
@@ -168,12 +150,9 @@ module tb_instruction_decoder;
             immediate_extended
         );
 
-
-        // ------------------------------------------------
         // TEST 4
         //
         // Negative immediate = -1
-        // ------------------------------------------------
 
         instruction = {
             OP_ADDI,
@@ -184,7 +163,6 @@ module tb_instruction_decoder;
         };
 
         #10;
-
 
         if (immediate_extended !== 32'hFFFFFFFF) begin
 
@@ -197,14 +175,10 @@ module tb_instruction_decoder;
 
         end
 
-
         $display(
             "PASS: negative immediate sign extension = %h",
             immediate_extended
         );
-
-
-        // ------------------------------------------------
 
         $display("");
         $display("ALL INSTRUCTION DECODER TESTS PASSED");

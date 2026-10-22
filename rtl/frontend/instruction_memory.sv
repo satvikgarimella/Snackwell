@@ -1,20 +1,29 @@
 module instruction_memory #(
     parameter integer WORDS = 1024,
-    parameter INIT_FILE = ""
+    parameter INIT_FILE = "",
+    parameter bit HOST_WRITABLE = 0,
+    parameter bit SIMULATION_INIT = 1
 ) (
     input  logic [31:0] pc,
-    output logic [31:0] instruction
+    output logic [31:0] instruction,
+    input  logic        clk,
+    input  logic        host_write_enable,
+    input  logic [9:0]  host_word_address,
+    input  logic [31:0] host_write_data,
+    output logic [31:0] host_read_data
 );
     import snackwell_pkg::*;
     localparam logic [31:0] EXIT_INSTRUCTION = {OP_EXIT, 26'd0};
+    localparam integer ADDRESS_BITS = $clog2(WORDS);
     logic [31:0] memory [0:WORDS-1];
-    string program_file;
-    integer file_handle;
-
-    initial begin
+`ifndef SYNTHESIS
+    if (SIMULATION_INIT) begin : simulation_image
+        string program_file;
+        integer file_handle;
+        initial begin
         if (WORDS < 4) $fatal(1, "Instruction memory needs at least four words");
         program_file = INIT_FILE;
-        // Simulation program loading; no runtime instruction-write bus yet.
+        // Legacy simulation loading. The FPGA device uses the host port instead.
         if ($value$plusargs("PROGRAM=%s", program_file)) begin end
         for (integer i = 0; i < WORDS; i = i + 1)
             memory[i] = program_file == "" ? 32'd0 : EXIT_INSTRUCTION;
@@ -30,13 +39,25 @@ module instruction_memory #(
             memory[2] = {OP_XOR, 4'd5, 4'd1, 4'd2, 14'd0};
             memory[3] = EXIT_INSTRUCTION;
         end
+        end
+    end
+`endif
+
+    if (HOST_WRITABLE) begin : host_port
+        always_ff @(posedge clk)
+            if (host_write_enable && {22'd0, host_word_address} < WORDS)
+                memory[host_word_address] <= host_write_data;
+        assign host_read_data = {22'd0, host_word_address} < WORDS
+            ? memory[host_word_address] : EXIT_INSTRUCTION;
+    end else begin : no_host_port
+        assign host_read_data = 32'd0;
     end
 
     // Never wrap a high or unaligned PC back into another instruction.
     // Invalid fetches halt via EXIT; this version has no instruction trap.
     always @(*) begin
         instruction = EXIT_INSTRUCTION;
-        if (pc[1:0] == 2'b0 && pc[31:2] < WORDS)
-            instruction = memory[pc[31:2]];
+        if (pc[1:0] == 2'b0 && {2'b0, pc[31:2]} < WORDS)
+            instruction = memory[pc[ADDRESS_BITS+1:2]];
     end
 endmodule

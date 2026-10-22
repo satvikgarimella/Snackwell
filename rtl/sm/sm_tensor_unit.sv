@@ -1,6 +1,6 @@
 // Register-file adapter for TMUL: four vector registers per row-major tile.
 // Owns both read ports for four gather cycles, then releases them while the
-// word-interface tensor core runs. The destination reservation lasts until
+// systolic array runs. The destination reservation lasts until
 // the last row actually commits through the SM's shared writeback port.
 module sm_tensor_unit (
     input  logic         clk,
@@ -30,16 +30,15 @@ module sm_tensor_unit (
     output logic         row_last,
     input  logic         last_row_committed
 );
-    typedef enum logic [2:0] {IDLE, GATHER, LOAD, START, RESULT, COMMIT} state_t;
+    // Keep trace state IDs stable; state 2 was the former serial operand load.
+    typedef enum logic [2:0] {IDLE=0, GATHER=1, START=3, RESULT=4, COMMIT=5} state_t;
     state_t state;
     logic [3:0] a_base, b_base, d_base;
     logic [1:0] gather_row;
-    logic [4:0] load_word;
+    logic [1:0] result_row;
     logic [511:0] a_tile, b_tile;
-    logic [95:0] row_buffer;
-    wire load_ready, start_ready, result_valid, result_ready, result_last;
-    wire [3:0] result_index;
-    wire [31:0] result_data;
+    wire start_ready, result_valid;
+    wire [511:0] result_tile;
 
     assign request_ready = state == IDLE && !reset;
     assign busy = state != IDLE;
@@ -47,23 +46,19 @@ module sm_tensor_unit (
     assign read_a_addr = a_base + {2'd0, gather_row};
     assign read_b_addr = b_base + {2'd0, gather_row};
     assign destination_mask = busy ? (16'h000f << d_base) : 16'd0;
-    assign row_valid = state == RESULT && result_valid && result_index[1:0] == 2'd3;
-    assign row_data = {result_data, row_buffer};
-    assign row_rd_addr = d_base + {2'd0, result_index[3:2]};
-    assign row_last = result_last;
-    assign result_ready = state == RESULT && (result_index[1:0] != 2'd3 || row_ready);
+    assign row_valid = state == RESULT && result_valid;
+    assign row_data = result_tile[result_row*128 +: 128];
+    assign row_rd_addr = d_base + {2'd0, result_row};
+    assign row_last = row_valid && result_row == 2'd3;
 
-    tensor_core tensor (
+    systolic_array_4x4 tensor (
         .clk(clk), .reset(reset),
         // As with SIMD FP, pausing SM issue does not strand an accepted job.
         .enable(1'b1),
-        .load_valid(state == LOAD), .load_ready(load_ready),
-        .load_matrix_b(load_word[4]), .load_index(load_word[3:0]),
-        .load_data(load_word[4] ? b_tile[load_word[3:0]*32 +: 32]
-                               : a_tile[load_word[3:0]*32 +: 32]),
-        .start_valid(state == START), .start_ready(start_ready), .busy(),
-        .result_valid(result_valid), .result_ready(result_ready),
-        .result_index(result_index), .result_data(result_data), .result_last(result_last)
+        .request_valid(state == START), .request_ready(start_ready), .busy(),
+        .a_tile(a_tile), .b_tile(b_tile),
+        .result_valid(result_valid), .result_ready(row_last && row_ready),
+        .result_tile(result_tile), .step_index(), .step_advance(), .pe_done_mask()
     );
 
     always_ff @(posedge clk) begin
@@ -75,10 +70,9 @@ module sm_tensor_unit (
             d_base <= 4'd0;
             row_write_mask <= 4'd0;
             gather_row <= 2'd0;
-            load_word <= 5'd0;
+            result_row <= 2'd0;
             a_tile <= 512'd0;
             b_tile <= 512'd0;
-            row_buffer <= 96'd0;
         end else begin
             case (state)
                 IDLE: if (request_valid && request_ready) begin
@@ -88,25 +82,20 @@ module sm_tensor_unit (
                     d_base <= request_d_base;
                     row_write_mask <= request_write_mask;
                     gather_row <= 2'd0;
+                    result_row <= 2'd0;
                     state <= GATHER;
                 end
                 GATHER: begin
                     a_tile[gather_row*128 +: 128] <= read_a_data;
                     b_tile[gather_row*128 +: 128] <= read_b_data;
                     if (gather_row == 2'd3) begin
-                        load_word <= 5'd0;
-                        state <= LOAD;
+                        state <= START;
                     end else gather_row <= gather_row + 2'd1;
                 end
-                LOAD: if (load_ready) begin
-                    if (load_word == 5'd31) state <= START;
-                    else load_word <= load_word + 5'd1;
-                end
                 START: if (start_ready) state <= RESULT;
-                RESULT: if (result_valid && result_ready) begin
-                    if (result_index[1:0] != 2'd3)
-                        row_buffer[result_index[1:0]*32 +: 32] <= result_data;
-                    if (result_last) state <= COMMIT;
+                RESULT: if (row_valid && row_ready) begin
+                    if (row_last) state <= COMMIT;
+                    else result_row <= result_row + 2'd1;
                 end
                 COMMIT: if (last_row_committed) state <= IDLE;
                 default: state <= IDLE;

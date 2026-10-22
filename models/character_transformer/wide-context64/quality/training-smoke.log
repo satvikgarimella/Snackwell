@@ -1,0 +1,6 @@
+/Users/satvik.garimella/Snackwell/build/model-venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+Initial validation loss: 4.1823
+step 2: train=4.2088, val=4.1775
+Selected step 2; test loss=4.1780; unigram=3.3620
+Exported 953 parameters to build/model-quality-v3/training-smoke/checkpoint.json

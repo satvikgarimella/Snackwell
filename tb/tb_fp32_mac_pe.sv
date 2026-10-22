@@ -3,10 +3,38 @@ module tb_fp32_mac_pe;
     logic clk = 0, reset = 1, clear = 0;
     logic step_valid = 0, a_valid = 0, b_valid = 0, advance = 0;
     logic [31:0] a_data = 0, b_data = 0;
-    wire step_ready, step_done, a_out_valid, b_out_valid;
+    wire step_ready, step_done, a_out_valid, b_out_valid, arithmetic_busy;
     wire [31:0] a_out, b_out, accumulator;
+    integer early_advances = 0, sum_forwards = 0;
     fp32_mac_pe dut (.*);
     always #5 clk = ~clk;
+    always @(posedge clk) begin
+        if (!reset && !clear) begin
+            if (advance && step_done && arithmetic_busy) early_advances = early_advances + 1;
+            if (dut.add_start && dut.add_done) sum_forwards = sum_forwards + 1;
+        end
+    end
+
+    task automatic queue_product(input logic [31:0] a, b);
+        integer cycles;
+        begin
+            @(negedge clk);
+            if (!step_ready) $fatal(1, "PE not ready for overlapped multiplication");
+            a_valid = 1; b_valid = 1; a_data = a; b_data = b; step_valid = 1;
+            @(negedge clk);
+            step_valid = 0;
+            cycles = 0;
+            while (!step_done && cycles < 20) begin
+                @(negedge clk);
+                cycles = cycles + 1;
+            end
+            if (!step_done) $fatal(1, "Overlapped PE stalled");
+            advance = 1;
+            @(negedge clk);
+            advance = 0;
+            if (a_out !== a || b_out !== b) $fatal(1, "Overlapped tokens were corrupted");
+        end
+    endtask
 
     task automatic do_step(input logic av, bv, input logic [31:0] a, b, expected);
         integer cycles;
@@ -29,6 +57,7 @@ module tb_fp32_mac_pe;
                 cycles = cycles + 1;
             end
             if (!step_done) $fatal(1, "MAC timeout");
+            while (arithmetic_busy) @(negedge clk);
             if (expected[30:23] == 8'hff && expected[22:0] != 0) begin
                 if (accumulator[30:23] !== 8'hff || (|accumulator[22:0]) !== 1'b1)
                     $fatal(1, "Expected NaN, got %h", accumulator);
@@ -68,6 +97,19 @@ module tb_fp32_mac_pe;
         do_step(1, 1, 32'h3f800001, 32'h3f7ffffe, 32'h00000000);
         do_step(1, 1, 32'h00000001, 32'h3f800000, 32'h00000001);
         $display("PASS: non-fused rounding and subnormal accumulation");
+
+        @(negedge clk); clear = 1;
+        @(negedge clk); clear = 0;
+        queue_product(32'h3f800000, 32'h3f800000);
+        queue_product(32'h3f800000, 32'h3f800000);
+        // A zero product returns early and must wait for the preceding sum.
+        queue_product(32'h00000000, 32'h3f800000);
+        queue_product(32'hc0000000, 32'h3f800000);
+        while (arithmetic_busy) @(negedge clk);
+        if (accumulator !== 0 || early_advances == 0 || sum_forwards == 0)
+            $fatal(1, "Missing/corrupt MAC overlap: acc=%h advances=%0d forwards=%0d",
+                accumulator, early_advances, sum_forwards);
+        $display("PASS: overlapping multiplication/addition and same-edge sum forwarding");
 
         for (integer use_reset = 0; use_reset < 2; use_reset = use_reset + 1) begin
             @(negedge clk);

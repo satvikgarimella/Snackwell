@@ -2,29 +2,20 @@ module snackwell_sm (
     input logic clk,
     input logic reset,
     input logic run_enable,
-
-    // =================================================
     // WARP LAUNCH
-    // =================================================
 
     input logic        launch_enable,
     input logic [1:0]  launch_warp_id,
     input logic [31:0] launch_pc,
     input logic [3:0]  launch_active_mask,
-
-    // =================================================
     // DEBUG REGISTER PRELOAD
-    // =================================================
 
     input logic        debug_write_enable,
     input logic [1:0]  debug_warp_id,
     input logic [1:0]  debug_lane_id,
     input logic [3:0]  debug_reg_addr,
     input logic [31:0] debug_write_data,
-
-    // =================================================
     // ISSUE / SCHEDULER STATUS
-    // =================================================
 
     output logic       issue_valid,
     output logic       issue_accept,
@@ -35,41 +26,26 @@ module snackwell_sm (
     output logic [5:0]  opcode,
 
     output logic [3:0] selected_active_mask,
-
-    // =================================================
     // WARP STATUS
-    // =================================================
 
     output logic [3:0] valid_mask,
     output logic [3:0] ready_mask,
     output logic [3:0] halted_mask,
     output logic [3:0] blocked_mask,
-
-    // =================================================
     // STALL STATUS
-    // =================================================
 
     output logic dependency_stall,
     output logic resource_stall,
-
-    // =================================================
     // EXECUTION DEBUG
-    // =================================================
 
     output logic [127:0] rs1_data,
     output logic [127:0] rs2_data,
     output logic [127:0] alu_result,
-
-    // =================================================
     // SHARED MEMORY DEBUG
-    // =================================================
 
     output logic       shared_bank_conflict,
     output logic [3:0] shared_conflict_mask,
-
-    // =================================================
     // SIMT CONTROL-FLOW DEBUG
-    // =================================================
 
     output logic       branch_divergent,
     output logic [3:0] branch_taken_mask,
@@ -77,17 +53,20 @@ module snackwell_sm (
 
     output logic       reconvergence_event
 );
-
-
-    // =================================================
     // COMPLETE SNACKWELL SM
-    // =================================================
 
     multiwarp_execution_core core (
 
         .clk                     (clk),
         .reset                   (reset),
         .run_enable              (run_enable),
+        .host_program_write(1'b0), .host_program_address(10'd0), .host_program_data(32'd0),
+        .host_program_read_data(),
+        .host_memory_valid(1'b0), .host_memory_ready(), .host_memory_write(1'b0),
+        .host_memory_address(10'd0), .host_memory_data(32'd0),
+        .host_memory_response_valid(), .host_memory_response_ready(1'b0),
+        .host_memory_read_data(), .execution_idle(),
+
 
         .launch_enable           (launch_enable),
         .launch_warp_id          (launch_warp_id),
@@ -132,6 +111,5 @@ module snackwell_sm (
         .reconvergence_event     (reconvergence_event)
 
     );
-
 
 endmodule

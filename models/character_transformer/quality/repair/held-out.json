@@ -1,0 +1,93 @@
+{
+  "verified": true,
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "evaluated_tokens": 256,
+  "loss": 1.6052631310600534,
+  "perplexity": 4.979169604557276,
+  "accuracy": 0.546875,
+  "unigram_loss": 3.3767879390135325,
+  "improves_unigram": true,
+  "cycles": 81981271,
+  "examples": [
+    {
+      "index": 0,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 1.3113021850585938e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10247605
+    },
+    {
+      "index": 1,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 2.6226043701171875e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10247280
+    },
+    {
+      "index": 2,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 1.4007091522216797e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10248754
+    },
+    {
+      "index": 3,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 1.6093254089355469e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10247421
+    },
+    {
+      "index": 4,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 2.205371856689453e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10247050
+    },
+    {
+      "index": 5,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 2.205371856689453e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10247416
+    },
+    {
+      "index": 6,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 2.8014183044433594e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10248082
+    },
+    {
+      "index": 7,
+      "verified": true,
+      "pytorch_accuracy": {
+        "max_absolute_error": 1.996755599975586e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "cycles": 10247663
+    }
+  ]
+}

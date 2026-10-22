@@ -1,0 +1,2 @@
+# Optional: only for CPU reference training/export, not RTL inference.
+torch==2.14.1

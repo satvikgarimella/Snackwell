@@ -1,0 +1,44 @@
+[
+  {
+    "number": 1,
+    "text": "Snackwell can do matrix math now 😎\n\nSince the last update, I’ve added FP32 multiply/add/subtract and a 4×4 systolic array, then connected the tensor unit to the SM with a TMUL instruction.\n\nHere’s how the data moves through it 👇",
+    "asset": "01-sm-architecture.png",
+    "characters": 228
+  },
+  {
+    "number": 2,
+    "text": "First came FP32: FMUL, FADD, and FSUB.\n\nThese take multiple cycles, so the SM has to remember the issuing warp, destination register, and active lanes until the result returns.\n\nDependent instructions wait; independent work can keep running.",
+    "asset": null,
+    "characters": 241
+  },
+  {
+    "number": 3,
+    "text": "Then came the systolic array.\n\nA values move right. B values move down. Each of the 16 processing elements keeps one output value and accumulates four products.\n\nThe animation shows the operands moving and the partial sums building up 👇",
+    "asset": "tensor-flow.mp4",
+    "characters": 236
+  },
+  {
+    "number": 4,
+    "text": "Inside each PE: an FP32 multiplier, an adder, and a local accumulator.\n\nThis version rounds after both operations, so the MAC is non-fused.\n\nThe whole array advances when every PE finishes. Ten logical steps here take more than ten clock cycles.",
+    "asset": "02-processing-element.png",
+    "characters": 245
+  },
+  {
+    "number": 5,
+    "text": "The array now runs through the real SM:\n\nTMUL R8, R0, R4\n\nA lives in R0–R3, B in R4–R7, and C goes to R8–R11. Each register holds one row across four lanes.\n\nAll four destination registers stay reserved until the last result row commits.",
+    "asset": "03-tmul-registers.png",
+    "characters": 237
+  },
+  {
+    "number": 6,
+    "text": "Then I tested the full path.\n\n35/35 testbenches pass. The SM tensor suite checks 185 matrix cases / 2,960 outputs, plus overlapping registers, all 16 lane masks, competing warps, divergence, reset, and writeback backpressure.",
+    "asset": "05-test-results.png",
+    "characters": 225
+  },
+  {
+    "number": 7,
+    "text": "Snackwell now has FP32 execution and its first integrated tensor unit.\n\nIt’s still a fixed 4×4 design with one tensor job at a time, verified in simulation.\n\nNext: shared-memory conflict replay, a small assembler, and the first reusable kernels. More soon!",
+    "asset": null,
+    "characters": 256
+  }
+]

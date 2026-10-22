@@ -24,7 +24,6 @@ module tb_simd_execution_unit;
     logic [127:0] debug_rs2_data;
     logic [127:0] debug_alu_result;
 
-
     simd_execution_unit dut (
         .clk                (clk),
         .reset              (reset),
@@ -47,19 +46,13 @@ module tb_simd_execution_unit;
         .debug_alu_result   (debug_alu_result)
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
         $dumpfile("tb_simd_execution_unit.vcd");
         $dumpvars(0, tb_simd_execution_unit);
     end
-
-
-    // -----------------------------------------
     // Debug preload helper
-    // -----------------------------------------
 
     task preload_register(
         input logic [1:0]  lane,
@@ -83,7 +76,6 @@ module tb_simd_execution_unit;
 
     endtask
 
-
     initial begin
 
         clk = 0;
@@ -102,69 +94,48 @@ module tb_simd_execution_unit;
         debug_write_addr   = 0;
         debug_write_data   = 0;
 
-
         $display("");
         $display("=== Snackwell 4-Lane SIMD Test ===");
         $display("");
-
-
-        // -----------------------------------------
         // RESET
-        // -----------------------------------------
 
         @(posedge clk);
         #1;
 
         reset = 0;
 
-
-        // -----------------------------------------
         // PRELOAD LANE 0
         //
         // R1 = 7
         // R2 = 8
-        // -----------------------------------------
 
         preload_register(2'd0, 4'd1, 32'd7);
         preload_register(2'd0, 4'd2, 32'd8);
 
-
-        // -----------------------------------------
         // PRELOAD LANE 1
         //
         // R1 = 7
         // R2 = 5
-        // -----------------------------------------
 
         preload_register(2'd1, 4'd1, 32'd7);
         preload_register(2'd1, 4'd2, 32'd5);
 
-
-        // -----------------------------------------
         // PRELOAD LANE 2
         //
         // R1 = 20
         // R2 = 30
-        // -----------------------------------------
 
         preload_register(2'd2, 4'd1, 32'd20);
         preload_register(2'd2, 4'd2, 32'd30);
 
-
-        // -----------------------------------------
         // PRELOAD LANE 3
         //
         // R1 = 100
         // R2 = 1
-        // -----------------------------------------
 
         preload_register(2'd3, 4'd1, 32'd100);
         preload_register(2'd3, 4'd2, 32'd1);
-
-
-        // -----------------------------------------
         // BROADCAST ADD R3, R1, R2
-        // -----------------------------------------
 
         rs1_addr = 4'd1;
         rs2_addr = 4'd2;
@@ -173,11 +144,7 @@ module tb_simd_execution_unit;
         opcode = OP_ADD;
 
         #1;
-
-
-        // -----------------------------------------
         // CHECK THE FOUR PARALLEL ALU RESULTS
-        // -----------------------------------------
 
         if (debug_alu_result[31:0] !== 32'd15) begin
             $display("FAIL Lane 0");
@@ -199,7 +166,6 @@ module tb_simd_execution_unit;
             $fatal;
         end
 
-
         $display(
             "PASS ADD results: [%0d, %0d, %0d, %0d]",
             debug_alu_result[31:0],
@@ -207,11 +173,7 @@ module tb_simd_execution_unit;
             debug_alu_result[95:64],
             debug_alu_result[127:96]
         );
-
-
-        // -----------------------------------------
         // WRITE ALL FOUR RESULTS INTO R3
-        // -----------------------------------------
 
         write_enable = 1'b1;
 
@@ -219,16 +181,11 @@ module tb_simd_execution_unit;
         #1;
 
         write_enable = 1'b0;
-
-
-        // -----------------------------------------
         // READ R3 FROM EVERY LANE
-        // -----------------------------------------
 
         rs1_addr = 4'd3;
 
         #1;
-
 
         if (debug_rs1_data[31:0] !== 32'd15) begin
             $display("FAIL Lane 0 R3");
@@ -250,7 +207,6 @@ module tb_simd_execution_unit;
             $fatal;
         end
 
-
         $display(
             "PASS R3 writeback: [%0d, %0d, %0d, %0d]",
             debug_rs1_data[31:0],
@@ -258,11 +214,7 @@ module tb_simd_execution_unit;
             debug_rs1_data[95:64],
             debug_rs1_data[127:96]
         );
-
-
-        // -----------------------------------------
         // SECOND INTEGRATION TEST: SUB R4, R1, R2
-        // -----------------------------------------
 
         rs1_addr = 4'd1;
         rs2_addr = 4'd2;
@@ -271,7 +223,6 @@ module tb_simd_execution_unit;
         opcode = OP_SUB;
 
         #1;
-
 
         if (debug_alu_result[31:0] !== 32'hFFFFFFFF) begin
             $display("FAIL Lane 0 SUB");
@@ -293,11 +244,9 @@ module tb_simd_execution_unit;
             $fatal;
         end
 
-
         $display(
             "PASS SUB broadcast across all lanes"
         );
-
 
         $display("");
         $display("ALL 4-LANE SIMD TESTS PASSED");

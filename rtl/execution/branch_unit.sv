@@ -10,10 +10,7 @@ module branch_unit (
 
     // Already sign-extended immediate
     input  logic [31:0] immediate,
-
-    // ------------------------------------------------
     // BRANCH RESULT
-    // ------------------------------------------------
 
     output logic [3:0] taken_mask,
     output logic [3:0] not_taken_mask,
@@ -25,17 +22,12 @@ module branch_unit (
     output logic [31:0] branch_target,
     output logic [31:0] fallthrough_pc
 );
-
-
-    // =================================================
     // PER-LANE CONDITIONS
-    // =================================================
 
     logic lane0_equal;
     logic lane1_equal;
     logic lane2_equal;
     logic lane3_equal;
-
 
     assign lane0_equal =
         operand_a[31:0] ==
@@ -52,11 +44,7 @@ module branch_unit (
     assign lane3_equal =
         operand_a[127:96] ==
         operand_b[127:96];
-
-
-    // =================================================
     // ACTIVE-LANE BRANCH MASKS
-    // =================================================
 
     assign taken_mask[0] =
         active_mask[0] && lane0_equal;
@@ -70,48 +58,36 @@ module branch_unit (
     assign taken_mask[3] =
         active_mask[3] && lane3_equal;
 
-
     assign not_taken_mask =
         active_mask &
         ~taken_mask;
-
-
-    // =================================================
     // BRANCH CLASSIFICATION
-    // =================================================
 
     assign uniform_taken =
         (active_mask != 4'b0000) &&
         (taken_mask == active_mask);
 
-
     assign uniform_not_taken =
         (active_mask != 4'b0000) &&
         (taken_mask == 4'b0000);
-
 
     assign divergent =
         (taken_mask != 4'b0000) &&
         (not_taken_mask != 4'b0000);
 
-
-    // =================================================
     // PC CALCULATION
     //
     // Branch immediate is treated as an instruction
     // displacement.
     //
     // target = PC + 4 + (imm << 2)
-    // =================================================
 
     assign fallthrough_pc =
         current_pc + 32'd4;
-
 
     assign branch_target =
         current_pc +
         32'd4 +
         (immediate << 2);
-
 
 endmodule

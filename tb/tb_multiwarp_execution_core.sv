@@ -5,29 +5,20 @@ module tb_multiwarp_execution_core;
     logic clk;
     logic reset;
     logic run_enable;
-
-    // ------------------------------------------------
     // WARP LAUNCH INTERFACE
-    // ------------------------------------------------
 
     logic        launch_enable;
     logic [1:0]  launch_warp_id;
     logic [31:0] launch_pc;
     logic [3:0]  launch_active_mask;
-
-    // ------------------------------------------------
     // DEBUG REGISTER PRELOAD
-    // ------------------------------------------------
 
     logic        debug_write_enable;
     logic [1:0]  debug_warp_id;
     logic [1:0]  debug_lane_id;
     logic [3:0]  debug_reg_addr;
     logic [31:0] debug_write_data;
-
-    // ------------------------------------------------
     // DUT OUTPUTS
-    // ------------------------------------------------
 
     logic       issue_valid;
     logic [1:0] selected_warp_id;
@@ -45,17 +36,20 @@ module tb_multiwarp_execution_core;
     logic [127:0] rs1_data;
     logic [127:0] rs2_data;
     logic [127:0] alu_result;
-
-
-    // =================================================
     // DUT
-    // =================================================
 
     multiwarp_execution_core dut (
 
         .clk                  (clk),
         .reset                (reset),
         .run_enable           (run_enable),
+        .host_program_write(1'b0), .host_program_address(10'd0), .host_program_data(32'd0),
+        .host_program_read_data(),
+        .host_memory_valid(1'b0), .host_memory_ready(), .host_memory_write(1'b0),
+        .host_memory_address(10'd0), .host_memory_data(32'd0),
+        .host_memory_response_valid(), .host_memory_response_ready(1'b0),
+        .host_memory_read_data(), .execution_idle(),
+
 
         .launch_enable        (launch_enable),
         .launch_warp_id       (launch_warp_id),
@@ -86,18 +80,10 @@ module tb_multiwarp_execution_core;
         .alu_result           (alu_result)
 
     );
-
-
-    // =================================================
     // CLOCK
-    // =================================================
 
     always #5 clk = ~clk;
-
-
-    // =================================================
     // WAVEFORM
-    // =================================================
 
     initial begin
 
@@ -105,11 +91,7 @@ module tb_multiwarp_execution_core;
         $dumpvars(0, tb_multiwarp_execution_core);
 
     end
-
-
-    // =================================================
     // LAUNCH WARP
-    // =================================================
 
     task launch_warp (
         input logic [1:0]  warp,
@@ -132,11 +114,7 @@ module tb_multiwarp_execution_core;
         end
 
     endtask
-
-
-    // =================================================
     // DEBUG REGISTER WRITE
-    // =================================================
 
     task write_reg (
         input logic [1:0]  warp,
@@ -162,11 +140,7 @@ module tb_multiwarp_execution_core;
         end
 
     endtask
-
-
-    // =================================================
     // MAIN TEST
-    // =================================================
 
     initial begin
 
@@ -185,21 +159,15 @@ module tb_multiwarp_execution_core;
         debug_reg_addr     = 4'd0;
         debug_write_data   = 32'd0;
 
-
         $display("");
         $display("=== Snackwell Multi-Warp Execution Test ===");
         $display("");
-
-
-        // =================================================
         // RESET
-        // =================================================
 
         @(posedge clk);
         #1;
 
         reset = 1'b0;
-
 
         if (valid_mask !== 4'b0000) begin
 
@@ -212,13 +180,8 @@ module tb_multiwarp_execution_core;
 
         end
 
-
         $display("PASS: reset cleared warp state");
-
-
-        // =================================================
         // LAUNCH FOUR WARPS
-        // =================================================
 
         launch_warp(
             2'd0,
@@ -244,9 +207,7 @@ module tb_multiwarp_execution_core;
             4'b1111
         );
 
-
         #1;
-
 
         if (valid_mask !== 4'b1111) begin
 
@@ -259,7 +220,6 @@ module tb_multiwarp_execution_core;
 
         end
 
-
         if (ready_mask !== 4'b1111) begin
 
             $display(
@@ -270,7 +230,6 @@ module tb_multiwarp_execution_core;
             $fatal;
 
         end
-
 
         if (halted_mask !== 4'b0000) begin
 
@@ -283,13 +242,8 @@ module tb_multiwarp_execution_core;
 
         end
 
-
         $display("PASS: four warps launched");
-
-
-        // =================================================
         // PRELOAD REGISTER VALUES
-        // =================================================
 
         // W0
         write_reg(2'd0, 2'd0, 4'd1, 32'd10);
@@ -307,31 +261,22 @@ module tb_multiwarp_execution_core;
         write_reg(2'd3, 2'd0, 4'd1, 32'd40);
         write_reg(2'd3, 2'd0, 4'd2, 32'd4);
 
-
         $display(
             "PASS: independent warp register state loaded"
         );
-
-
-        // =================================================
         // START EXECUTION
-        // =================================================
 
         run_enable = 1'b1;
 
         #1;
 
-
-        // =================================================
         // PC 0
         //
         // ADD R3, R1, R2
-        // =================================================
 
         repeat (4) begin
 
             #1;
-
 
             if (!issue_valid) begin
 
@@ -342,7 +287,6 @@ module tb_multiwarp_execution_core;
                 $fatal;
 
             end
-
 
             if (selected_pc !== 32'h00000000) begin
 
@@ -356,7 +300,6 @@ module tb_multiwarp_execution_core;
 
             end
 
-
             $display(
                 "ISSUE: W%0d PC=%h opcode=%h lane0_result=%0d",
                 selected_warp_id,
@@ -365,28 +308,22 @@ module tb_multiwarp_execution_core;
                 alu_result[31:0]
             );
 
-
             @(posedge clk);
             #1;
 
         end
 
-
         $display(
             "PASS: all four warps executed PC 0"
         );
 
-
-        // =================================================
         // PC 4
         //
         // SUB R4, R1, R2
-        // =================================================
 
         repeat (4) begin
 
             #1;
-
 
             if (!issue_valid) begin
 
@@ -397,7 +334,6 @@ module tb_multiwarp_execution_core;
                 $fatal;
 
             end
-
 
             if (selected_pc !== 32'h00000004) begin
 
@@ -411,7 +347,6 @@ module tb_multiwarp_execution_core;
 
             end
 
-
             $display(
                 "ISSUE: W%0d PC=%h opcode=%h lane0_result=%0d",
                 selected_warp_id,
@@ -420,28 +355,22 @@ module tb_multiwarp_execution_core;
                 alu_result[31:0]
             );
 
-
             @(posedge clk);
             #1;
 
         end
 
-
         $display(
             "PASS: independent warp PCs advanced to PC 4"
         );
 
-
-        // =================================================
         // PC 8
         //
         // XOR R5, R1, R2
-        // =================================================
 
         repeat (4) begin
 
             #1;
-
 
             if (!issue_valid) begin
 
@@ -452,7 +381,6 @@ module tb_multiwarp_execution_core;
                 $fatal;
 
             end
-
 
             if (selected_pc !== 32'h00000008) begin
 
@@ -466,7 +394,6 @@ module tb_multiwarp_execution_core;
 
             end
 
-
             $display(
                 "ISSUE: W%0d PC=%h opcode=%h lane0_result=%0d",
                 selected_warp_id,
@@ -475,19 +402,15 @@ module tb_multiwarp_execution_core;
                 alu_result[31:0]
             );
 
-
             @(posedge clk);
             #1;
 
         end
 
-
         $display(
             "PASS: independent warp PCs advanced to PC 8"
         );
 
-
-        // =================================================
         // EXIT PHASE
         //
         // PC C = EXIT
@@ -495,12 +418,10 @@ module tb_multiwarp_execution_core;
         // IMPORTANT:
         // Re-check halted_mask after #1 so the final
         // nonblocking state update has time to settle.
-        // =================================================
 
         while (halted_mask !== 4'b1111) begin
 
             #1;
-
 
             // The previous clock may have just halted
             // the final remaining warp.
@@ -522,7 +443,6 @@ module tb_multiwarp_execution_core;
 
                 end
 
-
                 if (selected_pc !== 32'h0000000C) begin
 
                     $display(
@@ -535,13 +455,11 @@ module tb_multiwarp_execution_core;
 
                 end
 
-
                 $display(
                     "EXIT: W%0d PC=%h",
                     selected_warp_id,
                     selected_pc
                 );
-
 
                 @(posedge clk);
                 #1;
@@ -549,18 +467,10 @@ module tb_multiwarp_execution_core;
             end
 
         end
-
-
-        // =================================================
         // LET FINAL COMBINATIONAL SIGNALS SETTLE
-        // =================================================
 
         #1;
-
-
-        // =================================================
         // FINAL STATE CHECKS
-        // =================================================
 
         if (halted_mask !== 4'b1111) begin
 
@@ -573,7 +483,6 @@ module tb_multiwarp_execution_core;
 
         end
 
-
         if (ready_mask !== 4'b0000) begin
 
             $display(
@@ -585,7 +494,6 @@ module tb_multiwarp_execution_core;
 
         end
 
-
         if (issue_valid !== 1'b0) begin
 
             $display(
@@ -596,20 +504,17 @@ module tb_multiwarp_execution_core;
 
         end
 
-
         $display("");
         $display("PASS: all four warps reached EXIT");
         $display("PASS: halted warps removed from scheduling");
         $display("PASS: independent PCs preserved");
         $display("PASS: independent register contexts preserved");
 
-
         $display("");
         $display(
             "ALL MULTI-WARP EXECUTION TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

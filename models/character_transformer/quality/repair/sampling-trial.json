@@ -1,0 +1,1742 @@
+{
+  "kind": "CPU-only exploratory sampling diagnostics; no RTL execution",
+  "checkpoints": {
+    "small": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+    "wide": "933a263b2d033eb1477665b7e52c76b25be399350109993893f78e1a25f026f7"
+  },
+  "temperature": 0.7,
+  "context_policy": "periodic_rebuild",
+  "tokens": 96,
+  "note": "Temporary diagnostic uses double-precision truncated CDF sampling. All 64 untruncated continuations match the saved baseline diagnostics. No truncation was added to inference.",
+  "decision": "Rejected: grammar remains weak; repeated-fourgram fraction worsens for both models.",
+  "cases": [
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "text": " 'twas. There's self-seeming in the blood\nLest us in thee to die: I have mark to be knee,\nAnd wh",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "text": " beholding to my bones are the place of of heaven,\nTo every the stars are free, thou wilt deputy",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "text": " a thousand with a man courtesy.\n\nBUCKINGHAM:\nTo men, but thou some leave it some worthy liege;\n",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "text": "lawful.\n\nCORIOLANUS:\nWe took not patience\nHath seement such of the common by this worthy lies: i",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "text": "\nAnd would not present but the reper it may be the profiting court and the throne that the first",
+      "repeated_fourgram_fraction": 0.09677419354838712,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "text": " and wrong'd, but these too help the house of the house, and dishonour the very set my part surm",
+      "repeated_fourgram_fraction": 0.12903225806451613,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "I love",
+      "text": " and turn to-morrow!\nHa, usurp'd the house of the house, and dismiss:\nAnd life to their births.\n",
+      "repeated_fourgram_fraction": 0.10752688172043012,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "text": "have trumpets, or life and the people than in the heavens of enter he done!\n\nMERCUTIO:\nShe have ",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "text": "?\n\nBISHOP OF ELY:\nFor I think thee, the news of the world to my wife;\nBut yourself in my teethfu",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "text": "?\nDear for what we will pough him.\n\nPOMPEY:\nAnd when it were not, for there, to noble\nHad been s",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "text": ", the mask the voices;\nThe and many she people\nTo pating to thrive to seems out of sick and let ",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "My name is ",
+      "text": "you have a very that were in our strike leave as their such a word subjects.\n\nSecond Citizen:\nYo",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "text": "\nStay not from the world, if the strong of the true witness of the traitors,\nWith no and uncles ",
+      "repeated_fourgram_fraction": 0.12903225806451613,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "Good night,",
+      "text": " robberat come to grow the English of the holy to say you, they well,\nShalt not less I have it, ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "I love",
+      "text": "s the last sends and the nearest rest,\nBut the truly old his loving was put out of pe heaven hou",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "text": "you have a very that were last in the pitched and reverends thus;\nAnd therefore is milders and p",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "text": " that other so.\nShe have would didst thou hast livest me,\nAs I prithee, if thou did fitted it th",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "text": " they on the matter?\n\nSecond Citizen:\nAnd let us then here with the meaning the earldent himself",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "text": " their slain,\nAs her hope, take men to the bent of the other distresses\nOf my mind and recont th",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "My name is ",
+      "text": "dooms--\n\nNORTHUMBERLAND:\nThe daughter's head on my own lord?\n\nPOMPEY:\nSay I will have to do you ",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "text": "\nWhat, the borneness of boy:\nBe may that night.\n\nSICINIUS:\nWhat will do not what is my life you ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "Good night,",
+      "text": "\nWhere the bornen of my courage have the ladies of the noble courtesy,\nAnd love him here compare",
+      "repeated_fourgram_fraction": 0.11827956989247312,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "I love",
+      "text": " them must be but to his royal figured\nThe child; and most thou the march and present the sexenc",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "text": "come; it is they are lose, take men winger before it.\n\nKING RICHARD III:\nCall thee all, being th",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 1
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "My lord, I have something to say",
+      "text": " the senatory.\n\nThird Citizen:\nSo much, sir, good carried a belly.\n\nBIONDELLO:\nYea, heaven your ",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "The king is dead, and we must now",
+      "text": " the people yourself.\n\nKING RICHARD IIII:\nThe word is in the duke. Be it begins.\n\nSecond Musicia",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 2
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "the sky today is",
+      "text": " the senate will not saw my life,\nHis wrong and safer of that the tears,\nAnd give you speak'd of",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "My name is ",
+      "text": "no man that you, present him some longst to her,\nAnd the tears here and past choice in the wars\n",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "ROMEO:",
+      "text": "\nThe satisfied of the Romans.\n\nLEONTES:\nSo hath of discontent thee, I have seen;\nAnd soften, and",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "Good night,",
+      "text": " the senate yourself, I can must be good so displace.\n\nHASTINGS:\nWhat is consider's good mother ",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "I love",
+      "text": " the services down.\n\nPARIS:\nO, no, they'll death,\nAnd made a fool. Camillo, journey, for thy fac",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "To be, or not to ",
+      "text": "my hands\nRemost very talk of the king.\nWho do we are the scandal to all,\nAnd for it is to him of",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "text": " 'twas to prove the hours, that he was he had our foul purpose to be a soldiers.\n\nSecond Murdere",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "text": " begins the world\nThat doth he shall be nature the profite,\nWhich all his eyes to the field of t",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "text": " a thousand with a little to king,\nWhich I have been them she may be a son the worst well and wi",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "text": "lawful speech, my lord,\nTo the rest; and I have been them she may be a son the worst well and un",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "text": "\nAnd with thy head, for this hand.\n\nBRUTUS:\nHere is the way that said heart.\n\nKING RICHARD III:\n",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 1
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "text": " and would not present down.\n\nDUKE VINCENTIO:\nSo many here is not a man of the worst well and un",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "I love",
+      "text": " and true revenge of wars: the place of of in the ground;\nFor this comes me, thou wilt thou stre",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "text": "have told the head of father have an execution,\nAnd then died speech first thou taunts the groun",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "text": "?\n\nBRUTUS:\nWe have with the place, that news thee thousand them.\n\nFirst Servant:\nMy lord, and yo",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "text": "?\n\nANGELO:\nWhat, having the place, that make thee thought to put on was put out of peace\nThat wi",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "text": " that man and hour to be point of the pitched and reverends the wars:\nO, with you mean the death",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "My name is ",
+      "text": "with soft but my fault to have it some hears\nThe solemnity, or true, I do wounds must be the fri",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "text": "\nStay not from the world, if the strong of the true with my life?\n\nQUEEN MARGARET:\nMadam, and yo",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "Good night,",
+      "text": " spare for the tribunes, my lord, sir, for the true with my life?\n\nQUEEN MARGARET:\nNo grave of t",
+      "repeated_fourgram_fraction": 0.10752688172043012,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "I love",
+      "text": "d ungening the treasure.\n\nKING RICHARD III:\nAre you will him to the warlike.\n\nSecond Citizen:\nYo",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 1
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "text": "you have a very that were in pin the king of this officers:\nThough the first to mine all the fri",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "text": " that princely world loves,\nAnd now with the prince that a woman,\nFor the better made the sex sh",
+      "repeated_fourgram_fraction": 0.12903225806451613,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "text": " they nothing by,\nTo his royal feastly to have one of lightness, nor my life:\nLet he heaven year",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "text": " the wind.\n\nMENENIUS:\nWhat, I am free, the child. God her brother's man\nThat now shall have you ",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "My name is ",
+      "text": "doth the painted in his brother lay\nWill in his friends that doth much and honest be honour was ",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "text": "\nWhat, the consul, where with a lawful time for my lord.\n\nCORIOLANUS:\nThe country's enemies, and",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "Good night,",
+      "text": "\nWhere we been your eyes sword in this sin.\n\nLUCIO:\nWhat have you have a carried in my people th",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "I love",
+      "text": " thee no man of your friends\nAnd frame the child. God here will she may\nThan the king to himself",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "text": "come. I'll be cruel,\nIn hour fall waters of his friends,\nAnd he will he in his land\nBut in the f",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "My lord, I have something to say",
+      "text": " the senatory.\n\nSecond Murderer:\nI will not desire his happily been a horses are crown,\nThat fol",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "The king is dead, and we must now",
+      "text": " the people with such a deed of the grown of my man\nTo make a secret me, and her crown, sir?\n\nKI",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "the sky today is",
+      "text": " the senate will not say to the seas,\nWith her soft to make a secret me,\nAnd for it is to him of",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "My name is ",
+      "text": "no man that you will part the prince of the fire.\n\nCORIOLANUS:\nCome all the king hope strong is\n",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "ROMEO:",
+      "text": "\nThe satisfied of the blood of the thrust of my man state.\n\nBENVOLIO:\nI say, and home, when I ma",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "Good night,",
+      "text": " the senate will not say no more.\n\nROMEO:\nNor will I welcome it is,\nAnd seem a we will to look a",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "I love",
+      "text": " the senate will not say to the seas, with her soldiers,\nWhen they are the sea, and many now he ",
+      "repeated_fourgram_fraction": 0.10752688172043012,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "To be, or not to ",
+      "text": "my hands\nOr woman to the elder of our world for the sun as I bear the greater of his foul is gon",
+      "repeated_fourgram_fraction": 0.09677419354838712,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "text": " 'twas to prove the hours, that he was in our presently, and for the child, and then were be to ",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "text": " before the world\nThat counterfeit upon the gates of their own straight.\n\nDUKE VINCENTIO:\nHere's",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "text": " a thousand with a man born;\nAnd thou the gods to his country's son of the throne that the first",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "text": "men, to say your body,\nAnd then he was he had our great well.\n\nMENENIUS:\nMy lord.\n\nMERCUTIO:\nWha",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "text": "\nAnd when thou not meet with him,\nAnd the heart is strange, then the children,\nWhere you may to ",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "text": " and would not present but the shall for a hands\nIn the wars and raise the times of my sight.\n\nK",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "I love",
+      "text": " and true revenge their supple of an eyes\nI'll take us to the most bear of the world, and herein",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "text": "have told the head of her, the repart the head.\n\nGLOUCESTER:\nAnd then as the powers, you might h",
+      "repeated_fourgram_fraction": 0.12903225806451613,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "text": ".\n\nANGELO:\nWhat, having the place, that make thee thou wouldst to my body, thou hast a lawful wo",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "text": ".\n\nANGELO:\nWhat, having the place, that make thee thou wouldst to my body, thou hast a lawful wo",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "text": " the one another,\nAnd from all the steel of all,\nThat you will present his sound me fall upon yo",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "My name is ",
+      "text": "would have the tribunes, my lord, sir, be no man.\n\nBUCKINGHAM:\nWhat was thy love here\nI come to ",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "text": "\nSpare my death, better than the strong of the true witness of the traitors,\nWith reign and moth",
+      "repeated_fourgram_fraction": 0.09677419354838712,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "Good night,",
+      "text": " so hear have it into his hand.\n\nMENENIUS:\nWell, that you will presence to the other and the fri",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "I love",
+      "text": ", we may be gone:\nAnd here are the right of a brought with thee, and I do wounds it in this inte",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "text": "the great but is deepen,\nOr shall men the lies streates the proud of Gloucester,\nFor I have may ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "text": " that so sail'd, and love, that let us the children, he was may so much death of sacrets but a g",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "text": " they prove so worthy words.\n\nBRUTUS:\nAy, if you were for a man's head,\nHath not need to command",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "text": " the wind.\n\nMENENIUS:\nWhat, I am free, the child. Go, here your power of here light for me.\n\nBRU",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "My name is ",
+      "text": "doth the painted in his brother lay\nWill have we were discipling of the maids of many that him.\n",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "text": "\nWhat, the consul, where with a marks,\nThat could bear my consent of my life:\nNot a great though",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "Good night,",
+      "text": "\nWhere we can cruelt it as the fiery of my children, for her content,\nSee her meaning the thresh",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "I love",
+      "text": " thee my liege, whose work.\n\nCAPULET:\nAy, if you were for a man that hand a will hand the servic",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "text": "be as the bark wonder will say\nThat will not prince, he was may so much death,\nI make thee holy ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "My lord, I have something to say",
+      "text": " the senatory.\n\nSecond Murderer:\nI will not desperate is the duke,\nAnd that in your father's dea",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "The king is dead, and we must now",
+      "text": " the passages,\nOr their day of the throok of my man\nTo make a secret of the heavens have pluck'd",
+      "repeated_fourgram_fraction": 0.09677419354838712,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "the sky today is",
+      "text": " the senate will not say to the seas,\nWith her soldiers are a secret me,\nAnd her come to me.\n\nKI",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "My name is ",
+      "text": "no man that young in the field.\n\nGLOUCESTER:\nIn that the teach of the ground and free the king a",
+      "repeated_fourgram_fraction": 0.11827956989247312,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "ROMEO:",
+      "text": "\nWell, when you will say to the seas,\nWith her soldiers are a secret in the king honourable.\n\nKI",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "Good night,",
+      "text": " the senate will not say to the reportune of my man state.\n\nBENVOLIO:\nI say, and home, when I pr",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "I love",
+      "text": " the senate will not say to the seas, with him.\n\nANGELO:\nWell, and have said my blood one my fac",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "small",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "To be, or not to ",
+      "text": "my hands\nOf your honour's rest, that would death,\nAnd made a fool. Be he content is here,\nIs it ",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "text": " all to see you:\nAnd we should not tell the father of his news.\n\nLADY ANNE:\nI must let thee to m",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "text": " any turn too.\n\nMARCIUS:\nWhy, he say to make his heart of this still before,\nThe crown of his to",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "text": " a time,\nAnd then prisoners for my tent, I fear,\nI should not not be beggared stranges the first",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "text": "here to see your consul, to give me a time\nFor the profess'd court in his friends with the first",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "text": "\nAnd would not speak what will not wash of king?\n\nGLOUCESTER:\nNow, but the time, I should be too",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "text": " and use his son,\nI have strength as his advance here,\nStanded to be beggared stranges the first",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "I love",
+      "text": " for to see your corruption:\nI see your hands my heart on the mother benefit\nThe crown of his to",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "text": "have true spurn'd of the true of one\nTo make bear our enter's mother being the victory,\nAnd thou",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "text": "?\n\nBRUTUS:\nWhat, heavens! o remember me so the true town?\n\nMENENIUS:\n'Tis with the king comes wi",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "text": "?\n\nBRUTUS:\nWhat, heavens! o renown, the man ancient with my love?\n\nQUEEN MARGARET:\nMontague merc",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "text": ", the king she would they have gone.\n\nLADY CAPULET:\nWhy, lords, you was not or so more law forbi",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "My name is ",
+      "text": "young in a thousand to the Duke of York,\nAnd say they will so with that surmity,\nGod I have many",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "text": "\nThat let him him down to make it straight the true\nWhose unstruments of your voices and the fri",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "Good night,",
+      "text": " no more and power with the\nson of the gracious spirits, and time must be worth\nThat I have many",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "I love",
+      "text": "s the last that we would make it strike of the\nstorest; who should to requite you held let him?\n",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "text": "you have a thousand to the Duke of York,\nAnd say they will so with that surfeit of mild,\nWhen yo",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "text": " what not before?\n\nSTANLEY:\n'Tis excused so down with his cornerity.\n\nKING RICHARD II:\nSir, you ",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "text": " they have\nAnd worth it betward now up the children, for a\nthat the man of my lord and play your",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "text": " the virtue\nThat he have sun her drawn to hear of his father,\nThe king and hope in a house, whic",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "My name is ",
+      "text": "but worthy brother, and all I am at\nthe high of it own of brief-son, but become,\nI am the tine i",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "text": "\nWhat, the bosoms of my cousin friends the child,\nAnd in her disposition airs of me\nI'll do you ",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "Good night,",
+      "text": " that must I may could rather all\nthis since on my lord.\n\nBUCKINGHAM:\nSay 'twere that we do you ",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "I love",
+      "text": " up your leave worships,\nTo God joy that makes me for my father's head.\n\nCAMILLO:\nA good friend,",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "text": "do consul:\nAnd you will be safely were the children that desire?\n\nHENRY BOLINGBROKE:\nI'll ten th",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "My lord, I have something to say",
+      "text": " unto him.\n\nWARWICK:\nWell then so looks; so every cause appaint of day,\nThen better me to my fac",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "The king is dead, and we must now",
+      "text": " the senatory.\n\nThird Citizen:\nSo much your father brother Saint Soldiers of Frona:\nI should com",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "the sky today is",
+      "text": " the senatory.\n\nThird Citizen:\nSo much your father brother Saint Soldiers of Frona:\nI should com",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "My name is ",
+      "text": "no man that you will say it not so.\n\nQUEEN ELIZABETH:\nI am a foolish for a times dreaming none!\n",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "ROMEO:",
+      "text": "\nWhat do your determise?\n\nMENENIUS:\nI'll so first me, go we are his body and deserve:\nStay you a",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "Good night,",
+      "text": " the respects have in a degree:\nTherefore shall in his hand against a greater of his\ndesires com",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "I love",
+      "text": " the senatory.\n\nThird Citizen:\nSo much your father brother Richard, I fear thee;\nAnd must be fol",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 1.0,
+      "seed": 1731,
+      "prompt": "To be, or not to ",
+      "text": "my kindred guilty's noble should be frown.\n\nDUKE OF YORK:\nA best that he doth not what winds him",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "text": " all the distress\nOf the true of service and discorns discourse.\n\nBENVOLIO:\nI must live a father",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "text": " any true of the country.\n\nPETER:\nAy, the head that will be the starr'd of the victory of her;\nB",
+      "repeated_fourgram_fraction": 0.10752688172043012,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "text": " a time,\nAnd then shall strong she was for my presently well:\nOr see her in my trembling life, h",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "text": "here to the world of the true of return,\nAnd being the purpose of bear the times from my life;\nB",
+      "repeated_fourgram_fraction": 0.10752688172043012,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "text": "\nBut with thy head in here: but he was he had\nWith suitor the noble lady of his patricians,\nTo m",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "text": " and with thy head in heavy fight.\n\nBRUTUS:\nI shall stay, sir, the did soldiers, as it seems us,",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "I love",
+      "text": " him to the world of the true of service,\nAnd the house of the stock in the fiery\nWith the first",
+      "repeated_fourgram_fraction": 0.18279569892473113,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "text": "have to seems out of the true of pass,\nFor he shall stay it the stand doth the victory of her;\nB",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "text": ".\n\nBRUTUS:\nWhat, if you shall come to the king of this?\n\nFirst Senator:\nStrike, my lord, when we",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "text": ".\n\nBRUTUS:\nWhat, if you shall come to the king of this?\n\nFirst Servingman:\nWhy, my lord, when we",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "text": " the man again.\n\nDUKE OF YORK:\nI would have been to this house.\n\nDUKE VINCENTIO:\nMy lord! I have",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "My name is ",
+      "text": "with my part masters. Come, sir, this man\nTo past thy words of the subjects, to mean again,\nI wi",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "text": "\nThat may be not here.\n\nMENENIUS:\nThe news see to say you with the subjects.\n\nROMEO:\nAnd we have",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "Good night,",
+      "text": " no more and power with the poor of the man,\nTherefore that shows it are worn with me\nDeath of t",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "I love",
+      "text": "d unto him the tribune of said!\n\nMENENIUS:\nWell, that you will stay well would not leave\nWhen yo",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "text": "you have a thousand to the blood,\nThat hath a brother work'd of your ancient,\nWhich hath the fri",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "text": " what our causes?\n\nROMEO:\nWhat is your place of my lord?\n\nBUCKINGHAM:\nSay 'twere that we do you ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "text": " they have\nAnd worth it between of all the children, but fast\nThou mayst be the field of his bro",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "text": " the world\nAnd with his counsel matched him but him.\n\nDUKE VINCENTIO:\nSay 'twere see our forth c",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "My name is ",
+      "text": "but worthy brother, and all again,\nAnd the child well have the prince of her.\n\nKING RICHARD III:",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 1
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "text": "\nWhat, the consumers of his bears were the child,\nAnd in her dission of our tongue and post,\nAnd",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "Good night,",
+      "text": " that must I may be country,\nAnd friends that which we might be so more\nThan the king so forth m",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "I love",
+      "text": " up your liege worships,\nTo accords that of his friends shall rest so need\nMy lord and of thy so",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "text": "do be our cause: but it could\nBe done and heart my lord.\n\nBUCKINGHAM:\nSay 'twere that we do you ",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "My lord, I have something to say",
+      "text": " the senatory.\n\nSecond Murderer:\nI will not for the state, I do must be part\nBy his father's fac",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "The king is dead, and we must now",
+      "text": " the senatory.\n\nSecond Murderer:\nI will not fly the state, I do must be part\nFor my heart honour",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "the sky today is",
+      "text": " the senatory.\n\nSecond Murderer:\nI will not for the state, I do must be part\nFor my heart honour",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "My name is ",
+      "text": "no man that you will say it not so.\n\nQUEEN ELIZABETH:\nI am a foolish for bow his dreams.\n\nGREGOR",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "ROMEO:",
+      "text": "\nWhat do your desired and the prince of the first\nBeing as I do him and seem his doom, which for",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "Good night,",
+      "text": " the senatory diviness\nThat prosperous with his majesty and behinds\nAnd say not better with chee",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "I love",
+      "text": " the senatory,\nStand the field of such with child before\nThat they are the times is here, by my ",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.95,
+      "seed": 1731,
+      "prompt": "To be, or not to ",
+      "text": "my kindred from which I did not she have so first\nBeing as I do it be for the more.\n\nFirst Watch",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "text": " all the death,\nThat we took of my tent, I have been them so:\nSo say 'Twere is the reverence to ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "text": " any true of the country.\n\nPETER:\nAy, the head that will be the state of perform.\n\nLADY ANNE:\nWh",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "text": " a time,\nAnd the consul strike of a blood of grief,\nWhere is here a lady of his rather seems to ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "text": "here to the world of the true of service,\nAnd the house of the stock of the fiery\nWith the first",
+      "repeated_fourgram_fraction": 0.21505376344086025,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "text": "\nAnd with thy head lives to him, for his blood,\nAnd the way that the cause of the world.\n\nCAPULE",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "text": " and with this night we spoke it.\n\nRICHARD:\nI shall stay it the state of souls to thee the first",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "I love",
+      "text": " him to the world of the true of service,\nAnd stand the way that the child that thou wert death.",
+      "repeated_fourgram_fraction": 0.15053763440860213,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "text": "have the doubt of the children of all the\nman of other presence, on the man house of your enemy,",
+      "repeated_fourgram_fraction": 0.10752688172043012,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "text": ",\nWhich they may be stay to see my son,\nOr the true to the story in the provils,\nBut I have her ",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "text": ", then I am born.\n\nSecond Murderer:\nThe man are the world to strong the prove.\n\nHENRY BOLINGBROK",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "text": " the man all show his country,\nAnd the heart of the world to prove the first of straight\nWhen yo",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "My name is ",
+      "text": "with our best from whom the poor of the majesty.\n\nKING RICHARD II:\nWhat strikes of so heaven?\n\nK",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "text": "\nThe lies of the good court of my lord.\n\nCLIFFORD:\nAy, therefore, here is the world fair wealth,",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "Good night,",
+      "text": " no more and pleased than the gods,\nThat did not so were it now, but I do with thee,\nAnd what yo",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "I love",
+      "text": ", the last that we would not have some good and to be worn.\n\nKING RICHARD III:\nSo much best some",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 1
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "text": "you have a thousand to the blood,\nThat hath a brother world of the subjects,\nWith me against the",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "text": " what so seems\nWith his country have sent in the while prepared to sight,\nAnd so lack the short ",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "text": " they have\nAnd with his country have sent in the while stand\nBy the new of my lord and of this f",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "text": " the world\nAnd with his country have sent her with such made\nAnd prophecial to me a father's bro",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "My name is ",
+      "text": "but worthy brother, and all again,\nAnd the child well have the prince of her.\n\nKING RICHARD III:",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 1
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "text": "\nWhat, the consul, where the day is the head\nTo him that desire the new of my lord,\nAnd have I d",
+      "repeated_fourgram_fraction": 0.08602150537634412,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "Good night,",
+      "text": " that must I may be country,\nAnd him the maid to the king is contraction,\nAnd so lack to for him",
+      "repeated_fourgram_fraction": 0.07526881720430112,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "I love",
+      "text": " them on the matter.\n\nSecond Citizen:\nAy, good my lord, that I must die the world again.\n\nPOMPEY",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "text": "do be princely worthing,\nTo accords the head of my lord, and from the part\nOf the castle grave.\n",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "My lord, I have something to say",
+      "text": " we are all worship.\n\nANGELO:\nSo lives your father brother and despair to the lords,\nBut should ",
+      "repeated_fourgram_fraction": 0.021505376344086002,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "The king is dead, and we must now",
+      "text": " the senatory.\n\nSecond Murderer:\nI will not dispose your seal shall be so repent\nOf my true, and",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "the sky today is",
+      "text": " the senatory.\n\nSecond Murderer:\nI will not dispose your seal shall be so repent\nOf my true, and",
+      "repeated_fourgram_fraction": 0.0,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "My name is ",
+      "text": "no man that you will say it not so.\n\nProvost:\nWhat dost him and my daughter?\n\nGREGORY:\nWhat, is ",
+      "repeated_fourgram_fraction": 0.043010752688172005,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "ROMEO:",
+      "text": "\nWhat do you there?\n\nPAULINA:\nNow, therefore it not stands a foolish death.\n\nCLIFFORD:\nWhat, is ",
+      "repeated_fourgram_fraction": 0.053763440860215006,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "Good night,",
+      "text": " the senatory desire.\n\nKING RICHARD III:\nThe house of York and course of Clarence,\nBut when I ma",
+      "repeated_fourgram_fraction": 0.032258064516129004,
+      "positions_starting_three_repeats": 1
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "I love",
+      "text": " the senatory,\nStand the flesh of such with blood behold\nThat they are speak and from the king's",
+      "repeated_fourgram_fraction": 0.06451612903225812,
+      "positions_starting_three_repeats": 0
+    },
+    {
+      "model": "wide",
+      "top_p": 0.9,
+      "seed": 1731,
+      "prompt": "To be, or not to ",
+      "text": "my hands in your honour,\nBut she is from the house of his back.\n\nProvost:\nThe lords of when I ma",
+      "repeated_fourgram_fraction": 0.010752688172043001,
+      "positions_starting_three_repeats": 0
+    }
+  ]
+}

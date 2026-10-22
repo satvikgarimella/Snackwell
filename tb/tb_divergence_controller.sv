@@ -55,7 +55,6 @@ module tb_divergence_controller;
 
     logic missing_reconvergence_target;
 
-
     divergence_controller dut (
 
         .current_pc                     (current_pc),
@@ -113,14 +112,12 @@ module tb_divergence_controller;
 
     );
 
-
     initial begin
 
         $dumpfile("tb_divergence_controller.vcd");
         $dumpvars(0, tb_divergence_controller);
 
     end
-
 
     initial begin
 
@@ -152,16 +149,12 @@ module tb_divergence_controller;
 
         stack_deferred_pending = 0;
 
-
         $display("");
         $display("=== Snackwell Divergence Controller Test ===");
         $display("");
 
-
-        // =================================================
         // TEST 1
         // UNIFORM TAKEN
-        // =================================================
 
         branch_valid = 1;
 
@@ -170,7 +163,6 @@ module tb_divergence_controller;
         divergent = 0;
 
         #1;
-
 
         if (
             !pc_update_enable ||
@@ -185,7 +177,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (mask_update_enable) begin
 
             $display(
@@ -195,7 +186,6 @@ module tb_divergence_controller;
             $fatal;
 
         end
-
 
         if (stack_push_enable) begin
 
@@ -207,22 +197,17 @@ module tb_divergence_controller;
 
         end
 
-
         $display(
             "PASS: uniform taken branch"
         );
 
-
-        // =================================================
         // TEST 2
         // UNIFORM NOT TAKEN
-        // =================================================
 
         uniform_taken = 0;
         uniform_not_taken = 1;
 
         #1;
-
 
         if (
             !pc_update_enable ||
@@ -237,7 +222,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (stack_push_enable) begin
 
             $display(
@@ -248,13 +232,10 @@ module tb_divergence_controller;
 
         end
 
-
         $display(
             "PASS: uniform not-taken branch"
         );
 
-
-        // =================================================
         // TEST 3
         // DIVERGENT BRANCH
         //
@@ -262,7 +243,6 @@ module tb_divergence_controller;
         // not taken = 1010
         //
         // execute taken first
-        // =================================================
 
         uniform_taken = 0;
         uniform_not_taken = 0;
@@ -275,7 +255,6 @@ module tb_divergence_controller;
         reconvergence_target_pc = 32'h300;
 
         #1;
-
 
         if (
             !pc_update_enable ||
@@ -290,7 +269,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (
             !mask_update_enable ||
             next_active_mask !== 4'b0101
@@ -304,7 +282,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (!stack_push_enable) begin
 
             $display(
@@ -314,7 +291,6 @@ module tb_divergence_controller;
             $fatal;
 
         end
-
 
         if (
             stack_push_deferred_pc !== 32'h104 ||
@@ -329,7 +305,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (
             stack_push_reconverge_pc !== 32'h300 ||
             stack_push_reconverge_mask !== 4'b1111
@@ -343,21 +318,16 @@ module tb_divergence_controller;
 
         end
 
-
         $display(
             "PASS: divergent branch creates two SIMT paths"
         );
 
-
-        // =================================================
         // TEST 4
         // DIVERGENCE WITHOUT SSY
-        // =================================================
 
         reconvergence_target_valid = 0;
 
         #1;
-
 
         if (!missing_reconvergence_target) begin
 
@@ -368,7 +338,6 @@ module tb_divergence_controller;
             $fatal;
 
         end
-
 
         if (
             pc_update_enable ||
@@ -384,18 +353,14 @@ module tb_divergence_controller;
 
         end
 
-
         $display(
             "PASS: divergent branch requires reconvergence target"
         );
 
-
-        // =================================================
         // TEST 5
         // FIRST ARRIVAL AT RECONVERGENCE
         //
         // switch to deferred path
-        // =================================================
 
         branch_valid = 0;
         divergent = 0;
@@ -415,7 +380,6 @@ module tb_divergence_controller;
 
         #1;
 
-
         if (!reconvergence_event) begin
 
             $display(
@@ -426,7 +390,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (!switch_to_deferred_path) begin
 
             $display(
@@ -436,7 +399,6 @@ module tb_divergence_controller;
             $fatal;
 
         end
-
 
         if (
             !pc_update_enable ||
@@ -451,7 +413,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (
             !mask_update_enable ||
             next_active_mask !== 4'b1010
@@ -464,7 +425,6 @@ module tb_divergence_controller;
             $fatal;
 
         end
-
 
         if (
             !stack_update_pending_enable ||
@@ -479,7 +439,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (stack_pop_enable) begin
 
             $display(
@@ -490,23 +449,18 @@ module tb_divergence_controller;
 
         end
 
-
         $display(
             "PASS: first reconvergence arrival switches paths"
         );
 
-
-        // =================================================
         // TEST 6
         // SECOND ARRIVAL
         //
         // restore full mask + pop
-        // =================================================
 
         stack_deferred_pending = 0;
 
         #1;
-
 
         if (!reconvergence_event) begin
 
@@ -518,7 +472,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (!restore_reconverged_mask) begin
 
             $display(
@@ -528,7 +481,6 @@ module tb_divergence_controller;
             $fatal;
 
         end
-
 
         if (
             !mask_update_enable ||
@@ -543,7 +495,6 @@ module tb_divergence_controller;
 
         end
 
-
         if (!stack_pop_enable) begin
 
             $display(
@@ -553,7 +504,6 @@ module tb_divergence_controller;
             $fatal;
 
         end
-
 
         if (pc_update_enable) begin
 
@@ -565,16 +515,12 @@ module tb_divergence_controller;
 
         end
 
-
         $display(
             "PASS: second reconvergence arrival restores warp"
         );
 
-
-        // =================================================
         // TEST 7
         // RECONVERGENCE HAS PRIORITY OVER BRANCH
-        // =================================================
 
         branch_valid = 1;
 
@@ -584,7 +530,6 @@ module tb_divergence_controller;
         stack_deferred_pending = 1;
 
         #1;
-
 
         if (
             !switch_to_deferred_path ||
@@ -599,18 +544,15 @@ module tb_divergence_controller;
 
         end
 
-
         $display(
             "PASS: reconvergence takes priority over fetched branch"
         );
-
 
         $display("");
         $display(
             "ALL DIVERGENCE CONTROLLER TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

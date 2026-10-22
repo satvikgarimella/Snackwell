@@ -13,7 +13,6 @@ module tb_warp_scheduler;
     logic [1:0] selected_warp_id;
     logic [3:0] eligible_mask;
 
-
     warp_scheduler dut (
         .clk              (clk),
         .reset            (reset),
@@ -28,28 +27,16 @@ module tb_warp_scheduler;
         .selected_warp_id (selected_warp_id),
         .eligible_mask    (eligible_mask)
     );
-
-
-    // -----------------------------------------
     // CLOCK
-    // -----------------------------------------
 
     always #5 clk = ~clk;
-
-
-    // -----------------------------------------
     // WAVEFORM
-    // -----------------------------------------
 
     initial begin
         $dumpfile("tb_warp_scheduler.vcd");
         $dumpvars(0, tb_warp_scheduler);
     end
-
-
-    // -----------------------------------------
     // CHECK CURRENT SCHEDULER DECISION
-    // -----------------------------------------
 
     task check_selected (
         input logic       expected_valid,
@@ -72,7 +59,6 @@ module tb_warp_scheduler;
 
             end
 
-
             if (
                 expected_valid &&
                 selected_warp_id !== expected_warp
@@ -87,7 +73,6 @@ module tb_warp_scheduler;
                 $fatal;
 
             end
-
 
             if (expected_valid) begin
 
@@ -109,11 +94,7 @@ module tb_warp_scheduler;
         end
 
     endtask
-
-
-    // =========================================
     // MAIN TEST
-    // =========================================
 
     initial begin
 
@@ -124,33 +105,24 @@ module tb_warp_scheduler;
         ready_mask  = 4'b0000;
         halted_mask = 4'b0000;
 
-
         $display("");
         $display("=== Snackwell Warp Scheduler Test ===");
         $display("");
-
-
-        // =====================================
         // RESET
-        // =====================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
 
-
-        // =====================================
         // TEST 1
         // ALL WARPS READY
         //
         // W0 -> W1 -> W2 -> W3 -> W0
-        // =====================================
 
         valid_mask  = 4'b1111;
         ready_mask  = 4'b1111;
         halted_mask = 4'b0000;
-
 
         check_selected(1'b1, 2'd0);
 
@@ -166,23 +138,18 @@ module tb_warp_scheduler;
         @(posedge clk);
         check_selected(1'b1, 2'd0);
 
-
         $display("");
         $display("PASS: full round-robin rotation");
         $display("");
 
-
-        // =====================================
         // TEST 2
         // WARP 2 STALLED
         //
         // ready = 1011
         //
         // W1 -> W3 -> W0
-        // =====================================
 
         ready_mask = 4'b1011;
-
 
         @(posedge clk);
         check_selected(1'b1, 2'd1);
@@ -193,20 +160,15 @@ module tb_warp_scheduler;
         @(posedge clk);
         check_selected(1'b1, 2'd0);
 
-
         $display("");
         $display("PASS: stalled warp skipped");
         $display("");
 
-
-        // =====================================
         // TEST 3
         // WARP 3 HALTED
-        // =====================================
 
         ready_mask  = 4'b1111;
         halted_mask = 4'b1000;
-
 
         @(posedge clk);
         check_selected(1'b1, 2'd1);
@@ -217,21 +179,16 @@ module tb_warp_scheduler;
         @(posedge clk);
         check_selected(1'b1, 2'd0);
 
-
         $display("");
         $display("PASS: halted warp skipped");
         $display("");
 
-
-        // =====================================
         // TEST 4
         // ONLY WARP 2 READY
-        // =====================================
 
         ready_mask  = 4'b0100;
         halted_mask = 4'b0000;
 
-
         @(posedge clk);
         check_selected(1'b1, 2'd2);
 
@@ -240,7 +197,6 @@ module tb_warp_scheduler;
 
         @(posedge clk);
         check_selected(1'b1, 2'd2);
-
 
         $display("");
         $display(
@@ -248,36 +204,27 @@ module tb_warp_scheduler;
         );
         $display("");
 
-
-        // =====================================
         // TEST 5
         // NO READY WARPS
-        // =====================================
 
         ready_mask = 4'b0000;
 
-
         @(posedge clk);
         check_selected(1'b0, 2'd0);
 
         @(posedge clk);
         check_selected(1'b0, 2'd0);
-
 
         $display("");
         $display("PASS: scheduler idles correctly");
         $display("");
 
-
-        // =====================================
         // TEST 6
         // ONLY WARPS 0 AND 1 VALID
-        // =====================================
 
         valid_mask  = 4'b0011;
         ready_mask  = 4'b1111;
         halted_mask = 4'b0000;
-
 
         // IMPORTANT:
         //
@@ -290,13 +237,11 @@ module tb_warp_scheduler;
 
         check_selected(1'b1, 2'd0);
 
-
         // Commit W0
         @(posedge clk);
 
         // Next must be W1
         check_selected(1'b1, 2'd1);
-
 
         // Commit W1
         @(posedge clk);
@@ -304,20 +249,15 @@ module tb_warp_scheduler;
         // Wrap back to W0
         check_selected(1'b1, 2'd0);
 
-
         // Commit W0
         @(posedge clk);
 
         // And W1 again
         check_selected(1'b1, 2'd1);
 
-
         $display("");
         $display("PASS: invalid warps skipped");
         $display("");
-
-
-        // =====================================
 
         $display("");
         $display(

@@ -50,7 +50,6 @@ module tb_snackwell_sm;
 
     logic reconvergence_event;
 
-
     snackwell_sm dut (
 
         .clk                     (clk),
@@ -101,9 +100,7 @@ module tb_snackwell_sm;
 
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
 
@@ -111,7 +108,6 @@ module tb_snackwell_sm;
         $dumpvars(0, tb_snackwell_sm);
 
     end
-
 
     task write_reg (
         input logic [1:0] warp,
@@ -138,9 +134,7 @@ module tb_snackwell_sm;
 
     endtask
 
-
     integer lane;
-
 
     initial begin
 
@@ -159,21 +153,15 @@ module tb_snackwell_sm;
         debug_reg_addr = 0;
         debug_write_data = 0;
 
-
         $display("");
         $display("=== Snackwell SM Top-Level Test ===");
         $display("");
-
-
-        // =================================================
         // RESET
-        // =================================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
-
 
         if (
             valid_mask !== 4'b0000 ||
@@ -189,18 +177,14 @@ module tb_snackwell_sm;
 
         end
 
-
         $display(
             "PASS: SM reset"
         );
 
-
-        // =================================================
         // SIMPLE PROGRAM
         //
         // ADD R3, R1, R2
         // EXIT
-        // =================================================
 
         dut.core.imem.memory[0] = {
             OP_ADD,
@@ -210,7 +194,6 @@ module tb_snackwell_sm;
             14'd0
         };
 
-
         dut.core.imem.memory[1] = {
             OP_EXIT,
             4'd0,
@@ -218,11 +201,7 @@ module tb_snackwell_sm;
             4'd0,
             14'd0
         };
-
-
-        // =================================================
         // PRELOAD FOUR LANES
-        // =================================================
 
         write_reg(
             2'd0, 2'd0,
@@ -234,7 +213,6 @@ module tb_snackwell_sm;
             4'd2, 32'd5
         );
 
-
         write_reg(
             2'd0, 2'd1,
             4'd1, 32'd20
@@ -244,7 +222,6 @@ module tb_snackwell_sm;
             2'd0, 2'd1,
             4'd2, 32'd7
         );
-
 
         write_reg(
             2'd0, 2'd2,
@@ -256,7 +233,6 @@ module tb_snackwell_sm;
             4'd2, 32'd9
         );
 
-
         write_reg(
             2'd0, 2'd3,
             4'd1, 32'd40
@@ -266,11 +242,7 @@ module tb_snackwell_sm;
             2'd0, 2'd3,
             4'd2, 32'd11
         );
-
-
-        // =================================================
         // LAUNCH
-        // =================================================
 
         launch_enable = 1'b1;
 
@@ -282,7 +254,6 @@ module tb_snackwell_sm;
         #1;
 
         launch_enable = 1'b0;
-
 
         if (
             valid_mask[0] !== 1'b1 ||
@@ -297,18 +268,12 @@ module tb_snackwell_sm;
 
         end
 
-
         $display(
             "PASS: warp launched through snackwell_sm"
         );
-
-
-        // =================================================
         // RUN
-        // =================================================
 
         run_enable = 1'b1;
-
 
         // Wait for halt.
 
@@ -319,16 +284,11 @@ module tb_snackwell_sm;
 
         end
 
-
         // One extra cycle for final WB safety.
 
         @(posedge clk);
         #1;
-
-
-        // =================================================
         // VERIFY SIMD RESULTS
-        // =================================================
 
         if (
             dut.core.regfile.registers[0][0][3]
@@ -343,7 +303,6 @@ module tb_snackwell_sm;
 
         end
 
-
         if (
             dut.core.regfile.registers[0][1][3]
             !== 32'd27
@@ -356,7 +315,6 @@ module tb_snackwell_sm;
             $fatal;
 
         end
-
 
         if (
             dut.core.regfile.registers[0][2][3]
@@ -371,7 +329,6 @@ module tb_snackwell_sm;
 
         end
 
-
         if (
             dut.core.regfile.registers[0][3][3]
             !== 32'd51
@@ -385,11 +342,9 @@ module tb_snackwell_sm;
 
         end
 
-
         $display(
             "PASS: 4-lane SIMD executed through complete SM"
         );
-
 
         if (halted_mask !== 4'b0001) begin
 
@@ -401,18 +356,15 @@ module tb_snackwell_sm;
 
         end
 
-
         $display(
             "PASS: EXIT propagated through complete SM"
         );
-
 
         $display("");
         $display(
             "ALL SNACKWELL SM TOP-LEVEL TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

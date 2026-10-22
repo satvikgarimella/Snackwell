@@ -1,0 +1,338 @@
+{
+  "kind": "Verified inference speed improvement; checkpoint and decoding unchanged",
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "source_files": {
+    "requirements-model.txt": "524f1c05431f8ebd64015ceda393b8e1c10e55184c673ed1194c3d7093135763",
+    "rtl/core/single_warp_core.sv": "0895ef365c94204fac43422fe9ec1bfdc4f6578bb31d88a810bf4af9c3e0fce8",
+    "rtl/execution/branch_unit.sv": "deac4ce8861f8459259e43aaf98ce98e1d73d7fbe2c65a745c6afca6c28390a1",
+    "rtl/execution/fp32/fp32_addsub.sv": "355812154c2e711b727d2fc34a8d43ce62cfa2698facef24e22625256af22996",
+    "rtl/execution/fp32/fp32_mul_wrapper.sv": "82d2f5076c1fddf346d238572ee5a9b773be1c938eb0d9119963fb6223740da7",
+    "rtl/execution/fp32/simd_fp32_execute.sv": "4364a2c3b75aa1d5ae00e4bda45d9291fdc8e0023ea4efee9cc489e93a86a582",
+    "rtl/execution/fp32/simd_fp32_mul.sv": "d616e8099e2e1e706b4f69cf3614bbe8a13a5f2799543d5174fa4175fef72312",
+    "rtl/execution/integer_alu.sv": "7c0c8b7a36c2a263ead8318ac99ae31d8f2002ae5f77511e8710060cc09b72d0",
+    "rtl/execution/simd_execution_unit.sv": "acd45cc1d0a5682c5ba5403650230445744e6109053ef6c4d03287de4af54ee8",
+    "rtl/execution/simd_integer_execute.sv": "a01a18ecf8985bb1c8b06d419a956e9a3e50e1503291c29d86ddee5b92b21f8b",
+    "rtl/execution/simd_lane.sv": "04476afc8d3af8433e2c57209fc9f441a315deccd8b48a9fc82ed516cd810eb9",
+    "rtl/execution/tensor/fp32_mac_pe.sv": "ff540e6c9607f2912423a6ec12cec00a67d3e7d0eb198d24fc74410a50333706",
+    "rtl/execution/tensor/systolic_array_4x4.sv": "b0b19a411b2737b9679c96af5b24c5984d3b323ace4a481704fcc94e47bcb3d7",
+    "rtl/execution/tensor/systolic_feeder_4x4.sv": "47e78771bd60e333765e643591820025197e027b2ced7a08e6211b37ae293954",
+    "rtl/execution/tensor/tensor_core.sv": "3984e87d078190575ee42c11b9879f009479aee0e8a15759a82fda4e2cbb6659",
+    "rtl/frontend/instruction_decoder.sv": "95fc59b26757f0e5ba48e3bbdf85a0ed0a102a2446cd4e18b5fbf821c694bdb3",
+    "rtl/frontend/instruction_frontend.sv": "6c6e40fec04efe1a2192798990a38b309a73c69fd4939ec345a92ea1e866a7a8",
+    "rtl/frontend/instruction_memory.sv": "f514cbd84caec357c45115a5e47fb9eea0161142b193750c1d15f5d359606292",
+    "rtl/frontend/program_counter.sv": "fbac99189781f0d1fd716481de843e760ebc32a1638d925766071a7a6986d2e1",
+    "rtl/memory/load_store_unit.sv": "f01b377fa42134e031f3b3fcdf6965df6871443a65078bf3f7759011c2976fbc",
+    "rtl/memory/multiwarp_register_file.sv": "e8aa26f8ebcc10ba21f9a27d73dbffe823ca54db0611fe2f92a91e8061d33d93",
+    "rtl/memory/register_file.sv": "2ea5b006d1ff9c2d8e2ff96361a9a8744dd235d7b6cc01eee42c646df7f231ec",
+    "rtl/memory/shared_memory.sv": "f00d2fee395cffac76c0ec287554fc4b5fcbd090e5037c7e17db05420d809f44",
+    "rtl/sm/divergence_controller.sv": "5a26d1d73b7ad6309778f3e133841fa6d8fda1669805507160c28eb69d13c625",
+    "rtl/sm/issue_control.sv": "87f7916baf77833273f3ffc9781f24d6a3d493d155f3c25b15f5feebe1e6bd59",
+    "rtl/sm/issue_stage.sv": "a4b7caefef94a3100d845f058817e5eb8e43f06cae3bcc89acc470ceab59d205",
+    "rtl/sm/multiwarp_execution_core.sv": "423c34a8042afdc2f6762426ddff4134e9b8d44fff0ed182158d86bcbffe02a4",
+    "rtl/sm/reconvergence_stack.sv": "90faef7ae2dcde18008fd811c02b8cbd8097b76aa0b85dd32a8f9c7ef879d22d",
+    "rtl/sm/reconvergence_target_table.sv": "b18ef3c9318a6a7caa1fc20d852838a4acabdb63030cb7ed504274a9da9af388",
+    "rtl/sm/scoreboard.sv": "75050f2266fe1a50a2950889271a9dac6d0e84159393c5b082f3b7e8df37ff59",
+    "rtl/sm/sm_tensor_unit.sv": "e04a235a49779fb1938a75979f34d98c1f167a1ffdcba6b1aedab6fbeeb0eeaf",
+    "rtl/sm/snackwell_sm.sv": "5ff0f81146f279cf55d23f816f2365d1a67b6a9630d91dbfbe7ac39e68fe3bc6",
+    "rtl/sm/warp_control_unit.sv": "31263c0ac81bf2de632694e679703c482f598f38bc9961c3d9d28b13124ad8d1",
+    "rtl/sm/warp_scheduler.sv": "9c94c648f7d5db11f6f39dd5092bfcad5db3d38386639a4681a4dcb33dca7024",
+    "rtl/sm/warp_state_table.sv": "4ceddcfb89789552796aa6f7ab49aa00d6e1eeefa831426fa6410318f98c0f4e",
+    "rtl/snackwell_pkg.sv": "b4d16a916c35b5cc3b0e52726db41de272004d86088250bdec8e9b2fe4229197",
+    "scripts/_bootstrap.py": "837ed5ff74437b02df1ab5c801e937a63661731bf94f043ed5b5694f426a5615",
+    "scripts/assemble.py": "dfa214ae90f287b8b80ada82e78c2558560c39b1fb4891439b2a1e1b5ca009be",
+    "scripts/compare_models.py": "71245a7eec9ebf8c330dfddc8db6f7aba42d00633d6609a6df7fb900d7477ea4",
+    "scripts/evaluate_generation.py": "b3f6ca55358ee46f1f4a2b308ef4e5f806b68b58dd8a9bc407422c67a09eda11",
+    "scripts/preview_model.py": "87a2014360f3b2af4c916210883f148ed6619672151471da2032f2df3644da32",
+    "scripts/run_kernel.py": "c77dc1c2925b7c39808de15f9c6f4797d6579437adf1b712b920b40dbd6fee25",
+    "scripts/run_model.py": "9a87d9f0e6f7b23f2ffb3af5eb086f84b3c77603609e7677a3edbf17932fb3f3",
+    "scripts/run_tests.py": "61cc7d936c92c319dcb8dbc88ac273fda9ead9bb2c083803e52f3b79142d5b1a",
+    "scripts/train_reference_model.py": "fd19ea5cd8e1a3815379ee0e3f563b8d66eb2dd5a0bdbbce9212e37e39a2e022",
+    "scripts/write_kernel_examples.py": "bd4b098df52c3165335a17229364233600e162709e34cef947e3bcca7c370ef1",
+    "snackwell/__init__.py": "eab600b6544b685d69da0c8d9745053b68c11011265645cfa05752b64c96a102",
+    "snackwell/assembler.py": "863146e7745e4367ade3b3592f959eb488c6dec6c96afeb2370920144ea85ba5",
+    "snackwell/character_model.py": "8d8afd8c57a7589ac7284552b815f086c49ee1c8a94adf5bf0c36c8bf5d74c5f",
+    "snackwell/cli/__init__.py": "f8c1c094c0d7bb9a40111c7783e83e8ec18ca2f08aba4648ba678cb0c3dd3dfb",
+    "snackwell/cli/assemble.py": "04795e91a239c82aa1d34373854e6a44233c6cebb7dc2375af93582059764a6d",
+    "snackwell/cli/examples.py": "0be9c0e743d523d7ec0dca9fa5cd2c067e0b80e5e00b5f145a15693f3882e079",
+    "snackwell/cli/generation_quality.py": "dfd6f19d1d8bd9ab114428f7f8d23835ed815ca08e6ed517bbb3763ca8b5cf60",
+    "snackwell/cli/kernel.py": "96e12f14868ee0a682fde369499ea5b7fe8e0d1dac7e19700c1e0c36dfe8f24d",
+    "snackwell/cli/model.py": "f8222a6f523ed24b2e8d0514f72708e9c23daa403fd34dfd3f9a43d049ed021a",
+    "snackwell/cli/model_quality.py": "f4192a934206831241bc93a8fe0e15fc2abb427c5cef41c73eec77e5f5cb3817",
+    "snackwell/cli/preview.py": "d3a0032c2da3df40ec04f308fce4fef957ac7dc9dae052f005d0fcffe77ad270",
+    "snackwell/cli/tests.py": "13a9877564484acb17b830a2707d4f1cdb88f3c5197bcad120e8fbf9b3ed847a",
+    "snackwell/cli/train.py": "a8a77db734e2fa6992da2b424cf55f73419cb7276baf3595b021e1eb076cc541",
+    "snackwell/decoding.py": "5860a55d334212b5eb3807c3b2ed097e647bda6f33a64e2c7fd568dae685f1c9",
+    "snackwell/inference_runner.py": "97602c4cd01ba1824f14b446a70618ca85a5bd0f43bd7075e77ba64881796329",
+    "snackwell/kernels/__init__.py": "9f027383bc97241b5dca4cb64664139cb34619177a7e2484345bb8d6147c9c2d",
+    "snackwell/kernels/basic.py": "a3ad5d96475bee85d763a67981045b61d8952b47577f5e3710f8c358b9952d70",
+    "snackwell/kernels/inference.py": "dfb0d20eb5241beff5d0887d3b66a84084c5488a85589fab813bab8a4902a1b3",
+    "snackwell/kernels/model.py": "a989c7ecc56ad55f292a6663edf8ba8ec93c8a750662aabdf0c8fc929a1f1e24",
+    "snackwell/kernels/transformer.py": "17b3dae3beb48725e0e7c581139b54651ae696be97dbd1e8758775d87466f881",
+    "snackwell/live_model.html": "93fdce15fd8d04a43562285376b47758fc125f0c7a32198285e13cd812e94988",
+    "snackwell/live_model.py": "69506158defd229f10cc0e61a9595f877531479c2e01e323986d2bc11faee9d8",
+    "snackwell/model_preview.py": "c4b4d5aa03b3a71ee12a8c4188bb8335a53a1e919ee92007eac6535bb920a5ba",
+    "snackwell/model_runner.py": "eedb0d2f2c431aa8a8b2c789fdba97f7d48aec76ce2ebf579e1411cb0365141b",
+    "snackwell/model_runtime.py": "b458c3698446979b59ecb459aaef954087446c9e4707b233802b1f94cb50040d",
+    "snackwell/numeric.py": "f124a2cd8b58261a57acb7c66ac6a00d15cb850fcafcbcb9246d82e34b27f3ed",
+    "snackwell/paths.py": "27644388a99c814e38dc71030f7974bdf1d3c55a3c04b0c4d83e89695cb0fc77",
+    "snackwell/profile.py": "eac624fb8f06dd2dbb4e0860c1a148f29a8bff3bc34f14f38a9d9a81fbc2f526",
+    "snackwell/reference/__init__.py": "41daec7648ebdfc876cf2338cfac1b3a2b44964562e2419efbf9d54b0b31b257",
+    "snackwell/reference/fp32.py": "6dfeb7b5fcb12dc68b1a20c389fa6c520c575acd37101792737720673871151a",
+    "snackwell/reference/fp32_native.cpp": "d56280bd4a6548fcb5093a25d27b404ed500654dd8996c43e76de94d5c2f4c4e",
+    "snackwell/reference/inference.py": "60f5da6e430e74b4f05cf5da743122f22f48df98a8cd4731115c76e8a90acc30",
+    "snackwell/reference/native.py": "1d92e22ec8b383f6cd9974652da3882a8165ebed7d214f43cb13740fc5ce9d00",
+    "snackwell/reference/tensor.py": "0fec0183884f3748378e50e02b973d3a3cbb14ad08baa587a32902c7e0e5340c",
+    "snackwell/reference/transformer.py": "52b9f8c49f2960178d967582bbae794b958a423ddeda17967dfc1fe394bd9c85",
+    "snackwell/simulator.py": "f0233bc4abd2e53e0ae83428b787b03a3719de91c775a2d0d7700a70247c23eb",
+    "snackwell/terminal_model.py": "f9d37fe4ad83553d8db9a76274cec73cbd52edc02a190db6969547fcc0422940",
+    "snackwell/torch_model.py": "ce8f7678783c5092571c86ab9f5fcacc3d72d673769c6c6fa01bf31759db8dda",
+    "tb/tb_branch_unit.sv": "0380826399ed059400bf526c3e7d09cafac3ce7bbfd56227f487fb4adbbd964f",
+    "tb/tb_divergence_controller.sv": "fff051aeca6d96654f79297b55c4703744e72dbf14242e18766c267ef851b285",
+    "tb/tb_fp32_mac_pe.sv": "ade6d56a93a1584324582a63a35669ef2c59ebd00d8326ac18178a24140d648f",
+    "tb/tb_fp32_mul_wrapper.sv": "27e24d967c3d32ae16bb35071a6957350471b61a985853f71d1d483ea6696ebc",
+    "tb/tb_instruction_decoder.sv": "c848097378f02eee988f40e5dedb8474fca41f849b92db9a8f69d8414cb8d88f",
+    "tb/tb_instruction_frontend.sv": "3ce561076663cc17ae3f002f24857733494ae1e0cd114c5f4b5a7d33d254b164",
+    "tb/tb_instruction_memory.sv": "a657cdb0db61aa69caa6240e2f78bf0d9b9c76f7ffa14342faa5b5a31f1108bb",
+    "tb/tb_integer_alu.sv": "639c0422e1e729e50bead4218bdffe5bf4bc56cc9bae7231605e342451e57408",
+    "tb/tb_issue_control.sv": "9dcd920da6ca6030fb50528058e3a18e098d7b70c999f448bb56f40f6a745d16",
+    "tb/tb_issue_stage.sv": "febd3b970132b446cb17f1177629510d9dafb008380b230235c2f476e329463f",
+    "tb/tb_load_store_unit.sv": "38db0c88495bf9b33ae64d51ab82a6ac055d8476b7226c636d4b9e77fc1d5669",
+    "tb/tb_multiwarp_divergence_core.sv": "7a60b4442876c7922d3f021646e230c0c53f3da78e2f174a877ed2b40ac9ebd0",
+    "tb/tb_multiwarp_execution_core.sv": "ca4a817b86f1d1de3fdade091567f9c63f1558af2058c7730718c41fc3272328",
+    "tb/tb_multiwarp_memory_core.sv": "e08c2ca4493e8ac4221b348939ac7865a930ea91dbdeab8c9c96cf9197b6ba83",
+    "tb/tb_multiwarp_register_file.sv": "ba26b7ed2f7133970b4bc6f9973fad44acfb97384290be1f934eb3cc8b7824d7",
+    "tb/tb_program_counter.sv": "3b2c8de91acd5665288f166a650685b8ff0ff62cf8e479bdc872c6b08a6cdecb",
+    "tb/tb_reconvergence_stack.sv": "d8d69c0341a2ef5b79cc27c9c001677800c0781ebba5409ce8e23586eeb20965",
+    "tb/tb_reconvergence_target_table.sv": "6e1de86a58b51bf1e529882ee4c477f9ddc827da9240e89f64154864a37f66fa",
+    "tb/tb_register_file.sv": "7014d78c5733e20ad625188da2a494f0e73255a7e48e8ced1b1cf14d27c8f0bc",
+    "tb/tb_scoreboard.sv": "7b163f7a72c6559a074e380cb665424a585cbeebabe6d3c3ad3a97e4af206111",
+    "tb/tb_shared_memory.sv": "3f1053e584b3e471d13a6de4975f1c9b919b1b125a5fd69d07dcd814e96798fe",
+    "tb/tb_simd_execution_unit.sv": "e9ba6ad264c3f6836d89b350dd782b83ba6371a1e06a59b700f380fe3d9b1cee",
+    "tb/tb_simd_fp32_execute.sv": "11081b38389f0c6e4bc0889f0a4f14cdb0d9b983709e1c0d8ce6397104e13730",
+    "tb/tb_simd_fp32_mul.sv": "f1474d8028efc57dc289daa6b8cbd6457189714fbbeff075f301702ac066b660",
+    "tb/tb_simd_lane.sv": "819bb46c46c3c94f6eaaa44621d519c2300be98036e8e16270bc4cf4e7ae47e7",
+    "tb/tb_single_warp_core.sv": "7beba2b2f18715307cbb2a7f11c7c3031d21efb7d144e0f879b0aeec8822c7ac",
+    "tb/tb_snackwell_kernel.sv": "50bd521193bf78f57c6c7a5c0fcb6a8618c251b4560ae971fd901bdae746ba58",
+    "tb/tb_snackwell_sm.sv": "932aa0aec6fd77d0b6507892c0531145400aa73743eb133264c93cce538d7686",
+    "tb/tb_snackwell_sm_fp32.sv": "eda324849f1085b468778b0335165f45dac75a391779e24867e0c42d3178bbbf",
+    "tb/tb_snackwell_sm_memory.sv": "d24c3c7363e609140420bdba06e5833b460c28f4ba3ffa3be01e5605752ff33c",
+    "tb/tb_snackwell_sm_tensor.sv": "37dce4cd651c8c172e036a87c48f43e0aba3c170ba5dd255d0d086eba28596ca",
+    "tb/tb_systolic_array_4x4.sv": "bfe5df4867a7b4101bb341b7fcf3454385529343a97f6f42def00dac12a0575a",
+    "tb/tb_tensor_core.sv": "1b3c92bfa772a21e30bfa8974910a68f9cf6ce1a7ff1814b3cee90a4071e43a2",
+    "tb/tb_warp_control_unit.sv": "0ad53045f300deb74d6ecee7a68389ca640c307a4d61a3861d2a058cc17530d5",
+    "tb/tb_warp_scheduler.sv": "97ab2bec59ca7ab7b6de87c85ebe6e5dac0116b2045a45e205d4dfbc60c64774",
+    "tb/tb_warp_scheduler_handshake.sv": "c4977b9b7378d9ee08e603e4b9a99c99b07888cce6cdf0b586ea4da021e3e212",
+    "tb/tb_warp_state_table.sv": "72637ecc31ff199d0e1fe66056daf25c44eb20a0d82b7e221281d4db67250cf3",
+    "tests/__init__.py": "a5509cd32f6d6938e6b4e5ec93d499588aee5425642c7d5b20fa0cd6dfaea8d4",
+    "tests/test_assembler.py": "c7ed5039f365eae95a298b087091e22900e0f53397dca8f541cd3a62fd062e46",
+    "tests/test_decoding.py": "0fc750f3b2bf277edf1f8add55bdd4f924f58f0f961fe0eef5f5d72a7be701db",
+    "tests/test_inference_kernels.py": "87a80249ab4141035f33042f4a07af598446c938d5fd552504959571485621e1",
+    "tests/test_kernels.py": "acf0f9a46631314d28763a61e3e5d450dcdf9124523187c561605fa79512dd93",
+    "tests/test_live_model.py": "3f45b874caadfffab87d1b84e4edc241f6b19b9ef47e12a1fb25a71bb1252062",
+    "tests/test_matmul_kernels.py": "48a029a9edbed718119e382439c2cbce75dbad2c3a174cef877fd4b5ba8e1357",
+    "tests/test_model.py": "60b0a48c3a1dd3c6955613f844bc68c7e1aa397761633722dd9d8876affc1880",
+    "tests/test_native_reference.py": "14b5e858b0c42e96475d0604ff5469ecc3767c2c9aeb7eda066520906ae7fa53",
+    "tests/test_simulator.py": "3b03025cb5df8af6811e64e042a38ea2ad49267d5a9fa07399b7b84eab96094f",
+    "tests/test_terminal_model.py": "339e11918bcc5c695bb56cbefcd90b797bb6818fdb438f0686877d5193b1748e",
+    "tests/test_transformer.py": "44e6e4d2d02acfacfae0f9af8130d9eff66818d147252d221a6fb4f4e6e9cea5"
+  },
+  "source_sha256": "4e6778fab10cbab875a7749fbcf93796a6f288d148b550eeeab15af5fad9f93f",
+  "source_hash_method": "SHA256 of json.dumps(source_files, sort_keys=True), UTF-8",
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 (main, Feb  3 2026, 17:53:27) [Clang 21.1.7 ]",
+    "simulator_build": {
+      "verilator": "/opt/homebrew/bin/verilator",
+      "version": "Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905",
+      "cxx": "/usr/bin/c++",
+      "cxx_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+      "flags": [
+        "--binary",
+        "--timing",
+        "--assert",
+        "-CFLAGS",
+        "-O3",
+        "--top-module",
+        "tb_snackwell_kernel",
+        "-Wno-fatal"
+      ],
+      "environment": {
+        "CC": null,
+        "CXX": null,
+        "CXXFLAGS": null,
+        "LDFLAGS": null
+      }
+    },
+    "native_verifier_library_sha256": "67d6aa4d194ff9b9d8f8a37ebaeb100b63b3fa9d99de423c92a2b9901b0a85f7"
+  },
+  "benchmark": {
+    "prompt": "My lord, I have something to say",
+    "seed": 92617660,
+    "temperature": 0.7,
+    "warm_build": true,
+    "profiled": false,
+    "timing_scope": "one verified forward pass, excluding CLI startup and compilation",
+    "before": {
+      "seconds": 36.23619933298323,
+      "cycles": 34236950,
+      "launches": 1571
+    },
+    "after": {
+      "seconds": 20.647610458981944,
+      "cycles": 32235401,
+      "launches": 1571
+    },
+    "speedup": 1.7549827087724854,
+    "wall_time_reduction_fraction": 0.43019381615477825,
+    "cycle_reduction_fraction": 0.058461662034731465,
+    "identical_fields": [
+      "probabilities",
+      "sampling_probabilities",
+      "predictions",
+      "selection",
+      "accuracy"
+    ],
+    "before_result": "build/inference-speed/baseline-unprofiled/token_000/result.json",
+    "after_result": "build/inference-speed/optimized-native/token_000/result.json"
+  },
+  "regression": {
+    "passed": true,
+    "rtl": {
+      "passed": 37,
+      "total": 37,
+      "failures": []
+    },
+    "python": {
+      "passed": true,
+      "test_methods": 79,
+      "sandbox_methods_passed": 75,
+      "loopback_methods_passed": 4
+    },
+    "note": "The full sandbox run passed all RTL benches and 75 Python methods; local HTTP setup was denied by the sandbox. All four affected methods then passed with loopback access. Raw logs are preserved.",
+    "logs": [
+      "regression.log",
+      "python-tests.log",
+      "live-tests.log"
+    ]
+  },
+  "native_oracle_scalar_comparisons": 68487,
+  "evaluation": {
+    "verified": true,
+    "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+    "evaluated_tokens": 256,
+    "loss": 1.6052631310600534,
+    "perplexity": 4.979169604557276,
+    "accuracy": 0.546875,
+    "unigram_loss": 3.3767879390135325,
+    "improves_unigram": true,
+    "cycles": 327356364,
+    "examples": [
+      {
+        "index": 0,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.3113021850585938e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 40982365
+      },
+      {
+        "index": 1,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.6226043701171875e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 41006861
+      },
+      {
+        "index": 2,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.4007091522216797e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 40786589
+      },
+      {
+        "index": 3,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.6093254089355469e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 40762645
+      },
+      {
+        "index": 4,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.205371856689453e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 40967269
+      },
+      {
+        "index": 5,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.205371856689453e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 41006145
+      },
+      {
+        "index": 6,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 2.8014183044433594e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 40897275
+      },
+      {
+        "index": 7,
+        "verified": true,
+        "pytorch_accuracy": {
+          "max_absolute_error": 1.996755599975586e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "cycles": 40947215
+      }
+    ]
+  },
+  "evaluation_baseline_comparison": {
+    "positions": 256,
+    "probabilities_bit_identical": true,
+    "greedy_predictions_identical": true,
+    "accuracy_metrics_identical": true
+  },
+  "terminal": {
+    "result": "build/inference-speed/terminal/terminal/20261015-211224-c019177f/result.json",
+    "result_sha256": "f023b6a279ddb90794349ce406524d158816e7155fae73a126e3091c9edf4e4f",
+    "generated": "My lord, I have something to say aga",
+    "characters_verified": 4,
+    "all_probability_and_selection_checks_identical_to_previous_rtl": true,
+    "wall_seconds": [
+      22.63447841600282,
+      22.55938045802759,
+      22.50884391699219,
+      22.980410332995234
+    ],
+    "timing_note": "Terminal correctness run overlapped held-out evaluation; use the isolated benchmark above for speed comparisons."
+  },
+  "limits": [
+    "RTL simulation timing, not FPGA throughput",
+    "No checkpoint, model-quality or sampling changes",
+    "Persistent process protocol is simulation-only; no hardware global memory or launch interface added",
+    "Python integer verification remains the fallback when the C++ checker cannot be compiled"
+  ]
+}

@@ -2,20 +2,15 @@ module warp_control_unit (
     input logic clk,
     input logic reset,
 
-    // ------------------------------------------------
     // GLOBAL ISSUE ENABLE
     //
     // 0 = warp state may exist, but scheduler must
     //     not attempt to issue instructions.
     //
     // Used during launch/debug preload.
-    // ------------------------------------------------
 
     input logic issue_enable,
-
-    // ------------------------------------------------
     // WARP STATE UPDATES
-    // ------------------------------------------------
 
     input logic       update_enable,
     input logic [1:0] update_warp_id,
@@ -34,10 +29,7 @@ module warp_control_unit (
 
     input logic update_halted_enable,
     input logic update_halted,
-
-    // ------------------------------------------------
     // CURRENT DECODED INSTRUCTION
-    // ------------------------------------------------
 
     input logic [3:0] rs1_addr,
     input logic [3:0] rs2_addr,
@@ -47,24 +39,15 @@ module warp_control_unit (
     input logic uses_rs2,
     input logic writes_rd,
     input logic additional_dependency,
-
-    // ------------------------------------------------
     // EXECUTION RESOURCE STATUS
-    // ------------------------------------------------
 
     input logic execution_unit_ready,
-
-    // ------------------------------------------------
     // WRITEBACK / SCOREBOARD CLEAR
-    // ------------------------------------------------
 
     input logic       clear_busy_enable,
     input logic [1:0] clear_busy_warp_id,
     input logic [3:0] clear_busy_reg,
-
-    // ------------------------------------------------
     // ISSUE OUTPUT
-    // ------------------------------------------------
 
     output logic       issue_valid,
     output logic       issue_accept,
@@ -72,10 +55,7 @@ module warp_control_unit (
 
     output logic dependency_stall,
     output logic resource_stall,
-
-    // ------------------------------------------------
     // SELECTED WARP STATE
-    // ------------------------------------------------
 
     output logic [31:0] selected_pc,
     output logic [3:0]  selected_active_mask,
@@ -83,10 +63,7 @@ module warp_control_unit (
     output logic selected_valid,
     output logic selected_ready,
     output logic selected_halted,
-
-    // ------------------------------------------------
     // STATUS
-    // ------------------------------------------------
 
     output logic [3:0] valid_mask,
     output logic [3:0] ready_mask,
@@ -96,35 +73,23 @@ module warp_control_unit (
     output logic [3:0] eligible_mask,
     output logic [15:0] selected_warp_busy_mask
 );
-
-    // =================================================
     // INTERNAL SIGNALS
-    // =================================================
 
     logic rs1_busy;
     logic rs2_busy;
-
 
     // This is the mask actually presented to the
     // scheduler/issue-control logic.
     //
     // The real warp state remains untouched.
     logic [3:0] issue_valid_mask;
-
-
-    // =================================================
     // ISSUE ENABLE GATING
-    // =================================================
 
     assign issue_valid_mask =
         issue_enable
             ? valid_mask
             : 4'b0000;
-
-
-    // =================================================
     // WARP STATE TABLE
-    // =================================================
 
     warp_state_table state_table (
 
@@ -166,11 +131,7 @@ module warp_control_unit (
         .halted_mask          (halted_mask)
 
     );
-
-
-    // =================================================
     // SCHEDULER + SCOREBOARD + ISSUE STAGE
-    // =================================================
 
     issue_control issue_control_unit (
 
@@ -225,6 +186,5 @@ module warp_control_unit (
         .eligible_mask           (eligible_mask)
 
     );
-
 
 endmodule

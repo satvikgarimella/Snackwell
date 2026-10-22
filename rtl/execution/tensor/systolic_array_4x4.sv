@@ -1,5 +1,6 @@
 // One C=A*B tile at a time, with 16 physical FP32 MAC PEs.
-// Operand transport advances in lockstep after every PE has completed a step.
+// Operand transport advances in lockstep after each product reaches its adder.
+// The final drain waits for all accumulation results before publishing the tile.
 // enable pauses step launch/transport, never the clocks of in-flight arithmetic.
 module systolic_array_4x4 (
     input  logic         clk,
@@ -17,12 +18,13 @@ module systolic_array_4x4 (
     output logic         step_advance,
     output wire [15:0]   pe_done_mask
 );
-    typedef enum logic [2:0] {IDLE, CLEAR, START_STEP, WAIT_STEP, RESULT} state_t;
+    typedef enum logic [2:0] {IDLE, CLEAR, START_STEP, WAIT_STEP, DRAIN, RESULT} state_t;
     state_t state;
     logic [511:0] saved_a, saved_b;
     wire [127:0] a_edges, b_edges;
     wire [3:0] a_edge_valid, b_edge_valid;
     wire [15:0] pe_ready_mask;
+    wire [15:0] pe_arithmetic_busy;
     wire [511:0] accumulators;
     wire pe_clear = state == CLEAR;
     wire pe_start = state == START_STEP && enable && (&pe_ready_mask) && !reset;
@@ -58,7 +60,8 @@ module systolic_array_4x4 (
                 .advance(step_advance), .step_done(pe_done_mask[r*4+c]),
                 .a_out_valid(a_valid_links[r][c+1]), .b_out_valid(b_valid_links[r+1][c]),
                 .a_out(a_links[r][c+1]), .b_out(b_links[r+1][c]),
-                .accumulator(accumulators[(r*4+c)*32 +: 32])
+                .accumulator(accumulators[(r*4+c)*32 +: 32]),
+                .arithmetic_busy(pe_arithmetic_busy[r*4+c])
             );
         end
     end
@@ -82,12 +85,15 @@ module systolic_array_4x4 (
                 START_STEP: if (pe_start) state <= WAIT_STEP;
                 WAIT_STEP: if (step_advance) begin
                     if (step_index == 4'd9) begin
-                        result_tile <= accumulators;
-                        state <= RESULT;
+                        state <= DRAIN;
                     end else begin
                         step_index <= step_index + 4'd1;
                         state <= START_STEP;
                     end
+                end
+                DRAIN: if (!(|pe_arithmetic_busy)) begin
+                    result_tile <= accumulators;
+                    state <= RESULT;
                 end
                 RESULT: if (result_ready) state <= IDLE;
                 default: state <= IDLE;

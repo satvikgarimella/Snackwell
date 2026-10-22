@@ -45,12 +45,18 @@ module tb_multiwarp_memory_core;
     logic [3:0] shared_conflict_mask;
     integer cycles;
 
-
     multiwarp_execution_core dut (
 
         .clk                  (clk),
         .reset                (reset),
         .run_enable           (run_enable),
+        .host_program_write(1'b0), .host_program_address(10'd0), .host_program_data(32'd0),
+        .host_program_read_data(),
+        .host_memory_valid(1'b0), .host_memory_ready(), .host_memory_write(1'b0),
+        .host_memory_address(10'd0), .host_memory_data(32'd0),
+        .host_memory_response_valid(), .host_memory_response_ready(1'b0),
+        .host_memory_read_data(), .execution_idle(),
+
 
         .launch_enable        (launch_enable),
         .launch_warp_id       (launch_warp_id),
@@ -90,9 +96,7 @@ module tb_multiwarp_memory_core;
 
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
 
@@ -100,7 +104,6 @@ module tb_multiwarp_memory_core;
         $dumpvars(0, tb_multiwarp_memory_core);
 
     end
-
 
     task launch_warp (
         input logic [1:0] warp
@@ -121,7 +124,6 @@ module tb_multiwarp_memory_core;
         end
 
     endtask
-
 
     task write_reg (
         input logic [1:0]  warp,
@@ -147,7 +149,6 @@ module tb_multiwarp_memory_core;
 
     endtask
 
-
     initial begin
 
         clk = 0;
@@ -165,25 +166,18 @@ module tb_multiwarp_memory_core;
         debug_reg_addr = 0;
         debug_write_data = 0;
 
-
         $display("");
         $display(
             "=== Snackwell Multi-Warp Shared Memory Integration Test ==="
         );
         $display("");
-
-
-        // ---------------------------------------------
         // RESET
-        // ---------------------------------------------
 
         @(posedge clk);
         #1;
 
         reset = 0;
 
-
-        // ---------------------------------------------
         // PROGRAM
         //
         // 0x00:
@@ -194,7 +188,6 @@ module tb_multiwarp_memory_core;
         //
         // 0x08:
         // EXIT
-        // ---------------------------------------------
 
         dut.imem.memory[0] = {
             OP_ST_SHARED,
@@ -219,14 +212,9 @@ module tb_multiwarp_memory_core;
             4'd0,
             14'd0
         };
-
-
-        // ---------------------------------------------
         // LAUNCH W0 ONLY
-        // ---------------------------------------------
 
         launch_warp(2'd0);
-
 
         // Lane 0:
         //
@@ -247,7 +235,6 @@ module tb_multiwarp_memory_core;
             32'd1234
         );
 
-
         if (blocked_mask !== 4'b0000) begin
 
             $display(
@@ -258,22 +245,13 @@ module tb_multiwarp_memory_core;
 
         end
 
-
         $display(
             "PASS: warp launched and memory operands loaded"
         );
-
-
-        // ---------------------------------------------
         // RUN
-        // ---------------------------------------------
 
         run_enable = 1'b1;
-
-
-        // ---------------------------------------------
         // STORE
-        // ---------------------------------------------
 
         #1;
 
@@ -290,19 +268,13 @@ module tb_multiwarp_memory_core;
 
         end
 
-
         $display(
             "ISSUE: ST_SHARED [R1], R2"
         );
 
-
         @(posedge clk);
         #1;
-
-
-        // ---------------------------------------------
         // LOAD
-        // ---------------------------------------------
 
         // The older store must finish before the next memory request issues.
         cycles = 0;
@@ -326,15 +298,12 @@ module tb_multiwarp_memory_core;
 
         end
 
-
         $display(
             "ISSUE: LD_SHARED R3, [R1]"
         );
 
-
         @(posedge clk);
         #1;
-
 
         // Loads complete asynchronously and retire through the shared WB port.
         cycles = 0;
@@ -343,15 +312,11 @@ module tb_multiwarp_memory_core;
             #1;
             cycles = cycles + 1;
         end
-
-
-        // ---------------------------------------------
         // DIRECTLY VERIFY ARCHITECTURAL R3
-        // ---------------------------------------------
 
         if (
             dut.regfile.registers[0][0][3]
-            !== 32'd1234 
+            !== 32'd1234
         ) begin
 
             $display(
@@ -363,20 +328,16 @@ module tb_multiwarp_memory_core;
 
         end
 
-
         $display(
             "PASS: LD_SHARED wrote 1234 into W0 L0 R3"
         );
 
-
-        // ---------------------------------------------
         // VERIFY SHARED MEMORY ITSELF
         //
         // Address 0x40:
         //
         // bank = address[3:2] = 0
         // row  = address[11:4] = 4
-        // ---------------------------------------------
 
         if (
             dut.shared_mem.bank0[4]
@@ -391,15 +352,10 @@ module tb_multiwarp_memory_core;
 
         end
 
-
         $display(
             "PASS: store committed into banked shared memory"
         );
-
-
-        // ---------------------------------------------
         // RUN TO EXIT
-        // ---------------------------------------------
 
         cycles = 0;
         while (halted_mask !== 4'b0001 && cycles < 30) begin
@@ -409,7 +365,6 @@ module tb_multiwarp_memory_core;
         end
 
         if (halted_mask !== 4'b0001) $fatal(1, "Memory program did not halt");
-
 
         if (issue_valid !== 1'b0) begin
 
@@ -421,18 +376,15 @@ module tb_multiwarp_memory_core;
 
         end
 
-
         $display(
             "PASS: warp reached EXIT after memory operations"
         );
-
 
         $display("");
         $display(
             "ALL MULTI-WARP MEMORY INTEGRATION TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

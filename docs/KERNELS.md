@@ -206,7 +206,7 @@ in this milestone. Inputs/outputs still live in the 4 KB shared memory.
 ```sh
 python3 scripts/run_tests.py
 python3 scripts/run_tests.py tb_snackwell_kernel
-python3 -m unittest discover -s scripts/tests -v
+python3 -m unittest discover -s tests -v
 ```
 
 The full regression includes the assembled vector-add kernel and the Python

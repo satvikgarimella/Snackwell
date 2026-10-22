@@ -34,11 +34,7 @@ module tb_reconvergence_stack;
 
     logic overflow_attempt;
     logic underflow_attempt;
-
-
-    // =================================================
     // DUT
-    // =================================================
 
     reconvergence_stack dut (
 
@@ -76,18 +72,10 @@ module tb_reconvergence_stack;
         .underflow_attempt       (underflow_attempt)
 
     );
-
-
-    // =================================================
     // CLOCK
-    // =================================================
 
     always #5 clk = ~clk;
-
-
-    // =================================================
     // WAVEFORM
-    // =================================================
 
     initial begin
 
@@ -95,11 +83,7 @@ module tb_reconvergence_stack;
         $dumpvars(0, tb_reconvergence_stack);
 
     end
-
-
-    // =================================================
     // PUSH HELPER
-    // =================================================
 
     task push_entry (
         input logic [1:0]  warp,
@@ -129,11 +113,7 @@ module tb_reconvergence_stack;
         end
 
     endtask
-
-
-    // =================================================
     // POP HELPER
-    // =================================================
 
     task pop_entry (
         input logic [1:0] warp
@@ -153,11 +133,7 @@ module tb_reconvergence_stack;
         end
 
     endtask
-
-
-    // =================================================
     // MAIN TEST
-    // =================================================
 
     initial begin
 
@@ -179,28 +155,21 @@ module tb_reconvergence_stack;
         update_pending_enable = 0;
         update_deferred_pending = 0;
 
-
         $display("");
         $display(
             "=== Snackwell Reconvergence Stack Test ==="
         );
         $display("");
-
-
-        // =================================================
         // RESET
-        // =================================================
 
         @(posedge clk);
         #1;
 
         reset = 0;
 
-
         warp_id = 2'd0;
 
         #1;
-
 
         if (!empty) begin
 
@@ -211,7 +180,6 @@ module tb_reconvergence_stack;
             $fatal;
 
         end
-
 
         if (depth !== 3'd0) begin
 
@@ -224,16 +192,12 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: reset cleared stack"
         );
 
-
-        // =================================================
         // TEST 1
         // PUSH FIRST DIVERGENCE FOR W0
-        // =================================================
 
         push_entry(
             2'd0,
@@ -245,15 +209,12 @@ module tb_reconvergence_stack;
             4'b1111
         );
 
-
         warp_id = 2'd0;
 
         #1;
 
-
         if (depth !== 3'd1)
             $fatal;
-
 
         if (top_deferred_pc !== 32'h00000120) begin
 
@@ -265,7 +226,6 @@ module tb_reconvergence_stack;
 
         end
 
-
         if (top_deferred_mask !== 4'b1010) begin
 
             $display(
@@ -275,7 +235,6 @@ module tb_reconvergence_stack;
             $fatal;
 
         end
-
 
         if (top_reconverge_pc !== 32'h00000140) begin
 
@@ -287,7 +246,6 @@ module tb_reconvergence_stack;
 
         end
 
-
         if (top_reconverge_mask !== 4'b1111) begin
 
             $display(
@@ -297,7 +255,6 @@ module tb_reconvergence_stack;
             $fatal;
 
         end
-
 
         if (!top_deferred_pending) begin
 
@@ -309,19 +266,15 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: divergence entry pushed"
         );
 
-
-        // =================================================
         // TEST 2
         //
         // TAKEN PATH FINISHED.
         //
         // Switch to deferred path and mark it consumed.
-        // =================================================
 
         update_deferred_pending = 1'b0;
         update_pending_enable   = 1'b1;
@@ -330,7 +283,6 @@ module tb_reconvergence_stack;
         #1;
 
         update_pending_enable = 1'b0;
-
 
         if (top_deferred_pending !== 1'b0) begin
 
@@ -342,7 +294,6 @@ module tb_reconvergence_stack;
 
         end
 
-
         if (depth !== 3'd1) begin
 
             $display(
@@ -353,22 +304,16 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: deferred path state updated"
         );
 
-
-        // =================================================
         // TEST 3
         // POP AFTER BOTH PATHS COMPLETE
-        // =================================================
 
         pop_entry(2'd0);
 
-
         #1;
-
 
         if (!empty) begin
 
@@ -380,16 +325,12 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: reconvergence entry popped"
         );
 
-
-        // =================================================
         // TEST 4
         // PER-WARP INDEPENDENCE
-        // =================================================
 
         push_entry(
             2'd0,
@@ -399,7 +340,6 @@ module tb_reconvergence_stack;
             4'b1111
         );
 
-
         push_entry(
             2'd1,
             32'h00000300,
@@ -408,10 +348,8 @@ module tb_reconvergence_stack;
             4'b1111
         );
 
-
         warp_id = 2'd0;
         #1;
-
 
         if (
             top_deferred_pc !==
@@ -426,10 +364,8 @@ module tb_reconvergence_stack;
 
         end
 
-
         warp_id = 2'd1;
         #1;
-
 
         if (
             top_deferred_pc !==
@@ -444,18 +380,14 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: reconvergence stacks independent per warp"
         );
 
-
-        // =================================================
         // TEST 5
         // NESTED DIVERGENCE
         //
         // W2 gets four nested entries.
-        // =================================================
 
         push_entry(
             2'd2,
@@ -489,10 +421,8 @@ module tb_reconvergence_stack;
             4'b1111
         );
 
-
         warp_id = 2'd2;
         #1;
-
 
         if (!full) begin
 
@@ -504,7 +434,6 @@ module tb_reconvergence_stack;
 
         end
 
-
         if (depth !== 3'd4) begin
 
             $display(
@@ -515,7 +444,6 @@ module tb_reconvergence_stack;
             $fatal;
 
         end
-
 
         if (
             top_deferred_pc !==
@@ -530,21 +458,16 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: four-level nested divergence supported"
         );
 
-
-        // =================================================
         // TEST 6
         // OVERFLOW DETECTION
-        // =================================================
 
         push_enable = 1'b1;
 
         #1;
-
 
         if (!overflow_attempt) begin
 
@@ -556,12 +479,10 @@ module tb_reconvergence_stack;
 
         end
 
-
         @(posedge clk);
         #1;
 
         push_enable = 1'b0;
-
 
         if (depth !== 3'd4) begin
 
@@ -573,23 +494,17 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: stack overflow safely rejected"
         );
 
-
-        // =================================================
         // TEST 7
         // LIFO ORDER
-        // =================================================
 
         pop_entry(2'd2);
 
-
         warp_id = 2'd2;
         #1;
-
 
         if (
             top_deferred_pc !==
@@ -604,9 +519,7 @@ module tb_reconvergence_stack;
 
         end
 
-
         pop_entry(2'd2);
-
 
         if (
             top_deferred_pc !==
@@ -621,16 +534,12 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: nested entries pop in LIFO order"
         );
 
-
-        // =================================================
         // TEST 8
         // UNDERFLOW DETECTION
-        // =================================================
 
         // Empty W3 has never been touched.
 
@@ -638,7 +547,6 @@ module tb_reconvergence_stack;
         pop_enable = 1'b1;
 
         #1;
-
 
         if (!underflow_attempt) begin
 
@@ -650,12 +558,10 @@ module tb_reconvergence_stack;
 
         end
 
-
         @(posedge clk);
         #1;
 
         pop_enable = 1'b0;
-
 
         if (depth !== 3'd0) begin
 
@@ -667,20 +573,15 @@ module tb_reconvergence_stack;
 
         end
 
-
         $display(
             "PASS: stack underflow safely rejected"
         );
-
-
-        // =================================================
 
         $display("");
         $display(
             "ALL RECONVERGENCE STACK TESTS PASSED"
         );
         $display("");
-
 
         $finish;
 

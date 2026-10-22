@@ -22,13 +22,11 @@ module reconvergence_target_table (
 
     integer w;
 
-
     assign read_pc =
         reconvergence_pc[read_warp_id];
 
     assign read_valid =
         reconvergence_valid[read_warp_id];
-
 
     always_ff @(posedge clk) begin
 
@@ -52,7 +50,6 @@ module reconvergence_target_table (
                     <= 1'b0;
 
             end
-
 
             // Write wins if both happen to target same cycle.
             if (write_enable) begin

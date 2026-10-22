@@ -1,0 +1,7 @@
+test_grouped_rounding_and_bias_at_full_memory_capacity (tests.test_matvec.MatvecTests.test_grouped_rounding_and_bias_at_full_memory_capacity) ... ok
+test_warp_partitions_transpose_accumulation_and_fp32_edges (tests.test_matvec.MatvecTests.test_warp_partitions_transpose_accumulation_and_fp32_edges) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.859s
+
+OK

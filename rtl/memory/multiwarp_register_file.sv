@@ -1,10 +1,7 @@
 module multiwarp_register_file (
     input  logic         clk,
     input  logic         reset,
-
-    // ------------------------------------------------
     // READ CONTEXT
-    // ------------------------------------------------
 
     input  logic [1:0]   read_warp_id,
 
@@ -13,20 +10,14 @@ module multiwarp_register_file (
 
     output logic [127:0] rs1_data,
     output logic [127:0] rs2_data,
-
-    // ------------------------------------------------
     // WRITEBACK CONTEXT
-    // ------------------------------------------------
 
     input  logic         write_enable,
     input  logic [1:0]   write_warp_id,
     input  logic [3:0]   rd_addr,
     input  logic [127:0] write_data,
     input  logic [3:0]   write_mask,
-
-    // ------------------------------------------------
     // DEBUG PRELOAD
-    // ------------------------------------------------
 
     input  logic         debug_write_enable,
     input  logic [1:0]   debug_warp_id,
@@ -40,11 +31,7 @@ module multiwarp_register_file (
     integer w;
     integer l;
     integer r;
-
-
-    // =================================================
     // RESET + WRITEBACK
-    // =================================================
 
     always_ff @(posedge clk) begin
 
@@ -96,11 +83,7 @@ module multiwarp_register_file (
         end
 
     end
-
-
-    // =================================================
     // COMBINATIONAL READS
-    // =================================================
 
     assign rs1_data = {
         registers[read_warp_id][3][rs1_addr],
@@ -109,13 +92,11 @@ module multiwarp_register_file (
         registers[read_warp_id][0][rs1_addr]
     };
 
-
     assign rs2_data = {
         registers[read_warp_id][3][rs2_addr],
         registers[read_warp_id][2][rs2_addr],
         registers[read_warp_id][1][rs2_addr],
         registers[read_warp_id][0][rs2_addr]
     };
-
 
 endmodule

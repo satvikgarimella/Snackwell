@@ -15,7 +15,6 @@ module tb_reconvergence_target_table;
     logic [31:0] read_pc;
     logic read_valid;
 
-
     reconvergence_target_table dut (
 
         .clk           (clk),
@@ -33,9 +32,7 @@ module tb_reconvergence_target_table;
 
     );
 
-
     always #5 clk = ~clk;
-
 
     initial begin
 
@@ -49,7 +46,6 @@ module tb_reconvergence_target_table;
         );
 
     end
-
 
     task write_target (
         input logic [1:0] warp,
@@ -71,7 +67,6 @@ module tb_reconvergence_target_table;
 
     endtask
 
-
     initial begin
 
         clk = 0;
@@ -83,17 +78,12 @@ module tb_reconvergence_target_table;
 
         read_warp_id = 0;
 
-
         $display("");
         $display(
             "=== Snackwell Reconvergence Target Table Test ==="
         );
         $display("");
-
-
-        // =============================================
         // RESET
-        // =============================================
 
         @(posedge clk);
         #1;
@@ -103,7 +93,6 @@ module tb_reconvergence_target_table;
         read_warp_id = 2'd0;
 
         #1;
-
 
         if (read_valid !== 1'b0) begin
 
@@ -115,25 +104,18 @@ module tb_reconvergence_target_table;
 
         end
 
-
         $display(
             "PASS: reset clears reconvergence targets"
         );
-
-
-        // =============================================
         // WRITE W0
-        // =============================================
 
         write_target(
             2'd0,
             32'h00000140
         );
 
-
         read_warp_id = 2'd0;
         #1;
-
 
         if (
             read_pc !== 32'h00000140 ||
@@ -148,25 +130,18 @@ module tb_reconvergence_target_table;
 
         end
 
-
         $display(
             "PASS: W0 reconvergence target stored"
         );
-
-
-        // =============================================
         // WRITE W1
-        // =============================================
 
         write_target(
             2'd1,
             32'h00000280
         );
 
-
         read_warp_id = 2'd1;
         #1;
-
 
         if (
             read_pc !== 32'h00000280 ||
@@ -181,12 +156,10 @@ module tb_reconvergence_target_table;
 
         end
 
-
         // Ensure W0 stayed untouched
 
         read_warp_id = 2'd0;
         #1;
-
 
         if (
             read_pc !== 32'h00000140 ||
@@ -201,25 +174,18 @@ module tb_reconvergence_target_table;
 
         end
 
-
         $display(
             "PASS: targets independent per warp"
         );
-
-
-        // =============================================
         // OVERWRITE W0
-        // =============================================
 
         write_target(
             2'd0,
             32'h00000300
         );
 
-
         read_warp_id = 2'd0;
         #1;
-
 
         if (read_pc !== 32'h00000300) begin
 
@@ -231,18 +197,15 @@ module tb_reconvergence_target_table;
 
         end
 
-
         $display(
             "PASS: reconvergence target updates correctly"
         );
-
 
         $display("");
         $display(
             "ALL RECONVERGENCE TARGET TABLE TESTS PASSED"
         );
         $display("");
-
 
         @(negedge clk);
         clear_enable = 1;

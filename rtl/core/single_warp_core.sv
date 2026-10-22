@@ -24,11 +24,7 @@ module single_warp_core (
 );
 
     import snackwell_pkg::*;
-
-
-    // -----------------------------------------
     // Decoded instruction fields
-    // -----------------------------------------
 
     logic [3:0] rd_addr;
     logic [3:0] rs1_addr;
@@ -36,19 +32,11 @@ module single_warp_core (
 
     logic [13:0] immediate;
     logic [31:0] immediate_extended;
-
-
-    // -----------------------------------------
     // Internal control
-    // -----------------------------------------
 
     logic pc_enable;
     logic write_enable;
-
-
-    // -----------------------------------------
     // HALT CONTROL
-    // -----------------------------------------
 
     always_comb begin
 
@@ -59,11 +47,7 @@ module single_warp_core (
         pc_enable = run_enable && !halted;
 
     end
-
-
-    // -----------------------------------------
     // REGISTER WRITEBACK CONTROL
-    // -----------------------------------------
 
     always_comb begin
 
@@ -92,8 +76,6 @@ module single_warp_core (
 
     end
 
-
-    // -----------------------------------------
     // INSTRUCTION FRONTEND
     //
     // PC
@@ -101,7 +83,6 @@ module single_warp_core (
     // instruction memory
     //  ↓
     // decoder
-    // -----------------------------------------
 
     instruction_frontend frontend (
         .clk                (clk),
@@ -120,11 +101,7 @@ module single_warp_core (
         .immediate          (immediate),
         .immediate_extended (immediate_extended)
     );
-
-
-    // -----------------------------------------
     // 4-LANE SIMD EXECUTION
-    // -----------------------------------------
 
     simd_execution_unit execution (
         .clk                (clk),

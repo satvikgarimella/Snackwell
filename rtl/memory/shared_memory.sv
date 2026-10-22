@@ -1,4 +1,6 @@
-module shared_memory (
+module shared_memory #(
+    parameter bit CLEAR_ON_RESET = 1
+) (
     input  logic         clk,
     input  logic         reset,
 
@@ -32,22 +34,31 @@ module shared_memory (
     logic [127:0] saved_addresses, saved_store_data;
     logic [3:0] saved_load_mask, saved_store_mask, pending_mask;
     logic [3:0] service_mask, banks_used;
+    logic [7:0] service_rows [0:3];
     logic [127:0] conflict_addresses;
     logic [3:0] conflict_requests;
+    logic conflict_read_only;
 
     assign request_ready = !reset && !servicing && !response_valid;
     assign bank_conflict = |conflict_mask;
 
-    // Each bank services its lowest-numbered pending lane independently.
-    // A four-way collision takes four service cycles; different banks work
-    // in parallel. Same-address stores consequently commit in lane order.
+    // Each bank selects its lowest-numbered pending lane. Read-only requests
+    // broadcast that word to every matching lane. Different words serialize;
+    // requests containing stores retain the original ascending lane order.
     always @(*) begin
         service_mask = 4'b0;
         banks_used = 4'b0;
+        for (integer bank = 0; bank < 4; bank = bank + 1)
+            service_rows[bank] = 8'b0;
         for (integer lane = 0; lane < 4; lane = lane + 1) begin
             if (pending_mask[lane] && !banks_used[saved_addresses[lane*32+2 +: 2]]) begin
                 service_mask[lane] = 1'b1;
                 banks_used[saved_addresses[lane*32+2 +: 2]] = 1'b1;
+                service_rows[saved_addresses[lane*32+2 +: 2]] = saved_addresses[lane*32+4 +: 8];
+            end else if (pending_mask[lane] && saved_store_mask == 0 &&
+                         service_rows[saved_addresses[lane*32+2 +: 2]] ==
+                             saved_addresses[lane*32+4 +: 8]) begin
+                service_mask[lane] = 1'b1;
             end
         end
     end
@@ -56,11 +67,14 @@ module shared_memory (
         conflict_addresses = servicing ? saved_addresses : lane_addresses;
         conflict_requests = servicing ? pending_mask :
             ((request_valid && request_ready) ? load_enable_mask | store_enable_mask : 4'b0);
+        conflict_read_only = servicing ? saved_store_mask == 0 : store_enable_mask == 0;
         conflict_mask = 4'b0;
         for (integer a = 0; a < 4; a = a + 1)
             for (integer b = 0; b < 4; b = b + 1)
                 if (a != b && conflict_requests[a] && conflict_requests[b] &&
-                    conflict_addresses[a*32+2 +: 2] == conflict_addresses[b*32+2 +: 2])
+                    conflict_addresses[a*32+2 +: 2] == conflict_addresses[b*32+2 +: 2] &&
+                    !(conflict_read_only &&
+                      conflict_addresses[a*32+2 +: 10] == conflict_addresses[b*32+2 +: 10]))
                     conflict_mask[a] = 1'b1;
     end
 
@@ -74,12 +88,13 @@ module shared_memory (
             saved_store_mask <= 4'b0;
             pending_mask <= 4'b0;
             load_data <= 128'b0;
-            for (integer row = 0; row < 256; row = row + 1) begin
-                bank0[row] <= 32'b0;
-                bank1[row] <= 32'b0;
-                bank2[row] <= 32'b0;
-                bank3[row] <= 32'b0;
-            end
+            if (CLEAR_ON_RESET)
+                for (integer row = 0; row < 256; row = row + 1) begin
+                    bank0[row] <= 32'b0;
+                    bank1[row] <= 32'b0;
+                    bank2[row] <= 32'b0;
+                    bank3[row] <= 32'b0;
+                end
         end else begin
             if (response_valid && response_ready)
                 response_valid <= 1'b0;
@@ -101,10 +116,10 @@ module shared_memory (
                         // the old word, then stores its new value at this edge.
                         if (saved_load_mask[lane]) begin
                             case (saved_addresses[lane*32+2 +: 2])
-                                0: load_data[lane*32 +: 32] <= bank0[saved_addresses[lane*32+4 +: 8]];
-                                1: load_data[lane*32 +: 32] <= bank1[saved_addresses[lane*32+4 +: 8]];
-                                2: load_data[lane*32 +: 32] <= bank2[saved_addresses[lane*32+4 +: 8]];
-                                3: load_data[lane*32 +: 32] <= bank3[saved_addresses[lane*32+4 +: 8]];
+                                0: load_data[lane*32 +: 32] <= bank0[service_rows[0]];
+                                1: load_data[lane*32 +: 32] <= bank1[service_rows[1]];
+                                2: load_data[lane*32 +: 32] <= bank2[service_rows[2]];
+                                3: load_data[lane*32 +: 32] <= bank3[service_rows[3]];
                             endcase
                         end
                         if (saved_store_mask[lane]) begin
