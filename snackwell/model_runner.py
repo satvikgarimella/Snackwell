@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 
 from snackwell.character_model import block_prefix, feedforward_width, reference_forward
-from snackwell.decoding import validate_temperature
+from snackwell.decoding import validate_min_p, validate_temperature
 from snackwell.kv_cache import model_signature
 from snackwell.model_runtime import ModelRuntime, insert_rectangle, rectangle
 from snackwell.numeric import bits, value
@@ -26,6 +26,8 @@ def forward(
     temperature=1.0,
     kv_cache=None,
     phase=None,
+    min_p=0.0,
+    token_prefix="",
 ):
     """Verify a forward pass, releasing its simulator process even on cancellation."""
     (Path(output) / "result.json").unlink(missing_ok=True)
@@ -47,19 +49,47 @@ def forward(
                 temperature,
                 kv_cache,
                 phase,
+                min_p,
+                token_prefix,
             )
     return _forward(
-        model, ids, output, executable, on_progress, draw, last_only, temperature, kv_cache, phase
+        model,
+        ids,
+        output,
+        executable,
+        on_progress,
+        draw,
+        last_only,
+        temperature,
+        kv_cache,
+        phase,
+        min_p,
+        token_prefix,
     )
 
 
 def _forward(
-    model, ids, output, executable, on_progress, draw, last_only, temperature, kv_cache, phase
+    model,
+    ids,
+    output,
+    executable,
+    on_progress,
+    draw,
+    last_only,
+    temperature,
+    kv_cache,
+    phase,
+    min_p,
+    token_prefix,
 ):
     started = time.perf_counter()
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     validate_temperature(temperature)
+    validate_min_p(min_p)
+    vocabulary = model["config"]["vocabulary"]
+    if not isinstance(token_prefix, str) or not any(t.startswith(token_prefix) for t in vocabulary):
+        raise ValueError("token prefix must match at least one vocabulary entry")
     if draw is not None and (not math.isfinite(draw) or not 0 <= value(bits(draw)) < 1):
         raise ValueError("sampling draw must round to FP32 in [0, 1)")
     config = model["config"]
@@ -312,31 +342,37 @@ def _forward(
         raise ValueError("RTL greedy predictions differ from whole-model reference")
     selected = predictions[-1]
     sampling_probabilities = None
-    if draw is not None:
+    sampling_weights = None
+    if draw is not None or token_prefix:
         # Sample only the final real row, including for partial prompt tiles.
         last_row = slice((output_rows - 1) * padded_vocabulary, output_rows * padded_vocabulary)
         sampling_bits = probability_bits[last_row]
-        if temperature != 1.0:
+        selection_logits = logits[last_row]
+        selection_temperature = temperature if draw is not None else 1.0
+        if token_prefix:
+            selection_logits = runtime.restrict_tokens(
+                "prompt_token_mask",
+                selection_logits,
+                [t.startswith(token_prefix) for t in vocabulary]
+                + [False] * (padded_vocabulary - vocabulary_size),
+            )
+        if selection_temperature != 1.0 or token_prefix:
             sampling_bits = runtime.rows(
                 "sampling_softmax",
                 "softmax",
-                logits[last_row],
+                selection_logits,
                 1,
                 padded_vocabulary,
-                temperature=temperature,
+                temperature=selection_temperature,
             )
-            sampling_expected = [
-                p
-                for row in [context - 1]
-                for p in stable_softmax(
-                    [
-                        z / temperature
-                        for z in expected["logits"][
-                            row * vocabulary_size : (row + 1) * vocabulary_size
-                        ]
-                    ]
-                )
-            ]
+            sampling_expected = stable_softmax(
+                [
+                    z / selection_temperature
+                    if vocabulary[i].startswith(token_prefix)
+                    else -math.inf
+                    for i, z in enumerate(expected["logits"][-vocabulary_size:])
+                ]
+            )
             checks["sampling_probabilities"] = verify_approx(
                 rectangle(sampling_bits, padded_vocabulary, 0, 1, 0, vocabulary_size),
                 sampling_expected,
@@ -351,21 +387,34 @@ def _forward(
         sampling_probabilities = [
             value(word) for word in sampling_bits[-padded_vocabulary:][:vocabulary_size]
         ]
-        selected = runtime.rows(
-            "sample_decode",
-            "categorical",
-            sampling_bits,
-            1,
-            padded_vocabulary,
-            draws=[bits(draw)],
-        )[-1]
+        if draw is not None:
+            if min_p:
+                sampling_bits = runtime.rows(
+                    "sampling_min_p", "min_p", sampling_bits, 1, padded_vocabulary, min_p=min_p
+                )
+                sampling_weights = [value(w) for w in sampling_bits[:vocabulary_size]]
+            selected = runtime.rows(
+                "sample_decode",
+                "categorical",
+                sampling_bits,
+                1,
+                padded_vocabulary,
+                draws=[bits(draw)],
+            )[-1]
+        else:
+            selected = runtime.rows(
+                "constrained_greedy_decode", "argmax", sampling_bits, 1, padded_vocabulary
+            )[-1]
     selected_distribution = (
-        sampling_probabilities
-        if draw is not None
-        else [value(word) for word in probabilities[-vocabulary_size:]]
+        sampling_weights if sampling_weights is not None else sampling_probabilities
     )
+    if selected_distribution is None:
+        selected_distribution = [value(word) for word in probabilities[-vocabulary_size:]]
     if not 0 <= selected < vocabulary_size or selected_distribution[selected] <= 0:
         raise ValueError("decoder selected a masked or zero-probability character")
+    token_text = vocabulary[selected]
+    if not token_text.startswith(token_prefix):
+        raise ValueError("decoder changed the required prompt prefix")
     report = dict(
         verified=True,
         simulation=runtime.simulation,
@@ -389,15 +438,19 @@ def _forward(
         cycles=sum(r["cycles"] for r in runtime.reports),
         launches=len(runtime.reports),
         predictions=predictions,
-        next_character=config["vocabulary"][selected],
+        next_character=token_text[len(token_prefix) :],
         greedy_next_character=config["vocabulary"][predictions[-1]],
         selection=dict(
             mode="sample" if draw is not None else "greedy",
             draw=draw,
             token_id=selected,
             temperature=temperature if draw is not None else None,
+            min_p=min_p if draw is not None else None,
+            token_text=token_text,
+            healed_prefix=token_prefix,
         ),
         sampling_probabilities=sampling_probabilities,
+        sampling_weights=sampling_weights,
         probabilities=[value(word) for word in probabilities],
         accuracy=checks,
         stages=runtime.reports,

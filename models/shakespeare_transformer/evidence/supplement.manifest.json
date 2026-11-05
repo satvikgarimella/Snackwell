@@ -1,0 +1,175 @@
+{
+  "included": [
+    {
+      "title": "ALL\u2019S WELL THAT ENDS WELL",
+      "characters": 128146
+    },
+    {
+      "title": "THE TRAGEDY OF ANTONY AND CLEOPATRA",
+      "characters": 140655
+    },
+    {
+      "title": "AS YOU LIKE IT",
+      "characters": 119215
+    },
+    {
+      "title": "THE COMEDY OF ERRORS",
+      "characters": 84461
+    },
+    {
+      "title": "CYMBELINE",
+      "characters": 151944
+    },
+    {
+      "title": "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK",
+      "characters": 169088
+    },
+    {
+      "title": "THE FIRST PART OF KING HENRY THE FOURTH",
+      "characters": 134666
+    },
+    {
+      "title": "THE SECOND PART OF KING HENRY THE FOURTH",
+      "characters": 145124
+    },
+    {
+      "title": "THE LIFE OF KING HENRY THE FIFTH",
+      "characters": 144979
+    },
+    {
+      "title": "THE FIRST PART OF HENRY THE SIXTH",
+      "characters": 122266
+    },
+    {
+      "title": "THE SECOND PART OF KING HENRY THE SIXTH",
+      "characters": 140658
+    },
+    {
+      "title": "KING HENRY THE EIGHTH",
+      "characters": 134852
+    },
+    {
+      "title": "THE LIFE AND DEATH OF KING JOHN",
+      "characters": 115983
+    },
+    {
+      "title": "THE TRAGEDY OF JULIUS CAESAR",
+      "characters": 110223
+    },
+    {
+      "title": "THE TRAGEDY OF KING LEAR",
+      "characters": 145780
+    },
+    {
+      "title": "LOVE\u2019S LABOUR\u2019S LOST",
+      "characters": 120697
+    },
+    {
+      "title": "THE TRAGEDY OF MACBETH",
+      "characters": 97147
+    },
+    {
+      "title": "THE MERCHANT OF VENICE",
+      "characters": 115573
+    },
+    {
+      "title": "THE MERRY WIVES OF WINDSOR",
+      "characters": 121741
+    },
+    {
+      "title": "A MIDSUMMER NIGHT\u2019S DREAM",
+      "characters": 90552
+    },
+    {
+      "title": "MUCH ADO ABOUT NOTHING",
+      "characters": 117931
+    },
+    {
+      "title": "THE TRAGEDY OF OTHELLO, THE MOOR OF VENICE",
+      "characters": 147501
+    },
+    {
+      "title": "PERICLES, PRINCE OF TYRE",
+      "characters": 103117
+    },
+    {
+      "title": "THE LIFE OF TIMON OF ATHENS",
+      "characters": 104993
+    },
+    {
+      "title": "THE TRAGEDY OF TITUS ANDRONICUS",
+      "characters": 112493
+    },
+    {
+      "title": "TROILUS AND CRESSIDA",
+      "characters": 148398
+    },
+    {
+      "title": "TWELFTH NIGHT; OR, WHAT YOU WILL",
+      "characters": 109571
+    },
+    {
+      "title": "THE TWO GENTLEMEN OF VERONA",
+      "characters": 96611
+    },
+    {
+      "title": "THE TWO NOBLE KINSMEN",
+      "characters": 131996
+    }
+  ],
+  "excluded": [
+    {
+      "title": "THE TRAGEDY OF CORIOLANUS",
+      "reason": "overlaps base corpus",
+      "windows": 11447
+    },
+    {
+      "title": "THE THIRD PART OF KING HENRY THE SIXTH",
+      "reason": "overlaps base corpus",
+      "windows": 9891
+    },
+    {
+      "title": "MEASURE FOR MEASURE",
+      "reason": "overlaps base corpus",
+      "windows": 10153
+    },
+    {
+      "title": "KING RICHARD THE SECOND",
+      "reason": "overlaps base corpus",
+      "windows": 7296
+    },
+    {
+      "title": "KING RICHARD THE THIRD",
+      "reason": "overlaps base corpus",
+      "windows": 4048
+    },
+    {
+      "title": "THE TRAGEDY OF ROMEO AND JULIET",
+      "reason": "overlaps base corpus",
+      "windows": 12621
+    },
+    {
+      "title": "THE TAMING OF THE SHREW",
+      "reason": "entire held-out play"
+    },
+    {
+      "title": "THE TEMPEST",
+      "reason": "overlaps base corpus",
+      "windows": 3219
+    },
+    {
+      "title": "THE WINTER\u2019S TALE",
+      "reason": "overlaps base corpus",
+      "windows": 15695
+    }
+  ],
+  "held_out_overlap_windows": 0,
+  "overlap_window_words": 32,
+  "characters": 3606389,
+  "base_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "source_sha256": "1f9d2c918583ded820da3a3241ce918e1ee72dbadc573b8668d67f6c690660e2",
+  "output_sha256": "9496a2f95175a9aa6e5a7514eb2233ac516b1610fc9b1a96374c474ff5c71401",
+  "source_url": "https://www.gutenberg.org/ebooks/100",
+  "source_file_sha256": "eb61e33cab23dbe712ad57091ded6c7292ba91ac3bb2764f51a3223ec0068fe5",
+  "note": "Training supplement only. Base vocabulary, tokenizer and evaluation splits stay fixed."
+}

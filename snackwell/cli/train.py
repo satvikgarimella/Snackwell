@@ -66,9 +66,16 @@ def score_targets(network, data, positions, context, device):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=ROOT / "build/data/tinyshakespeare.txt")
+    parser.add_argument(
+        "--extra-training-data",
+        type=Path,
+        action="append",
+        default=[],
+        help="Append text to training only; keep the base tokenizer and held-out splits unchanged",
+    )
     parser.add_argument("--download", action="store_true")
     parser.add_argument("--steps", type=int, default=6000)
-    parser.add_argument("--width", type=int, choices=(4, 8, 16, 32, 64, 128), default=16)
+    parser.add_argument("--width", type=int, choices=(4, 8, 16, 32, 64, 128, 256), default=16)
     parser.add_argument("--context", type=int, choices=(4, 8, 16, 32, 64, 128), default=16)
     parser.add_argument(
         "--bpe-vocabulary",
@@ -97,7 +104,7 @@ def main():
         action="store_true",
         help="Initialize a longer position table by repeating the resume checkpoint's positions",
     )
-    parser.add_argument("--layers", type=int, choices=(1, 2, 4), default=1)
+    parser.add_argument("--layers", type=int, choices=(1, 2, 4, 8), default=1)
     parser.add_argument("--heads", type=int, choices=(1, 2, 4), default=1)
     parser.add_argument("--ffn-multiplier", type=int, choices=(2, 4), default=2)
     parser.add_argument(
@@ -154,8 +161,8 @@ def main():
         parser.error("--expand-ffn requires --resume")
     if args.bpe_vocabulary and args.resume:
         parser.error("--resume uses the saved tokenizer; omit --bpe-vocabulary")
-    if args.ffn_multiplier * args.width > 512:
-        parser.error("feed-forward width cannot exceed 512")
+    if args.ffn_multiplier * args.width > 1024:
+        parser.error("feed-forward width cannot exceed 1024")
     if not math.isfinite(args.learning_rate) or args.learning_rate <= 0:
         parser.error("--learning-rate must be finite and positive")
     if args.min_learning_rate is not None and not (
@@ -195,6 +202,22 @@ def main():
         encode(part)
         for part in (text[:train_end], text[train_end:validation_end], text[validation_end:])
     ]
+    supplemental = []
+    for path in args.extra_training_data:
+        extra_raw = path.read_bytes()
+        extra_text = extra_raw.decode("utf-8")
+        if not extra_text.strip():
+            parser.error(f"extra training corpus is empty: {path}")
+        extra_ids = encode("\n\n" + extra_text)
+        splits[0].extend(extra_ids)
+        supplemental.append(
+            dict(
+                path=str(path.resolve()),
+                sha256=hashlib.sha256(extra_raw).hexdigest(),
+                characters=len(extra_text),
+                tokens_including_separator=len(extra_ids),
+            )
+        )
     if min(map(len, splits)) <= args.context:
         parser.error("each split must contain more tokens than --context")
 
@@ -289,10 +312,16 @@ def main():
             dict(
                 backend=f"PyTorch {args.device.upper()} reference training; not RTL",
                 arguments={
-                    key: str(value) if isinstance(value, Path) else value
+                    key: str(value)
+                    if isinstance(value, Path)
+                    else [str(p) for p in value]
+                    if key == "extra_training_data"
+                    else value
                     for key, value in vars(args).items()
                 },
                 dataset_sha256=hashlib.sha256(raw).hexdigest(),
+                supplemental_training=supplemental,
+                training_tokens=len(train),
                 input_checkpoint_sha256=resumed["sha256"] if resumed else None,
                 torch_version=torch.__version__,
                 source_sha256={
@@ -446,6 +475,8 @@ def main():
                 optimizer_state="fresh AdamW",
                 dataset_url=DATA_URL,
                 dataset_sha256=hashlib.sha256(raw).hexdigest(),
+                supplemental_training=supplemental,
+                training_tokens=len(train),
                 characters=len(text),
                 split_boundaries=dict(train_end=train_end, validation_end=validation_end),
                 initial_validation=initial,

@@ -1,0 +1,40 @@
+{
+  "kind": "Verified RTL matvec microbenchmarks; not full-model latency",
+  "rtl_sha256": "d47ac8279c655e1542f8c76b80f38464b054c2221023c48c4eae5ceabea7c461",
+  "backend": "verilator",
+  "measurements": [
+    {
+      "width": 256,
+      "columns": 1024,
+      "multiply_adds": 262144,
+      "seconds": 3.762584167008754,
+      "cycles": 1075091,
+      "launches": 296,
+      "verified": true,
+      "max_words": 956,
+      "max_instructions": 302
+    },
+    {
+      "width": 576,
+      "columns": 1024,
+      "multiply_adds": 589824,
+      "seconds": 5.164092666993383,
+      "cycles": 2422545,
+      "launches": 666,
+      "verified": true,
+      "max_words": 956,
+      "max_instructions": 302
+    },
+    {
+      "width": 576,
+      "columns": 1536,
+      "multiply_adds": 884736,
+      "seconds": 9.044997583026998,
+      "cycles": 3634312,
+      "launches": 990,
+      "verified": true,
+      "max_words": 956,
+      "max_instructions": 302
+    }
+  ]
+}

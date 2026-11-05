@@ -1,0 +1,36 @@
+{
+  "purpose": "Choose a pretrained model for short English continuations before implementing its Snackwell execution. CPU generation is evaluation only.",
+  "core_prompts": [
+    "My name is",
+    "The sky was dark, so Maya",
+    "Ben lost his keys. He looked",
+    "The dog waited by the door because",
+    "I was hungry, so I",
+    "Emma opened the box and found",
+    "The bus was late. Sam decided to",
+    "Lily planted a seed. Every morning, she",
+    "Tom wanted to help his friend, but",
+    "It started to rain while we were",
+    "Anna could not find her red hat. She asked",
+    "The little robot picked up the ball and"
+  ],
+  "stress_prompts": [
+    "My lord, I have something to say",
+    "ROMEO:",
+    "What is your name?",
+    "The king is dead, and we must now"
+  ],
+  "modes": ["greedy", "sample"],
+  "sample_seeds": [92617660, 1729, 1730],
+  "temperature": 0.7,
+  "top_p": 1.0,
+  "repetition_penalty": 1.0,
+  "new_token_limit": 128,
+  "inspection": "Retain and inspect every complete continuation, including failures. Token limits may leave an unfinished final sentence; score completed clauses. Core prompts assess short English narrative continuation; stress prompts separately expose domain limits and are not chatbot requirements.",
+  "acceptance": {
+    "core_sampled_usable_minimum": "33/36",
+    "core_greedy_usable_minimum": "11/12",
+    "usable": "Completed clauses are grammatical, follow the prompt, and avoid sustained loops, role/name swaps or clear contradictions within the continuation.",
+    "limitations": "This is a small manual screening set, not proof of general fluency. After selection, use a separate previously unseen confirmation set before promotion. Do not tune decoding to this set."
+  }
+}

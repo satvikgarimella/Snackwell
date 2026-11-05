@@ -10,7 +10,8 @@ import json
 import struct
 from dataclasses import dataclass
 
-from snackwell.character_model import ReferenceState, encode_prompt
+from snackwell.character_model import ReferenceState
+from snackwell.decoding import prepare_prompt
 
 
 def model_signature(model):
@@ -45,17 +46,17 @@ class KVCache:
 class Generation:
     """One prompt owns one cache. Discard the object on cancellation or completion."""
 
-    def __init__(self, model, prompt, *, cache=True):
+    def __init__(self, model, prompt, *, cache=True, heal=True):
         self.model = model
         self.enabled = cache
         self.context = model["config"]["context"]
         self.rebuild_tokens = max(1, 3 * self.context // 4)
         self.text = prompt
-        self.ids = encode_prompt(model, prompt, pad=not cache)
+        self.ids, self.token_prefix = prepare_prompt(model, prompt, cache=cache, heal=heal)
         self.cache = KVCache() if cache else None
         self.steps = 0
 
-    def next(self, output, executable, on_progress=None, *, draw=None, temperature=1.0):
+    def next(self, output, executable, on_progress=None, *, draw=None, temperature=1.0, min_p=0.0):
         from snackwell.model_runner import forward
 
         ids, cache = self.ids, self.cache
@@ -77,7 +78,10 @@ class Generation:
             temperature=temperature,
             kv_cache=cache,
             phase=phase,
+            min_p=min_p,
+            token_prefix=self.token_prefix,
         )
+        self.token_prefix = ""
         self.text += result["next_character"]
         self.cache = cache
         self.ids = (

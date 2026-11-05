@@ -1,0 +1,236 @@
+#!/usr/bin/env python3
+"""Train the bounded sentence model on the HOST, then export for RTL inference."""
+
+import argparse
+import hashlib
+import json
+import math
+import random
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from snackwell.character_model import (
+    FORMAT_SUBWORD,
+    load_checkpoint,
+    reference_forward,
+    validate_checkpoint,
+)
+from snackwell.numeric import bits, value
+from snackwell.sentence_task import (
+    LOCATIONS,
+    OBJECTS,
+    Example,
+    dataset_hash,
+    encode_example,
+    examples,
+    pair_split,
+)
+from snackwell.tokenizer import Tokenizer
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--steps", type=int, default=2000)
+    parser.add_argument("--seed", type=int, default=1729)
+    parser.add_argument("--eval-every", type=int, default=100)
+    parser.add_argument("--width", type=int, choices=(32, 64), default=32)
+    parser.add_argument(
+        "--curriculum",
+        action="store_true",
+        help="Start with one fact, then mix one- and two-fact training",
+    )
+    parser.add_argument("--initialization", choices=("gpt", "fan_in"), default="gpt")
+    parser.add_argument("--layers", type=int, choices=(2, 4), default=2)
+    parser.add_argument("--resume", type=Path)
+    parser.add_argument("--learning-rate", type=float, default=0.002)
+    parser.add_argument("--weight-decay", type=float, default=0.01)
+    args = parser.parse_args()
+    if args.steps < 1 or args.eval_every < 1:
+        parser.error("steps and evaluation interval must be positive")
+    if not math.isfinite(args.learning_rate) or args.learning_rate <= 0:
+        parser.error("learning rate must be finite and positive")
+    if not math.isfinite(args.weight_decay) or args.weight_decay < 0:
+        parser.error("weight decay must be finite and nonnegative")
+    if not 0 <= args.seed < 2**32:
+        parser.error("seed must be a 32-bit nonnegative integer")
+    args.out.mkdir(parents=True, exist_ok=False)
+
+    import torch
+    import torch.nn.functional as F
+
+    from snackwell.torch_model import ReferenceTransformer
+
+    torch.set_num_threads(1)
+    torch.manual_seed(args.seed)
+    rng = random.Random(args.seed)
+    splits = {name: examples(name) for name in ("train", "validation", "test")}
+    tokenizer = Tokenizer.train("\n".join(e.prompt + e.answer for e in splits["train"]), 256)
+    config = dict(
+        context=32,
+        width=args.width,
+        heads=2,
+        layers=args.layers,
+        epsilon=value(bits(1e-5)),
+        vocabulary=tokenizer.vocabulary,
+    )
+    resumed = load_checkpoint(args.resume) if args.resume else None
+    if resumed and (resumed["config"] != config or resumed["tokenizer"] != tokenizer.metadata()):
+        raise ValueError("resume model configuration/tokenizer does not match this task")
+    network = ReferenceTransformer(
+        config, resumed["weights"] if resumed else None, initialization=args.initialization
+    )
+    parameters = network.parameters_by_name
+
+    def tensors(data):
+        encoded = [encode_example(tokenizer, e) for e in data]
+        length = max(len(ids) for ids, _ in encoded)
+        if length > config["context"]:
+            raise ValueError("sentence exceeds model context")
+        x = torch.full((len(data), length), tokenizer.alphabet[" "], dtype=torch.long)
+        y = torch.full_like(x, -100)
+        for row, (ids, targets) in enumerate(encoded):
+            x[row, : len(ids)] = torch.tensor(ids)
+            y[row, : len(targets)] = torch.tensor(targets)
+        return x, y
+
+    single = [
+        Example(((obj, room),), obj)
+        for obj in OBJECTS
+        for room in LOCATIONS
+        if pair_split(obj, room) == "train"
+    ]
+    training = tensors(splits["train"] + (single * 24 if args.curriculum else []))
+    warmup = tensors(single)
+    validation = tensors(splits["validation"])
+
+    def score(data):
+        network.eval()
+        total, count, exact = 0.0, 0, 0
+        with torch.no_grad():
+            for start in range(0, len(data[0]), 64):
+                x, y = (tensor[start : start + 64] for tensor in data)
+                logits = network(x)
+                total += float(F.cross_entropy(logits.flatten(0, 1), y.flatten(), reduction="sum"))
+                count += int((y != -100).sum())
+                exact += int(((logits.argmax(-1) == y) | (y == -100)).all(-1).sum())
+        return dict(answer_loss=total / count, exact_answers=exact, examples=len(data[0]))
+
+    manifest = dict(
+        task="two-fact location question; short generated answer",
+        execution="HOST PyTorch training, not Snackwell RTL training",
+        config=config,
+        seed=args.seed,
+        steps=args.steps,
+        splits={
+            key: dict(count=len(data), sha256=dataset_hash(data)) for key, data in splits.items()
+        },
+        split_rule="Query pairs: (object index + location index) mod 8 = 0 test, 1 validation, else train. Both training facts use train pairs. Evaluation distractors use train pairs.",
+        tokenizer_fit="training only",
+        optimizer=dict(
+            name="AdamW",
+            learning_rate=args.learning_rate,
+            weight_decay=args.weight_decay,
+            clip_norm=1.0,
+        ),
+        resumed_from=resumed["sha256"] if resumed else None,
+        previous_training=resumed.get("training") if resumed else None,
+        batch_size=64,
+        curriculum=args.curriculum,
+        initialization=args.initialization,
+        curriculum_recipe="Fresh runs start with 300 single-fact updates; resumed runs skip this warmup. Then 24 copies of each single-fact example are mixed with the original training set. All facts use train-only pairs; location-token losses have 5x weight."
+        if args.curriculum
+        else None,
+        training_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        dataset_source_sha256=hashlib.sha256(
+            Path(__file__).parents[1].joinpath("snackwell/sentence_task.py").read_bytes()
+        ).hexdigest(),
+    )
+    (args.out / "recipe.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    optimizer = torch.optim.AdamW(
+        network.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay
+    )
+    best_loss, best_weights, history = float("inf"), None, []
+    started = time.monotonic()
+    print(
+        f"HOST training: {sum(p.numel() for p in parameters.values()):,} parameters; "
+        f"{len(tokenizer.vocabulary)} tokens; {len(splits['train'])} training examples",
+        flush=True,
+    )
+    for step in range(1, args.steps + 1):
+        network.train()
+        pool = warmup if args.curriculum and not resumed and step <= 300 else training
+        indexes = [rng.randrange(len(pool[0])) for _ in range(64)]
+        x, y = (tensor[indexes] for tensor in pool)
+        logits = network(x)
+        if args.curriculum:
+            weights = (y != -100).float()
+            for room in LOCATIONS:
+                for token in tokenizer.encode(" " + room):
+                    weights = torch.where(y == token, 5.0, weights)
+            errors = F.cross_entropy(logits.flatten(0, 1), y.flatten(), reduction="none").reshape(
+                y.shape
+            )
+            loss = (errors * weights).sum() / weights.sum()
+        else:
+            loss = F.cross_entropy(logits.flatten(0, 1), y.flatten())
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(network.parameters(), 1.0)
+        optimizer.step()
+        if step % args.eval_every == 0 or step == 1 or step == args.steps:
+            result = dict(step=step, train_batch_loss=float(loss.detach()), **score(validation))
+            history.append(result)
+            print(json.dumps(result), flush=True)
+            if result["answer_loss"] < best_loss:
+                best_loss = result["answer_loss"]
+                best_weights = {k: v.detach().clone() for k, v in parameters.items()}
+                manifest["selected_step"] = step
+            (args.out / "history.json").write_text(json.dumps(history, indent=2) + "\n")
+
+    with torch.no_grad():
+        for key, parameter in parameters.items():
+            parameter.copy_(best_weights[key])
+    model = validate_checkpoint(
+        dict(
+            format=FORMAT_SUBWORD,
+            config=config,
+            tokenizer=tokenizer.metadata(),
+            weights={k: v.detach().flatten().tolist() for k, v in parameters.items()},
+            training=manifest,
+        )
+    )
+    checkpoint = args.out / "checkpoint.json"
+    checkpoint.write_text(json.dumps(model, indent=2, allow_nan=False) + "\n")
+    # The independent scalar implementation checks export semantics, including
+    # position offsets, causal attention, normalization and weight orientation.
+    export_checks = []
+    network.eval()
+    for example in splits["validation"][:: max(1, len(splits["validation"]) // 4)]:
+        ids = tokenizer.encode(example.prompt)
+        with torch.no_grad():
+            got = network(torch.tensor([ids]))[0, -1].tolist()
+        expected = reference_forward(model, ids)["logits"][-len(tokenizer.vocabulary) :]
+        error = max(abs(a - b) for a, b in zip(got, expected))
+        if error > 2e-4:
+            raise ValueError(f"export reference mismatch: {error}")
+        export_checks.append(dict(prompt=example.prompt, maximum_logit_error=error))
+    report = dict(
+        execution="HOST evaluation, not RTL",
+        checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+        selected_step=manifest["selected_step"],
+        validation=score(validation),
+        test=score(tensors(splits["test"])),
+        export_checks=export_checks,
+        wall_seconds=time.monotonic() - started,
+        note="Exact answers require every answer-token argmax to match under teacher forcing. Autonomous generation and RTL are checked separately.",
+    )
+    (args.out / "report.json").write_text(json.dumps(report, indent=2) + "\n")
+    print(json.dumps(report, indent=2), flush=True)
+
+
+if __name__ == "__main__":
+    main()

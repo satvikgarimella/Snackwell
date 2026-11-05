@@ -250,7 +250,7 @@ class ModelTests(unittest.TestCase):
             ("heads", 3),
             ("heads", 4),
             ("context", 256),
-            ("width", 256),
+            ("width", 512),
         ):
             with self.subTest(key=key, value=bad):
                 altered = copy.deepcopy(model)

@@ -118,6 +118,70 @@ def vocabulary_mask(layout, rows, cols, vocabulary):
     return a.text()
 
 
+def token_mask(layout, cols):
+    """Apply a packed allow-list to one logit row in place."""
+    a = Assembly(layout, "restrict the next token to a supplied text prefix")
+    a.emit(f"""XOR R15, R15, R15
+        ADDI R8, R15, {layout.address("x")}
+        ADDI R9, R15, {layout.address("allowed")}
+        ADDI R10, R15, {cols}
+        ADDI R6, R15, 1""")
+    a.const(7, word=0xFF800000)
+    a.emit("""mask_word:
+        LD_SHARED R0, [R9]
+        ADDI R11, R15, 32
+        mask_token:
+        LD_SHARED R1, [R8]
+        AND R2, R0, R6""")
+    select(a, 1, 7, 1, 2, 3)
+    a.emit("""ST_SHARED [R8], R1
+        SHR R0, R0, R6
+        ADDI R8, R8, 4
+        ADDI R10, R10, -1
+        BEQ R10, R15, done
+        ADDI R11, R11, -1
+        BEQ R11, R15, next_word
+        BEQ R15, R15, mask_token
+        next_word:
+        ADDI R9, R9, 4
+        BEQ R15, R15, mask_word
+        done: EXIT""")
+    return a.text()
+
+
+def min_p_filter(layout, rows, cols, min_p):
+    """Keep weights >= min_p * max(weight); categorical sampling renormalizes."""
+    a = Assembly(layout, "discard sampling weights below a fraction of the maximum")
+    row_start(a, rows, cols, layout.address("x"), layout.address("x"))
+    a.emit(f"""LD_SHARED R0, [R12]
+        ADD R8, R12, R15
+        ADDI R9, R15, {cols}
+        max_loop:
+        LD_SHARED R1, [R8]""")
+    maximum(a, 0, 0, 1, 2, 3)
+    a.emit("""ADDI R8, R8, 4
+        ADDI R9, R9, -1
+        BEQ R9, R15, filter_start
+        BEQ R15, R15, max_loop
+        filter_start:""")
+    a.const(1, min_p)
+    a.emit(f"""FMUL R0, R0, R1
+        ADD R8, R12, R15
+        ADDI R9, R15, {cols}
+        filter_loop:
+        LD_SHARED R1, [R8]
+        FLT R2, R1, R0""")
+    select(a, 1, 1, 15, 2, 3)
+    a.emit("""ST_SHARED [R8], R1
+        ADDI R8, R8, 4
+        ADDI R9, R9, -1
+        BEQ R9, R15, filter_done
+        BEQ R15, R15, filter_loop
+        filter_done:""")
+    row_end(a, cols)
+    return a.text()
+
+
 def argmax(layout, rows, cols):
     a = Assembly(layout, "greedy token selection; lowest index wins ties")
     row_start(a, rows, cols, layout.address("x"), layout.address("out"), reduced=True)

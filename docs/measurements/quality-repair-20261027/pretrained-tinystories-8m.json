@@ -1,0 +1,590 @@
+{
+  "kind": "Published pretrained model evaluated on CPU; NOT Snackwell execution or training",
+  "model": "roneneldan/TinyStories-8M",
+  "revision": "8612e3b15c66ffa94eaa6ee0de5c96edd2d630af",
+  "config": {
+    "vocab_size": 50257,
+    "max_position_embeddings": 2048,
+    "hidden_size": 256,
+    "num_layers": 8,
+    "num_heads": 16,
+    "intermediate_size": null,
+    "window_size": 256,
+    "activation_function": "gelu_new",
+    "resid_dropout": 0,
+    "embed_dropout": 0,
+    "attention_dropout": 0,
+    "classifier_dropout": 0.1,
+    "layer_norm_epsilon": 1e-05,
+    "initializer_range": 0.02,
+    "use_cache": true,
+    "bos_token_id": 50256,
+    "eos_token_id": 50256,
+    "attention_types": [
+      [
+        [
+          "global",
+          "local"
+        ],
+        4
+      ]
+    ],
+    "attention_layers": [
+      "global",
+      "local",
+      "global",
+      "local",
+      "global",
+      "local",
+      "global",
+      "local"
+    ],
+    "return_dict": true,
+    "output_hidden_states": false,
+    "torchscript": false,
+    "dtype": "float32",
+    "pruned_heads": {},
+    "tie_word_embeddings": true,
+    "chunk_size_feed_forward": 0,
+    "is_encoder_decoder": false,
+    "is_decoder": false,
+    "cross_attention_hidden_size": null,
+    "add_cross_attention": false,
+    "tie_encoder_decoder": false,
+    "architectures": [
+      "GPTNeoForCausalLM"
+    ],
+    "finetuning_task": null,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "task_specific_params": null,
+    "problem_type": null,
+    "tokenizer_class": null,
+    "prefix": null,
+    "pad_token_id": null,
+    "sep_token_id": null,
+    "decoder_start_token_id": null,
+    "max_length": 20,
+    "min_length": 0,
+    "do_sample": false,
+    "early_stopping": false,
+    "num_beams": 1,
+    "temperature": 1.0,
+    "top_k": 50,
+    "top_p": 1.0,
+    "typical_p": 1.0,
+    "repetition_penalty": 1.0,
+    "length_penalty": 1.0,
+    "no_repeat_ngram_size": 0,
+    "encoder_no_repeat_ngram_size": 0,
+    "bad_words_ids": null,
+    "num_return_sequences": 1,
+    "output_scores": false,
+    "return_dict_in_generate": false,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": false,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "num_beam_groups": 1,
+    "diversity_penalty": 0.0,
+    "_name_or_path": "roneneldan/TinyStories-8M",
+    "transformers_version": "4.57.6",
+    "gradient_checkpointing": false,
+    "model_type": "gpt_neo",
+    "summary_activation": null,
+    "summary_first_dropout": 0.1,
+    "summary_proj_to_labels": true,
+    "summary_type": "cls_index",
+    "summary_use_proj": true,
+    "tf_legacy_loss": false,
+    "use_bfloat16": false,
+    "output_attentions": false
+  },
+  "parameters": 19702528,
+  "torch": "2.14.1",
+  "transformers": "4.57.6",
+  "context_policy": "128 tokens, periodic rebuild retaining the latest 96",
+  "temperature": 0.7,
+  "minimum_new_characters": 192,
+  "maximum_new_tokens": 256,
+  "source_sha256": "2e0ec6f72f3f6c94eec847441f09b8a2c1dcca8fa906dbe6c6768d4619e6be60",
+  "cases": [
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": ". Do you have it?\"\n\nLily and Ben look at the box. They see a small box with a bow. They have an idea.\n\n\"Yes, we have the box!\" Lily says. \"We can give it to the man. He will be happy.\"\n\nThey take",
+      "tokens": 62,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": "\n\nOne day, they see a big box in the living room. It has a picture of a castle on it. They wonder what is inside.\n\n\"Let's open it!\" Tom says. He runs to the box and pulls the lid.\n\n\"Wait for me",
+      "tokens": 58,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " I am flying!\"\n\nJenny was so excited. She had never seen a bird fly before. She watched as the bird flew higher and higher. She was so happy.\n\nJenny wanted to fly too. She asked her mom, \"Can I",
+      "tokens": 53,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " scared, or you might be scared or hurt.\n",
+      "tokens": 12,
+      "characters": 41,
+      "ended": true
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " Lily. You are my best friend.\"\n\nLily closed her eyes and said, \"Thank you, God. Amen.\"\n\nThen she opened her eyes and saw her mom and dad. They were smiling and holding her hand. They said, \"We",
+      "tokens": 53,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " was very happy and thanked the little girl. He said, \"You are very welcome! I am glad I could help.\"\n\nThe little girl smiled and said, \"It was my pleasure. I am glad I could help.\"\n\nThe king and",
+      "tokens": 52,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": "\u201d\n\nThe little girl smiled and said, \u201cMy name is Lucy. I like to play with my toys.\u201d\n\nThe old man smiled and said, \u201cThat\u2019s great! I\u2019m glad you like it.\u201d\n\nThe little girl thanked the old man and",
+      "tokens": 66,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " sweetie. I love you.\"\n\nLily and Ben said, \"We love you too, mom. Good night.\"\n\nThey closed their eyes and fell asleep. They dreamed of the park and the swings and the slide. They were happy.\n",
+      "tokens": 53,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " go to jail.\"\n\nThe king was very sad. He said, \"But I don't want to go to jail. I want to stay here.\"\n\nThe king said, \"I'm sorry, but I can't go to jail. I have to stay here.\"\n\nThe king was very",
+      "tokens": 63,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " blue. It is a beautiful day.\n",
+      "tokens": 10,
+      "characters": 30,
+      "ended": true
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": "____, Mandy! I'm so excited to explore the world!\"\n\nMandy was so happy to hear this and she couldn't wait to explore the world. She ran around the garden, exploring all the different things. She",
+      "tokens": 47,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " you, mom. I love you, dad. I love you, Lily. I love you, Lily. I love you, Lily. I love you, Lily. I love you, Lily. I love you, Lily. I love you, Lily. I love you, Lily. I love you, Lily. I love",
+      "tokens": 66,
+      "characters": 196,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": "careful.\n",
+      "tokens": 5,
+      "characters": 9,
+      "ended": true
+    },
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": ". I have to say sorry if you make a mistake.\" She ran to the kitchen and came back with a big box of markers and some paper. She said, \"I'm sorry, Spot. I was mean to you. Can we be friends again",
+      "tokens": 51,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": "\n\nOne day, Lily goes to the park with her mom. She sees a big slide and wants to go on it. She runs to the slide and climbs up. She is very brave.\n\nBut when she gets to the top, she sees something",
+      "tokens": 53,
+      "characters": 196,
+      "ended": false
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " I will never rise again\". Jenny felt very sad and started to cry. She knew that she had made a mistake, but she knew she had made a mistake.\n\nIn the end, Jenny had to go to the hospital and she",
+      "tokens": 48,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " happy, or we may miss Grandma's things. And sometimes, we have to be patient and wait for the right time to sort them. And we have to be kind and happy for Grandma.\n",
+      "tokens": 43,
+      "characters": 166,
+      "ended": true
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " Tim. You make me happy today.\"\n\nTim opened his eyes and looked at the chair. He saw a big clock on the wall. It was very old and had many hands. Tim thought it was the way to get to his room.",
+      "tokens": 50,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " was so happy that he celebrated every day. The king was united with his friends and was never apart. They all lived happily ever after.\n",
+      "tokens": 30,
+      "characters": 137,
+      "ended": true
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": "\u201d\n\nThe bee smiled and said, \u201cMy name is Buzz. I am a bee and I like to buzz around and explore.\u201d\n\nLila and Ben smiled and said, \u201cWe are happy to meet you, Buzz. Do you want to play with us?\u201d\n\n",
+      "tokens": 65,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " sweetie. Good night, Lily.\"\n\nLily nodded and said, \"Good night, mom.\"\n\nMom tucked Lily in and gave her a kiss. \"Good night, Lily. Sweet dreams.\"\n\nLily closed her eyes and fell asleep. She dreamed",
+      "tokens": 56,
+      "characters": 196,
+      "ended": false
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " go to court.\"\n\nAnna and Ben are sad. They love the king. He is their friend.\n\nThey hug each other. They say, \"We are sorry, king. We were not mean. We are happy to be your friends. We love you",
+      "tokens": 55,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " very high. They see big flashes of light. It is thunder.\n\n\"What is that?\" Lily asks.\n\n\"That is thunder. It is like a big sound that happens when the water comes from the ground. Sometimes it makes",
+      "tokens": 50,
+      "characters": 197,
+      "ended": false
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": "and the sunflower. One morning I'm so excited to bloom!\"\n\nThe next morning, the sunflower was sitting on the balcony. It was so happy to be blooming. As the sun came out, the sunflower smiled.",
+      "tokens": 49,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " you, Mommy. Thank you for helping me.\"\n",
+      "tokens": 13,
+      "characters": 40,
+      "ended": true
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": "re not.\" \n\nJane smiled and said, \"Okay, I'll try to be more careful next time.\" \n\nAnd with that, Jane and her family kept the memory of the memory, and they all lived happily ever after.\n",
+      "tokens": 52,
+      "characters": 187,
+      "ended": true
+    },
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": "...\" The knight was very surprised and said, \"You need to use your nose to make a loud noise!\"\n\nThe prince was a bit scared, but he decided to try it. He put his nose on the ground and the knight",
+      "tokens": 48,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Zoom, Zoom!\n",
+      "tokens": 6,
+      "characters": 13,
+      "ended": true
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Jenny. You are a big girl. You are a curious girl. But you also have to respect other people's things. You have to be careful and respectful. You have to learn and grow. You have to learn. You",
+      "tokens": 46,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " watered. What is that?\"\n\nLily was curious. She asked, \"What is it?\"\n\nMommy said, \"It is a surprise. If you water it, it will grow into a flower. If it grows bigger and bigger, you will bloom.\"",
+      "tokens": 56,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Benny.\" Benny was very happy and said, \"Thank you, Lily. You are so kind.\" They talked and laughed together for a long time.\n\nAfter they finished praying, Lily said, \"Benny, I made a promise to",
+      "tokens": 49,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " thanked the rabbit. He said, \"You are very welcome. You are very brave and kind.\" The rabbit said, \"You are right. We are friends. Let's play together.\" They played and had fun. The king and the",
+      "tokens": 48,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Where are you and where you are going?\"\n\nTom and Lily did not answer. They looked at each other and felt scared.\n\nThey heard a voice behind them. It was their mom. She said, \"Tom, Lily, where",
+      "tokens": 50,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Daisy.\" Daisy was so happy and she couldn't wait to tell her mommy about it. She couldn't wait to tell her friends.\n",
+      "tokens": 30,
+      "characters": 117,
+      "ended": true
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " finish our castle. We will not be able to play anymore. We will find another way to live.\"\n\nHe waves his hand, and they swam away. They went back to their homes, and they discussed the story.",
+      "tokens": 47,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " gloomy. They are sad and bored. They do not want to play with their toys.\n\nThey sit on the floor and look at the sky. They see some clouds and some birds. They see some clouds and some clouds",
+      "tokens": 46,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " raining. Do you want to play in the puddles?\"\n\nTimmy said, \"Yes, please!\" and they started to jump in the puddles. They splashed and played until it was time to go home. Timmy said, \"Thanks for",
+      "tokens": 55,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " collecting things!\"\n\nThe little girl smiled. \"Me too!\"\n",
+      "tokens": 16,
+      "characters": 56,
+      "ended": true
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": "grow. You have to be patient and wait. You will be strong and clever.\"\n\nAnna nodded and said, \"Yes, mister. I will be patient and clever. I will be a good girl.\"\n\nThe next day, Anna's dad took",
+      "tokens": 54,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": ". Do you have anything?\"\n\nLily and Ben looked at the necklace and the necklace. They both liked them, but they did not like the same things. They said, \"No, we don't have money. We only have toys",
+      "tokens": 50,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": "\n\nThe team worked together to clean the island. They planted big waves and stirred the soil around the island. After a few weeks, the island was clean and it looked so beautiful.\n\nThe team was",
+      "tokens": 43,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " I reach the top!\" The girl stopped and looked up, looking very sad. Jenny had lost her number. She felt so sorry for it!\n\nJenny said she was sorry that it was her number. But the girl didn't want",
+      "tokens": 49,
+      "characters": 196,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " seen.\u201d \n\nSo, the two friends decided to go explore some more. They went to the beach and played in the water. \n\nThe whale was happy to have such a cool friend. He swam around in circles and looked",
+      "tokens": 52,
+      "characters": 197,
+      "ended": false
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " mommy. I hope your wish comes true.\"\n\nHer mom smiled and hugged her. She said, \"Thank you, Sara. I love you. You are very sweet.\"\n\nThey talked for a while, and Sara felt better. She knew her mom",
+      "tokens": 54,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " was grumpy. He wanted to keep the castle.\n\nThe little boy looked at the castle. He looked at the castle and saw a big, round, red apple. He knew the castle was not for the king. But he had an",
+      "tokens": 50,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": "\u201d\n\nJohn smiled and said, \u201cMy name is John and I am three years old. What\u2019s yours?\u201d\n\n\u201cMy name is Joe,\u201d said John.\n\nJoe smiled and said, \u201cThat\u2019s a very nice name. Do you want to play a game?\u201d\n\nJohn",
+      "tokens": 75,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " Jack,\" said his dad. \"Now it's time to sleep.\"\n\nJack was still sleepy, but he knew he could dream about a new day. He gave his mom a big hug and said, \"I'm ready for bed now!\"\n",
+      "tokens": 52,
+      "characters": 177,
+      "ended": true
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " be alive to be alive again. We need to think of a way to repair him. We should work together and find a way to fix the dead.\n\nThe king and queen try to fix the dead. They work together and soon",
+      "tokens": 48,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " a bright and beautiful blue color. It is the day of the party. Lily was very excited and asked her mommy, \"Can we have a party with all the balloons, cake, and cake?\"\n\nHer mommy smiled and said",
+      "tokens": 49,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": "'s Kay and I love my music too. Can I do it?\"\n\nSuddenly, Billy heard a voice coming from the trees. It was a little bird.\n\n\"Hi Kay! My name is John. I'm looking for a guitar. Can you help me?\"",
+      "tokens": 56,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " you too, mom!\" Tom said.\n\n\"I love you too, Tom. You are a good brother.\" Mom said.\n\nThey went to the living room, where they had some cookies and milk. They ate them and talked about their day",
+      "tokens": 52,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": "t.\"\n\nSam smiled and said, \"I will help you, Mama!\"\n\nSo, together they managed to fix the puzzle, and it was even more organized. Sam was so proud of himself.\n\nMama said, \"You did it! You managed",
+      "tokens": 56,
+      "characters": 194,
+      "ended": false
+    }
+  ],
+  "review": "CPU feasibility probe only; grammatical English is clearer, but semantic errors, out-of-domain failures and greedy repetition remain. Not integrated with Snackwell and not presented as our training."
+}

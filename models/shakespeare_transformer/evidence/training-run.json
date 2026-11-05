@@ -1,0 +1,57 @@
+{
+  "backend": "PyTorch MPS reference training; not RTL",
+  "arguments": {
+    "data": "/Users/satvik.garimella/Snackwell/build/data/tinyshakespeare.txt",
+    "extra_training_data": [
+      "build/quality-repair-20261026/supplement.txt"
+    ],
+    "download": false,
+    "steps": 8000,
+    "width": 128,
+    "context": 128,
+    "bpe_vocabulary": null,
+    "batch_size": 32,
+    "loss_tail": 128,
+    "prefix_loss_weight": 0.2,
+    "eval_every": 1000,
+    "evaluation_targets": 2048,
+    "report_test": false,
+    "device": "mps",
+    "extend_context": false,
+    "layers": 8,
+    "heads": 4,
+    "ffn_multiplier": 4,
+    "expand_ffn": false,
+    "seed": 2631,
+    "resume": "build/quality-repair-20261026/deep8/checkpoint.json",
+    "learning_rate": 0.0003,
+    "dropout": 0.15,
+    "initialization": "fan_in",
+    "weight_decay": 0.1,
+    "warmup_steps": 200,
+    "teacher": null,
+    "distillation_weight": 0.5,
+    "distillation_temperature": 1.5,
+    "min_learning_rate": 3e-05,
+    "out": "build/quality-repair-20261026/dialogue8"
+  },
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "supplemental_training": [
+    {
+      "path": "/Users/satvik.garimella/Snackwell/build/quality-repair-20261026/supplement.txt",
+      "sha256": "9496a2f95175a9aa6e5a7514eb2233ac516b1610fc9b1a96374c474ff5c71401",
+      "characters": 3606389,
+      "tokens_including_separator": 1722457
+    }
+  ],
+  "training_tokens": 2185821,
+  "input_checkpoint_sha256": "2cdcfbf50ef4dcae2daa76210ecb2420efe42fa862565cc4b97fd57a4c9d987a",
+  "torch_version": "2.14.1",
+  "source_sha256": {
+    "snackwell/cli/train.py": "65d8d286105568defd4fcc8b7865da105077c8a6ceb6f72eb673353ed927e5b9",
+    "snackwell/torch_model.py": "8b8ee227e830e3d92ea030685e9b5b8d157469abeba0862d81bba353271d14a8",
+    "snackwell/model_expansion.py": "e7347b69d46da248f726734ea4fda1cde0ec6654345bf6ee3798537f7dceab63",
+    "snackwell/character_model.py": "254e7623b260ceaefd77c997b44140e847aa0289312bb4dd2a27c3e4a1c5adde",
+    "snackwell/tokenizer.py": "a8d75677eb2e24138ae58d0a328ca9851b43c8dddb9095823203b022ae70ce43"
+  }
+}

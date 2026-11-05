@@ -1,0 +1,25 @@
+{
+  "split": "test",
+  "bootstrap": {
+    "seed": 20261021,
+    "replicates": 5000,
+    "block_tokens": 128
+  },
+  "comparisons": [
+    {
+      "label": "dialogue8",
+      "baseline_token_loss": 3.1447330004096035,
+      "candidate_token_loss": 2.726549253506437,
+      "relative_loss_reduction": 0.13297909452048795,
+      "paired_mean_loss_change": -0.4181837469031664,
+      "block_bootstrap_95_percent_interval": [
+        -0.4718199230053071,
+        -0.3692998695327217
+      ],
+      "baseline_token_accuracy": 0.335205078125,
+      "candidate_token_accuracy": 0.3857421875,
+      "baseline_nats_per_character": 1.4547874143089288,
+      "candidate_nats_per_character": 1.2945970323795202
+    }
+  ]
+}

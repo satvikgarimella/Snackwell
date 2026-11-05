@@ -1,0 +1,26 @@
+{
+  "kind": "CPU reference, not RTL",
+  "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+  "cases": [
+    {
+      "prompt": "My name is ",
+      "heal": false,
+      "generated": "My name is imperious to this present particular.\n\nPRINCESS:"
+    },
+    {
+      "prompt": "My name is ",
+      "heal": true,
+      "generated": "My name is bold and daughter.\n\nPISTOL:\nBy my troth,\n"
+    },
+    {
+      "prompt": "ROMEO:",
+      "heal": false,
+      "generated": "ROMEO:\nAy, for this day, I'll not speak with thee.\n\nMERCUTIO:"
+    },
+    {
+      "prompt": "ROMEO:",
+      "heal": true,
+      "generated": "ROMEO:\nAy, for this day, I'll not speak with thee.\n\nMERCUTIO:"
+    }
+  ]
+}

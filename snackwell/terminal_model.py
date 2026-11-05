@@ -73,12 +73,14 @@ class TerminalPrediction:
             self.stream.flush()
 
 
-def predict(model, prompt, tokens, output, executable, stream=None, decoder=None, cache=True):
+def predict(
+    model, prompt, tokens, output, executable, stream=None, decoder=None, cache=True, heal=True
+):
     """Show and save a run; publish characters only after whole-model verification."""
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     (output / "result.json").unlink(missing_ok=True)
-    generation = Generation(model, prompt, cache=cache)
+    generation = Generation(model, prompt, cache=cache, heal=heal)
     decoder = decoder or Decoder()
     print(
         f"Model: {model_description(model)}\nDecoding: {decoder.describe()}",
@@ -103,6 +105,7 @@ def predict(model, prompt, tokens, output, executable, stream=None, decoder=None
                 display.progress,
                 draw=decoder.draw(),
                 temperature=decoder.temperature,
+                min_p=getattr(decoder, "min_p", 0.0),
             )
             display.prediction(result)
             reports.append(
@@ -124,6 +127,7 @@ def predict(model, prompt, tokens, output, executable, stream=None, decoder=None
             prompt=prompt,
             generated=display.generated,
             decoding=decoder.describe(),
+            token_healing=heal,
             tokens=reports,
             cycles=sum(r["cycles"] for r in reports),
             latency=latency_report(reports, cache, subword="tokenizer" in model),
@@ -174,6 +178,8 @@ def interactive(
     checkpoint_path=None,
     temperature=DEFAULT_TEMPERATURE,
     cache=True,
+    min_p=0.0,
+    heal=True,
 ):
     unit = "token" if "tokenizer" in model else "character"
     print(
@@ -245,8 +251,9 @@ def interactive(
                 tokens,
                 run_output,
                 executable,
-                decoder=Decoder(mode, seed, temperature),
+                decoder=Decoder(mode, seed, temperature, min_p=min_p),
                 cache=cache,
+                heal=heal,
             )
             print(f"Run files: {run_output}\n")
         except KeyboardInterrupt:

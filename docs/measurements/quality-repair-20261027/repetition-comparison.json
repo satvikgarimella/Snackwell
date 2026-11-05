@@ -1,0 +1,114 @@
+{
+  "note": "Mechanical repetition only, not a grammar or fluency score; all complete texts must be reviewed. Long means at least 12 characters repeated three consecutive times.",
+  "models": [
+    {
+      "name": "default",
+      "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+      "greedy": {
+        "cases": 8,
+        "cases_with_long_triple_repeat": 5,
+        "loop_examples": [
+          {
+            "prompt": "My lord, I have something to say",
+            "seed": null,
+            "repeated_text": " the world that I will be the sea of"
+          },
+          {
+            "prompt": "I pray you,",
+            "seed": null,
+            "repeated_text": " of the world that I will be the sea"
+          },
+          {
+            "prompt": "The king",
+            "seed": null,
+            "repeated_text": " of the world that I will be the sea"
+          },
+          {
+            "prompt": "What is your name?",
+            "seed": null,
+            "repeated_text": " of the world that I say,\nAnd then the season"
+          },
+          {
+            "prompt": "Good night,",
+            "seed": null,
+            "repeated_text": " of the world that I will be the sea"
+          }
+        ]
+      },
+      "sample": {
+        "cases": 24,
+        "cases_with_long_triple_repeat": 0,
+        "loop_examples": []
+      }
+    },
+    {
+      "name": "previous-broader",
+      "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+      "greedy": {
+        "cases": 8,
+        "cases_with_long_triple_repeat": 4,
+        "loop_examples": [
+          {
+            "prompt": "ROMEO:",
+            "seed": null,
+            "repeated_text": "\nIt is a most pretty times of a clock.\n\nROMEO:"
+          },
+          {
+            "prompt": "JULIET:",
+            "seed": null,
+            "repeated_text": "\nIt is a most pretty times of a child.\n\nROMEO:"
+          },
+          {
+            "prompt": "I pray you,",
+            "seed": null,
+            "repeated_text": ".\n\nPRINCE:\nIt is a pretty pleasure"
+          },
+          {
+            "prompt": "What is your name?",
+            "seed": null,
+            "repeated_text": " pretty pleasure.\n\nPRINCE:\nIt is a"
+          }
+        ]
+      },
+      "sample": {
+        "cases": 24,
+        "cases_with_long_triple_repeat": 0,
+        "loop_examples": []
+      }
+    },
+    {
+      "name": "continued8",
+      "checkpoint_sha256": "60e8e89eb9339989e3f1d5e5c354a70fdca47b57d436484d5c0d7a7728b754ed",
+      "greedy": {
+        "cases": 8,
+        "cases_with_long_triple_repeat": 0,
+        "loop_examples": []
+      },
+      "sample": {
+        "cases": 24,
+        "cases_with_long_triple_repeat": 0,
+        "loop_examples": []
+      }
+    },
+    {
+      "name": "wide4",
+      "checkpoint_sha256": "90dc15437af1b185f9189ccd38059792d1fb9643143b6622d45ae5f48b932df2",
+      "greedy": {
+        "cases": 8,
+        "cases_with_long_triple_repeat": 1,
+        "loop_examples": [
+          {
+            "prompt": "Good night,",
+            "seed": null,
+            "repeated_text": ".\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not mad"
+          }
+        ]
+      },
+      "sample": {
+        "cases": 24,
+        "cases_with_long_triple_repeat": 0,
+        "loop_examples": []
+      }
+    }
+  ]
+}

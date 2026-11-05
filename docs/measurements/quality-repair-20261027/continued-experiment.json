@@ -1,0 +1,659 @@
+{
+  "request": "Improve Shakespeare continuation quality, then verify selected weights on Snackwell RTL.",
+  "hypothesis": "The eight-block model was still improving after 8000 supplemental-corpus updates; continue that training before increasing runtime model size.",
+  "candidate": "continued8/checkpoint.json",
+  "training_run": {
+    "backend": "PyTorch MPS reference training; not RTL",
+    "arguments": {
+      "data": "/Users/satvik.garimella/Snackwell/build/data/tinyshakespeare.txt",
+      "extra_training_data": [
+        "build/quality-repair-20261026/supplement.txt"
+      ],
+      "download": false,
+      "steps": 24000,
+      "width": 128,
+      "context": 128,
+      "bpe_vocabulary": null,
+      "batch_size": 32,
+      "loss_tail": 128,
+      "prefix_loss_weight": 0.2,
+      "eval_every": 2000,
+      "evaluation_targets": 2048,
+      "report_test": false,
+      "device": "mps",
+      "extend_context": false,
+      "layers": 8,
+      "heads": 4,
+      "ffn_multiplier": 4,
+      "expand_ffn": false,
+      "seed": 2718,
+      "resume": "models/shakespeare_transformer/checkpoint.json",
+      "learning_rate": 0.0004,
+      "dropout": 0.1,
+      "initialization": "fan_in",
+      "weight_decay": 0.1,
+      "warmup_steps": 300,
+      "teacher": null,
+      "distillation_weight": 0.5,
+      "distillation_temperature": 1.5,
+      "min_learning_rate": 2e-05,
+      "out": "build/quality-repair-20261027/continued8"
+    },
+    "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+    "supplemental_training": [
+      {
+        "path": "/Users/satvik.garimella/Snackwell/build/quality-repair-20261026/supplement.txt",
+        "sha256": "9496a2f95175a9aa6e5a7514eb2233ac516b1610fc9b1a96374c474ff5c71401",
+        "characters": 3606389,
+        "tokens_including_separator": 1722457
+      }
+    ],
+    "training_tokens": 2185821,
+    "input_checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+    "torch_version": "2.14.1",
+    "source_sha256": {
+      "snackwell/cli/train.py": "65d8d286105568defd4fcc8b7865da105077c8a6ceb6f72eb673353ed927e5b9",
+      "snackwell/torch_model.py": "8b8ee227e830e3d92ea030685e9b5b8d157469abeba0862d81bba353271d14a8",
+      "snackwell/model_expansion.py": "e7347b69d46da248f726734ea4fda1cde0ec6654345bf6ee3798537f7dceab63",
+      "snackwell/character_model.py": "254e7623b260ceaefd77c997b44140e847aa0289312bb4dd2a27c3e4a1c5adde",
+      "snackwell/tokenizer.py": "a8d75677eb2e24138ae58d0a328ca9851b43c8dddb9095823203b022ae70ce43"
+    }
+  },
+  "evaluation": {
+    "split": "validation only; reserved test has already been observed and will not be used for selection",
+    "matched_token_targets": 8192,
+    "target_seed": 2718,
+    "minimum_position": 128,
+    "matched_text_passages": 16,
+    "passage_seed": 2741,
+    "generation": {
+      "prompts": [
+        "My lord, I have something to say",
+        "ROMEO:",
+        "JULIET:",
+        "To be, or not to be",
+        "I pray you,",
+        "The king",
+        "What is your name?",
+        "Good night,"
+      ],
+      "seeds": [
+        92617660,
+        1729,
+        1730
+      ],
+      "temperature": 0.7,
+      "new_characters": 192,
+      "lexicon_supplements": [
+        "build/quality-repair-20261026/supplement.txt"
+      ]
+    },
+    "review": "Inspect all complete continuations for grammar, sentence loops and invented words; likelihood improvement alone does not establish fluency.",
+    "additional_generation_prompts": [
+      "The king is dead, and we must now",
+      "the sky today is",
+      "My name is ",
+      "I love",
+      "To be, or not to "
+    ],
+    "additional_prompt_note": "These five prompts come from the previous October 27 character-model experiment; baseline outputs already saved. Use the same three seeds, temperature and character target."
+  },
+  "baselines": {
+    "default": {
+      "path": "models/character_transformer/checkpoint.json",
+      "sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e"
+    },
+    "subword": {
+      "path": "models/subword_transformer/checkpoint.json",
+      "sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8"
+    },
+    "previous_broader": {
+      "path": "models/shakespeare_transformer/checkpoint.json",
+      "sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971"
+    }
+  },
+  "promotion": {
+    "status": "No new checkpoint promoted; generated text remains inadequate.",
+    "requirements": [
+      "Actual text improves across the fixed prompt/seed set",
+      "No arithmetic tolerances relaxed",
+      "Full-window RTL and cache rebuild/decode verification",
+      "Terminal generated output matches CPU diagnostic",
+      "Report latency separately from language quality"
+    ]
+  },
+  "wider_candidate": {
+    "name": "wide4",
+    "reason": "The continued width-128 model improved validation loss only from 2.5527 to 2.5058 in its first 14000 updates. Test wider representations trained from scratch on the complete decontaminated training corpus.",
+    "config": {
+      "width": 256,
+      "layers": 4,
+      "heads": 4,
+      "ffn_multiplier": 4,
+      "context": 128,
+      "bpe_vocabulary": 512
+    },
+    "recipe": {
+      "steps": 24000,
+      "batch_size": 32,
+      "seed": 2727,
+      "dropout": 0.15,
+      "weight_decay": 0.1,
+      "learning_rate": 0.001,
+      "min_learning_rate": 5e-05,
+      "warmup_steps": 500,
+      "initialization": "gpt"
+    },
+    "status": "Completed; reviewed below, no default change.",
+    "hardware": "4 KB shared memory and 1024 instructions unchanged; wide normalization reuses input storage after its reductions",
+    "training_run": {
+      "backend": "PyTorch MPS reference training; not RTL",
+      "arguments": {
+        "data": "/Users/satvik.garimella/Snackwell/build/data/tinyshakespeare.txt",
+        "extra_training_data": [
+          "build/quality-repair-20261026/supplement.txt"
+        ],
+        "download": false,
+        "steps": 24000,
+        "width": 256,
+        "context": 128,
+        "bpe_vocabulary": 512,
+        "batch_size": 32,
+        "loss_tail": 128,
+        "prefix_loss_weight": 0.2,
+        "eval_every": 2000,
+        "evaluation_targets": 2048,
+        "report_test": false,
+        "device": "mps",
+        "extend_context": false,
+        "layers": 4,
+        "heads": 4,
+        "ffn_multiplier": 4,
+        "expand_ffn": false,
+        "seed": 2727,
+        "resume": null,
+        "learning_rate": 0.001,
+        "dropout": 0.15,
+        "initialization": "gpt",
+        "weight_decay": 0.1,
+        "warmup_steps": 500,
+        "teacher": null,
+        "distillation_weight": 0.5,
+        "distillation_temperature": 1.5,
+        "min_learning_rate": 5e-05,
+        "out": "build/quality-repair-20261027/wide4"
+      },
+      "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+      "supplemental_training": [
+        {
+          "path": "/Users/satvik.garimella/Snackwell/build/quality-repair-20261026/supplement.txt",
+          "sha256": "9496a2f95175a9aa6e5a7514eb2233ac516b1610fc9b1a96374c474ff5c71401",
+          "characters": 3606389,
+          "tokens_including_separator": 1722457
+        }
+      ],
+      "training_tokens": 2185821,
+      "input_checkpoint_sha256": null,
+      "torch_version": "2.14.1",
+      "source_sha256": {
+        "snackwell/cli/train.py": "e2135ab60255f95aca8d505f7cd8f9574c9e82388cafd81cea8b9779e762745d",
+        "snackwell/torch_model.py": "8b8ee227e830e3d92ea030685e9b5b8d157469abeba0862d81bba353271d14a8",
+        "snackwell/model_expansion.py": "4b0d92dca354f26bc5b9aad5f7be0610ffa9128d59cf1c08f19fc1051fb9b02c",
+        "snackwell/character_model.py": "fb11cecbfb9150354d9bd8c9f90b543c625103f59248f45786b7c3c61778b005",
+        "snackwell/tokenizer.py": "a8d75677eb2e24138ae58d0a328ca9851b43c8dddb9095823203b022ae70ce43"
+      }
+    }
+  },
+  "continued8_review": {
+    "checkpoint_sha256": "60e8e89eb9339989e3f1d5e5c354a70fdca47b57d436484d5c0d7a7728b754ed",
+    "matched_validation_token_loss": 2.49869184171271,
+    "matched_validation_token_accuracy": 0.427978515625,
+    "matched_validation_nats_per_character": 1.1255188173822877,
+    "decision": "Not promoted: complete continuations still show broken grammar and repeated sentences despite better likelihood.",
+    "examples": [
+      "My lord, I have something to say you shall be seen. It is a poy of you.",
+      "Sir, I will be a hundred home with thee."
+    ],
+    "sample_review": "All 32 fixed cases inspected. Greedy dialogue repeats It is not so and It is yours; sampled utterances are often locally grammatical but incoherent, with broken clauses."
+  },
+  "verification_before_training": {
+    "wide_tests": "tests.test_wide_transformer: 2 methods; normalization, 793861-parameter forward/backward/update, rebuild and decode; 30.778 seconds",
+    "existing_wide_tests": "tests.test_wide_model: 4 methods passed",
+    "focused_regression": "16 methods passed: reference trainer, generation diagnostics, simulator training parity, checkpoint validation",
+    "assembly_examples": "36 existing examples unchanged",
+    "lint": "Ruff check and format passed for snackwell, tests and scripts"
+  },
+  "wide4_review": {
+    "checkpoint_sha256": "90dc15437af1b185f9189ccd38059792d1fb9643143b6622d45ae5f48b932df2",
+    "matched_validation_token_loss": 2.432560532891028,
+    "matched_validation_token_accuracy": 0.4361572265625,
+    "matched_validation_nats_per_character": 1.0922642293895533,
+    "review": "All 32 primary and 20 additional cases inspected. Improved spelling and some natural short phrases; broken clauses, speaker confusion and greedy sentence loops persist.",
+    "decision": "Not promoted as the quality fix; use its trained weights to initialize a deeper capacity trial."
+  },
+  "deeper_candidate": {
+    "name": "wide8",
+    "layers": 8,
+    "width": 256,
+    "heads": 4,
+    "ffn_multiplier": 4,
+    "context": 128,
+    "initialization": "Existing four blocks copied; four new residual blocks initially output zero, preserving the original function.",
+    "checks": "FP32 logits identical to wide4 at 1, 16 and 128 tokens before training; scalar-reference equality on a small fixture.",
+    "steps": 16000,
+    "batch_size": 32,
+    "seed": 2728,
+    "dropout": 0.15,
+    "weight_decay": 0.1,
+    "learning_rate": 0.0005,
+    "min_learning_rate": 3e-05,
+    "warmup_steps": 300,
+    "status": "Rejected; completed 16000 updates and all quality checks. Remaining CPU scalar export verification intentionally interrupted after rejection; not deployable verification evidence.",
+    "training_run": {
+      "backend": "PyTorch MPS reference training; not RTL",
+      "arguments": {
+        "data": "/Users/satvik.garimella/Snackwell/build/data/tinyshakespeare.txt",
+        "extra_training_data": [
+          "build/quality-repair-20261026/supplement.txt"
+        ],
+        "download": false,
+        "steps": 16000,
+        "width": 256,
+        "context": 128,
+        "bpe_vocabulary": null,
+        "batch_size": 32,
+        "loss_tail": 128,
+        "prefix_loss_weight": 0.2,
+        "eval_every": 2000,
+        "evaluation_targets": 2048,
+        "report_test": false,
+        "device": "mps",
+        "extend_context": false,
+        "layers": 8,
+        "heads": 4,
+        "ffn_multiplier": 4,
+        "expand_ffn": false,
+        "seed": 2728,
+        "resume": "build/quality-repair-20261027/wide8-initial/checkpoint.json",
+        "learning_rate": 0.0005,
+        "dropout": 0.15,
+        "initialization": "fan_in",
+        "weight_decay": 0.1,
+        "warmup_steps": 300,
+        "teacher": null,
+        "distillation_weight": 0.5,
+        "distillation_temperature": 1.5,
+        "min_learning_rate": 3e-05,
+        "out": "build/quality-repair-20261027/wide8"
+      },
+      "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+      "supplemental_training": [
+        {
+          "path": "/Users/satvik.garimella/Snackwell/build/quality-repair-20261026/supplement.txt",
+          "sha256": "9496a2f95175a9aa6e5a7514eb2233ac516b1610fc9b1a96374c474ff5c71401",
+          "characters": 3606389,
+          "tokens_including_separator": 1722457
+        }
+      ],
+      "training_tokens": 2185821,
+      "input_checkpoint_sha256": "f448f59c88a89294ea5457d793427740b9e40ad8e97746d4ef1724bcd8331ef3",
+      "torch_version": "2.14.1",
+      "source_sha256": {
+        "snackwell/cli/train.py": "e2135ab60255f95aca8d505f7cd8f9574c9e82388cafd81cea8b9779e762745d",
+        "snackwell/torch_model.py": "8b8ee227e830e3d92ea030685e9b5b8d157469abeba0862d81bba353271d14a8",
+        "snackwell/model_expansion.py": "4b0d92dca354f26bc5b9aad5f7be0610ffa9128d59cf1c08f19fc1051fb9b02c",
+        "snackwell/character_model.py": "fb11cecbfb9150354d9bd8c9f90b543c625103f59248f45786b7c3c61778b005",
+        "snackwell/tokenizer.py": "a8d75677eb2e24138ae58d0a328ca9851b43c8dddb9095823203b022ae70ce43"
+      }
+    },
+    "checkpoint_sha256": "89e0acadab835a82e167698fd13c05a259d42187c4d02732862fb679f1b8c1f6",
+    "selected_step": 16000
+  },
+  "prose_candidate": {
+    "name": "prose4",
+    "parent": "wide4",
+    "purpose": "Test whether training on broader sentence structures improves Shakespeare continuation grammar; preserve all original evaluation prompts and splits.",
+    "prose_manifest": {
+      "purpose": "Optional training-only prose supplement; no model has used it merely by preparing it",
+      "base_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+      "output_sha256": "4a0caaa480ee45aee2b48cfb6ae0d1f37e3dd6295109e9bb421d45b4a5760b21",
+      "characters": 5448924,
+      "held_out_overlap_windows": 0,
+      "overlap_window_words": 32,
+      "sources": [
+        {
+          "ebook": 11,
+          "title": "Alice's Adventures in Wonderland",
+          "url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/11",
+          "source_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+          "cleaned_sha256": "4bb8043101cbffabf15a9ec616be1b9718cb2d792cec7325ecf44e2a0d3af904",
+          "characters": 142752,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 1661,
+          "title": "The Adventures of Sherlock Holmes",
+          "url": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/1661",
+          "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+          "cleaned_sha256": "3d36da551438c84988ced59568e72a1ab546edb8882a9a7dbe83ef69236ffd5c",
+          "characters": 560776,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 1342,
+          "title": "Pride and Prejudice",
+          "url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/1342",
+          "source_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+          "cleaned_sha256": "ec577765b5b8819c63346293c48078b0c5588092e2a6c657b746006fff9037c0",
+          "characters": 711618,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 120,
+          "title": "Treasure Island",
+          "url": "https://www.gutenberg.org/ebooks/120.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/120",
+          "source_sha256": "5bc08275eacea8640b1aa185c645283bb8c564d7b23df6b03437d229b4fc6ebd",
+          "cleaned_sha256": "bf51f43cc2bbf9a4983fc6d89c85c1d19937955a637fc4f4eee83878dfcac4a3",
+          "characters": 360263,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 55,
+          "title": "The Wonderful Wizard of Oz",
+          "url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/55",
+          "source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+          "cleaned_sha256": "742a7bc16f2de823226614af05a43e69bb2e498040009ad11c491a731e23b657",
+          "characters": 206662,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 1260,
+          "title": "Jane Eyre",
+          "url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/1260",
+          "source_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+          "cleaned_sha256": "1af0eb0cd140b00344a364c1a941c4204179f69c1486c740af021dc16c38db9f",
+          "characters": 1020742,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 1400,
+          "title": "Great Expectations",
+          "url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/1400",
+          "source_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+          "cleaned_sha256": "29256d70c975233098f6f9043b42be5f729c00cdd2a6bede96dfa1055409ac5a",
+          "characters": 992086,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 46,
+          "title": "A Christmas Carol",
+          "url": "https://www.gutenberg.org/ebooks/46.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/46",
+          "source_sha256": "8c36b93723d454982df045ec0efdf2664e5a48e6b5e2f670e883575f75ad0cc8",
+          "cleaned_sha256": "25ae56e8a880f4aa74e65f70172a73de68ba428888371d074cc35cacdf271ef3",
+          "characters": 158075,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 84,
+          "title": "Frankenstein",
+          "url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/84",
+          "source_sha256": "2b97b7f8aad508649481d8dd4f6b54f9b965ddb3ba634e9151c815f537b49e42",
+          "cleaned_sha256": "1f5809d3b9ec8317da0448c59c6da111096dee495c3b6f780c32c11788029926",
+          "characters": 418420,
+          "removed_overlapping_paragraphs": 0
+        },
+        {
+          "ebook": 158,
+          "title": "Emma",
+          "url": "https://www.gutenberg.org/ebooks/158.txt.utf-8",
+          "catalogue_url": "https://www.gutenberg.org/ebooks/158",
+          "source_sha256": "532b122b4e6a76cc556d6fdcd729b5892f5c4ce4a1b7060b9f832adfad8680dc",
+          "cleaned_sha256": "d7ae0e2e0aaa47ea6ee0599a1e3f37bc0f582e68d5569b10c4d94bcb51da0412",
+          "characters": 877521,
+          "removed_overlapping_paragraphs": 0
+        }
+      ],
+      "preparation_source_sha256": "b6f17648fe24d39bd5398f66baea9a3f11fdb8b023899aba9ea72e71c3c5aa30"
+    },
+    "recipe": {
+      "steps": 12000,
+      "batch_size": 32,
+      "seed": 2730,
+      "dropout": 0.1,
+      "weight_decay": 0.1,
+      "learning_rate": 0.00015,
+      "min_learning_rate": 2e-05,
+      "warmup_steps": 200,
+      "eval_every": 2000,
+      "evaluation_targets": 2048
+    },
+    "status": "Completed 12000 host updates, selected final step, scalar export checks completed; rejected after 52 quality checks.",
+    "training_run": {
+      "backend": "PyTorch MPS reference training; not RTL",
+      "arguments": {
+        "data": "/Users/satvik.garimella/Snackwell/build/data/tinyshakespeare.txt",
+        "extra_training_data": [
+          "build/quality-repair-20261026/supplement.txt",
+          "build/quality-repair-20261027/prose/supplement.txt"
+        ],
+        "download": false,
+        "steps": 12000,
+        "width": 256,
+        "context": 128,
+        "bpe_vocabulary": null,
+        "batch_size": 32,
+        "loss_tail": 128,
+        "prefix_loss_weight": 0.2,
+        "eval_every": 2000,
+        "evaluation_targets": 2048,
+        "report_test": false,
+        "device": "mps",
+        "extend_context": false,
+        "layers": 4,
+        "heads": 4,
+        "ffn_multiplier": 4,
+        "expand_ffn": false,
+        "seed": 2730,
+        "resume": "build/quality-repair-20261027/wide4/checkpoint.json",
+        "learning_rate": 0.00015,
+        "dropout": 0.1,
+        "initialization": "fan_in",
+        "weight_decay": 0.1,
+        "warmup_steps": 200,
+        "teacher": null,
+        "distillation_weight": 0.5,
+        "distillation_temperature": 1.5,
+        "min_learning_rate": 2e-05,
+        "out": "build/quality-repair-20261027/prose4"
+      },
+      "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+      "supplemental_training": [
+        {
+          "path": "/Users/satvik.garimella/Snackwell/build/quality-repair-20261026/supplement.txt",
+          "sha256": "9496a2f95175a9aa6e5a7514eb2233ac516b1610fc9b1a96374c474ff5c71401",
+          "characters": 3606389,
+          "tokens_including_separator": 1722457
+        },
+        {
+          "path": "/Users/satvik.garimella/Snackwell/build/quality-repair-20261027/prose/supplement.txt",
+          "sha256": "4a0caaa480ee45aee2b48cfb6ae0d1f37e3dd6295109e9bb421d45b4a5760b21",
+          "characters": 5448924,
+          "tokens_including_separator": 2397195
+        }
+      ],
+      "training_tokens": 4583016,
+      "input_checkpoint_sha256": "90dc15437af1b185f9189ccd38059792d1fb9643143b6622d45ae5f48b932df2",
+      "torch_version": "2.14.1",
+      "source_sha256": {
+        "snackwell/cli/train.py": "e2135ab60255f95aca8d505f7cd8f9574c9e82388cafd81cea8b9779e762745d",
+        "snackwell/torch_model.py": "8b8ee227e830e3d92ea030685e9b5b8d157469abeba0862d81bba353271d14a8",
+        "snackwell/model_expansion.py": "4b0d92dca354f26bc5b9aad5f7be0610ffa9128d59cf1c08f19fc1051fb9b02c",
+        "snackwell/character_model.py": "fb11cecbfb9150354d9bd8c9f90b543c625103f59248f45786b7c3c61778b005",
+        "snackwell/tokenizer.py": "a8d75677eb2e24138ae58d0a328ca9851b43c8dddb9095823203b022ae70ce43"
+      }
+    }
+  },
+  "wide4_full_context_forward": {
+    "verified": true,
+    "checkpoint_sha256": "90dc15437af1b185f9189ccd38059792d1fb9643143b6622d45ae5f48b932df2",
+    "rtl_source_sha256": "d47ac8279c655e1542f8c76b80f38464b054c2221023c48c4eae5ceabea7c461",
+    "cycles": 736494233,
+    "launches": 116224,
+    "accuracy": {
+      "embedding": {
+        "max_absolute_error": 3.3527612686157227e-08,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "block0_block": {
+        "max_absolute_error": 1.3292064760861422e-05,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "block1_block": {
+        "max_absolute_error": 6.213878220862057e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "block2_block": {
+        "max_absolute_error": 6.488904924495387e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "block3_block": {
+        "max_absolute_error": 7.632800638646131e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "final_norm": {
+        "max_absolute_error": 5.892356984449343e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "logits": {
+        "max_absolute_error": 1.117411768528781e-05,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      },
+      "probabilities": {
+        "max_absolute_error": 3.472520129443879e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      }
+    },
+    "context_tokens": 128,
+    "note": "Cache rebuild/decode audit still running. Concurrent training and sleep affect elapsed time; not an isolated performance benchmark."
+  },
+  "wide8_review": {
+    "checkpoint_sha256": "89e0acadab835a82e167698fd13c05a259d42187c4d02732862fb679f1b8c1f6",
+    "matched_validation_token_loss": 2.437366218321168,
+    "matched_validation_token_accuracy": 0.4400634765625,
+    "matched_validation_nats_per_character": 1.0914934256800222,
+    "review": "All 32 primary and 20 additional continuations inspected. Broken clauses, invented words (crystalks, forout), semantic contradictions, and greedy dialogue loops remain. The shared token loss is slightly worse than wide4; passage score is nearly identical.",
+    "decision": "Reject extra depth as the quality fix; it does not justify doubled model compute. No new RTL audit requested for this rejected candidate."
+  },
+  "prose4_review": {
+    "checkpoint_sha256": "15eb28fab1c7e0124293afe71ab2b0a791151406f99682af56fdf6ab429d32df",
+    "matched_validation_token_loss": 2.414268694623569,
+    "matched_validation_token_accuracy": 0.44189453125,
+    "matched_validation_nats_per_character": 1.0828276281977838,
+    "review": "All 32 primary and 20 additional continuations inspected. Grammar remains broken; prose and play dialogue mix unexpectedly; greedy to be able repeats through the output. Sampled clauses include I have been as welcome to me to command me to become the table.",
+    "decision": "Not promoted. Better likelihood does not solve the requested sentence quality."
+  },
+  "wide4_window_audit": {
+    "checkpoint_sha256": "90dc15437af1b185f9189ccd38059792d1fb9643143b6622d45ae5f48b932df2",
+    "rtl_sha256": "d47ac8279c655e1542f8c76b80f38464b054c2221023c48c4eae5ceabea7c461",
+    "python_source_sha256": {
+      "snackwell/__init__.py": "eab600b6544b685d69da0c8d9745053b68c11011265645cfa05752b64c96a102",
+      "snackwell/assembler.py": "863146e7745e4367ade3b3592f959eb488c6dec6c96afeb2370920144ea85ba5",
+      "snackwell/character_model.py": "fb11cecbfb9150354d9bd8c9f90b543c625103f59248f45786b7c3c61778b005",
+      "snackwell/cli/__init__.py": "f8c1c094c0d7bb9a40111c7783e83e8ec18ca2f08aba4648ba678cb0c3dd3dfb",
+      "snackwell/cli/assemble.py": "04795e91a239c82aa1d34373854e6a44233c6cebb7dc2375af93582059764a6d",
+      "snackwell/cli/benchmark_cache.py": "51e56a0cfde314ca73a054437be392edf342ce9df2d01d1e98a806bb09d2bdce",
+      "snackwell/cli/cache_quality.py": "8697a864143f3eb0330369cfa62fd37c71b3625523f44bff17d855247bd7df0f",
+      "snackwell/cli/examples.py": "0be9c0e743d523d7ec0dca9fa5cd2c067e0b80e5e00b5f145a15693f3882e079",
+      "snackwell/cli/fpga.py": "19d1adefb8eb0896da7032906feac106204312dcdefcab26905e9e23476f7567",
+      "snackwell/cli/generation_quality.py": "c353bff2df969a36e796a8987bd9038956545e26b3538d9d17c709f079d45e53",
+      "snackwell/cli/kernel.py": "96e12f14868ee0a682fde369499ea5b7fe8e0d1dac7e19700c1e0c36dfe8f24d",
+      "snackwell/cli/model.py": "075840c55399e91b1fdd58e6c1abcce530e5626c61ab80097c2b80ece12a52f9",
+      "snackwell/cli/model_quality.py": "00ebcac86ff63b957d744680ce4502f050e97c3d5355227cfa7d73dc6437e652",
+      "snackwell/cli/preview.py": "d29086b49b39144743bdcf5e37b6f0abd395aef5d23f0f59052157d9bdaafedd",
+      "snackwell/cli/synthesis.py": "ae01b56e06336519ee33acf4264102b9d93297a1daf356c4760579eef00b6530",
+      "snackwell/cli/tests.py": "13a9877564484acb17b830a2707d4f1cdb88f3c5197bcad120e8fbf9b3ed847a",
+      "snackwell/cli/text_quality.py": "b78f2acdc564a9d3b5228aeb989210c649d3cd4a59ff3b4a906361efd341fd05",
+      "snackwell/cli/train.py": "e2135ab60255f95aca8d505f7cd8f9574c9e82388cafd81cea8b9779e762745d",
+      "snackwell/cli/train_transformer.py": "661a16d25a0c1bb868393f0f8bd708a6de9c179fa38a082d4071b8659922d5e8",
+      "snackwell/cli/training.py": "ca6e1c1ee111b37e248e81e5d683696dc11ec0902396f3e6ebc0bba4f10845dd",
+      "snackwell/decoding.py": "5860a55d334212b5eb3807c3b2ed097e647bda6f33a64e2c7fd568dae685f1c9",
+      "snackwell/device.py": "e83c992a56062864c55931405c51c653bd4595ad68c585f4f2f7a394b702858f",
+      "snackwell/inference_runner.py": "97602c4cd01ba1824f14b446a70618ca85a5bd0f43bd7075e77ba64881796329",
+      "snackwell/kernels/__init__.py": "9f027383bc97241b5dca4cb64664139cb34619177a7e2484345bb8d6147c9c2d",
+      "snackwell/kernels/backward.py": "c37fcf19f170828abb55473dbf69a95647aaf9a899d142e891a879b594927fb6",
+      "snackwell/kernels/basic.py": "a3ad5d96475bee85d763a67981045b61d8952b47577f5e3710f8c358b9952d70",
+      "snackwell/kernels/inference.py": "af628a4a99ecde8944dd26637d1e81666d5a92473ae59a2ac15a0e7354c76df5",
+      "snackwell/kernels/matvec.py": "50ac114468c61359b3bbe633fadb3ba5bc2a40a23a483cf0af1c124933a93fd9",
+      "snackwell/kernels/model.py": "30d648b0f6e2e9896acc3f50e40b3de7cba7a4d27b1db749479091e2b5982e3d",
+      "snackwell/kernels/training.py": "4d2a057b05af60eaeff8ae406554452aba118d034488b44b164b7ca8e4ee896c",
+      "snackwell/kernels/transformer.py": "17b3dae3beb48725e0e7c581139b54651ae696be97dbd1e8758775d87466f881",
+      "snackwell/kv_cache.py": "9b8d749b680f1a4abbdacaa11f8172a08a4a76e164447a8aac3fbbaed285bb47",
+      "snackwell/live_model.py": "81b38502fe47173156bcc876cb7ec774c95c5a262f9bb3bb2f926db66a9e1a09",
+      "snackwell/model_expansion.py": "4b0d92dca354f26bc5b9aad5f7be0610ffa9128d59cf1c08f19fc1051fb9b02c",
+      "snackwell/model_preview.py": "78f560cfb5efd4745e47fe41769c3060967839e7305351faae6b193788e5b01c",
+      "snackwell/model_runner.py": "26c00dae9327ee662451b233988b7dd0438b603a2aaaeeb1d65f0baee85c0af1",
+      "snackwell/model_runtime.py": "0a11aa881234a9572ce8913ff2369cac078ae25496cfd14b270146c7e669ceb0",
+      "snackwell/numeric.py": "f124a2cd8b58261a57acb7c66ac6a00d15cb850fcafcbcb9246d82e34b27f3ed",
+      "snackwell/paths.py": "27644388a99c814e38dc71030f7974bdf1d3c55a3c04b0c4d83e89695cb0fc77",
+      "snackwell/profile.py": "fabb58fe44ef3b2af665e6aba016d17defd561cf0c660e99a28c87f4385cbc09",
+      "snackwell/reference/__init__.py": "41daec7648ebdfc876cf2338cfac1b3a2b44964562e2419efbf9d54b0b31b257",
+      "snackwell/reference/fp32.py": "3819e30f7035ef1665b7b229411373aa6bcb13de6c1926ca7eb21d63101e8840",
+      "snackwell/reference/inference.py": "a3eadd9018d38aca42cdc69e26aa7d0f47c9f912539121ff982900be1afa2baf",
+      "snackwell/reference/native.py": "1d92e22ec8b383f6cd9974652da3882a8165ebed7d214f43cb13740fc5ce9d00",
+      "snackwell/reference/tensor.py": "0fec0183884f3748378e50e02b973d3a3cbb14ad08baa587a32902c7e0e5340c",
+      "snackwell/reference/training.py": "f0d0bf6cc94ec47ea48a52dc5f89306d635e64fa965346863e9e7e1781209379",
+      "snackwell/reference/transformer.py": "52b9f8c49f2960178d967582bbae794b958a423ddeda17967dfc1fe394bd9c85",
+      "snackwell/reference/transformer_training.py": "6c5b41386492296dc292586f71bca15b1cc5026637701dcbcced00b01c237fb5",
+      "snackwell/shakespeare_data.py": "60f116a826d942233ecb91092e8089227175ed7de4268ebc88a97062115f38b0",
+      "snackwell/simulator.py": "f21f0429456952f2246f26141e8d9822eff63c274ea6258a46189d68c605eca0",
+      "snackwell/terminal_model.py": "a6bfd3ee37112604b191e5369d7d7e86c9a2dad7ab7819a3b2b3bc20fc15520c",
+      "snackwell/tokenizer.py": "a8d75677eb2e24138ae58d0a328ca9851b43c8dddb9095823203b022ae70ce43",
+      "snackwell/torch_model.py": "8b8ee227e830e3d92ea030685e9b5b8d157469abeba0862d81bba353271d14a8",
+      "snackwell/training.py": "a73e4a15944bcf83ad8bf11b62a843c0a98d3f5f814e3f5e96112b584548ccce",
+      "snackwell/training_runtime.py": "a856dd2ce867e60bd87d2fdead4584f66f58fa8250db52a2ca12dba60eb13344",
+      "snackwell/transformer_training.py": "02f656cb8cf4ca20b688b56fb32ccea6b38a43a32c0390f114bd29284aa080b1",
+      "snackwell/transformer_training_data.py": "a661891aa93ab9431b339325e01ddb55301cdf32648f66b40a2c98f0cc7380ff",
+      "snackwell/transformer_training_runtime.py": "d2de656320a3984d6672dcdfbe592d52f0364b8aea3d1e1f484bc6a4aa16ff08"
+    },
+    "audit_source_sha256": "04af28b12fb63e3ba0f45e366c5161480615e3937c44adb83aafd8ba45aa6cbe",
+    "verified": true,
+    "checks": [
+      {
+        "phase": "full_window",
+        "verified": true,
+        "torch": {
+          "max_absolute_error": 3.4725201278895668e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      {
+        "phase": "rebuild",
+        "bit_identical": true,
+        "context_tokens": 96
+      },
+      {
+        "phase": "decode",
+        "bit_identical": true,
+        "context_tokens": 97
+      }
+    ]
+  }
+}

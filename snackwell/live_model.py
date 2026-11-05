@@ -35,6 +35,8 @@ class LiveModelServer(ThreadingHTTPServer):
         checkpoint_path=None,
         temperature=DEFAULT_TEMPERATURE,
         cache=True,
+        min_p=0.0,
+        heal=True,
     ):
         self.model = model
         self.checkpoint_path = Path(checkpoint_path) if checkpoint_path is not None else None
@@ -42,7 +44,9 @@ class LiveModelServer(ThreadingHTTPServer):
         self.output.mkdir(parents=True, exist_ok=True)
         self.executable = executable or compile_model_runner(self.output)
         self.mode, self.seed = mode, seed
-        self.temperature = Decoder(mode, seed, temperature).temperature
+        decoder = Decoder(mode, seed, temperature, min_p=min_p)
+        self.temperature, self.min_p = decoder.temperature, decoder.min_p
+        self.heal = heal
         self.prompt, self.tokens = prompt, tokens
         self.cache = cache
         self.run_lock = threading.Lock()
@@ -61,6 +65,8 @@ class LiveModelServer(ThreadingHTTPServer):
             tokens=self.tokens,
             decoding=self.mode,
             temperature=self.temperature,
+            min_p=self.min_p,
+            token_healing=self.heal,
             kv_cache=self.cache,
             checkpoint_sha256=self.model.get("sha256"),
             **self.model["config"],
@@ -203,7 +209,9 @@ class LivePrediction:
         output = self.server.output / (time.strftime("%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:8])
         generated, reports, cycles, launches = prompt, [], 0, 0
         started = time.monotonic()
-        decoder = Decoder(self.server.mode, self.server.seed, self.server.temperature)
+        decoder = Decoder(
+            self.server.mode, self.server.seed, self.server.temperature, min_p=self.server.min_p
+        )
 
         def progress(event):
             if self.server.cancel.is_set():
@@ -225,7 +233,7 @@ class LivePrediction:
             )
             model = self.server.model
             vocabulary = model["config"]["vocabulary"]
-            generation = Generation(model, prompt, cache=self.server.cache)
+            generation = Generation(model, prompt, cache=self.server.cache, heal=self.server.heal)
             for step in range(tokens):
                 ids = generation.ids
                 if len(ids) > generation.context:
@@ -239,6 +247,7 @@ class LivePrediction:
                     progress,
                     draw=decoder.draw(),
                     temperature=decoder.temperature,
+                    min_p=decoder.min_p,
                 )
                 if self.server.cancel.is_set():
                     raise PredictionStopped
@@ -274,6 +283,7 @@ class LivePrediction:
                 prompt=prompt,
                 generated=generated,
                 decoding=decoder.describe(),
+                token_healing=self.server.heal,
                 cycles=cycles,
                 tokens=reports,
                 latency=latency_report(reports, self.server.cache),
@@ -300,6 +310,8 @@ def serve(
     checkpoint_path=None,
     temperature=DEFAULT_TEMPERATURE,
     cache=True,
+    min_p=0.0,
+    heal=True,
 ):
     if not 0 <= port <= 65535:
         raise ValueError("--port must be 0..65535")
@@ -315,6 +327,8 @@ def serve(
         checkpoint_path,
         temperature,
         cache,
+        min_p,
+        heal,
     ) as server:
         print(f"Snackwell live predictions: {server.url}", flush=True)
         print("Keep this terminal open. Press Ctrl+C to stop the server.", flush=True)

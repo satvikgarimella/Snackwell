@@ -29,7 +29,7 @@ class TransformerTrainingRuntime(TrainingRuntime):
         return self.vector(name, kind, x + [0] * pad, right + [0] * pad, scale)[: len(x)]
 
     def norm_backward(self, name, x, dy, gamma, rows, cols, epsilon):
-        self.row_shape(rows, cols)
+        self.row_shape(rows, cols, maximum=256)
         if len(x) != rows * cols or len(dy) != len(x) or len(gamma) != cols:
             raise ValueError("LayerNorm backward shape mismatch")
         dx, dg = [], []
@@ -40,11 +40,17 @@ class TransformerTrainingRuntime(TrainingRuntime):
             layout.allocate("x", count * cols, x[row * cols : (row + count) * cols])
             layout.allocate("dy", count * cols, dy[row * cols : (row + count) * cols])
             layout.allocate("gamma", cols, gamma)
-            layout.allocate("out", 2 * count * cols)
+            inplace = cols > 128
+            if inplace:
+                # The derivative pass consumes each x/dy pair before replacing
+                # it with dx/dgamma. The adjacent input regions hold both outputs.
+                layout.regions["out"] = (layout.regions["x"][0], 2 * count * cols)
+            else:
+                layout.allocate("out", 2 * count * cols)
             out = self.launch(
                 name,
                 layout,
-                backward.layernorm_backward(layout, count, cols, epsilon),
+                backward.layernorm_backward(layout, count, cols, epsilon, inplace=inplace),
                 "layernorm_backward",
                 ("x", "dy", "gamma"),
                 "out",

@@ -1,0 +1,253 @@
+Model: 8 blocks, 4 heads, width 128, FFN width 512, context 128 subword tokens; checkpoint 28e378b741fa
+Checkpoint file: /Users/satvik.garimella/Snackwell/models/shakespeare_transformer/checkpoint.json
+Preparing RTL simulator…
+RTL simulator: verilator; cycle trace: off
+RTL build: 592ce28d04d3
+
+Snackwell — live RTL token prediction
+Context: 128 tokens. New tokens per prompt: 1.
+Enter text and press Enter. /tokens N changes the length; /quit exits.
+/temperature T adjusts sampling; /seed N repeats a random sequence.
+Ctrl+C stops a prediction. Each token runs through the full SM RTL.
+Decoding: sample. Use --decode greedy for the most likely token each time.
+KV cache enabled; context is rebuilt periodically when full.
+
+Prompt> Model: 8 blocks, 4 heads, width 128, FFN width 512, context 128 subword tokens; checkpoint 28e378b741fa
+Decoding: {'mode': 'sample', 'seed': 92617660, 'temperature': 0.7}
+RTL build: 592ce28d04d3 (verilator)
+Text: 'My lord, I have something to say'
+Preparing the forward pass
+  token 1: prefill | 12 context tokens
+  token 1: embedding
+  token 1: block0_layernorm1
+  token 1: block0_q_matmul
+  token 1: block0_k_matmul
+  token 1: block0_v_matmul
+  token 1: block0_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block0_head0_attention_softmax
+  token 1: block0_head0_attention_pv
+  token 1: block0_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block0_head1_attention_softmax
+  token 1: block0_head1_attention_pv
+  token 1: block0_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block0_head2_attention_softmax
+  token 1: block0_head2_attention_pv
+  token 1: block0_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block0_head3_attention_softmax
+  token 1: block0_head3_attention_pv
+  token 1: block0_attention_output_matmul
+  token 1: block0_attention_residual
+  token 1: block0_layernorm2
+  token 1: block0_ffn_up_matmul
+  token 1: block0_ffn_gelu
+  token 1: block0_ffn_down_matmul
+  token 1: block0_ffn_residual
+  token 1: block1_layernorm1
+  token 1: block1_q_matmul
+  token 1: block1_k_matmul
+  token 1: block1_v_matmul
+  token 1: block1_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block1_head0_attention_softmax
+  token 1: block1_head0_attention_pv
+  token 1: block1_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block1_head1_attention_softmax
+  token 1: block1_head1_attention_pv
+  token 1: block1_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block1_head2_attention_softmax
+  token 1: block1_head2_attention_pv
+  token 1: block1_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block1_head3_attention_softmax
+  token 1: block1_head3_attention_pv
+  token 1: block1_attention_output_matmul
+  token 1: block1_attention_residual
+  token 1: block1_layernorm2
+  token 1: block1_ffn_up_matmul
+  token 1: block1_ffn_gelu
+  token 1: block1_ffn_down_matmul
+  token 1: block1_ffn_residual
+  token 1: block2_layernorm1
+  token 1: block2_q_matmul
+  token 1: block2_k_matmul
+  token 1: block2_v_matmul
+  token 1: block2_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block2_head0_attention_softmax
+  token 1: block2_head0_attention_pv
+  token 1: block2_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block2_head1_attention_softmax
+  token 1: block2_head1_attention_pv
+  token 1: block2_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block2_head2_attention_softmax
+  token 1: block2_head2_attention_pv
+  token 1: block2_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block2_head3_attention_softmax
+  token 1: block2_head3_attention_pv
+  token 1: block2_attention_output_matmul
+  token 1: block2_attention_residual
+  token 1: block2_layernorm2
+  token 1: block2_ffn_up_matmul
+  token 1: block2_ffn_gelu
+  token 1: block2_ffn_down_matmul
+  token 1: block2_ffn_residual
+  token 1: block3_layernorm1
+  token 1: block3_q_matmul
+  token 1: block3_k_matmul
+  token 1: block3_v_matmul
+  token 1: block3_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block3_head0_attention_softmax
+  token 1: block3_head0_attention_pv
+  token 1: block3_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block3_head1_attention_softmax
+  token 1: block3_head1_attention_pv
+  token 1: block3_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block3_head2_attention_softmax
+  token 1: block3_head2_attention_pv
+  token 1: block3_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block3_head3_attention_softmax
+  token 1: block3_head3_attention_pv
+  token 1: block3_attention_output_matmul
+  token 1: block3_attention_residual
+  token 1: block3_layernorm2
+  token 1: block3_ffn_up_matmul
+  token 1: block3_ffn_gelu
+  token 1: block3_ffn_down_matmul
+  token 1: block3_ffn_residual
+  token 1: block4_layernorm1
+  token 1: block4_q_matmul
+  token 1: block4_k_matmul
+  token 1: block4_v_matmul
+  token 1: block4_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block4_head0_attention_softmax
+  token 1: block4_head0_attention_pv
+  token 1: block4_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block4_head1_attention_softmax
+  token 1: block4_head1_attention_pv
+  token 1: block4_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block4_head2_attention_softmax
+  token 1: block4_head2_attention_pv
+  token 1: block4_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block4_head3_attention_softmax
+  token 1: block4_head3_attention_pv
+  token 1: block4_attention_output_matmul
+  token 1: block4_attention_residual
+  token 1: block4_layernorm2
+  token 1: block4_ffn_up_matmul
+  token 1: block4_ffn_gelu
+  token 1: block4_ffn_down_matmul
+  token 1: block4_ffn_residual
+  token 1: block5_layernorm1
+  token 1: block5_q_matmul
+  token 1: block5_k_matmul
+  token 1: block5_v_matmul
+  token 1: block5_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block5_head0_attention_softmax
+  token 1: block5_head0_attention_pv
+  token 1: block5_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block5_head1_attention_softmax
+  token 1: block5_head1_attention_pv
+  token 1: block5_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block5_head2_attention_softmax
+  token 1: block5_head2_attention_pv
+  token 1: block5_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block5_head3_attention_softmax
+  token 1: block5_head3_attention_pv
+  token 1: block5_attention_output_matmul
+  token 1: block5_attention_residual
+  token 1: block5_layernorm2
+  token 1: block5_ffn_up_matmul
+  token 1: block5_ffn_gelu
+  token 1: block5_ffn_down_matmul
+  token 1: block5_ffn_residual
+  token 1: block6_layernorm1
+  token 1: block6_q_matmul
+  token 1: block6_k_matmul
+  token 1: block6_v_matmul
+  token 1: block6_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block6_head0_attention_softmax
+  token 1: block6_head0_attention_pv
+  token 1: block6_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block6_head1_attention_softmax
+  token 1: block6_head1_attention_pv
+  token 1: block6_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block6_head2_attention_softmax
+  token 1: block6_head2_attention_pv
+  token 1: block6_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block6_head3_attention_softmax
+  token 1: block6_head3_attention_pv
+  token 1: block6_attention_output_matmul
+  token 1: block6_attention_residual
+  token 1: block6_layernorm2
+  token 1: block6_ffn_up_matmul
+  token 1: block6_ffn_gelu
+  token 1: block6_ffn_down_matmul
+  token 1: block6_ffn_residual
+  token 1: block7_layernorm1
+  token 1: block7_q_matmul
+  token 1: block7_k_matmul
+  token 1: block7_v_matmul
+  token 1: block7_head0_attention_qk
+  token 1: attention_scale_mask
+  token 1: block7_head0_attention_softmax
+  token 1: block7_head0_attention_pv
+  token 1: block7_head1_attention_qk
+  token 1: attention_scale_mask
+  token 1: block7_head1_attention_softmax
+  token 1: block7_head1_attention_pv
+  token 1: block7_head2_attention_qk
+  token 1: attention_scale_mask
+  token 1: block7_head2_attention_softmax
+  token 1: block7_head2_attention_pv
+  token 1: block7_head3_attention_qk
+  token 1: attention_scale_mask
+  token 1: block7_head3_attention_softmax
+  token 1: block7_head3_attention_pv
+  token 1: block7_attention_output_matmul
+  token 1: block7_attention_residual
+  token 1: block7_layernorm2
+  token 1: block7_ffn_up_matmul
+  token 1: block7_ffn_gelu
+  token 1: block7_ffn_down_matmul
+  token 1: block7_ffn_residual
+  token 1: final_norm
+  token 1: lm_head
+  token 1: vocabulary_mask
+  token 1: output_softmax
+  token 1: greedy_decode
+  token 1: sampling_softmax
+  token 1: sample_decode
+Text: 'My lord, I have something to say,'
+predicted ',' | 31,188,721 cycles
+Text: 'My lord, I have something to say,'
+Done | 31,188,721 cycles | 6444 launches | RTL/reference match
+First token: 23.44s (verified RTL simulation)
+Generated 1 character in 1 token; 0.04 tokens/s, 0.04 characters/s (including prefill/rebuilds)
+Run files: build/quality-repair-20261026/terminal-smoke/terminal/20261027-101940-85b8940c
+
+Prompt> 

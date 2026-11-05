@@ -1,0 +1,2333 @@
+{
+  "verified": true,
+  "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+  "prompt": "My name is ",
+  "generated": "My name is bold and daughter.\n\nPISTOL:\nBy my troth,\n",
+  "decoding": {
+    "mode": "sample",
+    "seed": 92617660,
+    "temperature": 0.7,
+    "min_p": 0.05
+  },
+  "tokens": [
+    {
+      "character": "b",
+      "cycles": 11264721,
+      "launches": 3384,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 5.990990994408918e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 7.833086941300138e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 8.859690865392622e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.760209447203124e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.842342055168871e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 8.78289872829896e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.258584584107325e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.1035709825968354e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.97996283635149e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.3441465809858073e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 4.4133289613113025e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 7.947387170581521e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 22.99276362499222,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.3344963788986206,
+        "token_id": 77,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": " b",
+        "healed_prefix": " "
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "prefill",
+        "reused_tokens": 0,
+        "computed_tokens": 4,
+        "context_tokens": 4,
+        "storage": "host raw FP32 words",
+        "bytes": 32768
+      }
+    },
+    {
+      "character": "o",
+      "cycles": 7515427,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 9.313225746154785e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.5607037984775047e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.6873865399679175e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.744078542755602e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 3.62924650443297e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.048503863847031e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 5.224423033911574e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 8.130725220878432e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 9.64322648622229e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.694727931462637e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 4.333063655437286e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.6815349505872046e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 3.397058019327659e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 12.515764166018926,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.09953165054321289,
+        "token_id": 53,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "o",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 4,
+        "computed_tokens": 1,
+        "context_tokens": 5,
+        "storage": "host raw FP32 words",
+        "bytes": 40960
+      }
+    },
+    {
+      "character": "ld",
+      "cycles": 7516333,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 4.94407516704598e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.6357723676161413e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.866939158880811e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.0607253226632167e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.157861307503175e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 5.509003073167484e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 8.941937815754031e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.05187781729299e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.974242419322536e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 2.649085061534606e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 8.169695979720615e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.428813781290117e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 13.705277583037969,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.5062462091445923,
+        "token_id": 121,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "ld",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 5,
+        "computed_tokens": 1,
+        "context_tokens": 6,
+        "storage": "host raw FP32 words",
+        "bytes": 49152
+      }
+    },
+    {
+      "character": " and",
+      "cycles": 7517565,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.0244548320770264e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.1957765433965335e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.1569510361428854e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.5725235680850176e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 3.8824318848718065e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.806486711446013e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 5.33928090573621e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 7.830492654292698e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 8.923875477739873e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.947368156063334e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.3228245985839067e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.8261312252632056e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 2.1874202085769845e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 13.984925833006855,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.8806771636009216,
+        "token_id": 107,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": " and",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 6,
+        "computed_tokens": 1,
+        "context_tokens": 7,
+        "storage": "host raw FP32 words",
+        "bytes": 57344
+      }
+    },
+    {
+      "character": " d",
+      "cycles": 7519994,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 5.157610465378326e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.419340290911066e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.2230778407592595e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.618098845832197e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 4.4579831337543396e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 6.639020548870889e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.0028700994091366e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.1585936299240984e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 3.0898955070135514e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 4.552424149650847e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 7.866894579516837e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.49133150426084e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 18.361237542005256,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.5099796652793884,
+        "token_id": 85,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": " d",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 7,
+        "computed_tokens": 1,
+        "context_tokens": 8,
+        "storage": "host raw FP32 words",
+        "bytes": 65536
+      }
+    },
+    {
+      "character": "au",
+      "cycles": 7626966,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.0244548320770264e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.5619578653278694e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.3657318754265475e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 2.694058462981985e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 3.570587499002187e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 4.0608722984281087e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 5.937308931169838e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 7.465174527432339e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 9.127080882187499e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.5784250335659777e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.1504260604720002e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 6.666525224907627e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.758617192426648e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 17.37588704196969,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.8787463307380676,
+        "token_id": 301,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "au",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 8,
+        "computed_tokens": 1,
+        "context_tokens": 9,
+        "storage": "host raw FP32 words",
+        "bytes": 73728
+      }
+    },
+    {
+      "character": "ght",
+      "cycles": 7628716,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.1175870895385742e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.776093696033044e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.172023088637843e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 5.213430729344992e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 6.735223552212233e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.689094840250931e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 7.210430773563203e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 9.699226581894038e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.3658994482135256e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.3886400000172614e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.6980244484396962e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.0702713225674287e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 2.2356373308163313e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 14.861137000028975,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.994991660118103,
+        "token_id": 157,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "ght",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 9,
+        "computed_tokens": 1,
+        "context_tokens": 10,
+        "storage": "host raw FP32 words",
+        "bytes": 81920
+      }
+    },
+    {
+      "character": "er",
+      "cycles": 7629896,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 4.0172369497604166e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.8821920345100125e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.158028121814539e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.483679861861823e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 4.719491817350985e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 5.903515353233857e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.0173691947779062e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.1389761357394335e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 3.0946777167528694e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.987206563138557e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.7448288142096757e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 7.376000703551711e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 16.33764958300162,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.7221341729164124,
+        "token_id": 81,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "er",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 10,
+        "computed_tokens": 1,
+        "context_tokens": 11,
+        "storage": "host raw FP32 words",
+        "bytes": 90112
+      }
+    },
+    {
+      "character": ".",
+      "cycles": 7631586,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 1.9085489677550527e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.687580417937152e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.354234381358623e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.2031336500159e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.842728175720069e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 7.868768039931417e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 7.547266092089444e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 8.427468831673224e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.4288932929383833e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 4.970746505961188e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 8.419204768073119e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 5.037860837941999e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 24.898475208028685,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.6684888601303101,
+        "token_id": 8,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": ".",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 11,
+        "computed_tokens": 1,
+        "context_tokens": 12,
+        "storage": "host raw FP32 words",
+        "bytes": 98304
+      }
+    },
+    {
+      "character": "\n",
+      "cycles": 7639745,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.6614103276756396e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.8146303110432314e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.529534788910716e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.296779324037715e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.688842466573419e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 7.602501144177154e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 7.187064614000427e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 8.118474205121018e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.7588282847924575e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 4.304707726277002e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 5.841078325463656e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 6.672957069131513e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 20.38828991696937,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.1725062131881714,
+        "token_id": 0,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "\n",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 12,
+        "computed_tokens": 1,
+        "context_tokens": 13,
+        "storage": "host raw FP32 words",
+        "bytes": 106496
+      }
+    },
+    {
+      "character": "\n",
+      "cycles": 7641159,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 4.1840848874485914e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.9623320974003775e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.3824795767078975e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.6833934441714575e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 8.108616884605624e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 8.606078962802854e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 8.772840716098074e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 2.091275574045426e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.9186750197519586e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 2.0449689843715646e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 5.790048946963111e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 2.561043694004894e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 19.544572290964425,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.6203989386558533,
+        "token_id": 0,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "\n",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 13,
+        "computed_tokens": 1,
+        "context_tokens": 14,
+        "storage": "host raw FP32 words",
+        "bytes": 114688
+      }
+    },
+    {
+      "character": "P",
+      "cycles": 7642690,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.257285475730896e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 5.646825551597345e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 4.433266740377917e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 5.58334468436783e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.549596104297393e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 4.2275405354175177e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 4.863692708301226e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 6.908458576315724e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.0650139206092035e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.072930776364501e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 2.2228883480579498e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.3334165882561422e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 3.543386664639492e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 21.34545750002144,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.6497106552124023,
+        "token_id": 28,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "P",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 14,
+        "computed_tokens": 1,
+        "context_tokens": 15,
+        "storage": "host raw FP32 words",
+        "bytes": 122880
+      }
+    },
+    {
+      "character": "IS",
+      "cycles": 7644784,
+      "launches": 2291,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.794500470499784e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.8751611874943137e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.723580169756602e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 3.634460707946374e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 4.272761572332584e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 5.125394322291754e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 6.45012066424755e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 8.622186644657859e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.3586285298193843e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 5.2637169201119605e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 3.0427891725692824e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 3.9513804353519255e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 16.588304249977227,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.9784256219863892,
+        "token_id": 502,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "IS",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 15,
+        "computed_tokens": 1,
+        "context_tokens": 16,
+        "storage": "host raw FP32 words",
+        "bytes": 131072
+      }
+    },
+    {
+      "character": "T",
+      "cycles": 7867740,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 4.6389889551967656e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 4.829567790132216e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.448040615834259e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 6.350750210160072e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.445151904399538e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 6.473631528614021e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.1084104518666038e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.1443206311412268e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.8875666648886522e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 5.1481000653552655e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 6.169533529609694e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 8.990685455012581e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 17.412758207996376,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.7988379597663879,
+        "token_id": 32,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "T",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 16,
+        "computed_tokens": 1,
+        "context_tokens": 17,
+        "storage": "host raw FP32 words",
+        "bytes": 139264
+      }
+    },
+    {
+      "character": "OL",
+      "cycles": 7868912,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 8.381903171539307e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.5115312502220775e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 6.053853385257213e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.960111115170918e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 6.504698446541113e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.948160018975912e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 9.705701993212301e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.1452897533681394e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.397906091549217e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 3.002953905761885e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 4.351423882553718e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 3.254630909221845e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 4.250595131427559e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 19.27533991698874,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.40708839893341064,
+        "token_id": 406,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "OL",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 17,
+        "computed_tokens": 1,
+        "context_tokens": 18,
+        "storage": "host raw FP32 words",
+        "bytes": 147456
+      }
+    },
+    {
+      "character": ":",
+      "cycles": 7870449,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.365501886065658e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.334736617954803e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.8967678667178873e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 6.03303545121392e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.460886764481089e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 7.583944933164943e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.322277872972677e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.6750827904754573e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 4.317216053095763e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 5.608369044285411e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 7.822753969044527e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.0916589454623704e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 21.439178541011643,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.5756611824035645,
+        "token_id": 10,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": ":",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 18,
+        "computed_tokens": 1,
+        "context_tokens": 19,
+        "storage": "host raw FP32 words",
+        "bytes": 155648
+      }
+    },
+    {
+      "character": "\n",
+      "cycles": 7873500,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.1175870895385742e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.2706845823061705e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.468158053492431e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.2224881851838916e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 3.374299908931455e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 7.624241075698812e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 8.875562129695425e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.0119832369870352e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.0386157929254125e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.6951743369020278e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.317716121387093e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 2.674392944546078e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 2.1047497511528235e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 21.342508125002496,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.6981027722358704,
+        "token_id": 0,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "\n",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 19,
+        "computed_tokens": 1,
+        "context_tokens": 20,
+        "storage": "host raw FP32 words",
+        "bytes": 163840
+      }
+    },
+    {
+      "character": "B",
+      "cycles": 7878363,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 5.45168084231662e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 4.4696677803379714e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.3570050967112195e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.092040291643229e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.878843452629013e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 5.24276898505871e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 7.89842478532421e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 7.827481869338015e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 1.4454874541769414e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.339143022529356e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.2813742662765026e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 2.120701098340394e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 20.599366582988296,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.09484559297561646,
+        "token_id": 14,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "B",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 20,
+        "computed_tokens": 1,
+        "context_tokens": 21,
+        "storage": "host raw FP32 words",
+        "bytes": 172032
+      }
+    },
+    {
+      "character": "y",
+      "cycles": 7879041,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 4.002805015224098e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.326701754069461e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.4385418556937e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.26495403799132e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.683998073324759e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 8.257486571738859e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 1.8112251618518371e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 2.2915651518573554e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.04628339339763e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 2.597001349968764e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 3.537346138227093e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 9.151009721652947e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 24.030870000016876,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.4899069666862488,
+        "token_id": 63,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "y",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 21,
+        "computed_tokens": 1,
+        "context_tokens": 22,
+        "storage": "host raw FP32 words",
+        "bytes": 180224
+      }
+    },
+    {
+      "character": " my",
+      "cycles": 7880401,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.15199177092218e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.9374952636995744e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.181376723171425e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 3.372565078874068e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 4.7351469567580295e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 8.858192257488184e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 9.443810988774004e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.2366900898896915e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 3.2008528894067467e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 4.478903150584301e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.4898650707584338e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 6.87071621374713e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 21.45472520898329,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.4675408601760864,
+        "token_id": 116,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": " my",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 22,
+        "computed_tokens": 1,
+        "context_tokens": 23,
+        "storage": "host raw FP32 words",
+        "bytes": 188416
+      }
+    },
+    {
+      "character": " tr",
+      "cycles": 7882093,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.170682658648616e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.323764026230691e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.320750124353623e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.038574722449063e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.432077012645919e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 6.83690494385214e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 9.194189398153974e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.4082326742492768e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 3.216647685988505e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 4.45950072508472e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 2.174603148108467e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.4302688222667115e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 19.484446749964263,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.35925841331481934,
+        "token_id": 314,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": " tr",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 23,
+        "computed_tokens": 1,
+        "context_tokens": 24,
+        "storage": "host raw FP32 words",
+        "bytes": 196608
+      }
+    },
+    {
+      "character": "oth",
+      "cycles": 7887938,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.1175870895385742e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.601256654521933e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 3.662619077471341e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.216948346069671e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.870249116217806e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.984532749942929e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 6.970865567001994e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 8.036074019557304e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.0133421148861288e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.622297030629994e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.964130495859308e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 5.855400655452314e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.4834944788572058e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 19.498057207965758,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.8749114871025085,
+        "token_id": 299,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "oth",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 24,
+        "computed_tokens": 1,
+        "context_tokens": 25,
+        "storage": "host raw FP32 words",
+        "bytes": 204800
+      }
+    },
+    {
+      "character": ",",
+      "cycles": 7889420,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 4.6745044635088107e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 4.1430463926239725e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 3.890839108677824e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.6106251794242326e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 5.22092347132741e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 8.059168705165654e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 8.851862076664219e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 1.2377209571701187e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.916203533542827e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.738698685751274e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 9.457441195737104e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 1.127326480498958e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 21.868202415993437,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.15101128816604614,
+        "token_id": 6,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": ",",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 25,
+        "computed_tokens": 1,
+        "context_tokens": 26,
+        "storage": "host raw FP32 words",
+        "bytes": 212992
+      }
+    },
+    {
+      "character": "\n",
+      "cycles": 7891257,
+      "launches": 2323,
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.210719347000122e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.665478080476902e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.559123397499752e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 2.745598881581657e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.02767714682939e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block4_block": {
+          "max_absolute_error": 6.447393700592663e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block5_block": {
+          "max_absolute_error": 8.111403876909229e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block6_block": {
+          "max_absolute_error": 8.430684120819265e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block7_block": {
+          "max_absolute_error": 9.412638952710495e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.0116159267224987e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 3.3533917651595857e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 4.0904140519160137e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "sampling_probabilities": {
+          "max_absolute_error": 4.528365845912763e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 17.97789425001247,
+      "simulation": {
+        "backend": "verilator",
+        "trace": false,
+        "artifacts": "summary"
+      },
+      "selection": {
+        "mode": "sample",
+        "draw": 0.18014442920684814,
+        "token_id": 0,
+        "temperature": 0.7,
+        "min_p": 0.05,
+        "token_text": "\n",
+        "healed_prefix": ""
+      },
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 26,
+        "computed_tokens": 1,
+        "context_tokens": 27,
+        "storage": "host raw FP32 words",
+        "bytes": 221184
+      }
+    }
+  ],
+  "cycles": 189088696,
+  "latency": {
+    "generated_characters": 41,
+    "generated_tokens": 24,
+    "tokens_per_second": 0.05248390021543361,
+    "characters_per_second": 0.08965999620136575,
+    "first_token_seconds": 22.99276362499222,
+    "subsequent_token_seconds": 18.882188048780613,
+    "cached_decode": true,
+    "decode_seconds": 18.882188048780613,
+    "decode_steps": 23,
+    "rebuild_seconds": null,
+    "rebuild_steps": 0
+  },
+  "tokenization": "subword"
+}

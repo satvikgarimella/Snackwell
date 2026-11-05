@@ -1,0 +1,28 @@
+{
+  "purpose": "New scope explicitly chosen by the user: a compact model completing ONE simple sentence. Host CPU screening only. Earlier paragraph failures remain valid and are preserved separately.",
+  "core_prompts": [
+    "The dog was hungry, so it",
+    "The girl opened the door and saw",
+    "The boy put on his shoes and",
+    "It was raining, so the children",
+    "The cat climbed the tree to",
+    "The mother gave her baby a",
+    "The little bird flew over the",
+    "The man went to the shop to buy",
+    "The sun came out and the snow",
+    "The rabbit hid behind the",
+    "The girl was tired, so she",
+    "The boy found a ball and"
+  ],
+  "stress_prompts": ["My name is", "ROMEO:", "The sky was dark, so Maya", "What is your name?"],
+  "sample_seeds": [92617660, 1729, 1730],
+  "temperature": 0.7,
+  "new_token_limit": 32,
+  "stop_after_sentence": true,
+  "acceptance": {
+    "core_greedy_usable_minimum": "11/12",
+    "core_sampled_usable_minimum": "33/36",
+    "usable": "Finishes a grammatical sentence consistent with the prompt, without a role swap, contradiction, or repetition loop. EOS or token limit without sentence punctuation is incomplete. All core outputs must be manually reviewed.",
+    "confirmation": "A separately written set with new subjects and situations must be evaluated before model selection. This is a bounded demonstration, not evidence of general language quality."
+  }
+}

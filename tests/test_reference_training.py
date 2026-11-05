@@ -193,6 +193,70 @@ class ReferenceTrainingTests(unittest.TestCase):
             self.assertIn("new directory", rerun.stderr)
             self.assertEqual(checkpoint, (out / "checkpoint.json").read_bytes())
 
+    def test_supplemental_text_preserves_tokenizer_and_held_out_splits(self):
+        import hashlib
+
+        from snackwell.tokenizer import Tokenizer
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            corpus, extra, out = root / "corpus.txt", root / "extra.txt", root / "run"
+            text = "abcd abcd bcda cdab dabc\n" * 100
+            corpus.write_text(text)
+            extra.write_text("dddd aaaa bbbb cccc\n" * 100)
+            run = subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/train_reference_model.py"),
+                    "--data",
+                    str(corpus),
+                    "--extra-training-data",
+                    str(extra),
+                    "--out",
+                    str(out),
+                    "--bpe-vocabulary",
+                    "128",
+                    "--width",
+                    "4",
+                    "--context",
+                    "4",
+                    "--steps",
+                    "2",
+                    "--batch-size",
+                    "2",
+                    "--eval-every",
+                    "1",
+                    "--evaluation-targets",
+                    "16",
+                ],
+                text=True,
+                capture_output=True,
+                timeout=30,
+            )
+            self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+            model = json.loads((out / "checkpoint.json").read_text())
+            end, validation_end = int(len(text) * 0.9), int(len(text) * 0.95)
+            codec = Tokenizer.train(text[:end], 128)
+            self.assertEqual(model["tokenizer"], codec.metadata())
+            metadata = model["training"]
+            self.assertEqual(
+                metadata["dataset_sha256"], hashlib.sha256(corpus.read_bytes()).hexdigest()
+            )
+            self.assertEqual(
+                metadata["supplemental_training"][0]["sha256"],
+                hashlib.sha256(extra.read_bytes()).hexdigest(),
+            )
+            self.assertEqual(
+                metadata["training_tokens"],
+                len(codec.encode(text[:end])) + len(codec.encode("\n\n" + extra.read_text())),
+            )
+            validation = codec.encode(text[end:validation_end])
+            for example in json.loads((out / "evaluation.json").read_text())["examples"]:
+                offset = example["split_token_offset"]
+                self.assertEqual(example["input_ids"], validation[offset : offset + 4])
+                self.assertEqual(example["target_ids"], validation[offset + 1 : offset + 5])
+            self.assertIsNone(metadata["test"])
+
     def test_invalid_tail_is_rejected_before_training(self):
         run = subprocess.run(
             [sys.executable, str(ROOT / "scripts/train_reference_model.py"), "--loss-tail", "0"],

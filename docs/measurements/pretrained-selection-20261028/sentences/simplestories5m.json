@@ -1,0 +1,1901 @@
+{
+  "kind": "CPU quality evaluation; no Snackwell execution or training",
+  "candidate": "simplestories5m",
+  "config": {
+    "vocab_size": 4019,
+    "max_position_embeddings": 2048,
+    "hidden_size": 256,
+    "intermediate_size": 682,
+    "num_hidden_layers": 6,
+    "num_attention_heads": 4,
+    "num_key_value_heads": 2,
+    "hidden_act": "silu",
+    "initializer_range": 0.02,
+    "rms_norm_eps": 1e-06,
+    "pretraining_tp": 1,
+    "use_cache": true,
+    "rope_theta": 10000.0,
+    "rope_scaling": null,
+    "attention_bias": false,
+    "attention_dropout": 0.0,
+    "mlp_bias": false,
+    "head_dim": 64,
+    "return_dict": true,
+    "output_hidden_states": false,
+    "torchscript": false,
+    "dtype": "float32",
+    "pruned_heads": {},
+    "tie_word_embeddings": true,
+    "chunk_size_feed_forward": 0,
+    "is_encoder_decoder": false,
+    "is_decoder": false,
+    "cross_attention_hidden_size": null,
+    "add_cross_attention": false,
+    "tie_encoder_decoder": false,
+    "architectures": [
+      "LlamaForCausalLM"
+    ],
+    "finetuning_task": null,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "task_specific_params": null,
+    "problem_type": null,
+    "tokenizer_class": null,
+    "prefix": null,
+    "bos_token_id": 1,
+    "pad_token_id": null,
+    "eos_token_id": 2,
+    "sep_token_id": null,
+    "decoder_start_token_id": null,
+    "max_length": 20,
+    "min_length": 0,
+    "do_sample": false,
+    "early_stopping": false,
+    "num_beams": 1,
+    "temperature": 1.0,
+    "top_k": 50,
+    "top_p": 1.0,
+    "typical_p": 1.0,
+    "repetition_penalty": 1.0,
+    "length_penalty": 1.0,
+    "no_repeat_ngram_size": 0,
+    "encoder_no_repeat_ngram_size": 0,
+    "bad_words_ids": null,
+    "num_return_sequences": 1,
+    "output_scores": false,
+    "return_dict_in_generate": false,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": false,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "num_beam_groups": 1,
+    "diversity_penalty": 0.0,
+    "_name_or_path": "/Users/satvik.garimella/Snackwell/build/pretrained-selection-20261028/simplestories5m",
+    "transformers_version": "4.57.6",
+    "model_type": "llama",
+    "tf_legacy_loss": false,
+    "use_bfloat16": false,
+    "output_attentions": false,
+    "total_parameters": 5354496,
+    "evaluation_eos_token_id": 1
+  },
+  "implementation": "official Transformers llama, FP32 CPU; Python random 24-bit uniform sampling",
+  "protocol": {
+    "purpose": "New scope explicitly chosen by the user: a compact model completing ONE simple sentence. Host CPU screening only. Earlier paragraph failures remain valid and are preserved separately.",
+    "core_prompts": [
+      "The dog was hungry, so it",
+      "The girl opened the door and saw",
+      "The boy put on his shoes and",
+      "It was raining, so the children",
+      "The cat climbed the tree to",
+      "The mother gave her baby a",
+      "The little bird flew over the",
+      "The man went to the shop to buy",
+      "The sun came out and the snow",
+      "The rabbit hid behind the",
+      "The girl was tired, so she",
+      "The boy found a ball and"
+    ],
+    "stress_prompts": [
+      "My name is",
+      "ROMEO:",
+      "The sky was dark, so Maya",
+      "What is your name?"
+    ],
+    "sample_seeds": [
+      92617660,
+      1729,
+      1730
+    ],
+    "temperature": 0.7,
+    "new_token_limit": 32,
+    "stop_after_sentence": true,
+    "acceptance": {
+      "core_greedy_usable_minimum": "11/12",
+      "core_sampled_usable_minimum": "33/36",
+      "usable": "Finishes a grammatical sentence consistent with the prompt, without a role swap, contradiction, or repetition loop. EOS or token limit without sentence punctuation is incomplete. All core outputs must be manually reviewed.",
+      "confirmation": "A separately written set with new subjects and situations must be evaluated before model selection. This is a bounded demonstration, not evidence of general language quality."
+    }
+  },
+  "protocol_sha256": "c9d93bb156f49187e51f482b468ff3af2875a439a7a44cb676201d0ca9c22f3d",
+  "source_sha256": "b849685aee0034dd04a4b2c92f7f61f1ef3493f2022126a792e6c2f1f6c6186a",
+  "max_cases": 64,
+  "cases": [
+    {
+      "index": 0,
+      "group": "core",
+      "prompt": "The dog was hungry, so it",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " ran to the dog.",
+      "prompt_tokens": 7,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1311,
+        127,
+        2645,
+        13,
+        217,
+        120
+      ],
+      "generated_ids": [
+        725,
+        93,
+        85,
+        1311,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 1,
+      "group": "core",
+      "prompt": "The girl opened the door and saw",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " a bright light.",
+      "prompt_tokens": 7,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        680,
+        85,
+        666,
+        94,
+        354
+      ],
+      "generated_ids": [
+        32,
+        289,
+        312,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 2,
+      "group": "core",
+      "prompt": "The boy put on his shoes and",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " ran outside.",
+      "prompt_tokens": 7,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        1774,
+        139,
+        156,
+        3081,
+        94
+      ],
+      "generated_ids": [
+        725,
+        933,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 3,
+      "group": "core",
+      "prompt": "It was raining, so the children",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " laughed and played.",
+      "prompt_tokens": 8,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        120,
+        127,
+        784,
+        92,
+        13,
+        217,
+        85,
+        1081
+      ],
+      "generated_ids": [
+        474,
+        94,
+        771,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 4,
+      "group": "core",
+      "prompt": "The cat climbed the tree to",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " get a better view.",
+      "prompt_tokens": 6,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        896,
+        1024,
+        85,
+        524,
+        93
+      ],
+      "generated_ids": [
+        1358,
+        32,
+        1096,
+        2421,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 5,
+      "group": "core",
+      "prompt": "The mother gave her baby a",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " small, glowing stone.",
+      "prompt_tokens": 7,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1222,
+        1612,
+        117,
+        2322,
+        1020,
+        32
+      ],
+      "generated_ids": [
+        346,
+        13,
+        959,
+        696,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 6,
+      "group": "core",
+      "prompt": "The little bird flew over the",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " trees, feeling the wind in her hair.",
+      "prompt_tokens": 6,
+      "new_tokens": 9,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        611,
+        852,
+        828,
+        540,
+        85
+      ],
+      "generated_ids": [
+        634,
+        13,
+        344,
+        85,
+        552,
+        108,
+        117,
+        2278,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 7,
+      "group": "core",
+      "prompt": "The man went to the shop to buy",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " a new toy.",
+      "prompt_tokens": 8,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        383,
+        1074,
+        93,
+        85,
+        2448,
+        93,
+        3701
+      ],
+      "generated_ids": [
+        32,
+        456,
+        1139,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 8,
+      "group": "core",
+      "prompt": "The sun came out and the snow",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " fell softly.",
+      "prompt_tokens": 7,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        365,
+        616,
+        324,
+        94,
+        85,
+        751
+      ],
+      "generated_ids": [
+        900,
+        838,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 9,
+      "group": "core",
+      "prompt": "The rabbit hid behind the",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " tree.",
+      "prompt_tokens": 5,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1107,
+        504,
+        825,
+        85
+      ],
+      "generated_ids": [
+        524,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 10,
+      "group": "core",
+      "prompt": "The girl was tired, so she",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " decided to follow the map.",
+      "prompt_tokens": 7,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        127,
+        1761,
+        13,
+        217,
+        106
+      ],
+      "generated_ids": [
+        491,
+        93,
+        717,
+        85,
+        592,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 11,
+      "group": "core",
+      "prompt": "The boy found a ball and",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " kicked it.",
+      "prompt_tokens": 6,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        229,
+        32,
+        1045,
+        94
+      ],
+      "generated_ids": [
+        3430,
+        120,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 12,
+      "group": "stress",
+      "prompt": "My name is",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " the best!",
+      "prompt_tokens": 3,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        441,
+        1647,
+        242
+      ],
+      "generated_ids": [
+        85,
+        799,
+        2
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 13,
+      "group": "stress",
+      "prompt": "ROMEO:",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " a big, shiny rock.",
+      "prompt_tokens": 5,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        279,
+        76,
+        58,
+        68,
+        27
+      ],
+      "generated_ids": [
+        32,
+        417,
+        13,
+        963,
+        694,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 14,
+      "group": "stress",
+      "prompt": "The sky was dark, so Maya",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": ", and the stars were bright.",
+      "prompt_tokens": 8,
+      "new_tokens": 7,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        408,
+        127,
+        421,
+        13,
+        217,
+        844,
+        65
+      ],
+      "generated_ids": [
+        13,
+        94,
+        85,
+        404,
+        294,
+        289,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 15,
+      "group": "stress",
+      "prompt": "What is your name?",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " \" she asked.",
+      "prompt_tokens": 5,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        251,
+        242,
+        645,
+        1647,
+        30
+      ],
+      "generated_ids": [
+        3,
+        106,
+        367,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 16,
+      "group": "core",
+      "prompt": "The dog was hungry, so it",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " ran to the market.",
+      "prompt_tokens": 7,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1311,
+        127,
+        2645,
+        13,
+        217,
+        120
+      ],
+      "generated_ids": [
+        725,
+        93,
+        85,
+        2419,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 17,
+      "group": "core",
+      "prompt": "The girl opened the door and saw",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " a bright light outside.",
+      "prompt_tokens": 7,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        680,
+        85,
+        666,
+        94,
+        354
+      ],
+      "generated_ids": [
+        32,
+        289,
+        312,
+        933,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 18,
+      "group": "core",
+      "prompt": "The boy put on his shoes and",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " ran to the library.",
+      "prompt_tokens": 7,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        1774,
+        139,
+        156,
+        3081,
+        94
+      ],
+      "generated_ids": [
+        725,
+        93,
+        85,
+        1866,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 19,
+      "group": "core",
+      "prompt": "It was raining, so the children",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " decided to make it a mission for the bird.",
+      "prompt_tokens": 8,
+      "new_tokens": 10,
+      "ended": false,
+      "prompt_ids": [
+        120,
+        127,
+        784,
+        92,
+        13,
+        217,
+        85,
+        1081
+      ],
+      "generated_ids": [
+        491,
+        93,
+        637,
+        120,
+        32,
+        1886,
+        158,
+        85,
+        852,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 20,
+      "group": "core",
+      "prompt": "The cat climbed the tree to",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " see the garden.",
+      "prompt_tokens": 6,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        896,
+        1024,
+        85,
+        524,
+        93
+      ],
+      "generated_ids": [
+        436,
+        85,
+        539,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 21,
+      "group": "core",
+      "prompt": "The mother gave her baby a",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " warm blanket.",
+      "prompt_tokens": 7,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1222,
+        1612,
+        117,
+        2322,
+        1020,
+        32
+      ],
+      "generated_ids": [
+        489,
+        2108,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 22,
+      "group": "core",
+      "prompt": "The little bird flew over the",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " trees, its wings wide and flapped around.",
+      "prompt_tokens": 6,
+      "new_tokens": 9,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        611,
+        852,
+        828,
+        540,
+        85
+      ],
+      "generated_ids": [
+        634,
+        13,
+        432,
+        1401,
+        1010,
+        94,
+        3114,
+        378,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 23,
+      "group": "core",
+      "prompt": "The man went to the shop to buy",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " the flowers.",
+      "prompt_tokens": 8,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        383,
+        1074,
+        93,
+        85,
+        2448,
+        93,
+        3701
+      ],
+      "generated_ids": [
+        85,
+        541,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 24,
+      "group": "core",
+      "prompt": "The sun came out and the snow",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " crunching underfoot as they played.",
+      "prompt_tokens": 7,
+      "new_tokens": 10,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        365,
+        616,
+        324,
+        94,
+        85,
+        751
+      ],
+      "generated_ids": [
+        468,
+        2397,
+        92,
+        394,
+        78,
+        2345,
+        140,
+        111,
+        771,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 25,
+      "group": "core",
+      "prompt": "The rabbit hid behind the",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " tree, feeling very small and foolish.",
+      "prompt_tokens": 5,
+      "new_tokens": 8,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1107,
+        504,
+        825,
+        85
+      ],
+      "generated_ids": [
+        524,
+        13,
+        344,
+        1490,
+        346,
+        94,
+        3704,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 26,
+      "group": "core",
+      "prompt": "The girl was tired, so she",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " decided to follow it.",
+      "prompt_tokens": 7,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        127,
+        1761,
+        13,
+        217,
+        106
+      ],
+      "generated_ids": [
+        491,
+        93,
+        717,
+        120,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 27,
+      "group": "core",
+      "prompt": "The boy found a ball and",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " played a game of tag.",
+      "prompt_tokens": 6,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        229,
+        32,
+        1045,
+        94
+      ],
+      "generated_ids": [
+        771,
+        32,
+        1003,
+        115,
+        3748,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 28,
+      "group": "stress",
+      "prompt": "My name is",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " the best!",
+      "prompt_tokens": 3,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        441,
+        1647,
+        242
+      ],
+      "generated_ids": [
+        85,
+        799,
+        2
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 29,
+      "group": "stress",
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " a lost bird.",
+      "prompt_tokens": 5,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        279,
+        76,
+        58,
+        68,
+        27
+      ],
+      "generated_ids": [
+        32,
+        381,
+        852,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 30,
+      "group": "stress",
+      "prompt": "The sky was dark, so Maya",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": ", and the moon was cold and gray.",
+      "prompt_tokens": 8,
+      "new_tokens": 9,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        408,
+        127,
+        421,
+        13,
+        217,
+        844,
+        65
+      ],
+      "generated_ids": [
+        13,
+        94,
+        85,
+        995,
+        127,
+        1089,
+        94,
+        2556,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 31,
+      "group": "stress",
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " \" the woman replied, \" yes, but i am lost in my own thoughts.",
+      "prompt_tokens": 5,
+      "new_tokens": 17,
+      "ended": false,
+      "prompt_ids": [
+        251,
+        242,
+        645,
+        1647,
+        30
+      ],
+      "generated_ids": [
+        3,
+        85,
+        819,
+        813,
+        13,
+        3,
+        1172,
+        13,
+        141,
+        40,
+        462,
+        381,
+        108,
+        441,
+        653,
+        1501,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 32,
+      "group": "core",
+      "prompt": "The dog was hungry, so it",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " wagged its tail, happy to help.",
+      "prompt_tokens": 7,
+      "new_tokens": 8,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1311,
+        127,
+        2645,
+        13,
+        217,
+        120
+      ],
+      "generated_ids": [
+        3954,
+        432,
+        2294,
+        13,
+        599,
+        93,
+        302,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 33,
+      "group": "core",
+      "prompt": "The girl opened the door and saw",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " herself in the other room - a bright - - - people with big smiles and smiling faces.",
+      "prompt_tokens": 7,
+      "new_tokens": 19,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        680,
+        85,
+        666,
+        94,
+        354
+      ],
+      "generated_ids": [
+        961,
+        108,
+        85,
+        353,
+        749,
+        14,
+        32,
+        289,
+        14,
+        14,
+        14,
+        536,
+        130,
+        417,
+        1502,
+        94,
+        1422,
+        1482,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 34,
+      "group": "core",
+      "prompt": "The boy put on his shoes and",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " headed home.",
+      "prompt_tokens": 7,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        1774,
+        139,
+        156,
+        3081,
+        94
+      ],
+      "generated_ids": [
+        3864,
+        527,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 35,
+      "group": "core",
+      "prompt": "It was raining, so the children",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " threw their bags.",
+      "prompt_tokens": 8,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        120,
+        127,
+        784,
+        92,
+        13,
+        217,
+        85,
+        1081
+      ],
+      "generated_ids": [
+        2850,
+        177,
+        3360,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 36,
+      "group": "core",
+      "prompt": "The cat climbed the tree to",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " grab the egg.",
+      "prompt_tokens": 6,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        896,
+        1024,
+        85,
+        524,
+        93
+      ],
+      "generated_ids": [
+        3408,
+        85,
+        2869,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 37,
+      "group": "core",
+      "prompt": "The mother gave her baby a",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " carrot.",
+      "prompt_tokens": 7,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1222,
+        1612,
+        117,
+        2322,
+        1020,
+        32
+      ],
+      "generated_ids": [
+        3742,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 38,
+      "group": "core",
+      "prompt": "The little bird flew over the",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " fence.",
+      "prompt_tokens": 6,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        611,
+        852,
+        828,
+        540,
+        85
+      ],
+      "generated_ids": [
+        3817,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 39,
+      "group": "core",
+      "prompt": "The man went to the shop to buy",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " supplies.",
+      "prompt_tokens": 8,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        383,
+        1074,
+        93,
+        85,
+        2448,
+        93,
+        3701
+      ],
+      "generated_ids": [
+        3721,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 40,
+      "group": "core",
+      "prompt": "The sun came out and the snow",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " glistened like tiny stars.",
+      "prompt_tokens": 7,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        365,
+        616,
+        324,
+        94,
+        85,
+        751
+      ],
+      "generated_ids": [
+        3707,
+        414,
+        240,
+        869,
+        404,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 41,
+      "group": "core",
+      "prompt": "The rabbit hid behind the",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " fence.",
+      "prompt_tokens": 5,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1107,
+        504,
+        825,
+        85
+      ],
+      "generated_ids": [
+        3817,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 42,
+      "group": "core",
+      "prompt": "The girl was tired, so she",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " dashed away to the river.",
+      "prompt_tokens": 7,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        127,
+        1761,
+        13,
+        217,
+        106
+      ],
+      "generated_ids": [
+        2861,
+        538,
+        93,
+        85,
+        855,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 43,
+      "group": "core",
+      "prompt": "The boy found a ball and",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " claimed it as a dragon.",
+      "prompt_tokens": 6,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        229,
+        32,
+        1045,
+        94
+      ],
+      "generated_ids": [
+        3688,
+        120,
+        140,
+        32,
+        893,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 44,
+      "group": "stress",
+      "prompt": "My name is",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " ringing!",
+      "prompt_tokens": 3,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        441,
+        1647,
+        242
+      ],
+      "generated_ids": [
+        3629,
+        2
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 45,
+      "group": "stress",
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " jelly rocks, a sea turtle, and even a giant jellyfish.",
+      "prompt_tokens": 5,
+      "new_tokens": 14,
+      "ended": false,
+      "prompt_ids": [
+        279,
+        76,
+        58,
+        68,
+        27
+      ],
+      "generated_ids": [
+        3417,
+        1554,
+        13,
+        32,
+        776,
+        1114,
+        13,
+        94,
+        499,
+        32,
+        753,
+        3417,
+        3245,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 46,
+      "group": "stress",
+      "prompt": "The sky was dark, so Maya",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " water.",
+      "prompt_tokens": 8,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        408,
+        127,
+        421,
+        13,
+        217,
+        844,
+        65
+      ],
+      "generated_ids": [
+        571,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 47,
+      "group": "stress",
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " \" she asked, her eyes wide.",
+      "prompt_tokens": 5,
+      "new_tokens": 8,
+      "ended": false,
+      "prompt_ids": [
+        251,
+        242,
+        645,
+        1647,
+        30
+      ],
+      "generated_ids": [
+        3,
+        106,
+        367,
+        13,
+        117,
+        348,
+        1010,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 48,
+      "group": "core",
+      "prompt": "The dog was hungry, so it",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " came closer.",
+      "prompt_tokens": 7,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1311,
+        127,
+        2645,
+        13,
+        217,
+        120
+      ],
+      "generated_ids": [
+        616,
+        843,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 49,
+      "group": "core",
+      "prompt": "The girl opened the door and saw",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " a glowing light.",
+      "prompt_tokens": 7,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        680,
+        85,
+        666,
+        94,
+        354
+      ],
+      "generated_ids": [
+        32,
+        959,
+        312,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 50,
+      "group": "core",
+      "prompt": "The boy put on his shoes and",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " walked home.",
+      "prompt_tokens": 7,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        1774,
+        139,
+        156,
+        3081,
+        94
+      ],
+      "generated_ids": [
+        542,
+        527,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 51,
+      "group": "core",
+      "prompt": "It was raining, so the children",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " laughed and danced.",
+      "prompt_tokens": 8,
+      "new_tokens": 4,
+      "ended": false,
+      "prompt_ids": [
+        120,
+        127,
+        784,
+        92,
+        13,
+        217,
+        85,
+        1081
+      ],
+      "generated_ids": [
+        474,
+        94,
+        525,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 52,
+      "group": "core",
+      "prompt": "The cat climbed the tree to",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " the top.",
+      "prompt_tokens": 6,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        896,
+        1024,
+        85,
+        524,
+        93
+      ],
+      "generated_ids": [
+        85,
+        1507,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 53,
+      "group": "core",
+      "prompt": "The mother gave her baby a",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " small pond.",
+      "prompt_tokens": 7,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1222,
+        1612,
+        117,
+        2322,
+        1020,
+        32
+      ],
+      "generated_ids": [
+        346,
+        1536,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 54,
+      "group": "core",
+      "prompt": "The little bird flew over the",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " flowers and the flowers.",
+      "prompt_tokens": 6,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        611,
+        852,
+        828,
+        540,
+        85
+      ],
+      "generated_ids": [
+        541,
+        94,
+        85,
+        541,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 55,
+      "group": "core",
+      "prompt": "The man went to the shop to buy",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " a drink.",
+      "prompt_tokens": 8,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        383,
+        1074,
+        93,
+        85,
+        2448,
+        93,
+        3701
+      ],
+      "generated_ids": [
+        32,
+        2856,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 56,
+      "group": "core",
+      "prompt": "The sun came out and the snow",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " crunched underfoot.",
+      "prompt_tokens": 7,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        365,
+        616,
+        324,
+        94,
+        85,
+        751
+      ],
+      "generated_ids": [
+        468,
+        3257,
+        394,
+        78,
+        2345,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 57,
+      "group": "core",
+      "prompt": "The rabbit hid behind the",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " tree.",
+      "prompt_tokens": 5,
+      "new_tokens": 2,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        1107,
+        504,
+        825,
+        85
+      ],
+      "generated_ids": [
+        524,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 58,
+      "group": "core",
+      "prompt": "The girl was tired, so she",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " asked him to help her remember.",
+      "prompt_tokens": 7,
+      "new_tokens": 7,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        275,
+        127,
+        1761,
+        13,
+        217,
+        106
+      ],
+      "generated_ids": [
+        367,
+        200,
+        93,
+        302,
+        117,
+        1067,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 59,
+      "group": "core",
+      "prompt": "The boy found a ball and",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " sat down.",
+      "prompt_tokens": 6,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        307,
+        229,
+        32,
+        1045,
+        94
+      ],
+      "generated_ids": [
+        572,
+        526,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 60,
+      "group": "stress",
+      "prompt": "My name is",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " the best!",
+      "prompt_tokens": 3,
+      "new_tokens": 3,
+      "ended": false,
+      "prompt_ids": [
+        441,
+        1647,
+        242
+      ],
+      "generated_ids": [
+        85,
+        799,
+        2
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 61,
+      "group": "stress",
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " a pile of leashes.",
+      "prompt_tokens": 5,
+      "new_tokens": 7,
+      "ended": false,
+      "prompt_ids": [
+        279,
+        76,
+        58,
+        68,
+        27
+      ],
+      "generated_ids": [
+        32,
+        2509,
+        115,
+        361,
+        1535,
+        98,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 62,
+      "group": "stress",
+      "prompt": "The sky was dark, so Maya",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": ", but he was safe.",
+      "prompt_tokens": 8,
+      "new_tokens": 6,
+      "ended": false,
+      "prompt_ids": [
+        85,
+        408,
+        127,
+        421,
+        13,
+        217,
+        844,
+        65
+      ],
+      "generated_ids": [
+        13,
+        141,
+        103,
+        127,
+        1354,
+        15
+      ],
+      "sentence_complete": true
+    },
+    {
+      "index": 63,
+      "group": "stress",
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " \" one girl asked.",
+      "prompt_tokens": 5,
+      "new_tokens": 5,
+      "ended": false,
+      "prompt_ids": [
+        251,
+        242,
+        645,
+        1647,
+        30
+      ],
+      "generated_ids": [
+        3,
+        208,
+        275,
+        367,
+        15
+      ],
+      "sentence_complete": true
+    }
+  ]
+}

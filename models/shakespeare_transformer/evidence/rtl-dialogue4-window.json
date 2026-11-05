@@ -1,0 +1,26 @@
+{
+  "checkpoint_sha256": "e6516ef351d59c30eded7a9f0305424b9c032399feddbaa9be77334dfa75941f",
+  "rtl_sha256": "592ce28d04d34a417c725311f338113b644d6b895cfe25296d951a7cec546c63",
+  "verified": true,
+  "checks": [
+    {
+      "phase": "full_window",
+      "verified": true,
+      "torch": {
+        "max_absolute_error": 3.1131430566766483e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      }
+    },
+    {
+      "phase": "rebuild",
+      "bit_identical": true,
+      "context_tokens": 96
+    },
+    {
+      "phase": "decode",
+      "bit_identical": true,
+      "context_tokens": 97
+    }
+  ]
+}

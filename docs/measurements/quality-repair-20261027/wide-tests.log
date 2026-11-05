@@ -1,0 +1,9 @@
+test_normalization_and_residuals_preserve_rows_and_original_gradients (tests.test_wide_transformer.WideTransformerTests.test_normalization_and_residuals_preserve_rows_and_original_gradients) ... ok
+test_wide_training_gradients_updates_and_cached_inference (tests.test_wide_transformer.WideTransformerTests.test_wide_training_gradients_updates_and_cached_inference) ... /Users/satvik.garimella/Snackwell/build/model-venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 30.778s
+
+OK

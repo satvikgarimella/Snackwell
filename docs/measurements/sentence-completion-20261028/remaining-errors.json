@@ -1,0 +1,426 @@
+{
+  "checkpoint_sha256": "66af3342b4a66ee4e63816f30756f3aed746b749b300ecd6f13c324be0d2423e",
+  "count": 28,
+  "cases": [
+    {
+      "prompt": "The hat is in the kitchen. The bag is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the kitchen.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The hat is in the kitchen. Where is the hat?",
+      "expected": " The hat is in the kitchen.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the kitchen. The bag is in the office. Where is the hat?",
+      "expected": " The hat is in the kitchen.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the office. The hat is in the kitchen. Where is the hat?",
+      "expected": " The hat is in the kitchen.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the garden. The bag is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the garden.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The hat is in the garden. Where is the hat?",
+      "expected": " The hat is in the garden.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the garden. The bag is in the office. Where is the hat?",
+      "expected": " The hat is in the garden.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the office. The hat is in the garden. Where is the hat?",
+      "expected": " The hat is in the garden.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the bedroom. The bag is in the office. Where is the hat?",
+      "expected": " The hat is in the bedroom.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the office. The hat is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the bedroom.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the office. The bag is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the office.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The hat is in the office. Where is the hat?",
+      "expected": " The hat is in the office.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the hallway. The bag is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the hallway.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The hat is in the hallway. Where is the hat?",
+      "expected": " The hat is in the hallway.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the hallway. The bag is in the office. Where is the hat?",
+      "expected": " The hat is in the hallway.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the office. The hat is in the hallway. Where is the hat?",
+      "expected": " The hat is in the hallway.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the bathroom. The bag is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the bathroom.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The hat is in the bathroom. Where is the hat?",
+      "expected": " The hat is in the bathroom.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the bathroom. The bag is in the office. Where is the hat?",
+      "expected": " The hat is in the bathroom.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the office. The hat is in the bathroom. Where is the hat?",
+      "expected": " The hat is in the bathroom.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the attic. The bag is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the attic.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The hat is in the attic. Where is the hat?",
+      "expected": " The hat is in the attic.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the attic. The bag is in the office. Where is the hat?",
+      "expected": " The hat is in the attic.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the office. The hat is in the attic. Where is the hat?",
+      "expected": " The hat is in the attic.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the cellar. The bag is in the bedroom. Where is the hat?",
+      "expected": " The hat is in the cellar.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The hat is in the cellar. Where is the hat?",
+      "expected": " The hat is in the cellar.",
+      "answer": " The hat is in the bedroom.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        81,
+        2
+      ]
+    },
+    {
+      "prompt": "The hat is in the cellar. The bag is in the office. Where is the hat?",
+      "expected": " The hat is in the cellar.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    },
+    {
+      "prompt": "The bag is in the office. The hat is in the cellar. Where is the hat?",
+      "expected": " The hat is in the cellar.",
+      "answer": " The hat is in the office.",
+      "exact": false,
+      "generated_ids": [
+        36,
+        62,
+        31,
+        34,
+        32,
+        96,
+        2
+      ]
+    }
+  ]
+}

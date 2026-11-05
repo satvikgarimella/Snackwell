@@ -1,0 +1,433 @@
+{
+  "execution": "Snackwell RTL; independent kernel and whole-model verification",
+  "verified": true,
+  "complete": true,
+  "checkpoint_sha256": "66af3342b4a66ee4e63816f30756f3aed746b749b300ecd6f13c324be0d2423e",
+  "prompt": "The toy is in the hallway. The ball is in the kitchen. Where is the ball?",
+  "answer": " The ball is in the kitchen.",
+  "decoding": "greedy; no token filters",
+  "rtl_source_sha256": "d47ac8279c655e1542f8c76b80f38464b054c2221023c48c4eae5ceabea7c461",
+  "cycles": 3608046,
+  "launches": 1135,
+  "latency": {
+    "generated_characters": 28,
+    "generated_tokens": 7,
+    "tokens_per_second": 0.7666440021737385,
+    "characters_per_second": 3.066576008694954,
+    "first_token_seconds": 4.542969042027835,
+    "subsequent_token_seconds": 0.7646226109936833,
+    "cached_decode": true,
+    "decode_seconds": 0.7646226109936833,
+    "decode_steps": 6,
+    "rebuild_seconds": null,
+    "rebuild_steps": 0
+  },
+  "tokens": [
+    {
+      "token_id": 36,
+      "text": " The",
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 2.9802322387695312e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 3.3193739948367273e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 6.525864985895691e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 6.021115437904179e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.502568296567034e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 6.886801218186633e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 1.5291871644507182e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 6.689699255657544e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 4.542969042027835,
+      "cycles": 1745969,
+      "launches": 391,
+      "cache": {
+        "enabled": true,
+        "phase": "prefill",
+        "reused_tokens": 0,
+        "computed_tokens": 19,
+        "context_tokens": 19,
+        "storage": "host raw FP32 words",
+        "bytes": 19456
+      }
+    },
+    {
+      "token_id": 60,
+      "text": " ball",
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 7.450580596923828e-09,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.539769852205609e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 4.1684018325938155e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.004150118142036e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 4.45114286096171e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 8.67951475275186e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 2.4205112478803414e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 2.8946413443975416e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 0.7850985419936478,
+      "cycles": 309011,
+      "launches": 124,
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 19,
+        "computed_tokens": 1,
+        "context_tokens": 20,
+        "storage": "host raw FP32 words",
+        "bytes": 20480
+      }
+    },
+    {
+      "token_id": 31,
+      "text": " is",
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 1.118528903942817e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.1767799740501914e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 2.3605809396087807e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 2.208925720115218e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 3.619780550856433e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 1.877885894785436e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.0503467728906202e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 0.8147507919929922,
+      "cycles": 310216,
+      "launches": 124,
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 20,
+        "computed_tokens": 1,
+        "context_tokens": 21,
+        "storage": "host raw FP32 words",
+        "bytes": 21504
+      }
+    },
+    {
+      "token_id": 34,
+      "text": " in",
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 1.4901161193847656e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 1.9505163945110482e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.680324925896649e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 2.4972488976704454e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 2.550721843741499e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 8.079808955230305e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 1.8773922212389493e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.1522943099695482e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 0.5924189579673111,
+      "cycles": 310223,
+      "launches": 124,
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 21,
+        "computed_tokens": 1,
+        "context_tokens": 22,
+        "storage": "host raw FP32 words",
+        "bytes": 22528
+      }
+    },
+    {
+      "token_id": 32,
+      "text": " the",
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 2.9802322387695312e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 1.455122088378502e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 1.8588906902650137e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 2.3692367379091195e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 2.816519343307178e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 7.615908892422141e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 1.24035349680085e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 7.231853516032061e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 0.8730866250116378,
+      "cycles": 310429,
+      "launches": 124,
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 22,
+        "computed_tokens": 1,
+        "context_tokens": 23,
+        "storage": "host raw FP32 words",
+        "bytes": 23552
+      }
+    },
+    {
+      "token_id": 94,
+      "text": " kitchen",
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 2.9802322387695312e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 2.8463661078115265e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 2.846403426293165e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 4.086414599480115e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 5.318189791603256e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 2.2927014902696108e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 5.462676190504112e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.6583918171775291e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 0.720024915994145,
+      "cycles": 310749,
+      "launches": 124,
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 23,
+        "computed_tokens": 1,
+        "context_tokens": 24,
+        "storage": "host raw FP32 words",
+        "bytes": 24576
+      }
+    },
+    {
+      "token_id": 2,
+      "text": ".",
+      "accuracy": {
+        "embedding": {
+          "max_absolute_error": 2.9802322387695312e-08,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block0_block": {
+          "max_absolute_error": 1.292167095823249e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block1_block": {
+          "max_absolute_error": 1.7656778014685237e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block2_block": {
+          "max_absolute_error": 2.0754201485173596e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "block3_block": {
+          "max_absolute_error": 3.168823239363405e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "final_norm": {
+          "max_absolute_error": 4.3817618600172636e-07,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "logits": {
+          "max_absolute_error": 1.3333370922907761e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        },
+        "probabilities": {
+          "max_absolute_error": 1.2603566723612403e-06,
+          "rtol": 0.0005,
+          "atol": 5e-05
+        }
+      },
+      "wall_seconds": 0.8023558330023661,
+      "cycles": 311449,
+      "launches": 124,
+      "cache": {
+        "enabled": true,
+        "phase": "decode",
+        "reused_tokens": 24,
+        "computed_tokens": 1,
+        "context_tokens": 25,
+        "storage": "host raw FP32 words",
+        "bytes": 25600
+      }
+    }
+  ]
+}

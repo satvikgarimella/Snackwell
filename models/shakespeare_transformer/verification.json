@@ -1,0 +1,138 @@
+{
+  "status": "Complete: RTL correctness, separate same-prompt timing comparison and terminal smoke check passed. Improved held-out loss; language quality remains limited.",
+  "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+  "rtl_sha256": "592ce28d04d34a417c725311f338113b644d6b895cfe25296d951a7cec546c63",
+  "training_backend": "PyTorch Apple MPS pretraining; separately audited full SGD step in Snackwell RTL",
+  "parameters": 1734400,
+  "default_changed": false,
+  "verified": true,
+  "forward_and_cache": [
+    {
+      "phase": "full_window",
+      "verified": true,
+      "torch": {
+        "max_absolute_error": 2.2987998560264344e-06,
+        "rtol": 0.0005,
+        "atol": 5e-05
+      }
+    },
+    {
+      "phase": "rebuild",
+      "bit_identical": true,
+      "context_tokens": 96
+    },
+    {
+      "phase": "decode",
+      "bit_identical": true,
+      "context_tokens": 97
+    }
+  ],
+  "training_audit": {
+    "verified": true,
+    "loss": 2.41622257232666,
+    "cycles": 1296881759,
+    "launches": 205425,
+    "seconds": 931.5445782499737,
+    "torch_loss": 2.41622326379649,
+    "exact_fp32_update_words": 1734400,
+    "checkpoint_reload_exact": true,
+    "reloaded_inference_verified": true,
+    "torch_loss_after_update": 2.4149037319981383
+  },
+  "largest_gradient_absolute_error": 7.817897650155836e-07,
+  "quality": {
+    "validation": {
+      "label": "dialogue8",
+      "baseline_token_loss": 2.8332169670113383,
+      "candidate_token_loss": 2.5765253064557108,
+      "relative_loss_reduction": 0.09060077768290464,
+      "paired_mean_loss_change": -0.25669166055562753,
+      "block_bootstrap_95_percent_interval": [
+        -0.2914268185995019,
+        -0.22397428385351434
+      ],
+      "baseline_token_accuracy": 0.3759765625,
+      "candidate_token_accuracy": 0.402587890625,
+      "baseline_nats_per_character": 1.2803770793206575,
+      "candidate_nats_per_character": 1.1603924553343035
+    },
+    "test": {
+      "label": "dialogue8",
+      "baseline_token_loss": 3.1447330004096035,
+      "candidate_token_loss": 2.726549253506437,
+      "relative_loss_reduction": 0.13297909452048795,
+      "paired_mean_loss_change": -0.4181837469031664,
+      "block_bootstrap_95_percent_interval": [
+        -0.4718199230053071,
+        -0.3692998695327217
+      ],
+      "baseline_token_accuracy": 0.335205078125,
+      "candidate_token_accuracy": 0.3857421875,
+      "baseline_nats_per_character": 1.4547874143089288,
+      "candidate_nats_per_character": 1.2945970323795202
+    }
+  },
+  "limitations": "Grammar and meaning remain unreliable. Greedy sentence loops worsened in the fixed evaluation. Sampled repeat flags do not establish an improvement: baseline flags included III. Model is optional and about 2.46x slower per cached token in the recorded RTL run.",
+  "tests": {
+    "initial_suite_methods": 36,
+    "diagnostic_followup_methods": 4,
+    "distinct_methods": 37,
+    "skipped": 0,
+    "passed": true
+  },
+  "evidence_directory": "evidence/",
+  "raw_run_directory": "build/quality-repair-20261026/",
+  "benchmark": [
+    {
+      "label": "baseline",
+      "checkpoint_sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8",
+      "latency": {
+        "generated_characters": 78,
+        "generated_tokens": 32,
+        "tokens_per_second": 0.3690879942926347,
+        "characters_per_second": 0.8996519860882971,
+        "first_token_seconds": 7.592134125006851,
+        "subsequent_token_seconds": 2.5518728372933825,
+        "cached_decode": true,
+        "decode_seconds": 2.5518728372933825,
+        "decode_steps": 31,
+        "rebuild_seconds": null,
+        "rebuild_steps": 0
+      },
+      "cycles": 106285823,
+      "launches": 32258,
+      "cpu_text_identical": true,
+      "verified": true
+    },
+    {
+      "label": "candidate",
+      "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+      "latency": {
+        "generated_characters": 71,
+        "generated_tokens": 32,
+        "tokens_per_second": 0.14760906971922472,
+        "characters_per_second": 0.3275076234395298,
+        "first_token_seconds": 22.25674858299317,
+        "subsequent_token_seconds": 6.275228974381236,
+        "cached_decode": true,
+        "decode_seconds": 6.275228974381236,
+        "decode_steps": 31,
+        "rebuild_seconds": null,
+        "rebuild_steps": 0
+      },
+      "cycles": 279083120,
+      "launches": 79354,
+      "cpu_text_identical": true,
+      "verified": true
+    }
+  ],
+  "terminal_smoke": {
+    "verified": true,
+    "tokens": 1,
+    "seed": 92617660,
+    "temperature": 0.7,
+    "prompt": "My lord, I have something to say",
+    "text": "My lord, I have something to say,",
+    "log": "evidence/terminal-smoke.log"
+  }
+}

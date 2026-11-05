@@ -1,0 +1,169 @@
+{
+  "selection": "Validation exactness gate, then independently audit complete generation; all source checkpoints retained under build. Reserved-test scores were not used to select weights within a training run.",
+  "trials": [
+    {
+      "run": "sentence-completion-20261028",
+      "config": {
+        "context": 32,
+        "width": 32,
+        "heads": 2,
+        "layers": 2,
+        "epsilon": 9.999999747378752e-06
+      },
+      "parameters": 24481,
+      "selected_validation": {
+        "step": 1100,
+        "train_batch_loss": 0.038798801600933075,
+        "answer_loss": 0.2836172136049422,
+        "exact_answers": 226,
+        "examples": 576
+      },
+      "decision": "rejected on validation",
+      "resumed_from": null,
+      "checkpoint_sha256": "186f48034d7f26601356bfc098a8a0142310e665e76265227fd04696919c8dbb"
+    },
+    {
+      "run": "sentence-completion-20261028-width64",
+      "config": {
+        "context": 32,
+        "width": 64,
+        "heads": 2,
+        "layers": 2,
+        "epsilon": 9.999999747378752e-06
+      },
+      "parameters": 81633,
+      "selected_validation": {
+        "step": 100,
+        "train_batch_loss": 0.15823689103126526,
+        "answer_loss": 0.169880885926504,
+        "exact_answers": 257,
+        "examples": 576
+      },
+      "decision": "rejected on validation",
+      "resumed_from": null,
+      "checkpoint_sha256": "d4c3dbe24e6220ae3410f8090b3a3e71a72fc42d4da5df7f5fd7c8c7f9b6da31"
+    },
+    {
+      "run": "sentence-completion-20261028-curriculum",
+      "config": {
+        "context": 32,
+        "width": 32,
+        "heads": 2,
+        "layers": 2,
+        "epsilon": 9.999999747378752e-06
+      },
+      "parameters": 24481,
+      "selected_validation": {
+        "step": 1800,
+        "train_batch_loss": 0.0059215915389359,
+        "answer_loss": 0.0902766575297666,
+        "exact_answers": 493,
+        "examples": 576
+      },
+      "decision": "rejected on validation",
+      "resumed_from": null,
+      "checkpoint_sha256": "09b01e4547ef1a1cf6c7b3155445517db23832b92fde32a39f521483ced49d38"
+    },
+    {
+      "run": "sentence-completion-20261028-fanin",
+      "config": {
+        "context": 32,
+        "width": 32,
+        "heads": 2,
+        "layers": 2,
+        "epsilon": 9.999999747378752e-06
+      },
+      "parameters": 24481,
+      "selected_validation": {
+        "step": 2400,
+        "train_batch_loss": 0.00014634446415584534,
+        "answer_loss": 0.07825879046383004,
+        "exact_answers": 480,
+        "examples": 576
+      },
+      "decision": "rejected on validation",
+      "resumed_from": null,
+      "checkpoint_sha256": "4d145a39e132d9062b8e3de35bae94a17811e666cf5a7b8eab0fe2063e787394"
+    },
+    {
+      "run": "sentence-completion-20261028-refine",
+      "config": {
+        "context": 32,
+        "width": 32,
+        "heads": 2,
+        "layers": 2,
+        "epsilon": 9.999999747378752e-06
+      },
+      "parameters": 24481,
+      "selected_validation": {
+        "step": 3000,
+        "train_batch_loss": 0.006540695205330849,
+        "answer_loss": 0.036883218251797,
+        "exact_answers": 557,
+        "examples": 576
+      },
+      "decision": "rejected on validation",
+      "resumed_from": "09b01e4547ef1a1cf6c7b3155445517db23832b92fde32a39f521483ced49d38",
+      "checkpoint_sha256": "2d8e1310fc86a8325493285a60001f1462e840cfa9a5ee07414068fdff31a8cc"
+    },
+    {
+      "run": "sentence-completion-20261028-four-block",
+      "config": {
+        "context": 32,
+        "width": 32,
+        "heads": 2,
+        "layers": 4,
+        "epsilon": 9.999999747378752e-06
+      },
+      "parameters": 41569,
+      "selected_validation": {
+        "step": 4000,
+        "train_batch_loss": 0.0001102491223718971,
+        "answer_loss": 0.0003490217763649684,
+        "exact_answers": 576,
+        "examples": 576
+      },
+      "decision": "candidate passing validation gate",
+      "resumed_from": null,
+      "checkpoint_sha256": "917756c4323235afd97fea126657e7141963c00af0e9e6ef58f2e9c64399f8ae"
+    },
+    {
+      "run": "sentence-completion-20261028-regularized",
+      "config": {
+        "context": 32,
+        "width": 32,
+        "heads": 2,
+        "layers": 2,
+        "epsilon": 9.999999747378752e-06
+      },
+      "parameters": 24481,
+      "selected_validation": {
+        "step": 1750,
+        "train_batch_loss": 0.02281317673623562,
+        "answer_loss": 0.030331062419073924,
+        "exact_answers": 545,
+        "examples": 576
+      },
+      "decision": "rejected on validation",
+      "resumed_from": "09b01e4547ef1a1cf6c7b3155445517db23832b92fde32a39f521483ced49d38",
+      "checkpoint_sha256": "e8cb6ca257cccf9bde6d7ffd0f36a8f05d26b6d8c2ad9e5ff1dc493266ed3160"
+    }
+  ],
+  "selected_refinement": {
+    "run": "sentence-completion-20261028-final-refine",
+    "selected_step": 1,
+    "validation": {
+      "answer_loss": 0.0003351215171509437,
+      "exact_answers": 576,
+      "examples": 576
+    },
+    "checkpoint_sha256": "66af3342b4a66ee4e63816f30756f3aed746b749b300ecd6f13c324be0d2423e",
+    "original_checkpoint": "917756c4323235afd97fea126657e7141963c00af0e9e6ef58f2e9c64399f8ae",
+    "exhaustive_correct_before": 6243,
+    "exhaustive_correct_after": 6244,
+    "exhaustive_total": 6272,
+    "corrected_prompts": 1,
+    "regressed_prompts": 0
+  },
+  "audit_limit": "The initial exhaustive audit motivated refinement on original training data. The repeated exhaustive audit is a development regression check, not an untouched generalization estimate. No reserved object/location pairs enter gradient training."
+}

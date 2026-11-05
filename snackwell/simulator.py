@@ -12,7 +12,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 
-from snackwell.assembler import write_image
+from snackwell.assembler import EXIT_WORD, write_image
 from snackwell.numeric import SHARED_WORDS
 from snackwell.paths import ROOT, rtl_sources
 from snackwell.profile import summarize_trace
@@ -25,13 +25,14 @@ class ModelSimulator:
     trace: bool = False
     source_sha256: str | None = None
     session_executable: Path | None = None
+    compact: bool = False
 
 
 class SimulatorSession:
     """Run separate, reset RTL launches in one Verilator process.
 
-    Only filenames and launch controls cross this interface. The C++ host clocks
-    the same RTL directly; traces use the original SystemVerilog testbench.
+    Programs, raw memory words and launch controls cross this interface. The C++
+    host clocks the RTL directly; traces use the original SystemVerilog testbench.
     """
 
     def __init__(self, simulator):
@@ -41,9 +42,12 @@ class SimulatorSession:
             simulator.session_executable if not simulator.trace else None
         ) or simulator.executable
         self.traced_executable = simulator.executable
+        self.direct_executable = simulator.session_executable
         self.backend, self.trace = simulator.backend, simulator.trace
         self.source_sha256 = simulator.source_sha256
+        self.compact = simulator.compact and not simulator.trace
         self.process = None
+        self.process_mode = None
         self.pending = b""
 
     def __enter__(self):
@@ -70,6 +74,67 @@ class SimulatorSession:
         finally:
             process.stdout.close()
             self.pending = b""
+            self.process_mode = None
+
+    def _start(self, mode):
+        if self.process is not None and self.process_mode != mode:
+            self.close()
+        if self.process is None:
+            self.process = subprocess.Popen(
+                [str(self.executable.resolve()), mode],
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                bufsize=0,
+            )
+            self.process_mode = mode
+
+    def run_words(self, words, memory, active_masks, warp_mask, entry, max_cycles, timeout=30):
+        """Exchange fixed-size little-endian frames; execute all arithmetic in RTL."""
+        if self.trace or self.direct_executable is None:
+            raise ValueError("word transport requires the untraced direct-clock driver")
+        try:
+            self.executable = self.direct_executable
+            self._start("+WORDS")
+            request = struct.pack(
+                "<2053I",
+                0x534E5731,
+                active_masks,
+                warp_mask,
+                entry,
+                max_cycles,
+                *words,
+                *([EXIT_WORD] * (1024 - len(words))),
+                *memory,
+            )
+            # Raw pipe writes may be partial, even for these fixed-size frames.
+            view = memoryview(request)
+            while view:
+                written = self.process.stdin.write(view)
+                if not written:
+                    raise RuntimeError("RTL word transport closed while writing")
+                view = view[written:]
+            deadline = time.monotonic() + timeout
+            response = bytearray()
+            expected_bytes = 1282 * 4
+            while len(response) < expected_bytes:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0 or not select.select([self.process.stdout], [], [], remaining)[0]:
+                    raise subprocess.TimeoutExpired(str(self.executable), timeout)
+                data = os.read(self.process.stdout.fileno(), expected_bytes - len(response))
+                if not data:
+                    raise RuntimeError(
+                        "RTL word transport ended before completion: "
+                        + response.decode(errors="replace")[-2000:]
+                    )
+                response.extend(data)
+            result = struct.unpack("<1282I", response)
+            if result[0] != 0x534E5731 or not 0 < result[1] <= max_cycles:
+                raise RuntimeError("Invalid RTL word transport response")
+            return list(result[2:1026]), list(result[1026:]), result[1]
+        except BaseException:
+            self.close()
+            raise
 
     def run(self, output, active_masks, warp_mask, entry, max_cycles, timeout=30):
         directory = str(output)
@@ -81,14 +146,7 @@ class SimulatorSession:
             if self.trace and self.executable != self.traced_executable:
                 self.close()
                 self.executable = self.traced_executable
-            if self.process is None:
-                self.process = subprocess.Popen(
-                    [str(self.executable.resolve()), "+SESSION"],
-                    stdin=subprocess.PIPE,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.STDOUT,
-                    bufsize=0,
-                )
+            self._start("+SESSION")
             request = (
                 f"{directory}\n{active_masks:04x} {warp_mask:x} {entry} {max_cycles} "
                 f"{int(self.trace)}\n"
@@ -141,10 +199,12 @@ def refresh_model_runner(simulator, output):
         return simulator
     if simulator.source_sha256 == rtl_source_digest():
         return simulator
-    return compile_model_runner(output, simulator.backend, simulator.trace)
+    return compile_model_runner(output, simulator.backend, simulator.trace, simulator.compact)
 
 
-def compile_model_runner(output: Path, backend="auto", trace=False) -> ModelSimulator:
+def compile_model_runner(
+    output: Path, backend="auto", trace=False, compact=False
+) -> ModelSimulator:
     """Prefer compiled RTL for model inference; keep the Icarus regression path explicit."""
     source_sha256 = rtl_source_digest()
     session_executable = None
@@ -161,7 +221,7 @@ def compile_model_runner(output: Path, backend="auto", trace=False) -> ModelSimu
         raise ValueError(f"Unknown simulator: {backend}")
     if source_sha256 != rtl_source_digest():
         raise RuntimeError("RTL changed during compilation; retry with a stable source tree")
-    return ModelSimulator(executable, backend, trace, source_sha256, session_executable)
+    return ModelSimulator(executable, backend, trace, source_sha256, session_executable, compact)
 
 
 def compile_verilator_runner(*, session=False) -> Path:
@@ -303,7 +363,6 @@ def run_program(
         else ModelSimulator(executable, "icarus", True)
     )
     output = output.resolve()
-    output.mkdir(parents=True, exist_ok=True)
     if len(memory) != SHARED_WORDS or any(
         type(word) is not int or not 0 <= word < 2**32 for word in memory
     ):
@@ -312,11 +371,19 @@ def run_program(
         raise ValueError("invalid launch masks or entry address")
     if type(max_cycles) is not int or not 1 <= max_cycles <= 1000000:
         raise ValueError("cycle limit must be 1 through 1000000")
+    if not 1 <= len(words) <= 1024 or any(
+        type(word) is not int or not 0 <= word < 2**32 for word in words
+    ):
+        raise ValueError("program must contain 1 through 1024 unsigned 32-bit words")
+    # A directory reused after a detailed run must not retain stale success files.
+    if output.exists():
+        for name in ("output.hex", "registers.hex", "trace.csv", "profile.json"):
+            (output / name).unlink(missing_ok=True)
+    if isinstance(simulator, SimulatorSession) and simulator.compact and not simulator.trace:
+        return simulator.run_words(words, memory, active_masks, warp_mask, entry, max_cycles)
+    output.mkdir(parents=True, exist_ok=True)
     program_path, data_path = output / "program.hex", output / "input.hex"
     result_path, register_path = output / "output.hex", output / "registers.hex"
-    # Remove outputs from earlier runs so a failed simulation cannot look successful.
-    for name in ("output.hex", "registers.hex", "trace.csv", "profile.json"):
-        (output / name).unlink(missing_ok=True)
     write_image(program_path, words)
     write_hex(data_path, memory)
     command = [str(simulator.executable.resolve())]

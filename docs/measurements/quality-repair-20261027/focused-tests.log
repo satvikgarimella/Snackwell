@@ -1,0 +1,26 @@
+test_dropout_is_training_only_and_export_matches_scalar_reference (tests.test_reference_training.ReferenceTrainingTests.test_dropout_is_training_only_and_export_matches_scalar_reference) ... /Users/satvik.garimella/Snackwell/build/model-venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+ok
+test_feedforward_expansion_preserves_predictions_and_can_learn (tests.test_reference_training.ReferenceTrainingTests.test_feedforward_expansion_preserves_predictions_and_can_learn) ... ok
+test_host_trainer_exports_validation_only_and_protects_existing_output (tests.test_reference_training.ReferenceTrainingTests.test_host_trainer_exports_validation_only_and_protects_existing_output) ... ok
+test_invalid_tail_is_rejected_before_training (tests.test_reference_training.ReferenceTrainingTests.test_invalid_tail_is_rejected_before_training) ... ok
+test_invalid_training_settings_are_rejected (tests.test_reference_training.ReferenceTrainingTests.test_invalid_training_settings_are_rejected) ... ok
+test_supplemental_text_preserves_tokenizer_and_held_out_splits (tests.test_reference_training.ReferenceTrainingTests.test_supplemental_text_preserves_tokenizer_and_held_out_splits) ... ok
+test_tail_objective_keeps_causal_prefix_and_weights_target_gradients (tests.test_reference_training.ReferenceTrainingTests.test_tail_objective_keeps_causal_prefix_and_weights_target_gradients) ... ok
+test_validation_scores_only_the_next_character_and_enforces_split_boundaries (tests.test_reference_training.ReferenceTrainingTests.test_validation_scores_only_the_next_character_and_enforces_split_boundaries) ... /Users/satvik.garimella/Snackwell/tests/test_reference_training.py:136: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  float(F.cross_entropy(network(data[p - 4 : p][None])[:, -1], data[p : p + 1]))
+ok
+test_character_target_keeps_complete_subword_tokens (tests.test_generation_quality.GenerationQualityTests.test_character_target_keeps_complete_subword_tokens) ... ok
+test_character_target_preserves_sample_sequence_across_rebuilds (tests.test_generation_quality.GenerationQualityTests.test_character_target_preserves_sample_sequence_across_rebuilds) ... ok
+test_repeated_speaker_and_sentence_are_detected (tests.test_generation_quality.GenerationQualityTests.test_repeated_speaker_and_sentence_are_detected) ... ok
+test_roman_numeral_exposes_single_character_pattern (tests.test_generation_quality.GenerationQualityTests.test_roman_numeral_exposes_single_character_pattern) ... ok
+test_short_repetitions_and_empty_text (tests.test_generation_quality.GenerationQualityTests.test_short_repetitions_and_empty_text) ... ok
+test_two_copies_do_not_count_as_three (tests.test_generation_quality.GenerationQualityTests.test_two_copies_do_not_count_as_three) ... ok
+test_complete_training_step_matches_both_simulators (tests.test_transformer_training.TransformerTrainingTests.test_complete_training_step_matches_both_simulators) ... ok
+test_multihead_checkpoint_rejects_invalid_configuration (tests.test_model.ModelTests.test_multihead_checkpoint_rejects_invalid_configuration) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 12.293s
+
+OK

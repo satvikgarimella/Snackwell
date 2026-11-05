@@ -1,0 +1,36 @@
+Model: 8 blocks, 4 heads, width 128, FFN width 512, context 128 subword tokens; checkpoint 28e378b741fa
+Checkpoint file: /Users/satvik.garimella/Snackwell/models/shakespeare_transformer/checkpoint.json
+Preparing RTL simulator…
+RTL simulator: verilator; cycle trace: off
+RTL build: d47ac8279c65
+Decoding: {'mode': 'sample', 'seed': 92617660, 'temperature': 0.7, 'min_p': 0.05}
+PASS token 1/24: 'b', 11264721 cycles, 22.99s (prefill)
+PASS token 2/24: 'o', 7515427 cycles, 12.52s (decode)
+PASS token 3/24: 'ld', 7516333 cycles, 13.71s (decode)
+PASS token 4/24: ' and', 7517565 cycles, 13.98s (decode)
+PASS token 5/24: ' d', 7519994 cycles, 18.36s (decode)
+PASS token 6/24: 'au', 7626966 cycles, 17.38s (decode)
+PASS token 7/24: 'ght', 7628716 cycles, 14.86s (decode)
+PASS token 8/24: 'er', 7629896 cycles, 16.34s (decode)
+PASS token 9/24: '.', 7631586 cycles, 24.90s (decode)
+PASS token 10/24: '\n', 7639745 cycles, 20.39s (decode)
+PASS token 11/24: '\n', 7641159 cycles, 19.54s (decode)
+PASS token 12/24: 'P', 7642690 cycles, 21.35s (decode)
+PASS token 13/24: 'IS', 7644784 cycles, 16.59s (decode)
+PASS token 14/24: 'T', 7867740 cycles, 17.41s (decode)
+PASS token 15/24: 'OL', 7868912 cycles, 19.28s (decode)
+PASS token 16/24: ':', 7870449 cycles, 21.44s (decode)
+PASS token 17/24: '\n', 7873500 cycles, 21.34s (decode)
+PASS token 18/24: 'B', 7878363 cycles, 20.60s (decode)
+PASS token 19/24: 'y', 7879041 cycles, 24.03s (decode)
+PASS token 20/24: ' my', 7880401 cycles, 21.45s (decode)
+PASS token 21/24: ' tr', 7882093 cycles, 19.48s (decode)
+PASS token 22/24: 'oth', 7887938 cycles, 19.50s (decode)
+PASS token 23/24: ',', 7889420 cycles, 21.87s (decode)
+PASS token 24/24: '\n', 7891257 cycles, 17.98s (decode)
+My name is bold and daughter.
+
+PISTOL:
+By my troth,
+
+Results: /Users/satvik.garimella/Snackwell/build/decoding-repair-20261027/rtl-name

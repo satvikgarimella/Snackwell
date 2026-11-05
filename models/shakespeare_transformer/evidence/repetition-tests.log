@@ -1,0 +1,9 @@
+test_repeated_speaker_and_sentence_are_detected (tests.test_generation_quality.GenerationQualityTests.test_repeated_speaker_and_sentence_are_detected) ... ok
+test_roman_numeral_exposes_single_character_pattern (tests.test_generation_quality.GenerationQualityTests.test_roman_numeral_exposes_single_character_pattern) ... ok
+test_short_repetitions_and_empty_text (tests.test_generation_quality.GenerationQualityTests.test_short_repetitions_and_empty_text) ... ok
+test_two_copies_do_not_count_as_three (tests.test_generation_quality.GenerationQualityTests.test_two_copies_do_not_count_as_three) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

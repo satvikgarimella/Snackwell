@@ -1,5 +1,8 @@
 # Language-quality experiments, October 21
 
+The later [October 26–27 experiment](QUALITY_REPAIR.md) adds training data and an
+eight-block candidate. This page records the earlier trials and their outcomes.
+
 Training correctness and language quality are different measurements. The
 [training audit](TRAINING_AUDIT.md) checked forward passes, losses, every gradient,
 updates, and checkpoint reloads. These experiments measure whether different

@@ -18,8 +18,8 @@ def expand_feedforward(model, multiplier, seed):
     if type(multiplier) is not int or multiplier not in (2, 4):
         raise ValueError("feed-forward multiplier must be 2 or 4")
     hidden = multiplier * width
-    if not previous < hidden <= 512:
-        raise ValueError("expansion must increase feed-forward width, to at most 512")
+    if not previous < hidden <= 1024:
+        raise ValueError("expansion must increase feed-forward width, to at most 1024")
     config.update(
         ffn_multiplier=multiplier, layers=config.get("layers", 1), heads=config.get("heads", 1)
     )

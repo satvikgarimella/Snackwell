@@ -39,6 +39,17 @@ def main():
         help="Sampling temperature, 0.1..2.0; lower values favor likely tokens (default: %(default)s)",
     )
     parser.add_argument(
+        "--min-p",
+        type=float,
+        default=0.0,
+        help="Drop choices below this fraction of the top probability (0 disables)",
+    )
+    parser.add_argument(
+        "--no-token-healing",
+        action="store_true",
+        help="Keep the original final subword token instead of completing it",
+    )
+    parser.add_argument(
         "--simulator",
         choices=("auto", "icarus", "verilator"),
         default="auto",
@@ -46,6 +57,13 @@ def main():
     )
     parser.add_argument(
         "--trace", action="store_true", help="Save and summarize every simulated cycle"
+    )
+    parser.add_argument(
+        "--artifacts",
+        choices=("summary", "full"),
+        default="summary",
+        help="Keep verified stage summaries, or every kernel memory image (default: summary); "
+        "tracing and Icarus always save full artifacts",
     )
     parser.add_argument(
         "--interactive",
@@ -82,9 +100,11 @@ def main():
             )
         print(f"Model: {model_description(model)}", flush=True)
         print(f"Checkpoint file: {args.checkpoint.resolve()}", flush=True)
-        decoder = Decoder(args.decode, args.seed, args.temperature)
+        decoder = Decoder(args.decode, args.seed, args.temperature, min_p=args.min_p)
         print("Preparing RTL simulator…", flush=True)
-        executable = compile_model_runner(args.out, args.simulator, args.trace)
+        executable = compile_model_runner(
+            args.out, args.simulator, args.trace, compact=args.artifacts == "summary"
+        )
         print(
             f"RTL simulator: {executable.backend}; cycle trace: {'on' if args.trace else 'off'}",
             flush=True,
@@ -106,6 +126,8 @@ def main():
                 checkpoint_path=args.checkpoint,
                 temperature=args.temperature,
                 cache=not args.no_kv_cache,
+                min_p=args.min_p,
+                heal=not args.no_token_healing,
             )
             return
         if args.interactive:
@@ -121,6 +143,8 @@ def main():
                 checkpoint_path=args.checkpoint,
                 temperature=args.temperature,
                 cache=not args.no_kv_cache,
+                min_p=args.min_p,
+                heal=not args.no_token_healing,
             )
             return
         if args.stream:
@@ -134,6 +158,7 @@ def main():
                 executable,
                 decoder=decoder,
                 cache=not args.no_kv_cache,
+                heal=not args.no_token_healing,
             )
             print(f"Results: {args.out.resolve()}")
             return
@@ -146,13 +171,16 @@ def main():
         else:
             print(f"Decoding: {decoder.describe()}", flush=True)
             generated, reports = args.prompt, []
-            generation = Generation(model, args.prompt, cache=not args.no_kv_cache)
+            generation = Generation(
+                model, args.prompt, cache=not args.no_kv_cache, heal=not args.no_token_healing
+            )
             for step in range(args.tokens):
                 result = generation.next(
                     args.out / f"token_{step:03d}",
                     executable,
                     draw=decoder.draw(),
                     temperature=decoder.temperature,
+                    min_p=decoder.min_p,
                 )
                 generated += result["next_character"]
                 reports.append(
@@ -179,6 +207,7 @@ def main():
                 prompt=args.prompt,
                 generated=generated,
                 decoding=decoder.describe(),
+                token_healing=not args.no_token_healing,
                 tokens=reports,
                 cycles=sum(r["cycles"] for r in reports),
                 latency=latency_report(reports, not args.no_kv_cache, subword="tokenizer" in model),

@@ -131,8 +131,8 @@ class KVCacheTests(unittest.TestCase):
             self.assertEqual(result["probabilities"][-5:], full["probabilities"][-5:])
             self.assertEqual(result["selection"], full["selection"])
 
-    def test_expanded_feedforward_cache_and_rebuild_match_full_rtl(self):
-        model = fixture(context=8, width=8, layers=2, heads=2, ffn_multiplier=4)
+    def test_eight_block_feedforward_cache_and_rebuild_match_full_rtl(self):
+        model = fixture(context=8, width=8, layers=8, heads=2, ffn_multiplier=4)
         generation = Generation(model, "abcdabc")
         phases = []
         for step in range(4):

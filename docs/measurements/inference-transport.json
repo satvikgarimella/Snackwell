@@ -1,0 +1,932 @@
+{
+  "rtl_sha256": "d47ac8279c655e1542f8c76b80f38464b054c2221023c48c4eae5ceabea7c461",
+  "runs": [
+    {
+      "model": "character_transformer",
+      "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+      "repeat": 0,
+      "artifacts": "full",
+      "text": "ROMEO:\nAnd",
+      "tokens": [
+        {
+          "cycles": 1908591,
+          "launches": 394,
+          "wall_seconds": 1.3676017500110902,
+          "reference_seconds": 0.06205870903795585,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 6,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 12288
+          }
+        },
+        {
+          "cycles": 736366,
+          "launches": 272,
+          "wall_seconds": 0.669901542016305,
+          "reference_seconds": 0.010517292015720159,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 14336
+          }
+        },
+        {
+          "cycles": 736860,
+          "launches": 272,
+          "wall_seconds": 0.6558919579838403,
+          "reference_seconds": 0.010681582964025438,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 7,
+            "computed_tokens": 1,
+            "context_tokens": 8,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 778538,
+          "launches": 272,
+          "wall_seconds": 0.7708713330212049,
+          "reference_seconds": 0.010847042023669928,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 8,
+            "computed_tokens": 1,
+            "context_tokens": 9,
+            "storage": "host raw FP32 words",
+            "bytes": 18432
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "9995e2329973a4132cb4a2f17ab0fa55cea218d0ed739353da481fd15d99b9b7",
+        "735051a4bac58a27b79e0daa5c20ffbc42f55cef673b705f265f0551ee1b9a25",
+        "d16afbbd076ca1decf988683bdc8b703441f5462d5bc3f350945c8ca439a8cba",
+        "a25741c8433cf46ad618c96c9444170f27bdfc136743a0c864cc2259f1d475a6"
+      ],
+      "verified": true
+    },
+    {
+      "model": "character_transformer",
+      "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+      "repeat": 0,
+      "artifacts": "summary",
+      "text": "ROMEO:\nAnd",
+      "tokens": [
+        {
+          "cycles": 1908591,
+          "launches": 394,
+          "wall_seconds": 0.8450445830239914,
+          "reference_seconds": 0.06303358403965831,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 6,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 12288
+          }
+        },
+        {
+          "cycles": 736366,
+          "launches": 272,
+          "wall_seconds": 0.33966175001114607,
+          "reference_seconds": 0.010557707981206477,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 14336
+          }
+        },
+        {
+          "cycles": 736860,
+          "launches": 272,
+          "wall_seconds": 0.3389350419747643,
+          "reference_seconds": 0.010725083004217595,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 7,
+            "computed_tokens": 1,
+            "context_tokens": 8,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 778538,
+          "launches": 272,
+          "wall_seconds": 0.34940324997296557,
+          "reference_seconds": 0.01059404102852568,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 8,
+            "computed_tokens": 1,
+            "context_tokens": 9,
+            "storage": "host raw FP32 words",
+            "bytes": 18432
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "9995e2329973a4132cb4a2f17ab0fa55cea218d0ed739353da481fd15d99b9b7",
+        "735051a4bac58a27b79e0daa5c20ffbc42f55cef673b705f265f0551ee1b9a25",
+        "d16afbbd076ca1decf988683bdc8b703441f5462d5bc3f350945c8ca439a8cba",
+        "a25741c8433cf46ad618c96c9444170f27bdfc136743a0c864cc2259f1d475a6"
+      ],
+      "verified": true
+    },
+    {
+      "model": "character_transformer",
+      "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+      "repeat": 1,
+      "artifacts": "summary",
+      "text": "ROMEO:\nAnd",
+      "tokens": [
+        {
+          "cycles": 1908591,
+          "launches": 394,
+          "wall_seconds": 0.8428238339838572,
+          "reference_seconds": 0.062328583968337625,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 6,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 12288
+          }
+        },
+        {
+          "cycles": 736366,
+          "launches": 272,
+          "wall_seconds": 0.340974582999479,
+          "reference_seconds": 0.010533916996791959,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 14336
+          }
+        },
+        {
+          "cycles": 736860,
+          "launches": 272,
+          "wall_seconds": 0.33814654097659513,
+          "reference_seconds": 0.010791875014547259,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 7,
+            "computed_tokens": 1,
+            "context_tokens": 8,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 778538,
+          "launches": 272,
+          "wall_seconds": 0.3498502090224065,
+          "reference_seconds": 0.010470999986864626,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 8,
+            "computed_tokens": 1,
+            "context_tokens": 9,
+            "storage": "host raw FP32 words",
+            "bytes": 18432
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "9995e2329973a4132cb4a2f17ab0fa55cea218d0ed739353da481fd15d99b9b7",
+        "735051a4bac58a27b79e0daa5c20ffbc42f55cef673b705f265f0551ee1b9a25",
+        "d16afbbd076ca1decf988683bdc8b703441f5462d5bc3f350945c8ca439a8cba",
+        "a25741c8433cf46ad618c96c9444170f27bdfc136743a0c864cc2259f1d475a6"
+      ],
+      "verified": true
+    },
+    {
+      "model": "character_transformer",
+      "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+      "repeat": 1,
+      "artifacts": "full",
+      "text": "ROMEO:\nAnd",
+      "tokens": [
+        {
+          "cycles": 1908591,
+          "launches": 394,
+          "wall_seconds": 1.3387949999887496,
+          "reference_seconds": 0.06227579200640321,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 6,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 12288
+          }
+        },
+        {
+          "cycles": 736366,
+          "launches": 272,
+          "wall_seconds": 0.6599038330023177,
+          "reference_seconds": 0.010651000018697232,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 14336
+          }
+        },
+        {
+          "cycles": 736860,
+          "launches": 272,
+          "wall_seconds": 0.6699752080021426,
+          "reference_seconds": 0.010410208022221923,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 7,
+            "computed_tokens": 1,
+            "context_tokens": 8,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 778538,
+          "launches": 272,
+          "wall_seconds": 0.6682081669569016,
+          "reference_seconds": 0.010456999996677041,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 8,
+            "computed_tokens": 1,
+            "context_tokens": 9,
+            "storage": "host raw FP32 words",
+            "bytes": 18432
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "9995e2329973a4132cb4a2f17ab0fa55cea218d0ed739353da481fd15d99b9b7",
+        "735051a4bac58a27b79e0daa5c20ffbc42f55cef673b705f265f0551ee1b9a25",
+        "d16afbbd076ca1decf988683bdc8b703441f5462d5bc3f350945c8ca439a8cba",
+        "a25741c8433cf46ad618c96c9444170f27bdfc136743a0c864cc2259f1d475a6"
+      ],
+      "verified": true
+    },
+    {
+      "model": "subword_transformer",
+      "checkpoint_sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8",
+      "repeat": 0,
+      "artifacts": "full",
+      "text": "ROMEO:\nBy hea",
+      "tokens": [
+        {
+          "cycles": 3910834,
+          "launches": 1266,
+          "wall_seconds": 3.504650082963053,
+          "reference_seconds": 0.1983319169958122,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 2859798,
+          "launches": 938,
+          "wall_seconds": 2.4422066250117496,
+          "reference_seconds": 0.05099666700698435,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 20480
+          }
+        },
+        {
+          "cycles": 2860355,
+          "launches": 938,
+          "wall_seconds": 2.4310893330257386,
+          "reference_seconds": 0.05067037499975413,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 24576
+          }
+        },
+        {
+          "cycles": 2860973,
+          "launches": 938,
+          "wall_seconds": 2.426528874959331,
+          "reference_seconds": 0.051227041985839605,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 28672
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "fe7e05bd884f08e5e1100191669c6d4045b9926c68dae4ce3005f486fc6191d3",
+        "114d3a7c2934aa2fdd8db4aa3338c25da27ae394210f8a1238e4fe5a857b84d4",
+        "877dc3d3efc06563c2a0f1eb6c57ad323b865435715fa6c207f53c686d0d91be",
+        "ec383a69137829acd45c02b7a2ecc88812e2fd99fe818179112f1bbcd80e7699"
+      ],
+      "verified": true
+    },
+    {
+      "model": "subword_transformer",
+      "checkpoint_sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8",
+      "repeat": 0,
+      "artifacts": "summary",
+      "text": "ROMEO:\nBy hea",
+      "tokens": [
+        {
+          "cycles": 3910834,
+          "launches": 1266,
+          "wall_seconds": 1.9827737079467624,
+          "reference_seconds": 0.20061649999115616,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 2859798,
+          "launches": 938,
+          "wall_seconds": 1.284196917025838,
+          "reference_seconds": 0.050337125023361295,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 20480
+          }
+        },
+        {
+          "cycles": 2860355,
+          "launches": 938,
+          "wall_seconds": 1.2852183749782853,
+          "reference_seconds": 0.05107408302137628,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 24576
+          }
+        },
+        {
+          "cycles": 2860973,
+          "launches": 938,
+          "wall_seconds": 1.3004659580183215,
+          "reference_seconds": 0.05068062501959503,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 28672
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "fe7e05bd884f08e5e1100191669c6d4045b9926c68dae4ce3005f486fc6191d3",
+        "114d3a7c2934aa2fdd8db4aa3338c25da27ae394210f8a1238e4fe5a857b84d4",
+        "877dc3d3efc06563c2a0f1eb6c57ad323b865435715fa6c207f53c686d0d91be",
+        "ec383a69137829acd45c02b7a2ecc88812e2fd99fe818179112f1bbcd80e7699"
+      ],
+      "verified": true
+    },
+    {
+      "model": "subword_transformer",
+      "checkpoint_sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8",
+      "repeat": 1,
+      "artifacts": "summary",
+      "text": "ROMEO:\nBy hea",
+      "tokens": [
+        {
+          "cycles": 3910834,
+          "launches": 1266,
+          "wall_seconds": 2.0642046660068445,
+          "reference_seconds": 0.2000957090058364,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 2859798,
+          "launches": 938,
+          "wall_seconds": 1.2999613750143908,
+          "reference_seconds": 0.05271625000750646,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 20480
+          }
+        },
+        {
+          "cycles": 2860355,
+          "launches": 938,
+          "wall_seconds": 1.2928903749561869,
+          "reference_seconds": 0.0509129170095548,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 24576
+          }
+        },
+        {
+          "cycles": 2860973,
+          "launches": 938,
+          "wall_seconds": 1.341717167000752,
+          "reference_seconds": 0.05236149998381734,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 28672
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "fe7e05bd884f08e5e1100191669c6d4045b9926c68dae4ce3005f486fc6191d3",
+        "114d3a7c2934aa2fdd8db4aa3338c25da27ae394210f8a1238e4fe5a857b84d4",
+        "877dc3d3efc06563c2a0f1eb6c57ad323b865435715fa6c207f53c686d0d91be",
+        "ec383a69137829acd45c02b7a2ecc88812e2fd99fe818179112f1bbcd80e7699"
+      ],
+      "verified": true
+    },
+    {
+      "model": "subword_transformer",
+      "checkpoint_sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8",
+      "repeat": 1,
+      "artifacts": "full",
+      "text": "ROMEO:\nBy hea",
+      "tokens": [
+        {
+          "cycles": 3910834,
+          "launches": 1266,
+          "wall_seconds": 3.6205133330076933,
+          "reference_seconds": 0.20004274998791516,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 16384
+          }
+        },
+        {
+          "cycles": 2859798,
+          "launches": 938,
+          "wall_seconds": 2.618566417018883,
+          "reference_seconds": 0.05133983300765976,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 20480
+          }
+        },
+        {
+          "cycles": 2860355,
+          "launches": 938,
+          "wall_seconds": 2.4192309170030057,
+          "reference_seconds": 0.052357207983732224,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 24576
+          }
+        },
+        {
+          "cycles": 2860973,
+          "launches": 938,
+          "wall_seconds": 2.4127717920346186,
+          "reference_seconds": 0.051264709036331624,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 28672
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "fe7e05bd884f08e5e1100191669c6d4045b9926c68dae4ce3005f486fc6191d3",
+        "114d3a7c2934aa2fdd8db4aa3338c25da27ae394210f8a1238e4fe5a857b84d4",
+        "877dc3d3efc06563c2a0f1eb6c57ad323b865435715fa6c207f53c686d0d91be",
+        "ec383a69137829acd45c02b7a2ecc88812e2fd99fe818179112f1bbcd80e7699"
+      ],
+      "verified": true
+    },
+    {
+      "model": "shakespeare_transformer",
+      "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+      "repeat": 0,
+      "artifacts": "full",
+      "text": "ROMEO:\nAy,",
+      "tokens": [
+        {
+          "cycles": 11237964,
+          "launches": 3382,
+          "wall_seconds": 9.805798541987315,
+          "reference_seconds": 0.5748649999732152,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 32768
+          }
+        },
+        {
+          "cycles": 7495984,
+          "launches": 2290,
+          "wall_seconds": 6.093704374972731,
+          "reference_seconds": 0.14666383399162441,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 40960
+          }
+        },
+        {
+          "cycles": 7497034,
+          "launches": 2290,
+          "wall_seconds": 6.386474041966721,
+          "reference_seconds": 0.1449143749778159,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 49152
+          }
+        },
+        {
+          "cycles": 7497927,
+          "launches": 2290,
+          "wall_seconds": 6.155121540999971,
+          "reference_seconds": 0.1448201250168495,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 57344
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "45b83ad375fb3be242a2326e518c72bffa3b3c94b684aa20e04ce57faa5865fb",
+        "490db3473aeb06edc2984b6f455661e6f6bef107caf6aa40ee3941aa00c0f228",
+        "05cbdd4376bf5280ef525325972a421f0e65d232a46f869dd7b730be2c2d2ad4",
+        "4364a0a867daf49c4143099267d07202e7d606926fcc663f556d74406fd959b6"
+      ],
+      "verified": true
+    },
+    {
+      "model": "shakespeare_transformer",
+      "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+      "repeat": 0,
+      "artifacts": "summary",
+      "text": "ROMEO:\nAy,",
+      "tokens": [
+        {
+          "cycles": 11237964,
+          "launches": 3382,
+          "wall_seconds": 5.635724041960202,
+          "reference_seconds": 0.5729054170078598,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 32768
+          }
+        },
+        {
+          "cycles": 7495984,
+          "launches": 2290,
+          "wall_seconds": 3.2955296249710955,
+          "reference_seconds": 0.14508387504611164,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 40960
+          }
+        },
+        {
+          "cycles": 7497034,
+          "launches": 2290,
+          "wall_seconds": 3.3006630419986323,
+          "reference_seconds": 0.1455975419958122,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 49152
+          }
+        },
+        {
+          "cycles": 7497927,
+          "launches": 2290,
+          "wall_seconds": 3.2838305410114117,
+          "reference_seconds": 0.1441888750414364,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 57344
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "45b83ad375fb3be242a2326e518c72bffa3b3c94b684aa20e04ce57faa5865fb",
+        "490db3473aeb06edc2984b6f455661e6f6bef107caf6aa40ee3941aa00c0f228",
+        "05cbdd4376bf5280ef525325972a421f0e65d232a46f869dd7b730be2c2d2ad4",
+        "4364a0a867daf49c4143099267d07202e7d606926fcc663f556d74406fd959b6"
+      ],
+      "verified": true
+    },
+    {
+      "model": "shakespeare_transformer",
+      "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+      "repeat": 1,
+      "artifacts": "summary",
+      "text": "ROMEO:\nAy,",
+      "tokens": [
+        {
+          "cycles": 11237964,
+          "launches": 3382,
+          "wall_seconds": 5.546133166993968,
+          "reference_seconds": 0.5569781659869477,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 32768
+          }
+        },
+        {
+          "cycles": 7495984,
+          "launches": 2290,
+          "wall_seconds": 3.244436750013847,
+          "reference_seconds": 0.14163854101207107,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 40960
+          }
+        },
+        {
+          "cycles": 7497034,
+          "launches": 2290,
+          "wall_seconds": 3.257715834013652,
+          "reference_seconds": 0.1429744159686379,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 49152
+          }
+        },
+        {
+          "cycles": 7497927,
+          "launches": 2290,
+          "wall_seconds": 3.241837957990356,
+          "reference_seconds": 0.14264833298511803,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 57344
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "45b83ad375fb3be242a2326e518c72bffa3b3c94b684aa20e04ce57faa5865fb",
+        "490db3473aeb06edc2984b6f455661e6f6bef107caf6aa40ee3941aa00c0f228",
+        "05cbdd4376bf5280ef525325972a421f0e65d232a46f869dd7b730be2c2d2ad4",
+        "4364a0a867daf49c4143099267d07202e7d606926fcc663f556d74406fd959b6"
+      ],
+      "verified": true
+    },
+    {
+      "model": "shakespeare_transformer",
+      "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+      "repeat": 1,
+      "artifacts": "full",
+      "text": "ROMEO:\nAy,",
+      "tokens": [
+        {
+          "cycles": 11237964,
+          "launches": 3382,
+          "wall_seconds": 9.953928374976385,
+          "reference_seconds": 0.556004749960266,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 4,
+            "context_tokens": 4,
+            "storage": "host raw FP32 words",
+            "bytes": 32768
+          }
+        },
+        {
+          "cycles": 7495984,
+          "launches": 2290,
+          "wall_seconds": 6.097628582967445,
+          "reference_seconds": 0.14294033299665898,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 4,
+            "computed_tokens": 1,
+            "context_tokens": 5,
+            "storage": "host raw FP32 words",
+            "bytes": 40960
+          }
+        },
+        {
+          "cycles": 7497034,
+          "launches": 2290,
+          "wall_seconds": 6.224364207999315,
+          "reference_seconds": 0.14300395804457366,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 5,
+            "computed_tokens": 1,
+            "context_tokens": 6,
+            "storage": "host raw FP32 words",
+            "bytes": 49152
+          }
+        },
+        {
+          "cycles": 7497927,
+          "launches": 2290,
+          "wall_seconds": 6.3646279579843394,
+          "reference_seconds": 0.14466112502850592,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 6,
+            "computed_tokens": 1,
+            "context_tokens": 7,
+            "storage": "host raw FP32 words",
+            "bytes": 57344
+          }
+        }
+      ],
+      "checked_result_sha256": [
+        "45b83ad375fb3be242a2326e518c72bffa3b3c94b684aa20e04ce57faa5865fb",
+        "490db3473aeb06edc2984b6f455661e6f6bef107caf6aa40ee3941aa00c0f228",
+        "05cbdd4376bf5280ef525325972a421f0e65d232a46f869dd7b730be2c2d2ad4",
+        "4364a0a867daf49c4143099267d07202e7d606926fcc663f556d74406fd959b6"
+      ],
+      "verified": true
+    }
+  ],
+  "protocol": {
+    "prompt": "ROMEO:",
+    "tokens_per_run": 4,
+    "seed": 92617660,
+    "temperature": 0.7,
+    "order": [
+      "full",
+      "summary",
+      "summary",
+      "full"
+    ],
+    "other_training_and_evaluation_jobs_running": false,
+    "timing_scope": "Verified forward passes; excludes checkpoint load and compilation",
+    "exact_parity": "All per-token checked result hashes (excluding wall time, reference time and artifact label) identical across modes and repeats"
+  }
+}

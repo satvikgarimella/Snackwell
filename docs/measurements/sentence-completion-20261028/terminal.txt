@@ -1,0 +1,12 @@
+Snackwell — compact sentence demo (two facts and a location question)
+Objects: ball, book, cup, hat, key, toy, bag, box.
+Places: kitchen, garden, bedroom, office, hallway, bathroom, attic, cellar.
+Example: The ball is in the kitchen. The book is in the garden. Where is the ball?
+Use two different objects in two different places. This model was trained for this format.
+Every predicted token executes in RTL and is independently verified.
+4 blocks, 2 heads, width 32, context 32 subword tokens; checkpoint 66af3342b4a6
+RTL: verilator; source d47ac8279c65
+Answer: The ball is in the kitchen.
+3,608,046 cycles | 1135 launches | RTL/reference match
+First token: 4.54s; total model time: 9.13s
+Run files: build/sentence-completion-20261028-terminal/20261028-142049-443c848d

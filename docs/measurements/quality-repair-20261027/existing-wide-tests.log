@@ -1,0 +1,9 @@
+test_looped_layernorm_preserves_unrolled_fp32_results (tests.test_wide_model.WideModelTests.test_looped_layernorm_preserves_unrolled_fp32_results) ... ok
+test_wide_cached_decode_matches_full_forward (tests.test_wide_model.WideModelTests.test_wide_cached_decode_matches_full_forward) ... ok
+test_wide_gelu_and_embedding_keep_flat_order (tests.test_wide_model.WideModelTests.test_wide_gelu_and_embedding_keep_flat_order) ... ok
+test_wide_layernorm_handles_zero_variance_and_distinct_rows (tests.test_wide_model.WideModelTests.test_wide_layernorm_handles_zero_variance_and_distinct_rows) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 12.202s
+
+OK

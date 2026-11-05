@@ -45,7 +45,19 @@ larger exported model. Both paths execute all forward/backward arithmetic on the
 SM. See [full transformer training](docs/TRANSFORMER_TRAINING.md) for commands,
 measurements and the distinction between training correctness and language quality.
 
-To enter prompts and watch the transformer predict in your terminal:
+For the compact sentence demo, give the model two location facts and ask about
+one object:
+
+```sh
+python3 scripts/run_sentence.py --interactive
+```
+
+Example: `The ball is in the kitchen. The book is in the garden. Where is the ball?`
+The transformer generates its answer token by token through verified RTL. This
+demo has a fixed vocabulary and sentence format; see the
+[task, training recipe, and evaluation](docs/SENTENCE_DEMO.md).
+
+To enter free-form prompts for the experimental Shakespeare character model:
 
 ```sh
 python3 scripts/run_model.py --interactive --tokens 4
@@ -85,17 +97,36 @@ compares a new candidate on the same held-out text. It also extends RTL inferenc
 and full training to that vocabulary without enlarging the SM's shared memory.
 Try it with `--checkpoint models/subword_transformer/checkpoint.json`; the default
 remains the character model. Subword predictions can emit several characters.
+The optional [broader-corpus model](models/shakespeare_transformer/README.md)
+uses eight blocks and a 128-token context. It lowers matched held-out test token
+loss by 13.3% compared with the subword candidate, but sentences still contain
+errors and the larger model costs more to simulate. Use
+`--checkpoint models/shakespeare_transformer/checkpoint.json` to select it.
+The [quality repair report](docs/QUALITY_REPAIR.md) records the data changes,
+complete sample sets, training recipe and hardware checks.
 Generation uses a KV cache with periodic context rebuilds. `--no-kv-cache` restores
 the padded, sliding-window computation.
+
+Subword generation now completes an extendable final prompt token while preserving
+every character you typed, including trailing spaces. `--no-token-healing` restores
+the previous behavior. An optional `--min-p 0.05` filter excludes choices whose
+probability is below 5% of the most likely token's probability; the filtering and
+selection run on the SM. It is disabled by default because the tested samples
+still have grammar errors. These decoding changes do not constitute a trained-model
+quality fix. See the [decoding checks and complete samples](docs/DECODING_REPAIR.md).
 
 For one prompt, use `python3 scripts/run_model.py --stream --prompt 'Hello ' --tokens 4`.
 An optional local browser view with attention weights and character probabilities
 is available with `--live`.
 
-Each run writes assembly, memory images, and checked results under `build/`.
-Model inference skips per-cycle trace logging by default; add `--trace` to save
-traces and detailed profiles, or `--simulator icarus --trace` for the original
-diagnostic path. All numerical checks run regardless of these options. See
+Each run saves checked results under `build/`. With Verilator, model inference
+passes programs and raw memory words through a pipe and keeps every stage's
+verification summary. Add `--artifacts full` to also save every kernel's assembly
+and memory images. Failed kernels save their inputs for reproduction automatically.
+Add `--trace` to save cycle traces and detailed profiles, or
+`--simulator icarus --trace` for the original diagnostic path. Tracing and Icarus
+always save full artifacts. All numerical checks run regardless of these options. See
+[the simulation transport](docs/INFERENCE_TRANSPORT.md) for how this works and
 [inference measurements](docs/MODEL_INFERENCE.md#simulation-speed) for timings.
 A failed check exits with a nonzero status. See [the development guide](CONTRIBUTING.md)
 for focused tests and formatting commands.

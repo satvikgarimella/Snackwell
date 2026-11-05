@@ -17,6 +17,8 @@ def main():
     parser.add_argument("--tokens", type=int, default=64)
     parser.add_argument("--seed", type=int)
     parser.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
+    parser.add_argument("--min-p", type=float, default=0.0)
+    parser.add_argument("--no-token-healing", action="store_true")
     parser.add_argument("--decode", choices=("sample", "greedy"), default="sample")
     parser.add_argument("--interactive", action="store_true")
     parser.add_argument(
@@ -26,7 +28,7 @@ def main():
     if not 1 <= args.tokens <= 256:
         parser.error("--tokens must be 1..256")
     model = load_checkpoint(args.checkpoint)
-    Decoder(args.decode, args.seed, args.temperature)
+    Decoder(args.decode, args.seed, args.temperature, min_p=args.min_p)
     preview = ModelPreview(model)
     print("CPU reference preview — no RTL execution or hardware verification.")
     print(f"Model: {model_description(model)}")
@@ -39,7 +41,7 @@ def main():
             return
         if prompt.strip() == "/quit":
             return
-        decoder = Decoder(args.decode, args.seed, args.temperature)
+        decoder = Decoder(args.decode, args.seed, args.temperature, min_p=args.min_p)
         try:
             if args.interactive:
                 updated = load_checkpoint(args.checkpoint)
@@ -48,7 +50,15 @@ def main():
                     preview = ModelPreview(model)
                     print(f"Reloaded model: {model_description(model)}")
             print(f"Decoding: {decoder.describe()}")
-            print(preview.generate(prompt, args.tokens, decoder, cache=not args.no_kv_cache))
+            print(
+                preview.generate(
+                    prompt,
+                    args.tokens,
+                    decoder,
+                    cache=not args.no_kv_cache,
+                    heal=not args.no_token_healing,
+                )
+            )
         except ValueError as error:
             if not args.interactive:
                 parser.exit(1, f"Preview failed: {error}\n")

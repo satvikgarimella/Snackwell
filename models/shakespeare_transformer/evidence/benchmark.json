@@ -1,0 +1,1395 @@
+{
+  "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+  "rtl_sha256": "592ce28d04d34a417c725311f338113b644d6b895cfe25296d951a7cec546c63",
+  "verified": true,
+  "comparisons": [
+    {
+      "label": "baseline",
+      "checkpoint_sha256": "964d603faa39de1b90c0bd31e2a5e0e66402d5cd10e2f1fc61ae183431cb7ba8",
+      "generated": "My lord, I have something to say,\nAnd make my gracious sovereign content.\n\nKING RICHARD III:\nThe longer danger",
+      "tokens": [
+        {
+          "next_character": ",",
+          "wall_seconds": 7.592134125006851,
+          "cycles": 9873706,
+          "launches": 2220,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 12,
+            "context_tokens": 12,
+            "storage": "host raw FP32 words",
+            "bytes": 49152
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.3344963788986206,
+            "token_id": 6,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 2.492370749998372,
+          "cycles": 2921777,
+          "launches": 938,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 12,
+            "computed_tokens": 1,
+            "context_tokens": 13,
+            "storage": "host raw FP32 words",
+            "bytes": 53248
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.09953165054321289,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "And",
+          "wall_seconds": 2.456115375040099,
+          "cycles": 2922439,
+          "launches": 938,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 13,
+            "computed_tokens": 1,
+            "context_tokens": 14,
+            "storage": "host raw FP32 words",
+            "bytes": 57344
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.5062462091445923,
+            "token_id": 135,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " make",
+          "wall_seconds": 2.4236701669869944,
+          "cycles": 2923493,
+          "launches": 938,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 14,
+            "computed_tokens": 1,
+            "context_tokens": 15,
+            "storage": "host raw FP32 words",
+            "bytes": 61440
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8806771636009216,
+            "token_id": 379,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " my",
+          "wall_seconds": 2.4210859169834293,
+          "cycles": 2924460,
+          "launches": 938,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 15,
+            "computed_tokens": 1,
+            "context_tokens": 16,
+            "storage": "host raw FP32 words",
+            "bytes": 65536
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.5099796652793884,
+            "token_id": 116,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " gra",
+          "wall_seconds": 2.6256781250122003,
+          "cycles": 3035814,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 16,
+            "computed_tokens": 1,
+            "context_tokens": 17,
+            "storage": "host raw FP32 words",
+            "bytes": 69632
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8787463307380676,
+            "token_id": 365,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "ci",
+          "wall_seconds": 2.4788468750193715,
+          "cycles": 3036475,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 17,
+            "computed_tokens": 1,
+            "context_tokens": 18,
+            "storage": "host raw FP32 words",
+            "bytes": 73728
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.994991660118103,
+            "token_id": 373,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "ous",
+          "wall_seconds": 2.4453492909669876,
+          "cycles": 3037191,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 18,
+            "computed_tokens": 1,
+            "context_tokens": 19,
+            "storage": "host raw FP32 words",
+            "bytes": 77824
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.7221341729164124,
+            "token_id": 231,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " so",
+          "wall_seconds": 2.4432247080258094,
+          "cycles": 3038776,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 19,
+            "computed_tokens": 1,
+            "context_tokens": 20,
+            "storage": "host raw FP32 words",
+            "bytes": 81920
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6684888601303101,
+            "token_id": 172,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "ve",
+          "wall_seconds": 2.456332541012671,
+          "cycles": 3041078,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 20,
+            "computed_tokens": 1,
+            "context_tokens": 21,
+            "storage": "host raw FP32 words",
+            "bytes": 86016
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.1725062131881714,
+            "token_id": 103,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "re",
+          "wall_seconds": 2.450432041019667,
+          "cycles": 3041692,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 21,
+            "computed_tokens": 1,
+            "context_tokens": 22,
+            "storage": "host raw FP32 words",
+            "bytes": 90112
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6203989386558533,
+            "token_id": 73,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "ign",
+          "wall_seconds": 2.4801243750262074,
+          "cycles": 3042362,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 22,
+            "computed_tokens": 1,
+            "context_tokens": 23,
+            "storage": "host raw FP32 words",
+            "bytes": 94208
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6497106552124023,
+            "token_id": 468,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " con",
+          "wall_seconds": 2.480013833963312,
+          "cycles": 3042993,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 23,
+            "computed_tokens": 1,
+            "context_tokens": 24,
+            "storage": "host raw FP32 words",
+            "bytes": 98304
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.9784256219863892,
+            "token_id": 273,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "t",
+          "wall_seconds": 2.50261775002582,
+          "cycles": 3045879,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 24,
+            "computed_tokens": 1,
+            "context_tokens": 25,
+            "storage": "host raw FP32 words",
+            "bytes": 102400
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.7988379597663879,
+            "token_id": 58,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "ent",
+          "wall_seconds": 2.5034346249885857,
+          "cycles": 3046866,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 25,
+            "computed_tokens": 1,
+            "context_tokens": 26,
+            "storage": "host raw FP32 words",
+            "bytes": 106496
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.40708839893341064,
+            "token_id": 148,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": ".",
+          "wall_seconds": 2.5395518749719486,
+          "cycles": 3047480,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 26,
+            "computed_tokens": 1,
+            "context_tokens": 27,
+            "storage": "host raw FP32 words",
+            "bytes": 110592
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.5756611824035645,
+            "token_id": 8,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 2.888676457980182,
+          "cycles": 3048728,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 27,
+            "computed_tokens": 1,
+            "context_tokens": 28,
+            "storage": "host raw FP32 words",
+            "bytes": 114688
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6981027722358704,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 2.5670071250060573,
+          "cycles": 3050967,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 28,
+            "computed_tokens": 1,
+            "context_tokens": 29,
+            "storage": "host raw FP32 words",
+            "bytes": 118784
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.09484559297561646,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "KING",
+          "wall_seconds": 2.543017832969781,
+          "cycles": 3051712,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 29,
+            "computed_tokens": 1,
+            "context_tokens": 30,
+            "storage": "host raw FP32 words",
+            "bytes": 122880
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.4899069666862488,
+            "token_id": 252,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " RICHARD",
+          "wall_seconds": 2.4523098330246285,
+          "cycles": 3052465,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 30,
+            "computed_tokens": 1,
+            "context_tokens": 31,
+            "storage": "host raw FP32 words",
+            "bytes": 126976
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.4675408601760864,
+            "token_id": 467,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " II",
+          "wall_seconds": 2.4565019159927033,
+          "cycles": 3052950,
+          "launches": 954,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 31,
+            "computed_tokens": 1,
+            "context_tokens": 32,
+            "storage": "host raw FP32 words",
+            "bytes": 131072
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.35925841331481934,
+            "token_id": 466,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "I",
+          "wall_seconds": 2.651619208045304,
+          "cycles": 3268068,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 32,
+            "computed_tokens": 1,
+            "context_tokens": 33,
+            "storage": "host raw FP32 words",
+            "bytes": 135168
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8749114871025085,
+            "token_id": 21,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": ":",
+          "wall_seconds": 2.617376708018128,
+          "cycles": 3268489,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 33,
+            "computed_tokens": 1,
+            "context_tokens": 34,
+            "storage": "host raw FP32 words",
+            "bytes": 139264
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.15101128816604614,
+            "token_id": 10,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 2.638868250011001,
+          "cycles": 3268597,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 34,
+            "computed_tokens": 1,
+            "context_tokens": 35,
+            "storage": "host raw FP32 words",
+            "bytes": 143360
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.18014442920684814,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "The",
+          "wall_seconds": 2.6511831670068204,
+          "cycles": 3270608,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 35,
+            "computed_tokens": 1,
+            "context_tokens": 36,
+            "storage": "host raw FP32 words",
+            "bytes": 147456
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.796729326248169,
+            "token_id": 159,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " l",
+          "wall_seconds": 2.715191458002664,
+          "cycles": 3272123,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 36,
+            "computed_tokens": 1,
+            "context_tokens": 37,
+            "storage": "host raw FP32 words",
+            "bytes": 151552
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.875368058681488,
+            "token_id": 88,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "ong",
+          "wall_seconds": 2.665969124995172,
+          "cycles": 3272112,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 37,
+            "computed_tokens": 1,
+            "context_tokens": 38,
+            "storage": "host raw FP32 words",
+            "bytes": 155648
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8922319412231445,
+            "token_id": 278,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "er",
+          "wall_seconds": 2.617660916992463,
+          "cycles": 3273793,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 38,
+            "computed_tokens": 1,
+            "context_tokens": 39,
+            "storage": "host raw FP32 words",
+            "bytes": 159744
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8047610521316528,
+            "token_id": 81,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " d",
+          "wall_seconds": 2.600401834002696,
+          "cycles": 3274390,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 39,
+            "computed_tokens": 1,
+            "context_tokens": 40,
+            "storage": "host raw FP32 words",
+            "bytes": 163840
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.2937504053115845,
+            "token_id": 85,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "an",
+          "wall_seconds": 2.6507549170055427,
+          "cycles": 3279269,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 40,
+            "computed_tokens": 1,
+            "context_tokens": 41,
+            "storage": "host raw FP32 words",
+            "bytes": 167936
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.361717164516449,
+            "token_id": 109,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "g",
+          "wall_seconds": 2.582637124985922,
+          "cycles": 3278822,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 41,
+            "computed_tokens": 1,
+            "context_tokens": 42,
+            "storage": "host raw FP32 words",
+            "bytes": 172032
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.2824116349220276,
+            "token_id": 45,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "er",
+          "wall_seconds": 2.610033833014313,
+          "cycles": 3280249,
+          "launches": 1002,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 42,
+            "computed_tokens": 1,
+            "context_tokens": 43,
+            "storage": "host raw FP32 words",
+            "bytes": 176128
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.643226683139801,
+            "token_id": 81,
+            "temperature": 0.7
+          }
+        }
+      ],
+      "latency": {
+        "generated_characters": 78,
+        "generated_tokens": 32,
+        "tokens_per_second": 0.3690879942926347,
+        "characters_per_second": 0.8996519860882971,
+        "first_token_seconds": 7.592134125006851,
+        "subsequent_token_seconds": 2.5518728372933825,
+        "cached_decode": true,
+        "decode_seconds": 2.5518728372933825,
+        "decode_steps": 31,
+        "rebuild_seconds": null,
+        "rebuild_steps": 0
+      },
+      "verified": true,
+      "cpu_text_identical": true
+    },
+    {
+      "label": "candidate",
+      "checkpoint_sha256": "28e378b741faa39fbd74f42d683ee99a91efc29f15b71b6742c04a32ddc22971",
+      "generated": "My lord, I have something to say,\nAnd then I know how I would laugh against myself.\n\nLADY MACBETH:\nI am",
+      "tokens": [
+        {
+          "next_character": ",",
+          "wall_seconds": 22.25674858299317,
+          "cycles": 31188721,
+          "launches": 6444,
+          "cache": {
+            "enabled": true,
+            "phase": "prefill",
+            "reused_tokens": 0,
+            "computed_tokens": 12,
+            "context_tokens": 12,
+            "storage": "host raw FP32 words",
+            "bytes": 98304
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.3344963788986206,
+            "token_id": 6,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 6.213507833017502,
+          "cycles": 7620201,
+          "launches": 2290,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 12,
+            "computed_tokens": 1,
+            "context_tokens": 13,
+            "storage": "host raw FP32 words",
+            "bytes": 106496
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.09953165054321289,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "And",
+          "wall_seconds": 6.388052416965365,
+          "cycles": 7621387,
+          "launches": 2290,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 13,
+            "computed_tokens": 1,
+            "context_tokens": 14,
+            "storage": "host raw FP32 words",
+            "bytes": 114688
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.5062462091445923,
+            "token_id": 135,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " then",
+          "wall_seconds": 6.182006915973034,
+          "cycles": 7623086,
+          "launches": 2290,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 14,
+            "computed_tokens": 1,
+            "context_tokens": 15,
+            "storage": "host raw FP32 words",
+            "bytes": 122880
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8806771636009216,
+            "token_id": 336,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " I",
+          "wall_seconds": 6.139596041990444,
+          "cycles": 7625182,
+          "launches": 2290,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 15,
+            "computed_tokens": 1,
+            "context_tokens": 16,
+            "storage": "host raw FP32 words",
+            "bytes": 131072
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.5099796652793884,
+            "token_id": 100,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " know",
+          "wall_seconds": 6.209250750020146,
+          "cycles": 7848066,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 16,
+            "computed_tokens": 1,
+            "context_tokens": 17,
+            "storage": "host raw FP32 words",
+            "bytes": 139264
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8787463307380676,
+            "token_id": 310,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " how",
+          "wall_seconds": 6.112787749967538,
+          "cycles": 7849211,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 17,
+            "computed_tokens": 1,
+            "context_tokens": 18,
+            "storage": "host raw FP32 words",
+            "bytes": 147456
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.994991660118103,
+            "token_id": 460,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " I",
+          "wall_seconds": 6.288326458015945,
+          "cycles": 7850637,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 18,
+            "computed_tokens": 1,
+            "context_tokens": 19,
+            "storage": "host raw FP32 words",
+            "bytes": 155648
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.7221341729164124,
+            "token_id": 100,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " would",
+          "wall_seconds": 6.2158865830278955,
+          "cycles": 7853787,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 19,
+            "computed_tokens": 1,
+            "context_tokens": 20,
+            "storage": "host raw FP32 words",
+            "bytes": 163840
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6684888601303101,
+            "token_id": 300,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " l",
+          "wall_seconds": 6.246517791005317,
+          "cycles": 7858746,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 20,
+            "computed_tokens": 1,
+            "context_tokens": 21,
+            "storage": "host raw FP32 words",
+            "bytes": 172032
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.1725062131881714,
+            "token_id": 88,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "au",
+          "wall_seconds": 6.222589790995698,
+          "cycles": 7859821,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 21,
+            "computed_tokens": 1,
+            "context_tokens": 22,
+            "storage": "host raw FP32 words",
+            "bytes": 180224
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6203989386558533,
+            "token_id": 301,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "gh",
+          "wall_seconds": 6.236708124983124,
+          "cycles": 7860958,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 22,
+            "computed_tokens": 1,
+            "context_tokens": 23,
+            "storage": "host raw FP32 words",
+            "bytes": 188416
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6497106552124023,
+            "token_id": 132,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " again",
+          "wall_seconds": 6.378349416947458,
+          "cycles": 7862254,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 23,
+            "computed_tokens": 1,
+            "context_tokens": 24,
+            "storage": "host raw FP32 words",
+            "bytes": 196608
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.9784256219863892,
+            "token_id": 431,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "st",
+          "wall_seconds": 6.36230187502224,
+          "cycles": 7868487,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 24,
+            "computed_tokens": 1,
+            "context_tokens": 25,
+            "storage": "host raw FP32 words",
+            "bytes": 204800
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.7988379597663879,
+            "token_id": 104,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " my",
+          "wall_seconds": 6.1876135829952545,
+          "cycles": 7869976,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 25,
+            "computed_tokens": 1,
+            "context_tokens": 26,
+            "storage": "host raw FP32 words",
+            "bytes": 212992
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.40708839893341064,
+            "token_id": 116,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "self",
+          "wall_seconds": 6.445698958996218,
+          "cycles": 7871359,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 26,
+            "computed_tokens": 1,
+            "context_tokens": 27,
+            "storage": "host raw FP32 words",
+            "bytes": 221184
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.5756611824035645,
+            "token_id": 307,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": ".",
+          "wall_seconds": 6.215842458012048,
+          "cycles": 7873905,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 27,
+            "computed_tokens": 1,
+            "context_tokens": 28,
+            "storage": "host raw FP32 words",
+            "bytes": 229376
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.6981027722358704,
+            "token_id": 8,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 6.151077457994688,
+          "cycles": 7878595,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 28,
+            "computed_tokens": 1,
+            "context_tokens": 29,
+            "storage": "host raw FP32 words",
+            "bytes": 237568
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.09484559297561646,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 6.178749958984554,
+          "cycles": 7880348,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 29,
+            "computed_tokens": 1,
+            "context_tokens": 30,
+            "storage": "host raw FP32 words",
+            "bytes": 245760
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.4899069666862488,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "LA",
+          "wall_seconds": 6.203061250038445,
+          "cycles": 7881173,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 30,
+            "computed_tokens": 1,
+            "context_tokens": 31,
+            "storage": "host raw FP32 words",
+            "bytes": 253952
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.4675408601760864,
+            "token_id": 251,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "D",
+          "wall_seconds": 6.116454790986609,
+          "cycles": 7882183,
+          "launches": 2322,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 31,
+            "computed_tokens": 1,
+            "context_tokens": 32,
+            "storage": "host raw FP32 words",
+            "bytes": 262144
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.35925841331481934,
+            "token_id": 16,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "Y",
+          "wall_seconds": 6.2300696250167675,
+          "cycles": 8312789,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 32,
+            "computed_tokens": 1,
+            "context_tokens": 33,
+            "storage": "host raw FP32 words",
+            "bytes": 270336
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8749114871025085,
+            "token_id": 37,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " M",
+          "wall_seconds": 6.3253492919611745,
+          "cycles": 8313448,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 33,
+            "computed_tokens": 1,
+            "context_tokens": 34,
+            "storage": "host raw FP32 words",
+            "bytes": 278528
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.15101128816604614,
+            "token_id": 256,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "A",
+          "wall_seconds": 6.242268292000517,
+          "cycles": 8314056,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 34,
+            "computed_tokens": 1,
+            "context_tokens": 35,
+            "storage": "host raw FP32 words",
+            "bytes": 286720
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.18014442920684814,
+            "token_id": 13,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "C",
+          "wall_seconds": 6.242796749982517,
+          "cycles": 8317913,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 35,
+            "computed_tokens": 1,
+            "context_tokens": 36,
+            "storage": "host raw FP32 words",
+            "bytes": 294912
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.796729326248169,
+            "token_id": 15,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "B",
+          "wall_seconds": 6.294964041968342,
+          "cycles": 8321248,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 36,
+            "computed_tokens": 1,
+            "context_tokens": 37,
+            "storage": "host raw FP32 words",
+            "bytes": 303104
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.875368058681488,
+            "token_id": 14,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "ET",
+          "wall_seconds": 6.379449917003512,
+          "cycles": 8320546,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 37,
+            "computed_tokens": 1,
+            "context_tokens": 38,
+            "storage": "host raw FP32 words",
+            "bytes": 311296
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8922319412231445,
+            "token_id": 276,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "H",
+          "wall_seconds": 6.275778041977901,
+          "cycles": 8324110,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 38,
+            "computed_tokens": 1,
+            "context_tokens": 39,
+            "storage": "host raw FP32 words",
+            "bytes": 319488
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.8047610521316528,
+            "token_id": 20,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": ":",
+          "wall_seconds": 6.455791499989573,
+          "cycles": 8325043,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 39,
+            "computed_tokens": 1,
+            "context_tokens": 40,
+            "storage": "host raw FP32 words",
+            "bytes": 327680
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.2937504053115845,
+            "token_id": 10,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "\n",
+          "wall_seconds": 6.455982582992874,
+          "cycles": 8334548,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 40,
+            "computed_tokens": 1,
+            "context_tokens": 41,
+            "storage": "host raw FP32 words",
+            "bytes": 335872
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.361717164516449,
+            "token_id": 0,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": "I",
+          "wall_seconds": 6.46671966597205,
+          "cycles": 8334432,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 41,
+            "computed_tokens": 1,
+            "context_tokens": 42,
+            "storage": "host raw FP32 words",
+            "bytes": 344064
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.2824116349220276,
+            "token_id": 21,
+            "temperature": 0.7
+          }
+        },
+        {
+          "next_character": " am",
+          "wall_seconds": 6.468548291013576,
+          "cycles": 8336904,
+          "launches": 2418,
+          "cache": {
+            "enabled": true,
+            "phase": "decode",
+            "reused_tokens": 42,
+            "computed_tokens": 1,
+            "context_tokens": 43,
+            "storage": "host raw FP32 words",
+            "bytes": 352256
+          },
+          "selection": {
+            "mode": "sample",
+            "draw": 0.643226683139801,
+            "token_id": 281,
+            "temperature": 0.7
+          }
+        }
+      ],
+      "latency": {
+        "generated_characters": 71,
+        "generated_tokens": 32,
+        "tokens_per_second": 0.14760906971922472,
+        "characters_per_second": 0.3275076234395298,
+        "first_token_seconds": 22.25674858299317,
+        "subsequent_token_seconds": 6.275228974381236,
+        "cached_decode": true,
+        "decode_seconds": 6.275228974381236,
+        "decode_steps": 31,
+        "rebuild_seconds": null,
+        "rebuild_steps": 0
+      },
+      "verified": true,
+      "cpu_text_identical": true
+    }
+  ]
+}

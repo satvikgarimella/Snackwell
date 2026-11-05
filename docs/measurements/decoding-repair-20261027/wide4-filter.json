@@ -1,0 +1,477 @@
+{
+  "kind": "CPU diagnostic, not RTL",
+  "checkpoint_sha256": "90dc15437af1b185f9189ccd38059792d1fb9643143b6622d45ae5f48b932df2",
+  "min_p": 0.05,
+  "penalty": 1.0,
+  "ngram": 0,
+  "cases": [
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "My lord, I have something to say",
+      "continuation": "\nI have a servant to my master's death.\n\nDUKE VINCENTIO:\nIt is the very same.\n\nLUCIO:\nIt is the very same.\n\nDUKE VINCENTIO:\nIt is the very same.\n\nLUCIO:\nIt is the very same.\n\nDUKE VINCENTIO:\nI",
+      "repeated_fourgram_fraction": 0.5661375661375662,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "ROMEO:",
+      "continuation": "\nAy, but I will not,\nBut I will not be a woman.\n\nJULIET:\nI will not be a woman.\n\nROMEO:\nI will not be a woman.\n\nJULIET:\nNay, then, I'll bear thee, I'll bear thee hence.\n\nROMEO:\nI'll tell thee,",
+      "repeated_fourgram_fraction": 0.47619047619047616,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "JULIET:",
+      "continuation": "\nI will not be so.\n\nROMEO:\nI will not do it.\n\nJULIET:\nI will not, then, for I will not do it.\n\nROMEO:\nI will not do it.\n\nJULIET:\nI will not, nurse:\nI will not do it.\n\nROMEO:\nI will not, nurse:",
+      "repeated_fourgram_fraction": 0.6507936507936508,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "To be, or not to be",
+      "continuation": " advised.\n\nCLEOPATRA:\nI'll tell thee, Charmian.\n\nCHARMIAN:\nI'll tell thee, Charmian.\n\nCLEOPATRA:\nI'll tell thee, Charmian.\n\nCLEOPATRA:\nI'll tell thee, Charmian.\n\nCHARMIAN:\nI'll tell thee, Char",
+      "repeated_fourgram_fraction": 0.7089947089947091,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "I pray you,",
+      "continuation": " sir,\nI'll tell you what I have done.\n\nPALAMON:\nI'll tell you what I have.\n\nARCITE:\nI'll tell you what I have.\n\nPALAMON:\nI'll tell you what I have.\n\nARCITE:\nI'll tell you what I have.\n\nPALAMON",
+      "repeated_fourgram_fraction": 0.6931216931216931,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "The king",
+      "continuation": "'s children, and his son,\nWhose father's sons, his son, and his son,\nHath made his sons, his sons, his sons, his sons,\nAnd his own sons, his sons, his sons, his sons,\nHave broke their heads and",
+      "repeated_fourgram_fraction": 0.5157894736842106,
+      "positions_starting_three_repeats": 18,
+      "longest_tripled_substring": " his sons,"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "What is your name?",
+      "continuation": "\n\nSECOND LORD:\nIt is the very pretty of the King's.\n\nFIRST LORD:\nIt is the King's pleasure.\n\nSECOND LORD:\nIt is the very pleasure of the King's.\n\nFIRST LORD:\nIt is the King's pleasure.\n\nSECOND",
+      "repeated_fourgram_fraction": 0.6137566137566137,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "Good night,",
+      "continuation": " good night.\n\nPALAMON:\nI am glad to see you.\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not mad.\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not mad.\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not mad.\n\nARCIT",
+      "repeated_fourgram_fraction": 0.671957671957672,
+      "positions_starting_three_repeats": 9,
+      "longest_tripled_substring": ".\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not mad"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "The king is dead, and we must now",
+      "continuation": " behold\nThe King's presence, and the King's presence\nWill bear himself to France.\n\nKING:\nIt is the King's pleasure.\n\nPRINCE:\nIt is the King's pleasure.\n\nKING:\nIt is the King's pleasure.\n\nPRINC",
+      "repeated_fourgram_fraction": 0.48677248677248675,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "the sky today is",
+      "continuation": " full of fear.\n\nSECOND GENTLEMAN:\nIt is a most pretty man.\n\nFIRST GENTLEMAN:\nIt is a most pretty one.\n\nSECOND GENTLEMAN:\nIt is a most pretty one.\n\nFIRST GENTLEMAN:\nIt is a most pretty one.\n\nSE",
+      "repeated_fourgram_fraction": 0.6243386243386244,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "My name is ",
+      "continuation": "Tybalt, and the Thane of Cawdor.\n\nTHAISA:\nI am a queen, and I am sorry for't.\n\nPERICLES:\nI am not mad.\n\nTHAISA:\nI am not mad.\n\nPERICLES:\nI am not mad.\n\nTHAISA:\nI am not mad.\n\nPERICLES:\nI am gl",
+      "repeated_fourgram_fraction": 0.5026455026455027,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "I love",
+      "continuation": " thee, and I will not believe thee.\n\nPALAMON:\nI am not mad.\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not mad.\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not mad.\n\nARCITE:\nI am not mad.\n\nPALAMON:\nI am not",
+      "repeated_fourgram_fraction": 0.671875,
+      "positions_starting_three_repeats": 21,
+      "longest_tripled_substring": ".\n\nPALAMON:\nI am not mad.\n\nARCITE:\nI am not mad"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "To be, or not to ",
+      "continuation": "be advised.\n\nCLEOPATRA:\nI'll tell thee, Charmian.\n\nCHARMIAN:\nI'll tell thee, Charmian.\n\nCLEOPATRA:\nI'll tell thee, Charmian.\n\nCLEOPATRA:\nI'll tell thee, Charmian.\n\nCHARMIAN:\nI'll tell thee, Char",
+      "repeated_fourgram_fraction": 0.7015706806282722,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "continuation": ",\nI cannot give it me.\n\nCAESAR:\nGood night.\n\nCLEOPATRA:\nCome, come.\n\nANTONY:\nIs it your will?\n\nCLEOPATRA:\nAy, and we'll leave you.\n\nANTONY:\nNot to be gone.\n\nCLEOPATRA:\nNor I.\n\nANTONY:\nNor neither",
+      "repeated_fourgram_fraction": 0.25,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "continuation": "\nAy, but it is not so.\n\nServant:\nNot I:\nI am so soon as I do believe thee,\nFor I am rich; and so I do.\n\nROMEO:\nGood night, good night.\n\nJULIET:\nGood night.\n\nROMEO:\nGood morrow, good father; I will",
+      "repeated_fourgram_fraction": 0.20725388601036265,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "JULIET:",
+      "continuation": "\nAy, but it is not so, so it were.\n\nROMEO:\nThen, if thou canst not, I will not be;\nI'll call for ever.\n\nNurse:\nO, sir, I would I were to say!\n\nROMEO:\nBy heaven, I say!\n\nNurse:\nO, let me see, I",
+      "repeated_fourgram_fraction": 0.15873015873015872,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "To be, or not to be",
+      "continuation": " accidental to me.\n\nPISANIO:\nI will not trouble you to this present service\nWhich you shall know.\n\nIMOGEN:\nI do not like him,\nFor I am heard of his return, I'll read it,\nAnd bear him for a fair",
+      "repeated_fourgram_fraction": 0.04210526315789476,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "I pray you,",
+      "continuation": " sir, I am glad to see you.\n\nSHALLOW:\nWell, sir, I am sorry for you.\n\nEVANS:\nI have a party of you. You have done a house, Master Shallow, I\nwill walk with you.\n\nSLENDER:\nIt is my lord.\n\nEVANS",
+      "repeated_fourgram_fraction": 0.14814814814814814,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "The king",
+      "continuation": "'s presence will not be guilty of it.\n\nSUFFOLK:\nWhat news?\n\nSUFFOLK:\nAy, my lord.\n\nSUFFOLK:\nGood my lord, to all the rest,\nI'll pay you for the King.\n\nWOLSEY:\nI'll speak no more.\n\nSUFFOLK:\nI'll",
+      "repeated_fourgram_fraction": 0.20526315789473681,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "What is your name?",
+      "continuation": "\n\nMESSENGER:\nSirrah, my lord, you are a goodly boy.\n\nCLEOPATRA:\nWhat, are you come?\n\nMESSENGER:\nAy, my good lord.\n\nCLEOPATRA:\nIt is a great dealing of your daughter's service;\nAnd what is your",
+      "repeated_fourgram_fraction": 0.1957671957671958,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "continuation": " you bid me every day.\n\nOTHELLO:\nGood night.\n\nIAGO:\nHow do you, sir?\n\nOTHELLO:\nMost mighty gentleman, I should be glad to see you.\n\nIAGO:\nIndeed, I would it were as good to hear.\n\nOTHELLO:\nI am",
+      "repeated_fourgram_fraction": 0.17368421052631577,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "continuation": " believe\nTo give him guardian to the people,\nAnd bid him speak to him.\n\nCLARENCE:\nMarry, he's dead,\nAnd will not find him.\n\nGLOUCESTER:\nWhy, he's a most noble fellow.\n\nCLARENCE:\nBrother, behold",
+      "repeated_fourgram_fraction": 0.14210526315789473,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "continuation": " full of drops.\n\nPISTOL:\nAway, thou wert not thyself, and I'll bear thee\nAnd say to thee, Jack, thou art a fool.\n\nNYM:\nAway, thou wert away!\n\nPISTOL:\nAway, thou fled; away, thou hast been merry",
+      "repeated_fourgram_fraction": 0.2578947368421053,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "continuation": "Cawdor: I am glad I should have found\nA woman in the mind of many a man,\nAnd I'll tell thee what I think.\n\nPERICLES:\nAnd I have said.\n\nCYMBELINE:\nHow do you, sir?\n\nPERDITA:\nNot I, my lord.\n\nCY",
+      "repeated_fourgram_fraction": 0.07936507936507942,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "I love",
+      "continuation": " thee, and thou dost love thee not.\n\nKING RICHARD III:\nNow, by my troth, I would not be a little worse.\n\nQUEEN ELIZABETH:\nNow, by God's soul, I'll do this:\nI take my life, and I will call thee",
+      "repeated_fourgram_fraction": 0.09523809523809523,
+      "positions_starting_three_repeats": 1,
+      "longest_tripled_substring": "I"
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "continuation": "begin to piece the cold.\n\nFIRST LORD:\nTherefore I'll warrant you.\n\nSECOND LORD:\nI'll make him a cause of his report.\n\nFIRST LORD:\nI'll make him a better place, and die for him.\n\nSECOND LORD:\nI",
+      "repeated_fourgram_fraction": 0.2592592592592593,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "continuation": " so.\n\nLUCIUS:\nAy, my lord.\n\nBRUTUS:\nYour patience, my lord.\n\nMARCIUS:\nI am very sick of yours, but I hope your mind.\n\nTITUS:\nYou have heard of this gentleman of mine,\nAnd I have done to you, but",
+      "repeated_fourgram_fraction": 0.16753926701570676,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "continuation": "\nSir, I will be whipped by you.\n\nMERCUTIO:\nAnd so will I, for I will be brief.\n\nROMEO:\nAy, if thou dost, then, thou art a man.\n\nMERCUTIO:\n'Tis not so much; but yet I am a fool,\nSpeak, cuckoo, and",
+      "repeated_fourgram_fraction": 0.140625,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "JULIET:",
+      "continuation": "\nSir, I will be while you cannot choose.\n\nROMEO:\nNor I, my lord, being weak, I'll warrant you,\nFor I shall tell you how I may be dead.\n\nNurse:\nWhy, she's dead.\n\nROMEO:\nNow, by my faith, I think",
+      "repeated_fourgram_fraction": 0.1105263157894737,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "To be, or not to be",
+      "continuation": "hold him\nTo pay the people, and in his feet\nHe tender it in.\n\nEMILIA:\nI will not leave him\nTo tell him what he is.\n\nPIRITHOUS:\nIt is well,\nAnd in this time of his goodness,\nWe will be entreating",
+      "repeated_fourgram_fraction": 0.07853403141361259,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "I pray you,",
+      "continuation": " come.\n\nFIRST FISHERMAN:\nHere comes your lordship.\n\nMALVOLIO:\nI will beseech you, sir.\n\nSIR TOBY:\nHere comes the man.\n\nMALVOLIO:\nO, he is a bachelor, I will die for him.\n\nSIR TOBY:\nI'll take him",
+      "repeated_fourgram_fraction": 0.19895287958115182,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "The king",
+      "continuation": " hath been, and he is set\nAgainst the King's death: and, by his part,\nI'll draw his head for his own part,\nAnd bring him to the Englishman.\n\nWOLSEY:\nWhat say'st thou?\n\nQUEEN KATHERINE:\nHis soul",
+      "repeated_fourgram_fraction": 0.0736842105263158,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "What is your name?",
+      "continuation": "\n\nVALENTINE:\nWhat, are you mad?\n\nVALENTINE:\nWhy, no, no.\n\nSPEED:\nAy, sir.\n\nVALENTINE:\nWhy, sir, I do not like a double man.\n\nVALENTINE:\nI think she is a fool.\n\nSPEED:\nThere is another woman, I",
+      "repeated_fourgram_fraction": 0.2751322751322751,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "Good night,",
+      "continuation": " come.\n\nHOSTESS:\nGood my lord, I'll go seek him.\n\nBARDOLPH:\nPeace, I say!\n\nPAGE:\nPeace, you rogue! God save thee, Pistol.\n\nFALSTAFF:\nI do not think I am a man.\n\nPISTOL:\nI am a Robert. I have p",
+      "repeated_fourgram_fraction": 0.06349206349206349,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "continuation": " restore\nThe crown of France.\n\nKING:\nHere comes the French and Duke of Burgundy.\n\nBURGUNDY:\nSo is my cousin Hereford now,\nTo give a barren villain that hath power\nTo wait upon the people.\n\nBUR",
+      "repeated_fourgram_fraction": 0.05291005291005291,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "continuation": " almost ill-dealing,\nAnd in the east twelve years of thine\nMay be the wooden cold winds, and there\nPlay the copy to thy eye.\n\nMESSENGER:\n'Tis noble madam.\n\nCLEOPATRA:\nHere's a letter;\nAnd this",
+      "repeated_fourgram_fraction": 0.05291005291005291,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "My name is ",
+      "continuation": "Paris,\nAnd I, my sister, and my son of Gloucester,\nSubmits the King of Suffolk, with the Duke of York,\nThe Fifth, and Somerset and Buckingham,\nShall be the Frenchman of the Scotland;\nAnd, as I",
+      "repeated_fourgram_fraction": 0.11111111111111116,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "I love",
+      "continuation": " thee not;\nAnd that I have not, I would not have thee blush'd.\n\nKING RICHARD III:\nNow, by my life, I do not live,\nFor I am ignorant of a king.\n\nQUEEN ELIZABETH:\nI do not like a king, thou art so",
+      "repeated_fourgram_fraction": 0.12565445026178013,
+      "positions_starting_three_repeats": 1,
+      "longest_tripled_substring": "I"
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "continuation": "be call'd?\n\nPAULINA:\nWhat, have you been?\n\nLEONTES:\nI am not mad;\nBut I will fight with you.\n\nPAULINA:\nYou do not love her.\n\nPAULINA:\nNay, but I am sure I am not afraid\nI cannot believe it.\n\nL",
+      "repeated_fourgram_fraction": 0.1693121693121693,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "continuation": "\nThat I have said to have heard a traitor to him,\nWhen I did swear he did recover it.\n\nBUCKINGHAM:\nBe thou sure, my lord, and I have heard\nAgainst the King, and my lord the Duke of Suffolk,\nAl",
+      "repeated_fourgram_fraction": 0.1428571428571429,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "continuation": "\nThen, if thou be'st a scurvy offence,\nThou wilt not sleep in Tybalt, Tybalt's skill.\n\nTYBALT:\nGo, call thy purse.\n\nMERCUTIO:\nI am glad to see thee, and I will not buy it.\n\nROMEO:\nNay, I will not",
+      "repeated_fourgram_fraction": 0.08333333333333337,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "JULIET:",
+      "continuation": "\nThen, sir, I am the law for you, sir;\nThere is no hope, but your remedy.\n\nLADY CAPULET:\nSir, I thank you for your ladyship.\n\nJULIET:\nI am very flattering to my master's wife.\n\nLADY CAPULET:\nI",
+      "repeated_fourgram_fraction": 0.17460317460317465,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "To be, or not to be",
+      "continuation": " a virgin.\n\nFIRST LORD:\nWhy, this is the very valiant Duke of Norfolk.\n\nFIRST LORD:\nIt is a very little villain.\n\nSECOND LORD:\nIs't possible that the Prince of Wales?\n\nFIRST LORD:\nAy, my good lord",
+      "repeated_fourgram_fraction": 0.20207253886010368,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "I pray you,",
+      "continuation": " sir, leave me a little,\nAnd look upon my knife, for I have been\nAttended to your sake.\n\nIACHIMO:\nMy lord, I have done you,\nBut I have seen your pleasure.\n\nPOSTHUMUS:\nGo, get you gone.\n\nIACHIM",
+      "repeated_fourgram_fraction": 0.12698412698412698,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "The king",
+      "continuation": "'s daughter, and he is,\nAnd he that made me every way of death\nTo see him ride.\n\nANTIPHOLUS OF EPHESUS:\nO, help me, master, what means this?\n\nDROMIO OF EPHESUS:\nAlas, poor wretched man! What's",
+      "repeated_fourgram_fraction": 0.08994708994709,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "What is your name?",
+      "continuation": "\n\nFALSTAFF:\nWhy, sir, I was never wish'd so many, I beseech you.\n\nPRINCE:\nWhy, thou art a man.\n\nFALSTAFF:\nMarry, thou wilt be a man.\n\nPRINCE:\nAnd thou shalt not hear.\n\nFALSTAFF:\nWhy, what wilt",
+      "repeated_fourgram_fraction": 0.2857142857142857,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "Good night,",
+      "continuation": "\nThat you have said, and pass'd me to this great deal\nSome half that I might fly from you.\n\nPALAMON:\nOur least best consideration\nWill call him in the field.\n\nARCITE:\nMadam,\nI have no power to",
+      "repeated_fourgram_fraction": 0.02645502645502651,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "continuation": " behold\nIn Richard, to King Edward's son,\nAnd all the king shall recover your king.\n\nQUEEN ELIZABETH:\nWhy, then I do not like your king.\n\nKING RICHARD III:\nThen, by my troth, I warrant you, in",
+      "repeated_fourgram_fraction": 0.08465608465608465,
+      "positions_starting_three_repeats": 1,
+      "longest_tripled_substring": "I"
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "continuation": " sick.\n\nWARWICK:\nWho, York? Now will he sleep forth,\nAnd to the Earl of Somerset's horse,\nAnd weeping thunder, or in the house of York,\nAnswering the French, to the Earl of Warwick.\n\nYORK:\nMar",
+      "repeated_fourgram_fraction": 0.15873015873015872,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "My name is ",
+      "continuation": "Tybalt, and I will take it.\n\nTHESEUS:\nAnd I will speak with you.\n\nPIRITHOUS:\nI'll have no more.\n\nTHESEUS:\nHow now, good my lord?\n\nTHESEUS:\nI would I had nothing,\nAnd I had rather be a mind to do",
+      "repeated_fourgram_fraction": 0.18324607329842935,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "I love",
+      "continuation": " him well,\nBut that I love him; and, as I partly found him,\nHe would be so valiant, I will presently\nA pretty woman.\n\nDIONYZA:\nGood my lord,\nYou are a certain error, and I'll serve\nYour worshi",
+      "repeated_fourgram_fraction": 0.02645502645502651,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "continuation": "be glad of such a shame\nThat is nothing canst thou profane to the world.\n\nBASSANIO:\nShe is the King and I beseech you,\nThat you have brought her to your good will.\n\nPORTIA:\nMadam, I'll write you",
+      "repeated_fourgram_fraction": 0.05759162303664922,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    }
+  ]
+}

@@ -9,8 +9,8 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-from snackwell.assembler import assemble
-from snackwell.decoding import validate_temperature
+from snackwell.assembler import assemble, write_image
+from snackwell.decoding import validate_min_p, validate_temperature
 from snackwell.kernels.inference import (
     Layout,
     Stage,
@@ -20,10 +20,24 @@ from snackwell.kernels.inference import (
     tiled_matmul,
 )
 from snackwell.kernels.matvec import simd_matvec
-from snackwell.kernels.model import argmax, categorical, embedding, loop_softmax, vocabulary_mask
+from snackwell.kernels.model import (
+    argmax,
+    categorical,
+    embedding,
+    loop_softmax,
+    min_p_filter,
+    token_mask,
+    vocabulary_mask,
+)
 from snackwell.reference.inference import expected_stage, verify_stage
 from snackwell.reference.native import tensor_product
-from snackwell.simulator import ModelSimulator, SimulatorSession, compile_runner, run_program
+from snackwell.simulator import (
+    ModelSimulator,
+    SimulatorSession,
+    compile_runner,
+    run_program,
+    write_hex,
+)
 
 
 @lru_cache(maxsize=128)
@@ -53,6 +67,11 @@ class ModelRuntime:
         self.executable = executable or compile_runner(self.output)
         self.reports = []
         self.on_progress = on_progress
+        self.compact = (
+            isinstance(self.executable, SimulatorSession)
+            and self.executable.compact
+            and not self.executable.trace
+        )
         self.simulation = dict(
             backend=self.executable.backend
             if isinstance(self.executable, (ModelSimulator, SimulatorSession))
@@ -61,6 +80,8 @@ class ModelRuntime:
             if isinstance(self.executable, (ModelSimulator, SimulatorSession))
             else True,
         )
+        if self.compact:
+            self.simulation["artifacts"] = "summary"
 
     def launch(
         self,
@@ -79,22 +100,53 @@ class ModelRuntime:
             self.on_progress(dict(type="kernel_start", stage=name, launch=len(self.reports) + 1))
         stage = Stage(name, source, operation, tuple(inputs), output, params)
         directory = self.output / f"{len(self.reports):03d}_{name}"
-        directory.mkdir(parents=True, exist_ok=True)
-        (directory / "result.json").unlink(missing_ok=True)
         words = list(assembled_program(source))
-        (directory / "program.asm").write_text(source)
-        (directory / "layout.json").write_text(json.dumps(layout.regions, indent=2) + "\n")
-        expected = expected_stage(stage, layout.memory, layout, matrix_product=tensor_product)
-        after, _, cycles = run_program(
-            self.executable,
-            words,
-            layout.memory,
-            directory,
-            warp_mask=warp_mask,
-            active_masks=active_masks,
-            max_cycles=200000,
-        )
-        accuracy = verify_stage(stage, layout.memory, after, layout, prepared=expected)
+
+        def save_inputs():
+            directory.mkdir(parents=True, exist_ok=True)
+            (directory / "program.asm").write_text(source)
+            (directory / "layout.json").write_text(json.dumps(layout.regions, indent=2) + "\n")
+
+        if not self.compact:
+            save_inputs()
+        if directory.exists():
+            (directory / "result.json").unlink(missing_ok=True)
+            (directory / "failure.json").unlink(missing_ok=True)
+        after = None
+        try:
+            expected = expected_stage(stage, layout.memory, layout, matrix_product=tensor_product)
+            after, registers, cycles = run_program(
+                self.executable,
+                words,
+                layout.memory,
+                directory,
+                warp_mask=warp_mask,
+                active_masks=active_masks,
+                max_cycles=200000,
+            )
+            accuracy = verify_stage(stage, layout.memory, after, layout, prepared=expected)
+        except BaseException as error:
+            if self.compact:
+                save_inputs()
+                write_image(directory / "program.hex", words)
+                write_hex(directory / "input.hex", layout.memory)
+                if after is not None:
+                    write_hex(directory / "output.hex", after)
+                    write_hex(directory / "registers.hex", registers)
+                (directory / "failure.json").write_text(
+                    json.dumps(
+                        dict(
+                            verified=False,
+                            error=str(error),
+                            warp_mask=warp_mask,
+                            active_masks=active_masks,
+                            max_cycles=200000,
+                        ),
+                        indent=2,
+                    )
+                    + "\n"
+                )
+            raise
         report = dict(
             stage=name,
             operation=operation,
@@ -107,7 +159,8 @@ class ModelRuntime:
             accuracy=accuracy,
         )
         self.reports.append(report)
-        (directory / "result.json").write_text(json.dumps(report, indent=2) + "\n")
+        if not self.compact:
+            (directory / "result.json").write_text(json.dumps(report, indent=2) + "\n")
         if self.on_progress:
             self.on_progress(dict(type="kernel_complete", launch=len(self.reports), **report))
         start, count = layout.regions[output]
@@ -199,9 +252,10 @@ class ModelRuntime:
         vocabulary=None,
         draws=None,
         temperature=1.0,
+        min_p=0.0,
     ):
-        classifier = kind in ("softmax", "vocabulary_mask", "argmax", "categorical")
-        max_cols = 512 if classifier or kind == "gelu" else 128
+        classifier = kind in ("softmax", "vocabulary_mask", "argmax", "categorical", "min_p")
+        max_cols = 1024 if kind == "gelu" else 512 if classifier else 256
         if (
             (rows != 1 and (rows < 4 or rows % 4))
             or cols < 4
@@ -232,7 +286,7 @@ class ModelRuntime:
             layout.allocate("x", len(block), block)
             ins, output, params = ["x"], "x", dict(rows=count, cols=cols)
             if kind in ("bias_add", "residual_add"):
-                b = other if kind == "bias_add" else other[row * cols : (row + 4) * cols]
+                b = other if kind == "bias_add" else other[row * cols : (row + count) * cols]
                 if len(b) != (cols if kind == "bias_add" else count * cols):
                     raise ValueError("addition tensor length mismatch")
                 layout.allocate("b", len(b), b)
@@ -243,7 +297,7 @@ class ModelRuntime:
             elif kind == "gelu":
                 source = elementwise(layout, kind, count, cols, "x", "x")
             elif kind == "layernorm":
-                if len(gamma) != cols or len(beta) != cols:
+                if gamma is None or beta is None or len(gamma) != cols or len(beta) != cols:
                     raise ValueError("normalization parameter length mismatch")
                 layout.allocate("gamma", cols, gamma)
                 layout.allocate("beta", cols, beta)
@@ -255,6 +309,9 @@ class ModelRuntime:
             elif kind == "softmax":
                 params["temperature"] = validate_temperature(temperature)
                 source = loop_softmax(layout, count, cols, temperature)
+            elif kind == "min_p":
+                params["min_p"] = validate_min_p(min_p)
+                source = min_p_filter(layout, count, cols, min_p)
             elif kind == "vocabulary_mask":
                 if type(vocabulary) is not int or not 1 <= vocabulary <= cols:
                     raise ValueError("invalid vocabulary size")
@@ -290,6 +347,30 @@ class ModelRuntime:
             )
         return out
 
+    def restrict_tokens(self, name, logits, allowed):
+        cols = len(logits)
+        if not 4 <= cols <= 512 or cols & (cols - 1) or len(allowed) != cols:
+            raise ValueError("token restriction requires 4..512 power-of-two logits and a mask")
+        if any(type(a) is not bool for a in allowed) or not any(allowed):
+            raise ValueError("token restriction requires a nonempty boolean allow-list")
+        packed = [
+            sum(int(flag) << bit for bit, flag in enumerate(allowed[start : start + 32]))
+            for start in range(0, cols, 32)
+        ]
+        layout = Layout()
+        layout.allocate("x", cols, logits)
+        layout.allocate("allowed", len(packed), packed)
+        return self.launch(
+            name,
+            layout,
+            token_mask(layout, cols),
+            "token_mask",
+            ("x", "allowed"),
+            "x",
+            cols=cols,
+            active_masks=1,
+        )
+
     def lookup(self, ids, table, position, width, vocabulary):
         rows = len(ids)
         if (rows != 1 and (rows < 4 or rows > 128 or rows % 4)) or width not in (
@@ -299,6 +380,7 @@ class ModelRuntime:
             32,
             64,
             128,
+            256,
         ):
             raise ValueError("unsupported embedding shape")
         if any(type(i) is not int or not 0 <= i < vocabulary for i in ids):

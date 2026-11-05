@@ -1,0 +1,111 @@
+{
+  "purpose": "Optional training-only prose supplement; no model has used it merely by preparing it",
+  "base_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "output_sha256": "4a0caaa480ee45aee2b48cfb6ae0d1f37e3dd6295109e9bb421d45b4a5760b21",
+  "characters": 5448924,
+  "held_out_overlap_windows": 0,
+  "overlap_window_words": 32,
+  "sources": [
+    {
+      "ebook": 11,
+      "title": "Alice's Adventures in Wonderland",
+      "url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/11",
+      "source_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "cleaned_sha256": "4bb8043101cbffabf15a9ec616be1b9718cb2d792cec7325ecf44e2a0d3af904",
+      "characters": 142752,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 1661,
+      "title": "The Adventures of Sherlock Holmes",
+      "url": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/1661",
+      "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+      "cleaned_sha256": "3d36da551438c84988ced59568e72a1ab546edb8882a9a7dbe83ef69236ffd5c",
+      "characters": 560776,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 1342,
+      "title": "Pride and Prejudice",
+      "url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/1342",
+      "source_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "cleaned_sha256": "ec577765b5b8819c63346293c48078b0c5588092e2a6c657b746006fff9037c0",
+      "characters": 711618,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 120,
+      "title": "Treasure Island",
+      "url": "https://www.gutenberg.org/ebooks/120.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/120",
+      "source_sha256": "5bc08275eacea8640b1aa185c645283bb8c564d7b23df6b03437d229b4fc6ebd",
+      "cleaned_sha256": "bf51f43cc2bbf9a4983fc6d89c85c1d19937955a637fc4f4eee83878dfcac4a3",
+      "characters": 360263,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 55,
+      "title": "The Wonderful Wizard of Oz",
+      "url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/55",
+      "source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+      "cleaned_sha256": "742a7bc16f2de823226614af05a43e69bb2e498040009ad11c491a731e23b657",
+      "characters": 206662,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 1260,
+      "title": "Jane Eyre",
+      "url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/1260",
+      "source_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+      "cleaned_sha256": "1af0eb0cd140b00344a364c1a941c4204179f69c1486c740af021dc16c38db9f",
+      "characters": 1020742,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 1400,
+      "title": "Great Expectations",
+      "url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/1400",
+      "source_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+      "cleaned_sha256": "29256d70c975233098f6f9043b42be5f729c00cdd2a6bede96dfa1055409ac5a",
+      "characters": 992086,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 46,
+      "title": "A Christmas Carol",
+      "url": "https://www.gutenberg.org/ebooks/46.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/46",
+      "source_sha256": "8c36b93723d454982df045ec0efdf2664e5a48e6b5e2f670e883575f75ad0cc8",
+      "cleaned_sha256": "25ae56e8a880f4aa74e65f70172a73de68ba428888371d074cc35cacdf271ef3",
+      "characters": 158075,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 84,
+      "title": "Frankenstein",
+      "url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/84",
+      "source_sha256": "2b97b7f8aad508649481d8dd4f6b54f9b965ddb3ba634e9151c815f537b49e42",
+      "cleaned_sha256": "1f5809d3b9ec8317da0448c59c6da111096dee495c3b6f780c32c11788029926",
+      "characters": 418420,
+      "removed_overlapping_paragraphs": 0
+    },
+    {
+      "ebook": 158,
+      "title": "Emma",
+      "url": "https://www.gutenberg.org/ebooks/158.txt.utf-8",
+      "catalogue_url": "https://www.gutenberg.org/ebooks/158",
+      "source_sha256": "532b122b4e6a76cc556d6fdcd729b5892f5c4ce4a1b7060b9f832adfad8680dc",
+      "cleaned_sha256": "d7ae0e2e0aaa47ea6ee0599a1e3f37bc0f582e68d5569b10c4d94bcb51da0412",
+      "characters": 877521,
+      "removed_overlapping_paragraphs": 0
+    }
+  ],
+  "preparation_source_sha256": "b6f17648fe24d39bd5398f66baea9a3f11fdb8b023899aba9ea72e71c3c5aa30"
+}

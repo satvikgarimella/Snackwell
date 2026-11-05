@@ -1,0 +1,8 @@
+{
+  "task": "Two facts, then generate a full answer to a location question",
+  "model_selection": "Validation only; never use reserved test scores to select weights",
+  "target": "All 576 validation questions correct, then evaluate all 576 reserved test questions and the full finite prompt space. Report every failure.",
+  "rtl": "Run every held-out query pair in both positions, plus location-swap checks, then compare cached and fresh results; verify all kernels and whole-model references.",
+  "scope": "Only the fixed grammar and eight objects/eight locations. No claim of open-ended language understanding.",
+  "training": "Host PyTorch, explicitly separate from RTL inference and prior Snackwell training demonstrations."
+}

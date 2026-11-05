@@ -1,0 +1,263 @@
+{
+  "kind": "CPU next-token diagnostic, no runtime change made",
+  "cases": [
+    {
+      "model": "subword",
+      "prompt": "My name is",
+      "pieces": [
+        "My",
+        " n",
+        "ame",
+        " is"
+      ],
+      "next_tokens": [
+        {
+          "text": " not",
+          "probability": 0.0892611147834296
+        },
+        {
+          "text": " a",
+          "probability": 0.058677690960627554
+        },
+        {
+          "text": " ",
+          "probability": 0.05476237466143496
+        },
+        {
+          "text": " come",
+          "probability": 0.05431411045087039
+        },
+        {
+          "text": " de",
+          "probability": 0.04738264578672441
+        }
+      ]
+    },
+    {
+      "model": "subword",
+      "prompt": "My name is ",
+      "pieces": [
+        "My",
+        " n",
+        "ame",
+        " is",
+        " "
+      ],
+      "next_tokens": [
+        {
+          "text": "ri",
+          "probability": 0.18563184425210827
+        },
+        {
+          "text": "qu",
+          "probability": 0.18025462110840543
+        },
+        {
+          "text": "very",
+          "probability": 0.11382427320520272
+        },
+        {
+          "text": "K",
+          "probability": 0.07933600896099362
+        },
+        {
+          "text": "D",
+          "probability": 0.060531506537273495
+        }
+      ]
+    },
+    {
+      "model": "wide4",
+      "prompt": "My name is",
+      "pieces": [
+        "My",
+        " n",
+        "ame",
+        " is"
+      ],
+      "next_tokens": [
+        {
+          "text": " ",
+          "probability": 0.2591373846556208
+        },
+        {
+          "text": " M",
+          "probability": 0.1262715905135716
+        },
+        {
+          "text": " C",
+          "probability": 0.12478307235749721
+        },
+        {
+          "text": " B",
+          "probability": 0.11519215884927421
+        },
+        {
+          "text": " P",
+          "probability": 0.08908945237186024
+        }
+      ]
+    },
+    {
+      "model": "wide4",
+      "prompt": "My name is ",
+      "pieces": [
+        "My",
+        " n",
+        "ame",
+        " is",
+        " "
+      ],
+      "next_tokens": [
+        {
+          "text": "T",
+          "probability": 0.3674804372560004
+        },
+        {
+          "text": "D",
+          "probability": 0.2304058732937235
+        },
+        {
+          "text": "N",
+          "probability": 0.14089115139372738
+        },
+        {
+          "text": "very",
+          "probability": 0.05479435082171605
+        },
+        {
+          "text": "F",
+          "probability": 0.04728130585541176
+        }
+      ]
+    },
+    {
+      "model": "prose4",
+      "prompt": "My name is",
+      "pieces": [
+        "My",
+        " n",
+        "ame",
+        " is"
+      ],
+      "next_tokens": [
+        {
+          "text": " ",
+          "probability": 0.2560322543269455
+        },
+        {
+          "text": " C",
+          "probability": 0.19833492296399435
+        },
+        {
+          "text": " B",
+          "probability": 0.11278416426839735
+        },
+        {
+          "text": " M",
+          "probability": 0.100403645794584
+        },
+        {
+          "text": " P",
+          "probability": 0.08111376854605525
+        }
+      ]
+    },
+    {
+      "model": "prose4",
+      "prompt": "My name is ",
+      "pieces": [
+        "My",
+        " n",
+        "ame",
+        " is",
+        " "
+      ],
+      "next_tokens": [
+        {
+          "text": "D",
+          "probability": 0.34974932296098304
+        },
+        {
+          "text": "N",
+          "probability": 0.15337174584751953
+        },
+        {
+          "text": "F",
+          "probability": 0.15284962867032462
+        },
+        {
+          "text": "T",
+          "probability": 0.10412788217892767
+        },
+        {
+          "text": "J",
+          "probability": 0.05602798874611917
+        }
+      ]
+    },
+    {
+      "model": "TinyStories-8M CPU only",
+      "prompt": "My name is",
+      "pieces": [
+        "My",
+        "\u0120name",
+        "\u0120is"
+      ],
+      "next_tokens": [
+        {
+          "text": " Tom",
+          "probability": 0.09216538296700388
+        },
+        {
+          "text": " Bob",
+          "probability": 0.08982518299624205
+        },
+        {
+          "text": " Lily",
+          "probability": 0.06992283995931227
+        },
+        {
+          "text": " Max",
+          "probability": 0.06701732150650117
+        },
+        {
+          "text": " Tim",
+          "probability": 0.05404125273614188
+        }
+      ]
+    },
+    {
+      "model": "TinyStories-8M CPU only",
+      "prompt": "My name is ",
+      "pieces": [
+        "My",
+        "\u0120name",
+        "\u0120is",
+        "\u0120"
+      ],
+      "next_tokens": [
+        {
+          "text": "____",
+          "probability": 0.24701225517805536
+        },
+        {
+          "text": "and",
+          "probability": 0.14681418508353417
+        },
+        {
+          "text": "her",
+          "probability": 0.05964392955754676
+        },
+        {
+          "text": "p",
+          "probability": 0.04012497700866107
+        },
+        {
+          "text": ".\"",
+          "probability": 0.023821076690130758
+        }
+      ]
+    }
+  ]
+}

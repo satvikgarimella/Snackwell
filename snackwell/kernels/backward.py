@@ -23,7 +23,7 @@ def loop_end(a, label):
         {label}_done:""")
 
 
-def layernorm_backward(layout, rows, cols, epsilon):
+def layernorm_backward(layout, rows, cols, epsilon, *, inplace=False):
     """One lane per row. Output contains dx followed by per-row dgamma."""
     a = Assembly(layout, f"LayerNorm backward: {rows} rows, {cols} features")
     row_setup(a, cols)
@@ -53,9 +53,10 @@ def layernorm_backward(layout, rows, cols, epsilon):
         FMUL R3, R1, R2
         FADD R10, R10, R3
         FMUL R4, R3, R0
-        FADD R11, R11, R4
-        FMUL R4, R1, R0
-        ST_SHARED [R6 + {layout.address("out") + rows * cols * 4}], R4""")
+        FADD R11, R11, R4""")
+    if not inplace:
+        a.emit(f"""FMUL R4, R1, R0
+            ST_SHARED [R6 + {layout.address("out") + rows * cols * 4}], R4""")
     loop_end(a, "reduce")
     a.const(7, 1 / cols)
     a.emit("FMUL R10, R10, R7\nFMUL R11, R11, R7")
@@ -63,8 +64,12 @@ def layernorm_backward(layout, rows, cols, epsilon):
     a.emit(f"""LD_SHARED R0, [R6 + {layout.address("x")}]
         FSUB R0, R0, R8
         FMUL R0, R0, R9
-        LD_SHARED R1, [R6 + {layout.address("dy")}]
-        LD_SHARED R2, [R13 + {layout.address("gamma")}]
+        LD_SHARED R1, [R6 + {layout.address("dy")}]""")
+    if inplace:
+        # Do not overwrite dy during the reduction: dx still needs its original value.
+        a.emit(f"""FMUL R4, R1, R0
+            ST_SHARED [R6 + {layout.address("out") + rows * cols * 4}], R4""")
+    a.emit(f"""LD_SHARED R2, [R13 + {layout.address("gamma")}]
         FMUL R1, R1, R2
         FSUB R1, R1, R10
         FMUL R0, R0, R11

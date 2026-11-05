@@ -1,0 +1,35 @@
+{
+  "execution": "HOST evaluation, not RTL",
+  "checkpoint_sha256": "66af3342b4a66ee4e63816f30756f3aed746b749b300ecd6f13c324be0d2423e",
+  "selected_step": 1,
+  "validation": {
+    "answer_loss": 0.0003351215171509437,
+    "exact_answers": 576,
+    "examples": 576
+  },
+  "test": {
+    "answer_loss": 0.0002389797323664266,
+    "exact_answers": 576,
+    "examples": 576
+  },
+  "export_checks": [
+    {
+      "prompt": "The ball is in the garden. The book is in the bedroom. Where is the ball?",
+      "maximum_logit_error": 3.0298862547795125e-06
+    },
+    {
+      "prompt": "The cup is in the cellar. The ball is in the bedroom. Where is the cup?",
+      "maximum_logit_error": 9.946799139903817e-07
+    },
+    {
+      "prompt": "The key is in the bathroom. The ball is in the bedroom. Where is the key?",
+      "maximum_logit_error": 1.8980085014774772e-06
+    },
+    {
+      "prompt": "The bag is in the office. The ball is in the bedroom. Where is the bag?",
+      "maximum_logit_error": 1.1067550742538401e-06
+    }
+  ],
+  "wall_seconds": 270.2933324999758,
+  "note": "Exact answers require every answer-token argmax to match under teacher forcing. Autonomous generation and RTL are checked separately."
+}

@@ -1,0 +1,56 @@
+{
+  "scope": "The user chose compact models and a simpler target after the original paragraph screening. These new sentence checks do not invalidate the earlier failures.",
+  "models": [
+    {
+      "candidate": "simplestories1m",
+      "decision": "rejected",
+      "core_failures": [
+        {
+          "index": 24,
+          "reason": "Incomplete clause: the snow in the sky."
+        },
+        {
+          "index": 34,
+          "reason": "Tense change from put to starts."
+        },
+        {
+          "index": 35,
+          "reason": "Unintroduced it and changed subject/pronoun."
+        },
+        {
+          "index": 37,
+          "reason": "Ungrammatical: a advice."
+        },
+        {
+          "index": 56,
+          "reason": "Incomplete clause: and the snow."
+        }
+      ],
+      "note": "Five sampled core failures already exceed the allowed three; not a complete human quality score."
+    },
+    {
+      "candidate": "simplestories5m",
+      "decision": "rejected",
+      "core_failures": [
+        {
+          "index": 22,
+          "reason": "Malformed coordination: its wings wide and flapped around."
+        },
+        {
+          "index": 24,
+          "reason": "Fragment: the snow crunching underfoot."
+        },
+        {
+          "index": 33,
+          "reason": "Broken and repeated clause."
+        },
+        {
+          "index": 53,
+          "reason": "A baby is given a pond; implausible literal continuation."
+        }
+      ],
+      "note": "These sampled core failures exceed the allowed three; greedy also attributes hair to a bird. Not a complete human quality score."
+    }
+  ],
+  "next_task": "A separately trained, bounded two-fact location-answering model. Neither pretrained candidate is installed as a Snackwell model."
+}

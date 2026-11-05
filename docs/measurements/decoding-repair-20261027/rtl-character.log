@@ -1,0 +1,33 @@
+Model: 4 blocks, 4 heads, width 64, context 32 characters; checkpoint 43f211daad7c
+Checkpoint file: /Users/satvik.garimella/Snackwell/models/character_transformer/checkpoint.json
+Preparing RTL simulator…
+RTL simulator: verilator; cycle trace: off
+RTL build: d47ac8279c65
+Decoding: {'mode': 'sample', 'seed': 92617660, 'temperature': 0.7, 'min_p': 0.05}
+PASS token 1/24: '\n', 1913349 cycles, 5.52s (prefill)
+PASS token 2/24: 'A', 741094 cycles, 3.49s (decode)
+PASS token 3/24: 'n', 741606 cycles, 2.70s (decode)
+PASS token 4/24: 'd', 783296 cycles, 2.67s (decode)
+PASS token 5/24: ' ', 783677 cycles, 2.93s (decode)
+PASS token 6/24: 'w', 783868 cycles, 2.19s (decode)
+PASS token 7/24: 'i', 784566 cycles, 1.77s (decode)
+PASS token 8/24: 't', 786754 cycles, 1.39s (decode)
+PASS token 9/24: 'h', 787311 cycles, 1.46s (decode)
+PASS token 10/24: ' ', 787829 cycles, 1.56s (decode)
+PASS token 11/24: 't', 788268 cycles, 1.36s (decode)
+PASS token 12/24: 'h', 872757 cycles, 1.39s (decode)
+PASS token 13/24: 'y', 873241 cycles, 1.62s (decode)
+PASS token 14/24: ' ', 873273 cycles, 1.87s (decode)
+PASS token 15/24: 'h', 874065 cycles, 1.94s (decode)
+PASS token 16/24: 'e', 876468 cycles, 1.89s (decode)
+PASS token 17/24: 'a', 876480 cycles, 1.87s (decode)
+PASS token 18/24: 'd', 876916 cycles, 1.86s (decode)
+PASS token 19/24: ' ', 877513 cycles, 1.70s (decode)
+PASS token 20/24: 'o', 878855 cycles, 1.86s (decode)
+PASS token 21/24: 'f', 879199 cycles, 1.66s (decode)
+PASS token 22/24: ' ', 879500 cycles, 2.15s (decode)
+PASS token 23/24: 'h', 880178 cycles, 3.19s (decode)
+PASS token 24/24: 'e', 881652 cycles, 2.86s (decode)
+ROMEO:
+And with thy head of he
+Results: /Users/satvik.garimella/Snackwell/build/decoding-repair-20261027/rtl-character

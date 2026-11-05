@@ -1,0 +1,478 @@
+{
+  "kind": "CPU diagnostic, not RTL",
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "temperature": 0.7,
+  "min_p": 0.05,
+  "penalty": 1.0,
+  "ngram": 0,
+  "cases": [
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "My lord, I have something to say",
+      "continuation": " the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world t",
+      "repeated_fourgram_fraction": 0.8201058201058201,
+      "positions_starting_three_repeats": 85,
+      "longest_tripled_substring": " the world that I will be the sea of"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "ROMEO:",
+      "continuation": "\nThe senate of the country's son,\nAnd then the season of the world through the strong of the world that I will be the sea of the world that I will be the sea of the world that I will be the se",
+      "repeated_fourgram_fraction": 0.5291005291005291,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "JULIET:",
+      "continuation": "\nWhat is the season of the country's son,\nAnd then the season of the world through the strong of the world that I will be the sea of the world that I will be the sea of the world that I will b",
+      "repeated_fourgram_fraction": 0.5396825396825398,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "To be, or not to be",
+      "continuation": " a soldiers and the seasons of the country's son,\nAnd then the season of the country's son,\nAnd then the season of the world that I will be the sea of the world,\nAnd then the season of the cou",
+      "repeated_fourgram_fraction": 0.5555555555555556,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "I pray you,",
+      "continuation": " and the sea of the world through the strong of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of ",
+      "repeated_fourgram_fraction": 0.7195767195767195,
+      "positions_starting_three_repeats": 41,
+      "longest_tripled_substring": " of the world that I will be the sea"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "The king",
+      "continuation": " of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the worl",
+      "repeated_fourgram_fraction": 0.8201058201058201,
+      "positions_starting_three_repeats": 85,
+      "longest_tripled_substring": " of the world that I will be the sea"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "What is your name?",
+      "continuation": "\n\nCORIOLANUS:\nThe senate of the world that I say,\nAnd then the season of the world that I say,\nAnd then the season of the world that I say,\nAnd then the season of the world that I say,\nAnd the",
+      "repeated_fourgram_fraction": 0.6666666666666667,
+      "positions_starting_three_repeats": 34,
+      "longest_tripled_substring": " of the world that I say,\nAnd then the season"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "Good night,",
+      "continuation": " and the seasons of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the",
+      "repeated_fourgram_fraction": 0.7671957671957672,
+      "positions_starting_three_repeats": 69,
+      "longest_tripled_substring": " of the world that I will be the sea"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "The king is dead, and we must now",
+      "continuation": " the contrary shall be the strength of the world that I will be the sea of the world,\nAnd then the season of the courtesy sense the seasons of the world that I will be the sea of the world tha",
+      "repeated_fourgram_fraction": 0.5026455026455027,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "the sky today is",
+      "continuation": " the seasons of the country's son,\nAnd then the season of the country's son,\nAnd then the season of the world that I will be the sea of the world,\nAnd then the season of the courtesy sense the",
+      "repeated_fourgram_fraction": 0.5555555555555556,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "My name is ",
+      "continuation": "the seasons of the world,\nAnd then the season of the courtesy sense the seasons of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of t",
+      "repeated_fourgram_fraction": 0.6243386243386244,
+      "positions_starting_three_repeats": 6,
+      "longest_tripled_substring": " of the world that I will be the sea"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "I love",
+      "continuation": " the sea of the world through the strong of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the world that I will be the sea of the ",
+      "repeated_fourgram_fraction": 0.7354497354497355,
+      "positions_starting_three_repeats": 45,
+      "longest_tripled_substring": " of the world that I will be the sea"
+    },
+    {
+      "mode": "greedy",
+      "seed": null,
+      "prompt": "To be, or not to ",
+      "continuation": "the sea of the world that I say,\nAnd then the season of the world that I say,\nAnd then the season of the world that I say,\nAnd then the season of the world that I say,\nAnd then the season of t",
+      "repeated_fourgram_fraction": 0.7671957671957672,
+      "positions_starting_three_repeats": 51,
+      "longest_tripled_substring": " of the world that I say,\nAnd then the season"
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "My lord, I have something to say",
+      "continuation": " 'twas to prove the hours, that he was in my country: but thou some many may may be my shame.\n\nKING RICHARD III:\nA mind arms, thou well stay.\n\nPOLIXENES:\nI shall the harder'd with the reason o",
+      "repeated_fourgram_fraction": 0.08465608465608465,
+      "positions_starting_three_repeats": 1,
+      "longest_tripled_substring": "I"
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "ROMEO:",
+      "continuation": "\nAnd with thy head of here?\n\nGLOUCESTER:\n\nFirst Citizen:\nCome, the die thanks, what look their heart's hour makes and morning.\n\nTRANIO:\nThen, this thou goest of an idle death, and the seat,\nAn",
+      "repeated_fourgram_fraction": 0.042328042328042326,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "JULIET:",
+      "continuation": "\nAnd with thy head of here?\n\nGLOUCESTER:\n\nFirst Citizen:\nCome, the early of Rome, while I cannot prince!\n\nCLARENCE:\nThen were thou well steep'st one that find an old harm that answer and with ",
+      "repeated_fourgram_fraction": 0.06349206349206349,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "To be, or not to be",
+      "continuation": " a virtuous with a man bosom of my signal\nIn blood one to shipping\nAnd then for this welcome, when it was a letter\nThe law to the king strength,\nAnd then have a busieved him such a side as law",
+      "repeated_fourgram_fraction": 0.06349206349206349,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "I pray you,",
+      "continuation": " and would not present but the repetitors\nBe consul, they she proud leave to revenge you may to his ground and looks the wishing.\n\nSecond Hostess:\nWhy hath she patience in the contrary.\n\nSecon",
+      "repeated_fourgram_fraction": 0.09523809523809523,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "The king",
+      "continuation": " bloody she will be him to the pitch of the father of my death,\nThat being the worst well and with sorrow and live on the house well and their state the land's law,\nAnd in the contrary days an",
+      "repeated_fourgram_fraction": 0.12169312169312174,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "What is your name?",
+      "continuation": "\n\nKING RICHARD II:\nO, and will not the heart is a little and courtesy\nHe not some worthy man. What is the close that the times of the courtesy-other than my liege?\n\nBENVOLIO:\nWell, that I see ",
+      "repeated_fourgram_fraction": 0.13227513227513232,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "Good night,",
+      "continuation": " and would not present but the repetitors\nBe consul, they she proud leave to revenge you may to his ground and looks the wishing.\n\nSecond Hostess:\nWhy hath she patience in the contrary.\n\nSecon",
+      "repeated_fourgram_fraction": 0.09523809523809523,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "The king is dead, and we must now",
+      "continuation": " before the world\nThat doth he shall be nature the profite,\nWhich all my heart will grandains: more something is a prince.\n\nSecond Senator:\nWhere is the market of my hands,\nAnd so something bu",
+      "repeated_fourgram_fraction": 0.10052910052910058,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "the sky today is",
+      "continuation": " a thousand with a man born;\nAnd thou the glory be strength the stand from the view my part on of the throat hath and on the worse.\n\nCAPULET:\nThe queen is my hands the manage of the gate\nWill ",
+      "repeated_fourgram_fraction": 0.13227513227513232,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "My name is ",
+      "continuation": "lawful speech, my lord,\nTo the rest, for I have been them retire.\n\nCLARENCE:\nSome will see this is my soul hand, a noble soundly;\nBut I shall not stay in the hardy than in the contrary.\n\nSecon",
+      "repeated_fourgram_fraction": 0.05820105820105825,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "I love",
+      "continuation": " and true revenge so that would forget that cannot promise.\n\nCORIOLANUS:\nMost not with the first steeps the last,\nAnd of your shores and the lips of the market\nThe sack beheld his pride as man",
+      "repeated_fourgram_fraction": 0.07936507936507942,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 92617660,
+      "prompt": "To be, or not to ",
+      "continuation": "have told the head of her tongue of a shear hath forgiveness,\nIn that consorted thee were be to live thee blood we might some set to be strength,\nTo take it me off the man, and so speak as the",
+      "repeated_fourgram_fraction": 0.07407407407407407,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "My lord, I have something to say",
+      "continuation": "?\n\nBISHOP OF ELY:\nGood some of sleeping of the true with my life?\n\nQUEEN MARGARET:\nNo grave men may the foul maid!\n\nKING HENRY VI:\nNow it the night, and your own and safeguard.\n\nJULIET:\nHere i",
+      "repeated_fourgram_fraction": 0.04761904761904767,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "ROMEO:",
+      "continuation": "\nStay not home to his course,\nAnd then he had any three with thee here.\n\nSecond Murderer:\nGo, when my names with a soldier.\n\nQUEEN MARGARET:\nNot prove my banished shall do it was done! What, t",
+      "repeated_fourgram_fraction": 0.031746031746031744,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "JULIET:",
+      "continuation": "\nStay not home to his course,\nAnd then he had any threwds the world.\n\nKING RICHARD II:\nNay, my lord, and with shall be never\nThat she hath consulting forth\nThe field of the fault of your highn",
+      "repeated_fourgram_fraction": 0.03703703703703709,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "To be, or not to be",
+      "continuation": " rich man bring them was our hearts, he shall be them with thee, and I do wounds mine\nIf we have been so storm and the land for the king,\nWhich of will treasons the flatterer we have done our ",
+      "repeated_fourgram_fraction": 0.1164021164021164,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "I pray you,",
+      "continuation": " sir, if I was the world,\nI shall respect the brother with thee, and I do wounds more heaven hour thine eyes.\n\nDUCHESS OF YORK:\nThe king of the poor beats are the people,\nHath beseech you, wer",
+      "repeated_fourgram_fraction": 0.042328042328042326,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "The king",
+      "continuation": ", that are you to do well have heard me to the sun as your privileges of your will,\nAnd by the orator of their dead;\nFor it is a words in the oracle.\n\nHERMIONE:\nO more heaven well of honesty\nT",
+      "repeated_fourgram_fraction": 0.10582010582010581,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "What is your name?",
+      "continuation": " that thou wert they were in pin the house of all things,\nWhich you was sure to me of my the friar,\nWhich thou didst to be interch'd with the morning is wars,\nWhich is dishonour the way of you",
+      "repeated_fourgram_fraction": 0.1693121693121693,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "Good night,",
+      "continuation": " spare for the tribunes.\n\nKING RICHARD III:\nAs thou within the suitor of your will,\nAnd by my true more hereafter and thanks the world not for the tread of their blood\nAnd he was doth the holy",
+      "repeated_fourgram_fraction": 0.10582010582010581,
+      "positions_starting_three_repeats": 1,
+      "longest_tripled_substring": "I"
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "The king is dead, and we must now",
+      "continuation": ".\n\nANGELO:\nWhat, having the place, that make thee thought to put on the own of the king friends,\nAnd do me still care you have been my love in the tongues\nAre well and discords\nAnd such a knav",
+      "repeated_fourgram_fraction": 0.07407407407407407,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "the sky today is",
+      "continuation": " that man and in mine arms,\nSince the piteous but reverend therefore.\n\nDUKE VINCENTIO:\nI will we but born, lord, a sing.\n\nFirst Senator:\nPray you, that the time of mine own cause it were is a ",
+      "repeated_fourgram_fraction": 0.05820105820105825,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "My name is ",
+      "continuation": "would have the tribunes, my lord, sir, for the true with my life?\n\nQUEEN MARGARET:\nMadam, I have been so storm and the land for the king,\nWhich of what the time of her countrymant to him,\nBy t",
+      "repeated_fourgram_fraction": 0.1164021164021164,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "I love",
+      "continuation": ", we may be gone:\nAnd here I may not more more than your graces where she will not he had been of this father's face,\nWhen in the one bitter of the rearer by the ancient of her feedish.\n\nKING ",
+      "repeated_fourgram_fraction": 0.10052910052910058,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1729,
+      "prompt": "To be, or not to ",
+      "continuation": "you have a very that were last in the pitched and reverends thy wife?\n\nDUKE VINCENTIO:\nI will we but born, lord, and the fearful with his sight.\n\nMENENIUS:\nWhere I do all the wars of home,\nWe ",
+      "repeated_fourgram_fraction": 0.03703703703703709,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "My lord, I have something to say",
+      "continuation": " that speak them.\n\nSICINIUS:\nHail! I think it well must shame to see the carries of mine eyes\nThat meet you will not so in any hope, and such as farewell, that thou hast said\nBe so are deadly ",
+      "repeated_fourgram_fraction": 0.042328042328042326,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "ROMEO:",
+      "continuation": "\nWhat, the consul, where with a man to see here from the day of the oracle\nMy life and pity way that shame; which you see thy matters that I am the true is of such a longer:\nAnd the news whom ",
+      "repeated_fourgram_fraction": 0.09523809523809523,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "JULIET:",
+      "continuation": "\nWhat, the consul, where with a marks,\nThat could bear the will since of her,\nOr lack to do you to me, and sweet sweet bloods:\nGod sweet my gally courtesy:\nO, if you know my blood in his vault",
+      "repeated_fourgram_fraction": 0.10582010582010581,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "To be, or not to be",
+      "continuation": " the virtue of your eyes\nTo a bear and the best is not speak from the part of the bad of his breathe lies the rearing part as this pursues.\n\nBRUTUS:\nWhat would think to come and so are descent",
+      "repeated_fourgram_fraction": 0.11111111111111116,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "I pray you,",
+      "continuation": " where you are your days success'd.\n\nMARCIUS:\nWhat shall I will shall have him so abidius thunder for set thy recover.\n\nGREEN:\nIn thought the house, that will go we discover'd for man hath wit",
+      "repeated_fourgram_fraction": 0.08465608465608465,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "The king",
+      "continuation": " that must be but to his purchase way and in the wars in her contrary,\nAnd lose him here done the contrary.\n\nMENENIUS:\nAnd I, sir, stay thou art here.\n\nMARIANA:\nBut I was do a farewell.\n\nSICIN",
+      "repeated_fourgram_fraction": 0.08465608465608465,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "What is your name?",
+      "continuation": "\n\nFRIAR LAURENCE:\nThen, and I am done, the child. God here what they had been on the greaters\nThat meet you will not so hear their purse of many farewell, that thou hast said\nBe so are descent",
+      "repeated_fourgram_fraction": 0.05291005291005291,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "Good night,",
+      "continuation": "\nWhere we been your eyes sword in this sin.\n\nLUCIO:\nWhat have you know him lost is a king thus.\n\nKING RICHARD II:\nYour births, but to the war my deep many that thou discover'd for once choice,",
+      "repeated_fourgram_fraction": 0.015873015873015928,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "The king is dead, and we must now",
+      "continuation": " they prove so worthy words.\n\nBRUTUS:\nAy, had your honour but this men and hope in a kneeling son,\nFor any sword to you.\n\nFRIAR LAURENCE:\nWe are heavy for the hopeful wars that is lawful way, ",
+      "repeated_fourgram_fraction": 0.05291005291005291,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "the sky today is",
+      "continuation": " the wind.\n\nMENENIUS:\nWhat, I am free, the child. God her brother's man\nThat now that will draw the poor of your mother gracious like the war my death,\nShow do this entertain death an earth.\n\n",
+      "repeated_fourgram_fraction": 0.07936507936507942,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "My name is ",
+      "continuation": "doth the painted in his course forth.\n\nPOMPEY:\nNow my grief, and sing, I cannot come to her way that means to the wise and at this purse it\nThat have not to comfort me;\nAnd make the man friend",
+      "repeated_fourgram_fraction": 0.08465608465608465,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "I love",
+      "continuation": " thee no man of your grace:\nAnd should the belly well bear\nWherein the all of the ballad is was the poor mortal country of any hope,\nAnd star love to me, the senate of a servant prince for you",
+      "repeated_fourgram_fraction": 0.09523809523809523,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    },
+    {
+      "mode": "sample",
+      "seed": 1730,
+      "prompt": "To be, or not to ",
+      "continuation": "come. I'll be cruel here to a bed waters in his fresh disciplines,\nOr rather me for my life were in the world,\nHaving the hath done, and subjects but she will do we discallibance of the fresh ",
+      "repeated_fourgram_fraction": 0.06878306878306883,
+      "positions_starting_three_repeats": 0,
+      "longest_tripled_substring": ""
+    }
+  ]
+}

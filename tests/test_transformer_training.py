@@ -144,6 +144,7 @@ class TransformerTrainingTests(unittest.TestCase):
             (1, 1, 4, 4, 2),
             (2, 2, 8, 8, 2),
             (4, 4, 16, 4, 2),
+            (8, 4, 16, 4, 4),
             (2, 2, 8, 8, 4),
             (1, 4, 128, 4, 4),
         ):

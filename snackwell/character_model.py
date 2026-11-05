@@ -76,22 +76,22 @@ def validate_checkpoint(data):
         type(n) is not int
         or n not in ((4, 8, 16, 32, 64, 128) if modern else (4, 8, 16))
         or type(d) is not int
-        or d not in ((4, 8, 16, 32, 64, 128) if modern else (4, 8, 16))
+        or d not in ((4, 8, 16, 32, 64, 128, 256) if modern else (4, 8, 16))
     ):
         raise ValueError("unsupported model context or width")
     layers, heads = c.get("layers", 1), c.get("heads", 1)
     multiplier = c.get("ffn_multiplier", 2)
-    if type(multiplier) is not int or multiplier not in (2, 4) or multiplier * d > 512:
-        raise ValueError("feed-forward width must be 2x or 4x model width and at most 512")
+    if type(multiplier) is not int or multiplier not in (2, 4) or multiplier * d > 1024:
+        raise ValueError("feed-forward width must be 2x or 4x model width and at most 1024")
     if (
         type(layers) is not int
-        or layers not in (1, 2, 4)
+        or layers not in (1, 2, 4, 8)
         or type(heads) is not int
         or heads not in (1, 2, 4)
         or d % heads
         or d // heads < 4
     ):
-        raise ValueError("model requires 1, 2 or 4 layers and 1, 2 or 4 heads of width >=4")
+        raise ValueError("model requires 1, 2, 4 or 8 layers and 1, 2 or 4 heads of width >=4")
     if not subword and (
         not isinstance(vocab, list)
         or not 2 <= len(vocab) <= 128

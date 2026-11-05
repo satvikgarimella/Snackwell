@@ -1,0 +1,590 @@
+{
+  "kind": "Published pretrained model evaluated on CPU; NOT Snackwell execution or training",
+  "model": "roneneldan/TinyStories-1M",
+  "revision": "77f1b168e219585646439073245fe87e56b3023e",
+  "config": {
+    "vocab_size": 50257,
+    "max_position_embeddings": 2048,
+    "hidden_size": 64,
+    "num_layers": 8,
+    "num_heads": 16,
+    "intermediate_size": null,
+    "window_size": 256,
+    "activation_function": "gelu_new",
+    "resid_dropout": 0,
+    "embed_dropout": 0,
+    "attention_dropout": 0,
+    "classifier_dropout": 0.1,
+    "layer_norm_epsilon": 1e-05,
+    "initializer_range": 0.02,
+    "use_cache": true,
+    "bos_token_id": 50256,
+    "eos_token_id": 50256,
+    "attention_types": [
+      [
+        [
+          "global",
+          "local"
+        ],
+        4
+      ]
+    ],
+    "attention_layers": [
+      "global",
+      "local",
+      "global",
+      "local",
+      "global",
+      "local",
+      "global",
+      "local"
+    ],
+    "return_dict": true,
+    "output_hidden_states": false,
+    "torchscript": false,
+    "dtype": "float32",
+    "pruned_heads": {},
+    "tie_word_embeddings": true,
+    "chunk_size_feed_forward": 0,
+    "is_encoder_decoder": false,
+    "is_decoder": false,
+    "cross_attention_hidden_size": null,
+    "add_cross_attention": false,
+    "tie_encoder_decoder": false,
+    "architectures": [
+      "GPTNeoForCausalLM"
+    ],
+    "finetuning_task": null,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "task_specific_params": null,
+    "problem_type": null,
+    "tokenizer_class": null,
+    "prefix": null,
+    "pad_token_id": null,
+    "sep_token_id": null,
+    "decoder_start_token_id": null,
+    "max_length": 20,
+    "min_length": 0,
+    "do_sample": false,
+    "early_stopping": false,
+    "num_beams": 1,
+    "temperature": 1.0,
+    "top_k": 50,
+    "top_p": 1.0,
+    "typical_p": 1.0,
+    "repetition_penalty": 1.0,
+    "length_penalty": 1.0,
+    "no_repeat_ngram_size": 0,
+    "encoder_no_repeat_ngram_size": 0,
+    "bad_words_ids": null,
+    "num_return_sequences": 1,
+    "output_scores": false,
+    "return_dict_in_generate": false,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": false,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "num_beam_groups": 1,
+    "diversity_penalty": 0.0,
+    "_name_or_path": "roneneldan/TinyStories-1M",
+    "transformers_version": "4.57.6",
+    "gradient_checkpointing": false,
+    "model_type": "gpt_neo",
+    "summary_activation": null,
+    "summary_first_dropout": 0.1,
+    "summary_proj_to_labels": true,
+    "summary_type": "cls_index",
+    "summary_use_proj": true,
+    "tf_legacy_loss": false,
+    "use_bfloat16": false,
+    "output_attentions": false
+  },
+  "parameters": 3745984,
+  "torch": "2.14.1",
+  "transformers": "4.57.6",
+  "context_policy": "128 tokens, periodic rebuild retaining the latest 96",
+  "temperature": 0.7,
+  "minimum_new_characters": 192,
+  "maximum_new_tokens": 256,
+  "source_sha256": "bdd79fef8911161793ea3549df73ddd6dfa7c49d2fd34c35c631d49a858509a6",
+  "cases": [
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": ", and I can't do it. I want to be a good friend.\"\n\nLily and Ben are scared. They say, \"No, we can't. We can't play with you. You can't play with the ball. It is not yours. It is not yours. It is",
+      "tokens": 62,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " \"No, I'm just a good girl. I'm not so good at all.\"\n\nThe little girl was very happy and she hugged her mom. She said, \"Thank you, mom. I love you, mom.\"\n\nHer mom smiled and said, \"You're welcome",
+      "tokens": 59,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": "\u201d\n\nThe man was so excited and said \u201cYes!\u201d\n\nJill was so excited and said \u201cYes!\u201d\n\nThe man smiled and said \u201cI\u2019m so proud of you!\u201d\n\nJill smiled and said \u201cThank you!\u201d\n\nThe man smiled and said \u201cYou\ufffd",
+      "tokens": 77,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " nice. They are not happy. They are not happy.\n",
+      "tokens": 14,
+      "characters": 47,
+      "ended": true
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " Anna. I will be a good girl. I will be a good girl.\"\n\nAnna nods. She says, \"I love you, Anna. I love you. You are my best friend. I love you.\"\n\nAnna says, \"I love you too, Anna. You are my best",
+      "tokens": 62,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " was very happy and thanked the little girl for his help. From that day on, the little girl was always happy to help the little girl.\n",
+      "tokens": 31,
+      "characters": 134,
+      "ended": true
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " It is a big, red ball. It is a big, red ball. It is a big, red ball. It has a red ball. It has a red ball. It has a red ball. It has a red ball. It has a red ball. It has a red ball. It has a",
+      "tokens": 63,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " Lily. She loves her mom and dad. She loves her mom and dad. She loves her mom and dad. She loves her mom and dad.\n",
+      "tokens": 32,
+      "characters": 115,
+      "ended": true
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " be safe. We will be safe and we will be safe.\"\n\nThe king and the king and the king were happy. They thanked the king and the king and the king. They said goodbye and went back to their castle",
+      "tokens": 46,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " a beautiful day.\n",
+      "tokens": 6,
+      "characters": 18,
+      "ended": true
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": "\n\nThe little girl was so excited to see the little girl. She asked her mommy, \"What is that?\"\n\nHer mommy said, \"It's a special thing to do. It's a special thing to do. It's a special thing to do",
+      "tokens": 56,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": " you too, mommy.\"\n",
+      "tokens": 8,
+      "characters": 18,
+      "ended": true
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "greedy",
+      "seed": null,
+      "continuation": "\n\nThe little girl was very sad and she wanted to help her mom. She asked her mom if she could help her. Her mom said yes and they went to the store. The little girl was so happy and thanked her",
+      "tokens": 46,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": ", and I'm going to spoil you. I'm sorry,\" Lily said, \"I'm sorry, sweetie. I wanted to help you. I didn't know. Can I have some help?\"\n\nThe little girl smiled and said, \"Yes, you can. Let's go and",
+      "tokens": 60,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " \"I'm sorry, Spot!\" Max said, \"Don't worry, Spot. I'm sorry. Can you help me fix my toy?\"\n\nSpot looked at the toy and said, \"Don't worry, Spot. I'll help you. But take everything in the garage",
+      "tokens": 57,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " The man is running so fast!\"\n\nJill was scared and asked, \"What are you doing?\"\n\nThe man smiled and said, \"I'm going to join the music!\"\n\nJill was so happy and thanked the man. She smiled and said",
+      "tokens": 55,
+      "characters": 196,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " kind. You should not touch birds or bugs. You should listen to me and change the others. You should be kind and respectful.\"\n\nSara and Ben nod. They do not understand. They are happy. They are",
+      "tokens": 46,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " please, mommy. My grandma has to be patient and respectful. She says that the chair is not safe. It does not trust her. It is also a place. If you don't use it, you can do it and keep it in the",
+      "tokens": 51,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " was so happy that he couldn't wait to see them again soon.\n",
+      "tokens": 16,
+      "characters": 60,
+      "ended": true
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": "\u201d\n\nThe Mom hugged her and said, \u201cThat\u2019s a regular name, Lily. I\u2019m glad you had a nice name.\u201d\n\n\u201cThat is a great name!\u201d said Lily.\n\nThe day was shining, and Lily smiled. She knew it was a good name",
+      "tokens": 69,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " little girl. She had never dreamed of her new house before it was back to night.\n",
+      "tokens": 20,
+      "characters": 82,
+      "ended": true
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " be there. If you'll settle down and get some water away.\"\n\nThe little girl was very upset. She decided to leave and look for the plants. She was mad, but then she saw a big sign on the ground",
+      "tokens": 47,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " the most beautiful flower. She hugged her mom and said, \"Thank you, Mom. This is the best day ever!\" \n\nThe little girl smiled and said, \"I love you, Mom. I love to be our mom. I love you too.\"",
+      "tokens": 54,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": "\n\nThe bell said \"thank you\".\n\nThe angel smiled and said \"I'm glad you're so strong!\" \n\nThe angel replied \"You're right to be careful when you're not doing the right way.\" \n\nThe angel smiled and",
+      "tokens": 54,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": " you, Ben?\"\n\nAnna smiles and says, \"Thank you, Ben. I love you.\"\n\nThey hug each other and run to the pitch. They are happy. They love each other.\n",
+      "tokens": 44,
+      "characters": 146,
+      "ended": true
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "sample",
+      "seed": 92617660,
+      "continuation": "\n\nSo they went back inside and went to play in their backyard. They found a big doll and gave it a hug. Tom was so happy and grateful. He was glad to have such a friend!\n",
+      "tokens": 44,
+      "characters": 170,
+      "ended": true
+    },
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " goodbye to him. He says, \"Don't worry, I will say hello.\"\n\nTim says, \"Okay, I will! I will show you your dragon friend!\" He takes the dragon and comes back with a smile. He tells him that he should",
+      "tokens": 53,
+      "characters": 198,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Sara was happy. She had a good day, and she was ready to show her mom. She ran to the kitchen and sat on a chair. She saw a big cake on the table. She wanted to touch it, but it was too hard.",
+      "tokens": 51,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Mia. She is very smart and hard. It is big and round and bright. She can hear her dad's voice? She is a surprise for her. She says, \"Mom, look! You are not supposed to see. What are you doing",
+      "tokens": 51,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " naughty. They are not allowed to go on a big adventure. And they should never be safe or angry at the beach.\n",
+      "tokens": 27,
+      "characters": 110,
+      "ended": true
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " grandma.\" Grandma says, \"I love you, Anna. You are very brave. And you have to be careful.\"\n\n\"Thank you, Grandma,\" Anna says. \"You are very kind. She is a good nurse.\"\n\n\"Thank you,\" Grandma says",
+      "tokens": 58,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " waved back at the little girl and said, \"It's so cool! Can you help me?\" The little girl smiled and said, \"Yes, I can help you.\" The small girl smiled and said, \"Thank you, I'm glad you're so",
+      "tokens": 52,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": "?'\n\n\"It's a big, comfy fox,\" said the fox.\n\nThe fox smiled. He had a small, magical tree.\n\nThe fox smiled and said, \"You are a brave little fox, if you want to be friendly and respectful.\"\n\nThe",
+      "tokens": 59,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " Benny went outside to play in the sun. \n",
+      "tokens": 12,
+      "characters": 41,
+      "ended": true
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " heal.\" But the little girl did not listen. She tried to feel the oven and the firemen around her. She felt sad and wanted to help the little girl.\n\nBut the little girl was more careful and he",
+      "tokens": 45,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " raining and rain. It has some water and a big boom. It can rain go over the clouds and make a loud noise. It is too hot and cold. It goes into the rain and the rain. The rain is cold and wet and",
+      "tokens": 49,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": "ilot. She was always looking for a ball, but she was too small and green.\n\nTommy's mommy came over. She said, \"No, Tom. You can't play with the ball. It's not yours.\" Tom did not listen. He tried",
+      "tokens": 56,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": " playing with my car. It is a special car. You can play with it too.\"\n\nTom likes the car. He thinks, \"I will be right. I am sorry. I will not do it again. I will give you my car. Can you forgive",
+      "tokens": 55,
+      "characters": 194,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "sample",
+      "seed": 1729,
+      "continuation": "?\". \n\nThe little girl was very happy. She had had a wonderful party and was happy that she had brought her friends in!\n",
+      "tokens": 30,
+      "characters": 119,
+      "ended": true
+    },
+    {
+      "prompt": "My lord, I have something to say",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": ", Jack. I'll try to talk to you. I'm sure I wanted you to come too. I won't be mad like you! I will be my friend!\"\n\nJack and Jake took the phone to the park and started to laugh. They laughed and",
+      "tokens": 54,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "ROMEO:",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " I'm also so delicate!\"\n\nThe boy was so excited to have fun playing with his toys. He smiled and said, \"Thank you, I'm glad I wanted to play with you!\"\n\nThe girl was very proud of himself for being",
+      "tokens": 51,
+      "characters": 197,
+      "ended": false
+    },
+    {
+      "prompt": "JULIET:",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " I'm very happy!\" \n\nThe children said, \"That's awesome!\" \n\nJill smiled and said, \"Yes! I like to watch the quiz, Pat!\"\n\nThe teacher said, \"Now our teacher is happy to show them to you.\" \n\nSo, the",
+      "tokens": 62,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to be",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " your friends. They always shared their toys and share.\n",
+      "tokens": 13,
+      "characters": 56,
+      "ended": true
+    },
+    {
+      "prompt": "I pray you,",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " my tooth is to pray.\"\n\nLily's mom smiled and said, \"I love you, Lily. You are very brave and a good night. You are good and grateful for the tooth. You are a good brother.\"\n\nThe cat looked at",
+      "tokens": 53,
+      "characters": 192,
+      "ended": false
+    },
+    {
+      "prompt": "The king",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " was happy. He thanked the cold fish for being so kind to his family and thanked him for teaching him a lesson.\n",
+      "tokens": 26,
+      "characters": 112,
+      "ended": true
+    },
+    {
+      "prompt": "What is your name?",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " I'm just so shy!\"\n\nThe girl was so excited. She peeked out of her window and ran inside. She closed her eyes and said, \"I wish I could make a wish. I will be out for you.\"\n\nThe girl smiled and",
+      "tokens": 54,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "Good night,",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " he couldn't find anything else he found.\n",
+      "tokens": 11,
+      "characters": 42,
+      "ended": true
+    },
+    {
+      "prompt": "The king is dead, and we must now",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": ". We can do anything else we want to see. We can make a pond!\"\n\nThe little girl nodded and said, \"Yes! We can do it. Maybe it will make you better.\"\n\nThe little girl smiled and said, \"Thank you",
+      "tokens": 53,
+      "characters": 193,
+      "ended": false
+    },
+    {
+      "prompt": "the sky today is",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " a beautiful place. One day, she went to the park and saw a shiny necklace. She picked it up and showed it to her mom, who was very happy. Her mom smiled and said, \"That's a very special necklace",
+      "tokens": 47,
+      "characters": 195,
+      "ended": false
+    },
+    {
+      "prompt": "My name is ",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": "\n\n\u201cHi there,\u201d said the man. \u201cWould you like to join me?\u201d\n\nSo the man and the man started to applaud. They laughed and laughed. \u201cI\u2019ll jump in here!\u201d he said.\n\nThe man smiled. \u201cYes, it\u2019s like a little",
+      "tokens": 73,
+      "characters": 198,
+      "ended": false
+    },
+    {
+      "prompt": "I love",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": " you too, mommy.\" \n\nAfter a while, they got hungry and started to eat. They ate some of the tasty food, and the pie was so tasty! They ate the delicious pie and enjoyed the rest of their hot health",
+      "tokens": 49,
+      "characters": 197,
+      "ended": false
+    },
+    {
+      "prompt": "To be, or not to ",
+      "mode": "sample",
+      "seed": 1730,
+      "continuation": "\n\nThe end.\n",
+      "tokens": 7,
+      "characters": 11,
+      "ended": true
+    }
+  ],
+  "review": "CPU feasibility probe only; grammatical English is clearer, but semantic errors, out-of-domain failures and greedy repetition remain. Not integrated with Snackwell and not presented as our training."
+}

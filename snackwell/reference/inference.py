@@ -58,10 +58,25 @@ def categorical_reference(weights, draw):
     return max(i for i, weight in enumerate(weights) if value(weight) > 0)
 
 
+def min_p_reference(weights, min_p):
+    """Independent FP32 threshold check, retaining the original surviving weights."""
+    if any(not math.isfinite(value(w)) or value(w) < 0 for w in weights):
+        raise ValueError("min-p requires finite nonnegative sampling weights")
+    maximum = max(weights, key=value)
+    if value(maximum) <= 0:
+        raise ValueError("min-p requires at least one positive sampling weight")
+    threshold = value(reference(FMUL, maximum, bits(min_p)))
+    return [w if value(w) >= threshold else 0 for w in weights]
+
+
 def expected_stage(stage, before, layout, matrix_product=tensor_product):
     arrays = [before[layout.regions[name][0] : sum(layout.regions[name])] for name in stage.inputs]
     x = arrays[0]
     p, kind = stage.params, stage.operation
+    if kind.startswith("pretrained_"):
+        from snackwell.reference.pretrained_kernels import expected
+
+        return expected(kind.removeprefix("pretrained_"), arrays, p)
     if kind in (
         "gelu_backward",
         "column_sum",
@@ -88,6 +103,16 @@ def expected_stage(stage, before, layout, matrix_product=tensor_product):
         ], True
     if kind == "vocabulary_mask":
         return [a if i % cols < p["vocabulary"] else 0xFF800000 for i, a in enumerate(x)], True
+    if kind == "token_mask":
+        return [
+            a if arrays[1][i // 32] & (1 << (i % 32)) else 0xFF800000 for i, a in enumerate(x)
+        ], True
+    if kind == "min_p":
+        return [
+            w
+            for r in range(p["rows"])
+            for w in min_p_reference(x[r * cols : (r + 1) * cols], p["min_p"])
+        ], True
     if kind == "argmax":
         return [
             max(range(cols), key=lambda c: value(x[r * cols + c])) for r in range(p["rows"])
@@ -204,6 +229,10 @@ def attention_reference(case):
 
 
 TOLERANCES = {
+    "pretrained_rms_inverse": (3e-5, 3e-6),
+    "pretrained_reciprocal": (3e-5, 3e-6),
+    "pretrained_exp": (1e-4, 2e-6),
+    "pretrained_swiglu": (1e-4, 3e-6),
     "gelu": (1e-4, 3e-6),
     "softmax": (1e-4, 2e-6),
     "layernorm": (3e-5, 3e-6),

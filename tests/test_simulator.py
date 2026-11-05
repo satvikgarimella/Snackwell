@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from dataclasses import replace
 from pathlib import Path
+from unittest.mock import patch
 
 from snackwell.assembler import assemble
 from snackwell.kernels.basic import (
@@ -16,7 +17,9 @@ from snackwell.kernels.basic import (
     verify_vector_add,
     verify_vector_mul,
 )
+from snackwell.kernels.inference import Layout
 from snackwell.model_runner import forward
+from snackwell.model_runtime import ModelRuntime
 from snackwell.paths import ROOT
 from snackwell.simulator import SimulatorSession, compile_model_runner, read_hex, run_program
 from tests.test_model import fixture
@@ -98,7 +101,81 @@ class VerilatorTests(unittest.TestCase):
         with SimulatorSession(self.verilator) as session:
             direct = run_program(session, words, memory, self.output / "direct" / name, **launch)
         self.assertEqual(first, direct, "the direct clock driver must preserve every bit and cycle")
+        with SimulatorSession(replace(self.verilator, compact=True)) as session:
+            streamed = run_program(session, words, memory, self.output / "words" / name, **launch)
+        self.assertEqual(first, streamed, "word transport must preserve every bit and cycle")
         return second[0]
+
+    def test_word_transport_model_matches_full_artifacts(self):
+        output = Path(tempfile.mkdtemp(prefix="word-model-", dir=self.output))
+        reports = []
+        for compact in (False, True):
+            result = forward(
+                fixture(),
+                [1, 2, 3, 4],
+                output / str(compact),
+                replace(self.verilator, compact=compact),
+            )
+            for key in ("wall_seconds", "reference_seconds", "simulation"):
+                result.pop(key)
+            reports.append(result)
+        self.assertEqual(reports[0], reports[1])
+        self.assertTrue(list((output / "False").glob("[0-9]*_*/program.hex")))
+        self.assertFalse(list((output / "True").glob("[0-9]*_*")))
+
+    def test_word_transport_timeout_restart_and_trace_switch(self):
+        output = Path(tempfile.mkdtemp(prefix="word-session-", dir=self.output))
+        with SimulatorSession(replace(self.verilator, compact=True)) as session:
+            words = assemble("ADDI R2, R0, 27\nEXIT")
+            actual = run_program(session, words, [1] * 1024, output, warp_mask=2)
+            expected = run_program(self.icarus, words, [1] * 1024, output / "icarus", warp_mask=2)
+            self.assertEqual(actual, expected)
+            process = session.process
+            with self.assertRaisesRegex(RuntimeError, "Kernel timeout"):
+                run_program(
+                    session,
+                    assemble("loop: BEQ R15, R15, loop"),
+                    [0] * 1024,
+                    output / "timeout",
+                    max_cycles=10,
+                )
+            self.assertIsNone(session.process)
+            self.assertIsNotNone(process.poll())
+            for trace in (False, True, False):
+                session.trace = trace
+                after, registers, _ = run_program(session, words, [0] * 1024, output, entry=4)
+                self.assertEqual(after, [0] * 1024)
+                self.assertEqual(registers, [0] * 256)
+                self.assertEqual((output / "trace.csv").exists(), trace)
+
+    def test_word_transport_verification_failure_saves_reproduction(self):
+        output = Path(tempfile.mkdtemp(prefix="word-failure-", dir=self.output))
+        layout = Layout()
+        layout.allocate("out", 4, [0] * 4)
+        with SimulatorSession(replace(self.verilator, compact=True)) as session:
+            runtime = ModelRuntime(output, session)
+            with (
+                patch("snackwell.model_runtime.expected_stage", return_value=[]),
+                patch("snackwell.model_runtime.verify_stage", side_effect=ValueError("mismatch")),
+                self.assertRaisesRegex(ValueError, "mismatch"),
+            ):
+                runtime.launch("failure", layout, "EXIT", "test", (), "out")
+        directory = output / "000_failure"
+        self.assertEqual(read_hex(directory / "input.hex", 1024), layout.memory)
+        self.assertEqual(read_hex(directory / "output.hex", 1024), layout.memory)
+        self.assertFalse(json.loads((directory / "failure.json").read_text())["verified"])
+        self.assertFalse((directory / "result.json").exists())
+
+    def test_word_driver_rejects_truncated_frames(self):
+        for data in (b"garbage", bytes.fromhex("31574e53")):
+            result = subprocess.run(
+                [str(self.verilator.session_executable), "+WORDS"],
+                input=data,
+                capture_output=True,
+                timeout=10,
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn(b"ERROR", result.stderr)
 
     def test_fp32_edges_masks_and_tensor_rounding_match_icarus(self):
         edges = [

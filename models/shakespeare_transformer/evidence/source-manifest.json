@@ -1,0 +1,37 @@
+{
+  "source_sha256": {
+    "snackwell/character_model.py": "254e7623b260ceaefd77c997b44140e847aa0289312bb4dd2a27c3e4a1c5adde",
+    "snackwell/cli/generation_quality.py": "bae28ec442f8430898dfce70553ef0e690abaebb72d60091c1f7c717650cedc0",
+    "snackwell/cli/train.py": "65d8d286105568defd4fcc8b7865da105077c8a6ceb6f72eb673353ed927e5b9",
+    "snackwell/cli/train_transformer.py": "e74ef5ecd766d83bd5c789337cfe55dc35e0a81fc9e11aabefbbe54de6d24708",
+    "snackwell/shakespeare_data.py": "60f116a826d942233ecb91092e8089227175ed7de4268ebc88a97062115f38b0",
+    "snackwell/torch_model.py": "8b8ee227e830e3d92ea030685e9b5b8d157469abeba0862d81bba353271d14a8",
+    "snackwell/transformer_training.py": "02f656cb8cf4ca20b688b56fb32ccea6b38a43a32c0390f114bd29284aa080b1",
+    "snackwell/transformer_training_runtime.py": "3663ee884e6be2a18aa27ee4e2036829e897f566a281ec243a13b4c42e9b96e6",
+    "snackwell/model_runner.py": "26c00dae9327ee662451b233988b7dd0438b603a2aaaeeb1d65f0baee85c0af1",
+    "snackwell/kv_cache.py": "9b8d749b680f1a4abbdacaa11f8172a08a4a76e164447a8aac3fbbaed285bb47",
+    "scripts/prepare_shakespeare.py": "7315e9c0ff82aa24ea5cc53d99ded938109d3f47628479bf6823362647e0e0d6",
+    "tests/test_kv_cache.py": "6f43af0c21fb8f5aa85c9a2fe1ad185d62b255fa21d36761fb07523e77493471",
+    "tests/test_reference_training.py": "a5df51b94233d55fc45fa0bd45d4ebe4e0d79355efcb00257132a138f67b6e35",
+    "tests/test_transformer_training.py": "08d4a66de463e3e17864cbcdd62f411723c55df0f03630e63532d5853f7c5289",
+    "tests/test_generation_quality.py": "39e70af0b118019e4fdb2b80ff5383d61c03e2905428b60c81b4517096646247",
+    "tests/test_shakespeare_data.py": "e4edf231d3809535bb64676b69890b74895018808069bbf1b0e5f8e7d6d73bfa",
+    "build/quality-repair-20261026/evaluate_candidate.py": "a0bb246950cd4d1d2aaf22733d8641a9102f2bb7c31f4192f74ba9fa74600ae9",
+    "build/quality-repair-20261026/compare_results.py": "8a94930bb31eeb77dc2de8adf26316315449d7e6d78c510c52d8b264a464d8ae",
+    "build/quality-repair-20261026/verify_model.py": "4a2492e6640cccb900de0176101e0be3edd71a3931a2f6d700aa2659bb7c6041",
+    "models/shakespeare_transformer/evidence/audit.py": "1300b463fc8c0568f0b82d94f67316605372d6dec694d3b9504aa98c2b61c69b"
+  },
+  "tests": {
+    "initial_suite_methods": 36,
+    "diagnostic_followup_methods": 4,
+    "distinct_methods": 37,
+    "skipped": 0,
+    "passed": true,
+    "logs": [
+      "final-tests.log",
+      "repetition-tests.log"
+    ]
+  },
+  "lint": "ruff check and format passed for all 12 added/changed Python files",
+  "audit_driver": "Saved experiment driver with repository/baseline paths adjusted; adds independent same-batch loss after update, also recorded for completed audits."
+}

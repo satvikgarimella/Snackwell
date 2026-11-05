@@ -1,0 +1,71 @@
+"""A bounded language task: answer a location question from two stated facts.
+
+Training never contains the object/location pairs reserved for validation/test.
+Inference uses only the vocabulary constants below for input validation. The
+data generator and expected-answer construction never supply model predictions.
+"""
+
+import hashlib
+import json
+from dataclasses import asdict, dataclass
+
+OBJECTS = ("ball", "book", "cup", "hat", "key", "toy", "bag", "box")
+LOCATIONS = ("kitchen", "garden", "bedroom", "office", "hallway", "bathroom", "attic", "cellar")
+
+
+def pair_split(obj, location):
+    remainder = (OBJECTS.index(obj) + LOCATIONS.index(location)) % len(LOCATIONS)
+    return "test" if remainder == 0 else "validation" if remainder == 1 else "train"
+
+
+@dataclass(frozen=True)
+class Example:
+    facts: tuple
+    query: str
+
+    @property
+    def prompt(self):
+        return " ".join(f"The {obj} is in the {room}." for obj, room in self.facts) + (
+            f" Where is the {self.query}?"
+        )
+
+    @property
+    def answer(self):
+        return f" The {self.query} is in the {dict(self.facts)[self.query]}."
+
+
+def examples(split):
+    if split not in ("train", "validation", "test"):
+        raise ValueError("unknown sentence-task split")
+    result = []
+    for obj in OBJECTS:
+        for room in LOCATIONS:
+            if pair_split(obj, room) != split:
+                continue
+            for distractor in OBJECTS:
+                for elsewhere in LOCATIONS:
+                    if (
+                        distractor == obj
+                        or elsewhere == room
+                        or pair_split(distractor, elsewhere) != "train"
+                    ):
+                        continue
+                    facts = ((obj, room), (distractor, elsewhere))
+                    result.extend((Example(facts, obj), Example(facts[::-1], obj)))
+    return result
+
+
+def dataset_hash(data):
+    return hashlib.sha256(
+        json.dumps([asdict(example) for example in data], sort_keys=True).encode()
+    ).hexdigest()
+
+
+def encode_example(tokenizer, example):
+    prompt = tokenizer.encode(example.prompt)
+    full = tokenizer.encode(example.prompt + example.answer)
+    if full[: len(prompt)] != prompt:
+        raise ValueError("tokenizer merged across the question/answer boundary")
+    # A target at input index i predicts token i+1. Only answer tokens have loss.
+    targets = [-100] * (len(prompt) - 1) + full[len(prompt) :]
+    return full[:-1], targets
