@@ -1,0 +1,21 @@
+test_aliases_and_fragmented_views_retain_original_values (tests.test_direct_memory.DirectMemoryTests.test_aliases_and_fragmented_views_retain_original_values) ... ok
+test_causal_masks_token_masks_and_indirect_embedding_indices (tests.test_direct_memory.DirectMemoryTests.test_causal_masks_token_masks_and_indirect_embedding_indices) ... ok
+test_direct_and_copy_generation_match_decode_rebuild_and_cache_identity (tests.test_direct_memory.DirectMemoryTests.test_direct_and_copy_generation_match_decode_rebuild_and_cache_identity) ... ok
+test_fp32_multiwarp_matvec_tiled_transpose_and_k_carry (tests.test_direct_memory.DirectMemoryTests.test_fp32_multiwarp_matvec_tiled_transpose_and_k_carry) ... ok
+test_lowering_rejects_unrelocatable_branches_and_register_exhaustion (tests.test_direct_memory.DirectMemoryTests.test_lowering_rejects_unrelocatable_branches_and_register_exhaustion) ... ok
+test_multi_pass_row_kernels_wide_shapes_and_partial_output (tests.test_direct_memory.DirectMemoryTests.test_multi_pass_row_kernels_wide_shapes_and_partial_output) ... ok
+test_native_maximum_jobs_partial_rows_and_k_chunks (tests.test_direct_memory.DirectMemoryTests.test_native_maximum_jobs_partial_rows_and_k_chunks) ... ok
+test_pointer_corruption_fails_and_full_artifacts_describe_physical_uploads (tests.test_direct_memory.DirectMemoryTests.test_pointer_corruption_fails_and_full_artifacts_describe_physical_uploads) ... ok
+test_allocations_reclaim_and_reject_foreign_stale_or_oversized_handles (tests.test_resident_memory.ResidentMemoryTests.test_allocations_reclaim_and_reject_foreign_stale_or_oversized_handles) ... ok
+test_corrupt_readback_cannot_become_a_verified_cache (tests.test_resident_memory.ResidentMemoryTests.test_corrupt_readback_cannot_become_a_verified_cache) ... ok
+test_invalid_ranges_and_timeouts_fail_without_reusing_device_state (tests.test_resident_memory.ResidentMemoryTests.test_invalid_ranges_and_timeouts_fail_without_reusing_device_state) ... ok
+test_large_scatter_and_memory_latency_do_not_change_results (tests.test_resident_memory.ResidentMemoryTests.test_large_scatter_and_memory_latency_do_not_change_results) ... ok
+test_model_change_and_cancellation_close_the_session (tests.test_resident_memory.ResidentMemoryTests.test_model_change_and_cancellation_close_the_session) ... ok
+test_prefill_decode_rebuild_sampling_match_global_in_both_precisions (tests.test_resident_memory.ResidentMemoryTests.test_prefill_decode_rebuild_sampling_match_global_in_both_precisions) ... ok
+test_rtl_outputs_feed_consumers_without_host_reupload (tests.test_resident_memory.ResidentMemoryTests.test_rtl_outputs_feed_consumers_without_host_reupload) ... ok
+test_transport_preserves_untouched_data_and_checks_all_guards (tests.test_resident_memory.ResidentMemoryTests.test_transport_preserves_untouched_data_and_checks_all_guards) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 5.669s
+
+OK

@@ -1,0 +1,15 @@
+test_assembler_rejects_invalid_tiles_rows_and_masks (tests.test_tensor_memory.TensorMemoryTests.test_assembler_rejects_invalid_tiles_rows_and_masks) ... ok
+test_invalid_descriptor_early_read_and_stale_ticket_report_errors (tests.test_tensor_memory.TensorMemoryTests.test_invalid_descriptor_early_read_and_stale_ticket_report_errors) ... ok
+test_legacy_array_contention_independent_fp_and_shared_snapshot (tests.test_tensor_memory.TensorMemoryTests.test_legacy_array_contention_independent_fp_and_shared_snapshot) ... ok
+test_nonzero_accumulator_and_rounding_contract (tests.test_tensor_memory.TensorMemoryTests.test_nonzero_accumulator_and_rounding_contract) ... ok
+test_old_ticket_cannot_publish_new_generation (tests.test_tensor_memory.TensorMemoryTests.test_old_ticket_cannot_publish_new_generation) ... ok
+test_partial_warp_and_malformed_encoding_retire_without_side_effects (tests.test_tensor_memory.TensorMemoryTests.test_partial_warp_and_malformed_encoding_retire_without_side_effects) ... ok
+test_public_device_bus_matches_full_sm (tests.test_tensor_memory.TensorMemoryTests.test_public_device_bus_matches_full_sm) ... ok
+test_tiled_program_random_values_strides_and_guards (tests.test_tensor_memory.TensorMemoryTests.test_tiled_program_random_values_strides_and_guards) ... ok
+test_two_warps_completion_and_release_before_reuse (tests.test_tensor_memory.TensorMemoryTests.test_two_warps_completion_and_release_before_reuse) ... ok
+test_verilator_and_persistent_session_match_icarus (tests.test_tensor_memory.TensorMemoryTests.test_verilator_and_persistent_session_match_icarus) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.749s
+
+OK

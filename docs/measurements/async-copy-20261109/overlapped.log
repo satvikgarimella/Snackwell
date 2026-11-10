@@ -1,0 +1,2 @@
+PASS global-memory kernel: 1412 cycles, 96 reads, 16 writes
+/Users/satvik.garimella/Snackwell/tb/tb_snackwell_global_memory.sv:250: $finish called at 147540000 (1ps)

@@ -73,6 +73,10 @@ def expected_stage(stage, before, layout, matrix_product=tensor_product):
     arrays = [before[layout.regions[name][0] : sum(layout.regions[name])] for name in stage.inputs]
     x = arrays[0]
     p, kind = stage.params, stage.operation
+    if kind == "nvfp4_matmul":
+        from snackwell.reference.nvfp4_model import packed_product
+
+        return packed_product(arrays, p), True
     if kind.startswith("pretrained_"):
         from snackwell.reference.pretrained_kernels import expected
 

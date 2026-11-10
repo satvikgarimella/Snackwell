@@ -48,6 +48,8 @@ def native_library():
         library.snackwell_fp32.restype = word
         library.snackwell_tensor_product.argtypes = [pointer] * 4 + [ctypes.c_int] * 4
         library.snackwell_tensor_product.restype = None
+        library.snackwell_sequential_product.argtypes = [pointer] * 4 + [ctypes.c_int] * 3
+        library.snackwell_sequential_product.restype = None
         return library
     except (OSError, RuntimeError, subprocess.SubprocessError) as error:
         warnings.warn(f"Using Python integer verification: {error}", stacklevel=2)
@@ -81,3 +83,41 @@ def tensor_product(a, b, m, n, k, transpose_b=False, initial=None):
         transpose_b,
     )
     return list(result)
+
+
+def nvfp4_product(a, b, initial=None, *, apply_tensor_scale=True):
+    """Optional fast integer oracle; the Python NVFP4 oracle remains independent."""
+    from snackwell.numeric import bits
+    from snackwell.reference.fp32 import FMUL, reference
+    from snackwell.reference.nvfp4 import matmul, scaled
+
+    library = native_library()
+    if library is None:
+        return matmul(a, b, initial, apply_tensor_scale=apply_tensor_scale)
+    m, n, k = len(a.codes), len(b.codes), len(a.codes[0])
+    if any(len(row) != k for row in a.codes + b.codes) or (
+        initial is not None and len(initial) != m * n
+    ):
+        raise ValueError("invalid native NVFP4 dimensions")
+
+    def decode(operand):
+        return [
+            bits(scaled(code, operand.scales[r][j // 16]))
+            for r, row in enumerate(operand.codes)
+            for j, code in enumerate(row)
+        ]
+
+    left, right = decode(a), decode(b)
+    word = ctypes.c_uint32
+    result = (word * (m * n))()
+    library.snackwell_sequential_product(
+        (word * len(left))(*left),
+        (word * len(right))(*right),
+        None if initial is None else (word * len(initial))(*initial),
+        result,
+        m,
+        n,
+        k,
+    )
+    alpha = reference(FMUL, a.tensor_scale, b.tensor_scale)
+    return [reference(FMUL, w, alpha) for w in result] if apply_tensor_scale else list(result)

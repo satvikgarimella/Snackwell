@@ -5,11 +5,12 @@ import random
 from snackwell.reference.fp32 import FADD, FMUL, pack, reference
 
 
-def matmul(a, b):
+def matmul(a, b, initial=None):
+    """Sequential non-fused MACs, optionally starting from a supplied FP32 tile."""
     result = []
     for row in range(4):
         for col in range(4):
-            accumulator = 0
+            accumulator = 0 if initial is None else initial[4 * row + col]
             for k in range(4):
                 product = reference(FMUL, a[4 * row + k], b[4 * k + col])
                 accumulator = reference(FADD, accumulator, product)

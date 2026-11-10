@@ -1,0 +1,1357 @@
+{
+  "verified": true,
+  "identical": true,
+  "precision": "nvfp4",
+  "memory": "resident",
+  "memory_latency": 2,
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "builds": {
+    "serial": {
+      "source_sha256": "73a30077fb39366d358e93a7fe03d36326aa2e11d3ccc3d5a697b32d0252a9bb",
+      "build_sha256": "3124610ddc465cc70085c4771af03ac9f6cef58b1ce57762730eeeaff4668747",
+      "defines": [
+        "SNACKWELL_SERIAL_GLOBAL_LOADS"
+      ],
+      "executable": "/Users/satvik.garimella/Snackwell/build/simulators/verilator/9d62cefb142297123e5c/snackwell_sim",
+      "binary_sha256": "4164350bdac1fe3056f6625147e6d1add0493165fd6bcd7999b612badf814794"
+    },
+    "broadcast": {
+      "source_sha256": "73a30077fb39366d358e93a7fe03d36326aa2e11d3ccc3d5a697b32d0252a9bb",
+      "build_sha256": "1dc2ab7fd2148094377b5a48ccac683aab03d39da3de3a2f07ef7347b53a6772",
+      "defines": [],
+      "executable": "/Users/satvik.garimella/Snackwell/build/simulators/verilator/22ba7e235d8a8881bcb8/snackwell_sim",
+      "binary_sha256": "2c32d6bc334fbb5ab21e337380f5196fe572622379863d270b3799b73d623121"
+    }
+  },
+  "compared_tokens": 4,
+  "answer_correct": null,
+  "totals": {
+    "serial": {
+      "cycles": 7890415,
+      "launches": 992,
+      "wall_seconds": 6.411695041999337,
+      "memory": {
+        "reads": 584688,
+        "writes": 60160,
+        "responses": 644848,
+        "host_upload_bytes": 171560,
+        "host_readback_bytes": 234384,
+        "constant_upload_bytes": 138536
+      },
+      "phase_averages": {
+        "prefill": {
+          "tokens": 1,
+          "cycles": 3426331.0,
+          "wall_seconds": 3.325089250000019
+        },
+        "decode": {
+          "tokens": 3,
+          "cycles": 1488028.0,
+          "wall_seconds": 1.028868597333106
+        }
+      }
+    },
+    "broadcast": {
+      "cycles": 6526615,
+      "launches": 992,
+      "wall_seconds": 5.045693250001932,
+      "memory": {
+        "reads": 394295,
+        "writes": 60160,
+        "responses": 454455,
+        "host_upload_bytes": 171560,
+        "host_readback_bytes": 234384,
+        "constant_upload_bytes": 138536
+      },
+      "phase_averages": {
+        "prefill": {
+          "tokens": 1,
+          "cycles": 2777707.0,
+          "wall_seconds": 2.2319872500011115
+        },
+        "decode": {
+          "tokens": 3,
+          "cycles": 1249636.0,
+          "wall_seconds": 0.9379020000002735
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "prompt": "ROMEO:",
+      "expected": null,
+      "generated": "\nMar",
+      "correct": null,
+      "tokens": [
+        {
+          "identical": true,
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10
+          ],
+          "probability_words": [
+            1065287060,
+            993029496,
+            910513279,
+            846242147,
+            803421303,
+            974192498,
+            924543419,
+            970675159,
+            935020230,
+            925780312,
+            882181969,
+            918796840,
+            912672853,
+            915461771,
+            937692789,
+            897649175,
+            897237127,
+            866119258,
+            890316550,
+            920791988,
+            901885038,
+            907136672,
+            889714797,
+            868334635,
+            951351778,
+            928947270,
+            930437101,
+            923037485,
+            908483273,
+            877343108,
+            928005673,
+            925077137,
+            902868010,
+            853704215,
+            872518348,
+            912936952,
+            841136159,
+            909236463,
+            797050857,
+            886489746,
+            871064114,
+            867616377,
+            918505017,
+            899513087,
+            856319767,
+            858279089,
+            848801875,
+            887005786,
+            823741178,
+            893399961,
+            885822129,
+            856094463,
+            885737255,
+            881836377,
+            900893365,
+            858784163,
+            884661353,
+            927637158,
+            855860365,
+            870113461,
+            875881136,
+            907381976,
+            860084025,
+            867008742,
+            798970362
+          ],
+          "selection": {
+            "mode": "greedy",
+            "draw": null,
+            "token_id": 0,
+            "temperature": null,
+            "min_p": null,
+            "token_text": "\n",
+            "healed_prefix": ""
+          },
+          "text": "\n",
+          "phase": "prefill",
+          "runs": {
+            "serial": {
+              "cycles": 3426331,
+              "wall_seconds": 3.325089250000019,
+              "launches": 353,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 173952,
+                "constant_upload_bytes": 138536,
+                "host_upload_bytes": 163464,
+                "host_readback_bytes": 112836,
+                "protocol_request_bytes": 3077804,
+                "protocol_response_bytes": 1938552,
+                "rtl_launches": 353,
+                "reads": 252656,
+                "writes": 29072,
+                "responses": 281728,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 17588,
+                  "launches": 16,
+                  "reads": 1152,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 287673,
+                  "launches": 16,
+                  "reads": 19648,
+                  "writes": 3712,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 1848043,
+                  "launches": 209,
+                  "reads": 140952,
+                  "writes": 13328,
+                  "copy_reads": 90720,
+                  "nvfp4_macs": 967680,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 156605,
+                  "launches": 32,
+                  "reads": 14336,
+                  "writes": 2400,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 24576
+                },
+                "scale_mask": {
+                  "cycles": 22614,
+                  "launches": 28,
+                  "reads": 1000,
+                  "writes": 800,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 188145,
+                  "launches": 29,
+                  "reads": 11439,
+                  "writes": 1856,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 97751,
+                  "launches": 14,
+                  "reads": 6400,
+                  "writes": 3200,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 801878,
+                  "launches": 7,
+                  "reads": 57600,
+                  "writes": 3200,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1042,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4992,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            },
+            "broadcast": {
+              "cycles": 2777707,
+              "wall_seconds": 2.2319872500011115,
+              "launches": 353,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 173952,
+                "constant_upload_bytes": 138536,
+                "host_upload_bytes": 163464,
+                "host_readback_bytes": 112836,
+                "protocol_request_bytes": 3077804,
+                "protocol_response_bytes": 1938552,
+                "rtl_launches": 353,
+                "reads": 163993,
+                "writes": 29072,
+                "responses": 193065,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 17140,
+                  "launches": 16,
+                  "reads": 1088,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 240394,
+                  "launches": 16,
+                  "reads": 13264,
+                  "writes": 3712,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 1600494,
+                  "launches": 209,
+                  "reads": 105777,
+                  "writes": 13328,
+                  "copy_reads": 90720,
+                  "nvfp4_macs": 967680,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 150869,
+                  "launches": 32,
+                  "reads": 13568,
+                  "writes": 2400,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 24576
+                },
+                "scale_mask": {
+                  "cycles": 21473,
+                  "launches": 28,
+                  "reads": 856,
+                  "writes": 800,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 148182,
+                  "launches": 29,
+                  "reads": 6111,
+                  "writes": 1856,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 97751,
+                  "launches": 14,
+                  "reads": 6400,
+                  "writes": 3200,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 495370,
+                  "launches": 7,
+                  "reads": 16800,
+                  "writes": 3200,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1042,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4992,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "identical": true,
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0
+          ],
+          "probability_words": [
+            1007148362,
+            938930972,
+            898245945,
+            900387729,
+            935788697,
+            995900102,
+            906282412,
+            932888569,
+            914938823,
+            966639919,
+            902244613,
+            903068907,
+            911813642,
+            1036816697,
+            1016864505,
+            1034017830,
+            1001857979,
+            999852673,
+            1007480502,
+            1037588669,
+            1032912671,
+            1027444104,
+            1000412372,
+            1017588995,
+            1032610441,
+            1040148425,
+            1021179457,
+            1029881914,
+            1013216473,
+            991864347,
+            1014230866,
+            1017088210,
+            1033023676,
+            993710412,
+            1009038435,
+            1035421018,
+            960468188,
+            1018124850,
+            942946169,
+            952123662,
+            933183975,
+            949596315,
+            930849919,
+            934123008,
+            940920605,
+            949868753,
+            935947048,
+            939746833,
+            919006123,
+            955063201,
+            943643457,
+            928916625,
+            931510629,
+            938163381,
+            924675222,
+            936257267,
+            884987996,
+            939757168,
+            931529336,
+            916645591,
+            923541030,
+            939738811,
+            933093636,
+            965204717,
+            879979308
+          ],
+          "selection": {
+            "mode": "greedy",
+            "draw": null,
+            "token_id": 25,
+            "temperature": null,
+            "min_p": null,
+            "token_text": "M",
+            "healed_prefix": ""
+          },
+          "text": "M",
+          "phase": "decode",
+          "runs": {
+            "broadcast": {
+              "cycles": 1215282,
+              "wall_seconds": 0.9171095000056084,
+              "launches": 213,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 183424,
+                "constant_upload_bytes": 0,
+                "host_upload_bytes": 3196,
+                "host_readback_bytes": 40004,
+                "protocol_request_bytes": 1760648,
+                "protocol_response_bytes": 1141640,
+                "rtl_launches": 213,
+                "reads": 74506,
+                "writes": 10192,
+                "responses": 84698,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 2286,
+                  "launches": 8,
+                  "reads": 136,
+                  "writes": 64,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 65255,
+                  "launches": 9,
+                  "reads": 2925,
+                  "writes": 576,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 890085,
+                  "launches": 117,
+                  "reads": 59201,
+                  "writes": 7440,
+                  "copy_reads": 50784,
+                  "nvfp4_macs": 541696,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 58820,
+                  "launches": 32,
+                  "reads": 5120,
+                  "writes": 384,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "scale_mask": {
+                  "cycles": 7110,
+                  "launches": 16,
+                  "reads": 160,
+                  "writes": 128,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 90344,
+                  "launches": 17,
+                  "reads": 3123,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 15603,
+                  "launches": 8,
+                  "reads": 1024,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 79745,
+                  "launches": 4,
+                  "reads": 2688,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1048,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4986,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            },
+            "serial": {
+              "cycles": 1446074,
+              "wall_seconds": 1.0261660410033073,
+              "launches": 213,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 183424,
+                "constant_upload_bytes": 0,
+                "host_upload_bytes": 3196,
+                "host_readback_bytes": 40004,
+                "protocol_request_bytes": 1760648,
+                "protocol_response_bytes": 1141640,
+                "rtl_launches": 213,
+                "reads": 107392,
+                "writes": 10192,
+                "responses": 117584,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 2468,
+                  "launches": 8,
+                  "reads": 160,
+                  "writes": 64,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 92387,
+                  "launches": 9,
+                  "reads": 6516,
+                  "writes": 576,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 1022728,
+                  "launches": 117,
+                  "reads": 78872,
+                  "writes": 7440,
+                  "copy_reads": 50784,
+                  "nvfp4_macs": 541696,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 81996,
+                  "launches": 32,
+                  "reads": 8192,
+                  "writes": 384,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "scale_mask": {
+                  "cycles": 7110,
+                  "launches": 16,
+                  "reads": 160,
+                  "writes": 128,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 90344,
+                  "launches": 17,
+                  "reads": 3123,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 15603,
+                  "launches": 8,
+                  "reads": 1024,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 127404,
+                  "launches": 4,
+                  "reads": 9216,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1048,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4986,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "identical": true,
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25
+          ],
+          "probability_words": [
+            889128711,
+            898953036,
+            910693856,
+            862443398,
+            869325747,
+            929260261,
+            894199183,
+            877406333,
+            875696043,
+            831078608,
+            879942994,
+            875808597,
+            868397200,
+            966899382,
+            854978012,
+            875350996,
+            883731141,
+            957234780,
+            847603521,
+            894515520,
+            868203324,
+            962805164,
+            872385605,
+            885279297,
+            861029070,
+            903267704,
+            904477644,
+            957872251,
+            888115944,
+            896643662,
+            916909000,
+            906531886,
+            873081324,
+            908886659,
+            868754525,
+            817947538,
+            907970699,
+            925876387,
+            875355388,
+            1054265226,
+            926365635,
+            884103836,
+            915709268,
+            1029284101,
+            902165682,
+            865779233,
+            952383686,
+            1028037940,
+            900252228,
+            902139004,
+            947482520,
+            919025654,
+            924814792,
+            1034126438,
+            941361706,
+            873073873,
+            982448659,
+            933457095,
+            877821113,
+            1041296121,
+            915546832,
+            941429885,
+            910030163,
+            1048751367,
+            855952896
+          ],
+          "selection": {
+            "mode": "greedy",
+            "draw": null,
+            "token_id": 39,
+            "temperature": null,
+            "min_p": null,
+            "token_text": "a",
+            "healed_prefix": ""
+          },
+          "text": "a",
+          "phase": "decode",
+          "runs": {
+            "serial": {
+              "cycles": 1446125,
+              "wall_seconds": 1.0344702919974225,
+              "launches": 213,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 192640,
+                "constant_upload_bytes": 0,
+                "host_upload_bytes": 2024,
+                "host_readback_bytes": 40004,
+                "protocol_request_bytes": 1759252,
+                "protocol_response_bytes": 1141640,
+                "rtl_launches": 213,
+                "reads": 107392,
+                "writes": 10192,
+                "responses": 117584,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 2468,
+                  "launches": 8,
+                  "reads": 160,
+                  "writes": 64,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 92357,
+                  "launches": 9,
+                  "reads": 6516,
+                  "writes": 576,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 1022541,
+                  "launches": 117,
+                  "reads": 78872,
+                  "writes": 7440,
+                  "copy_reads": 50784,
+                  "nvfp4_macs": 541696,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 82235,
+                  "launches": 32,
+                  "reads": 8192,
+                  "writes": 384,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "scale_mask": {
+                  "cycles": 7138,
+                  "launches": 16,
+                  "reads": 160,
+                  "writes": 128,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 90353,
+                  "launches": 17,
+                  "reads": 3123,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 15625,
+                  "launches": 8,
+                  "reads": 1024,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 127376,
+                  "launches": 4,
+                  "reads": 9216,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1042,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4990,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            },
+            "broadcast": {
+              "cycles": 1215213,
+              "wall_seconds": 0.9505257089986117,
+              "launches": 213,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 192640,
+                "constant_upload_bytes": 0,
+                "host_upload_bytes": 2024,
+                "host_readback_bytes": 40004,
+                "protocol_request_bytes": 1759252,
+                "protocol_response_bytes": 1141640,
+                "rtl_launches": 213,
+                "reads": 74506,
+                "writes": 10192,
+                "responses": 84698,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 2286,
+                  "launches": 8,
+                  "reads": 136,
+                  "writes": 64,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 65211,
+                  "launches": 9,
+                  "reads": 2925,
+                  "writes": 576,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 889876,
+                  "launches": 117,
+                  "reads": 59201,
+                  "writes": 7440,
+                  "copy_reads": 50784,
+                  "nvfp4_macs": 541696,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 59076,
+                  "launches": 32,
+                  "reads": 5120,
+                  "writes": 384,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "scale_mask": {
+                  "cycles": 7138,
+                  "launches": 16,
+                  "reads": 160,
+                  "writes": 128,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 90353,
+                  "launches": 17,
+                  "reads": 3123,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 15625,
+                  "launches": 8,
+                  "reads": 1024,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 79616,
+                  "launches": 4,
+                  "reads": 2688,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1042,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4990,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "identical": true,
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25,
+            39
+          ],
+          "probability_words": [
+            923365543,
+            946342378,
+            916235725,
+            870848288,
+            835705674,
+            889096160,
+            911767766,
+            940811695,
+            891477293,
+            807474402,
+            866111473,
+            887126436,
+            893362588,
+            842799007,
+            777738048,
+            867374478,
+            832008751,
+            832350943,
+            835343645,
+            822515125,
+            831485972,
+            838497965,
+            876610795,
+            880953014,
+            820112831,
+            868684201,
+            859455685,
+            838911405,
+            841452753,
+            858245904,
+            889000271,
+            861325919,
+            853675171,
+            841646709,
+            800648433,
+            786515410,
+            848678897,
+            813485665,
+            856879785,
+            927021843,
+            947737113,
+            1008496791,
+            1040600276,
+            937555073,
+            949903871,
+            996262258,
+            940898015,
+            993361493,
+            953588248,
+            1041296378,
+            999402448,
+            982310729,
+            1047301862,
+            913203189,
+            977843205,
+            875740509,
+            1052280565,
+            1028107830,
+            1027355106,
+            965345613,
+            957368783,
+            975015045,
+            939036357,
+            1016131311,
+            924967910
+          ],
+          "selection": {
+            "mode": "greedy",
+            "draw": null,
+            "token_id": 56,
+            "temperature": null,
+            "min_p": null,
+            "token_text": "r",
+            "healed_prefix": ""
+          },
+          "text": "r",
+          "phase": "decode",
+          "runs": {
+            "broadcast": {
+              "cycles": 1318413,
+              "wall_seconds": 0.9460707909966004,
+              "launches": 213,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 201920,
+                "constant_upload_bytes": 0,
+                "host_upload_bytes": 2876,
+                "host_readback_bytes": 41540,
+                "protocol_request_bytes": 1760248,
+                "protocol_response_bytes": 1143176,
+                "rtl_launches": 213,
+                "reads": 81290,
+                "writes": 10704,
+                "responses": 91994,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 2286,
+                  "launches": 8,
+                  "reads": 136,
+                  "writes": 64,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 65241,
+                  "launches": 9,
+                  "reads": 2925,
+                  "writes": 576,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 889851,
+                  "launches": 117,
+                  "reads": 59201,
+                  "writes": 7440,
+                  "copy_reads": 50784,
+                  "nvfp4_macs": 541696,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 111537,
+                  "launches": 32,
+                  "reads": 10240,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "scale_mask": {
+                  "cycles": 13423,
+                  "launches": 16,
+                  "reads": 288,
+                  "writes": 256,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 134942,
+                  "launches": 17,
+                  "reads": 4659,
+                  "writes": 768,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 15611,
+                  "launches": 8,
+                  "reads": 1024,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 79490,
+                  "launches": 4,
+                  "reads": 2688,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1042,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4990,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            },
+            "serial": {
+              "cycles": 1571885,
+              "wall_seconds": 1.0259694589985884,
+              "launches": 213,
+              "memory": {
+                "capacity_bytes": 1048576,
+                "peak_allocation_bytes": 201920,
+                "constant_upload_bytes": 0,
+                "host_upload_bytes": 2876,
+                "host_readback_bytes": 41540,
+                "protocol_request_bytes": 1760248,
+                "protocol_response_bytes": 1143176,
+                "rtl_launches": 213,
+                "reads": 117248,
+                "writes": 10704,
+                "responses": 127952,
+                "copy_cycles": 0,
+                "device_copy_words": 0
+              },
+              "operations": {
+                "embedding": {
+                  "cycles": 2468,
+                  "launches": 8,
+                  "reads": 160,
+                  "writes": 64,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "layernorm": {
+                  "cycles": 92380,
+                  "launches": 9,
+                  "reads": 6516,
+                  "writes": 576,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "nvfp4_matmul": {
+                  "cycles": 1022569,
+                  "launches": 117,
+                  "reads": 78872,
+                  "writes": 7440,
+                  "copy_reads": 50784,
+                  "nvfp4_macs": 541696,
+                  "fp32_tensor_multiplies": 0
+                },
+                "matmul": {
+                  "cycles": 157168,
+                  "launches": 32,
+                  "reads": 16384,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "scale_mask": {
+                  "cycles": 13423,
+                  "launches": 16,
+                  "reads": 288,
+                  "writes": 256,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "softmax": {
+                  "cycles": 134942,
+                  "launches": 17,
+                  "reads": 4659,
+                  "writes": 768,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "residual_add": {
+                  "cycles": 15611,
+                  "launches": 8,
+                  "reads": 1024,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "gelu": {
+                  "cycles": 127292,
+                  "launches": 4,
+                  "reads": 9216,
+                  "writes": 512,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "vocabulary_mask": {
+                  "cycles": 1042,
+                  "launches": 1,
+                  "reads": 1,
+                  "writes": 63,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                },
+                "argmax": {
+                  "cycles": 4990,
+                  "launches": 1,
+                  "reads": 128,
+                  "writes": 1,
+                  "copy_reads": 0,
+                  "nvfp4_macs": 0,
+                  "fp32_tensor_multiplies": 0
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "RTL simulation with independent numerical and memory guard checks; host orchestrates and quantizes"
+}

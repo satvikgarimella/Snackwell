@@ -2,14 +2,18 @@
 // Operand transport advances in lockstep after each product reaches its adder.
 // The final drain waits for all accumulation results before publishing the tile.
 // enable pauses step launch/transport, never the clocks of in-flight arithmetic.
-module systolic_array_4x4 (
+module systolic_array_4x4 #(
+    parameter bit INITIAL_ACCUMULATOR = 0
+) (
     input  logic         clk,
     input  logic         reset,
     input  logic         enable,
     input  logic         request_valid,
+    input  logic         nvfp4_mode,
     output logic         request_ready,
     input  logic [511:0] a_tile,
     input  logic [511:0] b_tile,
+    input  logic [511:0] c_tile,
     output logic         busy,
     output logic         result_valid,
     input  logic         result_ready,
@@ -20,7 +24,8 @@ module systolic_array_4x4 (
 );
     typedef enum logic [2:0] {IDLE, CLEAR, START_STEP, WAIT_STEP, DRAIN, RESULT} state_t;
     state_t state;
-    logic [511:0] saved_a, saved_b;
+    logic [511:0] saved_a, saved_b, saved_c;
+    logic saved_nvfp4;
     wire [127:0] a_edges, b_edges;
     wire [3:0] a_edge_valid, b_edge_valid;
     wire [15:0] pe_ready_mask;
@@ -52,8 +57,10 @@ module systolic_array_4x4 (
                 assign b_links[0][c] = b_edges[c*32 +: 32];
                 assign b_valid_links[0][c] = b_edge_valid[c];
             end
-            fp32_mac_pe pe (
+            fp32_mac_pe #(.INITIAL_ACCUMULATOR(INITIAL_ACCUMULATOR)) pe (
                 .clk(clk), .reset(reset), .clear(pe_clear),
+                .nvfp4_mode(saved_nvfp4),
+                .initial_accumulator(saved_c[(r*4+c)*32 +: 32]),
                 .step_valid(pe_start), .step_ready(pe_ready_mask[r*4+c]),
                 .a_valid(a_valid_links[r][c]), .b_valid(b_valid_links[r][c]),
                 .a_data(a_links[r][c]), .b_data(b_links[r][c]),
@@ -71,6 +78,8 @@ module systolic_array_4x4 (
             state <= IDLE;
             saved_a <= 512'd0;
             saved_b <= 512'd0;
+            saved_c <= 512'd0;
+            saved_nvfp4 <= 1'b0;
             result_tile <= 512'd0;
             step_index <= 4'd0;
         end else begin
@@ -78,6 +87,8 @@ module systolic_array_4x4 (
                 IDLE: if (request_valid && request_ready) begin
                     saved_a <= a_tile;
                     saved_b <= b_tile;
+                    saved_c <= INITIAL_ACCUMULATOR ? c_tile : 512'd0;
+                    saved_nvfp4 <= nvfp4_mode;
                     step_index <= 4'd0;
                     state <= CLEAR;
                 end

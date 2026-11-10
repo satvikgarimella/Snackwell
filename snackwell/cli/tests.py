@@ -10,11 +10,12 @@ from snackwell.assembler import assemble
 from snackwell.kernels.basic import default_inputs, vector_add_memory, verify_vector_add
 from snackwell.paths import ROOT
 from snackwell.reference.fp32 import write_vectors
+from snackwell.reference.nvfp4 import write_vectors as write_nvfp4_vectors
 from snackwell.reference.tensor import write_tensor_vectors
 from snackwell.simulator import checked_command, compile_testbench, run_program, tool_path
 
 
-def run_testbench(bench, output, vectors, tensor_vectors):
+def run_testbench(bench, output, vectors, tensor_vectors, nvfp4_vectors):
     executable = compile_testbench(bench, output)
     if bench.stem == "tb_snackwell_kernel":
         before = vector_add_memory(*default_inputs())
@@ -28,6 +29,7 @@ def run_testbench(bench, output, vectors, tensor_vectors):
             str(executable),
             f"+VECTORS={vectors}",
             f"+TENSOR_VECTORS={tensor_vectors}",
+            f"+NVFP4_VECTORS={nvfp4_vectors}",
         ],
         output,
         output / "simulation.log",
@@ -37,20 +39,23 @@ def run_testbench(bench, output, vectors, tensor_vectors):
 
 def run_python_tests(output):
     log_path = output / "python.log"
-    try:
-        result = subprocess.run(
-            [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            # An optional first Verilator build can take up to 300 seconds.
-            timeout=420,
-        )
-        log = result.stdout + result.stderr
-        passed = result.returncode == 0
-    except (subprocess.TimeoutExpired, OSError) as error:
-        log, passed = str(error), False
-    log_path.write_text(log)
+    # Keep progress and failures even if the overall suite deadline expires.
+    # Warm runs take about seven minutes; a cold Verilator build adds minutes.
+    with log_path.open("w") as stream:
+        try:
+            result = subprocess.run(
+                [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
+                cwd=ROOT,
+                stdout=stream,
+                stderr=subprocess.STDOUT,
+                text=True,
+                timeout=900,
+            )
+            passed = result.returncode == 0
+        except (subprocess.TimeoutExpired, OSError) as error:
+            stream.write(f"\n{error}\n")
+            passed = False
+    log = log_path.read_text()
     count = re.search(r"Ran (\d+) tests?", log)
     print(f"{'PASS' if passed else 'FAIL'} Python assembler and kernel tests", flush=True)
     if not passed:
@@ -76,6 +81,8 @@ def main():
     tensor_vectors = output / "tensor_vectors.txt"
     write_vectors(vectors)
     write_tensor_vectors(tensor_vectors)
+    nvfp4_vectors = output / "nvfp4_vectors.txt"
+    write_nvfp4_vectors(nvfp4_vectors)
     failures = []
     for bench in benches:
         work = output / bench.stem
@@ -84,7 +91,7 @@ def main():
         for path in logs:
             path.unlink(missing_ok=True)
         try:
-            detail = run_testbench(bench, work, vectors, tensor_vectors)
+            detail = run_testbench(bench, work, vectors, tensor_vectors, nvfp4_vectors)
             passed = True
         except (subprocess.TimeoutExpired, OSError, ValueError, RuntimeError) as error:
             detail, passed = str(error), False

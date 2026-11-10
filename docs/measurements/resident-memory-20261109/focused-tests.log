@@ -1,0 +1,13 @@
+test_allocations_reclaim_and_reject_foreign_stale_or_oversized_handles (tests.test_resident_memory.ResidentMemoryTests.test_allocations_reclaim_and_reject_foreign_stale_or_oversized_handles) ... ok
+test_corrupt_readback_cannot_become_a_verified_cache (tests.test_resident_memory.ResidentMemoryTests.test_corrupt_readback_cannot_become_a_verified_cache) ... ok
+test_invalid_ranges_and_timeouts_fail_without_reusing_device_state (tests.test_resident_memory.ResidentMemoryTests.test_invalid_ranges_and_timeouts_fail_without_reusing_device_state) ... ok
+test_large_scatter_and_memory_latency_do_not_change_results (tests.test_resident_memory.ResidentMemoryTests.test_large_scatter_and_memory_latency_do_not_change_results) ... ok
+test_model_change_and_cancellation_close_the_session (tests.test_resident_memory.ResidentMemoryTests.test_model_change_and_cancellation_close_the_session) ... ok
+test_prefill_decode_rebuild_sampling_match_global_in_both_precisions (tests.test_resident_memory.ResidentMemoryTests.test_prefill_decode_rebuild_sampling_match_global_in_both_precisions) ... ok
+test_rtl_outputs_feed_consumers_without_host_reupload (tests.test_resident_memory.ResidentMemoryTests.test_rtl_outputs_feed_consumers_without_host_reupload) ... ok
+test_transport_preserves_untouched_data_and_checks_all_guards (tests.test_resident_memory.ResidentMemoryTests.test_transport_preserves_untouched_data_and_checks_all_guards) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.369s
+
+OK

@@ -12,17 +12,28 @@ module snackwell_device (
     input  logic        response_ready,
     output logic        response_error,
     output logic [31:0] response_data,
+    // External word-memory master, independent of shared memory and host MMIO.
+    output logic        global_request_valid,
+    input  logic        global_request_ready,
+    output logic        global_request_write,
+    output logic [31:0] global_request_address, global_request_data,
+    input  logic        global_response_valid,
+    output logic        global_response_ready,
+    input  logic        global_response_error,
+    input  logic [31:0] global_response_data,
     output logic        busy,
     output logic        done,
     output logic        fault
 );
-    typedef enum logic [2:0] {IDLE, RESET_START, LAUNCH, RUN, RESET_ABORT} engine_state_t;
+    typedef enum logic [2:0] {IDLE, RESET_START, LAUNCH, RUN, DRAIN_ABORT, RESET_ABORT} engine_state_t;
     engine_state_t state;
     logic [1:0] launch_warp;
     logic [31:0] entry_pc, cycle_limit, cycles;
     logic [3:0] warp_mask, halted_mask;
     logic [15:0] active_masks;
-    logic core_idle, core_reset;
+    logic core_idle, core_reset, global_idle;
+    logic [11:0] global_status;
+    logic [31:0] copy_status;
     logic memory_wait, memory_write;
     logic host_memory_ready, host_memory_response_valid;
     logic [31:0] host_memory_read_data, host_program_read_data;
@@ -59,6 +70,12 @@ module snackwell_device (
         .host_memory_data(request_data), .host_memory_read_data(host_memory_read_data),
         .host_memory_response_valid(host_memory_response_valid),
         .host_memory_response_ready(memory_wait && !response_valid),
+        .global_request_valid(global_request_valid), .global_request_ready(global_request_ready),
+        .global_request_write(global_request_write), .global_request_address(global_request_address),
+        .global_request_data(global_request_data), .global_response_valid(global_response_valid),
+        .global_response_ready(global_response_ready), .global_response_error(global_response_error),
+        .global_response_data(global_response_data),
+        .global_idle(global_idle), .global_status(global_status), .copy_status(copy_status),
         .execution_idle(core_idle), .halted_mask(halted_mask),
         .issue_valid(), .issue_accept(), .selected_warp_id(), .selected_pc(),
         .instruction(), .opcode(), .selected_active_mask(), .valid_mask(),
@@ -104,13 +121,17 @@ module snackwell_device (
                 end
                 RUN: begin
                     if ((halted_mask & warp_mask) == warp_mask && core_idle) begin
-                        done <= 1;
+                        done <= global_status == 0 && copy_status == 0;
+                        fault <= global_status != 0 || copy_status != 0;
                         state <= IDLE;
                     end else if (cycles == cycle_limit) begin
                         fault <= 1;
-                        state <= RESET_ABORT;
+                        state <= DRAIN_ABORT;
                     end else cycles <= cycles + 1'b1;
                 end
+                // Finish the captured vector before resetting execution. Accepted
+                // stores are not reversible; responses cannot leak into a new launch.
+                DRAIN_ABORT: if (global_idle) state <= RESET_ABORT;
                 RESET_ABORT: state <= IDLE;
                 default: begin end
             endcase
@@ -133,7 +154,7 @@ module snackwell_device (
                     // Abort remains available during execution. Configuration
                     // cannot change beneath a running kernel.
                     if (request_address == 32'h08 && request_data == 2) begin
-                        state <= RESET_ABORT;
+                        state <= DRAIN_ABORT;
                         done <= 0;
                         fault <= 1;
                     end else if (busy) response_error <= 1;
@@ -175,6 +196,8 @@ module snackwell_device (
                     32'h14: response_data <= {16'd0, active_masks};
                     32'h18: response_data <= cycle_limit;
                     32'h1c: response_data <= cycles;
+                    32'h20: response_data <= {20'd0, global_status};
+                    32'h24: response_data <= copy_status;
                     default: response_error <= 1;
                 endcase
             end

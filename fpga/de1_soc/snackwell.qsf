@@ -18,6 +18,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/simd_executio
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/simd_integer_execute.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/simd_lane.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/tensor/fp32_mac_pe.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/tensor/nvfp4_product.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/tensor/systolic_array_4x4.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/tensor/systolic_feeder_4x4.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/execution/tensor/tensor_core.sv
@@ -26,6 +27,9 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/frontend/instruction_de
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/frontend/instruction_frontend.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/frontend/instruction_memory.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/frontend/program_counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/memory/async_copy_unit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/memory/global_memory_arbiter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/memory/global_memory_unit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/memory/load_store_unit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/memory/multiwarp_register_file.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/memory/register_file.sv
@@ -38,6 +42,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/reconvergence_stack.
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/reconvergence_target_table.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/scoreboard.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/sm_tensor_unit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/sm_tensor_memory_unit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/snackwell_sm.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/warp_control_unit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/sm/warp_scheduler.sv

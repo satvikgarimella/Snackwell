@@ -41,12 +41,41 @@ class KVCache:
     signature: str | None = None
     rtl_source_sha256: str | None = None
     reference: ReferenceState | None = None
+    precision: str = "fp32"
+    memory: str = "shared"
+    device_identity: object | None = None
+    optimize_resident: bool = True
 
 
 class Generation:
     """One prompt owns one cache. Discard the object on cancellation or completion."""
 
-    def __init__(self, model, prompt, *, cache=True, heal=True):
+    def __init__(
+        self,
+        model,
+        prompt,
+        *,
+        cache=True,
+        heal=True,
+        precision="fp32",
+        memory="shared",
+        memory_latency=2,
+        optimize_resident=True,
+    ):
+        from snackwell.nvfp4_inference import precision_policy
+
+        precision_policy(precision)
+        self.precision = precision
+        if (
+            memory not in ("shared", "global", "resident", "resident-copy")
+            or type(memory_latency) is not int
+            or not 0 <= memory_latency <= 1000
+        ):
+            raise ValueError(
+                "memory must be shared/global/resident/resident-copy and latency an integer from 0 to 1000"
+            )
+        self.memory, self.memory_latency = memory, memory_latency
+        self.optimize_resident = optimize_resident
         self.model = model
         self.enabled = cache
         self.context = model["config"]["context"]
@@ -55,10 +84,48 @@ class Generation:
         self.ids, self.token_prefix = prepare_prompt(model, prompt, cache=cache, heal=heal)
         self.cache = KVCache() if cache else None
         self.steps = 0
+        self.session = None
+        self.closed = False
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        self.close()
+
+    def close(self):
+        self.closed = True
+        if self.session is not None:
+            self.session.close()
+            self.session = None
+
+    def __del__(self):
+        if getattr(self, "session", None) is not None:
+            self.session.close()
 
     def next(self, output, executable, on_progress=None, *, draw=None, temperature=1.0, min_p=0.0):
+        try:
+            return self._next(
+                output, executable, on_progress, draw=draw, temperature=temperature, min_p=min_p
+            )
+        except BaseException:
+            if self.memory.startswith("resident"):
+                self.close()
+            raise
+
+    def _next(self, output, executable, on_progress=None, *, draw=None, temperature=1.0, min_p=0.0):
         from snackwell.model_runner import forward
 
+        if self.closed:
+            raise ValueError("generation is closed; start a new prompt")
+        if self.memory.startswith("resident"):
+            from snackwell.simulator import SimulatorSession
+
+            if self.session is None:
+                self.session = SimulatorSession(executable)
+            elif self.session.source_sha256 != executable.source_sha256:
+                raise ValueError("cannot switch RTL builds during a resident generation")
+            executable = self.session
         ids, cache = self.ids, self.cache
         phase = "prefill" if self.steps == 0 else "decode" if cache else "recompute"
         if len(ids) > self.context:
@@ -80,6 +147,10 @@ class Generation:
             phase=phase,
             min_p=min_p,
             token_prefix=self.token_prefix,
+            precision=self.precision,
+            memory=self.memory,
+            memory_latency=self.memory_latency,
+            optimize_resident=self.optimize_resident,
         )
         self.token_prefix = ""
         self.text += result["next_character"]

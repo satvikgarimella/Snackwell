@@ -1,0 +1,12 @@
+test_all_registers_used_and_later_scratch_redefinition (tests.test_resident_compiler.ResidentCompilerTests.test_all_registers_used_and_later_scratch_redefinition) ... ok
+test_divergent_join_does_not_mistake_a_dynamic_address_for_a_literal (tests.test_resident_compiler.ResidentCompilerTests.test_divergent_join_does_not_mistake_a_dynamic_address_for_a_literal) ... ok
+test_full_pointer_table_falls_back_without_overwriting_guards (tests.test_resident_compiler.ResidentCompilerTests.test_full_pointer_table_falls_back_without_overwriting_guards) ... ok
+test_literal_corruption_cannot_publish_verified_output (tests.test_resident_compiler.ResidentCompilerTests.test_literal_corruption_cannot_publish_verified_output) ... ok
+test_loop_backedge_widens_constant_addresses (tests.test_resident_compiler.ResidentCompilerTests.test_loop_backedge_widens_constant_addresses) ... ok
+test_optimizer_generation_preserves_sampling_rebuild_and_cache_policy (tests.test_resident_compiler.ResidentCompilerTests.test_optimizer_generation_preserves_sampling_rebuild_and_cache_policy) ... ok
+test_reused_pointer_base_changes_and_published_alias (tests.test_resident_compiler.ResidentCompilerTests.test_reused_pointer_base_changes_and_published_alias) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.261s
+
+OK

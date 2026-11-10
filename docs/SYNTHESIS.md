@@ -6,6 +6,14 @@ memory, shared memory, and host loading/launch interface. It uses the actual RTL
 with `SYNTHESIS` defined. The device disables simulation memory initialization;
 programs and data enter through the host bus.
 
+The November 7 tensor-memory/global-memory extensions and November 9 async-copy
+and NVFP4 hardware are included when synthesizing the current sources. The
+measurements below predate those changes.
+They have not yet been resynthesized or physically fitted, and the external
+memory controller is not part of this RTL. The existing `--verify` workloads
+exercise the legacy host/shared-memory path; new global-memory verification is
+currently RTL-level as described in [GLOBAL_MEMORY.md](GLOBAL_MEMORY.md).
+
 ## Run on macOS, Linux, or Windows
 
 Use Yosys with the `read_slang` SystemVerilog frontend. The portable YoWASP build

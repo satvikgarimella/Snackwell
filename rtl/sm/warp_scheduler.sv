@@ -10,9 +10,10 @@ module warp_scheduler (
     // execution resources, memory, etc.
     input  logic [3:0] blocked_mask,
 
-    // Only advance round-robin state when the
-    // candidate instruction was actually accepted.
+    // Advance after issue or an explicit resource retry. Retrying two blocked
+    // warps must not starve a third warp that can release their resource.
     input  logic       issue_accept,
+    input  logic       skip_candidate,
 
     output logic       issue_valid,
     output logic [1:0] selected_warp_id,
@@ -166,11 +167,11 @@ module warp_scheduler (
 
         else if (
             issue_valid &&
-            issue_accept
+            (issue_accept || skip_candidate)
         ) begin
 
             // Start next search after the warp that
-            // successfully issued.
+            // issued or was skipped for a resource wait.
 
             case (selected_warp_id)
 

@@ -1,7 +1,38 @@
 # Snackwell
 
-A GPU written in SystemVerilog, with a custom ISA, Python assembler, and kernels
-that run through the full streaming multiprocessor (SM) in RTL simulation.
+Snackwell aims to build a snack-sized implementation of B200 / Blackwell SM100's
+compute architecture in SystemVerilog. The current prototype has a custom ISA,
+Python assembler, and kernels that run through the full streaming multiprocessor (SM)
+in RTL simulation. The [Blackwell alignment plan](docs/BLACKWELL_ALIGNMENT.md)
+maps the existing foundation to the reference architecture and identifies the
+data-movement and precision work still required. The first
+[tensor-memory prototype](docs/TENSOR_MEMORY.md) now adds shared-memory operands,
+persistent matrix accumulation, and explicit completion/consumer ownership.
+It shares the existing array and retains the original FP32 operations.
+The [global-memory path](docs/GLOBAL_MEMORY.md) now connects kernel loads/stores
+to an external request/response interface. A checked demo moves matrices from
+global memory through shared memory and the tensor array, then stores the result
+back globally. [Asynchronous tile copies](docs/ASYNC_COPY.md) now add protected
+shared staging, generation tickets, and double buffering. The default checked
+matrix demo takes 1,412 cycles versus 1,582 with serial copies.
+[NVFP4 arithmetic](docs/NVFP4.md) adds packed E2M1 operands, sixteen-element
+UE4M3 scale groups, narrow multipliers, and FP32 accumulation. Its checked
+4×32 by 32×8 demo takes 1,656 cycles with overlapping copies versus 2,350
+serially. [Opt-in model inference](docs/NVFP4_INFERENCE.md) now runs linear
+layers on that native NVFP4 arithmetic, with FP32 attention and normalization.
+The first eight reserved sentence questions retained correct answers.
+[Global-memory model launches](docs/GLOBAL_MODEL.md) now route every inference
+kernel through the external port, with async shared staging for native NVFP4.
+[Resident model memory](docs/RESIDENT_MEMORY.md) now retains weights, intermediate
+tensors and KV state across launches. Kernels follow device pointers directly,
+removing the original gather/scatter launches; the paired sentence run used 51.5%
+fewer cycles with identical outputs. [Same-address load broadcasting](docs/measurements/load-broadcast-20261109/README.md)
+removes repeated external reads within a vector instruction, cutting another
+18.7% of those cycles with identical outputs. The
+[resident compiler](docs/measurements/resident-compiler-20261109/README.md) now
+keeps literals in shared memory, reuses physical pointers, and shortens output
+stores, saving another 10.8% of sentence-model cycles. Broader quality evaluation,
+adjacent-address coalescing and a physical memory controller remain open.
 
 The SM has four resident warps, four lanes per warp, integer and FP32 execution,
 divergence/reconvergence, 4 KB of banked shared memory, and a 4×4 FP32 systolic
@@ -21,6 +52,10 @@ python3 scripts/run_tests.py
 python3 scripts/run_kernel.py vector_add
 python3 scripts/run_kernel.py matmul_compare
 python3 scripts/run_kernel.py all
+python3 scripts/run_tensor_demo.py
+python3 scripts/run_global_demo.py
+python3 scripts/run_async_demo.py
+python3 scripts/run_nvfp4_demo.py
 python3 scripts/run_model.py --tokens 1
 python3 scripts/train_snackwell.py
 python3 scripts/train_transformer.py
@@ -147,6 +182,8 @@ for focused tests and formatting commands.
 
 ## Read the design
 
+- [Engineering report](docs/REPORT.md): architecture, kernel mapping, inference,
+  training, measured optimizations, language-quality results, and FPGA limits
 - Hardware: [FP32](docs/FP32.md), [tensor array and TMUL](docs/TENSOR.md),
   [shared memory](docs/MEMORY.md), [FPGA host interface](docs/FPGA.md)
 - Programs: [ISA and first kernels](docs/KERNELS.md),
@@ -173,13 +210,14 @@ are available; Quartus fit, timing closure, and board execution remain unverifie
 
 The GELU network and complete character transformer support verified
 forward/backward passes and SGD on Snackwell. Longer training runs, language
-quality, training throughput, global memory, a physical host transport and board
+quality, training throughput, persistent device allocation, a physical host transport and board
 driver, cooperating warp barriers, and FPGA resource/timing validation still need
 work. No physical FPGA run has been verified. The default character checkpoint
 was originally trained with PyTorch on the CPU; RTL training exports separate
 checkpoints that the same inference runner can load. Earlier teaching cores in
 `rtl/core/` implement a smaller instruction subset than the full SM.
 
-The original Jonathan P. Dawson multiplier and its copyright/license notice are
-preserved in [`multiplier.v`](rtl/execution/fp32/multiplier.v). The active FP path
+The original Jonathan P. Dawson multiplier and copyright header are preserved
+in [`multiplier.v`](rtl/execution/fp32/multiplier.v); its MIT permission notice
+is included in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The active FP path
 now uses Snackwell's bounded-latency multiplier; see [FP32](docs/FP32.md).

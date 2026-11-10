@@ -1,0 +1,2848 @@
+{
+  "verified": true,
+  "identical": true,
+  "precision": "nvfp4",
+  "memory_latency": 2,
+  "checkpoint_sha256": "66af3342b4a66ee4e63816f30756f3aed746b749b300ecd6f13c324be0d2423e",
+  "rtl_source_sha256": "a96505f467e2ab25d15a221bec8c16234960fecc147152926cf2e39c39953a86",
+  "compared_tokens": 56,
+  "cases": [
+    {
+      "prompt": "The cup is in the attic. The toy is in the garden. Where is the cup?",
+      "expected": " The cup is in the attic.",
+      "generated": " The cup is in the attic.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597312,
+            "global": 4098892
+          },
+          "wall_seconds": {
+            "shared": 1.7289959999980056,
+            "global": 3.4396620000043185
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243764,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287404,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36
+          ],
+          "token_id": 61,
+          "text": " cup",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304844,
+            "global": 715607
+          },
+          "wall_seconds": {
+            "shared": 0.2244624590020976,
+            "global": 0.6626655419968301
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45522,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69227,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305340,
+            "global": 715873
+          },
+          "wall_seconds": {
+            "shared": 0.2233588749950286,
+            "global": 0.6647531250055181
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45404,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69406,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305310,
+            "global": 716003
+          },
+          "wall_seconds": {
+            "shared": 0.22832208299951162,
+            "global": 0.6664752919969033
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45289,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68990,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306008,
+            "global": 716539
+          },
+          "wall_seconds": {
+            "shared": 0.23079458300344413,
+            "global": 0.6949638749938458
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45296,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69206,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32
+          ],
+          "token_id": 90,
+          "text": " attic",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306699,
+            "global": 716371
+          },
+          "wall_seconds": {
+            "shared": 0.22613166700466536,
+            "global": 0.6903177090061945
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45068,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69707,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32,
+            90
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306671,
+            "global": 716611
+          },
+          "wall_seconds": {
+            "shared": 0.22697150000021793,
+            "global": 0.6731678750002175
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45148,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69234,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "prompt": "The ball is in the kitchen. The toy is in the attic. Where is the ball?",
+      "expected": " The ball is in the kitchen.",
+      "generated": " The ball is in the kitchen.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597146,
+            "global": 4098259
+          },
+          "wall_seconds": {
+            "shared": 1.4438837500056252,
+            "global": 3.370614042003581
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243311,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287559,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36
+          ],
+          "token_id": 60,
+          "text": " ball",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305200,
+            "global": 715802
+          },
+          "wall_seconds": {
+            "shared": 0.22722704100306146,
+            "global": 0.662820625002496
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45466,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69368,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305041,
+            "global": 715802
+          },
+          "wall_seconds": {
+            "shared": 0.23228366599505534,
+            "global": 0.7196594999986701
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45450,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68987,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305456,
+            "global": 716060
+          },
+          "wall_seconds": {
+            "shared": 0.23514970800169976,
+            "global": 0.706718749999709
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45177,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69071,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306005,
+            "global": 716462
+          },
+          "wall_seconds": {
+            "shared": 0.24116383300133748,
+            "global": 0.6756075839948608
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45329,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69369,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31,
+            34,
+            32
+          ],
+          "token_id": 94,
+          "text": " kitchen",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306356,
+            "global": 716407
+          },
+          "wall_seconds": {
+            "shared": 0.22744008299923735,
+            "global": 0.6768805419997079
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45331,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69354,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31,
+            34,
+            32,
+            94
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306653,
+            "global": 716710
+          },
+          "wall_seconds": {
+            "shared": 0.22809558400331298,
+            "global": 0.669571457998245
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45224,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68687,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "prompt": "The box is in the attic. The bag is in the bedroom. Where is the bag?",
+      "expected": " The bag is in the bedroom.",
+      "generated": " The bag is in the bedroom.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597057,
+            "global": 4098331
+          },
+          "wall_seconds": {
+            "shared": 1.4420479580003303,
+            "global": 3.355874832996051
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243567,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287441,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36
+          ],
+          "token_id": 59,
+          "text": " bag",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304424,
+            "global": 715456
+          },
+          "wall_seconds": {
+            "shared": 0.23225516700040316,
+            "global": 0.6730633749975823
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45569,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68884,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305398,
+            "global": 715858
+          },
+          "wall_seconds": {
+            "shared": 0.2270777919984539,
+            "global": 0.6648745829952531
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45334,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69386,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305949,
+            "global": 716350
+          },
+          "wall_seconds": {
+            "shared": 0.2248967499981518,
+            "global": 0.6689406669975142
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45187,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69548,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305905,
+            "global": 716322
+          },
+          "wall_seconds": {
+            "shared": 0.22529795900481986,
+            "global": 0.6724219579991768
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45328,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69256,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32
+          ],
+          "token_id": 81,
+          "text": " bedroom",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306204,
+            "global": 716330
+          },
+          "wall_seconds": {
+            "shared": 0.22933583299891325,
+            "global": 0.6775612080018618
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45225,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69461,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306359,
+            "global": 716413
+          },
+          "wall_seconds": {
+            "shared": 0.23167954200471286,
+            "global": 0.6743078750005225
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45174,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68945,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "prompt": "The ball is in the cellar. The key is in the hallway. Where is the key?",
+      "expected": " The key is in the hallway.",
+      "generated": " The key is in the hallway.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597464,
+            "global": 4098622
+          },
+          "wall_seconds": {
+            "shared": 1.4655110000021523,
+            "global": 3.3939455419968
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243454,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287569,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36
+          ],
+          "token_id": 63,
+          "text": " key",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304798,
+            "global": 715291
+          },
+          "wall_seconds": {
+            "shared": 0.23124016699875938,
+            "global": 0.6839967499981867
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45611,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69782,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304929,
+            "global": 715883
+          },
+          "wall_seconds": {
+            "shared": 0.23109666599339107,
+            "global": 0.6737066249988857
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45344,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68630,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305350,
+            "global": 715940
+          },
+          "wall_seconds": {
+            "shared": 0.2267422919976525,
+            "global": 0.6976350000040838
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45297,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69166,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306230,
+            "global": 716658
+          },
+          "wall_seconds": {
+            "shared": 0.22987504200136755,
+            "global": 0.6725516670048819
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45396,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69475,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31,
+            34,
+            32
+          ],
+          "token_id": 93,
+          "text": " hallway",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306005,
+            "global": 715986
+          },
+          "wall_seconds": {
+            "shared": 0.2271842500049388,
+            "global": 0.6688526660000207
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45290,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69438,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306717,
+            "global": 716769
+          },
+          "wall_seconds": {
+            "shared": 0.2296425000022282,
+            "global": 0.6770795410047867
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45158,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69117,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "prompt": "The box is in the bathroom. The book is in the cellar. Where is the book?",
+      "expected": " The book is in the cellar.",
+      "generated": " The book is in the cellar.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597682,
+            "global": 4098879
+          },
+          "wall_seconds": {
+            "shared": 1.4657185000032769,
+            "global": 3.3812370829982683
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243283,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287755,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36
+          ],
+          "token_id": 64,
+          "text": " book",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304578,
+            "global": 715687
+          },
+          "wall_seconds": {
+            "shared": 0.22681737500533927,
+            "global": 0.6707827909995103
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45715,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68899,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305623,
+            "global": 716037
+          },
+          "wall_seconds": {
+            "shared": 0.2280631249959697,
+            "global": 0.6722135419986444
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45304,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69401,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305566,
+            "global": 716104
+          },
+          "wall_seconds": {
+            "shared": 0.22683583299658494,
+            "global": 0.6747562500022468
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45290,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69371,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306212,
+            "global": 716612
+          },
+          "wall_seconds": {
+            "shared": 0.2281064159978996,
+            "global": 0.6746267500057002
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45211,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69265,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31,
+            34,
+            32
+          ],
+          "token_id": 92,
+          "text": " cellar",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306395,
+            "global": 716288
+          },
+          "wall_seconds": {
+            "shared": 0.2279880839996622,
+            "global": 0.6866405830005533
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45294,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69622,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306130,
+            "global": 716381
+          },
+          "wall_seconds": {
+            "shared": 0.22837708300357917,
+            "global": 0.6696538329997566
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45227,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68471,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "prompt": "The bag is in the bedroom. The ball is in the hallway. Where is the bag?",
+      "expected": " The bag is in the bedroom.",
+      "generated": " The bag is in the bedroom.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597646,
+            "global": 4098801
+          },
+          "wall_seconds": {
+            "shared": 1.4723854170006234,
+            "global": 3.428858792001847
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243507,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287502,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36
+          ],
+          "token_id": 59,
+          "text": " bag",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304261,
+            "global": 715348
+          },
+          "wall_seconds": {
+            "shared": 0.22902437500306405,
+            "global": 0.6793717090040445
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45595,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68815,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305290,
+            "global": 715988
+          },
+          "wall_seconds": {
+            "shared": 0.22767737499816576,
+            "global": 0.6832147500026622
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45432,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69142,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305602,
+            "global": 716270
+          },
+          "wall_seconds": {
+            "shared": 0.2439519580002525,
+            "global": 0.712147833997733
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45281,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69253,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306040,
+            "global": 716433
+          },
+          "wall_seconds": {
+            "shared": 0.2450527919936576,
+            "global": 0.7166070829989621
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45297,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69347,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32
+          ],
+          "token_id": 81,
+          "text": " bedroom",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306269,
+            "global": 716243
+          },
+          "wall_seconds": {
+            "shared": 0.2307015840051463,
+            "global": 0.6811069999967003
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45321,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69574,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306406,
+            "global": 716283
+          },
+          "wall_seconds": {
+            "shared": 0.23014637500455137,
+            "global": 0.6802283750002971
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45155,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69171,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "prompt": "The toy is in the office. The cup is in the kitchen. Where is the toy?",
+      "expected": " The toy is in the office.",
+      "generated": " The toy is in the office.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597350,
+            "global": 4098504
+          },
+          "wall_seconds": {
+            "shared": 1.462204000003112,
+            "global": 3.4189026249950984
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243438,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287406,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36
+          ],
+          "token_id": 56,
+          "text": " toy",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304320,
+            "global": 715597
+          },
+          "wall_seconds": {
+            "shared": 0.2292470000029425,
+            "global": 0.6828581250010757
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45520,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68488,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304722,
+            "global": 715596
+          },
+          "wall_seconds": {
+            "shared": 0.22960383300232934,
+            "global": 0.6813861250047921
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45484,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69039,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305635,
+            "global": 716151
+          },
+          "wall_seconds": {
+            "shared": 0.23065612499340205,
+            "global": 0.6607472079995205
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45249,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69359,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306132,
+            "global": 716556
+          },
+          "wall_seconds": {
+            "shared": 0.22953637500177138,
+            "global": 0.6761037079995731
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45230,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69253,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31,
+            34,
+            32
+          ],
+          "token_id": 96,
+          "text": " office",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306274,
+            "global": 716169
+          },
+          "wall_seconds": {
+            "shared": 0.23388962500030175,
+            "global": 0.6847253330051899
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45253,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69553,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31,
+            34,
+            32,
+            96
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305619,
+            "global": 715888
+          },
+          "wall_seconds": {
+            "shared": 0.2297104160024901,
+            "global": 0.6883423750041402
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45415,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68655,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "prompt": "The cup is in the attic. The toy is in the kitchen. Where is the cup?",
+      "expected": " The cup is in the attic.",
+      "generated": " The cup is in the attic.",
+      "correct": true,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3
+          ],
+          "token_id": 36,
+          "text": " The",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1597879,
+            "global": 4099427
+          },
+          "wall_seconds": {
+            "shared": 1.4752531249978347,
+            "global": 3.477744290998089
+          },
+          "global_traffic": {
+            "reads": 325706,
+            "writes": 46608,
+            "responses": 372314,
+            "request_stalls": 243747,
+            "copy_reads": 53424,
+            "copy_writes": 53424,
+            "copy_arithmetic_overlap_cycles": 287543,
+            "nvfp4_macs": 569856,
+            "fp32_tensor_multiplies": 122880
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36
+          ],
+          "token_id": 61,
+          "text": " cup",
+          "phase": "decode",
+          "cycles": {
+            "shared": 304909,
+            "global": 715614
+          },
+          "wall_seconds": {
+            "shared": 0.24590975000319304,
+            "global": 0.702105208998546
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45576,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69320,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61
+          ],
+          "token_id": 31,
+          "text": " is",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305286,
+            "global": 715968
+          },
+          "wall_seconds": {
+            "shared": 0.23077816700242693,
+            "global": 0.6849193329981063
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45376,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69065,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31
+          ],
+          "token_id": 34,
+          "text": " in",
+          "phase": "decode",
+          "cycles": {
+            "shared": 305596,
+            "global": 716231
+          },
+          "wall_seconds": {
+            "shared": 0.2307104999999865,
+            "global": 0.6834380840009544
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45283,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69222,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34
+          ],
+          "token_id": 32,
+          "text": " the",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306097,
+            "global": 716542
+          },
+          "wall_seconds": {
+            "shared": 0.23049824999907287,
+            "global": 0.670030332999886
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45280,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69303,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32
+          ],
+          "token_id": 90,
+          "text": " attic",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306229,
+            "global": 716116
+          },
+          "wall_seconds": {
+            "shared": 0.23005866699531907,
+            "global": 0.67922604100022
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45256,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 69173,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32,
+            90
+          ],
+          "token_id": 2,
+          "text": ".",
+          "phase": "decode",
+          "cycles": {
+            "shared": 306441,
+            "global": 716647
+          },
+          "wall_seconds": {
+            "shared": 0.2323796249984298,
+            "global": 0.685289291999652
+          },
+          "global_traffic": {
+            "reads": 56176,
+            "writes": 6256,
+            "responses": 62432,
+            "request_stalls": 45245,
+            "copy_reads": 13488,
+            "copy_writes": 13488,
+            "copy_arithmetic_overlap_cycles": 68975,
+            "nvfp4_macs": 143872,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    }
+  ],
+  "answer_correct": 8,
+  "cycles": {
+    "shared": 27453019,
+    "global": 67163967
+  },
+  "wall_seconds": {
+    "shared": 23.00944550002896,
+    "global": 59.915954666008474
+  },
+  "global_traffic": {
+    "reads": 5302096,
+    "writes": 673152,
+    "responses": 5975248,
+    "request_stalls": 4123977,
+    "copy_reads": 1074816,
+    "copy_writes": 1074816,
+    "copy_arithmetic_overlap_cycles": 5621609,
+    "nvfp4_macs": 11464704,
+    "fp32_tensor_multiplies": 983040
+  },
+  "scope": "simulated external-memory kernel launches; host still quantizes, orchestrates and retains KV state"
+}

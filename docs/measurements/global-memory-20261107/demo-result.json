@@ -1,0 +1,23 @@
+{
+  "cycles": 1013,
+  "reads": 64,
+  "writes": 16,
+  "responses": 80,
+  "request_stalls": 54,
+  "independent_integer_issues": 0,
+  "dependency_stalls": 17,
+  "status": 0,
+  "transport": "simulated_external_memory",
+  "hardware_tested": false,
+  "latency": 2,
+  "passed": true,
+  "matrix_jobs": 2,
+  "macs": 128,
+  "guards_verified": true,
+  "shape": {
+    "m": 4,
+    "n": 4,
+    "k": 8
+  },
+  "arithmetic": "FP32 sequential non-fused MAC"
+}

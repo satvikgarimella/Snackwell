@@ -1,0 +1,23 @@
+{
+  "verilator": "/opt/homebrew/bin/verilator",
+  "version": "Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905",
+  "cxx": "/usr/bin/c++",
+  "cxx_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+  "flags": [
+    "--cc",
+    "--exe",
+    "--build",
+    "--assert",
+    "-CFLAGS",
+    "-O3 -std=c++17",
+    "--top-module",
+    "snackwell_sim_top",
+    "-Wno-fatal"
+  ],
+  "environment": {
+    "CC": null,
+    "CXX": null,
+    "CXXFLAGS": null,
+    "LDFLAGS": null
+  }
+}

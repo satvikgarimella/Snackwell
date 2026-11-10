@@ -1,0 +1,333 @@
+{
+  "verified": true,
+  "identical": true,
+  "memory_modes": [
+    "resident-unoptimized",
+    "resident"
+  ],
+  "precision": "nvfp4",
+  "memory_latency": 2,
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "rtl_source_sha256": "73a30077fb39366d358e93a7fe03d36326aa2e11d3ccc3d5a697b32d0252a9bb",
+  "compared_tokens": 4,
+  "cases": [
+    {
+      "prompt": "ROMEO:",
+      "expected": null,
+      "generated": "\nMar",
+      "correct": null,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10
+          ],
+          "token_id": 0,
+          "text": "\n",
+          "phase": "prefill",
+          "cycles": {
+            "resident-unoptimized": 2777707,
+            "resident": 2476690
+          },
+          "wall_seconds": {
+            "resident-unoptimized": 3.151341582997702,
+            "resident": 2.2020770410017576
+          },
+          "global_traffic": {
+            "reads": 139470,
+            "writes": 29072,
+            "responses": 168542,
+            "request_stalls": 144717,
+            "copy_reads": 90720,
+            "copy_writes": 90720,
+            "copy_arithmetic_overlap_cycles": 588751,
+            "nvfp4_macs": 967680,
+            "fp32_tensor_multiplies": 24576
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 173952,
+            "constant_upload_bytes": 138536,
+            "host_upload_bytes": 163464,
+            "host_readback_bytes": 112836,
+            "protocol_request_bytes": 3077804,
+            "protocol_response_bytes": 1938552,
+            "rtl_launches": 353,
+            "reads": 139470,
+            "writes": 29072,
+            "responses": 168542,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 173952,
+            "constant_upload_bytes": 138536,
+            "host_upload_bytes": 163464,
+            "host_readback_bytes": 112836,
+            "protocol_request_bytes": 3077804,
+            "protocol_response_bytes": 1938552,
+            "rtl_launches": 353,
+            "reads": 163993,
+            "writes": 29072,
+            "responses": 193065,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0
+          ],
+          "token_id": 25,
+          "text": "M",
+          "phase": "decode",
+          "cycles": {
+            "resident-unoptimized": 1215282,
+            "resident": 1094494
+          },
+          "wall_seconds": {
+            "resident-unoptimized": 0.9347994999989169,
+            "resident": 0.9025923340013833
+          },
+          "global_traffic": {
+            "reads": 65682,
+            "writes": 10192,
+            "responses": 75874,
+            "request_stalls": 70387,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 260533,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 183424,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 3196,
+            "host_readback_bytes": 40004,
+            "protocol_request_bytes": 1760648,
+            "protocol_response_bytes": 1141640,
+            "rtl_launches": 213,
+            "reads": 65682,
+            "writes": 10192,
+            "responses": 75874,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 183424,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 3196,
+            "host_readback_bytes": 40004,
+            "protocol_request_bytes": 1760648,
+            "protocol_response_bytes": 1141640,
+            "rtl_launches": 213,
+            "reads": 74506,
+            "writes": 10192,
+            "responses": 84698,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25
+          ],
+          "token_id": 39,
+          "text": "a",
+          "phase": "decode",
+          "cycles": {
+            "resident-unoptimized": 1215213,
+            "resident": 1093817
+          },
+          "wall_seconds": {
+            "resident-unoptimized": 0.947784165997291,
+            "resident": 0.8753734999991138
+          },
+          "global_traffic": {
+            "reads": 65682,
+            "writes": 10192,
+            "responses": 75874,
+            "request_stalls": 70197,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 259910,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 192640,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 2024,
+            "host_readback_bytes": 40004,
+            "protocol_request_bytes": 1759252,
+            "protocol_response_bytes": 1141640,
+            "rtl_launches": 213,
+            "reads": 65682,
+            "writes": 10192,
+            "responses": 75874,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 192640,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 2024,
+            "host_readback_bytes": 40004,
+            "protocol_request_bytes": 1759252,
+            "protocol_response_bytes": 1141640,
+            "rtl_launches": 213,
+            "reads": 74506,
+            "writes": 10192,
+            "responses": 84698,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25,
+            39
+          ],
+          "token_id": 56,
+          "text": "r",
+          "phase": "decode",
+          "cycles": {
+            "resident-unoptimized": 1318413,
+            "resident": 1185399
+          },
+          "wall_seconds": {
+            "resident-unoptimized": 0.9598487080002087,
+            "resident": 0.9096770830001333
+          },
+          "global_traffic": {
+            "reads": 71314,
+            "writes": 10704,
+            "responses": 82018,
+            "request_stalls": 74432,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 261919,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 201920,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 2876,
+            "host_readback_bytes": 41540,
+            "protocol_request_bytes": 1760248,
+            "protocol_response_bytes": 1143176,
+            "rtl_launches": 213,
+            "reads": 71314,
+            "writes": 10704,
+            "responses": 82018,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 201920,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 2876,
+            "host_readback_bytes": 41540,
+            "protocol_request_bytes": 1760248,
+            "protocol_response_bytes": 1143176,
+            "rtl_launches": 213,
+            "reads": 81290,
+            "writes": 10704,
+            "responses": 91994,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          }
+        }
+      ]
+    }
+  ],
+  "answer_correct": null,
+  "cycles": {
+    "resident-unoptimized": 6526615,
+    "resident": 5850400
+  },
+  "wall_seconds": {
+    "resident-unoptimized": 5.993773956994119,
+    "resident": 4.889719958002388
+  },
+  "global_traffic": {
+    "reads": 342148,
+    "writes": 60160,
+    "responses": 402308,
+    "request_stalls": 359733,
+    "copy_reads": 243072,
+    "copy_writes": 243072,
+    "copy_arithmetic_overlap_cycles": 1371113,
+    "nvfp4_macs": 2592768,
+    "fp32_tensor_multiplies": 24576
+  },
+  "scope": "persistent external RAM; direct pointer loads/stores on RTL, host quantization and verified readbacks; no FPGA fit claim",
+  "resident": {
+    "constant_upload_bytes": 138536,
+    "host_upload_bytes": 171560,
+    "host_readback_bytes": 234384,
+    "protocol_request_bytes": 8357952,
+    "protocol_response_bytes": 5365008,
+    "rtl_launches": 992,
+    "copy_cycles": 0,
+    "device_copy_words": 0,
+    "reads": 342148,
+    "writes": 60160,
+    "responses": 402308,
+    "capacity_bytes": 1048576,
+    "peak_allocation_bytes": 201920
+  },
+  "baseline_resident": {
+    "constant_upload_bytes": 138536,
+    "host_upload_bytes": 171560,
+    "host_readback_bytes": 234384,
+    "protocol_request_bytes": 8357952,
+    "protocol_response_bytes": 5365008,
+    "rtl_launches": 992,
+    "copy_cycles": 0,
+    "device_copy_words": 0,
+    "reads": 394295,
+    "writes": 60160,
+    "responses": 454455,
+    "capacity_bytes": 1048576,
+    "peak_allocation_bytes": 201920
+  }
+}

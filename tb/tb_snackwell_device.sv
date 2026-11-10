@@ -14,7 +14,11 @@ module tb_snackwell_device;
     integer cycles_file;
     string cycles_path;
 
-    snackwell_device dut (.*);
+    snackwell_device dut (
+        .global_request_valid(), .global_request_ready(1'b1), .global_request_write(),
+        .global_request_address(), .global_request_data(), .global_response_valid(1'b1),
+        .global_response_ready(), .global_response_error(1'b1), .global_response_data(32'd0),
+        .*);
     always #5 clk = ~clk;
 
     task automatic transaction(

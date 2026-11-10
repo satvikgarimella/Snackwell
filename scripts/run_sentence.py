@@ -24,6 +24,11 @@ def main():
     )
     parser.add_argument("--prompt", default=EXAMPLE)
     parser.add_argument("--interactive", action="store_true")
+    parser.add_argument("--precision", choices=("fp32", "nvfp4"), default="fp32")
+    parser.add_argument(
+        "--memory", choices=("shared", "global", "resident", "resident-copy"), default="shared"
+    )
+    parser.add_argument("--memory-latency", type=int, default=2)
     parser.add_argument("--out", type=Path, default=ROOT / "build/inference/sentence_completion")
     args = parser.parse_args()
     model = load_checkpoint(args.checkpoint)
@@ -41,6 +46,8 @@ def main():
     )
     print("Every predicted token executes in RTL and is independently verified.")
     print(model_description(model), flush=True)
+    print(f"Precision: {args.precision}; attention and normalization remain FP32", flush=True)
+    print(f"Memory: {args.memory}", flush=True)
     executable = compile_model_runner(args.out / "simulator", compact=True)
     print(f"RTL: {executable.backend}; source {executable.source_sha256[:12]}", flush=True)
     while True:
@@ -58,6 +65,9 @@ def main():
                 output,
                 executable,
                 on_token=lambda text: print(text, end="", flush=True),
+                precision=args.precision,
+                memory=args.memory,
+                memory_latency=args.memory_latency,
             )
             latency = result["latency"]
             print(
@@ -67,6 +77,16 @@ def main():
                 f"First token: {latency['first_token_seconds']:.2f}s; "
                 f"total model time: {sum(t['wall_seconds'] for t in result['tokens']):.2f}s"
             )
+            if args.memory.startswith("resident"):
+                memory = [t["resident"] for t in result["tokens"]]
+                uploaded = sum(m["host_upload_bytes"] for m in memory)
+                weights = sum(m["constant_upload_bytes"] for m in memory)
+                footprint = 65536 + max(m["peak_allocation_bytes"] for m in memory)
+                print(
+                    f"External uploads: {uploaded / 1024:.1f} KiB "
+                    f"({weights / 1024:.1f} KiB retained weights); "
+                    f"peak live allocations + scratch: {footprint / 1024:.1f} KiB."
+                )
             if not result["complete"]:
                 print("Token limit reached before a complete sentence.")
             print(f"Run files: {output}")

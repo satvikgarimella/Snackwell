@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "full_suite": true,
+  "rtl": {
+    "passed": 40,
+    "total": 40,
+    "failures": []
+  },
+  "python": {
+    "passed": false,
+    "test_methods": 189
+  }
+}

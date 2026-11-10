@@ -38,7 +38,16 @@ def summarize_trace(path, cycles):
 
         # Stable SM adapter trace IDs; LOAD=2 is retained for older traces.
         state = row["tensor_state"]
-        if state == 4:
+        tmem_state = row.get("tmem_state", 0)
+        if tmem_state:
+            phase = {
+                1: "shared_gather",
+                2: "shared_gather",
+                3: "array_launch",
+                4: "array_compute",
+                5: "nvfp4_operand_prepare",
+            }[tmem_state]
+        elif state == 4:
             phase = "result_stream" if row["array_result_valid"] else "array_compute"
         else:
             phase = {
@@ -88,6 +97,8 @@ def summarize_trace(path, cycles):
         "tensor_phases": dict(tensor_phases),
         "tensor_mac_pairs": macs,
         "tensor_row_commits": sum(row["tensor_row_commit"] for row in rows),
+        "tensor_memory_row_transfers": sum(row.get("tmem_row_take", 0) for row in rows),
+        "tensor_memory_operand_rows": sum(row.get("tmem_memory_response", 0) for row in rows),
         "tensor_steps": steps,
         # State occupancy, not completed FLOPs / theoretical peak throughput.
         "tensor_pe_arithmetic_cycles": arithmetic_pe_cycles,

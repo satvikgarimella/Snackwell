@@ -25,10 +25,32 @@ OPCODES = {
     "SHR": 0x10,
     "SLTU": 0x11,
     "FLT": 0x12,
+    "TALLOC": 0x13,
+    "TFREE": 0x14,
+    "TST": 0x15,
+    "TLD": 0x16,
+    "TMMA": 0x17,
+    "TMMA_ACC": 0x18,
+    "TCOMMIT": 0x19,
+    "TWAIT": 0x1A,
+    "TRELEASE": 0x1B,
+    "TSTATUS": 0x1C,
+    "LD_GLOBAL": 0x1D,
+    "ST_GLOBAL": 0x1E,
+    "GSTATUS": 0x1F,
+    "CPASYNC": 0x20,
+    "CPWAIT": 0x21,
+    "CPRELEASE": 0x22,
+    "CPSTATUS": 0x23,
+    "TMMA_NVFP4": 0x24,
+    "TMMA_NVFP4_ACC": 0x25,
     "EXIT": 0x3F,
 }
 EXIT_WORD = OPCODES["EXIT"] << 26
 OPERAND_COUNTS = {"NOP": 0, "EXIT": 0, "TID": 1, "SSY": 1, "LD_SHARED": 2, "ST_SHARED": 2}
+OPERAND_COUNTS.update(CPASYNC=4, CPWAIT=2, CPRELEASE=1, CPSTATUS=1)
+OPERAND_COUNTS.update(LD_GLOBAL=2, ST_GLOBAL=2, GSTATUS=1)
+OPERAND_COUNTS.update(TALLOC=1, TFREE=1, TRELEASE=1, TWAIT=2, TSTATUS=1)
 
 
 class AssemblyError(ValueError):
@@ -52,6 +74,25 @@ def immediate(value):
     if not -8192 <= value <= 8191:
         raise AssemblyError(f"signed 14-bit immediate out of range: {value}")
     return value & 0x3FFF
+
+
+def tensor_slot(text):
+    if text.upper() not in ("T0", "T1"):
+        raise AssemblyError(f"expected T0 or T1, got {text!r}")
+    return int(text[1])
+
+
+def copy_slot(text):
+    if text.upper() not in ("S0", "S1"):
+        raise AssemblyError(f"expected S0 or S1, got {text!r}")
+    return int(text[1])
+
+
+def tensor_row(text):
+    value = number(text)
+    if not 0 <= value <= 3:
+        raise AssemblyError("tensor row must be 0 through 3")
+    return value
 
 
 def memory_operand(text):
@@ -95,16 +136,48 @@ def assemble(source, max_words=IMEM_WORDS):
             if len(operands) != count or any(not operand for operand in operands):
                 raise AssemblyError(f"{op} expects {count} operands")
             rd = a = b = imm = 0
-            if op == "TID":
+            if op in ("TID", "TSTATUS", "GSTATUS", "CPSTATUS"):
                 rd = register(operands[0])
+            elif op == "CPASYNC":
+                rd = register(operands[0])
+                a = register(operands[2])
+                mask = number(operands[3])
+                if not 1 <= mask <= 15:
+                    raise AssemblyError("CPASYNC participant mask must be 1 through 15")
+                imm = copy_slot(operands[1]) | (mask << 1)
+            elif op == "CPWAIT":
+                imm = copy_slot(operands[0])
+                a = register(operands[1])
+            elif op == "CPRELEASE":
+                imm = copy_slot(operands[0])
+            elif op in ("TALLOC", "TFREE", "TRELEASE"):
+                imm = tensor_slot(operands[0])
+            elif op == "TST":
+                imm = tensor_slot(operands[0]) | (tensor_row(operands[1]) << 1)
+                a = register(operands[2])
+            elif op == "TLD":
+                rd = register(operands[0])
+                imm = tensor_slot(operands[1]) | (tensor_row(operands[2]) << 1)
+            elif op in ("TMMA", "TMMA_ACC", "TMMA_NVFP4", "TMMA_NVFP4_ACC"):
+                imm = tensor_slot(operands[0])
+                a, b = map(register, operands[1:])
+            elif op == "TCOMMIT":
+                rd = register(operands[0])
+                mask = number(operands[2])
+                if not 1 <= mask <= 15:
+                    raise AssemblyError("TCOMMIT participant mask must be 1 through 15")
+                imm = tensor_slot(operands[1]) | (mask << 1)
+            elif op == "TWAIT":
+                imm = tensor_slot(operands[0])
+                a = register(operands[1])
             elif op == "ADDI":
                 rd, a = map(register, operands[:2])
                 imm = immediate(number(operands[2]))
-            elif op == "LD_SHARED":
+            elif op in ("LD_SHARED", "LD_GLOBAL"):
                 rd = register(operands[0])
                 a, offset = memory_operand(operands[1])
                 imm = immediate(offset)
-            elif op == "ST_SHARED":
+            elif op in ("ST_SHARED", "ST_GLOBAL"):
                 a, offset = memory_operand(operands[0])
                 b = register(operands[1])
                 imm = immediate(offset)

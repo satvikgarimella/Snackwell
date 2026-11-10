@@ -1,8 +1,11 @@
 # Bringing Snackwell onto an FPGA
 
 The board-independent loading and launch interface is implemented and tested in
-RTL simulation. The full device has also passed Yosys synthesis, including a
-preliminary Cyclone V mapping. The provisional board is a DE1-SoC; its identity
+RTL simulation. The earlier device baseline passed Yosys synthesis, including a
+preliminary Cyclone V mapping. Those results predate the November 7 tensor-memory
+and global-memory extensions and November 9 async-copy/NVFP4 hardware; the
+extended RTL needs a new synthesis/fit run.
+The provisional board is a DE1-SoC; its identity
 still needs confirmation. No Quartus fit, timing closure, bitstream, or physical
 board execution has been verified. See [the synthesis guide](SYNTHESIS.md) for
 commands, generated netlists, and the Quartus project.
@@ -34,6 +37,8 @@ Board transport / clock-domain crossing
 snackwell_device
         | program loading, shared-memory access, launch and status
 Full SM: scheduler, integer/FP32 units, tensor array, register file, shared memory
+        | separate global request/response master
+External memory adapter/controller (board-specific; still to be implemented)
 ```
 
 Requests are accepted on a rising clock edge with `request_valid && request_ready`.
@@ -57,6 +62,8 @@ return `response_error=1` without applying the requested change.
 | `0x0014` | Read/write | Four lane-mask nibbles, warp 0 in bits 3:0; default `0xffff` |
 | `0x0018` | Read/write | Execution-cycle limit, nonzero; default 1,000,000 |
 | `0x001c` | Read | Execution cycles from the latest launch, excluding loading/launch setup |
+| `0x0020` | Read | Global-memory errors: 3 sticky bits per warp; see [contract](GLOBAL_MEMORY.md) |
+| `0x0024` | Read | Async-copy errors: 8 sticky bits per warp; see [contract](ASYNC_COPY.md) |
 | `0x1000`–`0x1ffc` | Read/write | 1,024 program words |
 | `0x2000`–`0x2ffc` | Read/write | 1,024 shared-memory words |
 
@@ -64,9 +71,13 @@ Memory access and configuration changes are rejected while busy. Status and
 cycle counters remain readable; abort remains available. Start acknowledges the
 command before execution completes. Poll until busy clears, then require done=1
 and fault=0 before trusting outputs. Done stays set until a new start, abort or
-reset. Timeout/abort clear execution and set fault; partially written outputs
-must be discarded. Invalid bus requests report an error on that response and do
-not themselves set the execution fault bit.
+reset. Timeout/abort set fault, drain captured global instructions and asynchronous
+copies (including their shared writes), then reset execution; partially written
+outputs must be discarded. Busy stays high while
+draining, which requires the external endpoint to respond. Global access errors
+and async-copy errors also produce fault instead of done at kernel completion.
+Invalid bus requests report an error on that response and do not themselves set
+the execution fault bit.
 
 ## Loading and reset
 
@@ -79,7 +90,9 @@ not themselves set the execution fault bit.
 Launch resets registers, scoreboards, warps and execution units. It preserves
 loaded program and data memories. Device reset also preserves those memories;
 their contents after power-up are unspecified. The host must initialize them
-before the first launch. A reset cancels outstanding bus requests/responses.
+before the first launch. A system reset cancels outstanding bus requests/responses;
+it must reset the external memory endpoint as well so old responses are discarded.
+Launch and software abort drain global memory before resetting the core.
 
 Host memory operations reuse the banked shared-memory controller while the SM is
 idle. There is no second data-memory port or concurrent host/SM memory access.
@@ -92,6 +105,8 @@ or modify internal DUT arrays.
 - Identify the board, FPGA part, available memory and supported build environment.
 - Implement the physical host transport and matching laptop driver, including
   clock-domain crossing and board clock/reset handling.
+- Connect the global-memory master to a real memory controller. The simulated
+  64 KiB RAM is testbench code, not synthesized storage or an SDRAM controller.
 - Add actual pin assignments and timing constraints from the board documentation.
 - Run the prepared project in Quartus and complete place-and-route; inspect
   actual ALM/DSP/memory use and timing.

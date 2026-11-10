@@ -8,6 +8,10 @@ module tb_snackwell_kernel;
     logic [3:0] launch_active_mask = 0;
     wire [3:0] halted_mask;
     snackwell_sm dut (
+        .global_request_valid(), .global_request_ready(1'b1), .global_request_write(),
+        .global_request_address(), .global_request_data(), .global_response_valid(1'b1),
+        .global_response_ready(), .global_response_error(1'b1), .global_response_data(32'd0),
+
         .clk(clk), .reset(reset), .run_enable(run_enable),
         .launch_enable(launch_enable), .launch_warp_id(launch_warp_id),
         .launch_pc(launch_pc), .launch_active_mask(launch_active_mask),
@@ -43,7 +47,7 @@ module tb_snackwell_kernel;
             trace_cycles = trace_cycles + 1;
             if (trace_handle != 0)
                 $fwrite(trace_handle,
-                    "%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d\n",
+                    "%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d,%0d\n",
                     trace_cycles, dut.core.issue_valid, dut.core.instruction_execute_accept,
                     dut.core.selected_warp_id, dut.core.selected_pc, dut.core.opcode,
                     dut.core.selected_active_mask, dut.core.dependency_stall, dut.core.resource_stall,
@@ -58,7 +62,12 @@ module tb_snackwell_kernel;
                     dut.core.shared_inflight, dut.core.shared_mem.servicing,
                     dut.core.shared_start, dut.core.shared_response_valid,
                     dut.core.shared_response_ready, dut.core.shared_bank_conflict,
-                    dut.core.tensor_start);
+                    dut.core.tensor_start,
+                    dut.core.tensor_memory.state, dut.core.tmem_start, dut.core.tmem_take,
+                    dut.core.tmem_memory_valid && dut.core.shared_request_ready,
+                    dut.core.tmem_memory_pending && dut.core.memory_response_valid &&
+                        dut.core.tmem_memory_response_ready,
+                    dut.core.tmem_warp_pending);
         end
     end
 
@@ -73,7 +82,7 @@ module tb_snackwell_kernel;
         if (trace_path != "") begin
             trace_handle = $fopen(trace_path, "w");
             if (trace_handle == 0) $fatal(1, "Cannot open kernel trace: %s", trace_path);
-            $fwrite(trace_handle, "cycle,issue_valid,instruction_accepted,warp,pc,opcode,active_mask,dependency_stall,resource_stall,reconvergence_accepted,fp_inflight,fp_start,fp_take,wb_commit,tensor_state,array_result_valid,array_step,array_step_start,array_step_advance,pe_mac_accept,pe_arithmetic_active,tensor_row_take,tensor_row_commit,shared_inflight,shared_servicing,shared_start,shared_response_valid,shared_response_ready,shared_bank_conflict,tensor_start\n");
+            $fwrite(trace_handle, "cycle,issue_valid,instruction_accepted,warp,pc,opcode,active_mask,dependency_stall,resource_stall,reconvergence_accepted,fp_inflight,fp_start,fp_take,wb_commit,tensor_state,array_result_valid,array_step,array_step_start,array_step_advance,pe_mac_accept,pe_arithmetic_active,tensor_row_take,tensor_row_commit,shared_inflight,shared_servicing,shared_start,shared_response_valid,shared_response_ready,shared_bank_conflict,tensor_start,tmem_state,tmem_start,tmem_row_take,tmem_memory_request,tmem_memory_response,tmem_warp_pending\n");
         end
         handle = $fopen(data_path, "r");
         if (handle == 0) $fatal(1, "Cannot open kernel input: %s", data_path);
@@ -109,7 +118,9 @@ module tb_snackwell_kernel;
         end
         if ((halted_mask & warp_mask) !== warp_mask) $fatal(1, "Kernel timeout after %0d cycles", cycles);
         if (trace_cycles != cycles) $fatal(1, "Trace and execution cycle counts disagree");
-        if (dut.core.shared_inflight || dut.core.fp_inflight || dut.core.tensor_busy || dut.core.wb_valid)
+        if (dut.core.copy_busy || dut.core.copy_row_valid || dut.core.copy_warp_pending != 0 ||
+                     dut.core.global_busy || dut.core.shared_inflight || dut.core.fp_inflight || dut.core.tensor_busy || dut.core.wb_valid ||
+            dut.core.tmem_busy || dut.core.tmem_row_valid || dut.core.tmem_warp_pending != 0)
             $fatal(1, "Kernel halted before all work completed");
         run_enable = 0;
         if (trace_handle != 0) $fclose(trace_handle);

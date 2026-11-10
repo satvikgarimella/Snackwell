@@ -1,0 +1,20 @@
+{
+  "rtl_testbenches_passed": 39,
+  "python_tests_passed_in_initial_run": 181,
+  "initial_environment_error": "LiveModelTests.setUpClass could not bind a localhost port inside the sandbox.",
+  "localhost_retry": {
+    "command": "build/model-venv/bin/python -m unittest tests.test_live_model -v",
+    "exit_code": 0,
+    "passed": 4,
+    "seconds": 5.096
+  },
+  "total_python_test_methods_passed": 185,
+  "ruff_lint": "passed",
+  "ruff_format": "passed",
+  "assembly_examples_checked": 36,
+  "new_checkpoints_validated": [
+    "sentence_completion",
+    "shakespeare_transformer"
+  ],
+  "raw_log_whitespace": "Two trailing spaces retained in historical evidence logs."
+}

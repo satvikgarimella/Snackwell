@@ -165,7 +165,11 @@ def encode_prompt(model, prompt, *, pad=True):
 
 @dataclass(frozen=True)
 class ReferenceState:
-    """Independent double-precision history, never populated from RTL words."""
+    """Independent reference history, never populated from simulator outputs.
+
+    FP32 mode uses double-precision model math; the mixed-precision checker
+    retains its independently calculated binary32 K/V words.
+    """
 
     ids: tuple
     layers: tuple

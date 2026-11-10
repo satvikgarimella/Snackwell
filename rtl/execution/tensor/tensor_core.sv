@@ -33,8 +33,9 @@ module tensor_core (
 
     systolic_array_4x4 array (
         .clk(clk), .reset(reset), .enable(enable),
+        .nvfp4_mode(1'b0),
         .request_valid(start_valid && start_ready), .request_ready(array_ready),
-        .a_tile(a_buffer), .b_tile(b_buffer), .busy(busy),
+        .a_tile(a_buffer), .b_tile(b_buffer), .c_tile(512'd0), .busy(busy),
         .result_valid(array_result_valid), .result_ready(result_ready && result_last),
         .result_tile(array_result), .step_index(), .step_advance(), .pe_done_mask()
     );

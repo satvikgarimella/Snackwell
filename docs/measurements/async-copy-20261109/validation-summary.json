@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-09",
+  "git_head": "f865889ed9118fa0effc902c3e2534c656095fb6",
+  "source_tree_includes_uncommitted_changes": true,
+  "source_manifest": "source-sha256.txt",
+  "source_files_hashed": 261,
+  "full_regression": {
+    "passed": true,
+    "full_suite": true,
+    "rtl": {
+      "passed": 45,
+      "total": 45,
+      "failures": []
+    },
+    "python": {
+      "passed": true,
+      "test_methods": 215
+    }
+  },
+  "python_duration_seconds": 335.331,
+  "python_skips": 0,
+  "lint_and_examples_passed": true,
+  "formatted_python_files": 123,
+  "generated_assembly_examples": 36,
+  "quartus_manifest_matches_rtl": true,
+  "rtl_implementation_files": 41,
+  "structural_lint_passed": true,
+  "structural_lint_warnings": [
+    "CASEINCOMPLETE",
+    "CASEINCOMPLETE"
+  ],
+  "demo": {
+    "passed": true,
+    "shape": {
+      "m": 4,
+      "n": 4,
+      "k": 12
+    },
+    "cases": {
+      "serial": {
+        "cycles": 1582,
+        "reads": 96,
+        "writes": 16,
+        "responses": 112,
+        "request_stalls": 114,
+        "independent_integer_issues": 0,
+        "dependency_stalls": 3,
+        "status": 0,
+        "copy_status": 0,
+        "copy_reads": 96,
+        "copy_writes": 96,
+        "copy_arithmetic_overlap_cycles": 0,
+        "transport": "simulated_external_memory",
+        "hardware_tested": false,
+        "latency": 2,
+        "copy_transfers_during_arithmetic": 0
+      },
+      "overlapped": {
+        "cycles": 1412,
+        "reads": 96,
+        "writes": 16,
+        "responses": 112,
+        "request_stalls": 118,
+        "independent_integer_issues": 0,
+        "dependency_stalls": 3,
+        "status": 0,
+        "copy_status": 0,
+        "copy_reads": 96,
+        "copy_writes": 96,
+        "copy_arithmetic_overlap_cycles": 139,
+        "transport": "simulated_external_memory",
+        "hardware_tested": false,
+        "latency": 2,
+        "copy_transfers_during_arithmetic": 25
+      }
+    },
+    "cycles_saved": 170,
+    "cycle_reduction_percent": 10.745891276864729,
+    "guards_verified": true,
+    "tickets_verified": true,
+    "hardware_tested": false
+  },
+  "fresh_verilator_control_passed": true,
+  "fresh_verilator_full_memory_reference_match": true,
+  "fresh_verilator_cycles": 1412,
+  "synthesis_rerun": false,
+  "physical_hardware_tested": false
+}

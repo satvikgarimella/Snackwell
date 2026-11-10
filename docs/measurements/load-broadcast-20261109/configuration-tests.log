@@ -1,0 +1,9 @@
+test_repeated_loads_reduce_requests_distinct_loads_keep_cycles (tests.test_global_loads.GlobalLoadTests.test_repeated_loads_reduce_requests_distinct_loads_keep_cycles) ... ok
+test_resident_generation_rejects_switching_build_configuration (tests.test_global_loads.GlobalLoadTests.test_resident_generation_rejects_switching_build_configuration) ... ok
+test_serial_baseline_handshake_masks_errors_reset_and_stores (tests.test_global_loads.GlobalLoadTests.test_serial_baseline_handshake_masks_errors_reset_and_stores) ... ok
+test_normal_global_traffic_shares_port_without_losing_responses (tests.test_async_copy.AsyncCopyTests.test_normal_global_traffic_shares_port_without_losing_responses) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.762s
+
+OK

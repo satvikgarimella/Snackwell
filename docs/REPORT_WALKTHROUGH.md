@@ -1,5 +1,10 @@
 # Snackwell report walkthrough
 
+> Historical walkthrough of the earlier inference milestones. References below
+> to one-warp kernels, future training/synthesis work, and older interfaces
+> describe those stages. The [engineering report](REPORT.md) covers the current
+> implementation and distinguishes historical experiments from current results.
+
 Work through these in order. For each choice, explain the constraint, follow one
 concrete example through the code, then show the measurement that supports it.
 The existing [whiteboard walkthrough](INFERENCE_WALKTHROUGH.md) supplies the

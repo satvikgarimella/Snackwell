@@ -1,0 +1,6 @@
+build/dev-venv/bin/ruff check snackwell scripts tests
+All checks passed!
+build/dev-venv/bin/ruff format --check snackwell scripts tests
+123 files already formatted
+python3 scripts/write_kernel_examples.py --check
+Checked 36 assembly examples in /Users/satvik.garimella/Snackwell/kernels/nn

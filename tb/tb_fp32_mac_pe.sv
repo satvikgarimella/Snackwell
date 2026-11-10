@@ -3,10 +3,11 @@ module tb_fp32_mac_pe;
     logic clk = 0, reset = 1, clear = 0;
     logic step_valid = 0, a_valid = 0, b_valid = 0, advance = 0;
     logic [31:0] a_data = 0, b_data = 0;
+    logic [31:0] initial_accumulator = 0;
     wire step_ready, step_done, a_out_valid, b_out_valid, arithmetic_busy;
     wire [31:0] a_out, b_out, accumulator;
     integer early_advances = 0, sum_forwards = 0;
-    fp32_mac_pe dut (.*);
+    fp32_mac_pe dut (.nvfp4_mode(1'b0), .*);
     always #5 clk = ~clk;
     always @(posedge clk) begin
         if (!reset && !clear) begin

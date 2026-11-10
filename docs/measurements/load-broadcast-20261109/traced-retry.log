@@ -1,0 +1,6 @@
+test_traced_verilator_uses_external_memory_and_saves_artifacts (tests.test_global_model.GlobalModelTests.test_traced_verilator_uses_external_memory_and_saves_artifacts) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.466s
+
+OK

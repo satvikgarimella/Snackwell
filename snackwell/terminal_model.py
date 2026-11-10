@@ -53,7 +53,7 @@ class TerminalPrediction:
             self.last_stage = event["stage"]
         elif event["type"] == "kernel_complete":
             self.cycles += event["cycles"]
-            self.launches += 1
+            self.launches += event.get("memory", {}).get("total", {}).get("rtl_launches", 1)
         elif event["type"] == "cache":
             self.status = f"{event['phase']} | {event['context_tokens']} context {self.unit}s"
             if not self.tty:
@@ -74,16 +74,35 @@ class TerminalPrediction:
 
 
 def predict(
-    model, prompt, tokens, output, executable, stream=None, decoder=None, cache=True, heal=True
+    model,
+    prompt,
+    tokens,
+    output,
+    executable,
+    stream=None,
+    decoder=None,
+    cache=True,
+    heal=True,
+    precision="fp32",
+    memory="shared",
+    memory_latency=2,
 ):
     """Show and save a run; publish characters only after whole-model verification."""
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     (output / "result.json").unlink(missing_ok=True)
-    generation = Generation(model, prompt, cache=cache, heal=heal)
+    generation = Generation(
+        model,
+        prompt,
+        cache=cache,
+        heal=heal,
+        precision=precision,
+        memory=memory,
+        memory_latency=memory_latency,
+    )
     decoder = decoder or Decoder()
     print(
-        f"Model: {model_description(model)}\nDecoding: {decoder.describe()}",
+        f"Model: {model_description(model)}\nPrecision: {precision}; memory: {memory}\nDecoding: {decoder.describe()}",
         file=stream or sys.stdout,
         flush=True,
     )
@@ -119,10 +138,13 @@ def predict(
                     rtl_source_sha256=result.get("rtl_source_sha256"),
                     selection=result["selection"],
                     cache=result["cache"],
+                    **({"resident": result["resident"]} if "resident" in result else {}),
                 )
             )
         report = dict(
             verified=True,
+            precision=precision,
+            memory=memory,
             checkpoint_sha256=model.get("sha256"),
             prompt=prompt,
             generated=display.generated,
@@ -137,6 +159,8 @@ def predict(
     except BaseException:
         display.finish("Stopped before completion; only verified predictions are shown")
         raise
+    finally:
+        generation.close()
     display.finish(
         f"Done | {display.cycles:,} cycles | {display.launches} launches | RTL/reference match"
     )
@@ -180,6 +204,9 @@ def interactive(
     cache=True,
     min_p=0.0,
     heal=True,
+    precision="fp32",
+    memory="shared",
+    memory_latency=2,
 ):
     unit = "token" if "tokenizer" in model else "character"
     print(
@@ -254,6 +281,9 @@ def interactive(
                 decoder=Decoder(mode, seed, temperature, min_p=min_p),
                 cache=cache,
                 heal=heal,
+                precision=precision,
+                memory=memory,
+                memory_latency=memory_latency,
             )
             print(f"Run files: {run_output}\n")
         except KeyboardInterrupt:

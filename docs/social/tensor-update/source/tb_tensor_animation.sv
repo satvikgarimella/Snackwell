@@ -8,8 +8,9 @@ wire [3:0] step_index;
 integer cycles=0;
 always #5 clk=~clk;
 always @(posedge clk) if (!reset) cycles=cycles+1;
-systolic_array_4x4 dut (.clk(clk),.reset(reset),.enable(1'b1),
+systolic_array_4x4 dut (.clk(clk),.reset(reset),.enable(1'b1),.nvfp4_mode(1'b0),
 .request_valid(request_valid),.request_ready(request_ready),.a_tile(a_tile),.b_tile(b_tile),
+.c_tile(512'd0),
 .busy(busy),.result_valid(result_valid),.result_ready(1'b0),.result_tile(result_tile),
 .step_index(step_index),.step_advance(step_advance),.pe_done_mask());
 for(genvar r=0;r<4;r=r+1)begin:rs

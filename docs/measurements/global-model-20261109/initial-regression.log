@@ -1,0 +1,95 @@
+PASS tb_async_copy_unit
+PASS tb_branch_unit
+PASS tb_divergence_controller
+PASS tb_fp32_arithmetic
+PASS tb_fp32_mac_pe
+PASS tb_fp32_mul_wrapper
+PASS tb_global_memory_arbiter
+PASS tb_global_memory_unit
+PASS tb_instruction_decoder
+PASS tb_instruction_frontend
+PASS tb_instruction_memory
+PASS tb_integer_alu
+PASS tb_issue_control
+PASS tb_issue_stage
+PASS tb_load_store_unit
+PASS tb_multiwarp_divergence_core
+PASS tb_multiwarp_execution_core
+PASS tb_multiwarp_memory_core
+PASS tb_multiwarp_register_file
+PASS tb_nvfp4_product
+PASS tb_program_counter
+PASS tb_reconvergence_stack
+PASS tb_reconvergence_target_table
+PASS tb_register_file
+PASS tb_scoreboard
+PASS tb_shared_memory
+PASS tb_simd_execution_unit
+PASS tb_simd_fp32_execute
+PASS tb_simd_fp32_mul
+PASS tb_simd_lane
+PASS tb_single_warp_core
+PASS tb_sm_tensor_memory_unit
+PASS tb_snackwell_device
+PASS tb_snackwell_global_memory
+PASS tb_snackwell_kernel
+PASS tb_snackwell_sm
+PASS tb_snackwell_sm_fp32
+PASS tb_snackwell_sm_global
+PASS tb_snackwell_sm_memory
+PASS tb_snackwell_sm_tensor
+PASS tb_systolic_array_4x4
+PASS tb_tensor_core
+PASS tb_warp_control_unit
+PASS tb_warp_scheduler
+PASS tb_warp_scheduler_handshake
+PASS tb_warp_state_table
+
+46/46 testbenches passed. Logs: /Users/satvik.garimella/Snackwell/build/tests
+FAIL Python assembler and kernel tests
+ut_and_bad_checkpoints (test_training.TrainingTests.test_terminal_command_rejects_existing_output_and_bad_checkpoints) ... ok
+test_whole_graph_check_rejects_wrong_backward_wiring_and_removes_stale_success (test_training.TrainingTests.test_whole_graph_check_rejects_wrong_backward_wiring_and_removes_stale_success) ... ok
+test_causal_first_row_independent_of_future_inputs (test_transformer.TransformerTests.test_causal_first_row_independent_of_future_inputs) ... ok
+test_cli_and_stale_result_removal (test_transformer.TransformerTests.test_cli_and_stale_result_removal) ... ok
+test_end_to_end_check_catches_missing_residual (test_transformer.TransformerTests.test_end_to_end_check_catches_missing_residual) ... ok
+test_invalid_inputs_and_capacity (test_transformer.TransformerTests.test_invalid_inputs_and_capacity) ... ok
+test_nonzero_parameters_shapes_and_masks (test_transformer.TransformerTests.test_nonzero_parameters_shapes_and_masks) ... ok
+test_zero_branches_preserve_residual_exactly (test_transformer.TransformerTests.test_zero_branches_preserve_residual_exactly) ... ok
+test_complete_training_step_matches_both_simulators (test_transformer_training.TransformerTrainingTests.test_complete_training_step_matches_both_simulators) ... ok
+test_cross_entropy_remains_finite_when_target_probability_underflows (test_transformer_training.TransformerTrainingTests.test_cross_entropy_remains_finite_when_target_probability_underflows) ... ok
+test_every_parameter_gradient_against_finite_differences (test_transformer_training.TransformerTrainingTests.test_every_parameter_gradient_against_finite_differences) ... ok
+test_invalid_inputs_and_cancelled_backward_do_not_commit (test_transformer_training.TransformerTrainingTests.test_invalid_inputs_and_cancelled_backward_do_not_commit) ... ok
+test_layernorm_backward_zero_variance_and_shared_memory_chunks (test_transformer_training.TransformerTrainingTests.test_layernorm_backward_zero_variance_and_shared_memory_chunks) ... ok
+test_multilayer_multihead_gradients_match_pytorch (test_transformer_training.TransformerTrainingTests.test_multilayer_multihead_gradients_match_pytorch) ... ok
+test_softmax_backward_masks_future_and_saturated_first_row (test_transformer_training.TransformerTrainingTests.test_softmax_backward_masks_future_and_saturated_first_row) ... ok
+test_terminal_cancellation_preserves_last_successful_step (test_transformer_training.TransformerTrainingTests.test_terminal_cancellation_preserves_last_successful_step) ... 
+Training cancelled. Last committed checkpoint: /Users/satvik.garimella/Snackwell/build/tests/transformer_training/tmpt1fqz6bx/cancel/checkpoint.json
+ok
+test_terminal_resume_reproduces_uninterrupted_weights_and_corpus_binding (test_transformer_training.TransformerTrainingTests.test_terminal_resume_reproduces_uninterrupted_weights_and_corpus_binding) ... ok
+test_updated_checkpoint_runs_through_existing_inference (test_transformer_training.TransformerTrainingTests.test_updated_checkpoint_runs_through_existing_inference) ... ok
+test_wrong_embedding_backward_is_rejected_without_mutating_model (test_transformer_training.TransformerTrainingTests.test_wrong_embedding_backward_is_rejected_without_mutating_model) ... ok
+test_looped_layernorm_preserves_unrolled_fp32_results (test_wide_model.WideModelTests.test_looped_layernorm_preserves_unrolled_fp32_results) ... ok
+test_wide_cached_decode_matches_full_forward (test_wide_model.WideModelTests.test_wide_cached_decode_matches_full_forward) ... ok
+test_wide_gelu_and_embedding_keep_flat_order (test_wide_model.WideModelTests.test_wide_gelu_and_embedding_keep_flat_order) ... ok
+test_wide_layernorm_handles_zero_variance_and_distinct_rows (test_wide_model.WideModelTests.test_wide_layernorm_handles_zero_variance_and_distinct_rows) ... ok
+test_normalization_and_residuals_preserve_rows_and_original_gradients (test_wide_transformer.WideTransformerTests.test_normalization_and_residuals_preserve_rows_and_original_gradients) ... ok
+test_wide_training_gradients_updates_and_cached_inference (test_wide_transformer.WideTransformerTests.test_wide_training_gradients_updates_and_cached_inference) ... ok
+
+======================================================================
+FAIL: test_complete_model_matches_icarus (test_simulator.VerilatorTests.test_complete_model_matches_icarus)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/satvik.garimella/Snackwell/tests/test_simulator.py", line 245, in test_complete_model_matches_icarus
+    self.assertEqual(report.pop("simulation"), dict(backend=simulator.backend, trace=False))
+AssertionError: {'memory': 'shared', 'memory_latency': None[33 chars]alse} != {'backend': 'icarus', 'trace': False}
++ {'backend': 'icarus', 'trace': False}
+- {'backend': 'icarus',
+-  'memory': 'shared',
+-  'memory_latency': None,
+-  'trace': False}
+
+----------------------------------------------------------------------
+Ran 242 tests in 396.927s
+
+FAILED (failures=1)
+

@@ -1,0 +1,2 @@
+PASS global SM writeback backpressure, dependent FP, warp/mask tags and halt drain
+/Users/satvik.garimella/Snackwell/tb/tb_snackwell_sm_global.sv:73: $finish called at 870000 (1ps)

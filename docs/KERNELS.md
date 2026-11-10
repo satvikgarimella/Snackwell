@@ -141,7 +141,9 @@ FP operand latency and scheduling. It is not a hardware clock-speed measurement.
 python3 scripts/assemble.py kernels/vector_add.asm -o build/vector_add.hex
 ```
 
-The assembler supports all currently defined SM opcodes:
+The assembler supports the original SM instructions below and the later
+[tensor-memory](TENSOR_MEMORY.md), [global-memory](GLOBAL_MEMORY.md),
+[asynchronous-copy](ASYNC_COPY.md), and [NVFP4](NVFP4.md) instructions.
 
 | Syntax | Meaning |
 | --- | --- |

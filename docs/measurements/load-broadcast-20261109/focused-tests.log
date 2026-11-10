@@ -1,0 +1,26 @@
+test_assembler_global_addressing (tests.test_global_memory.GlobalMemoryTests.test_assembler_global_addressing) ... ok
+test_duplicate_store_order_and_load_after_store (tests.test_global_memory.GlobalMemoryTests.test_duplicate_store_order_and_load_after_store) ... ok
+test_failed_kernel_removes_previous_result (tests.test_global_memory.GlobalMemoryTests.test_failed_kernel_removes_previous_result) ... ok
+test_fp_shared_and_global_writeback_contention (tests.test_global_memory.GlobalMemoryTests.test_fp_shared_and_global_writeback_contention) ... ok
+test_independent_warp_progress_and_dependent_stall (tests.test_global_memory.GlobalMemoryTests.test_independent_warp_progress_and_dependent_stall) ... ok
+test_invalid_reads_and_stores_report_errors_without_wrapping (tests.test_global_memory.GlobalMemoryTests.test_invalid_reads_and_stores_report_errors_without_wrapping) ... ok
+test_load_broadcast_groups_masks_warps_and_latency (tests.test_global_memory.GlobalMemoryTests.test_load_broadcast_groups_masks_warps_and_latency) ... ok
+test_masked_gather_scatter_all_warps_and_full_addresses (tests.test_global_memory.GlobalMemoryTests.test_masked_gather_scatter_all_warps_and_full_addresses) ... ok
+test_tensor_pipeline_random_values_and_latency (tests.test_global_memory.GlobalMemoryTests.test_tensor_pipeline_random_values_and_latency) ... ok
+test_verilator_public_bus_and_abort_parity (tests.test_global_memory.GlobalMemoryTests.test_verilator_public_bus_and_abort_parity) ... ok
+test_assembler_collective_copy_instructions (tests.test_async_copy.AsyncCopyTests.test_assembler_collective_copy_instructions) ... ok
+test_bad_descriptors_and_encodings_have_no_memory_side_effects (tests.test_async_copy.AsyncCopyTests.test_bad_descriptors_and_encodings_have_no_memory_side_effects) ... ok
+test_double_buffered_random_matmul_matches_serial_at_multiple_latencies (tests.test_async_copy.AsyncCopyTests.test_double_buffered_random_matmul_matches_serial_at_multiple_latencies) ... ok
+test_failed_copy_releases_without_exposing_partial_result (tests.test_async_copy.AsyncCopyTests.test_failed_copy_releases_without_exposing_partial_result) ... ok
+test_invalid_tensor_command_retires_instead_of_waiting_on_copy_guard (tests.test_async_copy.AsyncCopyTests.test_invalid_tensor_command_retires_instead_of_waiting_on_copy_guard) ... ok
+test_normal_global_traffic_shares_port_without_losing_responses (tests.test_async_copy.AsyncCopyTests.test_normal_global_traffic_shares_port_without_losing_responses) ... ok
+test_rectangular_strides_masks_and_captured_descriptor (tests.test_async_copy.AsyncCopyTests.test_rectangular_strides_masks_and_captured_descriptor) ... ok
+test_reuse_preserves_matrix_operand_snapshot (tests.test_async_copy.AsyncCopyTests.test_reuse_preserves_matrix_operand_snapshot) ... ok
+test_shared_reads_stores_and_tensor_gathers_wait_for_region_release (tests.test_async_copy.AsyncCopyTests.test_shared_reads_stores_and_tensor_gathers_wait_for_region_release) ... ok
+test_two_consumers_release_before_generation_reuse (tests.test_async_copy.AsyncCopyTests.test_two_consumers_release_before_generation_reuse) ... ok
+test_verilator_copy_pipeline_and_control_parity (tests.test_async_copy.AsyncCopyTests.test_verilator_copy_pipeline_and_control_parity) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 39.836s
+
+OK

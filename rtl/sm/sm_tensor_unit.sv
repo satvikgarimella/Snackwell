@@ -2,7 +2,9 @@
 // Owns both read ports for four gather cycles, then releases them while the
 // systolic array runs. The destination reservation lasts until
 // the last row actually commits through the SM's shared writeback port.
-module sm_tensor_unit (
+module sm_tensor_unit #(
+    parameter bit AUX_PORT = 0
+) (
     input  logic         clk,
     input  logic         reset,
     input  logic         request_valid,
@@ -28,7 +30,18 @@ module sm_tensor_unit (
     output logic [3:0]   row_write_mask,
     output logic [127:0] row_data,
     output logic         row_last,
-    input  logic         last_row_committed
+    input  logic         last_row_committed,
+
+    // The tensor-memory controller leases this same physical array. Legacy
+    // TMUL keeps its gather/writeback path and always starts its sums at zero.
+    input  logic         aux_busy,
+    input  logic         aux_request_valid,
+    input  logic         aux_nvfp4_mode,
+    output logic         aux_request_ready,
+    input  logic [511:0] aux_a_tile, aux_b_tile, aux_c_tile,
+    output logic         aux_result_valid,
+    input  logic         aux_result_ready,
+    output logic [511:0] aux_result_tile
 );
     // Keep trace state IDs stable; state 2 was the former serial operand load.
     typedef enum logic [2:0] {IDLE=0, GATHER=1, START=3, RESULT=4, COMMIT=5} state_t;
@@ -40,7 +53,8 @@ module sm_tensor_unit (
     wire start_ready, result_valid;
     wire [511:0] result_tile;
 
-    assign request_ready = state == IDLE && !reset;
+    wire use_aux = AUX_PORT && aux_busy;
+    assign request_ready = state == IDLE && !reset && !use_aux;
     assign busy = state != IDLE;
     assign gather_active = state == GATHER;
     assign read_a_addr = a_base + {2'd0, gather_row};
@@ -51,13 +65,22 @@ module sm_tensor_unit (
     assign row_rd_addr = d_base + {2'd0, result_row};
     assign row_last = row_valid && result_row == 2'd3;
 
-    systolic_array_4x4 tensor (
+    assign aux_request_ready = AUX_PORT && state == IDLE && start_ready;
+    assign aux_result_valid = use_aux && result_valid;
+    assign aux_result_tile = result_tile;
+
+    systolic_array_4x4 #(.INITIAL_ACCUMULATOR(AUX_PORT)) tensor (
         .clk(clk), .reset(reset),
         // As with SIMD FP, pausing SM issue does not strand an accepted job.
         .enable(1'b1),
-        .request_valid(state == START), .request_ready(start_ready), .busy(),
-        .a_tile(a_tile), .b_tile(b_tile),
-        .result_valid(result_valid), .result_ready(row_last && row_ready),
+        .request_valid(use_aux ? aux_request_valid : state == START),
+        .nvfp4_mode(use_aux && aux_nvfp4_mode),
+        .request_ready(start_ready), .busy(),
+        .a_tile(use_aux ? aux_a_tile : a_tile),
+        .b_tile(use_aux ? aux_b_tile : b_tile),
+        .c_tile(use_aux ? aux_c_tile : 512'd0),
+        .result_valid(result_valid),
+        .result_ready(use_aux ? aux_result_ready : row_last && row_ready),
         .result_tile(result_tile), .step_index(), .step_advance(), .pe_done_mask()
     );
 

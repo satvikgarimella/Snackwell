@@ -1,0 +1,2 @@
+PASS global device abort, watchdog, drain, reset and relaunch
+/Users/satvik.garimella/Snackwell/tb/tb_snackwell_global_memory.sv:184: $finish called at 5010000 (1ps)

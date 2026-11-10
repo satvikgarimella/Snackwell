@@ -1,0 +1,3065 @@
+{
+  "verified": true,
+  "quantization_policy": "nvfp4-linear-row-v1",
+  "checkpoint_sha256": "66af3342b4a66ee4e63816f30756f3aed746b749b300ecd6f13c324be0d2423e",
+  "rtl_source_sha256": "e96b19fc9a94aa79c246795f7697132776a59f876764f8c6df3943634421a5c0",
+  "cases": [
+    {
+      "prompt": "The cup is in the attic. The toy is in the garden. Where is the cup?",
+      "expected_answer": " The cup is in the attic.",
+      "generated": {
+        "fp32": " The cup is in the attic.",
+        "nvfp4": " The cup is in the attic."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 4.875778806789958e-05,
+            "nvfp4": 5.0188370316066977e-05
+          },
+          "logit_max_absolute_error": 0.6794064044952393,
+          "logit_relative_l2": 0.07684824965621184,
+          "total_variation": 5.090748359839525e-06,
+          "kl_fp32_to_nvfp4": 1.5765006098287057e-06,
+          "cycles": {
+            "fp32": 1745356,
+            "nvfp4": 1597312
+          },
+          "wall_seconds": {
+            "fp32": 0.8953326669980015,
+            "nvfp4": 1.6367391250023502
+          },
+          "reference_seconds": {
+            "fp32": 0.047696916000859346,
+            "nvfp4": 0.5867280839993327
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36
+          ],
+          "target": 61,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 61,
+            "nvfp4": 61
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00013376176858247477,
+            "nvfp4": 0.00016583387144153083
+          },
+          "logit_max_absolute_error": 1.7563008069992065,
+          "logit_relative_l2": 0.18935075885800093,
+          "total_variation": 4.787403755590021e-05,
+          "kl_fp32_to_nvfp4": 1.9873585430775645e-05,
+          "cycles": {
+            "fp32": 311576,
+            "nvfp4": 304844
+          },
+          "wall_seconds": {
+            "fp32": 0.16670562500075903,
+            "nvfp4": 0.22437062499739113
+          },
+          "reference_seconds": {
+            "fp32": 0.0026704169977165293,
+            "nvfp4": 0.033236582999961684
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.127545213127414e-05,
+            "nvfp4": 4.518134140117982e-05
+          },
+          "logit_max_absolute_error": 0.8370275497436523,
+          "logit_relative_l2": 0.07679557203572997,
+          "total_variation": 1.570246489270352e-05,
+          "kl_fp32_to_nvfp4": 5.13271329229993e-06,
+          "cycles": {
+            "fp32": 312229,
+            "nvfp4": 305340
+          },
+          "wall_seconds": {
+            "fp32": 0.1575142909969145,
+            "nvfp4": 0.22312337499897694
+          },
+          "reference_seconds": {
+            "fp32": 0.0027722920021915343,
+            "nvfp4": 0.032091917000798276
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.221503200429951e-05,
+            "nvfp4": 8.499983583340149e-05
+          },
+          "logit_max_absolute_error": 0.9599018543958664,
+          "logit_relative_l2": 0.08474729531010841,
+          "total_variation": 3.306860676513562e-05,
+          "kl_fp32_to_nvfp4": 1.079198040506884e-05,
+          "cycles": {
+            "fp32": 312581,
+            "nvfp4": 305310
+          },
+          "wall_seconds": {
+            "fp32": 0.15782966599726933,
+            "nvfp4": 0.22328449999986333
+          },
+          "reference_seconds": {
+            "fp32": 0.002562208999734139,
+            "nvfp4": 0.03158741600054782
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.11704784202342e-05,
+            "nvfp4": 0.0001262506069067708
+          },
+          "logit_max_absolute_error": 0.6634655892848969,
+          "logit_relative_l2": 0.09279288437681725,
+          "total_variation": 5.6067242030292526e-05,
+          "kl_fp32_to_nvfp4": 1.7869282075557645e-05,
+          "cycles": {
+            "fp32": 312744,
+            "nvfp4": 306008
+          },
+          "wall_seconds": {
+            "fp32": 0.15782866600056877,
+            "nvfp4": 0.22780562499974621
+          },
+          "reference_seconds": {
+            "fp32": 0.0026118750029127114,
+            "nvfp4": 0.03124033299900475
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32
+          ],
+          "target": 90,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 90,
+            "nvfp4": 90
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00011158612051911557,
+            "nvfp4": 0.00012577370965750223
+          },
+          "logit_max_absolute_error": 1.3599501848220825,
+          "logit_relative_l2": 0.12431716474656473,
+          "total_variation": 3.48187312869869e-05,
+          "kl_fp32_to_nvfp4": 1.7178726660411965e-05,
+          "cycles": {
+            "fp32": 313006,
+            "nvfp4": 306699
+          },
+          "wall_seconds": {
+            "fp32": 0.1573734159974265,
+            "nvfp4": 0.2227551250034594
+          },
+          "reference_seconds": {
+            "fp32": 0.002611542000522604,
+            "nvfp4": 0.03153625000049942
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            95,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32,
+            90
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.248187479449761e-05,
+            "nvfp4": 6.580569297915222e-05
+          },
+          "logit_max_absolute_error": 0.9564489424228668,
+          "logit_relative_l2": 0.08188148745859208,
+          "total_variation": 1.2369513635176403e-05,
+          "kl_fp32_to_nvfp4": 3.966522754526212e-06,
+          "cycles": {
+            "fp32": 313557,
+            "nvfp4": 306671
+          },
+          "wall_seconds": {
+            "fp32": 0.1592279159995087,
+            "nvfp4": 0.22336479099976714
+          },
+          "reference_seconds": {
+            "fp32": 0.002666041000338737,
+            "nvfp4": 0.0319889169986709
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "The ball is in the kitchen. The toy is in the attic. Where is the ball?",
+      "expected_answer": " The ball is in the kitchen.",
+      "generated": {
+        "fp32": " The ball is in the kitchen.",
+        "nvfp4": " The ball is in the kitchen."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 3.671713524740107e-05,
+            "nvfp4": 7.295874662970789e-05
+          },
+          "logit_max_absolute_error": 1.4265093803405762,
+          "logit_relative_l2": 0.0931735786292669,
+          "total_variation": 3.612796308391788e-05,
+          "kl_fp32_to_nvfp4": 1.2481761199289092e-05,
+          "cycles": {
+            "fp32": 1745167,
+            "nvfp4": 1597146
+          },
+          "wall_seconds": {
+            "fp32": 0.9163667499997246,
+            "nvfp4": 1.483858790998056
+          },
+          "reference_seconds": {
+            "fp32": 0.05030025000087335,
+            "nvfp4": 0.49586033299783594
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36
+          ],
+          "target": 60,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 60,
+            "nvfp4": 60
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00023254475570473398,
+            "nvfp4": 0.0004196451332774812
+          },
+          "logit_max_absolute_error": 1.3287056684494019,
+          "logit_relative_l2": 0.17527657835470445,
+          "total_variation": 0.00019564063901694582,
+          "kl_fp32_to_nvfp4": 7.441619798607812e-05,
+          "cycles": {
+            "fp32": 311594,
+            "nvfp4": 305200
+          },
+          "wall_seconds": {
+            "fp32": 0.16821762499967008,
+            "nvfp4": 0.23214670900051715
+          },
+          "reference_seconds": {
+            "fp32": 0.003018999999767402,
+            "nvfp4": 0.03228474999923492
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.412248205116375e-05,
+            "nvfp4": 2.3246081650464785e-05
+          },
+          "logit_max_absolute_error": 1.0920934975147247,
+          "logit_relative_l2": 0.0892123432420012,
+          "total_variation": 3.139484134327314e-05,
+          "kl_fp32_to_nvfp4": 2.1908732369001193e-05,
+          "cycles": {
+            "fp32": 312184,
+            "nvfp4": 305041
+          },
+          "wall_seconds": {
+            "fp32": 0.16490383299969835,
+            "nvfp4": 0.23599004200150375
+          },
+          "reference_seconds": {
+            "fp32": 0.0027754580005421303,
+            "nvfp4": 0.032840957999724196
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 4.66119185329516e-05,
+            "nvfp4": 4.911543343807595e-05
+          },
+          "logit_max_absolute_error": 0.9231956452131271,
+          "logit_relative_l2": 0.07196057458832203,
+          "total_variation": 8.190030586528229e-06,
+          "kl_fp32_to_nvfp4": 3.5556564967420227e-06,
+          "cycles": {
+            "fp32": 312568,
+            "nvfp4": 305456
+          },
+          "wall_seconds": {
+            "fp32": 0.16436633299963432,
+            "nvfp4": 0.2326302500005113
+          },
+          "reference_seconds": {
+            "fp32": 0.0027502909979375545,
+            "nvfp4": 0.03280566700050258
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.00975190295415e-05,
+            "nvfp4": 0.00015879938163605733
+          },
+          "logit_max_absolute_error": 1.006932020187378,
+          "logit_relative_l2": 0.11139654097973474,
+          "total_variation": 8.911149063250643e-05,
+          "kl_fp32_to_nvfp4": 3.9423043500690326e-05,
+          "cycles": {
+            "fp32": 312763,
+            "nvfp4": 306005
+          },
+          "wall_seconds": {
+            "fp32": 0.16819320800277637,
+            "nvfp4": 0.23490037499868777
+          },
+          "reference_seconds": {
+            "fp32": 0.0028167080017738044,
+            "nvfp4": 0.0333026250009425
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31,
+            34,
+            32
+          ],
+          "target": 94,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 94,
+            "nvfp4": 94
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00286213471967147,
+            "nvfp4": 0.12034526943569725
+          },
+          "logit_max_absolute_error": 2.4314632415771484,
+          "logit_relative_l2": 0.21733036518994345,
+          "total_variation": 0.11052758637027658,
+          "kl_fp32_to_nvfp4": 0.1067846645622206,
+          "cycles": {
+            "fp32": 313005,
+            "nvfp4": 306356
+          },
+          "wall_seconds": {
+            "fp32": 0.1659586659989145,
+            "nvfp4": 0.23611133400117978
+          },
+          "reference_seconds": {
+            "fp32": 0.002909416001784848,
+            "nvfp4": 0.03297937500246917
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            94,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            90,
+            2,
+            43,
+            31,
+            32,
+            60,
+            3,
+            36,
+            60,
+            31,
+            34,
+            32,
+            94
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.9725637605327214e-05,
+            "nvfp4": 9.477587628435033e-05
+          },
+          "logit_max_absolute_error": 1.1562776267528534,
+          "logit_relative_l2": 0.08861863026240484,
+          "total_variation": 3.672566603472637e-05,
+          "kl_fp32_to_nvfp4": 1.394117346071997e-05,
+          "cycles": {
+            "fp32": 313621,
+            "nvfp4": 306653
+          },
+          "wall_seconds": {
+            "fp32": 0.16652229199826252,
+            "nvfp4": 0.23559108300105436
+          },
+          "reference_seconds": {
+            "fp32": 0.002911167001002468,
+            "nvfp4": 0.03284725000048638
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "The box is in the attic. The bag is in the bedroom. Where is the bag?",
+      "expected_answer": " The bag is in the bedroom.",
+      "generated": {
+        "fp32": " The bag is in the bedroom.",
+        "nvfp4": " The bag is in the bedroom."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 4.1485693283145675e-05,
+            "nvfp4": 8.69073484167261e-05
+          },
+          "logit_max_absolute_error": 0.9772319793701172,
+          "logit_relative_l2": 0.07838258487527651,
+          "total_variation": 4.4602273569872604e-05,
+          "kl_fp32_to_nvfp4": 1.5082850823459032e-05,
+          "cycles": {
+            "fp32": 1745453,
+            "nvfp4": 1597057
+          },
+          "wall_seconds": {
+            "fp32": 0.9204941659991164,
+            "nvfp4": 1.4955269579986634
+          },
+          "reference_seconds": {
+            "fp32": 0.05112129200279014,
+            "nvfp4": 0.4985872500001278
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36
+          ],
+          "target": 59,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 59,
+            "nvfp4": 59
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.000162495463330436,
+            "nvfp4": 0.00011325523820562347
+          },
+          "logit_max_absolute_error": 1.5333800315856934,
+          "logit_relative_l2": 0.16245324185793789,
+          "total_variation": 5.703961981850479e-05,
+          "kl_fp32_to_nvfp4": 3.0069215650363333e-05,
+          "cycles": {
+            "fp32": 311684,
+            "nvfp4": 304424
+          },
+          "wall_seconds": {
+            "fp32": 0.16702091700062738,
+            "nvfp4": 0.23476841599767795
+          },
+          "reference_seconds": {
+            "fp32": 0.002841083001840161,
+            "nvfp4": 0.0331650840016664
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.592491012071738e-05,
+            "nvfp4": 6.854769083097744e-05
+          },
+          "logit_max_absolute_error": 1.001827359199524,
+          "logit_relative_l2": 0.08663692507172356,
+          "total_variation": 8.594048389134216e-06,
+          "kl_fp32_to_nvfp4": 2.559665987708632e-06,
+          "cycles": {
+            "fp32": 312198,
+            "nvfp4": 305398
+          },
+          "wall_seconds": {
+            "fp32": 0.16806170899872086,
+            "nvfp4": 0.23558479200073634
+          },
+          "reference_seconds": {
+            "fp32": 0.002872542001568945,
+            "nvfp4": 0.03344025000114925
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.102287757261429e-05,
+            "nvfp4": 7.522389095248524e-05
+          },
+          "logit_max_absolute_error": 1.0139272063970566,
+          "logit_relative_l2": 0.08342768689710131,
+          "total_variation": 2.373147101607149e-05,
+          "kl_fp32_to_nvfp4": 8.102097813677905e-06,
+          "cycles": {
+            "fp32": 312550,
+            "nvfp4": 305949
+          },
+          "wall_seconds": {
+            "fp32": 0.16722620899963658,
+            "nvfp4": 0.23686662499676459
+          },
+          "reference_seconds": {
+            "fp32": 0.0028400420014804695,
+            "nvfp4": 0.03273179199823062
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.11704784202342e-05,
+            "nvfp4": 0.0001272044020876015
+          },
+          "logit_max_absolute_error": 0.6140368580818176,
+          "logit_relative_l2": 0.10891922754721434,
+          "total_variation": 5.669222517489908e-05,
+          "kl_fp32_to_nvfp4": 1.8312344804433974e-05,
+          "cycles": {
+            "fp32": 312718,
+            "nvfp4": 305905
+          },
+          "wall_seconds": {
+            "fp32": 0.16973125000004075,
+            "nvfp4": 0.23953575000268756
+          },
+          "reference_seconds": {
+            "fp32": 0.002909416998591041,
+            "nvfp4": 0.033116499998868676
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32
+          ],
+          "target": 81,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 81,
+            "nvfp4": 81
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00015450717487663584,
+            "nvfp4": 0.00021907106386288632
+          },
+          "logit_max_absolute_error": 1.3832456469535828,
+          "logit_relative_l2": 0.10319617071024882,
+          "total_variation": 8.613195835043837e-05,
+          "kl_fp32_to_nvfp4": 3.88174591122181e-05,
+          "cycles": {
+            "fp32": 313029,
+            "nvfp4": 306204
+          },
+          "wall_seconds": {
+            "fp32": 0.1655922499994631,
+            "nvfp4": 0.23792987499837182
+          },
+          "reference_seconds": {
+            "fp32": 0.002811541999108158,
+            "nvfp4": 0.032870416001969716
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.759395159496781e-05,
+            "nvfp4": 9.27491283379371e-05
+          },
+          "logit_max_absolute_error": 0.8616275787353516,
+          "logit_relative_l2": 0.06753198091860192,
+          "total_variation": 2.6145100369349125e-05,
+          "kl_fp32_to_nvfp4": 4.911507840719069e-06,
+          "cycles": {
+            "fp32": 313571,
+            "nvfp4": 306359
+          },
+          "wall_seconds": {
+            "fp32": 0.1687991670005431,
+            "nvfp4": 0.23651020800025435
+          },
+          "reference_seconds": {
+            "fp32": 0.0029645419999724254,
+            "nvfp4": 0.03305745900070178
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "The ball is in the cellar. The key is in the hallway. Where is the key?",
+      "expected_answer": " The key is in the hallway.",
+      "generated": {
+        "fp32": " The key is in the hallway.",
+        "nvfp4": " The key is in the hallway."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 3.576342636894356e-05,
+            "nvfp4": 3.6001853503286645e-05
+          },
+          "logit_max_absolute_error": 0.819312572479248,
+          "logit_relative_l2": 0.14898358137636056,
+          "total_variation": 5.916051486923865e-06,
+          "kl_fp32_to_nvfp4": 2.594374531352315e-06,
+          "cycles": {
+            "fp32": 1745342,
+            "nvfp4": 1597464
+          },
+          "wall_seconds": {
+            "fp32": 0.9147600840005907,
+            "nvfp4": 1.5008242090007116
+          },
+          "reference_seconds": {
+            "fp32": 0.050258667000889545,
+            "nvfp4": 0.5038042920023145
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36
+          ],
+          "target": 63,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 63,
+            "nvfp4": 63
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00020464368360422857,
+            "nvfp4": 0.0013664159283451004
+          },
+          "logit_max_absolute_error": 1.8402012586593628,
+          "logit_relative_l2": 0.21974764270302846,
+          "total_variation": 0.0011610667920846955,
+          "kl_fp32_to_nvfp4": 0.0008147367920291144,
+          "cycles": {
+            "fp32": 311625,
+            "nvfp4": 304798
+          },
+          "wall_seconds": {
+            "fp32": 0.16821162500127684,
+            "nvfp4": 0.23748879200138617
+          },
+          "reference_seconds": {
+            "fp32": 0.0028180420013086405,
+            "nvfp4": 0.03320424999765237
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.187153528082015e-05,
+            "nvfp4": 7.903888246234548e-05
+          },
+          "logit_max_absolute_error": 0.7249683141708374,
+          "logit_relative_l2": 0.057709748289321065,
+          "total_variation": 2.0464008998056873e-05,
+          "kl_fp32_to_nvfp4": 4.811091161820464e-06,
+          "cycles": {
+            "fp32": 312306,
+            "nvfp4": 304929
+          },
+          "wall_seconds": {
+            "fp32": 0.16745683300177916,
+            "nvfp4": 0.23856045800130232
+          },
+          "reference_seconds": {
+            "fp32": 0.002886166999815032,
+            "nvfp4": 0.03359404100046959
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.126130834525278e-05,
+            "nvfp4": 0.00010634034021285965
+          },
+          "logit_max_absolute_error": 0.7064425945281982,
+          "logit_relative_l2": 0.08202654173968825,
+          "total_variation": 5.38727181774458e-05,
+          "kl_fp32_to_nvfp4": 2.1559277793582908e-05,
+          "cycles": {
+            "fp32": 312515,
+            "nvfp4": 305350
+          },
+          "wall_seconds": {
+            "fp32": 0.16821162499763886,
+            "nvfp4": 0.2365722079994157
+          },
+          "reference_seconds": {
+            "fp32": 0.0028275830009079073,
+            "nvfp4": 0.033160957998916274
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.427014534910338e-05,
+            "nvfp4": 0.00010967856086018665
+          },
+          "logit_max_absolute_error": 0.8849978744983673,
+          "logit_relative_l2": 0.14931807734871513,
+          "total_variation": 3.8729342019588555e-05,
+          "kl_fp32_to_nvfp4": 1.3295035212835342e-05,
+          "cycles": {
+            "fp32": 312794,
+            "nvfp4": 306230
+          },
+          "wall_seconds": {
+            "fp32": 0.16787912500149105,
+            "nvfp4": 0.2372365000010177
+          },
+          "reference_seconds": {
+            "fp32": 0.0028980419992876705,
+            "nvfp4": 0.03292016699924716
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31,
+            34,
+            32
+          ],
+          "target": 93,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 93,
+            "nvfp4": 93
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.0004912629228211431,
+            "nvfp4": 0.00036520473302512985
+          },
+          "logit_max_absolute_error": 3.150784492492676,
+          "logit_relative_l2": 0.2734358647033407,
+          "total_variation": 0.00027407453992933347,
+          "kl_fp32_to_nvfp4": 0.0003791864987214836,
+          "cycles": {
+            "fp32": 312979,
+            "nvfp4": 306005
+          },
+          "wall_seconds": {
+            "fp32": 0.16863670800012187,
+            "nvfp4": 0.23884554200049024
+          },
+          "reference_seconds": {
+            "fp32": 0.0029810419982823078,
+            "nvfp4": 0.03366320799977984
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            60,
+            31,
+            34,
+            32,
+            92,
+            2,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            63,
+            3,
+            36,
+            63,
+            31,
+            34,
+            32,
+            93
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.5433856068922445e-05,
+            "nvfp4": 5.0546016197884925e-05
+          },
+          "logit_max_absolute_error": 1.0474605560302734,
+          "logit_relative_l2": 0.09150385391318965,
+          "total_variation": 8.575425941150943e-06,
+          "kl_fp32_to_nvfp4": 2.955665786363827e-06,
+          "cycles": {
+            "fp32": 313572,
+            "nvfp4": 306717
+          },
+          "wall_seconds": {
+            "fp32": 0.17022750000251108,
+            "nvfp4": 0.23932287500065286
+          },
+          "reference_seconds": {
+            "fp32": 0.0029779579999740236,
+            "nvfp4": 0.0333908339998743
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "The box is in the bathroom. The book is in the cellar. Where is the book?",
+      "expected_answer": " The book is in the cellar.",
+      "generated": {
+        "fp32": " The book is in the cellar.",
+        "nvfp4": " The book is in the cellar."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00013602705063721533,
+            "nvfp4": 0.00016297237809253365
+          },
+          "logit_max_absolute_error": 0.790280818939209,
+          "logit_relative_l2": 0.07204951427190553,
+          "total_variation": 2.7547054219234177e-05,
+          "kl_fp32_to_nvfp4": 3.130768616519291e-06,
+          "cycles": {
+            "fp32": 1745362,
+            "nvfp4": 1597682
+          },
+          "wall_seconds": {
+            "fp32": 0.9248162919975584,
+            "nvfp4": 1.5121907499997178
+          },
+          "reference_seconds": {
+            "fp32": 0.050623833001736784,
+            "nvfp4": 0.5039819589983381
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36
+          ],
+          "target": 64,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 64,
+            "nvfp4": 64
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00011885872510054277,
+            "nvfp4": 0.00015283798833442812
+          },
+          "logit_max_absolute_error": 2.665377140045166,
+          "logit_relative_l2": 0.20684693629469514,
+          "total_variation": 5.544989339530612e-05,
+          "kl_fp32_to_nvfp4": 4.10075405094442e-05,
+          "cycles": {
+            "fp32": 311616,
+            "nvfp4": 304578
+          },
+          "wall_seconds": {
+            "fp32": 0.1697142079974583,
+            "nvfp4": 0.23988187499708147
+          },
+          "reference_seconds": {
+            "fp32": 0.002814250001392793,
+            "nvfp4": 0.03338712500044494
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00013197339163768142,
+            "nvfp4": 0.00013674240393113114
+          },
+          "logit_max_absolute_error": 1.2178145051002502,
+          "logit_relative_l2": 0.06695622543708958,
+          "total_variation": 1.9632318621573882e-05,
+          "kl_fp32_to_nvfp4": 1.0233323448213364e-05,
+          "cycles": {
+            "fp32": 312198,
+            "nvfp4": 305623
+          },
+          "wall_seconds": {
+            "fp32": 0.16988620799747878,
+            "nvfp4": 0.23840287500206614
+          },
+          "reference_seconds": {
+            "fp32": 0.0028611669986275956,
+            "nvfp4": 0.03312516699952539
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.0798585867464076e-05,
+            "nvfp4": 0.00015164571393867562
+          },
+          "logit_max_absolute_error": 0.8700304739177227,
+          "logit_relative_l2": 0.08432768794315607,
+          "total_variation": 9.066295007379762e-05,
+          "kl_fp32_to_nvfp4": 3.892561769325225e-05,
+          "cycles": {
+            "fp32": 312545,
+            "nvfp4": 305566
+          },
+          "wall_seconds": {
+            "fp32": 0.16889641599846072,
+            "nvfp4": 0.23760958300044877
+          },
+          "reference_seconds": {
+            "fp32": 0.0028320000019448344,
+            "nvfp4": 0.03321966699877521
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 8.070794582452142e-05,
+            "nvfp4": 0.00016535695531474316
+          },
+          "logit_max_absolute_error": 1.2502520680427551,
+          "logit_relative_l2": 0.11360639832060078,
+          "total_variation": 8.546201408050631e-05,
+          "kl_fp32_to_nvfp4": 3.314413749651869e-05,
+          "cycles": {
+            "fp32": 312700,
+            "nvfp4": 306212
+          },
+          "wall_seconds": {
+            "fp32": 0.16751170800125692,
+            "nvfp4": 0.23772949999693083
+          },
+          "reference_seconds": {
+            "fp32": 0.0028985829994780943,
+            "nvfp4": 0.033583833999728085
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31,
+            34,
+            32
+          ],
+          "target": 92,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 92,
+            "nvfp4": 92
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00011540125075335965,
+            "nvfp4": 0.0005517931972651035
+          },
+          "logit_max_absolute_error": 2.28873610496521,
+          "logit_relative_l2": 0.13567771449924035,
+          "total_variation": 0.00044474807507232376,
+          "kl_fp32_to_nvfp4": 0.00034542598993441765,
+          "cycles": {
+            "fp32": 313042,
+            "nvfp4": 306395
+          },
+          "wall_seconds": {
+            "fp32": 0.1690586250006163,
+            "nvfp4": 0.23984533300244948
+          },
+          "reference_seconds": {
+            "fp32": 0.0028889160021208227,
+            "nvfp4": 0.033508500000607455
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            58,
+            31,
+            34,
+            32,
+            82,
+            2,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92,
+            2,
+            43,
+            31,
+            32,
+            64,
+            3,
+            36,
+            64,
+            31,
+            34,
+            32,
+            92
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.901033940346765e-05,
+            "nvfp4": 9.072238449922276e-05
+          },
+          "logit_max_absolute_error": 0.6842364072799683,
+          "logit_relative_l2": 0.12388716701537904,
+          "total_variation": 3.3717213518713455e-05,
+          "kl_fp32_to_nvfp4": 9.429763077716855e-06,
+          "cycles": {
+            "fp32": 313531,
+            "nvfp4": 306130
+          },
+          "wall_seconds": {
+            "fp32": 0.16823325000223122,
+            "nvfp4": 0.23875262499859673
+          },
+          "reference_seconds": {
+            "fp32": 0.002929209000285482,
+            "nvfp4": 0.03345979200094007
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "The bag is in the bedroom. The ball is in the hallway. Where is the bag?",
+      "expected_answer": " The bag is in the bedroom.",
+      "generated": {
+        "fp32": " The bag is in the bedroom.",
+        "nvfp4": " The bag is in the bedroom."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 4.375076631595605e-05,
+            "nvfp4": 0.00010121380877335118
+          },
+          "logit_max_absolute_error": 0.9542398452758789,
+          "logit_relative_l2": 0.07646994869158413,
+          "total_variation": 5.6588911527785294e-05,
+          "kl_fp32_to_nvfp4": 2.1656645911900714e-05,
+          "cycles": {
+            "fp32": 1745363,
+            "nvfp4": 1597646
+          },
+          "wall_seconds": {
+            "fp32": 1.002170040999772,
+            "nvfp4": 1.5226896250023856
+          },
+          "reference_seconds": {
+            "fp32": 0.05146166700069443,
+            "nvfp4": 0.5105908750010713
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36
+          ],
+          "target": 59,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 59,
+            "nvfp4": 59
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.0002828640417204551,
+            "nvfp4": 0.00022789452296057675
+          },
+          "logit_max_absolute_error": 0.792274683713913,
+          "logit_relative_l2": 0.108819727010983,
+          "total_variation": 6.568970239276406e-05,
+          "kl_fp32_to_nvfp4": 1.440993321823359e-05,
+          "cycles": {
+            "fp32": 311594,
+            "nvfp4": 304261
+          },
+          "wall_seconds": {
+            "fp32": 0.17319716600104584,
+            "nvfp4": 0.24030608300017775
+          },
+          "reference_seconds": {
+            "fp32": 0.00273245900098118,
+            "nvfp4": 0.03398529200057965
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.973986615514199e-05,
+            "nvfp4": 4.923464858989257e-05
+          },
+          "logit_max_absolute_error": 1.2751367092132568,
+          "logit_relative_l2": 0.07681160932088812,
+          "total_variation": 2.292586000665861e-05,
+          "kl_fp32_to_nvfp4": 7.599924121926283e-06,
+          "cycles": {
+            "fp32": 312301,
+            "nvfp4": 305290
+          },
+          "wall_seconds": {
+            "fp32": 0.1717522500002815,
+            "nvfp4": 0.24268325000230107
+          },
+          "reference_seconds": {
+            "fp32": 0.0029518750015995465,
+            "nvfp4": 0.034560374999273336
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 4.9473078936162584e-05,
+            "nvfp4": 9.489509687970817e-05
+          },
+          "logit_max_absolute_error": 1.0240122079849243,
+          "logit_relative_l2": 0.09511887558318052,
+          "total_variation": 4.501685158937273e-05,
+          "kl_fp32_to_nvfp4": 1.7823683234228273e-05,
+          "cycles": {
+            "fp32": 312555,
+            "nvfp4": 305602
+          },
+          "wall_seconds": {
+            "fp32": 0.17337816700091935,
+            "nvfp4": 0.25267266599985305
+          },
+          "reference_seconds": {
+            "fp32": 0.0029084170018904842,
+            "nvfp4": 0.03865924999990966
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.081282516208753e-05,
+            "nvfp4": 9.489509687970817e-05
+          },
+          "logit_max_absolute_error": 0.8766112327575684,
+          "logit_relative_l2": 0.11774811694891799,
+          "total_variation": 2.8093588623162843e-05,
+          "kl_fp32_to_nvfp4": 8.289125884102636e-06,
+          "cycles": {
+            "fp32": 312736,
+            "nvfp4": 306040
+          },
+          "wall_seconds": {
+            "fp32": 0.17718895800135215,
+            "nvfp4": 0.2605132499993488
+          },
+          "reference_seconds": {
+            "fp32": 0.003099375000601867,
+            "nvfp4": 0.03394124999977066
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32
+          ],
+          "target": 81,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 81,
+            "nvfp4": 81
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00011552047380771243,
+            "nvfp4": 0.0001462804967490076
+          },
+          "logit_max_absolute_error": 1.6794521063566208,
+          "logit_relative_l2": 0.19676343205037486,
+          "total_variation": 4.6343144230002677e-05,
+          "kl_fp32_to_nvfp4": 2.3291908138787383e-05,
+          "cycles": {
+            "fp32": 313002,
+            "nvfp4": 306269
+          },
+          "wall_seconds": {
+            "fp32": 0.18082533400229295,
+            "nvfp4": 0.2465572080000129
+          },
+          "reference_seconds": {
+            "fp32": 0.0029347080017032567,
+            "nvfp4": 0.035077583001111634
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            59,
+            31,
+            34,
+            32,
+            81,
+            2,
+            36,
+            60,
+            31,
+            34,
+            32,
+            93,
+            2,
+            43,
+            31,
+            32,
+            59,
+            3,
+            36,
+            59,
+            31,
+            34,
+            32,
+            81
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.057438972772075e-05,
+            "nvfp4": 6.210996864012682e-05
+          },
+          "logit_max_absolute_error": 0.9860987663269043,
+          "logit_relative_l2": 0.07551244017437939,
+          "total_variation": 1.0065421632764631e-05,
+          "kl_fp32_to_nvfp4": 2.1345209578300294e-06,
+          "cycles": {
+            "fp32": 313531,
+            "nvfp4": 306406
+          },
+          "wall_seconds": {
+            "fp32": 0.17538279099971987,
+            "nvfp4": 0.2406159589991148
+          },
+          "reference_seconds": {
+            "fp32": 0.002986374998727115,
+            "nvfp4": 0.03415241699985927
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "The toy is in the office. The cup is in the kitchen. Where is the toy?",
+      "expected_answer": " The toy is in the office.",
+      "generated": {
+        "fp32": " The toy is in the office.",
+        "nvfp4": " The toy is in the office."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.389822064703782e-05,
+            "nvfp4": 0.00011862027821005712
+          },
+          "logit_max_absolute_error": 0.7747278213500977,
+          "logit_relative_l2": 0.09369874805559336,
+          "total_variation": 5.439321536927911e-05,
+          "kl_fp32_to_nvfp4": 1.7806740715670822e-05,
+          "cycles": {
+            "fp32": 1745473,
+            "nvfp4": 1597350
+          },
+          "wall_seconds": {
+            "fp32": 0.9378403330010769,
+            "nvfp4": 1.520789166999748
+          },
+          "reference_seconds": {
+            "fp32": 0.05097004200069932,
+            "nvfp4": 0.5096408329991391
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36
+          ],
+          "target": 56,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 56,
+            "nvfp4": 56
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00011957406611314137,
+            "nvfp4": 0.0003042683918662718
+          },
+          "logit_max_absolute_error": 2.0422632694244385,
+          "logit_relative_l2": 0.24666113636581063,
+          "total_variation": 0.00019945758717126395,
+          "kl_fp32_to_nvfp4": 0.0001381733720093549,
+          "cycles": {
+            "fp32": 311554,
+            "nvfp4": 304320
+          },
+          "wall_seconds": {
+            "fp32": 0.1707399999977497,
+            "nvfp4": 0.23875820900138933
+          },
+          "reference_seconds": {
+            "fp32": 0.0028823339998780284,
+            "nvfp4": 0.033393083002010826
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.996407045298079e-05,
+            "nvfp4": 5.4599345131374994e-05
+          },
+          "logit_max_absolute_error": 1.072005033493042,
+          "logit_relative_l2": 0.0867559578446804,
+          "total_variation": 1.1242372361549589e-05,
+          "kl_fp32_to_nvfp4": 3.0561592559072186e-06,
+          "cycles": {
+            "fp32": 312261,
+            "nvfp4": 304722
+          },
+          "wall_seconds": {
+            "fp32": 0.16812874999959604,
+            "nvfp4": 0.23831358300230931
+          },
+          "reference_seconds": {
+            "fp32": 0.002919750000728527,
+            "nvfp4": 0.033594415999687044
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 5.1738170061077543e-05,
+            "nvfp4": 7.546232749546058e-05
+          },
+          "logit_max_absolute_error": 0.49025505781173706,
+          "logit_relative_l2": 0.06288912662232676,
+          "total_variation": 2.4203938254193e-05,
+          "kl_fp32_to_nvfp4": 6.015651296428212e-06,
+          "cycles": {
+            "fp32": 312559,
+            "nvfp4": 305635
+          },
+          "wall_seconds": {
+            "fp32": 0.1691629169981752,
+            "nvfp4": 0.23928566699760268
+          },
+          "reference_seconds": {
+            "fp32": 0.0028875829993921798,
+            "nvfp4": 0.03343704200233333
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.283952864958594e-05,
+            "nvfp4": 0.00011909717204788533
+          },
+          "logit_max_absolute_error": 0.7081064879894257,
+          "logit_relative_l2": 0.08118805935367192,
+          "total_variation": 4.676392267101186e-05,
+          "kl_fp32_to_nvfp4": 1.4225504401801687e-05,
+          "cycles": {
+            "fp32": 312778,
+            "nvfp4": 306132
+          },
+          "wall_seconds": {
+            "fp32": 0.17185525000240887,
+            "nvfp4": 0.24102666600083467
+          },
+          "reference_seconds": {
+            "fp32": 0.002871250002499437,
+            "nvfp4": 0.03358754199871328
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31,
+            34,
+            32
+          ],
+          "target": 96,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 96,
+            "nvfp4": 96
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.0010100337809894526,
+            "nvfp4": 0.0008597492468614511
+          },
+          "logit_max_absolute_error": 2.5496106147766113,
+          "logit_relative_l2": 0.1550280447280648,
+          "total_variation": 0.00044777611451704254,
+          "kl_fp32_to_nvfp4": 0.0005073722348103288,
+          "cycles": {
+            "fp32": 312988,
+            "nvfp4": 306274
+          },
+          "wall_seconds": {
+            "fp32": 0.1701250420010183,
+            "nvfp4": 0.24088616600056412
+          },
+          "reference_seconds": {
+            "fp32": 0.002929209000285482,
+            "nvfp4": 0.03368224999940139
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            56,
+            31,
+            34,
+            32,
+            96,
+            2,
+            36,
+            61,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            56,
+            3,
+            36,
+            56,
+            31,
+            34,
+            32,
+            96
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.425587143216177e-05,
+            "nvfp4": 8.178091659983768e-05
+          },
+          "logit_max_absolute_error": 0.5848710536956787,
+          "logit_relative_l2": 0.07156562730834609,
+          "total_variation": 2.2403374241124983e-05,
+          "kl_fp32_to_nvfp4": 5.874965500465327e-06,
+          "cycles": {
+            "fp32": 313553,
+            "nvfp4": 305619
+          },
+          "wall_seconds": {
+            "fp32": 0.17006408399902284,
+            "nvfp4": 0.24021170899868594
+          },
+          "reference_seconds": {
+            "fp32": 0.003000291999342153,
+            "nvfp4": 0.03350920799857704
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "The cup is in the attic. The toy is in the kitchen. Where is the cup?",
+      "expected_answer": " The cup is in the attic.",
+      "generated": {
+        "fp32": " The cup is in the attic.",
+        "nvfp4": " The cup is in the attic."
+      },
+      "correct": {
+        "fp32": true,
+        "nvfp4": true
+      },
+      "paired": [
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3
+          ],
+          "target": 36,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 36,
+            "nvfp4": 36
+          },
+          "negative_log_likelihood": {
+            "fp32": 4.2916265128013755e-05,
+            "nvfp4": 5.9725637605327214e-05
+          },
+          "logit_max_absolute_error": 1.0181942582130432,
+          "logit_relative_l2": 0.08125562856457019,
+          "total_variation": 1.6260545100712486e-05,
+          "kl_fp32_to_nvfp4": 2.986481413750227e-06,
+          "cycles": {
+            "fp32": 1745443,
+            "nvfp4": 1597879
+          },
+          "wall_seconds": {
+            "fp32": 0.9527429170011601,
+            "nvfp4": 1.5276039999989734
+          },
+          "reference_seconds": {
+            "fp32": 0.05205420800120919,
+            "nvfp4": 0.5149183749999793
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36
+          ],
+          "target": 61,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 61,
+            "nvfp4": 61
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.00015343412606537413,
+            "nvfp4": 0.00021072462015432454
+          },
+          "logit_max_absolute_error": 2.3470858335494995,
+          "logit_relative_l2": 0.2036134056201614,
+          "total_variation": 5.805786269596833e-05,
+          "kl_fp32_to_nvfp4": 1.9495869445028704e-05,
+          "cycles": {
+            "fp32": 311612,
+            "nvfp4": 304909
+          },
+          "wall_seconds": {
+            "fp32": 0.16950516699944274,
+            "nvfp4": 0.24270712499856018
+          },
+          "reference_seconds": {
+            "fp32": 0.002815541000018129,
+            "nvfp4": 0.03388608300156193
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61
+          ],
+          "target": 31,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 31,
+            "nvfp4": 31
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.151388534845472e-05,
+            "nvfp4": 4.804249771127723e-05
+          },
+          "logit_max_absolute_error": 0.6722373962402344,
+          "logit_relative_l2": 0.08613829007154332,
+          "total_variation": 1.5474120053439064e-05,
+          "kl_fp32_to_nvfp4": 4.7923662464230275e-06,
+          "cycles": {
+            "fp32": 312282,
+            "nvfp4": 305286
+          },
+          "wall_seconds": {
+            "fp32": 0.17207758299991838,
+            "nvfp4": 0.24177616700035287
+          },
+          "reference_seconds": {
+            "fp32": 0.0030733339990547393,
+            "nvfp4": 0.03367870800138917
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31
+          ],
+          "target": 34,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 34,
+            "nvfp4": 34
+          },
+          "negative_log_likelihood": {
+            "fp32": 4.840014282563337e-05,
+            "nvfp4": 0.00011611658929268846
+          },
+          "logit_max_absolute_error": 1.9070587158203125,
+          "logit_relative_l2": 0.10276874739504747,
+          "total_variation": 6.823138563910167e-05,
+          "kl_fp32_to_nvfp4": 4.031925286025703e-05,
+          "cycles": {
+            "fp32": 312591,
+            "nvfp4": 305596
+          },
+          "wall_seconds": {
+            "fp32": 0.1704851670001517,
+            "nvfp4": 0.2405335000003106
+          },
+          "reference_seconds": {
+            "fp32": 0.002937375000328757,
+            "nvfp4": 0.03356954199989559
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34
+          ],
+          "target": 32,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 32
+          },
+          "negative_log_likelihood": {
+            "fp32": 6.985908376572898e-05,
+            "nvfp4": 0.00016154163448858325
+          },
+          "logit_max_absolute_error": 1.03997004032135,
+          "logit_relative_l2": 0.09910602919395238,
+          "total_variation": 9.152196966940564e-05,
+          "kl_fp32_to_nvfp4": 3.989555969260158e-05,
+          "cycles": {
+            "fp32": 312735,
+            "nvfp4": 306097
+          },
+          "wall_seconds": {
+            "fp32": 0.16991274999963935,
+            "nvfp4": 0.23952887500126963
+          },
+          "reference_seconds": {
+            "fp32": 0.002912125000875676,
+            "nvfp4": 0.033734917000401765
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32
+          ],
+          "target": 90,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 90,
+            "nvfp4": 90
+          },
+          "negative_log_likelihood": {
+            "fp32": 0.0003595998655674109,
+            "nvfp4": 0.00048422614342385
+          },
+          "logit_max_absolute_error": 0.9468521475791931,
+          "logit_relative_l2": 0.10389741155953153,
+          "total_variation": 0.00013452781704023683,
+          "kl_fp32_to_nvfp4": 2.6039649513112862e-05,
+          "cycles": {
+            "fp32": 313002,
+            "nvfp4": 306229
+          },
+          "wall_seconds": {
+            "fp32": 0.16833629200118594,
+            "nvfp4": 0.24034237500018207
+          },
+          "reference_seconds": {
+            "fp32": 0.0029775830007565673,
+            "nvfp4": 0.03355937499873107
+          }
+        },
+        {
+          "input_ids": [
+            33,
+            61,
+            31,
+            34,
+            32,
+            90,
+            2,
+            36,
+            56,
+            31,
+            34,
+            32,
+            94,
+            2,
+            43,
+            31,
+            32,
+            61,
+            3,
+            36,
+            61,
+            31,
+            34,
+            32,
+            90
+          ],
+          "target": 2,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 2,
+            "nvfp4": 2
+          },
+          "negative_log_likelihood": {
+            "fp32": 7.057438972772075e-05,
+            "nvfp4": 6.735551692809322e-05
+          },
+          "logit_max_absolute_error": 0.8341875076293945,
+          "logit_relative_l2": 0.07233990243959249,
+          "total_variation": 9.892080667157888e-06,
+          "kl_fp32_to_nvfp4": 2.834426589990523e-06,
+          "cycles": {
+            "fp32": 313571,
+            "nvfp4": 306441
+          },
+          "wall_seconds": {
+            "fp32": 0.1700831250018382,
+            "nvfp4": 0.24113620800198987
+          },
+          "reference_seconds": {
+            "fp32": 0.002975207997224061,
+            "nvfp4": 0.03380466700036777
+          }
+        }
+      ],
+      "verified": true
+    }
+  ],
+  "scope": "native NVFP4 linear layers; FP32 attention and nonlinear kernels; host shared-memory transport",
+  "selection": "reserved test split; random seed 20261109",
+  "paired_tokens": 56,
+  "top1_agreement": 1.0,
+  "mean_total_variation": 0.0020576348790225254,
+  "mean_kl_fp32_to_nvfp4": 0.0019605208112808024,
+  "max_logit_absolute_error": 3.150784492492676,
+  "mean_logit_relative_l2": 0.11400851893438246,
+  "answer_correct": {
+    "fp32": 8,
+    "nvfp4": 8
+  },
+  "mean_answer_nll": {
+    "fp32": 0.00016350043405755025,
+    "nvfp4": 0.0023156059566627626
+  },
+  "paired_cycles": {
+    "fp32": 28968765,
+    "nvfp4": 27453019
+  },
+  "paired_wall_seconds": {
+    "fp32": 15.541720912995515,
+    "nvfp4": 23.601594957006455
+  },
+  "timing_scope": "includes host quantization, launch handling, and verification; simulation cycles exclude host work"
+}

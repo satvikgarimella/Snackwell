@@ -1,0 +1,39 @@
+{
+  "archived_on": "2026-11-05",
+  "report_baseline_commit": "f865889ed9118fa0effc902c3e2534c656095fb6",
+  "purpose": "Byte-for-byte copies of existing audit records for the engineering report; no experiment was rerun for this archive.",
+  "files": [
+    {
+      "file": "validation-summary.json",
+      "original_path": "build/tests/personal-push-validation.json",
+      "sha256": "96cfdde48678dfb2943742ba08c96105c1b630628454b17a03c99f8097775470",
+      "bytes": 671
+    },
+    {
+      "file": "initial-suite-result.json",
+      "original_path": "build/tests/result.json",
+      "sha256": "678a69fba4e382992876d4dc603ca3733efc5c891bcc77eb7c365adab9a83569",
+      "bytes": 178
+    },
+    {
+      "file": "initial-python.log",
+      "original_path": "build/tests/python.log",
+      "sha256": "0bb858b841ab3010d3e36150149593f7bda398549771d2b50d83266e5dd00460",
+      "bytes": 28785
+    },
+    {
+      "file": "transformer-learning.json",
+      "original_path": "build/training-audit-20261021/learning/result.json",
+      "sha256": "55ab58e001f8b2bd4a3a51215ef882379b67fe16f9b7b8765c07bf18efb1d6ac",
+      "bytes": 15254
+    },
+    {
+      "file": "transformer-gradient-audit.json",
+      "original_path": "build/training-audit-20261021/current_model/result.json",
+      "sha256": "9115c0bd7922fac65c626bdd77d2a1dad0ab86929f31936454fb55c6410cd922",
+      "bytes": 21995
+    }
+  ],
+  "validation_provenance": "The initial invocation passed all 39 RTL benches and ran 181 Python methods, but failed LiveModelTests.setUpClass because localhost binding was blocked. A separate permitted retry passed all four HTTP methods in 5.096 seconds. Its result is in validation-summary.json; no separate raw retry log was saved.",
+  "training_provenance": "The two transformer reports are from the 2026-10-21 audit. Their wall times are not isolated benchmarks because the small and full-size runs overlapped. Large per-launch artifacts remain in the original local build directories."
+}

@@ -1,0 +1,2 @@
+PASS global memory snapshots, masks, stalls, errors, ordering and reset
+/Users/satvik.garimella/Snackwell/tb/tb_global_memory_unit.sv:135: $finish called at 2660000 (1ps)

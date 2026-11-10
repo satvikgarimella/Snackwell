@@ -129,3 +129,20 @@ extern "C" void snackwell_tensor_product(
         }
     }
 }
+
+// Quantized operands are decoded by Python into exact binary32 values. Unlike
+// legacy TMUL, NVFP4 carries one accumulator through every K group.
+extern "C" void snackwell_sequential_product(
+    const uint32_t* a, const uint32_t* b, const uint32_t* initial, uint32_t* out,
+    int m, int n, int k
+) {
+    for (int r = 0; r < m; ++r) {
+        for (int c = 0; c < n; ++c) {
+            uint32_t total = initial ? initial[r * n + c] : 0;
+            for (int j = 0; j < k; ++j)
+                total = snackwell_fp32(0x0d, total,
+                    snackwell_fp32(0x0c, a[r * k + j], b[c * k + j]));
+            out[r * n + c] = total;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "snackwell/kernels/nvfp4_model.py": "341efa1df25983555a0191b4ca3039ef9382c7ef4a15f11a815a96e40558802a",
+  "snackwell/nvfp4_inference.py": "3baaed0b1c1949ac6d06dafcbee280cdfd3b0b86874100aecd3de44ded71cf7a",
+  "snackwell/reference/nvfp4_model.py": "86da1fecd528d49a5b7c0de6290035b27be829da6b3ffab21e87018037bce08f",
+  "snackwell/reference/native.py": "7ea1d168c24b6d580cf495d5c888724d407aa51bb6dc6a6cbcd2058937361dbd",
+  "snackwell/reference/fp32_native.cpp": "dab363dff695f2a9dcde2b83d97ac54767a130fa0126b30d5073afa2f9c1748c",
+  "snackwell/reference/inference.py": "b10afd69b016da147cb44f1061392d58e8dfec274c0b9c6fa7aa19d56096fd37",
+  "snackwell/model_runtime.py": "61cc99bc7e63a846054858d03b5355823e3854e34b0060b5da8f09756f4c6b28",
+  "snackwell/model_runner.py": "7657237aecb02136851400dda60dd5702e607ed0b2657beb243d71cf9e8496f1",
+  "snackwell/kv_cache.py": "abe7d929733c7fc004efd83adcb30ce63a859b02b96bc7aec86368e00df3ee5c",
+  "snackwell/cli/model.py": "55ab085d0f6bb28ec7acc2fb6c783220f0d3fef8691cf7f89bcc4176baa6a8ef",
+  "snackwell/cli/compare_nvfp4_model.py": "89b77fe059e702aaf226f8c053f76efa6700de59721a081699a15fced0eca4af",
+  "snackwell/sentence_model.py": "d76cd035a49a45e5314e7848c43b156fc03183c721d1e61f3467d46107648e23",
+  "snackwell/terminal_model.py": "46ed46a26a27374f01b04c6580e296fbcd1dbbe1eb506732fb08a709a0674cee",
+  "snackwell/profile.py": "0b4501643a6c8fcdc3549a007b464cd607675fec55e5c949308ad0e847f96c09",
+  "tests/test_nvfp4_model.py": "fd40e998427d63f6d0fa31cb6a8b4182e7cc867283d065638f00d9196921d1a5"
+}

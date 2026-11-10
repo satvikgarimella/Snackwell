@@ -1,0 +1,11 @@
+- V e r i l a t i o n   R e p o r t: Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905
+- Verilator: Built from 4.415 MB sources in 39 modules, into 2.090 MB in 13 C++ files needing 0.000 MB
+- Verilator: Walltime 0.167 s (elab=0.011, cvt=0.122, bld=0.000); cpu 0.166 s on 1 threads; allocated 58.625 MB
+%Warning-CASEINCOMPLETE: /Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:255:17: Case values incompletely covered (example pattern 0x4)
+  255 |                 case (stack_depth[warp_id])
+      |                 ^~~~
+                         ... For warning description see https://verilator.org/warn/CASEINCOMPLETE?v=5.052
+                         ... Use "/* verilator lint_off CASEINCOMPLETE */" and lint_on around source to disable this message.
+%Warning-CASEINCOMPLETE: /Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:357:17: Case values incompletely covered (example pattern 0x0)
+  357 |                 case (stack_depth[warp_id])
+      |                 ^~~~

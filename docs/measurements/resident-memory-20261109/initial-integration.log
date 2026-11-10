@@ -1,0 +1,42 @@
+test_external_fault_timeout_and_restart (tests.test_global_model.GlobalModelTests.test_external_fault_timeout_and_restart) ... ok
+test_full_model_cache_sampling_rebuild_matches_shared_exactly (tests.test_global_model.GlobalModelTests.test_full_model_cache_sampling_rebuild_matches_shared_exactly) ... ok
+test_icarus_and_persistent_verilator_match (tests.test_global_model.GlobalModelTests.test_icarus_and_persistent_verilator_match) ... ok
+test_memory_switch_and_corruption_do_not_commit_cache (tests.test_global_model.GlobalModelTests.test_memory_switch_and_corruption_do_not_commit_cache) ... ok
+test_native_multiple_tiles_k_chunks_and_latency_invariance (tests.test_global_model.GlobalModelTests.test_native_multiple_tiles_k_chunks_and_latency_invariance) ... ok
+test_regular_kernels_multiwarp_partial_masks_and_global_guards (tests.test_global_model.GlobalModelTests.test_regular_kernels_multiwarp_partial_masks_and_global_guards) ... ok
+test_serial_and_overlapped_native_schedule_match (tests.test_global_model.GlobalModelTests.test_serial_and_overlapped_native_schedule_match) ... ok
+test_traced_verilator_uses_external_memory_and_saves_artifacts (tests.test_global_model.GlobalModelTests.test_traced_verilator_uses_external_memory_and_saves_artifacts) ... ok
+test_cancelled_append_preserves_previous_cache_and_can_retry (tests.test_kv_cache.KVCacheTests.test_cancelled_append_preserves_previous_cache_and_can_retry) ... ERROR
+test_context_128_append_and_rebuild_match_full_recomputation (tests.test_kv_cache.KVCacheTests.test_context_128_append_and_rebuild_match_full_recomputation) ... ok
+test_context_64_and_long_prompt_truncation (tests.test_kv_cache.KVCacheTests.test_context_64_and_long_prompt_truncation) ... ok
+test_each_prefix_matches_uncached_rtl_across_padding_boundaries (tests.test_kv_cache.KVCacheTests.test_each_prefix_matches_uncached_rtl_across_padding_boundaries) ... ok
+test_eight_block_feedforward_cache_and_rebuild_match_full_rtl (tests.test_kv_cache.KVCacheTests.test_eight_block_feedforward_cache_and_rebuild_match_full_rtl) ... ok
+test_incremental_reference_exactly_matches_full_independent_reference (tests.test_kv_cache.KVCacheTests.test_incremental_reference_exactly_matches_full_independent_reference) ... ok
+test_independent_reference_catches_corrupted_cached_rtl_values (tests.test_kv_cache.KVCacheTests.test_independent_reference_catches_corrupted_cached_rtl_values) ... ok
+test_overflow_rebuilds_positions_and_all_layers_before_reusing_cache (tests.test_kv_cache.KVCacheTests.test_overflow_rebuilds_positions_and_all_layers_before_reusing_cache) ... ok
+test_rejects_wrong_prefix_weights_and_rtl_without_committing (tests.test_kv_cache.KVCacheTests.test_rejects_wrong_prefix_weights_and_rtl_without_committing) ... ok
+test_short_prefix_reference_is_causal_and_legacy_mode_is_available (tests.test_kv_cache.KVCacheTests.test_short_prefix_reference_is_causal_and_legacy_mode_is_available) ... ok
+test_signature_tracks_in_place_edits_and_ignores_dictionary_order (tests.test_kv_cache.KVCacheTests.test_signature_tracks_in_place_edits_and_ignores_dictionary_order) ... ok
+test_cancellation_clears_stale_success_and_never_appends_a_character (tests.test_terminal_model.TerminalModelTests.test_cancellation_clears_stale_success_and_never_appends_a_character) ... ok
+test_interactive_prompt_runs_rtl_and_recovers_from_invalid_input (tests.test_terminal_model.TerminalModelTests.test_interactive_prompt_runs_rtl_and_recovers_from_invalid_input) ... ok
+test_interactive_reloads_checkpoint_before_next_prompt (tests.test_terminal_model.TerminalModelTests.test_interactive_reloads_checkpoint_before_next_prompt) ... ok
+test_interactive_replaces_stale_rtl_before_prediction (tests.test_terminal_model.TerminalModelTests.test_interactive_replaces_stale_rtl_before_prediction) ... ok
+
+======================================================================
+ERROR: test_cancelled_append_preserves_previous_cache_and_can_retry (tests.test_kv_cache.KVCacheTests.test_cancelled_append_preserves_previous_cache_and_can_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/satvik.garimella/Snackwell/tests/test_kv_cache.py", line 224, in test_cancelled_append_preserves_previous_cache_and_can_retry
+    result = generation.next(output, self.executable)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/satvik.garimella/Snackwell/snackwell/kv_cache.py", line 105, in next
+    return self._next(
+           ^^^^^^^^^^^
+  File "/Users/satvik.garimella/Snackwell/snackwell/kv_cache.py", line 116, in _next
+    raise ValueError("generation is closed; start a new prompt")
+ValueError: generation is closed; start a new prompt
+
+----------------------------------------------------------------------
+Ran 23 tests in 52.896s
+
+FAILED (errors=1)

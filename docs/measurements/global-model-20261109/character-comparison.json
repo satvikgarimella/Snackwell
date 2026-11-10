@@ -1,0 +1,179 @@
+{
+  "verified": true,
+  "identical": true,
+  "precision": "nvfp4",
+  "memory_latency": 2,
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "rtl_source_sha256": "a96505f467e2ab25d15a221bec8c16234960fecc147152926cf2e39c39953a86",
+  "compared_tokens": 4,
+  "cases": [
+    {
+      "prompt": "ROMEO:",
+      "expected": null,
+      "generated": "\nMar",
+      "correct": null,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10
+          ],
+          "token_id": 0,
+          "text": "\n",
+          "phase": "prefill",
+          "cycles": {
+            "shared": 1525934,
+            "global": 3334416
+          },
+          "wall_seconds": {
+            "shared": 2.4187403750038357,
+            "global": 3.032225750001089
+          },
+          "global_traffic": {
+            "reads": 267776,
+            "writes": 29072,
+            "responses": 296848,
+            "request_stalls": 207504,
+            "copy_reads": 90720,
+            "copy_writes": 90720,
+            "copy_arithmetic_overlap_cycles": 511994,
+            "nvfp4_macs": 967680,
+            "fp32_tensor_multiplies": 24576
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0
+          ],
+          "token_id": 25,
+          "text": "M",
+          "phase": "decode",
+          "cycles": {
+            "shared": 636252,
+            "global": 1366471
+          },
+          "wall_seconds": {
+            "shared": 0.5607704579961137,
+            "global": 1.3334700000050361
+          },
+          "global_traffic": {
+            "reads": 115856,
+            "writes": 10192,
+            "responses": 126048,
+            "request_stalls": 94451,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 272613,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25
+          ],
+          "token_id": 39,
+          "text": "a",
+          "phase": "decode",
+          "cycles": {
+            "shared": 635939,
+            "global": 1366444
+          },
+          "wall_seconds": {
+            "shared": 0.5698995829952764,
+            "global": 1.3207163340048282
+          },
+          "global_traffic": {
+            "reads": 115856,
+            "writes": 10192,
+            "responses": 126048,
+            "request_stalls": 94558,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 271791,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25,
+            39
+          ],
+          "token_id": 56,
+          "text": "r",
+          "phase": "decode",
+          "cycles": {
+            "shared": 679103,
+            "global": 1484713
+          },
+          "wall_seconds": {
+            "shared": 0.5558894589994452,
+            "global": 1.3373997079979745
+          },
+          "global_traffic": {
+            "reads": 125712,
+            "writes": 10704,
+            "responses": 136416,
+            "request_stalls": 101436,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 273170,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true
+        }
+      ]
+    }
+  ],
+  "answer_correct": null,
+  "cycles": {
+    "shared": 3477228,
+    "global": 7552044
+  },
+  "wall_seconds": {
+    "shared": 4.105299874994671,
+    "global": 7.023811792008928
+  },
+  "global_traffic": {
+    "reads": 625200,
+    "writes": 60160,
+    "responses": 685360,
+    "request_stalls": 497949,
+    "copy_reads": 243072,
+    "copy_writes": 243072,
+    "copy_arithmetic_overlap_cycles": 1329568,
+    "nvfp4_macs": 2592768,
+    "fp32_tensor_multiplies": 24576
+  },
+  "scope": "simulated external-memory kernel launches; host still quantizes, orchestrates and retains KV state"
+}

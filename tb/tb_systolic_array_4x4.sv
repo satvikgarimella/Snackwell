@@ -1,12 +1,13 @@
 `timescale 1ns/1ps
 module tb_systolic_array_4x4;
+    logic [511:0] c_tile = 0;
     logic clk = 0, reset = 1, enable = 1, request_valid = 0, result_ready = 0;
     logic [511:0] a_tile = 0, b_tile = 0;
     wire request_ready, busy, result_valid, step_advance;
     wire [511:0] result_tile;
     wire [3:0] step_index;
     wire [15:0] pe_done_mask;
-    systolic_array_4x4 dut (.*);
+    systolic_array_4x4 dut (.nvfp4_mode(1'b0), .*);
     always #5 clk = ~clk;
 
     reg [511:0] source_a, source_b, expected, held_result;

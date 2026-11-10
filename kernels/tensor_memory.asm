@@ -1,0 +1,32 @@
+; FP32 tensor-memory prototype: C[4,4] = A[4,8] @ B[8,4].
+; A at byte 0, B at 128, C at 512, status at 576, descriptors at 768.
+; Launch warp 0 with all four lanes. Other consumer warps need explicit leases.
+XOR R0, R0, R0
+TALLOC T0
+LD_SHARED R1, [R0 + 768]
+LD_SHARED R2, [R0 + 772]
+TMMA T0, R1, R2
+TCOMMIT R3, T0, 1
+TWAIT T0, R3
+TRELEASE T0
+LD_SHARED R1, [R0 + 776]
+LD_SHARED R2, [R0 + 780]
+TMMA_ACC T0, R1, R2
+TCOMMIT R3, T0, 1
+TWAIT T0, R3
+TLD R4, T0, 0
+TLD R5, T0, 1
+TLD R6, T0, 2
+TLD R7, T0, 3
+TRELEASE T0
+TFREE T0
+TID R12
+ADD R12, R12, R12
+ADD R12, R12, R12
+ST_SHARED [R12 + 512], R4
+ST_SHARED [R12 + 528], R5
+ST_SHARED [R12 + 544], R6
+ST_SHARED [R12 + 560], R7
+TSTATUS R8
+ST_SHARED [R12 + 576], R8
+EXIT

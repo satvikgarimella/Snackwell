@@ -49,6 +49,7 @@ class SimulatorSession:
         self.process = None
         self.process_mode = None
         self.pending = b""
+        self.resident = None
 
     def __enter__(self):
         return self
@@ -57,6 +58,9 @@ class SimulatorSession:
         self.close()
 
     def close(self):
+        if self.resident is not None:
+            self.resident.invalidate()
+            self.resident = None
         if self.process is None:
             return
         process, self.process = self.process, None
@@ -136,6 +140,131 @@ class SimulatorSession:
             self.close()
             raise
 
+    def run_resident_words(
+        self,
+        words,
+        shared,
+        uploads,
+        readback,
+        writable,
+        *,
+        active_masks=0xFFFF,
+        warp_mask=1,
+        latency=2,
+        max_cycles=200000,
+        timeout=30,
+    ):
+        """Update named external ranges, clock RTL, read named ranges and check all guards.
+
+        External RAM survives launches. The driver checks every word outside
+        writable ranges without transferring the whole RAM image to Python.
+        """
+        from snackwell.resident_memory import CAPACITY
+
+        if self.trace or self.direct_executable is None:
+            raise ValueError("resident memory requires untraced direct-clock Verilator")
+
+        def valid_word(word):
+            return type(word) is int and 0 <= word < 2**32
+
+        if (
+            not 1 <= len(words) <= 1024
+            or len(shared) != 1024
+            or not all(valid_word(w) for w in [*words, *shared])
+            or type(max_cycles) is not int
+            or not 1 <= max_cycles <= 1000000
+            or type(latency) is not int
+            or not 0 <= latency <= 1000
+            or not 0 <= active_masks <= 65535
+            or not 1 <= warp_mask <= 15
+        ):
+            raise ValueError("invalid resident launch")
+        ranges = [*((start, len(data)) for start, data in uploads), *readback, *writable]
+        if any(
+            type(start) is not int
+            or type(count) is not int
+            or start < 0
+            or count < 1
+            or start + count > CAPACITY
+            for start, count in ranges
+        ):
+            raise ValueError("invalid resident range")
+        if sum(len(data) for _, data in uploads) > CAPACITY or any(
+            not valid_word(w) for _, data in uploads for w in data
+        ):
+            raise ValueError("invalid resident upload")
+        request = [
+            0x534E5231,
+            active_masks,
+            warp_mask,
+            0,
+            max_cycles,
+            latency,
+            *words,
+            *([EXIT_WORD] * (1024 - len(words))),
+            *shared,
+            len(uploads),
+        ]
+        for start, data in uploads:
+            request.extend((start, len(data), *data))
+        for spans in (readback, writable):
+            request.append(len(spans))
+            request.extend(x for span in spans for x in span)
+        count = 2 + 1024 + 256 + sum(n for _, n in readback) + 11
+        try:
+            self.executable = self.direct_executable
+            self._start("+RESIDENT")
+            view = memoryview(struct.pack(f"<{len(request)}I", *request))
+            while view:
+                written = self.process.stdin.write(view)
+                if not written:
+                    raise RuntimeError("RTL resident transport closed while writing")
+                view = view[written:]
+            deadline, response = time.monotonic() + timeout, bytearray()
+            while len(response) < count * 4:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0 or not select.select([self.process.stdout], [], [], remaining)[0]:
+                    raise subprocess.TimeoutExpired(str(self.executable), timeout)
+                data = os.read(self.process.stdout.fileno(), count * 4 - len(response))
+                if not data:
+                    raise RuntimeError(
+                        "RTL resident transport failed: "
+                        + response.decode(errors="replace")[-2000:]
+                    )
+                response.extend(data)
+            result = struct.unpack(f"<{count}I", response)
+            if result[0] != 0x534E5231 or not 0 < result[1] <= max_cycles:
+                raise RuntimeError("invalid resident response")
+            keys = (
+                "reads",
+                "writes",
+                "responses",
+                "request_stalls",
+                "status",
+                "copy_status",
+                "copy_reads",
+                "copy_writes",
+                "copy_arithmetic_overlap_cycles",
+                "nvfp4_macs",
+                "fp32_tensor_multiplies",
+            )
+            metrics = dict(
+                zip(keys, result[-11:], strict=True),
+                cycles=result[1],
+                host_upload_bytes=4 * sum(len(data) for _, data in uploads),
+                host_readback_bytes=4 * sum(n for _, n in readback),
+                protocol_request_bytes=4 * len(request),
+                protocol_response_bytes=4 * count,
+            )
+            if metrics["reads"] + metrics["writes"] != metrics["responses"]:
+                raise RuntimeError("resident requests did not drain")
+            if metrics["status"] or metrics["copy_status"]:
+                raise ValueError("resident global/copy status reported an error")
+            return list(result[2:1026]), list(result[1026:1282]), list(result[1282:-11]), metrics
+        except BaseException:
+            self.close()
+            raise
+
     def run(self, output, active_masks, warp_mask, entry, max_cycles, timeout=30):
         directory = str(output)
         if "\n" in directory or "\r" in directory:
@@ -179,6 +308,71 @@ class SimulatorSession:
         finally:
             log_path.write_text("".join(lines))
 
+    def run_global_words(
+        self, words, shared, memory, active_masks, warp_mask, latency, max_cycles, timeout=30
+    ):
+        """Clock the external RAM handshake; no shared operand data is synthesized here."""
+        if self.trace or self.direct_executable is None:
+            raise ValueError("global word transport requires the untraced direct-clock driver")
+        try:
+            self.executable = self.direct_executable
+            self._start("+GLOBAL")
+            request = [
+                0x534E4731,
+                active_masks,
+                warp_mask,
+                0,
+                max_cycles,
+                latency,
+                *words,
+                *([EXIT_WORD] * (1024 - len(words))),
+                *shared,
+                *memory,
+            ]
+            view = memoryview(struct.pack(f"<{len(request)}I", *request))
+            while view:
+                written = self.process.stdin.write(view)
+                if not written:
+                    raise RuntimeError("RTL global transport closed while writing")
+                view = view[written:]
+            deadline = time.monotonic() + timeout
+            response = bytearray()
+            count = 2 + 1024 + 256 + 16384 + 11
+            while len(response) < count * 4:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0 or not select.select([self.process.stdout], [], [], remaining)[0]:
+                    raise subprocess.TimeoutExpired(str(self.executable), timeout)
+                data = os.read(self.process.stdout.fileno(), count * 4 - len(response))
+                if not data:
+                    raise RuntimeError(
+                        "RTL global transport ended before completion: "
+                        + response.decode(errors="replace")[-2000:]
+                    )
+                response.extend(data)
+            result = struct.unpack(f"<{count}I", response)
+            if result[0] != 0x534E4731 or not 0 < result[1] <= max_cycles:
+                raise RuntimeError("Invalid RTL global transport response")
+            keys = (
+                "reads",
+                "writes",
+                "responses",
+                "request_stalls",
+                "status",
+                "copy_status",
+                "copy_reads",
+                "copy_writes",
+                "copy_arithmetic_overlap_cycles",
+                "nvfp4_macs",
+                "fp32_tensor_multiplies",
+            )
+            metrics = dict(zip(keys, result[-11:], strict=True), cycles=result[1])
+            if metrics["reads"] + metrics["writes"] != metrics["responses"]:
+                raise RuntimeError("External requests did not drain")
+            return list(result[2:1026]), list(result[1026:1282]), list(result[1282:-11]), metrics
+        except BaseException:
+            self.close()
+            raise
+
 
 def rtl_source_digest():
     """Identify the RTL and testbench loaded by a long-lived model runner."""
@@ -188,6 +382,8 @@ def rtl_source_digest():
         ROOT / "tb/tb_snackwell_kernel.sv",
         ROOT / "sim/snackwell_sim_top.sv",
         ROOT / "sim/session.cpp",
+        ROOT / "tb/support/global_memory_model.sv",
+        ROOT / "tb/tb_snackwell_global_memory.sv",
     ]:
         digest.update(str(path.relative_to(ROOT)).encode() + b"\0" + path.read_bytes() + b"\0")
     return digest.hexdigest()
@@ -224,7 +420,7 @@ def compile_model_runner(
     return ModelSimulator(executable, backend, trace, source_sha256, session_executable, compact)
 
 
-def compile_verilator_runner(*, session=False) -> Path:
+def compile_verilator_runner(*, session=False, defines=()) -> Path:
     """Cache compiled RTL, with either the timed SV bench or the untimed C++ host."""
     import fcntl
 
@@ -243,6 +439,7 @@ def compile_verilator_runner(*, session=False) -> Path:
     flags = [
         *(["--cc", "--exe", "--build"] if session else ["--binary", "--timing"]),
         "--assert",
+        *(f"-D{define}" for define in defines),
         "-CFLAGS",
         "-O3 -std=c++17",
         "--top-module",
@@ -258,7 +455,7 @@ def compile_verilator_runner(*, session=False) -> Path:
         environment={key: os.environ.get(key) for key in ("CC", "CXX", "CXXFLAGS", "LDFLAGS")},
     )
     digest = hashlib.sha256(json.dumps(identity, sort_keys=True).encode())
-    for source in sources:
+    for source in [*sources, *([ROOT / "tb/support/global_memory_model.sv"] if session else [])]:
         digest.update(str(source.relative_to(ROOT)).encode() + b"\0" + source.read_bytes() + b"\0")
     output = ROOT / "build/simulators/verilator" / digest.hexdigest()[:20]
     output.mkdir(parents=True, exist_ok=True)
@@ -308,6 +505,8 @@ def read_hex(path, count):
 def checked_command(args, cwd, log_path, timeout=30):
     result = subprocess.run(args, cwd=cwd, capture_output=True, text=True, timeout=timeout)
     log = result.stdout + result.stderr
+    if result.returncode:
+        log += f"\nexit_code={result.returncode}\n"
     log_path.write_text(log)
     if result.returncode or re.search(
         r"\b(FAIL|FATAL|ERROR)\b|implicit definition of wire|dangling input port", log

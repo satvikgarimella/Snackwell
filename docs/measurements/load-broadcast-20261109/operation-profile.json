@@ -1,0 +1,542 @@
+{
+  "sentence": {
+    "serial": {
+      "embedding": {
+        "cycles": 233760,
+        "launches": 256,
+        "reads": 15360,
+        "writes": 6656,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "layernorm": {
+        "cycles": 5109968,
+        "launches": 728,
+        "reads": 351456,
+        "writes": 50176,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "nvfp4_matmul": {
+        "cycles": 27162461,
+        "launches": 5000,
+        "reads": 1909056,
+        "writes": 317312,
+        "copy_reads": 1074816,
+        "nvfp4_macs": 11464704,
+        "fp32_tensor_multiplies": 0
+      },
+      "matmul": {
+        "cycles": 12748576,
+        "launches": 1632,
+        "reads": 1310720,
+        "writes": 65280,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 983040
+      },
+      "scale_mask": {
+        "cycles": 1412688,
+        "launches": 640,
+        "reads": 46240,
+        "writes": 43520,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "softmax": {
+        "cycles": 12020351,
+        "launches": 696,
+        "reads": 612504,
+        "writes": 101376,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "residual_add": {
+        "cycles": 1335264,
+        "launches": 640,
+        "reads": 87040,
+        "writes": 43520,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "gelu": {
+        "cycles": 10899846,
+        "launches": 320,
+        "reads": 783360,
+        "writes": 43520,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "vocabulary_mask": {
+        "cycles": 29344,
+        "launches": 56,
+        "reads": 56,
+        "writes": 1736,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "argmax": {
+        "cycles": 279168,
+        "launches": 56,
+        "reads": 7168,
+        "writes": 56,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      }
+    },
+    "broadcast": {
+      "embedding": {
+        "cycles": 229392,
+        "launches": 256,
+        "reads": 14784,
+        "writes": 6656,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "layernorm": {
+        "cycles": 3980944,
+        "launches": 728,
+        "reads": 200760,
+        "writes": 50176,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "nvfp4_matmul": {
+        "cycles": 22955540,
+        "launches": 5000,
+        "reads": 1342872,
+        "writes": 317312,
+        "copy_reads": 1074816,
+        "nvfp4_macs": 11464704,
+        "fp32_tensor_multiplies": 0
+      },
+      "matmul": {
+        "cycles": 10479808,
+        "launches": 1632,
+        "reads": 1003520,
+        "writes": 65280,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 983040
+      },
+      "scale_mask": {
+        "cycles": 1403056,
+        "launches": 640,
+        "reads": 44800,
+        "writes": 43520,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "softmax": {
+        "cycles": 10470929,
+        "launches": 696,
+        "reads": 403704,
+        "writes": 101376,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "residual_add": {
+        "cycles": 1335264,
+        "launches": 640,
+        "reads": 87040,
+        "writes": 43520,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "gelu": {
+        "cycles": 6778597,
+        "launches": 320,
+        "reads": 228480,
+        "writes": 43520,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "vocabulary_mask": {
+        "cycles": 29344,
+        "launches": 56,
+        "reads": 56,
+        "writes": 1736,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "argmax": {
+        "cycles": 279168,
+        "launches": 56,
+        "reads": 7168,
+        "writes": 56,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      }
+    }
+  },
+  "character": {
+    "serial": {
+      "embedding": {
+        "cycles": 24992,
+        "launches": 40,
+        "reads": 1632,
+        "writes": 704,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "layernorm": {
+        "cycles": 564797,
+        "launches": 43,
+        "reads": 39196,
+        "writes": 5440,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "nvfp4_matmul": {
+        "cycles": 4915881,
+        "launches": 560,
+        "reads": 377568,
+        "writes": 35648,
+        "copy_reads": 243072,
+        "nvfp4_macs": 2592768,
+        "fp32_tensor_multiplies": 0
+      },
+      "matmul": {
+        "cycles": 478004,
+        "launches": 128,
+        "reads": 47104,
+        "writes": 3680,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 24576
+      },
+      "scale_mask": {
+        "cycles": 50285,
+        "launches": 76,
+        "reads": 1608,
+        "writes": 1312,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "softmax": {
+        "cycles": 503784,
+        "launches": 80,
+        "reads": 22344,
+        "writes": 3648,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "residual_add": {
+        "cycles": 144590,
+        "launches": 38,
+        "reads": 9472,
+        "writes": 4736,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "gelu": {
+        "cycles": 1183950,
+        "launches": 19,
+        "reads": 85248,
+        "writes": 4736,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "vocabulary_mask": {
+        "cycles": 4174,
+        "launches": 4,
+        "reads": 4,
+        "writes": 252,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "argmax": {
+        "cycles": 19958,
+        "launches": 4,
+        "reads": 512,
+        "writes": 4,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      }
+    },
+    "broadcast": {
+      "embedding": {
+        "cycles": 23998,
+        "launches": 40,
+        "reads": 1496,
+        "writes": 704,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "layernorm": {
+        "cycles": 436101,
+        "launches": 43,
+        "reads": 22039,
+        "writes": 5440,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "nvfp4_matmul": {
+        "cycles": 4270306,
+        "launches": 560,
+        "reads": 283380,
+        "writes": 35648,
+        "copy_reads": 243072,
+        "nvfp4_macs": 2592768,
+        "fp32_tensor_multiplies": 0
+      },
+      "matmul": {
+        "cycles": 380302,
+        "launches": 128,
+        "reads": 34048,
+        "writes": 3680,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 24576
+      },
+      "scale_mask": {
+        "cycles": 49144,
+        "launches": 76,
+        "reads": 1464,
+        "writes": 1312,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "softmax": {
+        "cycles": 463821,
+        "launches": 80,
+        "reads": 17016,
+        "writes": 3648,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "residual_add": {
+        "cycles": 144590,
+        "launches": 38,
+        "reads": 9472,
+        "writes": 4736,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "gelu": {
+        "cycles": 734221,
+        "launches": 19,
+        "reads": 24864,
+        "writes": 4736,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "vocabulary_mask": {
+        "cycles": 4174,
+        "launches": 4,
+        "reads": 4,
+        "writes": 252,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "argmax": {
+        "cycles": 19958,
+        "launches": 4,
+        "reads": 512,
+        "writes": 4,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      }
+    }
+  },
+  "fp32": {
+    "serial": {
+      "embedding": {
+        "cycles": 58872,
+        "launches": 64,
+        "reads": 3840,
+        "writes": 1664,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "layernorm": {
+        "cycles": 1278512,
+        "launches": 182,
+        "reads": 87864,
+        "writes": 12544,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "matmul": {
+        "cycles": 17107348,
+        "launches": 1422,
+        "reads": 1786040,
+        "writes": 63672,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 1310720
+      },
+      "scale_mask": {
+        "cycles": 354294,
+        "launches": 160,
+        "reads": 11560,
+        "writes": 10880,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "softmax": {
+        "cycles": 3018094,
+        "launches": 174,
+        "reads": 153126,
+        "writes": 25344,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "residual_add": {
+        "cycles": 334058,
+        "launches": 160,
+        "reads": 21760,
+        "writes": 10880,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "gelu": {
+        "cycles": 2711412,
+        "launches": 80,
+        "reads": 195840,
+        "writes": 10880,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "vocabulary_mask": {
+        "cycles": 7344,
+        "launches": 14,
+        "reads": 14,
+        "writes": 434,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "argmax": {
+        "cycles": 69788,
+        "launches": 14,
+        "reads": 1792,
+        "writes": 14,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      }
+    },
+    "broadcast": {
+      "embedding": {
+        "cycles": 57864,
+        "launches": 64,
+        "reads": 3696,
+        "writes": 1664,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "layernorm": {
+        "cycles": 995646,
+        "launches": 182,
+        "reads": 50190,
+        "writes": 12544,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "matmul": {
+        "cycles": 14021090,
+        "launches": 1422,
+        "reads": 1371512,
+        "writes": 63672,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 1310720
+      },
+      "scale_mask": {
+        "cycles": 350808,
+        "launches": 160,
+        "reads": 11200,
+        "writes": 10880,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "softmax": {
+        "cycles": 2623077,
+        "launches": 174,
+        "reads": 100926,
+        "writes": 25344,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "residual_add": {
+        "cycles": 334058,
+        "launches": 160,
+        "reads": 21760,
+        "writes": 10880,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "gelu": {
+        "cycles": 1698960,
+        "launches": 80,
+        "reads": 57120,
+        "writes": 10880,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "vocabulary_mask": {
+        "cycles": 7344,
+        "launches": 14,
+        "reads": 14,
+        "writes": 434,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      },
+      "argmax": {
+        "cycles": 69788,
+        "launches": 14,
+        "reads": 1792,
+        "writes": 14,
+        "copy_reads": 0,
+        "nvfp4_macs": 0,
+        "fp32_tensor_multiplies": 0
+      }
+    }
+  }
+}

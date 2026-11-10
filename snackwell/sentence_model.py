@@ -32,7 +32,18 @@ def validate_prompt(prompt):
         )
 
 
-def complete(model, prompt, output, executable, *, on_token=None, max_tokens=12):
+def complete(
+    model,
+    prompt,
+    output,
+    executable,
+    *,
+    on_token=None,
+    max_tokens=12,
+    precision="fp32",
+    memory="shared",
+    memory_latency=2,
+):
     validate_prompt(prompt)
     if type(max_tokens) is not int or not 1 <= max_tokens <= 32:
         raise ValueError("max_tokens must be 1..32")
@@ -44,22 +55,29 @@ def complete(model, prompt, output, executable, *, on_token=None, max_tokens=12)
     output.mkdir(parents=True, exist_ok=True)
     (output / "result.json").unlink(missing_ok=True)
     # The question ends at a punctuation boundary, so token healing is unnecessary.
-    generation = Generation(model, prompt, heal=False)
+    generation = Generation(
+        model, prompt, heal=False, precision=precision, memory=memory, memory_latency=memory_latency
+    )
     reports, text = [], ""
-    for step in range(max_tokens):
-        if len(generation.ids) > model["config"]["context"]:
-            raise ValueError("answer exceeds context; refusing to drop facts from the prompt")
-        result = generation.next(output / f"token_{step:03d}", executable)
-        reports.append(result)
-        piece = result["next_character"]
-        text += piece
-        if on_token:
-            on_token(piece)
-        if "." in piece:
-            break
+    try:
+        for step in range(max_tokens):
+            if len(generation.ids) > model["config"]["context"]:
+                raise ValueError("answer exceeds context; refusing to drop facts from the prompt")
+            result = generation.next(output / f"token_{step:03d}", executable)
+            reports.append(result)
+            piece = result["next_character"]
+            text += piece
+            if on_token:
+                on_token(piece)
+            if "." in piece:
+                break
+    finally:
+        generation.close()
     report = dict(
         execution="Snackwell RTL; independent kernel and whole-model verification",
         verified=True,
+        precision=precision,
+        memory=memory,
         complete=text.endswith("."),
         checkpoint_sha256=model.get("sha256"),
         prompt=prompt,
@@ -78,6 +96,7 @@ def complete(model, prompt, output, executable, *, on_token=None, max_tokens=12)
                 cycles=r["cycles"],
                 launches=r["launches"],
                 cache=r["cache"],
+                **({"resident": r["resident"]} if "resident" in r else {}),
             )
             for r in reports
         ],

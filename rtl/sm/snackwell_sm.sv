@@ -2,6 +2,15 @@ module snackwell_sm (
     input logic clk,
     input logic reset,
     input logic run_enable,
+    // External word-memory master, independent of shared memory and host MMIO.
+    output logic        global_request_valid,
+    input  logic        global_request_ready,
+    output logic        global_request_write,
+    output logic [31:0] global_request_address, global_request_data,
+    input  logic        global_response_valid,
+    output logic        global_response_ready,
+    input  logic        global_response_error,
+    input  logic [31:0] global_response_data,
     // WARP LAUNCH
 
     input logic        launch_enable,
@@ -60,6 +69,12 @@ module snackwell_sm (
         .clk                     (clk),
         .reset                   (reset),
         .run_enable              (run_enable),
+        .global_request_valid(global_request_valid), .global_request_ready(global_request_ready),
+        .global_request_write(global_request_write), .global_request_address(global_request_address),
+        .global_request_data(global_request_data), .global_response_valid(global_response_valid),
+        .global_response_ready(global_response_ready), .global_response_error(global_response_error),
+        .global_response_data(global_response_data),
+        .global_idle(), .global_status(), .copy_status(),
         .host_program_write(1'b0), .host_program_address(10'd0), .host_program_data(32'd0),
         .host_program_read_data(),
         .host_memory_valid(1'b0), .host_memory_ready(), .host_memory_write(1'b0),

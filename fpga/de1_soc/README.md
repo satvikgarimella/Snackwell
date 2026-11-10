@@ -14,6 +14,12 @@ It has no physical transport or pin assignments. `core.sdc` sets a proposed
 50 MHz clock, not an achieved frequency. Do not use a full `quartus_sh --flow
 compile` as a substitute for defining and checking the board interface.
 
+The top level now includes a global-memory request/response master, in addition
+to the host register bus. A board-specific memory endpoint must implement the
+[handshake and coordinated-reset contract](../../docs/GLOBAL_MEMORY.md). No
+external RAM controller is included. Earlier synthesis/resource measurements
+predate the tensor-memory and global-memory additions and do not prove they fit.
+
 The project was prepared on macOS; it needs execution and review in Quartus
 on Windows/Linux. See [the synthesis guide](../../docs/SYNTHESIS.md) for the
 local Yosys flow, verification, limitations, and remaining board work.

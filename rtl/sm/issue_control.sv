@@ -79,6 +79,7 @@ module issue_control (
         .blocked_mask     (blocked_mask),
 
         .issue_accept     (issue_accept),
+        .skip_candidate   (resource_stall),
 
         .issue_valid      (issue_valid),
         .selected_warp_id (selected_warp_id),

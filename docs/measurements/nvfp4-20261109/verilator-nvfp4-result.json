@@ -1,0 +1,17 @@
+{
+  "cycles": 1656,
+  "reads": 96,
+  "writes": 32,
+  "responses": 128,
+  "request_stalls": 125,
+  "independent_integer_issues": 0,
+  "dependency_stalls": 17,
+  "status": 0,
+  "copy_status": 0,
+  "copy_reads": 96,
+  "copy_writes": 96,
+  "copy_arithmetic_overlap_cycles": 538,
+  "transport": "simulated_external_memory",
+  "hardware_tested": false,
+  "latency": 2
+}

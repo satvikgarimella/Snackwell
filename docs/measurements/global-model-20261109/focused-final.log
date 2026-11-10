@@ -1,0 +1,14 @@
+test_complete_model_matches_icarus (tests.test_simulator.VerilatorTests.test_complete_model_matches_icarus) ... ok
+test_external_fault_timeout_and_restart (tests.test_global_model.GlobalModelTests.test_external_fault_timeout_and_restart) ... ok
+test_full_model_cache_sampling_rebuild_matches_shared_exactly (tests.test_global_model.GlobalModelTests.test_full_model_cache_sampling_rebuild_matches_shared_exactly) ... ok
+test_icarus_and_persistent_verilator_match (tests.test_global_model.GlobalModelTests.test_icarus_and_persistent_verilator_match) ... ok
+test_memory_switch_and_corruption_do_not_commit_cache (tests.test_global_model.GlobalModelTests.test_memory_switch_and_corruption_do_not_commit_cache) ... ok
+test_native_multiple_tiles_k_chunks_and_latency_invariance (tests.test_global_model.GlobalModelTests.test_native_multiple_tiles_k_chunks_and_latency_invariance) ... ok
+test_regular_kernels_multiwarp_partial_masks_and_global_guards (tests.test_global_model.GlobalModelTests.test_regular_kernels_multiwarp_partial_masks_and_global_guards) ... ok
+test_serial_and_overlapped_native_schedule_match (tests.test_global_model.GlobalModelTests.test_serial_and_overlapped_native_schedule_match) ... ok
+test_traced_verilator_uses_external_memory_and_saves_artifacts (tests.test_global_model.GlobalModelTests.test_traced_verilator_uses_external_memory_and_saves_artifacts) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 16.804s
+
+OK

@@ -11,6 +11,7 @@ from snackwell.decoding import validate_min_p, validate_temperature
 from snackwell.kv_cache import model_signature
 from snackwell.model_runtime import ModelRuntime, insert_rectangle, rectangle
 from snackwell.numeric import bits, value
+from snackwell.nvfp4_inference import precision_policy
 from snackwell.reference.inference import stable_softmax, verify_approx
 from snackwell.simulator import ModelSimulator, SimulatorSession, compile_model_runner
 
@@ -28,14 +29,35 @@ def forward(
     phase=None,
     min_p=0.0,
     token_prefix="",
+    precision="fp32",
+    memory="shared",
+    memory_latency=2,
+    optimize_resident=True,
 ):
     """Verify a forward pass, releasing its simulator process even on cancellation."""
     (Path(output) / "result.json").unlink(missing_ok=True)
+    precision_policy(precision)
+    if (
+        memory not in ("shared", "global", "resident", "resident-copy")
+        or type(memory_latency) is not int
+        or not 0 <= memory_latency <= 1000
+    ):
+        raise ValueError(
+            "memory must be shared/global/resident/resident-copy and memory latency an integer from 0 to 1000"
+        )
     if kv_cache is not None:
         if executable is None:
             executable = compile_model_runner(Path(output))
         if not getattr(executable, "source_sha256", None):
             raise ValueError("KV caching requires a model runner with an RTL source fingerprint")
+    if memory.startswith("resident") and executable is None:
+        executable = compile_model_runner(Path(output), "verilator", compact=True)
+    if (
+        memory.startswith("resident")
+        and kv_cache is not None
+        and not isinstance(executable, SimulatorSession)
+    ):
+        raise ValueError("resident KV caching requires a session owned by Generation or its caller")
     if isinstance(executable, ModelSimulator) and executable.backend == "verilator":
         with SimulatorSession(executable) as session:
             return _forward(
@@ -51,6 +73,10 @@ def forward(
                 phase,
                 min_p,
                 token_prefix,
+                precision,
+                memory,
+                memory_latency,
+                optimize_resident,
             )
     return _forward(
         model,
@@ -65,6 +91,10 @@ def forward(
         phase,
         min_p,
         token_prefix,
+        precision,
+        memory,
+        memory_latency,
+        optimize_resident,
     )
 
 
@@ -81,6 +111,10 @@ def _forward(
     phase,
     min_p,
     token_prefix,
+    precision,
+    memory,
+    memory_latency,
+    optimize_resident,
 ):
     started = time.perf_counter()
     output = Path(output)
@@ -97,21 +131,38 @@ def _forward(
     start = len(kv_cache.ids) if kv_cache is not None else 0
     signature = model_signature(model) if kv_cache is not None else None
     rtl_digest = getattr(executable, "source_sha256", None)
+    device = None
+    if memory.startswith("resident"):
+        from snackwell.resident_memory import resident_memory
+
+        if not isinstance(executable, SimulatorSession):
+            raise ValueError("resident memory requires an untraced Verilator session")
+        device = resident_memory(executable)
+        device.bind(signature or model_signature(model), precision_policy(precision))
     if start and (
         tuple(ids[:-1]) != kv_cache.ids
         or context != start + 1
         or kv_cache.signature != signature
         or kv_cache.rtl_source_sha256 != rtl_digest
+        or kv_cache.precision != precision_policy(precision)
+        or kv_cache.memory != memory
+        or (memory == "resident" and kv_cache.optimize_resident != optimize_resident)
+        or (device is not None and kv_cache.device_identity is not device.identity)
         or len(kv_cache.layers) != config.get("layers", 1)
         or any(len(k) != start * width or len(v) != start * width for k, v in kv_cache.layers)
         or kv_cache.reference is None
         or kv_cache.reference.ids != kv_cache.ids
     ):
-        raise ValueError("KV cache does not match this prefix, checkpoint or RTL build")
-    # This state contains only independent double-precision reference results.
+        raise ValueError(
+            "KV cache does not match this prefix, checkpoint, precision, memory, compiler options or RTL build"
+        )
+    # This state contains only independent numerical reference results.
     # Commit it together with RTL state only after every check succeeds.
     reference_started = time.perf_counter()
-    expected, reference_state = reference_forward(
+    model_reference = reference_forward
+    if precision == "nvfp4":
+        from snackwell.reference.nvfp4_model import forward as model_reference
+    expected, reference_state = model_reference(
         model, ids, previous=kv_cache.reference if start else None, return_state=True
     )
     reference_seconds = time.perf_counter() - reference_started
@@ -126,16 +177,49 @@ def _forward(
         name: list(struct.unpack(f"<{len(data)}I", struct.pack(f"<{len(data)}f", *data)))
         for name, data in model["weights"].items()
     }
-    runtime = ModelRuntime(output, executable, on_progress)
+    runtime = ModelRuntime(
+        output,
+        executable,
+        on_progress,
+        memory=memory,
+        memory_latency=memory_latency,
+        optimize_resident=optimize_resident,
+    )
+    constants_before = device.uploaded_constant_bytes if device is not None else 0
+    if device is not None:
+        quantized_weights = {"lm_weight"} | {
+            block_prefix(layer, config.get("layers", 1)) + suffix
+            for layer in range(config.get("layers", 1))
+            for suffix in ("wq", "wk", "wv", "wo", "w1", "w2")
+        }
+        # NVFP4 linears upload their packed tiles below. Their FP32 checkpoint
+        # copies stay on the host for quantization and independent verification.
+        weights = {
+            name: data
+            if precision == "nvfp4" and name in quantized_weights
+            else device.constant(("weight", name), data)
+            for name, data in weights.items()
+        }
     checks = {}
 
     def check(name, actual, row_offset=0, columns=None):
         columns = columns or width
         actual = actual[: (context - row_offset) * columns]
         reference = expected[name][row_offset * columns :]
-        # Threshold fixed before checkpoint training; failures are not relaxed.
+        # FP32 tolerances stay fixed. NVFP4 uses an exact mixed-precision oracle;
+        # comparing it with unquantized FP32 is a separate quality experiment.
         try:
-            checks[name] = verify_approx(actual, reference, "transformer")
+            if precision == "nvfp4":
+                if actual != [bits(x) for x in reference]:
+                    mismatch = next(
+                        (i for i, (a, b) in enumerate(zip(actual, reference)) if a != bits(b)), None
+                    )
+                    raise ValueError(f"NVFP4 whole-model FP32 bit mismatch at {mismatch}")
+                checks[name] = dict(
+                    comparison="FP32 bits against independent mixed-precision model"
+                )
+            else:
+                checks[name] = verify_approx(actual, reference, "transformer")
         except ValueError as error:
             raise ValueError(f"{name}: {error}") from error
         (output / f"{name}.json").write_text(json.dumps([value(a) for a in actual]) + "\n")
@@ -154,7 +238,8 @@ def _forward(
         )
 
     def linear(name, x, weight, bias, inner, columns, rows):
-        return runtime.matmul(
+        execute = runtime.nvfp4_linear if precision == "nvfp4" else runtime.matmul
+        return execute(
             name + "_matmul", x, weights[weight], rows, columns, inner, bias=weights[bias]
         )
 
@@ -178,7 +263,7 @@ def _forward(
         local_offset = new_tokens - 1 if final_row else 0
         row_offset = start + local_offset
         normalized = norm(prefix + "layernorm1", x, "1", input_rows, prefix)
-        if input_rows == 1:
+        if input_rows == 1 and precision == "fp32":
             # Concatenate output columns only. Each dot product and bias uses
             # exactly the same RTL arithmetic, but fewer column-chunk launches.
             qkv_weights = [
@@ -297,7 +382,8 @@ def _forward(
         for r in range(width)
         for col in range(projection_columns)
     ]
-    logits = runtime.matmul(
+    execute_linear = runtime.nvfp4_linear if precision == "nvfp4" else runtime.matmul
+    logits = execute_linear(
         "lm_head",
         normalized,
         weight,
@@ -412,11 +498,16 @@ def _forward(
         selected_distribution = [value(word) for word in probabilities[-vocabulary_size:]]
     if not 0 <= selected < vocabulary_size or selected_distribution[selected] <= 0:
         raise ValueError("decoder selected a masked or zero-probability character")
+    # Token IDs leave device tensor storage and become ordinary host controls.
+    selected = int(selected)
+    predictions = list(map(int, predictions))
     token_text = vocabulary[selected]
     if not token_text.startswith(token_prefix):
         raise ValueError("decoder changed the required prompt prefix")
     report = dict(
         verified=True,
+        precision=precision,
+        quantization_policy=precision_policy(precision),
         simulation=runtime.simulation,
         rtl_source_sha256=getattr(executable, "source_sha256", None),
         wall_seconds=time.perf_counter() - started,
@@ -432,7 +523,13 @@ def _forward(
             reused_tokens=start,
             computed_tokens=new_tokens,
             context_tokens=context,
-            storage="host raw FP32 words" if kv_cache is not None else None,
+            storage=(
+                "resident external RAM with verified host shadows"
+                if device is not None
+                else "host raw FP32 words"
+            )
+            if kv_cache is not None
+            else None,
             bytes=2 * layers * context * width * 4 if kv_cache is not None else 0,
         ),
         cycles=sum(r["cycles"] for r in runtime.reports),
@@ -455,12 +552,39 @@ def _forward(
         accuracy=checks,
         stages=runtime.reports,
     )
+    if device is not None:
+        report["model_launches"] = report["launches"]
+        report["launches"] = sum(r["memory"]["total"]["rtl_launches"] for r in runtime.reports)
+        report["resident"] = dict(
+            capacity_bytes=len(device.shadow) * 4,
+            peak_allocation_bytes=device.peak_words * 4,
+            constant_upload_bytes=device.uploaded_constant_bytes - constants_before,
+            **{
+                key: sum(r["memory"]["total"][key] for r in runtime.reports)
+                for key in (
+                    "host_upload_bytes",
+                    "host_readback_bytes",
+                    "protocol_request_bytes",
+                    "protocol_response_bytes",
+                    "rtl_launches",
+                    "reads",
+                    "writes",
+                    "responses",
+                )
+            },
+            copy_cycles=sum(r["memory"]["copy_cycles"] for r in runtime.reports),
+            device_copy_words=sum(r["memory"]["device_copy_words"] for r in runtime.reports),
+        )
     (output / "result.json").write_text(json.dumps(report, indent=2) + "\n")
     if kv_cache is not None:
         kv_cache.ids = tuple(ids)
         kv_cache.layers = tuple(pending_cache)
         kv_cache.signature = signature
         kv_cache.rtl_source_sha256 = rtl_digest
+        kv_cache.precision = precision_policy(precision)
+        kv_cache.memory = memory
+        kv_cache.optimize_resident = optimize_resident
+        kv_cache.device_identity = device.identity if device is not None else None
         kv_cache.reference = reference_state
     return report
 

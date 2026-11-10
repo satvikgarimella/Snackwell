@@ -16,6 +16,10 @@ module tb_snackwell_sm_memory;
     wire [5:0] opcode;
     wire [3:0] halted_mask, selected_active_mask;
     snackwell_sm dut (
+        .global_request_valid(), .global_request_ready(1'b1), .global_request_write(),
+        .global_request_address(), .global_request_data(), .global_response_valid(1'b1),
+        .global_response_ready(), .global_response_error(1'b1), .global_response_data(32'd0),
+
         .clk(clk), .reset(reset), .run_enable(run_enable),
         .launch_enable(launch_enable), .launch_warp_id(launch_warp_id),
         .launch_pc(launch_pc), .launch_active_mask(launch_active_mask),

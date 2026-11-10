@@ -1,0 +1,333 @@
+{
+  "verified": true,
+  "identical": true,
+  "memory_modes": [
+    "resident-copy",
+    "resident"
+  ],
+  "precision": "nvfp4",
+  "memory_latency": 2,
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "rtl_source_sha256": "cae6f6a3a75bba5ffabfa0a34bdede7e5b2c77d7dff772e54e05dcbaa3c09abf",
+  "compared_tokens": 4,
+  "cases": [
+    {
+      "prompt": "ROMEO:",
+      "expected": null,
+      "generated": "\nMar",
+      "correct": null,
+      "verified": true,
+      "tokens": [
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10
+          ],
+          "token_id": 0,
+          "text": "\n",
+          "phase": "prefill",
+          "cycles": {
+            "resident-copy": 7650298,
+            "resident": 3426331
+          },
+          "wall_seconds": {
+            "resident-copy": 5.91203824999684,
+            "resident": 2.558774874996743
+          },
+          "global_traffic": {
+            "reads": 252656,
+            "writes": 29072,
+            "responses": 281728,
+            "request_stalls": 227496,
+            "copy_reads": 90720,
+            "copy_writes": 90720,
+            "copy_arithmetic_overlap_cycles": 588778,
+            "nvfp4_macs": 967680,
+            "fp32_tensor_multiplies": 24576
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 173952,
+            "constant_upload_bytes": 138536,
+            "host_upload_bytes": 163464,
+            "host_readback_bytes": 112836,
+            "protocol_request_bytes": 3077804,
+            "protocol_response_bytes": 1938552,
+            "rtl_launches": 353,
+            "reads": 252656,
+            "writes": 29072,
+            "responses": 281728,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 169824,
+            "constant_upload_bytes": 138536,
+            "host_upload_bytes": 321464,
+            "host_readback_bytes": 1558724,
+            "protocol_request_bytes": 11730908,
+            "protocol_response_bytes": 8680568,
+            "rtl_launches": 1377,
+            "reads": 417543,
+            "writes": 178839,
+            "responses": 596382,
+            "copy_cycles": 4315882,
+            "device_copy_words": 149767
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0
+          ],
+          "token_id": 25,
+          "text": "M",
+          "phase": "decode",
+          "cycles": {
+            "resident-copy": 3522311,
+            "resident": 1446074
+          },
+          "wall_seconds": {
+            "resident-copy": 2.3627960000012536,
+            "resident": 1.0231384159997106
+          },
+          "global_traffic": {
+            "reads": 107392,
+            "writes": 10192,
+            "responses": 117584,
+            "request_stalls": 98338,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 260522,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 183424,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 3196,
+            "host_readback_bytes": 40004,
+            "protocol_request_bytes": 1760648,
+            "protocol_response_bytes": 1141640,
+            "rtl_launches": 213,
+            "reads": 107392,
+            "writes": 10192,
+            "responses": 117584,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 179296,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 123320,
+            "host_readback_bytes": 912452,
+            "protocol_request_bytes": 6769804,
+            "protocol_response_bytes": 5065568,
+            "rtl_launches": 803,
+            "reads": 190651,
+            "writes": 84987,
+            "responses": 275638,
+            "copy_cycles": 2155840,
+            "device_copy_words": 74795
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25
+          ],
+          "token_id": 39,
+          "text": "a",
+          "phase": "decode",
+          "cycles": {
+            "resident-copy": 3536500,
+            "resident": 1446125
+          },
+          "wall_seconds": {
+            "resident-copy": 2.3413357919998816,
+            "resident": 1.0145902079966618
+          },
+          "global_traffic": {
+            "reads": 107392,
+            "writes": 10192,
+            "responses": 117584,
+            "request_stalls": 98437,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 260075,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 192640,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 2024,
+            "host_readback_bytes": 40004,
+            "protocol_request_bytes": 1759252,
+            "protocol_response_bytes": 1141640,
+            "rtl_launches": 213,
+            "reads": 107392,
+            "writes": 10192,
+            "responses": 117584,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 188512,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 121672,
+            "host_readback_bytes": 912452,
+            "protocol_request_bytes": 6768252,
+            "protocol_response_bytes": 5065568,
+            "rtl_launches": 803,
+            "reads": 191163,
+            "writes": 85499,
+            "responses": 276662,
+            "copy_cycles": 2170056,
+            "device_copy_words": 75307
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            25,
+            39
+          ],
+          "token_id": 56,
+          "text": "r",
+          "phase": "decode",
+          "cycles": {
+            "resident-copy": 3691354,
+            "resident": 1571885
+          },
+          "wall_seconds": {
+            "resident-copy": 2.440879792004125,
+            "resident": 1.0803340829952504
+          },
+          "global_traffic": {
+            "reads": 117248,
+            "writes": 10704,
+            "responses": 127952,
+            "request_stalls": 106812,
+            "copy_reads": 50784,
+            "copy_writes": 50784,
+            "copy_arithmetic_overlap_cycles": 262015,
+            "nvfp4_macs": 541696,
+            "fp32_tensor_multiplies": 0
+          },
+          "identical": true,
+          "resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 201920,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 2876,
+            "host_readback_bytes": 41540,
+            "protocol_request_bytes": 1760248,
+            "protocol_response_bytes": 1143176,
+            "rtl_launches": 213,
+            "reads": 117248,
+            "writes": 10704,
+            "responses": 127952,
+            "copy_cycles": 0,
+            "device_copy_words": 0
+          },
+          "baseline_resident": {
+            "capacity_bytes": 1048576,
+            "peak_allocation_bytes": 197792,
+            "constant_upload_bytes": 0,
+            "host_upload_bytes": 137576,
+            "host_readback_bytes": 913988,
+            "protocol_request_bytes": 6784636,
+            "protocol_response_bytes": 5067104,
+            "rtl_launches": 803,
+            "reads": 202299,
+            "writes": 87291,
+            "responses": 289590,
+            "copy_cycles": 2206641,
+            "device_copy_words": 76587
+          }
+        }
+      ]
+    }
+  ],
+  "answer_correct": null,
+  "cycles": {
+    "resident-copy": 18400463,
+    "resident": 7890415
+  },
+  "wall_seconds": {
+    "resident-copy": 13.0570498340021,
+    "resident": 5.676837581988366
+  },
+  "global_traffic": {
+    "reads": 584688,
+    "writes": 60160,
+    "responses": 644848,
+    "request_stalls": 531083,
+    "copy_reads": 243072,
+    "copy_writes": 243072,
+    "copy_arithmetic_overlap_cycles": 1371390,
+    "nvfp4_macs": 2592768,
+    "fp32_tensor_multiplies": 24576
+  },
+  "scope": "persistent external RAM; direct pointer loads/stores on RTL, host quantization and verified readbacks; no FPGA fit claim",
+  "resident": {
+    "constant_upload_bytes": 138536,
+    "host_upload_bytes": 171560,
+    "host_readback_bytes": 234384,
+    "protocol_request_bytes": 8357952,
+    "protocol_response_bytes": 5365008,
+    "rtl_launches": 992,
+    "copy_cycles": 0,
+    "device_copy_words": 0,
+    "reads": 584688,
+    "writes": 60160,
+    "responses": 644848,
+    "capacity_bytes": 1048576,
+    "peak_allocation_bytes": 201920
+  },
+  "baseline_resident": {
+    "constant_upload_bytes": 138536,
+    "host_upload_bytes": 704032,
+    "host_readback_bytes": 4297616,
+    "protocol_request_bytes": 32053600,
+    "protocol_response_bytes": 23878808,
+    "rtl_launches": 3786,
+    "copy_cycles": 10848419,
+    "device_copy_words": 376456,
+    "reads": 1001656,
+    "writes": 436616,
+    "responses": 1438272,
+    "capacity_bytes": 1048576,
+    "peak_allocation_bytes": 197792
+  }
+}

@@ -1,0 +1,46 @@
+warning: Some design elements have no explicit time unit and/or
+       : time precision. This may cause confusing timing results.
+       : Affected design elements are:
+       :   -- module async_copy_unit declared here: /Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:3
+       :   -- module branch_unit declared here: /Users/satvik.garimella/Snackwell/rtl/execution/branch_unit.sv:1
+       :   -- module divergence_controller declared here: /Users/satvik.garimella/Snackwell/rtl/sm/divergence_controller.sv:1
+       :   -- module fp32_addsub declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/fp32_addsub.sv:5
+       :   -- module fp32_mac_pe declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/fp32_mac_pe.sv:5
+       :   -- module fp32_mul_wrapper declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/fp32_mul_wrapper.sv:4
+       :   -- module global_memory_arbiter declared here: /Users/satvik.garimella/Snackwell/rtl/memory/global_memory_arbiter.sv:3
+       :   -- module global_memory_unit declared here: /Users/satvik.garimella/Snackwell/rtl/memory/global_memory_unit.sv:3
+       :   -- module instruction_decoder declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/instruction_decoder.sv:1
+       :   -- module instruction_frontend declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/instruction_frontend.sv:1
+       :   -- module instruction_memory declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/instruction_memory.sv:1
+       :   -- module integer_alu declared here: /Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:1
+       :   -- module issue_control declared here: /Users/satvik.garimella/Snackwell/rtl/sm/issue_control.sv:1
+       :   -- module issue_stage declared here: /Users/satvik.garimella/Snackwell/rtl/sm/issue_stage.sv:1
+       :   -- module load_store_unit declared here: /Users/satvik.garimella/Snackwell/rtl/memory/load_store_unit.sv:1
+       :   -- module multiplier declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/multiplier.v:4
+       :   -- module multiwarp_execution_core declared here: /Users/satvik.garimella/Snackwell/rtl/sm/multiwarp_execution_core.sv:1
+       :   -- module multiwarp_register_file declared here: /Users/satvik.garimella/Snackwell/rtl/memory/multiwarp_register_file.sv:1
+       :   -- module program_counter declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/program_counter.sv:1
+       :   -- module reconvergence_stack declared here: /Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:1
+       :   -- module reconvergence_target_table declared here: /Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_target_table.sv:1
+       :   -- module register_file declared here: /Users/satvik.garimella/Snackwell/rtl/memory/register_file.sv:1
+       :   -- module scoreboard declared here: /Users/satvik.garimella/Snackwell/rtl/sm/scoreboard.sv:1
+       :   -- module shared_memory declared here: /Users/satvik.garimella/Snackwell/rtl/memory/shared_memory.sv:1
+       :   -- module simd_execution_unit declared here: /Users/satvik.garimella/Snackwell/rtl/execution/simd_execution_unit.sv:1
+       :   -- module simd_fp32_execute declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/simd_fp32_execute.sv:3
+       :   -- module simd_fp32_mul declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/simd_fp32_mul.sv:1
+       :   -- module simd_integer_execute declared here: /Users/satvik.garimella/Snackwell/rtl/execution/simd_integer_execute.sv:1
+       :   -- module simd_lane declared here: /Users/satvik.garimella/Snackwell/rtl/execution/simd_lane.sv:1
+       :   -- module single_warp_core declared here: /Users/satvik.garimella/Snackwell/rtl/core/single_warp_core.sv:1
+       :   -- module sm_tensor_memory_unit declared here: /Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:3
+       :   -- module sm_tensor_unit declared here: /Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_unit.sv:5
+       :   -- module snackwell_device declared here: /Users/satvik.garimella/Snackwell/rtl/fpga/snackwell_device.sv:3
+       :   -- module snackwell_sm declared here: /Users/satvik.garimella/Snackwell/rtl/sm/snackwell_sm.sv:1
+       :   -- module systolic_array_4x4 declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/systolic_array_4x4.sv:5
+       :   -- module systolic_feeder_4x4 declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/systolic_feeder_4x4.sv:4
+       :   -- module tensor_core declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/tensor_core.sv:3
+       :   -- module warp_control_unit declared here: /Users/satvik.garimella/Snackwell/rtl/sm/warp_control_unit.sv:1
+       :   -- module warp_scheduler declared here: /Users/satvik.garimella/Snackwell/rtl/sm/warp_scheduler.sv:1
+       :   -- module warp_state_table declared here: /Users/satvik.garimella/Snackwell/rtl/sm/warp_state_table.sv:1
+       :   -- package snackwell_pkg declared here: /Users/satvik.garimella/Snackwell/rtl/snackwell_pkg.sv:1
+PASS global arbiter held grants, response routing and round-robin progress
+/Users/satvik.garimella/Snackwell/tb/tb_global_memory_arbiter.sv:43: $finish called at 590000 (1ps)

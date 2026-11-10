@@ -14,6 +14,7 @@ module tb_warp_scheduler;
     logic [3:0] eligible_mask;
 
     warp_scheduler dut (
+        .skip_candidate(1'b0),
         .clk              (clk),
         .reset            (reset),
 

@@ -1,0 +1,7 @@
+exit_code=0
+test_verilator_copy_pipeline_and_control_parity (test_async_copy.AsyncCopyTests.test_verilator_copy_pipeline_and_control_parity) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.311s
+
+OK

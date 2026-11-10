@@ -1,0 +1,176 @@
+./tb/support/global_memory_model.sv:3: warning: timescale for global_memory_model inherited from another file.
+/Users/satvik.garimella/Snackwell/tb/tb_snackwell_global_memory.sv:1: ...: The inherited timescale is here.
+warning: Some design elements have no explicit time unit and/or
+       : time precision. This may cause confusing timing results.
+       : Affected design elements are:
+       :   -- module async_copy_unit declared here: /Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:3
+       :   -- module branch_unit declared here: /Users/satvik.garimella/Snackwell/rtl/execution/branch_unit.sv:1
+       :   -- module divergence_controller declared here: /Users/satvik.garimella/Snackwell/rtl/sm/divergence_controller.sv:1
+       :   -- module fp32_addsub declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/fp32_addsub.sv:5
+       :   -- module fp32_mac_pe declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/fp32_mac_pe.sv:6
+       :   -- module fp32_mul_wrapper declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/fp32_mul_wrapper.sv:4
+       :   -- module global_memory_arbiter declared here: /Users/satvik.garimella/Snackwell/rtl/memory/global_memory_arbiter.sv:3
+       :   -- module global_memory_unit declared here: /Users/satvik.garimella/Snackwell/rtl/memory/global_memory_unit.sv:3
+       :   -- module instruction_decoder declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/instruction_decoder.sv:1
+       :   -- module instruction_frontend declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/instruction_frontend.sv:1
+       :   -- module instruction_memory declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/instruction_memory.sv:1
+       :   -- module integer_alu declared here: /Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:1
+       :   -- module issue_control declared here: /Users/satvik.garimella/Snackwell/rtl/sm/issue_control.sv:1
+       :   -- module issue_stage declared here: /Users/satvik.garimella/Snackwell/rtl/sm/issue_stage.sv:1
+       :   -- module load_store_unit declared here: /Users/satvik.garimella/Snackwell/rtl/memory/load_store_unit.sv:1
+       :   -- module multiplier declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/multiplier.v:4
+       :   -- module multiwarp_execution_core declared here: /Users/satvik.garimella/Snackwell/rtl/sm/multiwarp_execution_core.sv:1
+       :   -- module multiwarp_register_file declared here: /Users/satvik.garimella/Snackwell/rtl/memory/multiwarp_register_file.sv:1
+       :   -- module nvfp4_product declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/nvfp4_product.sv:4
+       :   -- module program_counter declared here: /Users/satvik.garimella/Snackwell/rtl/frontend/program_counter.sv:1
+       :   -- module reconvergence_stack declared here: /Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:1
+       :   -- module reconvergence_target_table declared here: /Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_target_table.sv:1
+       :   -- module register_file declared here: /Users/satvik.garimella/Snackwell/rtl/memory/register_file.sv:1
+       :   -- module scoreboard declared here: /Users/satvik.garimella/Snackwell/rtl/sm/scoreboard.sv:1
+       :   -- module shared_memory declared here: /Users/satvik.garimella/Snackwell/rtl/memory/shared_memory.sv:1
+       :   -- module simd_execution_unit declared here: /Users/satvik.garimella/Snackwell/rtl/execution/simd_execution_unit.sv:1
+       :   -- module simd_fp32_execute declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/simd_fp32_execute.sv:3
+       :   -- module simd_fp32_mul declared here: /Users/satvik.garimella/Snackwell/rtl/execution/fp32/simd_fp32_mul.sv:1
+       :   -- module simd_integer_execute declared here: /Users/satvik.garimella/Snackwell/rtl/execution/simd_integer_execute.sv:1
+       :   -- module simd_lane declared here: /Users/satvik.garimella/Snackwell/rtl/execution/simd_lane.sv:1
+       :   -- module single_warp_core declared here: /Users/satvik.garimella/Snackwell/rtl/core/single_warp_core.sv:1
+       :   -- module sm_tensor_memory_unit declared here: /Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:3
+       :   -- module sm_tensor_unit declared here: /Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_unit.sv:5
+       :   -- module snackwell_device declared here: /Users/satvik.garimella/Snackwell/rtl/fpga/snackwell_device.sv:3
+       :   -- module snackwell_sm declared here: /Users/satvik.garimella/Snackwell/rtl/sm/snackwell_sm.sv:1
+       :   -- module systolic_array_4x4 declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/systolic_array_4x4.sv:5
+       :   -- module systolic_feeder_4x4 declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/systolic_feeder_4x4.sv:4
+       :   -- module tensor_core declared here: /Users/satvik.garimella/Snackwell/rtl/execution/tensor/tensor_core.sv:3
+       :   -- module warp_control_unit declared here: /Users/satvik.garimella/Snackwell/rtl/sm/warp_control_unit.sv:1
+       :   -- module warp_scheduler declared here: /Users/satvik.garimella/Snackwell/rtl/sm/warp_scheduler.sv:1
+       :   -- module warp_state_table declared here: /Users/satvik.garimella/Snackwell/rtl/sm/warp_state_table.sv:1
+       :   -- package snackwell_pkg declared here: /Users/satvik.garimella/Snackwell/rtl/snackwell_pkg.sv:1
+/Users/satvik.garimella/Snackwell/rtl/frontend/instruction_memory.sv:61: warning: @* is sensitive to all 1024 words in array 'memory'.
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:21: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:30: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:31: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:21: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:30: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:31: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:21: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:30: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:31: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:21: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:26: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:27: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:29: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:30: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:31: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:32: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_a[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/execution/integer_alu.sv:34: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'operand_b[31:0]').
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:98: warning: @* is sensitive to all 2 words in array 'owner'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:99: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:135: warning: @* is sensitive to all 2 words in array 'owner'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:144: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:145: warning: @* is sensitive to all 2 words in array 'initialized'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:146: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:144: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:145: warning: @* is sensitive to all 2 words in array 'initialized'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:146: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:144: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:145: warning: @* is sensitive to all 2 words in array 'initialized'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:146: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:144: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:145: warning: @* is sensitive to all 2 words in array 'initialized'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:146: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:144: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:145: warning: @* is sensitive to all 2 words in array 'initialized'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:146: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:144: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:145: warning: @* is sensitive to all 2 words in array 'initialized'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:146: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:153: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:156: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:157: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:160: warning: @* is sensitive to all 2 words in array 'readers'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:165: warning: @* is sensitive to all 2 words in array 'initialized'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:166: warning: @* is sensitive to all 2 words in array 'visible'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:167: warning: @* is sensitive to all 2 words in array 'tiles'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:170: warning: @* is sensitive to all 2 words in array 'visible'.
+/Users/satvik.garimella/Snackwell/rtl/sm/sm_tensor_memory_unit.sv:172: warning: @* is sensitive to all 4 words in array 'errors'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:101: warning: @* is sensitive to all 4 words in array 'stack_depth'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:103: warning: @* is sensitive to all 4 words in array 'stack_depth'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:108: warning: @* is sensitive to all 16 words in array 'deferred_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:111: warning: @* is sensitive to all 16 words in array 'deferred_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:114: warning: @* is sensitive to all 16 words in array 'reconverge_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:117: warning: @* is sensitive to all 16 words in array 'reconverge_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:120: warning: @* is sensitive to all 16 words in array 'deferred_pending_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:127: warning: @* is sensitive to all 16 words in array 'deferred_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:130: warning: @* is sensitive to all 16 words in array 'deferred_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:133: warning: @* is sensitive to all 16 words in array 'reconverge_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:136: warning: @* is sensitive to all 16 words in array 'reconverge_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:139: warning: @* is sensitive to all 16 words in array 'deferred_pending_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:146: warning: @* is sensitive to all 16 words in array 'deferred_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:149: warning: @* is sensitive to all 16 words in array 'deferred_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:152: warning: @* is sensitive to all 16 words in array 'reconverge_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:155: warning: @* is sensitive to all 16 words in array 'reconverge_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:158: warning: @* is sensitive to all 16 words in array 'deferred_pending_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:165: warning: @* is sensitive to all 16 words in array 'deferred_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:168: warning: @* is sensitive to all 16 words in array 'deferred_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:171: warning: @* is sensitive to all 16 words in array 'reconverge_pc_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:174: warning: @* is sensitive to all 16 words in array 'reconverge_mask_stack'.
+/Users/satvik.garimella/Snackwell/rtl/sm/reconvergence_stack.sv:177: warning: @* is sensitive to all 16 words in array 'deferred_pending_stack'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:82: warning: @* is sensitive to all 2 words in array 'consumers'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:82: warning: @* is sensitive to all 2 words in array 'consumers'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:95: warning: @* is sensitive to all 2 words in array 'region_first'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:95: warning: @* is sensitive to all 2 words in array 'region_last'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:96: warning: @* is sensitive to all 2 words in array 'waited'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:99: warning: @* is sensitive to all 2 words in array 'waited'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:100: warning: @* is sensitive to all 2 words in array 'region_last'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:101: warning: @* is sensitive to all 2 words in array 'region_first'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:102: warning: @* is sensitive to all 2 words in array 'region_last'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:103: warning: @* is sensitive to all 2 words in array 'region_first'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:139: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:141: warning: @* is sensitive to all 2 words in array 'region_last'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:142: warning: @* is sensitive to all 2 words in array 'region_first'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:143: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:146: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:147: warning: @* is sensitive to all 2 words in array 'generation'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:149: warning: @* is sensitive to all 2 words in array 'consumers'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:154: warning: @* is sensitive to all 2 words in array 'consumers'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:155: warning: @* is sensitive to all 2 words in array 'waited'.
+/Users/satvik.garimella/Snackwell/rtl/memory/async_copy_unit.sv:158: warning: @* is sensitive to all 4 words in array 'errors'.
+/Users/satvik.garimella/Snackwell/rtl/memory/shared_memory.sv:59: warning: @* is sensitive to all 4 words in array 'service_rows'.
+PASS global device abort, watchdog, drain, reset and relaunch
+PASS async copy abort, watchdog, shared-write drain, link reset and relaunch
+/Users/satvik.garimella/Snackwell/tb/tb_snackwell_global_memory.sv:261: $finish called at 17650000 (1ps)

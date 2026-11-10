@@ -1,0 +1,17 @@
+{
+  "sim/snackwell_sim_top.sv": "ea5dadee8af8354e8fb2c5bbbed0f00cd8c87e6adb37918fc3c3942a82699220",
+  "sim/session.cpp": "477d1f70e61cb093649d029c4e27f440f35c8085ff8c81ecadad7f8567f97fe5",
+  "tb/support/global_memory_model.sv": "f7e125e7359cc8ddd04a910213d11d72757b312ff3df60479fd1f68bf7849dc1",
+  "tb/tb_snackwell_global_memory.sv": "cf1b533f1ba7eaadedefef13888059a905fff2ebd377e44e69b82afb1b48aea8",
+  "snackwell/simulator.py": "0e6804fec95988640d3f27f95a2e963428c119a780cdf8d8f4c4c95dac7dc481",
+  "snackwell/global_memory.py": "dd83632ef7bcf3583380bec977743cef3f7f0ec8a8cf963f6888c6553de106d1",
+  "snackwell/kernels/global_model.py": "caf006d0d73ddb67201796b770150316c243fd384aa6d8a13217ca8179cc2046",
+  "snackwell/model_runtime.py": "c2ab0f105f2ad1ee56e26aa44cc7a1cc1e481ba99b5953351448da99b92ff5f9",
+  "snackwell/model_runner.py": "846fb258395d3a21bcc1f260d2e8381215666f86fd5c0ce4fd9c509385cdaf2b",
+  "snackwell/kv_cache.py": "c6ea727c43a0cb9b69f3a501f0766acef4df48bb9ff18facd35f128f253908bf",
+  "snackwell/sentence_model.py": "c5a0b80bd33c753f30d6ee9dd271f129b5bdd6ba6596657909bf3eb4c7600de6",
+  "snackwell/terminal_model.py": "29b62f93c19acdc08e0b6881df1461510795d3833ce2273cc545a6627be56d22",
+  "snackwell/cli/model.py": "3c9c493497e55fd5dbf4501fa92125c5a8a4e6978f1d0da9c376120846f99625",
+  "snackwell/cli/compare_model_memory.py": "7888cbac906b59b9fdf4450d71adb714faa2a91c6b60da3596004a38f45c4f16",
+  "tests/test_global_model.py": "54f8c93e35713591d5edf0d47eaa4f8f4819c97e96819d9146ffc2fe29f39901"
+}

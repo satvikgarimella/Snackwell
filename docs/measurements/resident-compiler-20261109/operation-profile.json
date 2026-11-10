@@ -1,0 +1,494 @@
+{
+  "sentence": {
+    "resident-unoptimized": {
+      "embedding": {
+        "cycles": 229392,
+        "reads": 14784,
+        "instructions": 11776,
+        "launches": 256
+      },
+      "layernorm": {
+        "cycles": 3980944,
+        "reads": 200760,
+        "instructions": 115864,
+        "launches": 728
+      },
+      "nvfp4_matmul": {
+        "cycles": 22955540,
+        "reads": 1342872,
+        "instructions": 1787808,
+        "launches": 5000
+      },
+      "matmul": {
+        "cycles": 10479808,
+        "reads": 1003520,
+        "instructions": 466624,
+        "launches": 1632
+      },
+      "scale_mask": {
+        "cycles": 1403056,
+        "reads": 44800,
+        "instructions": 321872,
+        "launches": 640
+      },
+      "softmax": {
+        "cycles": 10470929,
+        "reads": 403704,
+        "instructions": 88056,
+        "launches": 696
+      },
+      "residual_add": {
+        "cycles": 1335264,
+        "reads": 87040,
+        "instructions": 127920,
+        "launches": 640
+      },
+      "gelu": {
+        "cycles": 6778597,
+        "reads": 228480,
+        "instructions": 38080,
+        "launches": 320
+      },
+      "vocabulary_mask": {
+        "cycles": 29344,
+        "reads": 56,
+        "instructions": 1344,
+        "launches": 56
+      },
+      "argmax": {
+        "cycles": 279168,
+        "reads": 7168,
+        "instructions": 2128,
+        "launches": 56
+      }
+    },
+    "resident": {
+      "embedding": {
+        "cycles": 226560,
+        "reads": 14784,
+        "instructions": 10944,
+        "launches": 256
+      },
+      "layernorm": {
+        "cycles": 3898024,
+        "reads": 197120,
+        "instructions": 105224,
+        "launches": 728
+      },
+      "nvfp4_matmul": {
+        "cycles": 21038903,
+        "reads": 1253304,
+        "instructions": 1549584,
+        "launches": 5000
+      },
+      "matmul": {
+        "cycles": 10477576,
+        "reads": 1003520,
+        "instructions": 454624,
+        "launches": 1632
+      },
+      "scale_mask": {
+        "cycles": 1291536,
+        "reads": 43520,
+        "instructions": 280272,
+        "launches": 640
+      },
+      "softmax": {
+        "cycles": 8241485,
+        "reads": 153480,
+        "instructions": 77616,
+        "launches": 696
+      },
+      "residual_add": {
+        "cycles": 1303072,
+        "reads": 87040,
+        "instructions": 106800,
+        "launches": 640
+      },
+      "gelu": {
+        "cycles": 4887554,
+        "reads": 43520,
+        "instructions": 32320,
+        "launches": 320
+      },
+      "vocabulary_mask": {
+        "cycles": 25032,
+        "reads": 0,
+        "instructions": 1232,
+        "launches": 56
+      },
+      "argmax": {
+        "cycles": 278832,
+        "reads": 7168,
+        "instructions": 2072,
+        "launches": 56
+      }
+    }
+  },
+  "fp32": {
+    "resident-unoptimized": {
+      "embedding": {
+        "cycles": 57864,
+        "reads": 3696,
+        "instructions": 2944,
+        "launches": 64
+      },
+      "layernorm": {
+        "cycles": 995646,
+        "reads": 50190,
+        "instructions": 28966,
+        "launches": 182
+      },
+      "matmul": {
+        "cycles": 14021090,
+        "reads": 1371512,
+        "instructions": 456766,
+        "launches": 1422
+      },
+      "scale_mask": {
+        "cycles": 350808,
+        "reads": 11200,
+        "instructions": 80468,
+        "launches": 160
+      },
+      "softmax": {
+        "cycles": 2623077,
+        "reads": 100926,
+        "instructions": 22014,
+        "launches": 174
+      },
+      "residual_add": {
+        "cycles": 334058,
+        "reads": 21760,
+        "instructions": 31980,
+        "launches": 160
+      },
+      "gelu": {
+        "cycles": 1698960,
+        "reads": 57120,
+        "instructions": 9520,
+        "launches": 80
+      },
+      "vocabulary_mask": {
+        "cycles": 7344,
+        "reads": 14,
+        "instructions": 336,
+        "launches": 14
+      },
+      "argmax": {
+        "cycles": 69788,
+        "reads": 1792,
+        "instructions": 532,
+        "launches": 14
+      }
+    },
+    "resident": {
+      "embedding": {
+        "cycles": 56516,
+        "reads": 3696,
+        "instructions": 2736,
+        "launches": 64
+      },
+      "layernorm": {
+        "cycles": 975174,
+        "reads": 49280,
+        "instructions": 26306,
+        "launches": 182
+      },
+      "matmul": {
+        "cycles": 14020436,
+        "reads": 1371512,
+        "instructions": 444616,
+        "launches": 1422
+      },
+      "scale_mask": {
+        "cycles": 322272,
+        "reads": 10880,
+        "instructions": 70068,
+        "launches": 160
+      },
+      "softmax": {
+        "cycles": 2060476,
+        "reads": 38370,
+        "instructions": 19404,
+        "launches": 174
+      },
+      "residual_add": {
+        "cycles": 325742,
+        "reads": 21760,
+        "instructions": 26700,
+        "launches": 160
+      },
+      "gelu": {
+        "cycles": 1222221,
+        "reads": 10880,
+        "instructions": 8080,
+        "launches": 80
+      },
+      "vocabulary_mask": {
+        "cycles": 6266,
+        "reads": 0,
+        "instructions": 308,
+        "launches": 14
+      },
+      "argmax": {
+        "cycles": 69760,
+        "reads": 1792,
+        "instructions": 518,
+        "launches": 14
+      }
+    }
+  },
+  "character": {
+    "resident-unoptimized": {
+      "embedding": {
+        "cycles": 23998,
+        "reads": 1496,
+        "instructions": 2080,
+        "launches": 40
+      },
+      "layernorm": {
+        "cycles": 436101,
+        "reads": 22039,
+        "instructions": 10807,
+        "launches": 43
+      },
+      "nvfp4_matmul": {
+        "cycles": 4270306,
+        "reads": 283380,
+        "instructions": 282384,
+        "launches": 560
+      },
+      "matmul": {
+        "cycles": 380302,
+        "reads": 34048,
+        "instructions": 28808,
+        "launches": 128
+      },
+      "scale_mask": {
+        "cycles": 49144,
+        "reads": 1464,
+        "instructions": 12608,
+        "launches": 76
+      },
+      "softmax": {
+        "cycles": 463821,
+        "reads": 17016,
+        "instructions": 9968,
+        "launches": 80
+      },
+      "residual_add": {
+        "cycles": 144590,
+        "reads": 9472,
+        "instructions": 13490,
+        "launches": 38
+      },
+      "gelu": {
+        "cycles": 734221,
+        "reads": 24864,
+        "instructions": 2261,
+        "launches": 19
+      },
+      "vocabulary_mask": {
+        "cycles": 4174,
+        "reads": 4,
+        "instructions": 96,
+        "launches": 4
+      },
+      "argmax": {
+        "cycles": 19958,
+        "reads": 512,
+        "instructions": 152,
+        "launches": 4
+      }
+    },
+    "resident": {
+      "embedding": {
+        "cycles": 23762,
+        "reads": 1496,
+        "instructions": 1920,
+        "launches": 40
+      },
+      "layernorm": {
+        "cycles": 429079,
+        "reads": 21824,
+        "instructions": 9679,
+        "launches": 43
+      },
+      "nvfp4_matmul": {
+        "cycles": 3918623,
+        "reads": 263124,
+        "instructions": 245424,
+        "launches": 560
+      },
+      "matmul": {
+        "cycles": 381112,
+        "reads": 34048,
+        "instructions": 27984,
+        "launches": 128
+      },
+      "scale_mask": {
+        "cycles": 43800,
+        "reads": 1312,
+        "instructions": 11060,
+        "launches": 76
+      },
+      "softmax": {
+        "cycles": 360952,
+        "reads": 5624,
+        "instructions": 8768,
+        "launches": 80
+      },
+      "residual_add": {
+        "cycles": 140985,
+        "reads": 9472,
+        "instructions": 11160,
+        "launches": 38
+      },
+      "gelu": {
+        "cycles": 528556,
+        "reads": 4736,
+        "instructions": 1919,
+        "launches": 19
+      },
+      "vocabulary_mask": {
+        "cycles": 3580,
+        "reads": 0,
+        "instructions": 88,
+        "launches": 4
+      },
+      "argmax": {
+        "cycles": 19951,
+        "reads": 512,
+        "instructions": 148,
+        "launches": 4
+      }
+    }
+  },
+  "rebuild": {
+    "resident-unoptimized": {
+      "embedding": {
+        "cycles": 125242,
+        "reads": 8208,
+        "instructions": 3008,
+        "launches": 48
+      },
+      "layernorm": {
+        "cycles": 1741038,
+        "reads": 95448,
+        "instructions": 17548,
+        "launches": 120
+      },
+      "nvfp4_matmul": {
+        "cycles": 12021221,
+        "reads": 795716,
+        "instructions": 793840,
+        "launches": 1572
+      },
+      "matmul": {
+        "cycles": 4019906,
+        "reads": 395264,
+        "instructions": 169300,
+        "launches": 372
+      },
+      "scale_mask": {
+        "cycles": 589475,
+        "reads": 23200,
+        "instructions": 106040,
+        "launches": 208
+      },
+      "softmax": {
+        "cycles": 3088157,
+        "reads": 135540,
+        "instructions": 28340,
+        "launches": 212
+      },
+      "residual_add": {
+        "cycles": 696110,
+        "reads": 45568,
+        "instructions": 65108,
+        "launches": 104
+      },
+      "gelu": {
+        "cycles": 3505435,
+        "reads": 119616,
+        "instructions": 6188,
+        "launches": 52
+      },
+      "vocabulary_mask": {
+        "cycles": 4178,
+        "reads": 4,
+        "instructions": 96,
+        "launches": 4
+      },
+      "argmax": {
+        "cycles": 19954,
+        "reads": 512,
+        "instructions": 152,
+        "launches": 4
+      }
+    },
+    "resident": {
+      "embedding": {
+        "cycles": 122965,
+        "reads": 8208,
+        "instructions": 2752,
+        "launches": 48
+      },
+      "layernorm": {
+        "cycles": 1709569,
+        "reads": 94848,
+        "instructions": 16168,
+        "launches": 120
+      },
+      "nvfp4_matmul": {
+        "cycles": 11072384,
+        "reads": 738852,
+        "instructions": 689912,
+        "launches": 1572
+      },
+      "matmul": {
+        "cycles": 4020074,
+        "reads": 395264,
+        "instructions": 168100,
+        "launches": 372
+      },
+      "scale_mask": {
+        "cycles": 556571,
+        "reads": 22784,
+        "instructions": 92520,
+        "launches": 208
+      },
+      "softmax": {
+        "cycles": 2531349,
+        "reads": 70604,
+        "instructions": 25160,
+        "launches": 212
+      },
+      "residual_add": {
+        "cycles": 677093,
+        "reads": 45568,
+        "instructions": 53820,
+        "launches": 104
+      },
+      "gelu": {
+        "cycles": 2540424,
+        "reads": 22784,
+        "instructions": 5252,
+        "launches": 52
+      },
+      "vocabulary_mask": {
+        "cycles": 3588,
+        "reads": 0,
+        "instructions": 88,
+        "launches": 4
+      },
+      "argmax": {
+        "cycles": 19940,
+        "reads": 512,
+        "instructions": 148,
+        "launches": 4
+      }
+    }
+  }
+}

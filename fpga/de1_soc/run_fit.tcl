@@ -69,6 +69,9 @@ foreach port {
     reset request_valid request_ready request_write
     {request_address[*]} {request_data[*]}
     response_valid response_ready response_error {response_data[*]}
+    global_request_valid global_request_ready global_request_write
+    {global_request_address[*]} {global_request_data[*]}
+    global_response_valid global_response_ready global_response_error {global_response_data[*]}
     busy done fault
 } {
     set_instance_assignment -name VIRTUAL_PIN ON -to $port

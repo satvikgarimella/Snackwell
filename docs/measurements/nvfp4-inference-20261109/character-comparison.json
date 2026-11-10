@@ -1,0 +1,335 @@
+{
+  "verified": true,
+  "quantization_policy": "nvfp4-linear-row-v1",
+  "checkpoint_sha256": "43f211daad7c733d69c34f1d2588dace14de4504a46cf785ec64e6722053622e",
+  "rtl_source_sha256": "e96b19fc9a94aa79c246795f7697132776a59f876764f8c6df3943634421a5c0",
+  "cases": [
+    {
+      "prompt": "ROMEO:",
+      "expected_answer": null,
+      "generated": {
+        "fp32": "\nThe",
+        "nvfp4": "\nMar"
+      },
+      "correct": null,
+      "paired": [
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10
+          ],
+          "target": 0,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 0,
+            "nvfp4": 0
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 2.680526375770569,
+          "logit_relative_l2": 0.2690681838657356,
+          "total_variation": 0.001575238751948917,
+          "kl_fp32_to_nvfp4": 0.0005118313451090272,
+          "cycles": {
+            "fp32": 1873736,
+            "nvfp4": 1525934
+          },
+          "wall_seconds": {
+            "fp32": 1.0621166250057286,
+            "nvfp4": 2.4061355000012554
+          },
+          "reference_seconds": {
+            "fp32": 0.05576804200245533,
+            "nvfp4": 0.9173885000054725
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0
+          ],
+          "target": 32,
+          "prediction_agrees": false,
+          "predictions": {
+            "fp32": 32,
+            "nvfp4": 25
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 2.4727513194084167,
+          "logit_relative_l2": 0.2714090308229014,
+          "total_variation": 0.2908076390857037,
+          "kl_fp32_to_nvfp4": 0.2542876645423133,
+          "cycles": {
+            "fp32": 708853,
+            "nvfp4": 636252
+          },
+          "wall_seconds": {
+            "fp32": 0.39412849999644095,
+            "nvfp4": 0.5630641669995384
+          },
+          "reference_seconds": {
+            "fp32": 0.009276750002754852,
+            "nvfp4": 0.09815925000293646
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            32
+          ],
+          "target": 46,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 46,
+            "nvfp4": 46
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 1.3023872375488281,
+          "logit_relative_l2": 0.10765316917000044,
+          "total_variation": 0.07692322106561761,
+          "kl_fp32_to_nvfp4": 0.02592729577594581,
+          "cycles": {
+            "fp32": 709324,
+            "nvfp4": 636932
+          },
+          "wall_seconds": {
+            "fp32": 0.39823770899965893,
+            "nvfp4": 0.5601109589988482
+          },
+          "reference_seconds": {
+            "fp32": 0.009505499998340383,
+            "nvfp4": 0.09830804200464627
+          }
+        },
+        {
+          "input_ids": [
+            30,
+            27,
+            25,
+            17,
+            27,
+            10,
+            0,
+            32,
+            46
+          ],
+          "target": 43,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 43,
+            "nvfp4": 43
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 2.267101287841797,
+          "logit_relative_l2": 0.12578917792156039,
+          "total_variation": 0.3204220440326272,
+          "kl_fp32_to_nvfp4": 0.24996189254310758,
+          "cycles": {
+            "fp32": 751144,
+            "nvfp4": 679479
+          },
+          "wall_seconds": {
+            "fp32": 0.4099803749995772,
+            "nvfp4": 0.5730693340010475
+          },
+          "reference_seconds": {
+            "fp32": 0.009442209004191682,
+            "nvfp4": 0.09708083299483405
+          }
+        }
+      ],
+      "verified": true
+    },
+    {
+      "prompt": "My lord,",
+      "expected_answer": null,
+      "generated": {
+        "fp32": " and",
+        "nvfp4": "\nAnd"
+      },
+      "correct": null,
+      "paired": [
+        {
+          "input_ids": [
+            25,
+            63,
+            1,
+            50,
+            53,
+            56,
+            42,
+            6
+          ],
+          "target": 1,
+          "prediction_agrees": false,
+          "predictions": {
+            "fp32": 1,
+            "nvfp4": 0
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 4.184048771858215,
+          "logit_relative_l2": 0.3489533609294195,
+          "total_variation": 0.4292863043827675,
+          "kl_fp32_to_nvfp4": 0.3921622729166124,
+          "cycles": {
+            "fp32": 1875414,
+            "nvfp4": 1524087
+          },
+          "wall_seconds": {
+            "fp32": 1.0503706250019604,
+            "nvfp4": 1.7083700829971349
+          },
+          "reference_seconds": {
+            "fp32": 0.07448237499920651,
+            "nvfp4": 0.640907041997707
+          }
+        },
+        {
+          "input_ids": [
+            25,
+            63,
+            1,
+            50,
+            53,
+            56,
+            42,
+            6,
+            1
+          ],
+          "target": 39,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 39,
+            "nvfp4": 39
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 1.0359158515930176,
+          "logit_relative_l2": 0.11157498187104836,
+          "total_variation": 0.11943036914041467,
+          "kl_fp32_to_nvfp4": 0.04677511172460653,
+          "cycles": {
+            "fp32": 751216,
+            "nvfp4": 678069
+          },
+          "wall_seconds": {
+            "fp32": 0.4179168750051758,
+            "nvfp4": 0.5761991249964922
+          },
+          "reference_seconds": {
+            "fp32": 0.009573292001732625,
+            "nvfp4": 0.09861029099556617
+          }
+        },
+        {
+          "input_ids": [
+            25,
+            63,
+            1,
+            50,
+            53,
+            56,
+            42,
+            6,
+            1,
+            39
+          ],
+          "target": 52,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 52,
+            "nvfp4": 52
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 1.806851863861084,
+          "logit_relative_l2": 0.14196292379098227,
+          "total_variation": 0.2149815121891015,
+          "kl_fp32_to_nvfp4": 0.18291204680456144,
+          "cycles": {
+            "fp32": 751691,
+            "nvfp4": 677714
+          },
+          "wall_seconds": {
+            "fp32": 0.4103461250051623,
+            "nvfp4": 0.5748773340019397
+          },
+          "reference_seconds": {
+            "fp32": 0.009418666006240528,
+            "nvfp4": 0.09851345800416311
+          }
+        },
+        {
+          "input_ids": [
+            25,
+            63,
+            1,
+            50,
+            53,
+            56,
+            42,
+            6,
+            1,
+            39,
+            52
+          ],
+          "target": 42,
+          "prediction_agrees": true,
+          "predictions": {
+            "fp32": 42,
+            "nvfp4": 42
+          },
+          "negative_log_likelihood": null,
+          "logit_max_absolute_error": 3.251417636871338,
+          "logit_relative_l2": 0.2671291061089317,
+          "total_variation": 0.07584695202761144,
+          "kl_fp32_to_nvfp4": 0.05311562825989209,
+          "cycles": {
+            "fp32": 751852,
+            "nvfp4": 678314
+          },
+          "wall_seconds": {
+            "fp32": 0.40635699999984354,
+            "nvfp4": 0.569905625001411
+          },
+          "reference_seconds": {
+            "fp32": 0.009471040997595992,
+            "nvfp4": 0.09847500000614673
+          }
+        }
+      ],
+      "verified": true
+    }
+  ],
+  "scope": "native NVFP4 linear layers; FP32 attention and nonlinear kernels; host shared-memory transport",
+  "selection": "explicit prompts",
+  "paired_tokens": 8,
+  "top1_agreement": 0.75,
+  "mean_total_variation": 0.19115916008447406,
+  "mean_kl_fp32_to_nvfp4": 0.15070671798901852,
+  "max_logit_absolute_error": 4.184048771858215,
+  "mean_logit_relative_l2": 0.20544249181007246,
+  "answer_correct": null,
+  "mean_answer_nll": null,
+  "paired_cycles": {
+    "fp32": 8173230,
+    "nvfp4": 7036781
+  },
+  "paired_wall_seconds": {
+    "fp32": 4.549453834013548,
+    "nvfp4": 7.531732126997667
+  },
+  "timing_scope": "includes host quantization, launch handling, and verification; simulation cycles exclude host work"
+}

@@ -20,6 +20,18 @@ module multiwarp_execution_core #(
     input  logic        host_memory_response_ready,
     output logic [31:0] host_memory_read_data,
     output logic        execution_idle,
+    // External word-memory master, independent of shared memory and host MMIO.
+    output logic        global_request_valid,
+    input  logic        global_request_ready,
+    output logic        global_request_write,
+    output logic [31:0] global_request_address, global_request_data,
+    input  logic        global_response_valid,
+    output logic        global_response_ready,
+    input  logic        global_response_error,
+    input  logic [31:0] global_response_data,
+    output logic global_idle,
+    output logic [11:0] global_status,
+    output logic [31:0] copy_status,
     // WARP LAUNCH
 
     input logic        launch_enable,
@@ -83,6 +95,9 @@ module multiwarp_execution_core #(
     logic is_integer_op;
     logic is_fp_op;
     logic is_tensor_op;
+    logic is_tmem_op;
+    logic is_global_op;
+    logic is_copy_op;
     logic is_shared_load;
     logic is_shared_store;
     logic is_branch;
@@ -147,6 +162,11 @@ module multiwarp_execution_core #(
     logic [3:0] shared_rd_addr, shared_write_mask;
     logic memory_response_valid, memory_response_ready;
     logic host_memory_pending, host_memory_accept;
+    logic global_start, global_ready, global_busy, global_completion_valid;
+    logic global_completion_ready, global_writes_rd, global_take;
+    logic [1:0] global_warp;
+    logic [3:0] global_rd, global_mask;
+    logic [127:0] global_data;
     // WRITEBACK
 
     logic         wb_valid;
@@ -177,15 +197,52 @@ module multiwarp_execution_core #(
     logic [1:0] rf_read_warp_id;
     logic [3:0] rf_rs1_addr, rf_rs2_addr;
 
+    logic tmem_start, tmem_ready, tmem_busy, tmem_memory_lock;
+    logic tmem_nvfp4_mode, tmem_matrix_guard_valid;
+    logic [3:0] tmem_warp_pending;
+    logic tmem_memory_valid, tmem_memory_response_ready, tmem_memory_pending;
+    logic [127:0] tmem_memory_addresses;
+    logic tmem_array_valid, tmem_array_ready, tmem_array_result_valid, tmem_array_result_ready;
+    logic [511:0] tmem_a, tmem_b, tmem_c, tmem_array_result;
+    logic tmem_row_valid, tmem_take;
+    logic [1:0] tmem_row_warp;
+    logic [3:0] tmem_row_rd, tmem_row_mask;
+    logic [127:0] tmem_row_data;
+
+    logic copy_start, copy_ready, copy_busy, copy_shared_access, copy_matrix_access;
+    logic [3:0] copy_warp_pending;
+    logic copy_row_valid, copy_take;
+    logic [1:0] copy_row_warp;
+    logic [3:0] copy_row_rd, copy_row_mask;
+    logic [127:0] copy_row_data;
+    logic copy_shared_valid, copy_shared_ready, copy_shared_pending, copy_shared_response_ready;
+    logic [31:0] copy_shared_address, copy_shared_data;
+    logic copy_global_valid, copy_global_ready, copy_global_response_valid;
+    logic copy_global_response_ready, copy_global_error;
+    logic [31:0] copy_global_address, copy_global_data;
+    logic lsu_global_valid, lsu_global_ready, lsu_global_write, lsu_global_response_valid;
+    logic lsu_global_response_ready, lsu_global_error, global_bus_busy;
+    logic [31:0] lsu_global_address, lsu_global_data, lsu_global_result;
+
     assign wb_fire = wb_valid && !debug_write_enable;
     assign wb_slot_available = !wb_valid || wb_fire;
     assign fp_completion_valid = fp_inflight && (fp_done || fp_result_pending);
     assign fp_take = fp_completion_valid && wb_slot_available;
     assign tensor_take = tensor_row_valid && wb_slot_available && !fp_completion_valid;
+    assign tmem_take = tmem_row_valid && wb_slot_available &&
+                       !fp_completion_valid && !tensor_row_valid;
+    assign copy_take = copy_row_valid && wb_slot_available &&
+                       !fp_completion_valid && !tensor_row_valid && !tmem_row_valid;
     assign shared_completion_valid = shared_inflight && shared_is_load && shared_response_valid;
     assign shared_response_ready = !shared_is_load ||
-        (wb_slot_available && !fp_completion_valid && !tensor_row_valid);
+        (wb_slot_available && !fp_completion_valid && !tensor_row_valid && !tmem_row_valid && !copy_row_valid);
     assign shared_take = shared_completion_valid && shared_response_ready;
+
+    assign global_completion_ready = !global_writes_rd ||
+        (wb_slot_available && !fp_completion_valid && !tensor_row_valid &&
+         !tmem_row_valid && !copy_row_valid && !shared_completion_valid);
+    assign global_take = global_completion_valid && global_writes_rd && global_completion_ready;
+    assign global_idle = !global_busy && !copy_busy && !global_bus_busy;
 
     assign selected_tensor_busy_mask = (selected_warp_id == tensor_warp_id)
                                       ? tensor_destination_mask : 16'd0;
@@ -288,6 +345,9 @@ module multiwarp_execution_core #(
 
     assign fp_start = instruction_execute_accept && is_fp_op;
     assign tensor_start = instruction_execute_accept && is_tensor_op;
+    assign tmem_start = instruction_execute_accept && is_tmem_op;
+    assign copy_start = instruction_execute_accept && is_copy_op;
+    assign global_start = instruction_execute_accept && is_global_op;
     assign shared_start = instruction_execute_accept && (is_shared_load || is_shared_store);
 
     assign instruction_execute_accept =
@@ -296,15 +356,18 @@ module multiwarp_execution_core #(
     // INSTRUCTION MEMORY
 
     assign execution_idle = !fp_inflight && !tensor_busy && !shared_inflight &&
-        !wb_valid && !host_memory_pending;
+        !wb_valid && !host_memory_pending && !global_busy && !tmem_busy && !tmem_row_valid &&
+        tmem_warp_pending == 0 && !copy_busy && !copy_row_valid && copy_warp_pending == 0;
     assign host_memory_ready = HOST_PORTS && !reset && !run_enable &&
         !launch_enable && execution_idle && shared_request_ready;
     assign host_memory_accept = host_memory_valid && host_memory_ready;
     assign host_memory_response_valid = host_memory_pending && memory_response_valid;
     assign host_memory_read_data = shared_load_data[31:0];
-    assign shared_response_valid = memory_response_valid && !host_memory_pending;
+    assign shared_response_valid = memory_response_valid && !host_memory_pending && !tmem_memory_pending && !copy_shared_pending;
     assign memory_response_ready = host_memory_pending
-        ? host_memory_response_ready : shared_response_ready;
+        ? host_memory_response_ready : tmem_memory_pending
+        ? tmem_memory_response_ready : copy_shared_pending
+        ? copy_shared_response_ready : shared_response_ready;
 
     always_ff @(posedge clk) begin
         if (reset)
@@ -353,6 +416,9 @@ module multiwarp_execution_core #(
         is_integer_op   = 1'b0;
         is_fp_op        = 1'b0;
         is_tensor_op    = 1'b0;
+        is_tmem_op      = 1'b0;
+        is_global_op    = 1'b0;
+        is_copy_op      = 1'b0;
         is_shared_load  = 1'b0;
         is_shared_store = 1'b0;
         is_branch       = 1'b0;
@@ -408,6 +474,27 @@ module multiwarp_execution_core #(
                                rd_addr <= 4'd12 && immediate == 14'd0;
                 // All source and destination rows are checked together by
                 // tensor_dependency, and allocated by sm_tensor_unit.
+            end
+
+            OP_TALLOC, OP_TFREE, OP_TST, OP_TLD, OP_TMMA, OP_TMMA_ACC, OP_TMMA_NVFP4, OP_TMMA_NVFP4_ACC,
+            OP_TCOMMIT, OP_TWAIT, OP_TRELEASE, OP_TSTATUS: begin
+                is_tmem_op = 1'b1;
+                uses_rs1 = opcode == OP_TST || tensor_matrix_opcode(opcode) || opcode == OP_TWAIT;
+                uses_rs2 = tensor_matrix_opcode(opcode);
+                writes_rd = opcode == OP_TLD || opcode == OP_TCOMMIT || opcode == OP_TSTATUS;
+            end
+
+            OP_CPASYNC, OP_CPWAIT, OP_CPRELEASE, OP_CPSTATUS: begin
+                is_copy_op = 1'b1;
+                uses_rs1 = opcode == OP_CPASYNC || opcode == OP_CPWAIT;
+                writes_rd = opcode == OP_CPASYNC || opcode == OP_CPSTATUS;
+            end
+
+            OP_LD_GLOBAL, OP_ST_GLOBAL, OP_GSTATUS: begin
+                is_global_op = 1'b1;
+                uses_rs1 = opcode != OP_GSTATUS;
+                uses_rs2 = opcode == OP_ST_GLOBAL;
+                writes_rd = opcode != OP_ST_GLOBAL;
             end
 
             OP_LD_SHARED: begin
@@ -480,12 +567,21 @@ module multiwarp_execution_core #(
         (at_reconvergence_point ||
          ((!is_fp_op || !fp_inflight) &&
           (!is_tensor_op || tensor_ready) &&
-          (!(is_shared_load || is_shared_store) || shared_request_ready) &&
+          (!is_tmem_op || (tmem_ready &&
+            (!tensor_matrix_opcode(opcode) || copy_matrix_access))) &&
+          (!is_copy_op || copy_ready) &&
+          (!is_global_op || global_ready) &&
+          (!(is_shared_load || is_shared_store) || (shared_request_ready && !tmem_memory_lock &&
+            !copy_shared_valid && copy_shared_access)) &&
           (!is_integer_op ||
-           (wb_slot_available && !fp_completion_valid && !tensor_row_valid && !shared_completion_valid)) &&
+           (wb_slot_available && !fp_completion_valid && !tensor_row_valid &&
+            !tmem_row_valid && !copy_row_valid && !shared_completion_valid &&
+            !(global_completion_valid && global_writes_rd))) &&
           (opcode != OP_EXIT ||
            (selected_warp_busy_mask == 16'd0 && selected_tensor_busy_mask == 16'd0 &&
-            !(shared_inflight && shared_warp_id == selected_warp_id)))));
+            !(shared_inflight && shared_warp_id == selected_warp_id) &&
+            !(global_busy && global_warp == selected_warp_id) &&
+            !tmem_warp_pending[selected_warp_id] && !copy_warp_pending[selected_warp_id]))));
     // WARP CONTROL
 
     warp_control_unit warp_control (
@@ -633,7 +729,7 @@ module multiwarp_execution_core #(
     end
     // TENSOR EXECUTION AND REGISTER TRANSFERS
 
-    sm_tensor_unit tensor_execute (
+    sm_tensor_unit #(.AUX_PORT(1)) tensor_execute (
         .clk(clk), .reset(reset),
         .request_valid(tensor_start), .request_ready(tensor_ready),
         .request_warp_id(selected_warp_id),
@@ -646,8 +742,45 @@ module multiwarp_execution_core #(
         .row_valid(tensor_row_valid), .row_ready(tensor_take),
         .row_rd_addr(tensor_rd_addr), .row_write_mask(tensor_write_mask),
         .row_data(tensor_result), .row_last(tensor_row_last),
-        .last_row_committed(wb_fire && wb_is_tensor && wb_tensor_last)
+        .last_row_committed(wb_fire && wb_is_tensor && wb_tensor_last),
+        .aux_busy(tmem_busy), .aux_request_valid(tmem_array_valid),
+        .aux_nvfp4_mode(tmem_nvfp4_mode),
+        .aux_request_ready(tmem_array_ready),
+        .aux_a_tile(tmem_a), .aux_b_tile(tmem_b), .aux_c_tile(tmem_c),
+        .aux_result_valid(tmem_array_result_valid), .aux_result_ready(tmem_array_result_ready),
+        .aux_result_tile(tmem_array_result)
     );
+
+    sm_tensor_memory_unit tensor_memory (
+        .clk(clk), .reset(reset), .command_valid(tmem_start), .command_ready(tmem_ready),
+        .opcode(opcode), .warp_id(selected_warp_id), .active_mask(selected_active_mask),
+        .rd_addr(rd_addr), .rs1_addr(rs1_addr), .rs2_addr(rs2_addr), .immediate(immediate),
+        .source_a(rs1_data), .source_b(rs2_data), .array_available(!tensor_busy),
+        .memory_idle(shared_request_ready && !shared_inflight && !host_memory_pending &&
+                     !copy_shared_valid && !copy_shared_pending),
+        .busy(tmem_busy), .memory_lock(tmem_memory_lock), .warp_pending(tmem_warp_pending),
+        .matrix_guard_valid(tmem_matrix_guard_valid),
+        .memory_request_valid(tmem_memory_valid), .memory_request_ready(shared_request_ready),
+        .memory_addresses(tmem_memory_addresses),
+        .memory_response_valid(memory_response_valid && tmem_memory_pending),
+        .memory_response_ready(tmem_memory_response_ready), .memory_data(shared_load_data),
+        .array_request_valid(tmem_array_valid), .array_request_ready(tmem_array_ready),
+        .array_nvfp4_mode(tmem_nvfp4_mode),
+        .a_tile(tmem_a), .b_tile(tmem_b), .c_tile(tmem_c),
+        .array_result_valid(tmem_array_result_valid), .array_result_ready(tmem_array_result_ready),
+        .array_result(tmem_array_result),
+        .row_valid(tmem_row_valid), .row_ready(tmem_take), .row_warp_id(tmem_row_warp),
+        .row_rd_addr(tmem_row_rd), .row_write_mask(tmem_row_mask), .row_data(tmem_row_data)
+    );
+
+    always_ff @(posedge clk) begin
+        if (reset) tmem_memory_pending <= 1'b0;
+        else begin
+            if (tmem_memory_valid && shared_request_ready) tmem_memory_pending <= 1'b1;
+            if (memory_response_valid && tmem_memory_pending && tmem_memory_response_ready)
+                tmem_memory_pending <= 1'b0;
+        end
+    end
     // BRANCH UNIT
 
     branch_unit branch (
@@ -832,6 +965,67 @@ module multiwarp_execution_core #(
         .store_enable_mask (lsu_store_mask)
 
     );
+    global_memory_unit global_memory (
+        .clk(clk), .reset(reset), .command_valid(global_start), .command_ready(global_ready),
+        .command_store(opcode == snackwell_pkg::OP_ST_GLOBAL),
+        .command_status(opcode == snackwell_pkg::OP_GSTATUS),
+        .command_warp(selected_warp_id), .command_rd(rd_addr), .command_mask(selected_active_mask),
+        .command_bases(rs1_data), .command_data(rs2_data), .command_offset(immediate_extended),
+        .busy(global_busy), .warp_id(global_warp), .status_bits(global_status),
+        .request_valid(lsu_global_valid), .request_ready(lsu_global_ready),
+        .request_write(lsu_global_write), .request_address(lsu_global_address),
+        .request_data(lsu_global_data), .response_valid(lsu_global_response_valid),
+        .response_ready(lsu_global_response_ready), .response_error(lsu_global_error),
+        .response_data(lsu_global_result), .completion_valid(global_completion_valid),
+        .completion_ready(global_completion_ready), .completion_writes_rd(global_writes_rd),
+        .completion_rd(global_rd), .completion_mask(global_mask), .completion_data(global_data)
+    );
+    global_memory_arbiter global_bus (
+        .clk(clk), .reset(reset),
+        .lsu_valid(lsu_global_valid), .lsu_ready(lsu_global_ready), .lsu_write(lsu_global_write),
+        .lsu_address(lsu_global_address), .lsu_data(lsu_global_data),
+        .lsu_response_valid(lsu_global_response_valid), .lsu_response_ready(lsu_global_response_ready),
+        .lsu_error(lsu_global_error), .lsu_result(lsu_global_result),
+        .copy_valid(copy_global_valid), .copy_ready(copy_global_ready), .copy_address(copy_global_address),
+        .copy_response_valid(copy_global_response_valid), .copy_response_ready(copy_global_response_ready),
+        .copy_error(copy_global_error), .copy_result(copy_global_data),
+        .request_valid(global_request_valid), .request_ready(global_request_ready),
+        .request_write(global_request_write), .request_address(global_request_address),
+        .request_data(global_request_data), .response_valid(global_response_valid),
+        .response_ready(global_response_ready), .response_error(global_response_error),
+        .response_data(global_response_data), .busy(global_bus_busy)
+    );
+
+    async_copy_unit async_copy (
+        .clk(clk), .reset(reset), .command_valid(copy_start), .command_ready(copy_ready),
+        .opcode(opcode), .warp_id(selected_warp_id), .active_mask(selected_active_mask),
+        .rd_addr(rd_addr), .rs1_addr(rs1_addr), .rs2_addr(rs2_addr), .immediate(immediate), .source(rs1_data),
+        .memory_idle(shared_request_ready && !shared_inflight && !host_memory_pending &&
+                     !tmem_memory_lock && !copy_shared_pending),
+        .busy(copy_busy), .warp_pending(copy_warp_pending), .status_bits(copy_status),
+        .probe_addresses(lsu_addresses), .probe_store(is_shared_store),
+        .matrix_a(rs1_data[31:0]), .matrix_b(rs2_data[31:0]),
+        .matrix_valid(tmem_matrix_guard_valid), .matrix_nvfp4(tensor_nvfp4_opcode(opcode)),
+        .shared_access_ready(copy_shared_access), .matrix_access_ready(copy_matrix_access),
+        .global_valid(copy_global_valid), .global_ready(copy_global_ready), .global_address(copy_global_address),
+        .global_response_valid(copy_global_response_valid), .global_response_ready(copy_global_response_ready),
+        .global_error(copy_global_error), .global_data(copy_global_data),
+        .shared_valid(copy_shared_valid), .shared_ready(copy_shared_ready),
+        .shared_address(copy_shared_address), .shared_data(copy_shared_data),
+        .shared_response_valid(copy_shared_pending && memory_response_valid),
+        .shared_response_ready(copy_shared_response_ready),
+        .row_valid(copy_row_valid), .row_ready(copy_take), .row_warp(copy_row_warp),
+        .row_rd(copy_row_rd), .row_mask(copy_row_mask), .row_data(copy_row_data)
+    );
+    assign copy_shared_ready = shared_request_ready && !tmem_memory_lock && !host_memory_accept;
+    always_ff @(posedge clk) begin
+        if (reset) copy_shared_pending <= 0;
+        else begin
+            if (copy_shared_valid && copy_shared_ready) copy_shared_pending <= 1;
+            if (copy_shared_pending && memory_response_valid && copy_shared_response_ready)
+                copy_shared_pending <= 0;
+        end
+    end
     // SHARED MEMORY
 
     shared_memory #(.CLEAR_ON_RESET(CLEAR_SHARED_ON_RESET)) shared_mem (
@@ -839,23 +1033,29 @@ module multiwarp_execution_core #(
         .clk               (clk),
         .reset             (reset),
 
-        .request_valid     (shared_start || host_memory_accept),
+        .request_valid     (shared_start || host_memory_accept || tmem_memory_valid ||
+                            (copy_shared_valid && !tmem_memory_lock)),
         .request_ready     (shared_request_ready),
         .response_valid    (memory_response_valid),
         .response_ready    (memory_response_ready),
 
         .lane_addresses    (host_memory_accept
-                            ? {96'd0, 20'd0, host_memory_address, 2'b0} : lsu_addresses),
-        .store_data        (host_memory_accept ? {96'd0, host_memory_data} : lsu_store_data),
+                            ? {96'd0, 20'd0, host_memory_address, 2'b0} :
+                            tmem_memory_lock ? tmem_memory_addresses :
+                            copy_shared_valid ? {96'd0, copy_shared_address} : lsu_addresses),
+        .store_data        (host_memory_accept ? {96'd0, host_memory_data} :
+                            copy_shared_valid && !tmem_memory_lock ? {96'd0, copy_shared_data} : lsu_store_data),
 
         .load_enable_mask  (
-            host_memory_accept ? {3'b0, !host_memory_write} : instruction_execute_accept
+            host_memory_accept ? {3'b0, !host_memory_write} : tmem_memory_lock
+                ? 4'hf : copy_shared_valid ? 4'd0 : instruction_execute_accept
                 ? lsu_load_mask
                 : 4'b0000
         ),
 
         .store_enable_mask (
-            host_memory_accept ? {3'b0, host_memory_write} : instruction_execute_accept
+            host_memory_accept ? {3'b0, host_memory_write} : tmem_memory_lock ? 4'd0 :
+            copy_shared_valid ? 4'b0001 : instruction_execute_accept
                 ? lsu_store_mask
                 : 4'b0000
         ),
@@ -908,7 +1108,7 @@ module multiwarp_execution_core #(
             wb_is_tensor <= 1'b0;
             wb_tensor_last <= 1'b0;
 
-            // Priority: FP completion, tensor row, shared load, then integer.
+            // Priority: FP, tensor row, tensor-memory row, copy ticket/status, shared load, global load/status, integer.
             // Each producer holds its result until it owns a writeback slot.
             if (fp_take) begin
                 wb_valid      <= 1'b1;
@@ -926,12 +1126,33 @@ module multiwarp_execution_core #(
                 wb_write_mask <= tensor_write_mask;
                 wb_result     <= tensor_result;
             end
+            else if (tmem_take) begin
+                wb_valid      <= 1'b1;
+                wb_warp_id    <= tmem_row_warp;
+                wb_rd_addr    <= tmem_row_rd;
+                wb_write_mask <= tmem_row_mask;
+                wb_result     <= tmem_row_data;
+            end
+            else if (copy_take) begin
+                wb_valid      <= 1'b1;
+                wb_warp_id    <= copy_row_warp;
+                wb_rd_addr    <= copy_row_rd;
+                wb_write_mask <= copy_row_mask;
+                wb_result     <= copy_row_data;
+            end
             else if (shared_take) begin
                 wb_valid      <= 1'b1;
                 wb_warp_id    <= shared_warp_id;
                 wb_rd_addr    <= shared_rd_addr;
                 wb_write_mask <= shared_write_mask;
                 wb_result     <= shared_load_data;
+            end
+            else if (global_take) begin
+                wb_valid      <= 1'b1;
+                wb_warp_id    <= global_warp;
+                wb_rd_addr    <= global_rd;
+                wb_write_mask <= global_mask;
+                wb_result     <= global_data;
             end
             else if (
                 run_enable &&

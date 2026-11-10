@@ -1,8 +1,9 @@
 """Simulation launch orchestration for models larger than shared memory.
 
-Host code copies raw words and reshapes/slices tensors. Every model arithmetic
-operation, token lookup and greedy selection runs on the SM. This is not DMA
-or a hardware global-memory implementation.
+Host code copies/reshapes raw words and optionally quantizes linear inputs.
+Model arithmetic, token lookup and selection run on the SM. Shared mode loads
+internal memory directly. Global mode stages inputs externally and executes
+ordinary loads/stores plus asynchronous shared copies for native NVFP4 tiles.
 """
 
 import json
@@ -16,6 +17,7 @@ from snackwell.kernels.inference import (
     Stage,
     elementwise,
     layernorm,
+    loop_layernorm,
     scale_mask,
     tiled_matmul,
 )
@@ -61,7 +63,24 @@ def insert_rectangle(target, stride, row, rows, col, columns, data):
 class ModelRuntime:
     """Split tensors into launches that fit shared memory; verify every launch."""
 
-    def __init__(self, output, executable=None, on_progress=None):
+    def __init__(
+        self,
+        output,
+        executable=None,
+        on_progress=None,
+        *,
+        memory="shared",
+        memory_latency=2,
+        optimize_resident=True,
+    ):
+        if memory not in ("shared", "global", "resident", "resident-copy"):
+            raise ValueError("memory must be shared, global, resident or resident-copy")
+        if type(memory_latency) is not int or not 0 <= memory_latency <= 1000:
+            raise ValueError("memory latency must be an integer from 0 to 1000")
+        if type(optimize_resident) is not bool:
+            raise ValueError("optimize_resident must be a boolean")
+        self.memory, self.memory_latency = memory, memory_latency
+        self.optimize_resident = optimize_resident
         self.output = Path(output)
         self.output.mkdir(parents=True, exist_ok=True)
         self.executable = executable or compile_runner(self.output)
@@ -80,6 +99,17 @@ class ModelRuntime:
             if isinstance(self.executable, (ModelSimulator, SimulatorSession))
             else True,
         )
+        self.device = None
+        if memory.startswith("resident"):
+            from snackwell.resident_memory import resident_memory
+
+            if not isinstance(self.executable, SimulatorSession):
+                raise ValueError("resident memory requires an explicit Verilator session")
+            self.device = resident_memory(self.executable)
+        if memory != "shared":
+            self.simulation.update(memory=memory, memory_latency=memory_latency)
+        if memory == "resident":
+            self.simulation["resident_optimized"] = optimize_resident
         if self.compact:
             self.simulation["artifacts"] = "summary"
 
@@ -98,6 +128,24 @@ class ModelRuntime:
     ):
         if self.on_progress:
             self.on_progress(dict(type="kernel_start", stage=name, launch=len(self.reports) + 1))
+        external = wanted_shared = direct = None
+        if self.memory == "resident":
+            from snackwell.direct_memory import DirectLaunch
+
+            direct = DirectLaunch(
+                self.device,
+                layout,
+                source,
+                operation,
+                params,
+                layout.regions[output],
+                optimize=self.optimize_resident,
+            )
+            source, wanted_shared = direct.source, direct.expected_shared
+        elif self.memory != "shared":
+            from snackwell.kernels.global_model import prepare
+
+            source, external, wanted_shared = prepare(layout, source, operation, params)
         stage = Stage(name, source, operation, tuple(inputs), output, params)
         directory = self.output / f"{len(self.reports):03d}_{name}"
         words = list(assembled_program(source))
@@ -106,41 +154,140 @@ class ModelRuntime:
             directory.mkdir(parents=True, exist_ok=True)
             (directory / "program.asm").write_text(source)
             (directory / "layout.json").write_text(json.dumps(layout.regions, indent=2) + "\n")
+            if direct is not None:
+                direct.save(directory)
+            if external is not None:
+                from snackwell.numeric import SENTINEL
+
+                write_hex(directory / "global-input.hex", external)
+                write_hex(directory / "input.hex", [SENTINEL] * 1024)
 
         if not self.compact:
             save_inputs()
         if directory.exists():
             (directory / "result.json").unlink(missing_ok=True)
             (directory / "failure.json").unlink(missing_ok=True)
-        after = None
+            if self.memory != "shared":
+                for filename in (
+                    "output.hex",
+                    "global-output.hex",
+                    "logical-output.hex",
+                    "shared-output.hex",
+                    "registers.hex",
+                    "trace.csv",
+                    "metrics.txt",
+                    "profile.json",
+                ):
+                    (directory / filename).unlink(missing_ok=True)
+        after = global_after = shared_after = None
+        transfer = resident_output = None
         try:
-            expected = expected_stage(stage, layout.memory, layout, matrix_product=tensor_product)
-            after, registers, cycles = run_program(
-                self.executable,
-                words,
-                layout.memory,
-                directory,
-                warp_mask=warp_mask,
-                active_masks=active_masks,
-                max_cycles=200000,
+            expected = expected_stage(
+                stage, list(map(int, layout.memory)), layout, matrix_product=tensor_product
             )
+            if self.memory != "shared":
+                from snackwell.global_memory import run_model_global
+
+                if direct is not None:
+                    shared_after, registers, global_after, transfer, resident_output = direct.run(
+                        words,
+                        directory,
+                        warp_mask=warp_mask,
+                        active_masks=active_masks,
+                        latency=self.memory_latency,
+                    )
+                elif self.device is not None:
+                    shared_after, registers, global_after, transfer, resident_output = (
+                        self.device.run(
+                            words,
+                            external,
+                            layout.regions[output],
+                            directory,
+                            warp_mask=warp_mask,
+                            active_masks=active_masks,
+                            latency=self.memory_latency,
+                        )
+                    )
+                else:
+                    shared_after, registers, global_after, transfer = run_model_global(
+                        self.executable,
+                        words,
+                        external,
+                        directory,
+                        warp_mask=warp_mask,
+                        active_masks=active_masks,
+                        latency=self.memory_latency,
+                    )
+                cycles = transfer.get("total_cycles", transfer["cycles"])
+                after = global_after[:1024]
+                if transfer["status"] or transfer["copy_status"]:
+                    raise ValueError("global-memory or asynchronous-copy status reported an error")
+                if shared_after != wanted_shared or (
+                    self.device is None and global_after[1024:] != external[1024:]
+                ):
+                    raise ValueError("global transport changed a shared or external memory guard")
+                if operation == "nvfp4_matmul":
+                    jobs = params["n"] // 4 * (params["k"] // 16)
+                    if transfer["copy_reads"] != jobs * 24 or transfer["copy_writes"] != jobs * 24:
+                        raise ValueError("incorrect NVFP4 operand transfer count")
+                    if "nvfp4_macs" in transfer and (
+                        transfer["nvfp4_macs"] != jobs * 256
+                        or transfer["fp32_tensor_multiplies"] != 0
+                    ):
+                        raise ValueError("incorrect native NVFP4 arithmetic path")
+                elif transfer["copy_reads"] or transfer["copy_writes"]:
+                    raise ValueError("unexpected async copies in a global scalar/register kernel")
+                if not self.compact:
+                    if direct is not None:
+                        direct.save(directory)
+                    write_image(directory / "program.hex", words)
+                    write_hex(directory / "output.hex", after)
+                    write_hex(
+                        directory / ("logical-output.hex" if direct else "global-output.hex"),
+                        global_after,
+                    )
+                    write_hex(directory / "shared-output.hex", shared_after)
+                    write_hex(directory / "registers.hex", registers)
+            else:
+                after, registers, cycles = run_program(
+                    self.executable,
+                    words,
+                    layout.memory,
+                    directory,
+                    warp_mask=warp_mask,
+                    active_masks=active_masks,
+                    max_cycles=200000,
+                )
+            if operation == "nvfp4_matmul" and any(registers[lane * 16 + 14] for lane in range(4)):
+                raise ValueError("NVFP4 tensor status reported an execution error")
             accuracy = verify_stage(stage, layout.memory, after, layout, prepared=expected)
         except BaseException as error:
+            if self.device is not None:
+                self.executable.close()
             if self.compact:
                 save_inputs()
                 write_image(directory / "program.hex", words)
-                write_hex(directory / "input.hex", layout.memory)
+                if self.memory == "shared":
+                    write_hex(directory / "input.hex", layout.memory)
                 if after is not None:
                     write_hex(directory / "output.hex", after)
                     write_hex(directory / "registers.hex", registers)
+                if global_after is not None:
+                    write_hex(
+                        directory / ("logical-output.hex" if direct else "global-output.hex"),
+                        global_after,
+                    )
+                    write_hex(directory / "shared-output.hex", shared_after)
                 (directory / "failure.json").write_text(
                     json.dumps(
                         dict(
                             verified=False,
                             error=str(error),
+                            memory=self.memory,
+                            memory_latency=self.memory_latency,
                             warp_mask=warp_mask,
                             active_masks=active_masks,
-                            max_cycles=200000,
+                            max_cycles=1000000 if self.device is not None else 200000,
                         ),
                         indent=2,
                     )
@@ -158,13 +305,15 @@ class ModelRuntime:
             active_masks=active_masks,
             accuracy=accuracy,
         )
+        if transfer is not None:
+            report["memory"] = transfer
         self.reports.append(report)
         if not self.compact:
             (directory / "result.json").write_text(json.dumps(report, indent=2) + "\n")
         if self.on_progress:
             self.on_progress(dict(type="kernel_complete", launch=len(self.reports), **report))
         start, count = layout.regions[output]
-        return after[start : start + count]
+        return resident_output if resident_output is not None else after[start : start + count]
 
     def matmul(self, name, a, b, m, n, k, transpose_b=False, bias=None):
         """Compute an m-by-n output in chunks, reducing across k inputs per element."""
@@ -238,6 +387,81 @@ class ModelRuntime:
                 insert_rectangle(out, n, row, row_count, col, columns, result)
         return out
 
+    def nvfp4_linear(self, name, a, b, m, n, k, bias=None):
+        """Quantize on the host, execute native packed products and the epilogue on RTL."""
+        from snackwell.kernels.nvfp4_model import program
+        from snackwell.nvfp4_inference import activation_rows, tile, weight_columns
+        from snackwell.reference.nvfp4 import QuantizedVectors
+
+        if any(type(x) is not int or x < 1 for x in (m, n, k)) or n % 4:
+            raise ValueError("NVFP4 linear requires positive dimensions and columns divisible by 4")
+        if len(a) != m * k or len(b) != k * n or (bias is not None and len(bias) != n):
+            raise ValueError("NVFP4 linear tensor length mismatch")
+        padded = (k + 15) // 16 * 16
+        activations = activation_rows(a, m, k)
+        # The quantizer's process-wide LRU must not retain device allocation handles.
+        weights = weight_columns(tuple(map(int, b)), n, k)
+        weight_scale = [weights.tensor_scale]
+        if self.device is not None:
+            weight_scale = self.device.constant(("nvfp4_scale", weights.tensor_scale), weight_scale)
+        out = [None] * (m * n)
+        for row in range(0, m, 4):
+            count = min(4, m - row)
+            rows = activations[row : row + count]
+            scales = [v.tensor_scale for v in rows] + [0x3F800000] * (4 - count)
+            left = QuantizedVectors(
+                [v.codes[0] for v in rows] + [[0] * padded for _ in range(4 - count)],
+                [v.scales[0] for v in rows] + [[0] * (padded // 16) for _ in range(4 - count)],
+                0x3F800000,
+            )
+            for col in range(0, n, 16):
+                columns = min(16, n - col)
+                result = None
+                for start in range(0, padded, 128):
+                    inner = min(128, padded - start)
+                    aa, bb = (
+                        tile(left, 0, 4, start, inner),
+                        tile(weights, col, columns, start, inner),
+                    )
+                    packed_a = [w for g in range(inner // 16) for w in aa.group_words(0, g)]
+                    packed_b = [
+                        w
+                        for c in range(0, columns, 4)
+                        for g in range(inner // 16)
+                        for w in bb.group_words(c, g)
+                    ]
+                    if self.device is not None:
+                        packed_b = self.device.constant(("packed_nvfp4", tuple(packed_b)), packed_b)
+                    layout = Layout()
+                    layout.allocate("a", len(packed_a), packed_a)
+                    layout.allocate("b", len(packed_b), packed_b)
+                    layout.allocate("scale_a", 4, scales)
+                    layout.allocate("scale_b", 1, weight_scale)
+                    inputs = ["a", "b", "scale_a", "scale_b"]
+                    if result is not None:
+                        layout.allocate("initial", 4 * columns, result)
+                        inputs.append("initial")
+                    final = start + inner == padded
+                    add_bias = final and bias is not None
+                    if add_bias:
+                        layout.allocate("bias", columns, bias[col : col + columns])
+                        inputs.append("bias")
+                    layout.allocate("out", 4 * columns)
+                    options = dict(accumulate=start != 0, final=final, bias=add_bias)
+                    result = self.launch(
+                        name,
+                        layout,
+                        program(layout, columns, inner, **options),
+                        "nvfp4_matmul",
+                        inputs,
+                        "out",
+                        n=columns,
+                        k=inner,
+                        **options,
+                    )
+                insert_rectangle(out, n, row, count, col, columns, result[: count * columns])
+        return out
+
     def rows(
         self,
         name,
@@ -278,7 +502,12 @@ class ModelRuntime:
                 for word in self.rows(name, kind, x[start : start + chunk], chunk // 128, 128)
             ]
         out = []
-        row_chunk = 1 if cols > 128 else 4
+        row_chunk = (
+            1
+            if cols > 128
+            or (self.memory == "resident" and cols >= 128 and kind in ("bias_add", "residual_add"))
+            else 4
+        )
         for row in range(0, rows, row_chunk):
             layout = Layout()
             count = min(row_chunk, rows - row)
@@ -303,8 +532,15 @@ class ModelRuntime:
                 layout.allocate("beta", cols, beta)
                 ins += ["gamma", "beta"]
                 params["epsilon"] = epsilon
-                source = layernorm(
-                    layout, count, cols, epsilon, "x", "x", parallel_affine=count == 1
+                normalize = loop_layernorm if self.memory == "resident" and cols > 16 else layernorm
+                source = normalize(
+                    layout,
+                    count,
+                    cols,
+                    epsilon,
+                    "x",
+                    "x",
+                    parallel_affine=count == 1 and not (self.memory == "resident" and cols > 128),
                 )
             elif kind == "softmax":
                 params["temperature"] = validate_temperature(temperature)
@@ -340,7 +576,11 @@ class ModelRuntime:
                     ins,
                     output,
                     active_masks=1
-                    if count == 1 and kind not in ("gelu", "layernorm", "bias_add", "residual_add")
+                    if count == 1
+                    and (
+                        kind not in ("gelu", "layernorm", "bias_add", "residual_add")
+                        or (self.memory == "resident" and kind == "layernorm" and cols > 128)
+                    )
                     else 0xFFFF,
                     **params,
                 )

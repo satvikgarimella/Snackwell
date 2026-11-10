@@ -21,6 +21,21 @@ def main():
     parser.add_argument("--prompt", default="To be, or not to ")
     parser.add_argument("--tokens", type=int, default=4)
     parser.add_argument(
+        "--memory", choices=("shared", "global", "resident", "resident-copy"), default="shared"
+    )
+    parser.add_argument(
+        "--memory-latency",
+        type=int,
+        default=2,
+        help="extra external response cycles in global mode",
+    )
+    parser.add_argument(
+        "--precision",
+        choices=("fp32", "nvfp4"),
+        default="fp32",
+        help="NVFP4 linear projections with FP32 attention/normalization (opt-in)",
+    )
+    parser.add_argument(
         "--no-kv-cache",
         action="store_true",
         help="Use the original padded, sliding-window recomputation policy",
@@ -93,6 +108,14 @@ def main():
     try:
         if args.tokens < 1 or args.tokens > 256:
             raise ValueError("--tokens must be 1..256")
+        if args.precision == "nvfp4" and (args.live or args.evaluate):
+            raise ValueError("NVFP4 uses terminal generation or scripts/compare_nvfp4_model.py")
+        if args.memory != "shared" and (args.live or args.evaluate):
+            raise ValueError(
+                "global memory uses terminal generation or scripts/compare_model_memory.py"
+            )
+        if not 0 <= args.memory_latency <= 1000:
+            raise ValueError("memory latency must be 0..1000")
         model = load_checkpoint(args.checkpoint)
         if args.live and "tokenizer" in model:
             raise ValueError(
@@ -145,6 +168,9 @@ def main():
                 cache=not args.no_kv_cache,
                 min_p=args.min_p,
                 heal=not args.no_token_healing,
+                precision=args.precision,
+                memory=args.memory,
+                memory_latency=args.memory_latency,
             )
             return
         if args.stream:
@@ -159,6 +185,9 @@ def main():
                 decoder=decoder,
                 cache=not args.no_kv_cache,
                 heal=not args.no_token_healing,
+                precision=args.precision,
+                memory=args.memory,
+                memory_latency=args.memory_latency,
             )
             print(f"Results: {args.out.resolve()}")
             return
@@ -172,37 +201,49 @@ def main():
             print(f"Decoding: {decoder.describe()}", flush=True)
             generated, reports = args.prompt, []
             generation = Generation(
-                model, args.prompt, cache=not args.no_kv_cache, heal=not args.no_token_healing
+                model,
+                args.prompt,
+                cache=not args.no_kv_cache,
+                heal=not args.no_token_healing,
+                precision=args.precision,
+                memory=args.memory,
+                memory_latency=args.memory_latency,
             )
-            for step in range(args.tokens):
-                result = generation.next(
-                    args.out / f"token_{step:03d}",
-                    executable,
-                    draw=decoder.draw(),
-                    temperature=decoder.temperature,
-                    min_p=decoder.min_p,
-                )
-                generated += result["next_character"]
-                reports.append(
-                    dict(
-                        character=result["next_character"],
-                        cycles=result["cycles"],
-                        launches=result["launches"],
-                        accuracy=result["accuracy"],
-                        wall_seconds=result["wall_seconds"],
-                        simulation=result["simulation"],
-                        selection=result["selection"],
-                        cache=result["cache"],
+            try:
+                for step in range(args.tokens):
+                    result = generation.next(
+                        args.out / f"token_{step:03d}",
+                        executable,
+                        draw=decoder.draw(),
+                        temperature=decoder.temperature,
+                        min_p=decoder.min_p,
                     )
-                )
-                print(
-                    f"PASS token {step + 1}/{args.tokens}: {result['next_character']!r}, "
-                    f"{result['cycles']} cycles, {result['wall_seconds']:.2f}s "
-                    f"({result['cache']['phase']})",
-                    flush=True,
-                )
+                    generated += result["next_character"]
+                    reports.append(
+                        dict(
+                            character=result["next_character"],
+                            cycles=result["cycles"],
+                            launches=result["launches"],
+                            accuracy=result["accuracy"],
+                            wall_seconds=result["wall_seconds"],
+                            simulation=result["simulation"],
+                            selection=result["selection"],
+                            cache=result["cache"],
+                            **({"resident": result["resident"]} if "resident" in result else {}),
+                        )
+                    )
+                    print(
+                        f"PASS token {step + 1}/{args.tokens}: {result['next_character']!r}, "
+                        f"{result['cycles']} cycles, {result['wall_seconds']:.2f}s "
+                        f"({result['cache']['phase']})",
+                        flush=True,
+                    )
+            finally:
+                generation.close()
             report = dict(
                 verified=True,
+                precision=args.precision,
+                memory=args.memory,
                 checkpoint_sha256=model["sha256"],
                 prompt=args.prompt,
                 generated=generated,
