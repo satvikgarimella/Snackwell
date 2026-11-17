@@ -75,9 +75,10 @@ module async_copy_unit (
                             {27'd0, row_index} * {20'd0, destination_stride} +
                             {25'd0, column_index, 2'b0};
 
+    genvar status_lane;
     generate
-        for (genvar w = 0; w < 4; w = w + 1) begin : statuses
-            assign status_bits[w*8 +: 8] = errors[w];
+        for (status_lane = 0; status_lane < 4; status_lane = status_lane + 1) begin : statuses
+            assign status_bits[status_lane*8 +: 8] = errors[status_lane];
         end
     endgenerate
 

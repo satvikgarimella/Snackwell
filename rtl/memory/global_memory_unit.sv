@@ -65,9 +65,10 @@ module global_memory_unit #(
         end
     end
 
+    genvar status_lane;
     generate
-        for (genvar w = 0; w < 4; w = w + 1) begin : status_outputs
-            assign status_bits[w*3 +: 3] = status[w];
+        for (status_lane = 0; status_lane < 4; status_lane = status_lane + 1) begin : status_outputs
+            assign status_bits[status_lane*3 +: 3] = status[status_lane];
         end
     endgenerate
 

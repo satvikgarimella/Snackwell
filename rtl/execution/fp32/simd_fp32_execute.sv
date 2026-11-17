@@ -20,8 +20,10 @@ module simd_fp32_execute (
     wire accept = start && !busy &&
         (opcode == snackwell_pkg::OP_FMUL || opcode == OP_FADD || opcode == snackwell_pkg::OP_FSUB);
 
+    // Keep generate indices outside loop headers for Quartus Lite compatibility.
+    genvar lane;
     generate
-        for (genvar lane = 0; lane < 4; lane = lane + 1) begin : lanes
+        for (lane = 0; lane < 4; lane = lane + 1) begin : lanes
             fp32_mul_wrapper mul (
                 .clk(clk), .rst(rst),
                 .start(accept && active_mask[lane] && opcode == snackwell_pkg::OP_FMUL),

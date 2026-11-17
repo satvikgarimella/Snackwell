@@ -49,11 +49,12 @@ module systolic_array_4x4 #(
         .a_valid(a_edge_valid), .b_valid(b_edge_valid)
     );
 
+    genvar r, c;
     generate
-        for (genvar r = 0; r < 4; r = r + 1) begin : rows
+        for (r = 0; r < 4; r = r + 1) begin : rows
             assign a_links[r][0] = a_edges[r*32 +: 32];
             assign a_valid_links[r][0] = a_edge_valid[r];
-            for (genvar c = 0; c < 4; c = c + 1) begin : columns
+            for (c = 0; c < 4; c = c + 1) begin : columns
                 if (r == 0) begin : top_edge
                     assign b_links[0][c] = b_edges[c*32 +: 32];
                     assign b_valid_links[0][c] = b_edge_valid[c];
