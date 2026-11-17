@@ -49,29 +49,31 @@ module systolic_array_4x4 #(
         .a_valid(a_edge_valid), .b_valid(b_edge_valid)
     );
 
-    for (genvar r = 0; r < 4; r = r + 1) begin : rows
-        assign a_links[r][0] = a_edges[r*32 +: 32];
-        assign a_valid_links[r][0] = a_edge_valid[r];
-        for (genvar c = 0; c < 4; c = c + 1) begin : columns
-            if (r == 0) begin : top_edge
-                assign b_links[0][c] = b_edges[c*32 +: 32];
-                assign b_valid_links[0][c] = b_edge_valid[c];
+    generate
+        for (genvar r = 0; r < 4; r = r + 1) begin : rows
+            assign a_links[r][0] = a_edges[r*32 +: 32];
+            assign a_valid_links[r][0] = a_edge_valid[r];
+            for (genvar c = 0; c < 4; c = c + 1) begin : columns
+                if (r == 0) begin : top_edge
+                    assign b_links[0][c] = b_edges[c*32 +: 32];
+                    assign b_valid_links[0][c] = b_edge_valid[c];
+                end
+                fp32_mac_pe #(.INITIAL_ACCUMULATOR(INITIAL_ACCUMULATOR)) pe (
+                    .clk(clk), .reset(reset), .clear(pe_clear),
+                    .nvfp4_mode(saved_nvfp4),
+                    .initial_accumulator(saved_c[(r*4+c)*32 +: 32]),
+                    .step_valid(pe_start), .step_ready(pe_ready_mask[r*4+c]),
+                    .a_valid(a_valid_links[r][c]), .b_valid(b_valid_links[r][c]),
+                    .a_data(a_links[r][c]), .b_data(b_links[r][c]),
+                    .advance(step_advance), .step_done(pe_done_mask[r*4+c]),
+                    .a_out_valid(a_valid_links[r][c+1]), .b_out_valid(b_valid_links[r+1][c]),
+                    .a_out(a_links[r][c+1]), .b_out(b_links[r+1][c]),
+                    .accumulator(accumulators[(r*4+c)*32 +: 32]),
+                    .arithmetic_busy(pe_arithmetic_busy[r*4+c])
+                );
             end
-            fp32_mac_pe #(.INITIAL_ACCUMULATOR(INITIAL_ACCUMULATOR)) pe (
-                .clk(clk), .reset(reset), .clear(pe_clear),
-                .nvfp4_mode(saved_nvfp4),
-                .initial_accumulator(saved_c[(r*4+c)*32 +: 32]),
-                .step_valid(pe_start), .step_ready(pe_ready_mask[r*4+c]),
-                .a_valid(a_valid_links[r][c]), .b_valid(b_valid_links[r][c]),
-                .a_data(a_links[r][c]), .b_data(b_links[r][c]),
-                .advance(step_advance), .step_done(pe_done_mask[r*4+c]),
-                .a_out_valid(a_valid_links[r][c+1]), .b_out_valid(b_valid_links[r+1][c]),
-                .a_out(a_links[r][c+1]), .b_out(b_links[r+1][c]),
-                .accumulator(accumulators[(r*4+c)*32 +: 32]),
-                .arithmetic_busy(pe_arithmetic_busy[r*4+c])
-            );
         end
-    end
+    endgenerate
 
     always_ff @(posedge clk) begin
         if (reset) begin

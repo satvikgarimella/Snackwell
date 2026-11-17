@@ -74,9 +74,12 @@ module async_copy_unit (
     assign shared_address = {20'd0, destination_base} +
                             {27'd0, row_index} * {20'd0, destination_stride} +
                             {25'd0, column_index, 2'b0};
-    for (genvar w = 0; w < 4; w = w + 1) begin : statuses
-        assign status_bits[w*8 +: 8] = errors[w];
-    end
+
+    generate
+        for (genvar w = 0; w < 4; w = w + 1) begin : statuses
+            assign status_bits[w*8 +: 8] = errors[w];
+        end
+    endgenerate
 
     always @(*) begin
         warp_pending = consumers[0] | consumers[1];

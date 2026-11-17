@@ -64,9 +64,12 @@ module global_memory_unit #(
                  bases[i*32 +: 32] == bases[lane*32 +: 32]));
         end
     end
-    for (genvar w = 0; w < 4; w = w + 1) begin : status_outputs
-        assign status_bits[w*3 +: 3] = status[w];
-    end
+
+    generate
+        for (genvar w = 0; w < 4; w = w + 1) begin : status_outputs
+            assign status_bits[w*3 +: 3] = status[w];
+        end
+    endgenerate
 
     always_ff @(posedge clk) begin
         if (reset) begin

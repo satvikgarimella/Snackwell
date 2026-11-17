@@ -16,42 +16,45 @@ module instruction_memory #(
     localparam logic [31:0] EXIT_INSTRUCTION = {OP_EXIT, 26'd0};
     localparam integer ADDRESS_BITS = $clog2(WORDS);
     logic [31:0] memory [0:WORDS-1];
+
+    generate
 `ifndef SYNTHESIS
-    if (SIMULATION_INIT) begin : simulation_image
-        string program_file;
-        integer file_handle;
-        initial begin
-        if (WORDS < 4) $fatal(1, "Instruction memory needs at least four words");
-        program_file = INIT_FILE;
-        // Legacy simulation loading. The FPGA device uses the host port instead.
-        if ($value$plusargs("PROGRAM=%s", program_file)) begin end
-        for (integer i = 0; i < WORDS; i = i + 1)
-            memory[i] = program_file == "" ? 32'd0 : EXIT_INSTRUCTION;
-        if (program_file != "") begin
-            file_handle = $fopen(program_file, "r");
-            if (file_handle == 0) $fatal(1, "Cannot open program: %s", program_file);
-            $fclose(file_handle);
-            $readmemh(program_file, memory);
-        end else begin
-            // Preserve the original smoke-test program when no image is given.
-            memory[0] = {OP_ADD, 4'd3, 4'd1, 4'd2, 14'd0};
-            memory[1] = {OP_SUB, 4'd4, 4'd1, 4'd2, 14'd0};
-            memory[2] = {OP_XOR, 4'd5, 4'd1, 4'd2, 14'd0};
-            memory[3] = EXIT_INSTRUCTION;
+        if (SIMULATION_INIT) begin : simulation_image
+            string program_file;
+            integer file_handle;
+            initial begin
+                if (WORDS < 4) $fatal(1, "Instruction memory needs at least four words");
+                program_file = INIT_FILE;
+                // Legacy simulation loading. The FPGA device uses the host port instead.
+                if ($value$plusargs("PROGRAM=%s", program_file)) begin end
+                for (integer i = 0; i < WORDS; i = i + 1)
+                    memory[i] = program_file == "" ? 32'd0 : EXIT_INSTRUCTION;
+                if (program_file != "") begin
+                    file_handle = $fopen(program_file, "r");
+                    if (file_handle == 0) $fatal(1, "Cannot open program: %s", program_file);
+                    $fclose(file_handle);
+                    $readmemh(program_file, memory);
+                end else begin
+                    // Preserve the original smoke-test program when no image is given.
+                    memory[0] = {OP_ADD, 4'd3, 4'd1, 4'd2, 14'd0};
+                    memory[1] = {OP_SUB, 4'd4, 4'd1, 4'd2, 14'd0};
+                    memory[2] = {OP_XOR, 4'd5, 4'd1, 4'd2, 14'd0};
+                    memory[3] = EXIT_INSTRUCTION;
+                end
+            end
         end
-        end
-    end
 `endif
 
-    if (HOST_WRITABLE) begin : host_port
-        always_ff @(posedge clk)
-            if (host_write_enable && {22'd0, host_word_address} < WORDS)
-                memory[host_word_address] <= host_write_data;
-        assign host_read_data = {22'd0, host_word_address} < WORDS
-            ? memory[host_word_address] : EXIT_INSTRUCTION;
-    end else begin : no_host_port
-        assign host_read_data = 32'd0;
-    end
+        if (HOST_WRITABLE) begin : host_port
+            always_ff @(posedge clk)
+                if (host_write_enable && {22'd0, host_word_address} < WORDS)
+                    memory[host_word_address] <= host_write_data;
+            assign host_read_data = {22'd0, host_word_address} < WORDS
+                ? memory[host_word_address] : EXIT_INSTRUCTION;
+        end else begin : no_host_port
+            assign host_read_data = 32'd0;
+        end
+    endgenerate
 
     // Never wrap a high or unaligned PC back into another instruction.
     // Invalid fetches halt via EXIT; this version has no instruction trap.

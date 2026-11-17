@@ -20,25 +20,27 @@ module simd_fp32_execute (
     wire accept = start && !busy &&
         (opcode == snackwell_pkg::OP_FMUL || opcode == OP_FADD || opcode == snackwell_pkg::OP_FSUB);
 
-    for (genvar lane = 0; lane < 4; lane = lane + 1) begin : lanes
-        fp32_mul_wrapper mul (
-            .clk(clk), .rst(rst),
-            .start(accept && active_mask[lane] && opcode == snackwell_pkg::OP_FMUL),
-            .operand_a(operand_a[lane*32 +: 32]),
-            .operand_b(operand_b[lane*32 +: 32]),
-            .busy(), .done(mul_done[lane]),
-            .result(mul_result[lane*32 +: 32])
-        );
-        fp32_addsub addsub (
-            .clk(clk), .rst(rst),
-            .start(accept && active_mask[lane] && opcode != snackwell_pkg::OP_FMUL),
-            .subtract(opcode == snackwell_pkg::OP_FSUB),
-            .operand_a(operand_a[lane*32 +: 32]),
-            .operand_b(operand_b[lane*32 +: 32]),
-            .busy(), .done(add_done[lane]),
-            .result(add_result[lane*32 +: 32])
-        );
-    end
+    generate
+        for (genvar lane = 0; lane < 4; lane = lane + 1) begin : lanes
+            fp32_mul_wrapper mul (
+                .clk(clk), .rst(rst),
+                .start(accept && active_mask[lane] && opcode == snackwell_pkg::OP_FMUL),
+                .operand_a(operand_a[lane*32 +: 32]),
+                .operand_b(operand_b[lane*32 +: 32]),
+                .busy(), .done(mul_done[lane]),
+                .result(mul_result[lane*32 +: 32])
+            );
+            fp32_addsub addsub (
+                .clk(clk), .rst(rst),
+                .start(accept && active_mask[lane] && opcode != snackwell_pkg::OP_FMUL),
+                .subtract(opcode == snackwell_pkg::OP_FSUB),
+                .operand_a(operand_a[lane*32 +: 32]),
+                .operand_b(operand_b[lane*32 +: 32]),
+                .busy(), .done(add_done[lane]),
+                .result(add_result[lane*32 +: 32])
+            );
+        end
+    endgenerate
 
     assign lane_done = use_mul ? mul_done : add_done;
     assign result = use_mul ? mul_result : add_result;
